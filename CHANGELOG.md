@@ -6,8 +6,18 @@ Dates use the available commit evidence or this conversation's integration date.
 
 Baseline: reviewed rc1 `d9fc392ceddad5f760e0d4a71070bbc723609f77`. Working branch: `constitution/pre-ratification-working`. This is an integration pass, not a new adversarial review, frozen rc2, ratification, merge, or release.
 
+Subsequent development-governance integration starts from actual HEAD `337e3b95f9685f79121b5e572a86e7f583cd1900`, which includes the Linux Mint addition after the owner's previously expected `237b643f6830d3207377a688c1a819b7c65458e5`. The working label remains `1.0.0-working.1`; Git revisions distinguish these integrations.
+
+- Added DEV-1 through DEV-15 as intentional owner ecosystem/development-governance policy: longevity purpose, idea refinement before implementation, comparative research, strongest reasonably available planning, iterative plan review and Plan Freeze Gate, logical APP Plan/Codebase responsibilities, current Master Plan, research/decision records, machine/human-readable Project State, executable phase contracts, full-build small-model continuity, safe zero-conversation resumption, Done Phases evidence, continuous three-layer conformance, and brownfield assessment/repair before features.
+- Preserved all four Linux baselines: Arch Linux, CachyOS, Ubuntu LTS, and Linux Mint (current stable Ubuntu-based release); made permissions and native/system integration explicit.
+- Strengthened shared-core client coverage, UI canonical consistency, no-NAS local-first sync, and Hermes validation/privacy-aware retrieval. General application research does not broaden the pending Hermes comparison beyond its four named sources.
+- Preserved the owner gate: finish Hermes comparison, integrate its blueprint, discuss remaining policies, receive explicit policy-completion confirmation, freeze the candidate, and only then conduct the final attack. No attack or ratification was performed.
+- Recorded coverage, direct reconciliations, and validation in the [development-governance integration report](reviews/2026-10-development-governance-integration.md).
+
+Earlier integration history (retained below):
+
 - Integrated N1–N4: Rust artifact scope, exception lifecycle, qualified SQLite WAL coordination, and explicitly justified relationships between independent data dimensions.
-- Added declared Desktop, Mobile, Universal Device Application, and Web product scopes; Arch Linux, CachyOS, and Ubuntu LTS are first-class Linux test baselines.
+- Initially added declared Desktop, Mobile, Universal Device Application, and Web product scopes with three Linux baselines; the subsequent Linux Mint addition below expanded the current set to Arch Linux, CachyOS, Ubuntu LTS, and Linux Mint (current stable Ubuntu-based release).
 - Subsequent owner addition: promoted Linux Mint's current stable Ubuntu-based release to the same first-class tested baseline status. Clarified equal applicable packaging/installation, launch, updates, filesystem, core-feature, native-integration, and automated/manual validation expectations across all four baselines. Ubuntu/Mint testing does not prove other distributions compatible; other mainstream distributions remain best-effort unless explicitly promoted.
 - Added one shared Rust core across product clients, with technical exceptions, platform-appropriate or shared UI strategies, and adaptive presentation/reuse priorities.
 - Added personal device-local operation, no-NAS local-first continuity, opt-in NAS synchronization hub, and safe topology transitions while retaining authority, consistency, privacy, and recovery contracts.

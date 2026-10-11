@@ -2,6 +2,8 @@
 
 This repository defines a governance constitution for software in this ecosystem. The primary normative document is [Universal Rules for All Apps](UNIVERSL%20RULES%20FOR%20ALL%20APPS.md). Its original filename is retained for continuity.
 
+The rules are a blueprint and development system intended to keep applications maintainable, understandable, recoverable, portable, evolvable, AI-continuable, user-controlled, coherent, and useful over many years. App designs remain specific to their users, domain, risk, data, platforms, and lifecycle.
+
 **Version: 1.0.0-working.1**
 
 **Status: Pre-Ratification Working Candidate — Not Yet Ratified**
@@ -23,6 +25,18 @@ The principal ecosystem choices are:
 - **Device continuity:** Preserve ordinary local operation without a permanent server. Applicable products support local-first device synchronization, an opt-in NAS hub, and safe topology transitions. See [synchronization](UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#s20).
 - **Visual assets:** Prefer genuine SVG source artwork for naturally vector assets; retain raster content where appropriate, permit generated platform icons, respect official brand assets, and enforce SVG trust boundaries. See [ASSET-1](UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#asset-1).
 - **Hermes:** Optional bounded local intelligence and structured small-model retrieval direction are included. The **Hermes / User-Adaptable File Structure Blueprint** is **PENDING FINAL DESIGN — DO NOT INVENT OR FREEZE YET**. See [HERMES-1](UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#hermes-1) and the [pending plan](UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#s30).
+- **Development governance:** Refine the idea, research alternatives, use the strongest reasonably available planning model, and pass the application Plan Freeze Gate before implementation. Keep discoverable APP Plan and Codebase responsibilities, a current Master Plan and Project State, executable phase specifications, and evidence-bearing Done Phases. See [section 31](UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#s31).
+- **Full-build continuity and conformance:** A sufficiently capable small local model should be able to build the entire app from durable repository artifacts without hidden chat history or continuous stronger-model rescue. Missing information blocks affected execution; it does not authorize guessing. Every phase must pass Universal Rules, Master Plan, and Phase Contract checks. Brownfield applications undergo assessment and conformance repair before new features, preserving compliant work.
+
+## Application development lifecycle
+
+For new applications: refine the idea → research → write the Master Plan and phase contracts → review the candidate plan through Attack/Fix cycles → pass the Plan Freeze Gate → implement bounded phases → verify all three conformance layers → preserve Done Phases evidence and update Project State. Known material questions must be resolved or explicitly accepted and documented with applicable authority before implementation.
+
+For existing applications when these rules are applied: pause ordinary feature work → inspect the authorized application → create/update the Master Plan and Existing App Assessment → preserve reusable work and define Conformance Phases → repair and verify → resume planned features subject to the same phase gate. Missing future roadmap features are distinct from defects in the inherited implemented scope.
+
+APP Plan is the durable specification and development memory; Codebase contains implementation. Exact folder names may vary. Project State is the concise machine-readable and human-readable execution entry point, not a second Master Plan. Strongest-model planning implies no permanent cloud dependency. Verification checks actual artifacts against specifications; an agent's completion claim is insufficient.
+
+These application workflows do not authorize inspecting another repository or conducting this constitution's final attack. The development-artifact blueprint does not finalize the pending user-data/Hermes hierarchy.
 
 ## Decisions and exceptions
 
@@ -35,7 +49,7 @@ ADRs in [decisions/](decisions/) preserve significant decisions and rationale. T
 1. Identify the current base commit, affected rules, and applicable user decisions.
 2. Make proposed changes on a reviewable branch and preserve historical evidence.
 3. Record findings and their disposition, validate links and normative consistency, and distinguish documentation validation from runtime evidence.
-4. Receive and integrate the owner-supplied Hermes blueprint and any further policies. Keep the working candidate open until the owner explicitly says **“There is nothing else left to add.”**
+4. Complete the pending Hermes comparison of only Mosaic, LMS, Accounting-and-Money, and Read-and-Watch plans/discussions through the owner's separate workflow; receive and integrate the resulting blueprint. Discuss remaining missing policies with the owner. Keep the working candidate open until the owner explicitly says **“There is nothing else left to add.”**
 5. Only after that confirmation, freeze the final candidate and conduct its final adversarial review. Ratification requires a separate owner decision. Do not infer authority to inspect, migrate, or enforce rules in other repositories, merge into `main`, or tag `1.0.0`.
 
 Rule anchors are preferred over old section numbers. Historical review section references refer to the recorded original commit, not this renumbered candidate.
@@ -48,7 +62,8 @@ Rule anchors are preferred over old section numbers. Historical review section r
 - [Pre-ratification adversarial review](reviews/2026-10-astra-adversarial-review.md): preserved historical report.
 - [Integration disposition and validation](reviews/2026-10-rc1-integration-disposition.md): finding-by-finding outcomes, coverage, and checks.
 - [RC1 verification outcome](reviews/2026-10-rc1-verification-outcome.md): historical verdict, reviewed revision, and four non-blocking clarifications.
-- [Pre-attack integration report](reviews/2026-10-pre-attack-integration.md): current policy coverage, direct conflicts resolved, validation, and remaining work.
+- [Initial pre-attack integration report](reviews/2026-10-pre-attack-integration.md): earlier product-policy coverage, direct conflicts resolved, and validation at that stage.
+- [Development-governance integration](reviews/2026-10-development-governance-integration.md): subsequent owner decisions, actual starting revision, lifecycle coverage, and consistency validation.
 - [Initial-generation provenance](provenance/initial-generation-boundary.md): original drafting attestation, retained as historical claims rather than current rules.
 
 This is a documentation repository; it defines no application build or runtime test suite. Documentation checks do not certify future implementations, supported NAS configurations, or the truth of every possible guarantee. The remaining design and gated review sequence are explicit in [section 30](UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#s30).

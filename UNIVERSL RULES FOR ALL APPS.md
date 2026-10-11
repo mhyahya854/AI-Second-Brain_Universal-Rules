@@ -10,6 +10,8 @@
 
 This constitution governs ecosystem software through engineering invariants, deliberate ecosystem policies, and capability-specific requirements. This working revision integrates owner decisions made after the successful rc1 verification; it is not the reviewed rc1 or a frozen rc2. Preparing or committing it does not ratify it or establish compliance of any application. No further adversarial attack or final release-candidate freeze is authorized until the owner explicitly confirms: **“There is nothing else left to add.”** The detailed Hermes blueprint remains pending under [section 30](#s30).
 
+Its purpose is to maximize the probability that applications remain maintainable, understandable, recoverable, portable, evolvable, AI-continuable, user-controlled, structurally coherent, and usable for as many years as reasonably possible. It is a blueprint and development system for discovering, challenging, documenting, building, verifying, and maintaining app-specific designs, not a requirement for identical features or content hierarchies. The development lifecycle is specified in [section 31](#s31).
+
 ## Contents
 
 1. [Scope and rule classification](#s01)
@@ -42,6 +44,7 @@ This constitution governs ecosystem software through engineering invariants, del
 28. [Documentation, exceptions, and ratification](#s28)
 29. [Anti-pattern index — non-normative](#s29)
 30. [Pending design and integration plan — non-normative](#s30)
+31. [Application planning, continuity, and conformance](#s31)
 
 <a id="s01"></a>
 ## 1. Scope and rule classification
@@ -189,6 +192,8 @@ Examples: typed application functions, query ports, commands, events, actor mess
 
 Where technically practical, all clients of the same product MUST share the same Rust core for domain logic, canonical-state rules, data models, validation, synchronization, conflict semantics, migrations where applicable, authorization rules, AI capability enforcement, and durable application behavior. The goal is **one product truth, multiple clients**. Platform code may call into the core through suitable interfaces. Business logic MUST NOT be independently rewritten in Kotlin, Swift, TypeScript, or desktop frontend code merely because clients use different UI technologies.
 
+This spans applicable Windows, macOS, Linux, Android, iOS, iPadOS, tablet, and web-associated native clients within the declared product scope. Neither UI strategy may independently alter canonical behavior; product behavior remains governed by the shared core and its documented technical exceptions.
+
 Technical departures MUST document the affected component, concrete constraint, scope, and consistency implications under [LANG-1](#lang-1) and [GOV-3](#gov-3). A shared core may consist of cohesive feature modules and target-specific builds; it does not require one giant module, identical binaries, or one process. [ARCH-3](#arch-3)'s general duplication discretion does not override this product-core policy. Shared code does not establish trusted execution: enforce authority at the effective boundary under [AUTH-1](#auth-1), including service-side enforcement where clients are untrusted.
 
 <a id="ui-1"></a>
@@ -315,7 +320,7 @@ Each application MUST declare its Product Platform Scope or scopes and its concr
 | UNIVERSAL DEVICE APPLICATION | The declared universal scope targets Windows, macOS, Linux, Android, iPhone/iOS, iPadOS, and applicable Android tablets. Its Linux targets include the desktop baselines. Web MAY additionally be included. |
 | WEB | Supported modern browsers, with explicit versions/capabilities and evidence. Web support is distinct from native application support. |
 
-Arch Linux and CachyOS are particularly important first-class Linux targets; Ubuntu LTS provides the mainstream stable baseline. Linux Mint's current stable Ubuntu-based release has the same first-class support expectations as every other named Linux baseline. Each named baseline MUST receive applicable installation/packaging, launch, updates where applicable, filesystem behavior, core-feature, and native-integration support, with relevant automated/manual validation. Products MUST identify tested versions or rolling-release snapshots and material environment assumptions; a declared target awaiting implementation/testing MUST be labeled accordingly rather than reported as verified support. Evidence remains proportional under [TEST-1](#test-1).
+Arch Linux and CachyOS are particularly important first-class Linux targets; Ubuntu LTS provides the mainstream stable baseline. Linux Mint's current stable Ubuntu-based release has the same first-class support expectations as every other named Linux baseline. Each named baseline MUST receive applicable installation/packaging, launch, updates where applicable, filesystem behavior, permissions, core-feature, and native/system-integration support, with relevant automated/manual validation. Products MUST identify tested versions or rolling-release snapshots and material environment assumptions; a declared target awaiting implementation/testing MUST be labeled accordingly rather than reported as verified support. Evidence remains proportional under [TEST-1](#test-1).
 
 Passing Ubuntu or Linux Mint tests MUST NOT be represented as proof of compatibility with every other Linux distribution or as a substitute for validating the other named baselines. Other mainstream Linux distributions remain compatibility/best-effort targets where dependencies permit unless explicitly promoted to first-class support.
 
@@ -503,6 +508,8 @@ Provider integrations SHOULD isolate replaceable dependencies where useful and d
 
 Hermes MUST remain an optional intelligence layer rather than the sole means of using the application. Core application behavior MUST work without Hermes. Hermes MUST NOT receive unrestricted raw authority over canonical state; canonical writes MUST pass through validated, authorized application operations under [AUTH-1](#auth-1) and [AI-1](#ai-1). Hermes SHOULD be able to operate locally where the relevant data and model are available. Optional Hermes capabilities do not redefine unrelated AI-native functions in [AI-4](#ai-4) as ordinary core functionality.
 
+Approved application/core operations MUST enforce applicable deterministic validation and bounded authority; model-generated intent supplies neither approval nor validation. Retrieval MUST respect access scope and privacy; provenance and audit follow [AUDIT-1](#audit-1), [AUDIT-2](#audit-2), and [PRIV-1](#priv-1).
+
 Canonical data MUST NOT exist solely inside an opaque AI memory/vector database with no independent application access and preservation path. This concerns opacity and sole dependence on the intelligence layer, not a blanket ban on vector storage technology: authoritative originals may use such a backend under [DATA-1](#data-1), [LIFE-2](#life-2), and applicable storage/export contracts.
 
 <a id="hermes-2"></a>
@@ -511,6 +518,8 @@ Canonical data MUST NOT exist solely inside an opaque AI memory/vector database 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** information architecture and retrieval interfaces intended for Hermes
 
 Information architecture and retrieval interfaces MUST be designed for structured, scoped discovery rather than broad filesystem guessing or dependence on large-context reasoning. Small-model usability SHOULD influence that design, with an approximately 1B-parameter local model as the intended design target, not a universal reliability guarantee inferred from parameter count. Retrieval SHOULD prefer deterministic indexes, catalogs, and stable IDs. Search indexes and caches SHOULD be rebuildable where appropriate under [DATA-2](#data-2).
+
+The intended discoverability contract is conceptually `query → catalog/index → stable ID → exact resource`, rather than recursive filesystem wandering followed by inference of a likely answer. Filesystem organization, manifests, indexes, metadata, IDs, and deterministic retrieval tools should minimize model guessing. This direction does not freeze a user-data hierarchy or promise mathematical perfection.
 
 The forthcoming blueprint will address discoverability, stable identity, manifests, indexes/catalogs, predictable metadata, deterministic lookup, scoped retrieval, safe mutation, provenance, index rebuilding, local operation, and synchronization. These topics do not prescribe a manifest schema, index implementation, folder tree, or fixed retrieval protocol in this revision. User-facing organization MUST remain adaptable to the user's domain and preferences. Detailed **Hermes / User-Adaptable File Structure Blueprint: PENDING FINAL DESIGN — DO NOT INVENT OR FREEZE YET.** See the gated plan in [section 30](#s30).
 
@@ -613,7 +622,7 @@ Offline availability is constrained by invariants: scarce resources may need onl
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** personal products requiring cross-device continuity
 
-Without a NAS, supported laptops, desktops, phones, and tablets MUST retain applicable local operation under [OFFLINE-3](#offline-3). Such products SHOULD support direct device synchronization or another explicitly selected local-first synchronization mechanism, for example Phone ↔ Laptop or Phone ↔ Laptop ↔ Tablet. A permanent central cloud server MUST NOT be required merely to synchronize the user's own devices. Optional selected intermediaries remain subject to declared dependencies, privacy, and authorization. Conflicts, offline changes, unknown outcomes, integrity, retries, and recovery follow [SYNC-1](#sync-1), [OUT-1](#out-1), and [RETRY-1](#retry-1).
+Without a NAS, supported laptops, desktops, phones, and tablets MUST retain applicable local operation under [OFFLINE-3](#offline-3). Such products MUST support direct device synchronization or another explicitly selected local-first synchronization mechanism, for example Phone ↔ Laptop or Phone ↔ Laptop ↔ Tablet. A permanent central cloud server MUST NOT be required merely to synchronize the user's own devices. Optional selected intermediaries remain subject to declared dependencies, privacy, and authorization. Conflicts, offline changes, unknown outcomes, integrity, retries, and recovery follow [SYNC-1](#sync-1), [OUT-1](#out-1), and [RETRY-1](#retry-1).
 
 <a id="sync-3"></a>
 ### SYNC-3 — Opt-in NAS synchronization hub
@@ -799,6 +808,8 @@ Documentation MUST describe actual behavior, guarantees, assumptions, support, a
 
 Machine-readable contracts SHOULD be maintained where they improve interoperability/enforcement. Schema generation reduces drift but does not prove runtime semantic or authorization agreement. Record significant tradeoffs and governing clauses. This constitution is primary; ADRs, reviews, and examples cannot silently strengthen it.
 
+The specific development-governance obligations in [section 31](#s31) apply alongside this proportionality rule. Concise or combined records may satisfy them; proportionality does not waive idea refinement, the Plan Freeze Gate, current Project State, or phase conformance. The required machine-readable and human-readable Project State is governed by [DEV-9](#dev-9), not left optional by the general recommendation above.
+
 <a id="gov-3"></a>
 ### GOV-3 — Policy authority and exceptions
 
@@ -822,6 +833,8 @@ An exception MUST NOT present an unmet engineering guarantee as satisfied. A rea
 Changes MUST preserve reviewability through recorded versions, rationale, affected rule IDs, and evidence. Candidate status MUST remain explicit until owner ratification. Adoption should identify exact revision and applicability date. Preserve historical reviews rather than rewriting findings to fit the result. Substantive changes need appropriate adversarial review and disposition. Changes here do not authorize automatic migration or assessment of governed repositories.
 
 For this integration phase, a new adversarial attack and final release-candidate freeze MUST wait until the owner explicitly confirms **“There is nothing else left to add.”** Integration may resolve direct contradictions and validate documentation without conducting a hostile ratification review. The owner-supplied Hermes blueprint remains pending; no final rc2 designation, ratification, merge into `main`, or `1.0.0` tag is authorized by this pass. Prior rc1 verification applies only to its reviewed revision, not automatically to this expanded working candidate.
+
+The application Plan Freeze Gate in [DEV-5](#dev-5) does not trigger a constitutional attack or permit bypassing this gate. The remaining sequence is Hermes comparative analysis, blueprint integration, owner policy-completion review, explicit confirmation, candidate freeze, and only then the constitutional adversarial attack. Adoption and authority to inspect another application's implementation remain separate decisions.
 
 Supporting records: [Rust ADR](decisions/ADR-0001-rust-first.md), [historical review](reviews/2026-10-astra-adversarial-review.md), [integration disposition](reviews/2026-10-rc1-integration-disposition.md), [changelog](CHANGELOG.md), [historical attestation](provenance/initial-generation-boundary.md). Historical section numbers refer to their baseline, not this candidate.
 
@@ -858,15 +871,176 @@ This navigation index adds no requirements. Applicability, strength, and excepti
 
 Rust-first, feature-first, modular-monolith default, applicable NAS support, local/offline-first, owner governance, scoped product platforms, the shared Rust core, UI strategies, device/NAS synchronization direction, and vector-asset policy are owner decisions integrated into this working candidate. Universal event sourcing, one database, per-action confirmation, and identical presentation across all devices are not pending requirements.
 
-**Hermes / User-Adaptable File Structure Blueprint — PENDING FINAL DESIGN — DO NOT INVENT OR FREEZE YET.** The owner is conducting comparative analysis of plans and prior discussions from Mosaic, LMS, Accounting-and-Money, and Read-and-Watch. Those names identify forthcoming inputs, not permission to inspect those repositories or infer their implementations. The owner will supply the finalized blueprint before the final attack. Only the direction and safety constraints in [HERMES-1](#hermes-1) and [HERMES-2](#hermes-2) are integrated here; no detailed hierarchy, metadata schema, or retrieval implementation has been invented.
+**Hermes / User-Adaptable File Structure Blueprint — PENDING FINAL DESIGN — DO NOT INVENT OR FREEZE YET.** Its final design must derive from comparative analysis of only Mosaic, LMS, Accounting-and-Money, and Read-and-Watch, including their strongest historical plans and relevant prior discussions. Those names identify forthcoming inputs, not permission in this integration to inspect those repositories or infer their implementations. The owner will supply the finalized blueprint before the final attack. It will standardize discoverability, not impose one user-facing content hierarchy. Only the direction and safety constraints in [HERMES-1](#hermes-1) and [HERMES-2](#hermes-2) are integrated here; no detailed hierarchy, metadata schema, or retrieval implementation has been invented. The development-artifact blueprint in [DEV-6](#dev-6) is a separate responsibility and does not finalize this pending user-data design.
 
 Remaining sequence:
 
 1. Receive the owner's finalized Hermes blueprint and any further policy decisions. Keep the candidate open and record additions without restarting completed integration.
-2. Integrate supplied decisions, resolve direct contradictions, update their dispositions, and validate document structure and references. Do not perform a new adversarial attack during this stage.
+2. Integrate supplied decisions, resolve direct contradictions, update their dispositions, and validate document structure and references. Discuss any remaining missing universal policies with the owner. Do not perform a new adversarial attack during this stage.
 3. Wait for the owner's explicit **“There is nothing else left to add.”** confirmation. Only then freeze the final release candidate and proceed to the final adversarial attack on an identified revision, with findings recorded separately from historical reviews.
 4. Resolve that review's findings and obtain a separate explicit owner ratification decision. Neither policy-completion confirmation nor a favorable attack automatically ratifies or authorizes merging/tagging.
 
-No other universal-policy design question has been identified as unresolved in this integration; the owner may still add requirements. Application-specific target versions/architectures, threat models, legal obligations, support evidence, NAS configurations, sync implementations, and recovery targets remain product decisions. No unapproved global encryption-at-rest mandate or fixed audit retention period is introduced.
+The Hermes blueprint and owner policy-completion review remain outstanding. No other specific universal-policy design question has been identified in this integration; that is not a declaration that the owner's policy design is complete. Application-specific target versions/architectures, threat models, legal obligations, support evidence, NAS configurations, sync implementations, and recovery targets remain product decisions. No unapproved global encryption-at-rest mandate or fixed audit retention period is introduced.
 
-The prior rc1 verdict was **RATIFY WITH NON-BLOCKING ISSUES**, with no blockers and four clarifications; its historical outcome is recorded [separately](reviews/2026-10-rc1-verification-outcome.md). Subsequent owner decisions required this integration before ratification. The rc1 verdict is not a review of this revision. Current progress and policy coverage are recorded in the [integration report](reviews/2026-10-pre-attack-integration.md).
+The prior rc1 verdict was **RATIFY WITH NON-BLOCKING ISSUES**, with no blockers and four clarifications; its historical outcome is recorded [separately](reviews/2026-10-rc1-verification-outcome.md). Subsequent owner decisions required this integration before ratification. The rc1 verdict is not a review of this revision. Policy coverage is recorded in the [initial integration report](reviews/2026-10-pre-attack-integration.md) and subsequent [development-governance integration](reviews/2026-10-development-governance-integration.md).
+
+<a id="s31"></a>
+## 31. Application planning, continuity, and conformance
+
+These are intentional owner development-governance policies, not claims that a particular directory structure is a universal engineering invariant. They inherit CANDIDATE status. Their application to another repository requires the applicable adoption and task authority; this integration does not authorize inspecting or changing other apps.
+
+<a id="dev-1"></a>
+### DEV-1 — App-specific design and long-lived purpose
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** application design and development lifecycle
+
+The development process MUST pursue maintainability, understandability, recoverability, portability, evolvability, AI continuity, user control, structural coherence, and useful longevity. The constitution governs how designs are discovered, challenged, documented, built, verified, and maintained. It MUST NOT be interpreted as requiring identical application features or identical user-data structures. The design MUST reflect the idea, users, domain, risk, data, target platforms, and intended lifecycle. These goals improve the probability of long-term success; they do not guarantee indefinite usability.
+
+<a id="dev-2"></a>
+### DEV-2 — Refine the idea before implementation
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** new applications before implementation begins
+
+Implementation MUST NOT begin merely because an initial idea exists. Before implementation code is changed, the idea MUST be interrogated and refined into a coherent product definition addressing the problem, users, long-term role, owned/preserved information, offline capabilities, multi-device needs, NAS behavior, desktop/mobile/web scope, Hermes/AI role, privacy/security expectations, user configuration, expected lifetime, migration/portability needs, and major failure scenarios where applicable. Record non-applicability rather than inventing unnecessary features. Brainstorming MUST NOT silently become implementation. Planning then proceeds through research, specification, and the [Plan Freeze Gate](#dev-5).
+
+<a id="dev-3"></a>
+### DEV-3 — Research before architecture freeze
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** new or substantially revised application architecture
+
+After the idea is sufficiently defined and before architecture is frozen, planning MUST research relevant existing solutions: GitHub repositories, mature open-source applications, standards, libraries/frameworks, technical papers or documentation where useful, known architectural failures, and competing approaches. Scope research to the actual problem and authorized sources. Ask whether an existing solution solves a relevant problem better than the proposed design; copying another project is not the goal.
+
+If no better solution is found, refine and retain the design. If a superior pattern is found, understand its advantage, determine applicable parts, and deliberately update the plan. Important comparisons and resulting decisions MUST be preserved under [DEV-8](#dev-8); lack of evidence MUST NOT be reported as completed research.
+
+<a id="dev-4"></a>
+### DEV-4 — Strongest reasonably available planning capability
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** creation or substantial redesign of an application Master Plan
+
+Planning MUST use the highest-capability model reasonably available for research synthesis, architectural resolution, edge cases, interfaces, storage and synchronization semantics, platform strategy, AI/Hermes design, risks, phases, and acceptance criteria. Record the planning capability selected and material availability constraints proportionately. This requires neither a named provider nor permanent cloud access; relevant data-access and privacy constraints remain in force.
+
+Reasoning, decisions, contracts, and requirements needed for implementation MUST be captured in durable project artifacts. The implementation process MUST NOT depend on continued access to the strongest model or on its hidden conversation history. Model selection does not itself establish correctness or authority.
+
+<a id="dev-5"></a>
+### DEV-5 — Candidate-plan review and Plan Freeze Gate
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** application plans before implementation and material architectural replanning
+
+Once the full application plan appears complete, freeze an identifiable candidate plan for hostile review before implementing it. Review MUST use the strongest reasonably available AI capability and relevant human/domain expertise and targeted technical research as appropriate to the plan and risk. Attack correctness, architecture, maintainability, longevity, data loss, storage/NAS failures, partitions, sync conflicts, migrations, offline behavior, platform differences, AI failures, security, privacy, performance, recovery, technology/dependency changes, small-model usability, developer replacement, and incomplete requirements where applicable.
+
+Use **Attack → Fix → Attack → Fix**, preserving findings and dispositions, until no known material issue remains unresolved. The **Plan Freeze Gate** is: implementation may begin only when all known material architectural questions, contradictions, blocking risks, and unresolved design decisions have been resolved or explicitly accepted and documented by the applicable authority. Record the gated plan revision, evidence, accepted constraints, and any approved exceptions. Acceptance MUST NOT disguise a missing decision as an implementation task or waive a constitutional obligation without [GOV-3](#gov-3) authority. The gate is an evidence-based decision, not mathematical “100% perfection.”
+
+Material new architectural uncertainty during implementation returns the affected work to planning and this gate; do not silently improvise a different architecture. This application-plan review requirement does not authorize the constitution's final attack, which remains blocked under [GOV-4](#gov-4).
+
+<a id="dev-6"></a>
+### DEV-6 — Discoverable planning and implementation responsibilities
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** substantial application repositories, with proportionate representations for smaller applications
+
+Substantial applications SHOULD conceptually separate `App/APP Plan/` from `App/Codebase/`. The implementation belongs to Codebase; APP Plan holds durable specification, intelligence, state, decisions, and the roadmap. These logical responsibilities MUST remain clear and discoverable. Exact directory names and physical layout MAY be adapted; smaller projects may combine concise records without dropping applicable lifecycle gates.
+
+The APP Plan blueprint MUST support these discoverable responsibilities, directly or by clear references:
+
+| Area | Responsibility |
+|---|---|
+| Master Plan | Current authoritative intended product specification under [DEV-7](#dev-7). |
+| Project State | Concise current execution status and authoritative next action under [DEV-9](#dev-9). |
+| Research | Important comparative evidence, including adopted/rejected alternatives. |
+| Decisions | Individually discoverable architectural choices and rationale. |
+| Phases | Active and planned executable implementation specifications. |
+| Done Phases | Completed specifications, actual outcomes, and evidence. |
+| Reviews | Candidate-plan attacks, conformance verification, findings, and dispositions. |
+| Existing App Assessment | Inherited implementation assessment when adopting the rules for a brownfield app. |
+
+This is a development-artifact blueprint, not a universal user-data/Hermes folder tree. Equivalent domain-appropriate representations are allowed; names do not establish compliance.
+
+<a id="dev-7"></a>
+### DEV-7 — Authoritative current Master Plan
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** application planning and changes to intended architecture or behavior
+
+The Master Plan MUST state the current authoritative specification of the intended completed product, directly or through clear references. It MUST cover applicable product purpose, users, features, architecture, shared Rust core, platform scope, UI strategy, storage architecture, canonical data model, synchronization, NAS and local-only behavior, AI/Hermes, security, privacy, backup/recovery, migrations, testing, deployment, packaging, interfaces, extension points, constraints, and accepted exceptions.
+
+Keep historical brainstorming and superseded rationale in Research, Decisions, Reviews, or provenance; do not make a reader infer current intent from chronology. Changes to intended behavior MUST update the plan deliberately with relevant decision and phase links. The Master Plan specifies intended product truth; it does not claim unbuilt features exist or supersede the constitution without an approved exception.
+
+<a id="dev-8"></a>
+### DEV-8 — Comparative research and explicit decisions
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** significant researched alternatives and architectural decisions
+
+Research records MUST identify what was examined, why it was relevant, strengths, weaknesses, what was adopted or rejected, and why. Preserve important source/version references and comparative evidence sufficiently for future humans or AI to understand the decision without repeating major research. Such records do not require copying entire third-party repositories or restricted source material.
+
+Important architectural decisions MUST be explicit and individually discoverable, including applicable Rust-core, storage-engine, sync-model, NAS-topology, UI, identity, AI/Hermes-boundary, and backup choices. A weaker model must not need to infer them from hundreds of pages of historical text. Decision records MUST identify current versus superseded decisions and link to the Master Plan where needed.
+
+<a id="dev-9"></a>
+### DEV-9 — Project State as the current execution entry point
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** every active application
+
+Each active application MUST maintain a concise machine-readable and human-readable Project State record, discoverable from the repository entry point. One record or consistently generated views MAY satisfy both forms; no exact format is mandated. Its sole governing responsibility is current execution status and navigation, not duplication of the full Master Plan or completed history.
+
+Without prior conversation, it MUST reveal the current phase, last completed phase, completed capabilities, work in progress, work not started, known blockers, current branch/revision where applicable, next authoritative action, and the active phase specification's location. Identify the revision actually observed rather than inventing a self-referential commit identifier. Update status when work, blockers, phase completion, or next action changes; distinguish verified completion from claims awaiting verification. State/implementation contradictions MUST be reconciled before relying on that state to proceed.
+
+<a id="dev-10"></a>
+### DEV-10 — Phases as executable implementation specifications
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** planned implementation and conformance phases
+
+Each phase MUST be sufficiently specified for bounded execution rather than a loose task list. Define as appropriate its objective, rationale, prerequisites, current and expected end states, files/components, interfaces/contracts, data structures, dependencies, tasks and ordering, invariants, files/systems that must not change, error behavior, edge cases, migration impact, security/privacy, tests, validation commands, expected results, completion evidence, stopping conditions, follow-up state, and next phase.
+
+If major architecture must still be invented during execution, the phase is insufficiently specified and affected implementation MUST stop for planning resolution. A phase MUST distinguish delegated implementation choices from unresolved architectural decisions. Acceptance criteria and validation MUST describe outcomes that can actually be checked under [TEST-1](#test-1), not merely the presence of code.
+
+<a id="dev-11"></a>
+### DEV-11 — Full-build small-model continuity and safe resumption
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** application plans, phase execution, and AI-assisted continuation
+
+Plans and repositories MUST be designed so that a sufficiently capable small local model can build the entire application phase by phase using APP Plan and Codebase, without hidden conversation history or continuous rescue by a stronger model. Shift complexity into specifications, contracts, examples, indexes, tests, acceptance criteria, deterministic tooling, and explicit Project State. Strong planning captures architectural reasoning ahead of time; weaker execution remains bounded. This is a full-build design target, not merely the ability to continue one task and not a claim that any model or parameter count can complete every application.
+
+Every phase MUST support zero-conversation resumption: locate Project State; establish completion and active phase; read the specification; locate implementation; understand the required outcome; make authorized safe changes; run validation; record results; determine completion; and proceed only where permitted by the phase gate. Local execution is the baseline design target; a suitable cloud model may follow the same artifacts, but provider/location alone does not establish capability and continued cloud access is not required.
+
+**A weaker model is allowed to do less, but not to invent more.** If required information is missing, contradictory, or cannot be safely established, the executor MUST stop affected work and record the precise blocker and needed resolution. It MUST NOT invent architecture, silently reinterpret the Master Plan, claim unperformed validation, expand authority, or bypass [AI-1](#ai-1), [AI-3](#ai-3), or [AUTH-1](#auth-1). Full-build continuity does not grant unrestricted autonomous execution; it supplies the information needed to execute authorized work safely.
+
+<a id="dev-12"></a>
+### DEV-12 — Evidence-bearing Done Phases
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** phases that have passed the completion gate
+
+A completed phase MUST be moved or recorded in discoverable Done Phases history, preserving the original specification or its immutable reference, actual implementation, deviations, relevant decisions, tests executed, outcomes, completion evidence, relevant commit/revision references, and remaining follow-ups. Update Project State with the result and next permitted action. A failed or unverified phase MUST NOT be represented as done.
+
+Done Phases complements Git and other version history with understandable evidence; it neither replaces version control nor requires reconstructing completed work solely from commits. References may avoid duplicating large artifacts, provided the promised evidence remains accessible under its retention contract. Follow-ups MUST NOT conceal unresolved required acceptance criteria; approved exceptions are explicit.
+
+<a id="dev-13"></a>
+### DEV-13 — Three-Layer Conformance Gate after every phase
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** completion of every implementation or conformance phase
+
+Code being written is not completion. Before a phase is marked complete or the next implementation phase proceeds, all applicable layers MUST pass:
+
+1. **Universal Rules:** conformance to the applicable constitutional revision and approved exceptions.
+2. **App Master Plan:** conformance to the application's current specified architecture and behavior.
+3. **Phase Contract:** satisfaction of that phase's acceptance criteria and required evidence.
+
+Verification MAY be performed by AI, humans, automated validation, or a combination. The verifier MUST compare the actual implementation/artifacts with specifications rather than merely trusting the implementing agent's completion claim. Use deterministic evidence where practical: tests, builds, schemas, static analysis, fixtures, integration validation, and artifact inspection. Record applicable criteria, outcomes, evidence, and exceptions; skipped or unrun required checks are not passes. Separate verifier identity is not universally required, but evidence-based comparison is.
+
+The continuing cycle is **Implement → Verify → Universal Rules → Master Plan → Phase Contract → Pass: continue / Fail: repair**. Do not accumulate known architectural debt for later without an explicit approved exception under [GOV-3](#gov-3). Phase checks cover implemented scope and effects, including regressions in previously conformant work; a planned future capability is not automatically a present violation. Required-but-missing behavior for the current scope remains a failure. Repair phases may address documented failures; ordinary feature progression cannot bypass them.
+
+<a id="dev-14"></a>
+### DEV-14 — Brownfield assessment and conformance before features
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** existing or partially built applications when these rules are applied with appropriate authority
+
+Normal feature development MUST pause before extending inherited implementation. First inspect the authorized application, create/update its Master Plan, compare implementation with the applicable Universal Rules, Master Plan, and intended architecture, classify existing work, create Conformance Phases, repair, verify conformance, and only then resume ordinary planned development. Applying this workflow requires actual authority for that repository; this constitutional rule alone grants none.
+
+An Existing App Assessment or equivalent MUST classify inherited implementation as applicable: already compliant, correct and reusable, usable with modification, obsolete, unsafe, architecturally inconsistent, or missing. **Preserve compliant work, repair non-compliant work, replace only where necessary.** Age or predating the current plan does not justify rewriting working compliant code. Record evidence, gaps, retained work, required repairs, and any approved exceptions.
+
+Conformance Phases MUST precede new feature phases and use [DEV-10](#dev-10) and [DEV-13](#dev-13). They bring the inherited implemented scope into alignment with the constitution and current Master Plan; they do not require all future roadmap features to exist before development can resume. A failed gate permits scoped repair, not ordinary feature expansion. Following aggregate conformance verification, every subsequent phase remains subject to the same three-layer gate. Applicable safety/containment actions under [SAFE-2](#safe-2) remain possible; they are not a feature-development bypass.
+
+<a id="dev-15"></a>
+### DEV-15 — Repository memory and the longevity test
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** application planning, documentation, and long-term continuation
+
+Planning MUST ask: **Could another human or AI understand, maintain, repair, migrate, and continue this application years later using only the repository and documented external dependencies?** If not, planning/documentation is insufficient and the identified gaps MUST be addressed before claiming the relevant plan or phase ready.
+
+The repository MUST carry durable development memory sufficient to establish what the app is, why major decisions were made, what is implemented, what remains, what was rejected, known risks, how to validate, and how to continue. Conversation history may assist planning but MUST NOT be required for continuation. Avoid unnecessary dependence on one developer's memory, one AI conversation, one model provider, one computer, undocumented file locations/decisions, or unsupported proprietary assumptions. Document necessary external dependencies and recovery/access requirements without committing secrets or retaining unnecessary sensitive conversation payloads; [PRIV-1](#priv-1) and [SEC-2](#sec-2) still apply.
