@@ -13,7 +13,7 @@ All links below refer to the primary constitution; this report adds no requireme
 | Owner requirement | Integrated location and disposition |
 |---|---|
 | Preserve successful rc1 corrections | Existing rule IDs and classifications retained; new policies extend their authority, storage, consistency, privacy, recovery, and exception contracts. |
-| Product Platform Scope | [PORT-3](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#port-3): Desktop, Mobile, Universal Device Application, Web; Arch Linux, CachyOS, Ubuntu LTS first-class Linux baselines; adaptive mobile/tablet scope; declared versions and honest support evidence. |
+| Product Platform Scope | [PORT-3](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#port-3): Desktop, Mobile, Universal Device Application, Web; Arch Linux, CachyOS, Ubuntu LTS, and Linux Mint (current stable Ubuntu-based release) first-class tested Linux baselines; equal applicable support/validation expectations; adaptive mobile/tablet scope; declared versions and honest support evidence. |
 | One shared Rust core | [CORE-1](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#core-1): all listed domain, canonical-state, model, validation, sync, conflict, migration, authorization, AI-enforcement, and durable behavior responsibilities; documented technical exceptions. |
 | Two UI strategies | [UI-1](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-1): platform-appropriate UIs preferred when resources allow; shared cross-platform UI is a first-class alternative; Rust language exceptions remain scoped. |
 | Code reuse priority | [UI-2](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-2): shared core, beneficial UI reuse, materially appropriate platform experience, adaptive presentation rather than identical layouts. |
@@ -30,6 +30,12 @@ All links below refer to the primary constitution; this report adds no requireme
 | Small-model retrieval direction | [HERMES-2](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#hermes-2): approximate 1B-model design target, deterministic scoped discovery, rebuildable indexes where appropriate, user-adaptable organization; detailed blueprint not invented. |
 | Working version and review gate | [GOV-4](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#gov-4) and [section 30](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#s30): no frozen rc2 or attack until explicit owner policy-completion confirmation; separate ratification decision. |
 | Preserve historical verification | [RC1 outcome record](2026-10-rc1-verification-outcome.md), unchanged earlier review files, and changelog distinguish reviewed rc1 from subsequent integration. |
+
+## Subsequent Linux baseline addition
+
+Subsequent owner addition integrated: Linux Mint's current stable Ubuntu-based release receives the same first-class installation/packaging, launch, applicable updates, filesystem behavior, core-feature, native-integration, and relevant automated/manual validation expectations as the other named Linux baselines. Ubuntu or Mint testing does not prove compatibility with other distributions or replace their validation. Other mainstream distributions remain best-effort unless explicitly promoted. This addition changes PORT-3 and its supporting summaries; the working status and owner review gate remain in effect.
+
+Validation for this addition: reviewed the four-file diff and baseline references; `git diff --check` passed. No new platform-runtime or adversarial verification is claimed.
 
 ## Existing RC1 clarifications
 

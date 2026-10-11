@@ -310,12 +310,14 @@ Each application MUST declare its Product Platform Scope or scopes and its concr
 
 | Scope | Product targets |
 |---|---|
-| DESKTOP | Normal desktop/laptop products SHOULD support Windows, macOS, and Linux. Arch Linux, CachyOS, and Ubuntu LTS are first-class tested Linux baselines for this scope. |
+| DESKTOP | Normal desktop/laptop products SHOULD support Windows, macOS, and Linux. Arch Linux, CachyOS, Ubuntu LTS, and Linux Mint — current stable Ubuntu-based release — are first-class tested Linux baselines for this scope. |
 | MOBILE | Mobile products SHOULD normally support Android, iOS/iPhone, iPadOS/iPad, and Android tablets where applicable, with adaptive phone/tablet layouts under [UI-2](#ui-2). |
 | UNIVERSAL DEVICE APPLICATION | The declared universal scope targets Windows, macOS, Linux, Android, iPhone/iOS, iPadOS, and applicable Android tablets. Its Linux targets include the desktop baselines. Web MAY additionally be included. |
 | WEB | Supported modern browsers, with explicit versions/capabilities and evidence. Web support is distinct from native application support. |
 
-Arch Linux and CachyOS are particularly important first-class Linux targets; Ubuntu LTS provides the mainstream stable baseline. Passing Ubuntu tests MUST NOT be represented as evidence that Arch, CachyOS, or every other Linux distribution works. Other mainstream distributions MAY receive compatibility/best-effort support where dependencies permit. Products MUST identify tested versions or rolling-release snapshots and material environment assumptions; a declared target awaiting implementation/testing MUST be labeled accordingly rather than reported as verified support. Evidence remains proportional under [TEST-1](#test-1).
+Arch Linux and CachyOS are particularly important first-class Linux targets; Ubuntu LTS provides the mainstream stable baseline. Linux Mint's current stable Ubuntu-based release has the same first-class support expectations as every other named Linux baseline. Each named baseline MUST receive applicable installation/packaging, launch, updates where applicable, filesystem behavior, core-feature, and native-integration support, with relevant automated/manual validation. Products MUST identify tested versions or rolling-release snapshots and material environment assumptions; a declared target awaiting implementation/testing MUST be labeled accordingly rather than reported as verified support. Evidence remains proportional under [TEST-1](#test-1).
+
+Passing Ubuntu or Linux Mint tests MUST NOT be represented as proof of compatibility with every other Linux distribution or as a substitute for validating the other named baselines. Other mainstream Linux distributions remain compatibility/best-effort targets where dependencies permit unless explicitly promoted to first-class support.
 
 <a id="asset-1"></a>
 ### ASSET-1 — Genuine vector source artwork

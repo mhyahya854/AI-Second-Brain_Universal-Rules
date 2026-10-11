@@ -8,6 +8,7 @@ Baseline: reviewed rc1 `d9fc392ceddad5f760e0d4a71070bbc723609f77`. Working branc
 
 - Integrated N1–N4: Rust artifact scope, exception lifecycle, qualified SQLite WAL coordination, and explicitly justified relationships between independent data dimensions.
 - Added declared Desktop, Mobile, Universal Device Application, and Web product scopes; Arch Linux, CachyOS, and Ubuntu LTS are first-class Linux test baselines.
+- Subsequent owner addition: promoted Linux Mint's current stable Ubuntu-based release to the same first-class tested baseline status. Clarified equal applicable packaging/installation, launch, updates, filesystem, core-feature, native-integration, and automated/manual validation expectations across all four baselines. Ubuntu/Mint testing does not prove other distributions compatible; other mainstream distributions remain best-effort unless explicitly promoted.
 - Added one shared Rust core across product clients, with technical exceptions, platform-appropriate or shared UI strategies, and adaptive presentation/reuse priorities.
 - Added personal device-local operation, no-NAS local-first continuity, opt-in NAS synchronization hub, and safe topology transitions while retaining authority, consistency, privacy, and recovery contracts.
 - Added genuine SVG source policy, raster exceptions, generated platform icon packaging, third-party brand fidelity, and SVG trust boundaries.
