@@ -1,14 +1,14 @@
 # Universal Rules for All Apps
 
-> Version: 1.0.0-rc1<br>
-> Status: V1.0 Ratification Candidate — Not Yet Ratified<br>
+> Version: 1.0.0-working.1<br>
+> Status: Pre-Ratification Working Candidate — Not Yet Ratified<br>
 > Date: 2026-10-11<br>
 > Document identifier: ECOSYSTEM-CONST-001<br>
 > Source repository: https://github.com/mhyahya854/Universal-Rules<br>
 > Governance authority: repository owner/user, unless explicitly delegated<br>
-> Integration baseline: `c2fd9e3d8ac8c41a2ec1e336d2ec097314ef80a5`
+> Integration baseline: reviewed `1.0.0-rc1`, `d9fc392ceddad5f760e0d4a71070bbc723609f77`
 
-This constitution governs ecosystem software through engineering invariants, deliberate ecosystem policies, and capability-specific requirements. It is a candidate for further adversarial verification and owner ratification. Preparing or committing it does not ratify it or establish compliance of any application.
+This constitution governs ecosystem software through engineering invariants, deliberate ecosystem policies, and capability-specific requirements. This working revision integrates owner decisions made after the successful rc1 verification; it is not the reviewed rc1 or a frozen rc2. Preparing or committing it does not ratify it or establish compliance of any application. No further adversarial attack or final release-candidate freeze is authorized until the owner explicitly confirms: **“There is nothing else left to add.”** The detailed Hermes blueprint remains pending under [section 30](#s30).
 
 ## Contents
 
@@ -17,17 +17,17 @@ This constitution governs ecosystem software through engineering invariants, del
 3. [Definitions](#s03)
 4. [Principals and delegation](#s04)
 5. [Rust-first implementation](#s05)
-6. [Feature-first architecture and process boundaries](#s06)
+6. [Feature-first architecture, shared core, and UI](#s06)
 7. [Data lifecycle and application replacement](#s07)
 8. [Authority, derivation, and reproducibility](#s08)
 9. [Local and offline operation](#s09)
-10. [Portability, paths, and supported targets](#s10)
+10. [Product platforms, portability, and visual assets](#s10)
 11. [NAS support](#s11)
 12. [Storage and crash consistency](#s12)
 13. [Concurrency and conflict semantics](#s13)
 14. [Operation outcomes and acknowledgements](#s14)
 15. [Retries and deduplication](#s15)
-16. [AI authority, tools, and memory](#s16)
+16. [AI authority, tools, memory, and Hermes](#s16)
 17. [Audit and provenance](#s17)
 18. [Privacy, retention, and deletion](#s18)
 19. [External editing and drift](#s19)
@@ -41,7 +41,7 @@ This constitution governs ecosystem software through engineering invariants, del
 27. [Verification and evidence](#s27)
 28. [Documentation, exceptions, and ratification](#s28)
 29. [Anti-pattern index — non-normative](#s29)
-30. [Open questions and review probes — non-normative](#s30)
+30. [Pending design and integration plan — non-normative](#s30)
 
 <a id="s01"></a>
 ## 1. Scope and rule classification
@@ -150,10 +150,12 @@ Familiarity, habit, popularity, trendiness, tutorials, framework preference, avo
 
 The decision MUST identify the component, selected language, concrete reason Rust was rejected, why the alternative better meets requirements, and whether scope is one component or the whole application. Polyglot systems are permitted with deliberate, maintainable boundaries. Rust is especially preferred for canonical state, filesystem operations, synchronization, concurrency, long-running services, security boundaries, durable infrastructure, performance-sensitive work, AI capability enforcement, and domain operations.
 
+This language-selection requirement governs authored implementation components. Importing a library or an FFI dependency written in another language does not by itself constitute authoring a new non-Rust application component; dependency and boundary responsibilities still apply. Generated bindings/code, SQL, configuration, shaders, schemas, platform resources, and frontend assets MUST be classified by their role rather than their file extension. They are not automatically separate application components requiring individual exceptions. Authored executable frontend or other implementation logic remains subject to this policy. A documented component-level or standing exception MAY cover related implementation artifacts within its approved scope; generated glue does not exempt independently authored domain logic. The shared product core follows [CORE-1](#core-1).
+
 Rust does not establish domain correctness, storage durability, distributed consistency, safe FFI, secure architecture, or correct concurrency semantics. Those remain architectural responsibilities. This policy does not itself mandate rewriting existing applications. Rationale and examples: [ADR-0001](decisions/ADR-0001-rust-first.md).
 
 <a id="s06"></a>
-## 6. Feature-first architecture and process boundaries
+## 6. Feature-first architecture, shared core, and UI
 
 <a id="arch-1"></a>
 ### ARCH-1 — Feature-first organization
@@ -179,6 +181,31 @@ A modular monolith SHOULD be preferred when it is the simplest design satisfying
 Modules SHOULD communicate through explicit interfaces and avoid unnecessary dependency cycles. Build-time cycles and runtime conversations differ. Shared code SHOULD have cohesive responsibility and ownership; substantial shared domain kernels may be appropriate. Choose duplication or reuse by consistency needs and change coupling, not line counts or folder names.
 
 Examples: typed application functions, query ports, commands, events, actor messages, callbacks, streams, and plugin protocols. A feature may contain domain logic, adapters, presentation, tests, and documentation without needing every category. An event bus can conceal coupling and does not by itself prove modularity.
+
+<a id="core-1"></a>
+### CORE-1 — One shared Rust product core
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** products with multiple clients sharing domain or durable application behavior
+
+Where technically practical, all clients of the same product MUST share the same Rust core for domain logic, canonical-state rules, data models, validation, synchronization, conflict semantics, migrations where applicable, authorization rules, AI capability enforcement, and durable application behavior. The goal is **one product truth, multiple clients**. Platform code may call into the core through suitable interfaces. Business logic MUST NOT be independently rewritten in Kotlin, Swift, TypeScript, or desktop frontend code merely because clients use different UI technologies.
+
+Technical departures MUST document the affected component, concrete constraint, scope, and consistency implications under [LANG-1](#lang-1) and [GOV-3](#gov-3). A shared core may consist of cohesive feature modules and target-specific builds; it does not require one giant module, identical binaries, or one process. [ARCH-3](#arch-3)'s general duplication discretion does not override this product-core policy. Shared code does not establish trusted execution: enforce authority at the effective boundary under [AUTH-1](#auth-1), including service-side enforcement where clients are untrusted.
+
+<a id="ui-1"></a>
+### UI-1 — Platform-appropriate or shared UI
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** products with user interfaces across platform scopes
+
+When resources allow, products SHOULD prefer separate platform-appropriate UIs while preserving product identity, visual consistency, and applicable capabilities. Android-native UI technologies, Swift/SwiftUI on Apple platforms, and suitable desktop technologies are valid choices. Non-Rust platform UI components may meet [LANG-1](#lang-1)'s technical exception criteria; record the component or standing exception without treating it as permission to duplicate core behavior.
+
+When maintaining several UIs imposes excessive time or development cost, a shared cross-platform UI MAY be selected as a first-class compliant architecture. This is not an inferior compliance state and needs no exception to this UI strategy. Its implementation language still follows [LANG-1](#lang-1). Both strategies preserve the shared Rust core under [CORE-1](#core-1).
+
+<a id="ui-2"></a>
+### UI-2 — Reuse priorities and adaptive presentation
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** products spanning device sizes or platform interaction models
+
+Products MUST share core logic under [CORE-1](#core-1), SHOULD share UI when beneficial, and MUST NOT sacrifice a materially better platform experience merely to maximize UI code reuse. Cross-platform does not mean identical presentation. Navigation, layouts, windowing, gestures, keyboard behavior, menus, share interfaces, and platform integrations may differ while representing the same underlying product and data. Phone and tablet interfaces MUST adapt to their interaction and layout needs rather than simply stretching a phone interface onto a tablet.
 
 <a id="s07"></a>
 ## 7. Data lifecycle and application replacement
@@ -214,7 +241,7 @@ Roles such as `app/`, `data/`, `config/`, `derived/`, `audit/`, `cache/`, `logs/
 
 **Type:** UNIVERSAL INVARIANT | **Origin:** DERIVED ENGINEERING RULE | **Applies:** state whose authority or lifecycle matters
 
-Applications MUST identify authoritative state and when other representations may be relied on or discarded. Authority, factual verification, provenance, ownership, reproducibility, retention value, recovery cost, sensitivity, and lifecycle MUST NOT be inferred from one another. A generated document may be authoritative and valuable; canonical temporary state may expire. Distributed authority is permitted with defined semantics.
+Applications MUST identify authoritative state and when other representations may be relied on or discarded. Authority, factual verification, provenance, ownership, reproducibility, retention value, recovery cost, sensitivity, and lifecycle MUST NOT be automatically treated as equivalent or inferred from one another without an explicit justified rule. Valid policy relationships between these dimensions are permitted; for example, sensitivity can inform retention and access policy. A generated document may be authoritative and valuable; canonical temporary state may expire. Distributed authority is permitted with defined semantics.
 
 Storage technology does not determine authority: a vector database can hold authoritative originals and embeddings. An expendable cache must not hold the only copy of information promised preservation. Human edits or confirmation do not establish factual correctness of a whole record. Verification claims MUST identify the actual reviewed scope.
 
@@ -246,15 +273,22 @@ Search services, email delivery, streaming, live collaboration, market access, a
 
 Queueing MUST have domain-safe freshness, expiry, cancellation, authorization, replay, and conflict semantics. Time-sensitive orders, physical commands, or door-unlock actions MUST NOT replay automatically merely because connectivity returns. A domain may reject offline writes, allocate rights in advance, or restrict operations to preserve shared invariants. Distinguish queued intent from completed remote action under [OUT-1](#out-1).
 
+<a id="offline-3"></a>
+### OFFLINE-3 — Device-local personal operation
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** personal applications with ordinary local capabilities
+
+Each applicable personal application MUST remain usable locally on its supported devices. A permanent NAS, cloud service, or Internet connection MUST NOT be required for ordinary local capabilities unless the capability itself is inherently remote. Devices MAY maintain appropriate local working copies; loss of connectivity MUST NOT unnecessarily remove ordinary local functionality or access to locally held user data. Products MUST describe what is retained locally, what is available offline, and which operations require remote coordination. An appropriate working copy need not contain an entire huge media collection. Offline changes and reconnection remain subject to [OFFLINE-2](#offline-2) and [SYNC-1](#sync-1).
+
 <a id="s10"></a>
-## 10. Portability, paths, and supported targets
+## 10. Product platforms, portability, and visual assets
 
 <a id="port-1"></a>
 ### PORT-1 — Avoid unnecessary platform lock-in
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** platform and deployment choices
 
-Applications SHOULD preserve portable architecture where practical and MUST document architectural portability, source portability, buildability, tested support, and official support separately. Native/specialized applications may support fewer targets with rationale. A build is not runtime evidence. Windows architectures, macOS architectures, Linux distributions, BSD, mobile, browser, and NAS targets are not one universally required matrix. NAS obligations follow [NAS-1](#nas-1).
+Applications SHOULD preserve portable architecture where practical and MUST document architectural portability, source portability, buildability, tested support, and official support separately. Product targets follow the declared scopes in [PORT-3](#port-3); platform-specific departures use documented exceptions under [GOV-3](#gov-3). A build is not runtime evidence. CPU architectures, OS versions, browser versions, BSD, and NAS platforms are not automatically one support matrix for every product. Declare concrete supported configurations and evidence. NAS obligations follow [NAS-1](#nas-1).
 
 <a id="port-2"></a>
 ### PORT-2 — Portable references and faithful content
@@ -266,6 +300,45 @@ Hardcoded developer-specific paths in portable logic MUST NOT become runtime ass
 Use runtime path APIs where appropriate. Claimed targets require consideration of case behavior, Unicode normalization, reserved names, permissions, links, and collisions. Case-sensitive comparison or a universal sanitizer does not solve these differences. Preserve original names, bytes, and line endings when identity, signatures, fidelity, or user intent requires it; transformations need defined semantics and collision handling.
 
 Example: `attachments/doc1.pdf` can be relative when its base and escaping are specified. `file://attachments/doc1.pdf` places `attachments` in the URI authority; it is not an ordinary relative reference. Reversible mappings can avoid lossy sanitation.
+
+<a id="port-3"></a>
+### PORT-3 — Declared Product Platform Scope
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** application product scope and supported clients
+
+Each application MUST declare its Product Platform Scope or scopes and its concrete support matrix under [PORT-1](#port-1). Scopes describe the product being offered; they do not require every CLI, library, or service to acquire a mobile or graphical interface. Platform-specific applications may receive documented exceptions under [GOV-3](#gov-3).
+
+| Scope | Product targets |
+|---|---|
+| DESKTOP | Normal desktop/laptop products SHOULD support Windows, macOS, and Linux. Arch Linux, CachyOS, and Ubuntu LTS are first-class tested Linux baselines for this scope. |
+| MOBILE | Mobile products SHOULD normally support Android, iOS/iPhone, iPadOS/iPad, and Android tablets where applicable, with adaptive phone/tablet layouts under [UI-2](#ui-2). |
+| UNIVERSAL DEVICE APPLICATION | The declared universal scope targets Windows, macOS, Linux, Android, iPhone/iOS, iPadOS, and applicable Android tablets. Its Linux targets include the desktop baselines. Web MAY additionally be included. |
+| WEB | Supported modern browsers, with explicit versions/capabilities and evidence. Web support is distinct from native application support. |
+
+Arch Linux and CachyOS are particularly important first-class Linux targets; Ubuntu LTS provides the mainstream stable baseline. Passing Ubuntu tests MUST NOT be represented as evidence that Arch, CachyOS, or every other Linux distribution works. Other mainstream distributions MAY receive compatibility/best-effort support where dependencies permit. Products MUST identify tested versions or rolling-release snapshots and material environment assumptions; a declared target awaiting implementation/testing MUST be labeled accordingly rather than reported as verified support. Evidence remains proportional under [TEST-1](#test-1).
+
+<a id="asset-1"></a>
+### ASSET-1 — Genuine vector source artwork
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** application-owned visual assets, including web UI assets
+
+Naturally vector-representable assets SHOULD use genuine SVG as their source format, including icons, logos, interface symbols, badges, simple illustrations, diagrams, and decorative vector artwork. When recreating a raster reference as a UI icon or another vector-representable asset, authors MUST reconstruct genuine vector geometry rather than embed PNG/JPEG content in an SVG wrapper and claim compliance. Appropriate structures include paths, shapes, gradients, masks, and vector text converted appropriately when needed.
+
+Photographs, screenshots, scans, textures, camera images, complex photographic artwork, and other intrinsically raster content MAY remain raster in formats appropriate to the use case. They MUST NOT be converted into meaningless SVG merely to satisfy this policy. Required generated raster icon sizes and platform/store-specific containers are permitted; naturally vector artwork SHOULD retain vector source-of-truth artwork. Generated platform derivatives do not violate this policy.
+
+<a id="asset-2"></a>
+### ASSET-2 — Third-party brand fidelity
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** third-party trademarks and brand assets
+
+Products MUST NOT inaccurately redraw third-party trademarks from screenshots. Where permitted, use official brand assets and follow applicable brand requirements. The application-owned SVG preference does not authorize inaccurate conversion or disregard of asset licensing or brand constraints.
+
+<a id="asset-3"></a>
+### ASSET-3 — SVG trust boundaries
+
+**Type:** CONDITIONAL | **Origin:** USER POLICY | **Applies:** SVG acceptance, rendering, and application-owned SVG assets
+
+Untrusted SVG MUST NOT automatically be treated as harmless image data. Applications accepting external SVG MUST handle script execution, remote resource access, and unsafe embedded content according to the actual renderer and trust boundary, using appropriate restrictions, sanitization, isolation, or rejection. Application-owned SVG SHOULD avoid unnecessary executable or external content. File extensions and SVG wrappers do not establish safety.
 
 <a id="s11"></a>
 ## 11. NAS support
@@ -287,6 +360,8 @@ NAS support is intentional. Applicable applications MUST identify and support NA
 
 All five modes are not required. Backup-only support MUST NOT be presented as active shared-data support. A service-mediated design can satisfy active NAS use without shared raw database files. Software with no relevant role may document non-applicability; applicable software omitting NAS support needs an approved exception. Docker is neither necessary nor sufficient for NAS compatibility.
 
+A NAS synchronization hub is a topology role under [SYNC-3](#sync-3), not an assertion of raw database access or a sixth interchangeable storage mode. Products MUST distinguish NAS as sync hub, storage service, backup destination, and application/service host. A deployment may combine these roles, but each role retains its own contract; synchronization alone is not a backup.
+
 <a id="nas-2"></a>
 ### NAS-2 — Configuration-specific evidence
 
@@ -294,7 +369,7 @@ All five modes are not required. Backup-only support MUST NOT be presented as ac
 
 Claims MUST identify engine, protocol, client/server, filesystem, and configuration assumptions with proportionate empirical evidence. Mode 4 MUST be supported only where the engine explicitly supports that configuration and the application's assumptions have been verified. Unsupported configurations MUST be rejected or clearly reported as unsupported, rather than silently accepted as safe.
 
-SMB/NFS locking is configuration- and failure-dependent. Standard SQLite WAL relies on shared-memory coordination and is not a general multi-host SMB/NFS solution; custom VFS behavior needs its own supported contract. A NAS-local database service is a different mode.
+SMB/NFS locking is configuration- and failure-dependent. Ordinary multi-process SQLite WAL coordination commonly relies on shared coordination mechanisms; shared-memory coordination does not describe every possible WAL configuration. This does not establish safe multi-host SQLite database access over SMB/NFS. Specialized configurations, including custom VFS behavior, require their own supported contract and evidence under Mode 4. A NAS-local database service is a different mode.
 
 `fsync` and `FlushFileBuffers` offer the guarantees implemented by the complete storage stack; server acknowledgements, caches, hardware, and error propagation matter. Oplocks do not alone define stable-storage durability. Permissions depend on identities/ACLs; `0755` and `0644` are not universal privacy settings. Latency assumptions MUST be measured or bounded for the claimed workload, not copied from fixed illustrative numbers.
 
@@ -379,7 +454,7 @@ Key-based protocols MUST define principal/operation scope, persistence, concurre
 External duplicate prevention depends on the remote contract; a client key alone cannot provide it. An uncertain external action MUST NOT be retried merely because of a timeout. Status queries, reconciliation, durable intent/outboxes, remote idempotency, cancellation, or human intervention may be appropriate. Attempts may be observable without falsely recording repeated business effects.
 
 <a id="s16"></a>
-## 16. AI authority, tools, and memory
+## 16. AI authority, tools, memory, and Hermes
 
 <a id="ai-1"></a>
 ### AI-1 — Explicitly delegated capability
@@ -418,6 +493,24 @@ When approval relies on a preview, bind it to relevant parameters, resources, ve
 Domain consistency MUST NOT depend solely on hidden model memory or ephemeral context. Explicit state follows [DATA-1](#data-1); scratch work need not become permanent history. Retained AI memory MUST have defined inspection, correction, export, access, deletion, and derived-copy lifecycle controls consistent with principals' rights. It MUST NOT silently override authoritative records or policy.
 
 Provider integrations SHOULD isolate replaceable dependencies where useful and declare capabilities. Abstraction reduces coupling, not differences in model quality, interfaces, cost, licensing, or availability. Provider-specific tools may intentionally use unique capabilities. Optional AI failure SHOULD preserve independent functions; AI-native functions may become unavailable with truthful results. Protect retained data and contain failure within stated assumptions rather than promising immunity to all crashes or resource exhaustion.
+
+<a id="hermes-1"></a>
+### HERMES-1 — Optional, bounded intelligence
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** applications integrating Hermes
+
+Hermes MUST remain an optional intelligence layer rather than the sole means of using the application. Core application behavior MUST work without Hermes. Hermes MUST NOT receive unrestricted raw authority over canonical state; canonical writes MUST pass through validated, authorized application operations under [AUTH-1](#auth-1) and [AI-1](#ai-1). Hermes SHOULD be able to operate locally where the relevant data and model are available. Optional Hermes capabilities do not redefine unrelated AI-native functions in [AI-4](#ai-4) as ordinary core functionality.
+
+Canonical data MUST NOT exist solely inside an opaque AI memory/vector database with no independent application access and preservation path. This concerns opacity and sole dependence on the intelligence layer, not a blanket ban on vector storage technology: authoritative originals may use such a backend under [DATA-1](#data-1), [LIFE-2](#life-2), and applicable storage/export contracts.
+
+<a id="hermes-2"></a>
+### HERMES-2 — Small-model retrieval direction
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** information architecture and retrieval interfaces intended for Hermes
+
+Information architecture and retrieval interfaces MUST be designed for structured, scoped discovery rather than broad filesystem guessing or dependence on large-context reasoning. Small-model usability SHOULD influence that design, with an approximately 1B-parameter local model as the intended design target, not a universal reliability guarantee inferred from parameter count. Retrieval SHOULD prefer deterministic indexes, catalogs, and stable IDs. Search indexes and caches SHOULD be rebuildable where appropriate under [DATA-2](#data-2).
+
+The forthcoming blueprint will address discoverability, stable identity, manifests, indexes/catalogs, predictable metadata, deterministic lookup, scoped retrieval, safe mutation, provenance, index rebuilding, local operation, and synchronization. These topics do not prescribe a manifest schema, index implementation, folder tree, or fixed retrieval protocol in this revision. User-facing organization MUST remain adaptable to the user's domain and preferences. Detailed **Hermes / User-Adaptable File Structure Blueprint: PENDING FINAL DESIGN — DO NOT INVENT OR FREEZE YET.** See the gated plan in [section 30](#s30).
 
 <a id="s17"></a>
 ## 17. Audit and provenance
@@ -512,6 +605,31 @@ Drift does not prove maliciousness or authorship. Snapshots can roll back data a
 Protocols MUST define authority, identity, causal/conflict semantics, disconnected changes, duplicate handling, deletion propagation, and recovery. Peer data MUST pass applicable authority/integrity controls; sync is not a bypass. Preserve origin and propagation identity where needed for accountability.
 
 Offline availability is constrained by invariants: scarce resources may need online coordination or preallocated rights. Convergence is not proof of correctness. Tombstone retention, long-offline replicas, and reintroduction of erased information need explicit lifecycle semantics. Conflicts follow [CON-2](#con-2); delay follows [OFFLINE-2](#offline-2).
+
+<a id="sync-2"></a>
+### SYNC-2 — Device continuity without a NAS
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** personal products requiring cross-device continuity
+
+Without a NAS, supported laptops, desktops, phones, and tablets MUST retain applicable local operation under [OFFLINE-3](#offline-3). Such products SHOULD support direct device synchronization or another explicitly selected local-first synchronization mechanism, for example Phone ↔ Laptop or Phone ↔ Laptop ↔ Tablet. A permanent central cloud server MUST NOT be required merely to synchronize the user's own devices. Optional selected intermediaries remain subject to declared dependencies, privacy, and authorization. Conflicts, offline changes, unknown outcomes, integrity, retries, and recovery follow [SYNC-1](#sync-1), [OUT-1](#out-1), and [RETRY-1](#retry-1).
+
+<a id="sync-3"></a>
+### SYNC-3 — Opt-in NAS synchronization hub
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** applicable personal products with a suitable NAS enabled by the user for shared synchronization
+
+When a suitable NAS is available and the user enables this role, it MUST become the primary shared synchronization hub for application data. All applicable retained/shared data SHOULD synchronize to it according to the declared data scope, permissions, retention, and synchronization contract. Desktop, mobile, and tablet instances act as clients of that shared system while retaining appropriate local working copies. This policy does not silently upload data excluded by user scope, authority, or privacy rules.
+
+The NAS MUST NOT become a hard requirement for ordinary offline work. Temporary disconnection MUST preserve applicable local operation; reconnection MUST synchronize and reconcile according to the declared consistency model and current authority. Primary hub placement does not by itself transfer ownership or make every local write a globally final commit. Distinguish local persistence, hub acknowledgement, and reconciliation under [OUT-1](#out-1). NAS storage/service, backup, and hosting roles remain distinct under [NAS-1](#nas-1).
+
+<a id="sync-4"></a>
+### SYNC-4 — Safe topology transitions
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** applicable products transitioning between device-local/peer operation and a NAS synchronization hub
+
+Products SHOULD support safe transitions between no-NAS local or peer operation and an enabled NAS hub. Adding a NAS MUST NOT require destructive migration or recreation of all user data. Removing or temporarily losing the NAS MUST NOT make the user's locally held data inaccessible. Appropriate working copies and documented availability still apply; a client cannot promise offline access to content it has never retained.
+
+Authority transitions MUST define identity continuity, reconciliation of concurrent/offline changes, deletion handling, pending or unknown operations, and which participants may accept changes during and after the transition. Removing a hub deliberately MUST provide a preservation/transfer path for retained data needed by the chosen replacement topology; failures MUST report remaining unavailable data truthfully. Existing synchronization, migration, recovery, and authorization contracts apply. These are outcome requirements, not a mandated peer protocol, conflict algorithm, or central-cloud dependency.
 
 <a id="s21"></a>
 ## 21. Reversal and recovery
@@ -688,6 +806,8 @@ The repository owner/user is ultimate policy and ratification authority unless e
 
 Formal exceptions to ecosystem policies, prohibitions, explicitly mandatory defaults, or genuine exceptional conflicts involving invariants MUST record rule ID, component/scope, technical reason, risk, mitigation, relevant duration/permanence or review trigger, and actual approving authority with approval evidence. Proposed exceptions are not approved. Scoped prior delegation can authorize decisions without repeated prompts.
 
+Exceptions MUST be reconsidered when they expire, their assumptions materially change, their technical rationale disappears, or the requested scope changes. They may be renewed, replaced, superseded, or withdrawn by the applicable authority, with the disposition and affected scope recorded. Expiry does not silently renew approval, and changed scope is not automatically covered. When coverage lapses, record the resulting deviation and a proportionate resolution or transition; do not claim conformance or force unsafe immediate changes to deployed systems. Standing or enduring exceptions need no arbitrary periodic review when no expiry or material trigger applies.
+
 Ordinary DEFAULT alternatives need a proportionate rationale, not impossibility proof or formal exception unless their clause expressly requires one. RECOMMENDATION alternatives need no exception. Material CONDITIONAL non-applicability should be documented without requiring approval. Rust-first and applicable NAS/feature-first departures follow formal policy governance; folder-name variation within feature-first does not.
 
 An exception MUST NOT present an unmet engineering guarantee as satisfied. A real domain conflict needs revised scope, affected claims, residual risk, and authority under [SAFE-2](#safe-2). Approval cannot waive physical constraints or applicable legal obligations by declaration.
@@ -698,6 +818,8 @@ An exception MUST NOT present an unmet engineering guarantee as satisfied. A rea
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** constitutional changes and adoption
 
 Changes MUST preserve reviewability through recorded versions, rationale, affected rule IDs, and evidence. Candidate status MUST remain explicit until owner ratification. Adoption should identify exact revision and applicability date. Preserve historical reviews rather than rewriting findings to fit the result. Substantive changes need appropriate adversarial review and disposition. Changes here do not authorize automatic migration or assessment of governed repositories.
+
+For this integration phase, a new adversarial attack and final release-candidate freeze MUST wait until the owner explicitly confirms **“There is nothing else left to add.”** Integration may resolve direct contradictions and validate documentation without conducting a hostile ratification review. The owner-supplied Hermes blueprint remains pending; no final rc2 designation, ratification, merge into `main`, or `1.0.0` tag is authorized by this pass. Prior rc1 verification applies only to its reviewed revision, not automatically to this expanded working candidate.
 
 Supporting records: [Rust ADR](decisions/ADR-0001-rust-first.md), [historical review](reviews/2026-10-astra-adversarial-review.md), [integration disposition](reviews/2026-10-rc1-integration-disposition.md), [changelog](CHANGELOG.md), [historical attestation](provenance/initial-generation-boundary.md). Historical section numbers refer to their baseline, not this candidate.
 
@@ -730,19 +852,19 @@ This navigation index adds no requirements. Applicability, strength, and excepti
 | Unsupported or untested targets presented as verified | [TEST-1](#test-1), [PORT-1](#port-1) |
 
 <a id="s30"></a>
-## 30. Open questions and review probes — non-normative
+## 30. Pending design and integration plan — non-normative
 
-Rust-first, feature-first preference, mandatory applicable NAS support, local/offline-first preference, and owner governance are decided policies for this integration. Universal event sourcing, one database, per-action confirmation, and a fixed platform matrix are not pending requirements: scoped rules above replace them.
+Rust-first, feature-first, modular-monolith default, applicable NAS support, local/offline-first, owner governance, scoped product platforms, the shared Rust core, UI strategies, device/NAS synchronization direction, and vector-asset policy are owner decisions integrated into this working candidate. Universal event sourcing, one database, per-action confirmation, and identical presentation across all devices are not pending requirements.
 
-Remaining ratification work is further adversarial verification of this candidate and the owner's adoption decision on its exact revision. No unapproved global encryption-at-rest mandate or fixed audit retention period is introduced. Application-specific threat models, legal obligations, support matrices, NAS configurations, and recovery targets remain application decisions, not unresolved universal-policy placeholders.
+**Hermes / User-Adaptable File Structure Blueprint — PENDING FINAL DESIGN — DO NOT INVENT OR FREEZE YET.** The owner is conducting comparative analysis of plans and prior discussions from Mosaic, LMS, Accounting-and-Money, and Read-and-Watch. Those names identify forthcoming inputs, not permission to inspect those repositories or infer their implementations. The owner will supply the finalized blueprint before the final attack. Only the direction and safety constraints in [HERMES-1](#hermes-1) and [HERMES-2](#hermes-2) are integrated here; no detailed hierarchy, metadata schema, or retrieval implementation has been invented.
 
-Useful illustrative review probes:
+Remaining sequence:
 
-- Can required audit evidence recover after failure at each commit boundary?
-- Can stale writers, previews, revoked delegations, or expired deduplication keys violate effect limits?
-- Can restore reintroduce erased information or hide loss of newer work?
-- Does NAS support distinguish hosting, service access, files, raw database access, and backups?
-- Can tiny tools avoid irrelevant subsystems while large collaborative systems retain meaningful guarantees?
-- Are examples or recommendations being used as hidden prohibitions?
+1. Receive the owner's finalized Hermes blueprint and any further policy decisions. Keep the candidate open and record additions without restarting completed integration.
+2. Integrate supplied decisions, resolve direct contradictions, update their dispositions, and validate document structure and references. Do not perform a new adversarial attack during this stage.
+3. Wait for the owner's explicit **“There is nothing else left to add.”** confirmation. Only then freeze the final release candidate and proceed to the final adversarial attack on an identified revision, with findings recorded separately from historical reviews.
+4. Resolve that review's findings and obtain a separate explicit owner ratification decision. Neither policy-completion confirmation nor a favorable attack automatically ratifies or authorizes merging/tagging.
 
-These probes do not replace claim-specific evidence under [TEST-1](#test-1).
+No other universal-policy design question has been identified as unresolved in this integration; the owner may still add requirements. Application-specific target versions/architectures, threat models, legal obligations, support evidence, NAS configurations, sync implementations, and recovery targets remain product decisions. No unapproved global encryption-at-rest mandate or fixed audit retention period is introduced.
+
+The prior rc1 verdict was **RATIFY WITH NON-BLOCKING ISSUES**, with no blockers and four clarifications; its historical outcome is recorded [separately](reviews/2026-10-rc1-verification-outcome.md). Subsequent owner decisions required this integration before ratification. The rc1 verdict is not a review of this revision. Current progress and policy coverage are recorded in the [integration report](reviews/2026-10-pre-attack-integration.md).

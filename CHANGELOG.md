@@ -2,6 +2,23 @@
 
 Dates use the available commit evidence or this conversation's integration date. Unknown earlier drafting dates and model identities are not inferred. The candidate remains unratified.
 
+## 1.0.0-working.1 — Pre-Ratification Working Candidate — 2026-10-11
+
+Baseline: reviewed rc1 `d9fc392ceddad5f760e0d4a71070bbc723609f77`. Working branch: `constitution/pre-ratification-working`. This is an integration pass, not a new adversarial review, frozen rc2, ratification, merge, or release.
+
+- Integrated N1–N4: Rust artifact scope, exception lifecycle, qualified SQLite WAL coordination, and explicitly justified relationships between independent data dimensions.
+- Added declared Desktop, Mobile, Universal Device Application, and Web product scopes; Arch Linux, CachyOS, and Ubuntu LTS are first-class Linux test baselines.
+- Added one shared Rust core across product clients, with technical exceptions, platform-appropriate or shared UI strategies, and adaptive presentation/reuse priorities.
+- Added personal device-local operation, no-NAS local-first continuity, opt-in NAS synchronization hub, and safe topology transitions while retaining authority, consistency, privacy, and recovery contracts.
+- Added genuine SVG source policy, raster exceptions, generated platform icon packaging, third-party brand fidelity, and SVG trust boundaries.
+- Preserved optional bounded Hermes operation and added structured small-model retrieval direction. The **Hermes / User-Adaptable File Structure Blueprint** remains **PENDING FINAL DESIGN — DO NOT INVENT OR FREEZE YET**.
+- Replaced the immediate-review plan with an owner-gated integration sequence. The final attack and final candidate freeze wait for **“There is nothing else left to add.”** Ratification remains a separate decision.
+- Preserved prior review files unchanged; added a [historical rc1 outcome record](reviews/2026-10-rc1-verification-outcome.md) and [current integration report](reviews/2026-10-pre-attack-integration.md).
+
+## RC1 final adversarial verification — 2026-10-11 conversation
+
+Reviewed revision: `d9fc392ceddad5f760e0d4a71070bbc723609f77`, branch `constitution/v1.0.0-rc1`. Verdict: **RATIFY WITH NON-BLOCKING ISSUES**. No blockers were found; four non-blocking clarifications were identified. This was a recommendation, not owner ratification. Subsequent owner policy decisions required another integration phase before ratification. The outcome is preserved [separately](reviews/2026-10-rc1-verification-outcome.md); the prior review has not been rewritten or applied to the expanded candidate.
+
 ## 1.0.0-rc1 — V1.0 Ratification Candidate — 2026-10-11
 
 Integration baseline: `c2fd9e3d8ac8c41a2ec1e336d2ec097314ef80a5` on GitHub `main`, verified before editing. Work is prepared on `constitution/v1.0.0-rc1`; this entry is not a statement of publication, merge, or ratification.

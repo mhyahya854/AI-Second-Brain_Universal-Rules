@@ -3,7 +3,8 @@
 - Date: 2026-10-11
 - Decision authority: repository owner/user, unless explicitly delegated
 - Decision status: user-directed ecosystem policy; its constitutional wording is CANDIDATE
-- Constitution version: 1.0.0-rc1 — not yet ratified
+- Originally integrated in: 1.0.0-rc1 — not yet ratified
+- Current wording aligned with: 1.0.0-working.1 — Pre-Ratification Working Candidate
 - Governing clause: [LANG-1](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#lang-1)
 - Origin: the owner's Rust-first policy and subsequent integration instructions in this conversation
 
@@ -27,6 +28,10 @@ Those benefits depend on design and implementation. Rust is not evidence of doma
 
 A decision record identifies the component, alternative language, concrete reason Rust was rejected, why the alternative better meets requirements, scope, risks and mitigations, duration or review trigger where relevant, and actual approving authority. A component exception does not exempt the remainder of the application.
 
+The policy concerns authored implementation components. Imported libraries and FFI dependencies do not automatically constitute a new authored non-Rust component. Generated bindings/code, SQL, configuration, shaders, schemas, platform resources, and frontend assets are classified by role, not merely extension. Authored executable implementation logic still needs applicable justification. Component-level or standing exceptions can cover related artifacts within their approved scope; separate paperwork for every generated file is unnecessary.
+
+Exceptions are reconsidered on expiry or material changes to assumptions, rationale, or scope. They may be renewed, replaced, superseded, or withdrawn under [GOV-3](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#gov-3); there is no arbitrary periodic review requirement for unchanged enduring exceptions.
+
 Legitimate reasons include platform-required SDKs, host/plugin constraints, essential libraries impractical in Rust, specialized scientific or ML capabilities, interoperability or runtime constraints, deployment requirements, materially safer lifecycle or maintenance outcomes, and scripting/configuration/generated glue where Rust adds disproportionate complexity without meaningful benefit.
 
 Staffing, certification, qualification, available expertise, and support continuity may be valid reasons when tied to material lifecycle or safety risk. An evidence-based support constraint is different from personal familiarity alone.
@@ -46,6 +51,8 @@ Insufficient on their own: familiarity, habit, trendiness, tutorials, framework 
 ## Consequences and polyglot boundaries
 
 Rust-first does not require every line to be Rust. Language boundaries should have deliberate ownership, interfaces, failure handling, build dependencies, and security responsibilities. Minimize accidental polyglot sprawl, while retaining boundaries that improve the system. Do not force FFI or complex bridges merely to make Rust usage appear larger.
+
+The subsequent shared-product-core policy in [CORE-1](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#core-1) requires one shared Rust implementation of product domain and durable behavior across clients where technically practical. Both platform-appropriate UIs and a shared cross-platform UI are valid under [UI-1](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-1). A UI language exception does not authorize separate rewrites of business logic. Technical core exceptions remain scoped and documented.
 
 The policy adds learning and toolchain costs and may constrain hiring or dependency choices. Such costs should be evaluated concretely. They neither automatically invalidate the policy nor automatically defeat a justified exception. Future revisions require an owner decision; an AI reviewer cannot independently ratify or repeal this policy.
 
