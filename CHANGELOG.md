@@ -17,6 +17,13 @@ Baseline HEAD `bb0fac006cee6637cd3f4dff36a10bd0d4275ab4`, branch `constitution/p
 - Created [research evidence](research/2026-10-ui-product-agent-skills.md), [persisted protocol](governance/green-red-protocol.md), and [master integration report](reviews/2026-10-green-ui-product-skills-integration.md). Eighteen repositories were pinned and selected files statically inspected; required live-source retrievals were blocked by the network proxy. This is incomplete research, not a claim of completed Green review.
 - The detailed second prompt will be followed through after this master integration, retaining its broader scope and avoiding duplicate rules. The candidate remains `1.0.0-working.1`, unfrozen/unratified. No final completion review, Red attack, push, merge, tag or release.
 
+### Detailed UI / skills prompt follow-through — 2026-10-12
+
+Processed the second upload after first checkpoint `081425bc36d397205214f8f0b687e0bf1b2a1a41`, verifying its clean current state and all 85 request sections. Its expected `bb0fac0`/103-rule state had advanced through the immediately preceding master integration; no reset or duplicate policy was introduced. All requested UI details and original 21 workflow families are represented by the broader 113-rule/33-section candidate and 33-family catalog.
+
+- Added a [dedicated sequential coverage report](reviews/2026-10-ui-design-agent-skills-integration.md) and navigation links only. No normative text, IDs/classifications, master research/protocol/report, or older historical records changed in this second step.
+- UI/skills wording is integrated as candidate policy; mandatory master live-source research remains incomplete. No final completeness review, freeze, attack, ratification or remote publication was performed.
+
 ### Raw intake and native ClamAV policy delta — 2026-10-12
 
 Verified clean starting HEAD: `ec0d03a117bc56c97bcbb031d48851e53dc5e602`, on `constitution/pre-ratification-working`. Candidate remains `1.0.0-working.1`, unfrozen and unratified.
