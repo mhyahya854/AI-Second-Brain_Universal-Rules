@@ -34,6 +34,9 @@ The principal ecosystem choices are:
 
 - **Raw intake and local malware scanning:** File-ingesting applications should prefer an explicit logical Raw/Intake boundary and a replaceable local scanner capability, evaluating ClamAV where suitable. Required checks gate promotion; startup evaluates every Raw object's verdict validity in the background without requiring a full historical byte rescan. New/changed files are queued promptly; failure is not clean. Scan status, signature freshness, quarantine, and receiving-device trust are explicit. See [IO-2](UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#io-2), [IO-3](UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#io-3), and [SEC-6](UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#sec-6). No mandatory physical folder, scanner for irrelevant apps, cloud upload, or Linux-only mechanism is introduced.
 
+- **UI/product governance:** Substantial products explain actual user value, then establish flows/information hierarchy, a design brief and system before substantial UI construction. Holistic anti-slop review, subtraction, deliberate density/color/type/motion, real states/content, accessible platform adaptation, rendered QA, and proportionate usability validation govern completion. 60/30/10 is a heuristic, and no font, color, card, gradient, or other primitive is universally banned. See [UI-4–UI-7](UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-4) and [DEV-18](UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#dev-18).
+- **Universal Agent Skills:** A normative catalog defines 33 reusable workflow families, portable inspectable guidance, progressive loading, trusted revisions, conflict/context management, and third-party review. Skills remain beneath owner/project/phase/design contracts and cannot grant execution authority or replace specifications. These are library responsibilities, not installed trusted packages. See [section 33](UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#s33).
+
 ## Application development lifecycle
 
 For new applications: refine the idea → research → write the Master Plan and phase contracts → review the candidate plan through Attack/Fix cycles → pass the Plan Freeze Gate → implement bounded phases → verify all three conformance layers → preserve Done Phases evidence and update Project State. Known material questions must be resolved or explicitly accepted and documented with applicable authority before implementation.
@@ -62,6 +65,12 @@ ADRs in [decisions/](decisions/) preserve significant decisions and rationale. T
 
 Rule anchors are preferred over old section numbers. Historical review section references refer to the recorded original commit, not this renumbered candidate.
 
+## Green / Red review modes
+
+The [persisted protocol](governance/green-red-protocol.md) makes `GREEN FLAG`, `RED FLAG`, and `GREEN FIX` resumable under [GOV-5](UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#gov-5). Green integrates and validates; Red is an independent read-only attack requiring owner freeze authority; Green Fix repairs validated findings and invalidates earlier Red passes. Ratification recommendations require two consecutive independent clean Red rounds after the last normative repair, with evidence and residual risks. This does not authorize remote publication or ratification.
+
+The owner reopened completion to add these policies. Required live-source research remains incomplete because official web retrievals returned proxy `403` errors. The [research matrix](research/2026-10-ui-product-agent-skills.md) records 18 pinned repository sources, inspected-file scope, licenses, adoption recommendations and outstanding live pages. The candidate remains unfrozen/unratified; no Red attack has occurred.
+
 ## Repository records
 
 - [Constitution](UNIVERSL%20RULES%20FOR%20ALL%20APPS.md): candidate normative source.
@@ -75,6 +84,7 @@ Rule anchors are preferred over old section numbers. Historical review section r
 - [Four-app blueprint integration](reviews/2026-10-four-app-blueprint-integration.md): generalized design provenance, reconciled rules, blueprint status transition, coverage, and current validation. The four source apps are neither normative sources nor repository dependencies.
 - [Final policy-gap integration](reviews/2026-10-final-policy-gap-integration.md): seven lifecycle decisions from the preceding owner review, the follow-up timezone/malware policy, direct reconciliations, and validation for this pass.
 - [Raw intake and ClamAV integration](reviews/2026-10-raw-intake-clamav-integration.md): subsequent owner delta covering intake/promotion, incremental scan state, quarantine, local replaceable scanning, provenance/licensing, and validation.
+- [Green UI/product/skills integration](reviews/2026-10-green-ui-product-skills-integration.md): master-prompt coverage, research limits, normative integration and validation.
 - [Initial-generation provenance](provenance/initial-generation-boundary.md): original drafting attestation, retained as historical claims rather than current rules.
 
-This is a documentation repository; it defines no application build or runtime test suite. Documentation checks do not certify future implementations, supported NAS configurations, or the truth of every possible guarantee. No specific unresolved universal-policy item identified. One final owner policy-completion review remains before Plan Freeze under [section 30](UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#s30). That review and the final adversarial attack were not performed in this integration. Earlier reports showing pending Hermes design remain historical records, not the current status.
+This is a documentation repository; it defines no application build or runtime test suite. Documentation checks do not certify implementations, NAS compatibility, source security or licensing. Resume outstanding primary-source research or obtain explicit owner disposition, then conduct the separately authorized final policy-completion review before Plan Freeze under [section 30](UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#s30). The prior completion recommendation applies only to its reviewed revision. Earlier pending-Hermes reports remain historical; the blueprint is currently integrated.

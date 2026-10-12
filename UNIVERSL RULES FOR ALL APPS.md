@@ -46,6 +46,7 @@ Its purpose is to maximize the probability that applications remain maintainable
 30. [Pending design and integration plan — non-normative](#s30)
 31. [Application planning, continuity, and conformance](#s31)
 32. [Universal Information Architecture Blueprint](#s32)
+33. [Reusable Universal Agent Skills governance](#s33)
 
 <a id="s01"></a>
 ## 1. Scope and rule classification
@@ -223,6 +224,72 @@ Products MUST share core logic under [CORE-1](#core-1), SHOULD share UI when ben
 Important supported workflows MUST provide reasonable accessible interaction appropriate to the target platform and interaction model. The App Plan MUST identify applicable accessibility acceptance criteria and relevant platform/industry standards, considering keyboard or other non-pointer operation, semantic controls, assistive technology, text scaling, visible/readable focus, contrast, reduced motion, and alternative interaction where relevant. Accessibility is part of product correctness, not merely optional visual polish; validate applicable workflows under [TEST-1](#test-1).
 
 Native, shared cross-platform, and web UIs retain this outcome while adapting mechanisms and presentation under [UI-1](#ui-1) and [UI-2](#ui-2). No single accessibility standard or identical UI is universally required. Headless libraries, background daemons, and machine-facing APIs need no graphical accessibility controls; any user-facing administration or tooling is assessed on its own applicable interactions.
+
+Accessibility MUST be considered from relevant wireframe, component, interaction/state, and design-system decisions, not deferred entirely to final polish. Applicable criteria SHOULD address accessible names, focus order/visibility, screen-reader structure, target size, dragging alternatives, and non-color-only meaning. Use current platform/industry guidance and WCAG/APG where applicable without imposing web mechanisms on native/headless software.
+
+<a id="ui-4"></a>
+### UI-4 — Deliberate design brief, identity, and generic-aesthetic review
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** substantial user-facing interfaces before implementation and at design/completion review
+
+Before substantial UI implementation, the App Plan MUST include or reference an explicit design brief and intentional visual/interaction direction rather than leaving identity to a coding model or framework defaults. Address relevant users, purpose, primary workflows, platform, information density, visual personality, tone, accessibility, interaction model, navigation philosophy, references, anti-references, intended emotional impression, and platform conventions. Tiny utilities with trivial interfaces need no extensive design dossier. UI governance applies to either presentation strategy in [UI-1](#ui-1).
+
+Substantial interfaces MUST demonstrate coherent product-specific decisions about typography, color, spacing/density, geometry/radii/borders, elevation/shadows, iconography/illustrations, motion, layout/imagery/surfaces, navigation, and controls where relevant. The design must explain why this product looks and behaves this way; “the AI generated it” is insufficient. AI-generated work MUST NOT be accepted merely because it functions, looks clean/modern, or responds to viewport changes. **AI convenience must not become visual identity.** Every major dashboard, chart, panel, sidebar, analytics area, or AI interaction MUST have a product purpose; do not manufacture complexity to resemble common generated applications. AI capability requires no permanent chat sidebar, sparkle button, or generic AI aesthetic: contextual, command-based, invoked, workflow-integrated, or external Hermes interaction may fit.
+
+An explicit **AI-Slop / Generic-Aesthetic Review** MUST evaluate the composition as a whole against the brief and product workflows. Review signals include combinations of:
+
+| Signal group | Examples requiring product-specific reasoning when present |
+|---|---|
+| Color and surfaces | Unexplained purple/blue/cyan or startup-style gradients, gradient text, indiscriminate glassmorphism/backdrop blur, glowing borders, excessive soft shadows. |
+| Typography and hierarchy | Unexamined Inter/Roboto/system-sans defaults, oversized centered marketing headlines, interchangeable SaaS heroes, hierarchy dictated by fashion rather than product importance. |
+| Layout and geometry | Repetitive three-card layouts, identical rounded-card grids, nested cards, excessive pills/buttons/chips/tags/rounded rectangles or borders, fashionable bento layouts, unnecessary floating cards, domain-independent dashboards, huge empty whitespace reducing useful density. |
+| Decorative symbolism | Generic thin-line icons everywhere, decorative blobs, random dot grids, purposeless noise textures, sparkles or generic AI stars/wands. |
+| Motion and copy | Arbitrary micro-animation, excessive hover motion or meaningless bouncing/scaling; interchangeable copy such as “Unlock the power of…”, “Transform the way you…”, “Elevate your workflow…”, or “Supercharge your…”. |
+
+These are contextual review signals, not prohibited primitives. Gradients, purple, cards, rounded corners, glass, shadows, familiar fonts, and other techniques remain valid when deliberately chosen, coherent, useful, accessible, and consistent with the design system. Superficially changing a purple gradient to green while leaving an unjustified generic SaaS composition intact MUST NOT count as product-specific design. Review evidence MUST explain relevant decisions and observed workflow/hierarchy suitability rather than merely check off banned-looking features or claim visual uniqueness.
+
+The brief MUST connect relevant differentiation under [DEV-18](#dev-18), use context, and content tone to user flows and information priority before decoration: immediate/secondary information, primary/detail/contextual views, progressive disclosure, and competing attention. Complex interfaces SHOULD reason through low-fidelity sketches, text/ASCII wireframes, navigation maps, mockups, or interaction flows first. One-shot AI output is an exploration prototype, not automatic finished design. Develop appropriate drafts, subtract unnecessary effects/containers/labels/chrome, choose concrete art direction, then establish actual flows, systems, states, accessibility, and real-content behavior. Vague “modern”, “premium”, “sleek”, or “less AI” adjectives are insufficient final specifications.
+
+Every generic-aesthetic review MUST ask what can be removed. Also inspect reflexive badge/H1/dual-CTA heroes, exactly three feature cards, identical icon boxes, thin gray borders or colored left edges everywhere, permanent sidebars/floating AI buttons, arbitrary stagger/fade/hover-scale, and dark mode chosen by reflex. Invented metrics, testimonials, and social proof MUST NOT be presented as genuine evidence under [EVID-1](#evid-1). The logo-swap question SHOULD test whether workflow, information architecture, typography, hierarchy, layout, content, and interaction could belong to many unrelated products; it is a heuristic, not proof or a requirement for novelty that harms usability.
+
+References from software/screenshots/platforms, design systems, print, architecture, photography, physical products, typography, moodboards, or historical UI MAY inform composition, rhythm, hierarchy, interaction, and density. References do not authorize copying proprietary work. Prefer owner-created, properly licensed/open resources, public standards, and original design, preserving relevant provenance. Art-direction dials such as variance, motion intensity, or density MAY clarify the brief; no third-party numerical default becomes universal policy.
+
+<a id="ui-5"></a>
+### UI-5 — Coherent design system and purposeful presentation
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** substantial user-facing applications and supported themes/platform presentations
+
+Applications MUST define a reusable design system or equivalent coherent design contract for relevant typography, sizes/weights/line heights, spacing/grid/rhythm, colors/surfaces, borders/radii, elevation/shadows, icons, motion, focus, interaction states, and responsive behavior. Do not improvise these independently per screen. Semantic design tokens SHOULD represent reusable visual constants where practical; names such as `surface.primary`, `text.muted`, `action.primary`, `status.error`, `space.1`, or `motion.quick` are examples, not universal naming. Equivalent controls SHOULD share semantic behavior for primary/destructive actions, modal dismissal, validation, search, selection, navigation, and notifications instead of arbitrary conventions for novelty.
+
+The approximate **60 / 30 / 10** color balance SHOULD be a starting heuristic where appropriate: dominant/base canvas and large low-emphasis surfaces; secondary/supporting navigation, panels, and structural surfaces; scarce accent for primary actions, focus, and selected/active emphasis. No literal pixel counting or mathematical ratio enforcement is required. Semantic error/danger/warning/success/information/focus/selection communication and accessibility MUST take precedence over this decorative balance. Primary accent SHOULD retain meaning rather than indiscriminately color every icon, heading, card, border, and control.
+
+Supported dark mode MUST be deliberately designed rather than blindly invert light mode: define relevant surfaces, hierarchy, contrast, text tones, borders, shadows/elevation, focus/semantic states, and image treatment. Themes retain product identity without requiring identical visual treatment. Typography SHOULD be deliberately selected for readability, hierarchy, platform, supported languages, weights, performance, licensing, and longevity; Inter, Roboto, or framework defaults are valid when reasoned. Iconography SHOULD use a coherent family/style with deliberate reasons for mixed strokes, filled/outline styles, or generated imagery; vector artwork remains subject to [ASSET-1](#asset-1).
+
+Density SHOULD reflect task frequency, information complexity, expertise, device size, and accessibility, rather than universally impose huge cards, spacing, or typography on finance, developer, media, medical, settings, and other products. Motion SHOULD communicate transition, relationship, hierarchy, continuity, progress, or feedback; respect reduced-motion needs under [UI-3](#ui-3). Visual decoration MUST NOT obscure hierarchy, navigation, actions, application state, errors/warnings, permissions, security/sync state, or progress. Product identity MUST respect applicable navigation, keyboard/windowing/gesture/back/menu/input/selection/system-control conventions; cross-platform consistency means shared identity and semantics, not identical pixels. [UI-2](#ui-2) and [CORE-1](#core-1) still govern adaptation and common product truth.
+
+Establish the core design system before proliferating independently designed screens. Avoid artificial sparsity and chaotic density through grouping/hierarchy. Icon aggregators do not license every underlying asset; verify collection/asset licensing and provenance under [ASSET-2](#asset-2) and [SEC-3](#sec-3). Motion MUST NOT be the only channel of important meaning. Refine hover/pressed/focus/loading/transition/scroll/selection/drag/success/error micro-interactions after the interaction structure is sound; polish does not rescue missing information architecture.
+
+<a id="ui-6"></a>
+### UI-6 — Complete workflow states and actionable copy
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** user-facing workflows and their materially relevant states
+
+Design MUST cover relevant states beyond the ideal happy path: initial/empty, loading/progressive loading, success/error/partial failure, unavailable service, offline/reconnecting, sync conflict, stale information, permission denied/authentication required, migration/recovery/unsupported version, security scan running/detection/quarantine/scanner unavailable, backup/recovery state, destructive confirmation, and irreversible-action warnings. A state with no applicable capability need not be invented. State presentation MUST accurately reflect outcomes and uncertainty under [OUT-1](#out-1), [RUN-2](#run-2), and [IO-3](#io-3), without changing established authorization or confirmation policy.
+
+User-facing copy MUST be specific, understandable, context-aware, and concise where possible, explaining actual value, state, or action rather than generic AI marketing. Empty states SHOULD explain what belongs there, why it is empty, a useful next action, and whether content is expected automatically where relevant; generic “Nothing here yet!” filler and meaningless illustrations are insufficient when guidance is needed. Errors SHOULD explain what happened/was affected, whether anything changed, whether retry is safe, and the next action to the extent known. Raw implementation failures or “Something went wrong” MUST NOT be the sole explanation when they conceal known material information or uncertainty. Apply [PRIV-1](#priv-1) and [SEC-2](#sec-2) to disclosures.
+
+<a id="ui-7"></a>
+### UI-7 — Rendered UI evidence and completion gate
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** substantial interface completion and validation of supported sizes/workflows
+
+UI evaluation MUST NOT rely solely on immaculate placeholders or lorem ipsum. Test relevant long/short names, absent optional information, large/small numbers, long/empty lists, unusual Unicode, supported languages, long dates/times/filenames, errors, and realistic content density. Where multiple sizes/form factors are supported, validate actual rendered UI at representative sizes for hierarchy, controls, density, text readability, overflow, navigation, focus, touch targets, and orientation where relevant. A responsive framework alone does not establish good adaptive behavior.
+
+Substantial interface work MUST receive visual review from actual rendered output, using real rendering, screenshots, device previews, human/AI visual review, or equivalent evidence as appropriate; source correctness alone is insufficient. Mature interfaces SHOULD consider visual-regression automation where stability matters; trivial UIs need no screenshot infrastructure. Before declaring substantial UI implementation complete, explicitly review product identity, component/design-system consistency, platform conventions, accessibility, responsive/adaptive behavior, state coverage, realistic content, generic-aesthetic signals, and visual hierarchy. Evidence may be concise but MUST compare rendered behavior with the design brief/contracts and applicable [UI-3](#ui-3) criteria. This review feeds [DEV-13](#dev-13)'s existing Three-Layer Conformance Gate rather than replacing it or creating a second completion authority.
+
+Use a proportionate draft → render → inspect → identify specific issue → modify → render/re-review loop, preferably in coherent flows/screens/components/states rather than giant one-shot whole-product generation. Include representative zoom/text scaling, platform context, and supported localizations/RTL where relevant. Passing code tests MUST NOT alone overrule a coherent owner/designer rejection against intended product direction; preserve actionable evidence and resolve it under project authority/contracts.
+
+Substantial UI SHOULD receive applicable usability heuristic review: system status, real-world match, user control, consistency, error prevention, recognition over memory, flexibility, minimalist focus, error recovery, and useful help. Progressive disclosure SHOULD reduce complexity without hiding necessary primary/frequent functions merely for visual sparsity. Where scale/stakes justify it, validate representative tasks with users, owner walkthroughs for personal products, or equivalent evidence. Tiny personal utilities need no formal research bureaucracy. Subjectivity does not excuse required brief, rendered evidence, accessibility, or workflow review.
 
 <a id="s07"></a>
 ## 7. Data lifecycle and application replacement
@@ -1035,9 +1102,43 @@ Changes MUST preserve reviewability through recorded versions, rationale, affect
 
 For this integration phase, a new adversarial attack and final release-candidate freeze MUST wait until the owner explicitly confirms **“There is nothing else left to add.”** Integration may resolve direct contradictions and validate documentation without conducting a hostile ratification review. The owner-supplied four-app blueprint is integrated as candidate policy; no final rc2 designation, ratification, merge, push, or release tag is authorized by this pass. Prior rc1 verification applies only to its reviewed revision, not automatically to this expanded working candidate.
 
-The application Plan Freeze Gate in [DEV-5](#dev-5) does not trigger a constitutional attack or permit bypassing this gate. With the owner-reported comparative design analysis complete and its generalized blueprint integrated, the remaining sequence is owner policy-completion review, any further integration, explicit confirmation, candidate freeze, and only then the constitutional adversarial attack. Adoption and authority to inspect another application's implementation remain separate decisions.
+The application Plan Freeze Gate in [DEV-5](#dev-5) does not trigger a constitutional attack or permit bypassing this gate. With the four-app blueprint integrated and subsequent UI/product/skill owner decisions supplied, finish authorized Green research/integration and completeness review, obtain explicit confirmation and candidate freeze, and only then conduct Red under [GOV-5](#gov-5). Earlier completeness recommendations apply only to their reviewed revision, not the expanded candidate. Adoption and authority to inspect another application's implementation remain separate decisions.
 
 Supporting records: [Rust ADR](decisions/ADR-0001-rust-first.md), [historical review](reviews/2026-10-astra-adversarial-review.md), [integration disposition](reviews/2026-10-rc1-integration-disposition.md), [changelog](CHANGELOG.md), [historical attestation](provenance/initial-generation-boundary.md). Historical section numbers refer to their baseline, not this candidate.
+
+<a id="gov-5"></a>
+### GOV-5 — Green Flag, Red Flag, and review convergence
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** constitutional candidate integration, frozen-candidate attack, repair, and ratification recommendations
+
+**GREEN FLAG** researches, integrates, reconciles, validates, and may repair confirmed findings within authorized scope. **RED FLAG** independently attacks the written owner-frozen candidate and is read-only: no normative edits, repairs, repair commits, or favorable reinterpretation of ambiguity. **GREEN FIX**, when invoked by the owner after Red findings, verifies the exact report/revision, repairs only validated findings, preserves owner policy, records every disposition, validates regressions, commits locally, and reports the new candidate HEAD. It does not introduce unrelated policy or ratify. Operational instructions are persisted in the [Green/Red protocol](governance/green-red-protocol.md); this rule remains normative authority.
+
+Before RED FLAG, verify branch/HEAD/status, actual normative text, and explicit owner freeze evidence identifying the candidate. Without that evidence, STOP with **RED FLAG REQUIRES OWNER-AUTHORIZED PLAN FREEZE**. Prior completeness recommendations, integration reports, rule counts, historical favorable verdicts, or skill invocation do not authorize freeze/attack. After normative Green Fix, identify the exact repaired revision and verify that the owner freeze/repair authorization covers its review; do not transfer a prior verdict or infer authority for unrelated new policy. Scoped prior delegation may cover repair/review without a fresh prompt under [GOV-3](#gov-3). [GOV-4](#gov-4)'s completion-confirmation gate and separate ratification authority remain.
+
+Red review MUST exercise independent lenses below, using independent reviewers where available or distinct sequential passes with the independence limitation disclosed:
+
+| Lens | Attack scope |
+|---|---|
+| A — Normative logic | Contradictions/circular definitions, conflicting MUSTs/precedence, terms, absolutes, universality/applicability/exception loopholes. |
+| B — Proportionality | Tiny-tool ceremony and lifelong systems evading safety. |
+| C — 20–50-year lifecycle | Developer/machine/provider/dependency loss, OS changes, version skew, growth, migration/recovery, exit/reconstruction. |
+| D — Data loss/ransomware/sync | Mass deletion/encryption/renames, NAS propagation, backups, stale replicas/conflicts, restore collisions. |
+| E — Malware/Raw/ClamAV | False verdicts, stale/unavailable/compromised scanner, parser compromise, quarantine escape, infected Raw sync, platform/license/Rust integration, updates. |
+| F — Agent/skill supply chain | Malicious instructions/scripts, injection/exfiltration, mutable remote rules/updates, broad tools, conflicts/context overload, symlinks/path traversal, dependencies/licenses/installers. |
+| G — Hermes/AI authority | Content posing as instructions, invented identities/paths, raw writes/traversal, cloud privilege, weak-model guessing, ambiguous matches, approval/version mismatch. |
+| H — UI/UX/anti-slop | Blind ratios/new formulas, forced novelty, excessive process, platform/design-system rigidity, inaccessible styling, primitive bans, third-party taste bias, unrendered QA. |
+| I — Accessibility | Keyboard traps/focus, color-only meaning, drag-only actions, targets/names, screen readers, scaling/reflow/motion, native/web scope. |
+| J — Locale/time | Offset/zone identity, DST/rules, date-only/recurrence, skew/device clocks, parsing/Unicode/RTL, history reinterpretation. |
+| K — Platforms/Rust | Windows/macOS/four Linux baselines, mobile/web/native/shared UI, foreign-language dependencies, exception ambiguity, SDKs. |
+| L — Local-first/NAS | Absent/added/removed hub, concurrent writers/network storage, backup confusion, raw database shares, outage/stale copies. |
+| M — Migration/recovery | Old client/new data, ancient data, interruptions/backup failure, rollback over newer work, corruption/derived rebuild, recovery without startup. |
+| N — Build/release/supply chain | Rebuild limits, registries/toolchains/signing loss, updates/unpinned dependencies, vendors, licensing. |
+| O — Development governance | Ambiguous phases, APP Plan drift, false Done evidence, emergency abuse, brownfield rewrites, conformance loopholes, hidden context. |
+| P — Technical factuality | Hashes/tamper proof, Rust/correctness, scans/immunity, backups/cleanliness, WAL/share safety, keys/exactly-once, schemas/determinism, approval/factual truth. |
+
+Classify every finding **BLOCKER** (unsafe ratification: material data loss/security/fundamental contradiction/unenforceable core/dangerous falsehood), **MATERIAL** (must repair before ratification), **NON-BLOCKING** (recorded improvement), or **NOT AN ISSUE** (rejected hypothesis). Give exact rule/section and wording, scenario, why existing rules do not resolve it, severity/confidence, smallest repair direction, and regression risk. Do not inflate taste into a defect or apply the repair during Red. Trust the frozen text rather than previous author/report claims.
+
+Every normative Green Fix invalidates an earlier Red pass and requires another attack. Recommend ratification only when zero BLOCKER/MATERIAL findings remain, prior findings have explicit dispositions, no old material defect regressed, current structural/factuality/proportionality checks pass, and **two consecutive independent Red rounds after the last normative repair** find no BLOCKER/MATERIAL defect. Disclose unavailable independence; a same-author replay is not independent. A recommendation is not ratification. State residual risk: **No material defect was identified under the defined review battery. This does not prove absolute correctness, security, or immunity to future unknown conditions.** No mode grants push, merge, remote-main/tag/release, or ratification authority without separate authorization.
 
 <a id="s29"></a>
 ## 29. Anti-pattern index — non-normative
@@ -1083,7 +1184,7 @@ Remaining sequence:
 3. Wait for the owner's explicit **“There is nothing else left to add.”** confirmation. Only then freeze the final release candidate and proceed to the final adversarial attack on an identified revision, with findings recorded separately from historical reviews.
 4. Resolve that review's findings and obtain a separate explicit owner ratification decision. Neither policy-completion confirmation nor a favorable attack automatically ratifies or authorizes merging/tagging.
 
-No specific unresolved universal-policy item identified. One final owner policy-completion review remains before Plan Freeze. The seven lifecycle-policy decisions and follow-up timezone/malware protections are recorded in the [final policy-gap integration report](reviews/2026-10-final-policy-gap-integration.md); the subsequent [Raw intake and ClamAV integration](reviews/2026-10-raw-intake-clamav-integration.md) records the local scanner/intake delta. This is not a declaration that the constitution is complete. Application-specific target versions/architectures, threat models, legal obligations, support evidence, NAS configurations, sync implementations, and recovery targets remain product decisions. No unapproved global encryption-at-rest mandate or fixed audit retention period is introduced.
+The owner reopened policy completion before freeze to add full UI/product and Agent Skill governance. Those policies are integrated as candidate wording in [UI-4](#ui-4)–[UI-7](#ui-7), [DEV-18](#dev-18), and [section 33](#s33). Required live-source research remains incomplete because primary-site retrievals were blocked; exact revisions, evidence and access limits are recorded in the [research matrix](research/2026-10-ui-product-agent-skills.md). Resume that research or obtain explicit owner disposition of unavailable sources before claiming Green complete, then perform the separately authorized final owner policy-completion review. No Plan Freeze or Red attack has occurred. The persisted protocol follows [GOV-5](#gov-5). Previous lifecycle and Raw/ClamAV integration reports remain historical; their completeness statements do not automatically renew for this revision.
 
 The prior rc1 verdict was **RATIFY WITH NON-BLOCKING ISSUES**, with no blockers and four clarifications; its historical outcome is recorded [separately](reviews/2026-10-rc1-verification-outcome.md). Subsequent owner decisions required this integration before ratification. The rc1 verdict is not a review of this revision. Policy coverage is recorded in the [initial integration report](reviews/2026-10-pre-attack-integration.md) and subsequent [development-governance integration](reviews/2026-10-development-governance-integration.md).
 
@@ -1105,6 +1206,8 @@ The development process MUST pursue maintainability, understandability, recovera
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** new applications before implementation begins
 
 Implementation MUST NOT begin merely because an initial idea exists. Before implementation code is changed, the idea MUST be interrogated and refined into a coherent product definition addressing the problem, users, long-term role, owned/preserved information, offline capabilities, multi-device needs, NAS behavior, desktop/mobile/web scope, Hermes/AI role, privacy/security expectations, user configuration, expected lifetime, migration/portability needs, and major failure scenarios where applicable. Record non-applicability rather than inventing unnecessary features. Brainstorming MUST NOT silently become implementation. Planning then proceeds through research, specification, and the [Plan Freeze Gate](#dev-5).
+
+Substantial product refinement MUST include actual value/differentiation under [DEV-18](#dev-18) before architecture freeze; private/internal fit does not require a commercial moat.
 
 <a id="dev-3"></a>
 ### DEV-3 — Research before architecture freeze
@@ -1159,6 +1262,8 @@ The APP Plan blueprint MUST support these discoverable responsibilities, directl
 | Done Phases | Completed specifications, actual outcomes, and evidence. |
 | Reviews | Candidate-plan attacks, conformance verification, findings, and dispositions. |
 | Existing App Assessment | Inherited implementation assessment when adopting the rules for a brownfield app. |
+| UI design, where relevant | Product value/flows/information hierarchy, brief, identity/references/design system, platform/accessibility, states, adaptation, anti-slop and rendered QA under [UI-4](#ui-4)–[UI-7](#ui-7). |
+| Agent Skill metadata, where relevant | Universal/project workflows, trusted revisions/provenance, modifications/permissions and reliable references under [SKILL-1](#skill-1)–[SKILL-3](#skill-3). |
 
 This is a development-artifact blueprint, distinct from the runtime user-data/workspace contract in [section 32](#s32). Organized APP Plan records do not establish that product data is discoverable, and a navigable runtime hierarchy does not replace a proper APP Plan. Evidence, Research, and completed execution records may share storage/references while retaining their distinct responsibilities. Equivalent domain-appropriate representations are allowed; names do not establish compliance.
 
@@ -1176,6 +1281,8 @@ Every App Plan MUST state the timezone policy under [DATA-5](#data-5). It MUST a
 For substantial retained-data applications, security planning MUST address relevant hostile inputs and exposed processors, their access and compromise consequences, destructive sync propagation, NAS-history protection, actual backup copies/deletion authority, restore validation, update integrity, suspected-compromise containment, and evidence for known-good recovery points. Reference the contracts in [SEC-1](#sec-1), [SEC-3](#sec-3), [IO-1](#io-1), [SYNC-1](#sync-1), [NAS-1](#nas-1), [BACKUP-1](#backup-1), [BACKUP-2](#backup-2), and [RECOVER-1](#recover-1) rather than duplicating a parallel security plan. Scope effort to retained-data value, attack surface, and architecture.
 
 Applicable file-intake plans MUST make the [IO-2](#io-2), [IO-3](#io-3), and [SEC-6](#sec-6) contracts discoverable: logical boundary, required promotion gates, scanner selection/transport/authority, verdict reuse and rescan policy, signature maintenance, quarantine controls, status reporting, cross-device trust, lifetime performance, source provenance, and distribution-license verification. Concise references may satisfy this without a separate scanner governance system.
+
+For relevant user-facing work, the plan MUST include or reference the design responsibilities under [UI-4](#ui-4)–[UI-7](#ui-7) and product value under [DEV-18](#dev-18). Development metadata SHOULD identify applicable skill families, trusted versions, local changes/provenance and permissions under [section 33](#s33), without duplicating unchanged central guidance.
 
 <a id="dev-8"></a>
 ### DEV-8 — Comparative research and explicit decisions
@@ -1209,6 +1316,8 @@ If major architecture must still be invented during execution, the phase is insu
 Large phases MAY be decomposed into bounded tasks. As applicable, a task SHOULD state its ID, objective, prerequisites, scope, permitted and forbidden changes, expected result, validation, and stop conditions. The phase remains the governing specification and conformance boundary. Tiny phases need no artificial task hierarchy.
 
 The temporary emergency path in [DEV-17](#dev-17) may defer only necessary normal planning steps; its durable emergency record and subsequent repair contract do not grant permission to invent unknown architecture.
+
+Phase specifications MAY name relevant process skills for bounded loading, but MUST retain their actual project-specific specification under [SKILL-2](#skill-2). Substantial UI phase acceptance MUST include applicable rendered review under [UI-7](#ui-7); “use frontend-design skill” alone is not a phase contract.
 
 <a id="dev-11"></a>
 ### DEV-11 — Full-build small-model continuity and safe resumption
@@ -1293,6 +1402,15 @@ Maintain a proportionate durable record of trigger, scope, authorization, affect
 
 Before ordinary feature development resumes after a material emergency change, reconcile the applicable Master Plan, Project State, Decisions, phase/execution history, tests, architecture, compatibility expectations, migration implications, and documentation. Establish or update the repair's phase contract and run the applicable [Three-Layer Conformance Gate](#dev-13); deferred required checks are not passes. Outstanding failures require repair or an actually approved scoped exception under [GOV-3](#gov-3), not silent permanent drift. Emergency repair may temporarily precede complete planning; it MUST NOT permanently bypass project truth or mark an unverified phase complete.
 
+<a id="dev-18"></a>
+### DEV-18 — Product value and differentiation before architecture freeze
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** idea refinement and planning of substantial applications
+
+Before architecture freeze, the product MUST answer: **If someone else can create software performing the same general function, why should someone use this application?** Record actual value such as workflow/usability, privacy/local operation/user ownership, reliability/portability/accessibility, performance/interoperability, specialist fit, low friction, execution quality, longevity/recovery/trust, or precise fit to an individual owner's needs. No fake commercial moat, novelty for its own sake, or market claim is required for private/internal products.
+
+The answer MUST influence relevant workflows, feature priorities, UX/UI, architecture, privacy, platform support, integrations, performance and offline/local behavior; an interchangeable implementation with only a slogan is insufficient. Record what should not be built alongside purpose and alternatives under [DEV-2](#dev-2), [DEV-3](#dev-3), and [DEV-7](#dev-7). Verify the connection in applicable phase/UI review under [DEV-13](#dev-13) and [UI-7](#ui-7).
+
 <a id="s32"></a>
 ## 32. Universal Information Architecture Blueprint
 
@@ -1335,3 +1453,86 @@ When an object participates in multiple views or relationships, prefer explicit 
 Applications MUST support appropriate deterministic stable/bounded addressing where technically meaningful so a consumer can resolve **object → precise relevant region** without loading or reasoning over an entire huge object. Pages, sections, paragraphs, records, spreadsheet ranges, timestamps, transcript segments, media frames, image regions, and code symbols are examples, not required features or one universal anchor format.
 
 Anchors to mutable content MUST retain enough source context to determine validity, such as source version/hash, surrounding-text hash, record revision, time/version relationship, or an equivalent mechanism. An old annotation/extraction MUST NOT silently attach to unrelated changed content. Stale, ambiguous, or unresolvable anchors require explicit status, revalidation, or a justified remapping operation. Source and derivative lineage follows [DATA-3](#data-3), while uncertainty follows [EVID-1](#evid-1).
+
+<a id="s33"></a>
+## 33. Reusable Universal Agent Skills governance
+
+These owner policies define a reusable workflow library and its trust/authority contracts. This constitutional catalog is not a claim that operational skill packages have already been authored, installed, reviewed, or tested. An Agent Skill means inspectable workflow guidance and any supporting resources/scripts; calling it a prompt does not remove supply-chain or execution risk.
+
+<a id="skill-1"></a>
+### SKILL-1 — Modular, discoverable, portable process expertise
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** design and maintenance of ecosystem/project Agent Skill libraries
+
+The ecosystem Agent Skill Library MUST organize reusable engineering process expertise rather than encode each application's product truth. Universal skills and project-specific/domain skills MUST remain distinguishable; project-specific workflows remain under that project's Master Plan and authority. A catalog/manifest or equivalent discovery contract MUST expose skill name/purpose, applicability, needed permissions, source/provenance and current trusted revision/review state where relevant, plus availability and deprecated/superseded status. No universal directory tree, filename, or copy of each unchanged global skill inside every project is required; reliable versioned references may suffice.
+
+Skills SHOULD be cohesive modules loaded progressively for the current task rather than one universal super-prompt containing frontend, security, deployment, databases, planning, UX, tests, and legal disciplines at once. Identify relevant guidance, load only what is needed, execute within the phase, and leave irrelevant material out of active context where tooling permits. Trivial work needs no dozens of skills. Supporting templates, checklists, scripts, examples, schemas, and references MAY be included, while governing instructions and permissions remain understandable.
+
+Critical workflow instructions MUST remain reviewable text or equivalent inspectable durable process documentation; an opaque proprietary prompt/service MUST NOT be their only representation. Core expertise SHOULD be portable across current/future cloud models, local models, and human developers, with provider-specific wrappers where useful. Skills SHOULD supply explicit procedure, expected inputs/outputs, stop conditions, validation, and evidence for bounded small-model execution under [DEV-11](#dev-11); limited capability does not justify broader authority.
+
+Initial discovery SHOULD expose concise metadata, loading detailed instructions only for relevant tasks. Prefer one primary skill per concern with complementary specialized/project/review layers, rather than competing frontend/color/architecture/testing/writing foundations. Where skills overlap, record priority, why both are needed, and conflict behavior; governing product/design contracts and constitution prevail. Manage context budget for small models; skill/prompt/plugin count is not a quality metric. Centrally maintained references MUST remain revision-resolvable and support future continuation without silent disappearance; dependency continuity follows [SEC-5](#sec-5).
+
+<a id="skill-2"></a>
+### SKILL-2 — Subordinate guidance and bounded skill execution
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** selection, invocation, and output of Agent Skills during development or application operations
+
+The execution hierarchy is **Universal Rules → owner policy → App Master Plan → Phase/Task Contract → project-specific design/system rules → relevant Agent Skills → implementation**, subject to actual owner authority/approved exceptions under [GOV-3](#gov-3). A skill MUST NOT override governing rules, owner policy, Master Plan, Phase Contract, project design/system contracts, security boundaries, or authorization. External installed skills MUST NOT silently become universal policy. A skill may guide use of existing authorized capabilities; it MUST NOT independently grant filesystem, deployment, credential, canonical-mutation, or production access, nor inherit every capability available to its host AI. Enforce only the permissions required by the workflow through [AUTH-1](#auth-1) and [AI-2](#ai-2). Frontend review normally needs no production DB writes, secrets, or backup deletion; documentation guidance normally needs no deployment authority.
+
+Skill output, including reviews, recommendations, plans, and classifications, MUST remain subject to evidence, relevant core validation/tests, project contracts, and applicable owner approval. Labels or successful skill execution do not establish factual truth or completion under [EVID-1](#evid-1), [TEST-1](#test-1), and [DEV-13](#dev-13). A skill reference MUST NOT replace project-specific phase objectives, files, constraints, target state, tests, evidence, or stopping conditions under [DEV-10](#dev-10). Materially guiding skill choices SHOULD be discoverable in phase/development metadata to support resumption; source/version/local modifications/permissions follow [SKILL-3](#skill-3). Neither a named adversarial skill nor this catalog authorizes the constitution's final attack under [GOV-4](#gov-4).
+
+<a id="skill-3"></a>
+### SKILL-3 — Skill supply-chain review, revisions, and lifecycle
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** third-party skill consideration/trusted use and maintenance of consequential reusable skills
+
+Third-party Agent Skills MUST be treated as supply-chain inputs. Before trusted use, perform the **Skill Security Review** workflow in [SKILL-4](#skill-4): assess provenance/source/repository/author/version, inspect instructions and supporting resources, scripts/dependencies, requested tools, network/filesystem/shell access, credential exposure, prompt-injection behavior, hidden downloads, and update strategy. This may be performed by an authorized human or trusted tooling; it does not require first executing an unreviewed security-review package. Do not install and execute an Internet skill with full shell/credentials merely because it appears helpful or is described as “only a prompt.” Unreviewed resources remain untrusted under [IO-1](#io-1) and [AI-1](#ai-1).
+
+Trusted reusable skills MUST preserve proportionate provenance and review state where consequential: name/purpose, source, version/revision or equivalent identity/digest, license, author/maintainer, local modifications, reviewed scope, and approving authority where required. Projects MUST be able to identify the revision that materially guided work when review/reproducibility matters. A materially changed remote revision MUST NOT silently replace a trusted skill during an active phase; reassess content, permissions, and affected contracts before trusted adoption. Record actual trust/version identity in the discoverable catalog under [SKILL-1](#skill-1); do not claim unperformed review or infer verified provenance.
+
+Important reusable skills SHOULD have workflow-appropriate validation, such as fixtures, expected output structures, policy-compliance cases, permission tests, or adversarial cases; parsing a prose file alone establishes no trust. Review/modification history SHOULD preserve enough evidence to understand significant past work where needed. Obsolete, insecure, superseded, or incompatible skills MUST be marked and have their trusted invocation state reconsidered; old references do not justify continued automatic use. Preserve useful lineage without retaining unnecessary private payloads under [PRIV-1](#priv-1). General dependency/build safety and privilege boundaries in [SEC-1](#sec-1), [SEC-3](#sec-3), and [SEC-4](#sec-4) remain controlling.
+
+Dynamically fetched remote instructions MUST remain untrusted until validated. Pin/verify content where practical, constrain network access, and record the exact retrieved revision or digest before trusted adoption; mutable `main` or `latest` MUST NOT silently change governing instructions mid-phase. Skill Security Review MUST include installer behavior, symlinks/path traversal, license, dynamic remote resources, and overlap/conflicts as well as scripts, dependencies, permissions, and credentials. Trust registration follows source → revision/license → static/content review → scripts/dependencies → permission/network/conflict review → version/digest → approved discoverable registry. Presence in a registry is a recorded trust disposition, not proof of immunity.
+
+<a id="skill-4"></a>
+### SKILL-4 — Universal workflow capability catalog
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** ecosystem Agent Skill Library scope and design of the listed reusable workflows
+
+The library blueprint MUST support the following logical workflow families, with discoverable purpose, procedure, inputs/outputs, evidence, validation, and stopping conditions appropriate to each. Implementations MAY combine closely related workflows or split large ones while preserving focused responsibilities; neither one file per row nor loading every family for every task is required. Applicable project contracts remain primary under [SKILL-2](#skill-2). Availability, implemented/reviewed status, and limits MUST be reported honestly rather than treating this policy catalog as installed trusted packages.
+
+| Universal skill family | Required process responsibility and relevant governing contracts |
+|---|---|
+| Idea refinement | Challenge actual problem, users/workflows, assumptions, constraints, non-goals, failure scenarios, unnecessary features, and alternatives before architecture; [DEV-2](#dev-2). |
+| Product differentiation/value | Establish why this product/workflow, actual value, what is meaningfully better/different, and what not to build; personal fit needs no commercial moat under [DEV-18](#dev-18). |
+| Research and alternatives | Examine relevant open-source projects, mature libraries, standards/platform APIs, known failures, alternatives/tradeoffs; distinguish verified, inferred, and unknown evidence under [DEV-3](#dev-3), [DEV-8](#dev-8), [EVID-1](#evid-1). |
+| Architecture and ADR | Identify responsibilities/boundaries, shared core, components, data ownership, interfaces/dependencies/deployment, alternatives and rationale; produce/update required discoverable decisions under [DEV-7](#dev-7), [DEV-8](#dev-8), [CORE-1](#core-1). |
+| Phase planning | Turn the Master Plan into bounded executable phases: objective, prerequisites, permitted/forbidden changes, tasks, invariants, tests/validation, evidence, stop conditions, and next phase; [DEV-10](#dev-10), [DEV-11](#dev-11). |
+| Frontend design | Execute [UI-4](#ui-4)–[UI-7](#ui-7) from the brief/platform/identity/design system/accessibility/states/realistic content, explicitly resist generic AI defaults, and support holistic generic-aesthetic review. |
+| Design system | Define tokens, components, state patterns, typography/spacing, accessibility and responsive/adaptive rules before screen proliferation under [UI-5](#ui-5). |
+| UI/anti-slop audit | Review rendered identity, hierarchy/density, generic defaults, unnecessary elements/fake complexity, states and real content; [UI-4](#ui-4), [UI-7](#ui-7). |
+| Usability review | Apply heuristics, progressive disclosure, recovery/status visibility, task flows and proportionate user/owner validation; [UI-7](#ui-7). |
+| Product copy/writing review | Plain concrete/action-oriented labels, remove empty AI puffery, preserve product voice and localization/accessibility meaning; [UI-6](#ui-6), [DATA-4](#data-4). |
+| Accessibility review | Inspect applicable semantics, keyboard/navigation/focus, screen readers, text scaling, contrast, pointer/touch targets, reduced motion, and non-color-only communication; project/platform standards under [UI-3](#ui-3). |
+| API/interface design | Define durable deterministic typed input/output/error contracts, versioning/compatibility, relevant idempotency, authorization, validation, and discovery; [ARCH-3](#arch-3), [AUTH-1](#auth-1), [OUT-1](#out-1), [RETRY-1](#retry-1), [MIGRATE-2](#migrate-2), [INFO-2](#info-2). |
+| Security threat model | Identify assets, trust boundaries, principals, entry points/hostile input, authorization/secrets, abuse, blast radius, and recovery; connect existing Raw/ClamAV, AI, NAS, sync, backup/privacy contracts in [SEC-1](#sec-1), [SEC-6](#sec-6), and [DEV-7](#dev-7). |
+| Hostile input/malware intake review | Apply Raw/Intake, replaceable ClamAV, scan validity/status, parser isolation, quarantine, source/update security and sync safeguards; [IO-1](#io-1)–[IO-3](#io-3), [SEC-1](#sec-1), [SEC-6](#sec-6), [SYNC-1](#sync-1). |
+| Privacy/data minimization review | Review necessary collection/retention/disclosure, sensitive logs/backups/AI context and deletion; [PRIV-1](#priv-1), [PRIV-2](#priv-2), [AUDIT-1](#audit-1). |
+| Dependency/supply-chain review | Assess dependencies/provenance/licenses, resolution/pinning, maintenance/vulnerabilities, disappearance, vendor/fork choices, updates and replacement; [SEC-3](#sec-3)–[SEC-5](#sec-5). |
+| Testing strategy | Select appropriate unit, integration, end-to-end, property, fuzzing, fault-injection, migration, security, UI/visual/accessibility, and performance evidence. No requirement for every test class in every app; [TEST-1](#test-1), [TEST-2](#test-2). |
+| Root-cause debugging | Prefer reproduce → observe → isolate → hypothesize → test hypothesis → establish root cause → minimal correction → regression validation. Do not accept repeated random edits without evidence; preserve known limits when reproduction/root cause remains uncertain under [EVID-1](#evid-1). |
+| Performance profiling | Measure relevant startup, memory/CPU/disk/network, queries/index/rebuild, migration/sync/rendering; evidence-driven optimization rather than guessing, within [DEV-16](#dev-16) and [TEST-1](#test-1). |
+| Data migration/recovery | Identify source/target versions, snapshots/backups, validation, forward safety, rollback limits, partial failure, recovery and retained meaning; [MIGRATE-1](#migrate-1), [MIGRATE-2](#migrate-2), [RECOVER-1](#recover-1), [BACKUP-1](#backup-1), [BACKUP-2](#backup-2). |
+| Backup/restore rehearsal | Restore evidence, failure-domain/credential independence, known-good points, ransomware recovery and derived rebuild; [BACKUP-1](#backup-1), [BACKUP-2](#backup-2), [RECOVER-1](#recover-1). |
+| Concurrency/crash-safety review | Applicable locking/fencing, atomicity/partial commits, crash recovery, unknown outcomes/retries; [STORE-1](#store-1), [CON-1](#con-1), [OUT-1](#out-1), [AUDIT-2](#audit-2), [RETRY-1](#retry-1). |
+| Distributed state/local-first/sync/NAS review | Replica authority, offline work/conflicts, topology/NAS transitions, backup distinction and malicious mass changes; [SYNC-1](#sync-1)–[SYNC-4](#sync-4), [NAS-1](#nas-1), [OFFLINE-3](#offline-3). |
+| Observability/diagnostics review | Actionable errors/health, privacy-safe logs/correlation, supportability and visible failures; [RUN-2](#run-2), [OUT-1](#out-1), [PRIV-1](#priv-1), [HERMES-3](#hermes-3). |
+| Locale/timezone/internationalization review | Verify relevant locale-independent values, every App Plan's timezone policy, distinct temporal meanings, parsing assumptions, deliberate Unicode/text semantics, and presentation localization without canonical reinterpretation; [DATA-4](#data-4), [DATA-5](#data-5), [PORT-2](#port-2). |
+| Code review | Independently inspect actual correctness, maintainability, security, architectural conformance, error handling/tests, unintended complexity, and regressions; do not assume implementer claims are true under [DEV-13](#dev-13). Independent assessment need not require a different actor for every trivial change. |
+| Code simplification | After correctness is established, reduce unnecessary duplication, abstraction/indirection, dead code, overengineering, and generated boilerplate while preserving behavior and meaningful tests; [ARCH-3](#arch-3), [TEST-1](#test-1). |
+| Documentation continuity | Reconcile applicable Master Plan, Project State, ADR/decisions, API documentation, phases/Done Phases, recovery/build instructions; [GOV-2](#gov-2), [DEV-7](#dev-7), [DEV-9](#dev-9), [DEV-12](#dev-12), [DEV-17](#dev-17). |
+| Brownfield assessment | Assess authorized existing code as compliant/reusable/needs modification/unsafe/obsolete/inconsistent/missing, preserve good work, and avoid preference-driven rewrites; [DEV-14](#dev-14). |
+| Release readiness | Assess applicable builds/platform packaging/signing, reconstruction/dependencies, updates, migration/rollback boundaries, backup, documentation and known issues; [SEC-3](#sec-3), [SEC-5](#sec-5), [MIGRATE-1](#migrate-1), [PORT-1](#port-1), [TEST-1](#test-1). Passing this workflow supplies evidence, not authority to ship. |
+| Build/release reconstruction | Source/toolchain/assets/commands, packaging/signing, dependency resolution and practical limits; [SEC-5](#sec-5). |
+| Adversarial review | Independently challenge plans/implementation for contradictions, edge cases, unsafe assumptions/false guarantees, hidden coupling, privilege/data-loss/migration failures, ambiguous authority, and portability. Required formal reviews still follow [DEV-5](#dev-5) and [GOV-4](#gov-4); skill invocation neither substitutes for nor automatically authorizes the constitutional final review. |
+| Skill security review | Mandatory workflow before third-party trusted use: provenance → instruction/content review → scripts/dependencies → permissions → version/digest → discoverable trusted registration. Apply [SKILL-3](#skill-3), [AI-1](#ai-1), and [AUTH-1](#auth-1); never infer broad shell/credential authority from a downloaded skill. |

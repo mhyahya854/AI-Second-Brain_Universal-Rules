@@ -6,6 +6,17 @@ Dates use the available commit evidence or this conversation's integration date.
 
 Baseline: reviewed rc1 `d9fc392ceddad5f760e0d4a71070bbc723609f77`. Working branch: `constitution/pre-ratification-working`. This is an integration pass, not a new adversarial review, frozen rc2, ratification, merge, or release.
 
+### Green UI / product / Agent Skills integration — 2026-10-12
+
+Baseline HEAD `bb0fac006cee6637cd3f4dff36a10bd0d4275ab4`, branch `constitution/pre-ratification-working`, originally clean with 103 rules/32 sections. The earlier UI/skills request had produced an uncommitted draft when the owner supplied the controlling Green/Red master prompt followed by the detailed UI/skills prompt. Existing draft work was preserved. Research preceded further master-policy editing; no reset or source execution.
+
+- Added UI-4–UI-7 for deliberate brief/identity, information hierarchy and references, holistic generic-aesthetic review/subtraction, design systems/color/type/density/motion/platform adaptation, complete states/copy, rendered QA/usability and completion evidence.
+- Added SKILL-1–SKILL-4 and section 33 for modular portable process expertise, authority/permissions, skill provenance/version/trust lifecycle, conflict/context management, and 33 logical workflow families. No downloaded skills were installed or run.
+- Added DEV-18 for substantial-product value/differentiation without a fake commercial moat, and GOV-5 for Green/Red/Green Fix, 16 attack lenses, findings/evidence, repair invalidation and two independent clean Red rounds before a ratification recommendation.
+- Connected UI-3, DEV-2/6/7/10 and GOV-4 in place. Existing IDs/classifications, Rust/shared-core/platform, Raw/ClamAV, backup/privacy/timezone/AI authority and prior history are preserved.
+- Created [research evidence](research/2026-10-ui-product-agent-skills.md), [persisted protocol](governance/green-red-protocol.md), and [master integration report](reviews/2026-10-green-ui-product-skills-integration.md). Eighteen repositories were pinned and selected files statically inspected; required live-source retrievals were blocked by the network proxy. This is incomplete research, not a claim of completed Green review.
+- The detailed second prompt will be followed through after this master integration, retaining its broader scope and avoiding duplicate rules. The candidate remains `1.0.0-working.1`, unfrozen/unratified. No final completion review, Red attack, push, merge, tag or release.
+
 ### Raw intake and native ClamAV policy delta — 2026-10-12
 
 Verified clean starting HEAD: `ec0d03a117bc56c97bcbb031d48851e53dc5e602`, on `constitution/pre-ratification-working`. Candidate remains `1.0.0-working.1`, unfrozen and unratified.
