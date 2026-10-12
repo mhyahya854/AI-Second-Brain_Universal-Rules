@@ -6,6 +6,16 @@ Dates use the available commit evidence or this conversation's integration date.
 
 Baseline: reviewed rc1 `d9fc392ceddad5f760e0d4a71070bbc723609f77`. Working branch: `constitution/pre-ratification-working`. This is an integration pass, not a new adversarial review, frozen rc2, ratification, merge, or release.
 
+### Raw intake and native ClamAV policy delta — 2026-10-12
+
+Verified clean starting HEAD: `ec0d03a117bc56c97bcbb031d48851e53dc5e602`, on `constitution/pre-ratification-working`. Candidate remains `1.0.0-working.1`, unfrozen and unratified.
+
+- Added IO-2 for the preferred logical Raw/Intake boundary, untrusted content, required promotion gates, quarantine rather than automatic source destruction, and retained originals.
+- Added IO-3 for background startup validity evaluation of every Raw object, safe incremental verdict reuse, prompt new/changed-object scanning, explicit non-Boolean outcomes, receipts, signature maintenance/rescan policy, unobtrusive status, failure recovery, and deliberate sync/NAS trust.
+- Added SEC-6 for a generic replaceable malware-scanning capability with ClamAV preferred where suitable, local scanning, protected process/IPC preference, justified library alternatives, no untrusted unauthenticated daemon exposure, cross-platform adapters, source provenance, and actual GPLv2/distribution verification before shipping.
+- All three new rules are ECOSYSTEM POLICY / USER POLICY / CANDIDATE. Existing IO-1, HERMES-1, and DEV-7 connect the contracts without changing core mutation authority or weakening prior defense-in-depth, backup, timezone, privacy, and lifecycle requirements.
+- No engine was installed, source archive evaluated, application implementation certified, or licensing compliance claimed. The [integration report](reviews/2026-10-raw-intake-clamav-integration.md) records coverage and documentation validation. No final attack, owner completion review, freeze, ratification, push, merge, tag, or release candidate was performed.
+
 ### Final policy-gap and follow-up owner integration — 2026-10-12
 
 Verified clean starting HEAD: `cd06a629fb370b4c08684ec9470151c4d4ca88f8`, on `constitution/pre-ratification-working`. The preceding read-only owner policy-completion review identified seven lifecycle gaps; the owner authorized their integration and supplied an additional timezone/malware-protection delta during this pass. The working version remains `1.0.0-working.1`, not frozen or ratified.
