@@ -6,6 +6,17 @@ Dates use the available commit evidence or this conversation's integration date.
 
 Baseline: reviewed rc1 `d9fc392ceddad5f760e0d4a71070bbc723609f77`. Working branch: `constitution/pre-ratification-working`. This is an integration pass, not a new adversarial review, frozen rc2, ratification, merge, or release.
 
+### Final policy-gap and follow-up owner integration — 2026-10-12
+
+Verified clean starting HEAD: `cd06a629fb370b4c08684ec9470151c4d4ca88f8`, on `constitution/pre-ratification-working`. The preceding read-only owner policy-completion review identified seven lifecycle gaps; the owner authorized their integration and supplied an additional timezone/malware-protection delta during this pass. The working version remains `1.0.0-working.1`, not frozen or ratified.
+
+- Added SEC-5 (release reconstruction/critical-dependency continuity), DEV-16 (lifetime growth and lifecycle validation), DEV-17 (bounded emergency maintenance and reconciliation), UI-3 (accessible interaction), DATA-4 (locale-independent meaning), and DATA-5 (universal timezone planning and explicit temporal semantics). All six are applicability-declared ECOSYSTEM POLICY / USER POLICY with inherited CANDIDATE status.
+- Strengthened RECOVER-1 for recovery without normal startup, uncertainty-preserving repair, and safe malware recovery. Expanded SEC-1/3, IO-1, SYNC-1, BACKUP-1/2, NAS-1, and AI-1 for hostile-input boundaries, least privilege, parser isolation, compromise/suspicious-sync containment, backup separation/validation, authorized intact updates, encryption limits, and retrieved content as data rather than authority.
+- Linked applicable lifecycle/security contracts through DEV-7; timezone planning is mandatory in every App Plan, even without scheduling. Timezone-free concepts remain timezone-free; no all-UTC rule, universal complex temporal schema, scanner, backup topology, SBOM, cloud build, or enterprise security system is imposed.
+- Reconciled DEV-5/10/13 with DEV-17: urgent repair may temporarily precede complete planning within actual authority, with durable evidence and a post-emergency Three-Layer Conformance Gate before normal features resume. No permanent bypass or broadened AI authority.
+- Preserved all 94 prior rule IDs/classifications and all historical reports/provenance/ADR files. The four-app blueprint remains integrated as candidate policy; the prior rc1 verdict is not applied to this expanded revision.
+- Added the [dedicated integration report](reviews/2026-10-final-policy-gap-integration.md). No final owner completion review, adversarial attack, ratification, freeze, push, merge, tag, or release candidate was performed. One final owner policy-completion review remains before Plan Freeze.
+
 ### Four-app blueprint integration — 2026-10-11
 
 Verified clean starting HEAD: `d52e5cb112d637e96cc6a9cc6223fd762784a0bb`. The owner supplied generalized principles from the completed comparative design analysis of Mosaic, LMS / Studies, Accounting & Money, and Read & Watch. Those applications are design provenance, not normative sources or dependencies; none of their repositories was inspected in this pass.

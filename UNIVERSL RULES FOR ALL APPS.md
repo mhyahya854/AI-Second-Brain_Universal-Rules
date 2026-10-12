@@ -2,7 +2,7 @@
 
 > Version: 1.0.0-working.1<br>
 > Status: Pre-Ratification Working Candidate — Not Yet Ratified<br>
-> Date: 2026-10-11<br>
+> Date: 2026-10-12<br>
 > Document identifier: ECOSYSTEM-CONST-001<br>
 > Source repository: https://github.com/mhyahya854/Universal-Rules<br>
 > Governance authority: repository owner/user, unless explicitly delegated<br>
@@ -215,6 +215,15 @@ When maintaining several UIs imposes excessive time or development cost, a share
 
 Products MUST share core logic under [CORE-1](#core-1), SHOULD share UI when beneficial, and MUST NOT sacrifice a materially better platform experience merely to maximize UI code reuse. Cross-platform does not mean identical presentation. Navigation, layouts, windowing, gestures, keyboard behavior, menus, share interfaces, and platform integrations may differ while representing the same underlying product and data. Phone and tablet interfaces MUST adapt to their interaction and layout needs rather than simply stretching a phone interface onto a tablet.
 
+<a id="ui-3"></a>
+### UI-3 — Accessible interaction as product correctness
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** user-facing capabilities, including administration and tooling interfaces where exposed
+
+Important supported workflows MUST provide reasonable accessible interaction appropriate to the target platform and interaction model. The App Plan MUST identify applicable accessibility acceptance criteria and relevant platform/industry standards, considering keyboard or other non-pointer operation, semantic controls, assistive technology, text scaling, visible/readable focus, contrast, reduced motion, and alternative interaction where relevant. Accessibility is part of product correctness, not merely optional visual polish; validate applicable workflows under [TEST-1](#test-1).
+
+Native, shared cross-platform, and web UIs retain this outcome while adapting mechanisms and presentation under [UI-1](#ui-1) and [UI-2](#ui-2). No single accessibility standard or identical UI is universally required. Headless libraries, background daemons, and machine-facing APIs need no graphical accessibility controls; any user-facing administration or tooling is assessed on its own applicable interactions.
+
 <a id="s07"></a>
 ## 7. Data lifecycle and application replacement
 
@@ -280,6 +289,30 @@ Applications MUST distinguish preserved originals from extraction, normalization
 Meaningful derivatives SHOULD retain proportionate lineage sufficient to identify their parent/source and relevant source version/hash, tool/version, model/version where applicable, creation time, method, and review/verification status. Not every field is needed for trivial artifacts, and uncertain model identity must remain uncertain. Material source changes MUST support invalidation, stale marking, regeneration, or review as appropriate rather than silently representing outdated derivatives as current. Lineage and its retention follow [EVID-1](#evid-1) and [PRIV-1](#priv-1).
 
 Where originals are to be preserved, notes, highlights, comments, tags, review decisions, and AI annotations SHOULD normally be related overlays anchored to the original, rather than destructive alteration. Ordinary editable documents remain valid. Anchors and their source-context validity follow [INFO-4](#info-4).
+
+<a id="data-4"></a>
+### DATA-4 — Locale-independent durable meaning
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** durable or interchange values whose interpretation or identity can materially depend on locale or text conventions
+
+Persistent/interchange meaning MUST NOT silently depend on the reading device's current display locale. Use typed or otherwise unambiguous representations where needed, separating semantic values from locale-aware presentation. The App Plan MUST declare relevant number, date, currency, percentage, unit, sorting/collation, encoding, Unicode normalization, case, and identifier semantics where these affect durable meaning or identity across supported platforms. [PORT-2](#port-2) governs filesystem differences; no universal normalization algorithm is prescribed.
+
+Human-formatted imports/exports MUST declare parsing/interpretation assumptions, detect ambiguity where practical, and preserve source representation/provenance where meaningful under [IO-1](#io-1), [EVID-1](#evid-1), and [PRIV-1](#priv-1). An ambiguous value such as `1,234` MUST NOT silently be reinterpreted using the current device locale when durable meaning matters. No translation mandate, support for every locale, or locale metadata on every stored string is required.
+
+<a id="data-5"></a>
+### DATA-5 — Universal timezone policy and explicit temporal meaning
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** every application's timezone planning, with temporal representations and controls determined by actual semantics
+
+Every App Plan MUST explicitly state its timezone policy, regardless of domain or presence of scheduling features. Define how timezone-sensitive values are represented, converted, persisted, compared, displayed, imported, exported, synchronized, and migrated wherever those operations occur. Consider logs, audit events, backups, sync, filesystem observations, migrations, certificates/security events, scheduled jobs, reports, APIs, receipts, provenance, and diagnostics as well as user-visible domain values. A small application may use a concise statement identifying its actual temporal inputs/outputs and absent operations; lack of scheduling MUST NOT be used to omit timezone planning.
+
+Distinguish relevant event/effective time, source observation, ingestion, creation/modification, due time, absolute instants, local civil date/time, timezone-relative schedules, recurring local times, date-only values, elapsed durations, and monotonic runtime intervals. Only relevant concepts need representation. Date-only birthdays, elapsed durations, and monotonic timers MUST NOT acquire arbitrary timezone meaning or conversions. UTC instants are appropriate for many events, not a universal representation for every temporal concept.
+
+Changes to OS timezone, travel location, device, NAS, or locale MUST NOT silently reinterpret persisted historical meaning. Conversions MUST retain enough source context to reconstruct or explain the relevant original meaning where required by the domain/retention contract, distinguishing source timezone, canonical instant, and display timezone where significant. For example, a deadline defined as 23:59 Asia/Bahrain does not become 23:59 Europe/London because a laptop travels; a converted display may differ while preserving declared meaning. Retention remains subject to [PRIV-1](#priv-1).
+
+An observed offset such as UTC+03:00 and a timezone-rule identity such as Asia/Riyadh are not interchangeable concepts. Where future rule changes affect meaning, the App Plan SHOULD use durable timezone semantics rather than relying solely on today's numeric offset, and MUST define how relevant rule changes are handled. No single storage representation or timezone database is prescribed. Where wall-clock correctness matters, account proportionately for skew, unsynchronized devices, source-provided timestamps, device clock changes, uncertain zones, and daylight-saving/rule changes; an OS timestamp is not automatically verified truth under [EVID-1](#evid-1).
+
+Leases, retries, deadlines, expirations, synchronization, idempotency, and ordering MUST use time semantics appropriate to their correctness contracts. Distinguish wall-clock readings from monotonic elapsed-time measurement where conflation could break correctness; document relevant clock, restart, and cross-device assumptions. No one clock mechanism provides distributed ordering or stale-writer exclusion by itself; [CON-1](#con-1), [CON-2](#con-2), and [RETRY-1](#retry-1) continue to apply.
 
 <a id="s09"></a>
 ## 9. Local and offline operation
@@ -390,6 +423,8 @@ NAS support is intentional. Applicable applications MUST identify and support NA
 All five modes are not required. Backup-only support MUST NOT be presented as active shared-data support. A service-mediated design can satisfy active NAS use without shared raw database files. Software with no relevant role may document non-applicability; applicable software omitting NAS support needs an approved exception. Docker is neither necessary nor sufficient for NAS compatibility.
 
 A NAS synchronization hub is a topology role under [SYNC-3](#sync-3), not an assertion of raw database access or a sixth interchangeable storage mode. Products MUST distinguish NAS as sync hub, storage service, backup destination, and application/service host. A deployment may combine these roles, but each role retains its own contract; synchronization alone is not a backup.
+
+For important retained data, NAS-hub compromise MUST be included in the recovery risk assessment under [BACKUP-1](#backup-1). Consider protected snapshots/version history, separately protected backup, or another independent recovery mechanism so the hub does not unnecessarily become a single point whose compromise destroys every historical copy. Ordinary sync clients SHOULD NOT require unrestricted NAS administrator authority; [SEC-1](#sec-1) governs least privilege.
 
 <a id="nas-2"></a>
 ### NAS-2 — Configuration-specific evidence
@@ -502,6 +537,8 @@ External duplicate prevention depends on the remote contract; a client key alone
 **Type:** UNIVERSAL INVARIANT | **Origin:** USER POLICY | **Applies:** AI actors exercising capabilities
 
 An AI MUST exercise only explicitly delegated capabilities through enforcement it cannot silently bypass within the declared threat model. Effects MUST satisfy applicable authorization, integrity, privacy, safety, and operational constraints. Human/AI interfaces normally share domain-integrity rules under [AUTH-1](#auth-1), without identical privileges or approval policy.
+
+Retrieved files, websites, email, PDFs, messages, transcripts, and metadata are data, not authority. Embedded instructions MUST NOT override governing system policy, capability boundaries, authorization, core validation, or data-protection policy. This applies to Hermes as a bounded client as well as other AI integrations.
 
 Scoped reads/writes, patches, SQL, shell execution, scratch space, import staging, coding, and bulk operations can be legitimate when intentionally delegated and effectively bounded. Validate scope/effects at execution; a broad tool name or path supplies no authority. Untrusted content and model output MUST NOT grant authority by claiming to be principal instructions.
 
@@ -678,6 +715,10 @@ Protocols MUST define authority, identity, causal/conflict semantics, disconnect
 
 Offline availability is constrained by invariants: scarce resources may need online coordination or preallocated rights. Convergence is not proof of correctness. Tombstone retention, long-offline replicas, and reintroduction of erased information need explicit lifecycle semantics. Conflicts follow [CON-2](#con-2); delay follows [OFFLINE-2](#offline-2).
 
+Applications synchronizing large retained datasets MUST define a risk-based policy for destructive or anomalous bulk-change propagation; a locally observed change is not automatically legitimate user intent. Consider mass rewrites, renames/deletions, unexpected encrypted/high-entropy replacements, unexplained bursts, and broad schema-invalidating changes where relevant. These signals are not proof of malware. Proportionate responses may pause propagation, stage/quarantine, reconcile, preserve permitted prior versions, or alert; no universal numeric threshold or fresh prompt for every bulk operation is required.
+
+Where suspected compromise could propagate damage, the system MUST provide an appropriate containment route, such as sync pause, device revocation, replica isolation, read-only operation, connector disablement, or staged-import quarantine. Resume automatic propagation only after applicable validation/reconciliation under [RECOVER-1](#recover-1). Authorized bulk work and legitimate deletion/erasure remain supported under [AUTH-2](#auth-2) and [PRIV-1](#priv-1); containment is not indefinite retention authority.
+
 <a id="sync-2"></a>
 ### SYNC-2 — Device continuity without a NAS
 
@@ -709,11 +750,17 @@ Authority transitions MUST define identity continuity, reconciliation of concurr
 <a id="recover-1"></a>
 ### RECOVER-1 — Honest recovery semantics
 
-**Type:** UNIVERSAL INVARIANT | **Origin:** DERIVED ENGINEERING RULE | **Applies:** undo, restoration, reversal, or compensation claims
+**Type:** UNIVERSAL INVARIANT | **Origin:** DERIVED ENGINEERING RULE | **Applies:** undo, restoration, reversal, or compensation claims and recovery of important retained user state
 
 Applications MUST describe actual recovery/compensation honestly and provide recovery where technically and operationally appropriate. Distinguish inverse mutation, transaction rollback, restoration, compensation, cancellation, reconciliation, and irreversible actions. Reversal MUST use current authority and constraints, not historical permission alone.
 
 Communications cannot be recalled from recipients' knowledge. Refunds are separate effects; physical actions may be irreversible; APIs may need reconciliation. Restoring old global state MUST NOT be presented as safe undo without accounting for newer valid work. Expired/erased information may not be recoverable. Required reversal audit links to the original under [AUDIT-1](#audit-1).
+
+For applications owning important retained user state, successful normal application startup MUST NOT be the only route to inspect, verify, extract, or recover otherwise recoverable information. Define an appropriate recovery route and its dependencies/limits in the App Plan, supported by proportionate evidence under [BACKUP-2](#backup-2) and [TEST-1](#test-1). A read-only recovery mode, independent reader, doctor tool, recovery executable, or documented portable inspection/export procedure may suffice. Neither a CLI nor a separate rescue application is required where the durable format already provides an adequate route. Recovery MUST preserve applicable authorization, privacy, and key-access constraints under [AUTH-1](#auth-1), [PRIV-1](#priv-1), and [BACKUP-1](#backup-1).
+
+Recovery MUST distinguish corruption detection/diagnosis, derived-state rebuilding, verified canonical restoration, and canonical repair. It MUST NOT fabricate missing facts to claim a healthy state. When facts cannot be established, preserve uncertainty under [EVID-1](#evid-1), surface the problem, quarantine where appropriate, and stop destructive repair; [SAFE-1](#safe-1), [DATA-2](#data-2), and [EDIT-1](#edit-1) remain governing constraints.
+
+Malware/ransomware recovery SHOULD, where applicable, contain affected clients/services, stop unsafe propagation, identify the best evidenced known-good canonical state/recovery points, validate backup integrity, restore or reconstruct canonical information, rebuild disposable derived state, reconcile legitimate newer information where safe, and rotate/revoke compromised credentials before validated sync resumption. Recovery MUST NOT overwrite the best surviving clean evidence merely for convenience. Recovery copies may themselves be corrupted, malicious, or already compromised; age or immutability does not establish cleanliness. Evidence and uncertainty follow [BACKUP-2](#backup-2) and [EVID-1](#evid-1), with privacy/deletion duties intact.
 
 <a id="recover-2"></a>
 ### RECOVER-2 — Prefer bounded reversibility
@@ -736,6 +783,8 @@ Strategies MUST identify a consistent recovery point and complete dependency set
 
 No directory inclusion list or derived-data exclusion applies universally. NAS/filesystem snapshots, OS backup, database-native, or application-native backup may be used. Understand snapshot scope and cross-store consistency. A copy in the same failure domain does not establish independent recovery.
 
+For important retained data, the backup strategy MUST distinguish active copies, synchronized replicas, NAS hubs, snapshot/version history, and backups, and consider a recovery copy not simultaneously destroyable through the same ordinary client credentials or failure mechanism. Document the chosen protection and residual risk proportionately. Immutable/write-protected history, offline/disconnected media, separately credentialed storage, append/versioned backup, or another justified isolation mechanism may fit; no topology is universally required. Ordinary client credentials SHOULD NOT automatically have unrestricted deletion authority over all independent backup generations unless genuinely required; separate retention/deletion authority where meaningful. Isolation does not override authorized erasure under [PRIV-1](#priv-1).
+
 <a id="backup-2"></a>
 ### BACKUP-2 — Recovery evidence
 
@@ -744,6 +793,8 @@ No directory inclusion list or derived-data exclusion applies universally. NAS/f
 Claims MUST have documented, testable restoration and supporting evidence. Verify intended results, keys/dependencies, compatibility, and meaningful failure cases. Untested backups are unverified, not necessarily empty or legally nonexistent. State recovery-point/time expectations and untested limits.
 
 Manifests/checksums can detect accidental corruption; adversaries may require protected evidence under [AUDIT-3](#audit-3). Verification SHOULD avoid active-data changes and restore tests SHOULD use safe destinations. Actual restore requires authority and accounting for later work/deletion policy.
+
+For important retained data, restoration or equivalent recoverability MUST be validated at a proportionate cadence defined in the App Plan. A successful backup write alone is insufficient. Test/sample restores, isolated rehearsals, integrity/dependency verification, or another justified method must support the actual recovery claim; checksums alone do not establish that an application can use the restored state. Assess possible corruption, malicious content, and already-compromised backup state, using evidence to select the best available known-good recovery point and preserving uncertainty when cleanliness cannot be established. Older or immutable does not automatically mean clean; [RECOVER-1](#recover-1) governs safe recovery.
 
 <a id="s23"></a>
 ## 23. Import and export
@@ -755,7 +806,9 @@ Manifests/checksums can detect accidental corruption; adversaries may require pr
 
 Imports MUST validate format/domain constraints, define identity/conflicts, and prevent blind overwrite contrary to intent. Staging, skip, audited replacement, merge, or alternatives may be used. Track needed provenance without unrelated sensitive content.
 
-Controlled intake SHOULD provide risk-appropriate inspection/staging, validation, identity/provenance resolution, and commit. Relevant checks include path/archive safety, type/media validation, size limits, untrusted-content or malware handling, duplicates, provenance, quarantine, and operation receipts. These are applicable safeguards, not mandatory heavyweight quarantine or a fixed physical pipeline for every tiny input.
+Externally supplied data MUST be treated as untrusted until processed according to the application's risk model. This includes applicable downloads, email attachments, documents/media, archives, office files, plugin packages, NAS content, sync peers, APIs, and removable media. Controls may include format/type/magic validation, safe-path/traversal checks, archive-depth/expansion and decompression-bomb limits, size/resource limits, active-content restrictions, staging/quarantine, scanning, and restricted parsing under [SEC-1](#sec-1). Harmless bounded values need no expensive scanning without meaningful benefit. Parsing success or location in a data tree does not grant execution trust. Locale/time interpretation follows [DATA-4](#data-4) and [DATA-5](#data-5).
+
+Controlled intake SHOULD provide risk-appropriate inspection/staging, validation using the relevant controls above, duplicate/identity/provenance resolution, commit, and operation receipts where needed. These are applicable safeguards, not mandatory heavyweight quarantine or a fixed physical pipeline for every tiny input.
 
 Exports presented as copies MUST NOT silently mutate/delete sources. An intentional move or export-and-delete needs separate effect semantics and authority. Exports MUST document scope, omissions, transformations, consistency point, and format, distinguishing archival fidelity from presentation. Apply [PRIV-1](#priv-1).
 
@@ -798,6 +851,12 @@ Controls MUST reflect principals, reachable surfaces, protocols, deployment, and
 
 Local apps SHOULD bind local services to loopback by default. Network services may use intended interfaces, including containers, with explicit secure deployment. Authentication, authorization, transport protection, browser-origin defenses, and rate limits MUST match exposed operations/data. Deliberately public data may have public access semantics; private LAN location does not justify sensitive unauthenticated access. CORS/WAFs are not universal protocol controls; CORS is not general authorization.
 
+Where relevant, the threat model MUST address malware/ransomware, malicious imports/archives/external content, compromised parsers/plugins/updates/dependencies, and unauthorized local processes through defense in depth. Antivirus/endpoint protection may contribute but is not the whole contract. High-risk parsing, previewing, extraction, conversion, transcoding, and rendering SHOULD run with the minimum authority reasonably required, using process isolation, sandboxing, restricted filesystem views, reduced privileges, bounded network access, resource limits, or disposable working space where technically practical. Processing one object SHOULD NOT automatically expose the entire archive, backups, secrets/credentials, NAS administration, arbitrary network services, or unrelated data.
+
+Substantial retained-data applications MUST assess and limit unnecessary compromise propagation from a client, parser, optional subsystem, plugin, or AI tool to all data, replicas, NAS history, backups, and secrets. Use the existing capability model under [AUTH-1](#auth-1): an indexer needs no unrelated remote-write authority, a media parser needs no backup-deletion rights, and ordinary UI/sync need no automatic destructive backup-management or NAS-admin privilege. Presence inside a retained-data tree MUST NOT make content trusted executable code. Distinguish data from executable extensions; scripts/macros/binaries discovered as ordinary data MUST NOT execute merely because of location. Executable extensions require an explicitly trusted installation/activation process or equivalent authority boundary.
+
+Document trust assumptions and residual risk: controls reduce likelihood and blast radius; they do not guarantee virus-proof software, malware-free snapshots, or containment against a fully compromised OS/root/admin. Hashes and sandboxes alone do not establish malware immunity. Encryption at rest primarily addresses access to protected storage without an authorized unlocked session, including lost/stolen media or offline theft; malware with equivalent authority in an unlocked session may still read data. Encryption does not replace least privilege, isolation, safe parsing, integrity verification, independent recovery, or backup protection. Malware controls likewise do not replace appropriate privacy encryption; they address different threats.
+
 <a id="sec-2"></a>
 ### SEC-2 — No accidental secret disclosure
 
@@ -816,6 +875,8 @@ Released builds MUST record a reproducible dependency-resolution strategy approp
 
 Use supported lock/resolution mechanisms and review updates. `go.sum` records checksums; it alone is not an exact Go dependency lock model, which also involves `go.mod` and resolution semantics. Rust ownership checks and `Cargo.lock` do not establish trust. Vulnerability review SHOULD be proportionate and recurring; CVE scans cannot prove absence of defects.
 
+Protect software delivery proportionately through dependency provenance, controlled resolution, source/release integrity verification, appropriately verifiable packages/updates, restricted build/release authority, vulnerability response, and review of critical third-party changes. No one signing system, SBOM format, package manager, or scanner is mandated. Automated updates MUST verify authorization and integrity before execution using an appropriate platform mechanism; arriving through the update path is not trust evidence by itself. Update failure MUST NOT silently authorize destructive data migration; [MIGRATE-1](#migrate-1) and [MIGRATE-2](#migrate-2) still apply. Reconstruction and material dependency-disappearance dispositions follow [SEC-5](#sec-5).
+
 <a id="sec-4"></a>
 ### SEC-4 — Vendored or forked foundation provenance
 
@@ -824,6 +885,17 @@ Use supported lock/resolution mechanisms and review updates. `go.sum` records ch
 Projects MUST preserve durable provenance appropriate to the foundation: upstream project/repository, version/tag where applicable, exact commit/revision, source digest where appropriate, license/notices, import date, acquisition method, local modification boundary, and maintenance/update strategy. When source identifiers differ, record an equivalent exact snapshot identity rather than inventing a commit.
 
 Explicitly decide whether the project tracks upstream, selectively merges changes, or owns a fixed independent fork/snapshot. Do not leave that maintenance responsibility ambiguous. This does not require vendoring dependencies; foundation evaluation follows [DEV-3](#dev-3) and dependency safety follows [SEC-3](#sec-3).
+
+<a id="sec-5"></a>
+### SEC-5 — Release reconstruction and critical-dependency continuity
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** software built/distributed as executables, and dependencies whose disappearance materially threatens building, operation, migration, recovery, or maintenance
+
+Projects producing executable software MUST preserve durable instructions and inputs sufficient to reconstruct a supported release or equivalent functioning build where reasonably practicable. Record applicable source revision, toolchain/compiler/runtime requirements, build commands, dependency resolution/locks, required build-time assets and generated-code steps, platform prerequisites, packaging/signing procedures, release provenance, and known limits. A future maintainer MUST NOT need undocumented tribal knowledge to determine how a supported release is produced. A tiny utility may satisfy this with concise prerequisites, its source revision, and one deterministic build command; larger distributions need proportionate detail and evidence under [TEST-1](#test-1).
+
+For critical frameworks, runtimes, SDKs, toolchains, package ecosystems, libraries, required local services, model runtimes/providers, APIs, or platform components, the App Plan MUST record a proportionate disappearance-risk disposition where material. Options include replacement paths, interface boundaries, preserved source/vendor snapshots, migration/archive strategies, supported alternatives, or deliberately accepted dependency risk with applicable authority. Match treatment to criticality, replaceability, maintenance burden, license, security, and intended lifetime. Existing selection and foundation provenance follow [SEC-3](#sec-3) and [SEC-4](#sec-4).
+
+State material reconstruction limits honestly, including proprietary SDKs, unavailable signing systems, hardware, closed platforms, discontinued services, and legal restrictions where relevant. No perpetual rebuild guarantee, bit-for-bit reproducibility, mandatory SBOM format, universal vendoring, permanent toolchain-binary retention, or archive of every historical release is required. Preservation does not require continued use of vulnerable obsolete components; distinguish preserved reference material from safe supported execution. No mandatory cloud build infrastructure is introduced. Protect signing secrets and respect access/retention constraints under [SEC-2](#sec-2) and [PRIV-1](#priv-1).
 
 <a id="s26"></a>
 ## 26. Configuration, observability, and runtime lifecycle
@@ -960,7 +1032,7 @@ Remaining sequence:
 3. Wait for the owner's explicit **“There is nothing else left to add.”** confirmation. Only then freeze the final release candidate and proceed to the final adversarial attack on an identified revision, with findings recorded separately from historical reviews.
 4. Resolve that review's findings and obtain a separate explicit owner ratification decision. Neither policy-completion confirmation nor a favorable attack automatically ratifies or authorizes merging/tagging.
 
-No specific pending universal-policy item identified by this integration. Owner policy-completion review remains required. This is not a declaration that the constitution is complete. Application-specific target versions/architectures, threat models, legal obligations, support evidence, NAS configurations, sync implementations, and recovery targets remain product decisions. No unapproved global encryption-at-rest mandate or fixed audit retention period is introduced.
+No specific unresolved universal-policy item identified. One final owner policy-completion review remains before Plan Freeze. The seven lifecycle-policy decisions and follow-up timezone/malware protections are recorded in the [final policy-gap integration report](reviews/2026-10-final-policy-gap-integration.md). This is not a declaration that the constitution is complete. Application-specific target versions/architectures, threat models, legal obligations, support evidence, NAS configurations, sync implementations, and recovery targets remain product decisions. No unapproved global encryption-at-rest mandate or fixed audit retention period is introduced.
 
 The prior rc1 verdict was **RATIFY WITH NON-BLOCKING ISSUES**, with no blockers and four clarifications; its historical outcome is recorded [separately](reviews/2026-10-rc1-verification-outcome.md). Subsequent owner decisions required this integration before ratification. The rc1 verdict is not a review of this revision. Policy coverage is recorded in the [initial integration report](reviews/2026-10-pre-attack-integration.md) and subsequent [development-governance integration](reviews/2026-10-development-governance-integration.md).
 
@@ -1014,6 +1086,8 @@ Use **Attack → Fix → Attack → Fix**, preserving findings and dispositions,
 
 Material new architectural uncertainty during implementation returns the affected work to planning and this gate; do not silently improvise a different architecture. This application-plan review requirement does not authorize the constitution's final attack, which remains blocked under [GOV-4](#gov-4).
 
+Necessary emergency maintenance may temporarily precede complete planning only under [DEV-17](#dev-17), with bounded authority, evidence, and reconciliation before ordinary feature work resumes. This does not waive the gate for normal implementation.
+
 <a id="dev-6"></a>
 ### DEV-6 — Discoverable planning and implementation responsibilities
 
@@ -1046,6 +1120,10 @@ The Master Plan MUST state the current authoritative specification of the intend
 
 Keep historical brainstorming and superseded rationale in Research, Decisions, Reviews, or provenance; do not make a reader infer current intent from chronology. Changes to intended behavior MUST update the plan deliberately with relevant decision and phase links. The Master Plan specifies intended product truth; it does not claim unbuilt features exist or supersede the constitution without an approved exception.
 
+Every App Plan MUST state the timezone policy under [DATA-5](#data-5). It MUST also specify, where applicable, release reconstruction and dependency-disappearance dispositions ([SEC-5](#sec-5)), recovery without normal startup ([RECOVER-1](#recover-1)), lifetime growth/validation assumptions ([DEV-16](#dev-16)), emergency repair/reconciliation ([DEV-17](#dev-17)), accessibility acceptance criteria ([UI-3](#ui-3)), and locale parsing/identity semantics ([DATA-4](#data-4)). Make procedures, limits, and criteria discoverable without inferring them from code; no separate empty documents are required.
+
+For substantial retained-data applications, security planning MUST address relevant hostile inputs and exposed processors, their access and compromise consequences, destructive sync propagation, NAS-history protection, actual backup copies/deletion authority, restore validation, update integrity, suspected-compromise containment, and evidence for known-good recovery points. Reference the contracts in [SEC-1](#sec-1), [SEC-3](#sec-3), [IO-1](#io-1), [SYNC-1](#sync-1), [NAS-1](#nas-1), [BACKUP-1](#backup-1), [BACKUP-2](#backup-2), and [RECOVER-1](#recover-1) rather than duplicating a parallel security plan. Scope effort to retained-data value, attack surface, and architecture.
+
 <a id="dev-8"></a>
 ### DEV-8 — Comparative research and explicit decisions
 
@@ -1076,6 +1154,8 @@ Each phase MUST be sufficiently specified for bounded execution rather than a lo
 If major architecture must still be invented during execution, the phase is insufficiently specified and affected implementation MUST stop for planning resolution. A phase MUST distinguish delegated implementation choices from unresolved architectural decisions. Acceptance criteria and validation MUST describe outcomes that can actually be checked under [TEST-1](#test-1), not merely the presence of code.
 
 Large phases MAY be decomposed into bounded tasks. As applicable, a task SHOULD state its ID, objective, prerequisites, scope, permitted and forbidden changes, expected result, validation, and stop conditions. The phase remains the governing specification and conformance boundary. Tiny phases need no artificial task hierarchy.
+
+The temporary emergency path in [DEV-17](#dev-17) may defer only necessary normal planning steps; its durable emergency record and subsequent repair contract do not grant permission to invent unknown architecture.
 
 <a id="dev-11"></a>
 ### DEV-11 — Full-build small-model continuity and safe resumption
@@ -1118,6 +1198,8 @@ Verification MAY be performed by AI, humans, automated validation, or a combinat
 
 The continuing cycle is **Implement → Verify → Universal Rules → Master Plan → Phase Contract → Pass: continue / Fail: repair**. Do not accumulate known architectural debt for later without an explicit approved exception under [GOV-3](#gov-3). Phase checks cover implemented scope and effects, including regressions in previously conformant work; a planned future capability is not automatically a present violation. Required-but-missing behavior for the current scope remains a failure. Repair phases may address documented failures; ordinary feature progression cannot bypass them.
 
+Emergency containment/repair follows [DEV-17](#dev-17)'s temporary procedure and post-emergency reconciliation gate; it does not count as verified phase completion merely because it was urgent.
+
 <a id="dev-14"></a>
 ### DEV-14 — Brownfield assessment and conformance before features
 
@@ -1137,6 +1219,26 @@ Conformance Phases MUST precede new feature phases and use [DEV-10](#dev-10) and
 Planning MUST ask: **Could another human or AI understand, maintain, repair, migrate, and continue this application years later using only the repository and documented external dependencies?** If not, planning/documentation is insufficient and the identified gaps MUST be addressed before claiming the relevant plan or phase ready.
 
 The repository MUST carry durable development memory sufficient to establish what the app is, why major decisions were made, what is implemented, what remains, what was rejected, known risks, how to validate, and how to continue. Conversation history may assist planning but MUST NOT be required for continuation. Avoid unnecessary dependence on one developer's memory, one AI conversation, one model provider, one computer, undocumented file locations/decisions, or unsupported proprietary assumptions. Document necessary external dependencies and recovery/access requirements without committing secrets or retaining unnecessary sensitive conversation payloads; [PRIV-1](#priv-1) and [SEC-2](#sec-2) still apply.
+
+<a id="dev-16"></a>
+### DEV-16 — Lifetime growth envelope and maintenance validation
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** planning and verification where retained data, history, media, logs, indexes, or relationships may materially grow
+
+The App Plan MUST define a reasonable expected lifetime growth envelope and its validation assumptions where scale affects architecture. Relevant dimensions may include records/files, storage/media volume, relationships, history/audit growth, devices, archive age, and users/accounts/tenants. State assumptions and limits so future humans or AI need not infer the intended workload. This is a planning envelope, not an indefinite capacity guarantee or universal numerical threshold.
+
+Validation under [TEST-1](#test-1) MUST consider applicable ordinary and lifecycle operations at expected scale: startup, query/search, index rebuilding, backup, restore, migration, sync, recovery, export, integrity scans, and compaction/retention. The App Plan defines suitable resource/time budgets and supporting evidence, including limitations of estimates or representative samples. Tiny or inherently bounded applications may state that bound and its rationale without special scaling architecture or meaningless benchmarks.
+
+<a id="dev-17"></a>
+### DEV-17 — Emergency maintenance and reconciliation
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** urgent maintenance where delay materially increases security, data-loss, privacy, safety, or unrecoverable operational risk
+
+Emergency maintenance MAY precede complete normal planning when necessary under [SAFE-2](#safe-2). Bound work to the minimum necessary containment, mitigation, repair, urgency-appropriate validation, and preservation of change evidence. Defer only planning or routine approval steps that cannot practicably precede containment, using actual applicable emergency authority or prior delegation under [AUTH-2](#auth-2) and [GOV-3](#gov-3). Emergency status does not manufacture permission, waive integrity/privacy boundaries, or authorize ordinary feature development. Routine bugfixes do not automatically invoke this procedure.
+
+Maintain a proportionate durable record of trigger, scope, authorization, affected components, actual change, validation, residual risks, and temporarily deferred requirements. Link it from Project State under [DEV-9](#dev-9) so an interrupted session can resume safely. A small urgent patch needs concise evidence, not a parallel paperwork system. [DEV-11](#dev-11) still prohibits guessing missing facts or inventing architecture; choose only safely established, authorized actions and record blockers for the rest.
+
+Before ordinary feature development resumes after a material emergency change, reconcile the applicable Master Plan, Project State, Decisions, phase/execution history, tests, architecture, compatibility expectations, migration implications, and documentation. Establish or update the repair's phase contract and run the applicable [Three-Layer Conformance Gate](#dev-13); deferred required checks are not passes. Outstanding failures require repair or an actually approved scoped exception under [GOV-3](#gov-3), not silent permanent drift. Emergency repair may temporarily precede complete planning; it MUST NOT permanently bypass project truth or mark an unverified phase complete.
 
 <a id="s32"></a>
 ## 32. Universal Information Architecture Blueprint
