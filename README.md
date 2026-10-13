@@ -4,11 +4,11 @@ This repository defines a governance constitution for software in this ecosystem
 
 The rules are a blueprint and development system intended to keep applications maintainable, understandable, recoverable, portable, evolvable, AI-continuable, user-controlled, coherent, and useful over many years. App designs remain specific to their users, domain, risk, data, platforms, and lifecycle.
 
-**Version: 1.0.0-rc2**
+**Version: 1.0.0-rc2.1**
 
-**Status: Policy-Complete, Owner-Frozen Adversarial-Review Candidate — Not Yet Ratified**
+**Status: Owner-Authorized Repaired Frozen Candidate — Fresh Red Review Required — Not Yet Ratified**
 
-The reviewed `1.0.0-rc1` at `d9fc392ceddad5f760e0d4a71070bbc723609f77` received **RATIFY WITH NON-BLOCKING ISSUES**. Subsequent owner decisions expanded the candidate; that historical verdict does not verify this revision. Green Flag and the final owner completeness review are complete, with **Material Universal Gaps: None**. On 2026-10-13 the owner explicitly authorized Plan Freeze of source `6a0d89b6bb0bf57fe8c9f8b29f6c31e87ee22f4b`. See the [freeze record](governance/2026-10-plan-freeze.md). The next stage is a fresh Red Flag review; no attack or ratification occurred during freeze, and no governed application was inspected or certified.
+The prior frozen candidate `1.0.0-rc2` at `e15191c1509facc3859b46c25cc8a1d1b7eaa12f` received a Red review with zero BLOCKER, zero MATERIAL, and two NON-BLOCKING findings. On 2026-10-13 the owner authorized GREEN FIX for RF-01 and RF-02 only. The repaired candidate changes DEV-5's research-experiment boundary and GOV-5's conditional residual-risk reporting. See the [repair and frozen-revision record](governance/2026-10-green-fix-rf01-rf02.md). The prior Red result is historical and does not count toward post-repair convergence. Two consecutive independent clean Red rounds are required; no new Red attack or ratification occurred in this repair. The [original freeze record](governance/2026-10-plan-freeze.md) and its revision receipt remain unchanged.
 
 ## How to read the constitution
 
@@ -69,11 +69,12 @@ Rule anchors are preferred over old section numbers. Historical review section r
 
 The [persisted protocol](governance/green-red-protocol.md) makes `GREEN FLAG`, `RED FLAG`, and `GREEN FIX` resumable under [GOV-5](UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#gov-5). Green integrates and validates; Red is an independent read-only attack requiring owner freeze authority; Green Fix repairs validated findings and invalidates earlier Red passes. Ratification recommendations require two consecutive independent clean Red rounds after the last normative repair, with evidence and residual risks. This does not authorize remote publication or ratification.
 
-The owner reopened completion to add these policies. On 2026-10-13, owner-supplied externally verified live primary-source summaries resolved the proxy `403` research block. The [research matrix](research/2026-10-ui-product-agent-skills.md#externally-verified-primary-web-sources) distinguishes 23 external source summaries from 18 previously pinned repository sources and records coverage/conflict dispositions. Codex did not retrieve the blocked live pages. Narrow SKILL-1/UI-7 refinements completed Green research reconciliation. The final owner completeness review subsequently found no material universal policy gap, and owner-authorized Plan Freeze now identifies `1.0.0-rc2`. No Red attack has occurred; the candidate remains unratified.
+The owner reopened completion to add these policies. On 2026-10-13, owner-supplied externally verified live primary-source summaries resolved the proxy `403` research block. The [research matrix](research/2026-10-ui-product-agent-skills.md#externally-verified-primary-web-sources) distinguishes 23 external source summaries from 18 previously pinned repository sources and records coverage/conflict dispositions. Codex did not retrieve the blocked live pages. Narrow SKILL-1/UI-7 refinements completed Green research reconciliation. The final owner completeness review subsequently preceded the original `1.0.0-rc2` freeze and its Red review. The scoped RF-01/RF-02 repair now identifies `1.0.0-rc2.1`; the repaired candidate needs fresh independent review and remains unratified.
 
 ## Repository records
 
 - [Constitution](UNIVERSL%20RULES%20FOR%20ALL%20APPS.md): frozen candidate normative source.
+- [RF-01/RF-02 repair record](governance/2026-10-green-fix-rf01-rf02.md): owner repair authority, historical Red outcome, dispositions, validation, and repaired frozen revision.
 - [Owner Plan Freeze record](governance/2026-10-plan-freeze.md): authorization, source revision, completeness outcome, scope and revision identification.
 - [Changelog](CHANGELOG.md): known history and integration changes.
 - [Rust-first ADR](decisions/ADR-0001-rust-first.md): decision rationale and exceptions.

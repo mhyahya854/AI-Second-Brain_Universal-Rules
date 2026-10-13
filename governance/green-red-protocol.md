@@ -4,7 +4,7 @@ Status: owner-directed candidate workflow; adopted normative authority is [GOV-5
 
 ## Current checkpoint and invocation
 
-The current `1.0.0-rc2` candidate is **OWNER-FROZEN FOR ADVERSARIAL REVIEW / UNRATIFIED** from source `6a0d89b6bb0bf57fe8c9f8b29f6c31e87ee22f4b`, authorized on 2026-10-13 in the [freeze record](2026-10-plan-freeze.md). Green Flag and final owner completeness review are complete; Material Universal Gaps: None. The [research matrix](../research/2026-10-ui-product-agent-skills.md) remains historical evidence with honest source-access limits. No Red review was run during freeze. Next is a fresh Red Flag task; verify the exact frozen revision and scope before starting. Ordinary brainstorming is closed. Defect correction and owner-authorized reopening follow the recorded freeze scope, with every normative repair invalidating prior clean Red status.
+The current `1.0.0-rc2.1` candidate is **OWNER-AUTHORIZED REPAIRED FROZEN CANDIDATE / UNRATIFIED**. The owner authorized GREEN FIX for RF-01 and RF-02 only, following the Red review of `e15191c1509facc3859b46c25cc8a1d1b7eaa12f` (zero BLOCKER/MATERIAL, two NON-BLOCKING). The [repair record](2026-10-green-fix-rf01-rf02.md) identifies the repaired frozen revision and authority. DEV-5 and GOV-5 changed; the prior Red result no longer counts toward convergence. No new Red review was run during this repair. Next is a fresh independent Red task on the repaired revision. Two consecutive independent clean rounds after the last normative repair remain required; ordinary brainstorming stays closed. The [original freeze record](2026-10-plan-freeze.md) remains unchanged historical evidence.
 
 The future Red Flag reviewer attacks the actual frozen normative candidate: **frozen normative constitution → governance protocol → supporting historical evidence**. Do not reconstruct intent from chats, prompts or summaries. Green completion, counts, research, design systems, Rust, ClamAV, Skill review and backup/accessibility wording establish no automatic correctness, security or implementation guarantee. Historical evidence may explain provenance but cannot excuse defective wording.
 
@@ -14,7 +14,7 @@ The future Red Flag reviewer attacks the actual frozen normative candidate: **fr
 
 Every run records observed branch/HEAD/tree, actual scope/evidence, findings/dispositions, remaining blockers and next authoritative action in its report. Keep a revision-bound record of any owner freeze and permitted repair/review scope; no self-authorized freeze marker. Red is read-only: return its report in the conversation unless separately authorized to save a non-normative report; saving one must never mutate the frozen normative candidate. Use distinct reviewers for independence when available under the task's authority, otherwise disclose sequential same-reviewer limitations.
 
-The following owner-supplied protocol is retained as operational detail. Its source section numbers are master-prompt identifiers, not constitution section numbers. Its review requirements are normatively integrated in GOV-5, so this record is supporting process memory rather than a separate policy authority.
+The following owner-supplied protocol is retained as operational detail; section 138 is synchronized with the owner-authorized RF-02 clarification in GOV-5. Its source section numbers are master-prompt identifiers, not constitution section numbers. Its review requirements are normatively integrated in GOV-5, so this record is supporting process memory rather than a separate policy authority.
 
 # PART XIX — PERSIST THE GREEN / RED PROTOCOL
 
@@ -453,9 +453,13 @@ Do not fake independence.
 
 # 138. RESIDUAL RISK
 
-Even after convergence, the final report must state:
+Every Red report must disclose that review does not prove absolute correctness, security, completeness, or immunity to future unknown conditions.
 
-> No material defect was identified under the defined review battery. This does not prove absolute correctness, security, or immunity to future unknown conditions.
+Only when the review identifies zero BLOCKER and zero MATERIAL findings, state:
+
+> No material defect was identified under the defined review battery. This does not prove absolute correctness, security, completeness, or immunity to future unknown conditions.
+
+If any BLOCKER or MATERIAL finding is identified, do not assert the clean-result sentence as the outcome. Report the material findings and state that other defects may still exist and the attack does not prove all defects were discovered. This applies before or after any convergence assessment.
 
 Do NOT call the constitution “unbeatable.”
 

@@ -2,6 +2,15 @@
 
 Dates use the available commit evidence or this conversation's integration date. Unknown earlier drafting dates and model identities are not inferred. The candidate remains unratified.
 
+## 1.0.0-rc2.1 — Scoped Green Fix, Repaired Frozen Candidate — 2026-10-13
+
+Starting HEAD: `9cf038a95ab85589ab5568a83c1480896ccbefa7`; prior frozen Red target: `e15191c1509facc3859b46c25cc8a1d1b7eaa12f`. Owner authorization covers RF-01 and RF-02 only.
+
+- RF-01: clarify DEV-5's bounded, authorized pre-freeze research experiments, evidence and non-authoritative status, and normal gates before product adoption; no production-scope prototype loophole.
+- RF-02: condition GOV-5's clean-result sentence on zero BLOCKER/MATERIAL findings, preserve truthful failed-result reporting, and require residual-risk disclosure for every result. Synchronize operational protocol section 138 without changing convergence requirements.
+- Preserve 113 rule IDs, classifications/applicability, 33 sections, 33 Skill families, all other normative bodies, and all prior historical files/entries. Update current metadata and add the [repair record](governance/2026-10-green-fix-rf01-rf02.md).
+- The prior Red result remains historical but cannot count toward post-repair convergence. The owner-authorized repaired frozen candidate requires two consecutive independent clean Red rounds. No new Red attack, ratification, push, merge, tag, or release occurred.
+
 ## 1.0.0-rc2 — Owner-Frozen Adversarial-Review Candidate — 2026-10-13
 
 Owner Plan Freeze authorization received for exact clean source `6a0d89b6bb0bf57fe8c9f8b29f6c31e87ee22f4b` on `constitution/pre-ratification-working`. Green Flag and final owner completeness review are complete; Material Universal Gaps: None.
