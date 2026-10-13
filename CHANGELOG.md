@@ -2,6 +2,15 @@
 
 Dates use the available commit evidence or this conversation's integration date. Unknown earlier drafting dates and model identities are not inferred. The candidate remains unratified.
 
+## 1.0.0-rc2 — Owner-Frozen Adversarial-Review Candidate — 2026-10-13
+
+Owner Plan Freeze authorization received for exact clean source `6a0d89b6bb0bf57fe8c9f8b29f6c31e87ee22f4b` on `constitution/pre-ratification-working`. Green Flag and final owner completeness review are complete; Material Universal Gaps: None.
+
+- Freeze policy design for a fresh Red Flag task; no substantive normative policy change. All 113 rule bodies, metadata/classifications/applicability, 33 sections and 33 Skill families are preserved.
+- Update constitution header/non-normative continuation, README and protocol checkpoint only; preserve prior historical reports, research, ADR and changelog entries.
+- Add the [owner freeze record](governance/2026-10-plan-freeze.md). A subsequent append-only revision receipt identifies the exact freeze commit without rewriting this record or manufacturing a self-referential hash.
+- No Red attack, Green Fix, ratification, push, merge, tag or release. Post-freeze normative repairs require traceable findings, validation and renewed Red review; two consecutive independent clean rounds remain required before a separate ratification decision.
+
 ## 1.0.0-working.1 — Pre-Ratification Working Candidate — 2026-10-11
 
 Baseline: reviewed rc1 `d9fc392ceddad5f760e0d4a71070bbc723609f77`. Working branch: `constitution/pre-ratification-working`. This is an integration pass, not a new adversarial review, frozen rc2, ratification, merge, or release.

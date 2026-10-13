@@ -1,14 +1,15 @@
 # Universal Rules for All Apps
 
-> Version: 1.0.0-working.1<br>
-> Status: Pre-Ratification Working Candidate — Not Yet Ratified<br>
-> Date: 2026-10-12<br>
+> Version: 1.0.0-rc2<br>
+> Status: Policy-Complete, Owner-Frozen Adversarial-Review Candidate — Not Yet Ratified<br>
+> Date: 2026-10-13<br>
+> Freeze source: `6a0d89b6bb0bf57fe8c9f8b29f6c31e87ee22f4b`<br>
 > Document identifier: ECOSYSTEM-CONST-001<br>
 > Source repository: https://github.com/mhyahya854/Universal-Rules<br>
 > Governance authority: repository owner/user, unless explicitly delegated<br>
 > Integration baseline: reviewed `1.0.0-rc1`, `d9fc392ceddad5f760e0d4a71070bbc723609f77`
 
-This constitution governs ecosystem software through engineering invariants, deliberate ecosystem policies, and capability-specific requirements. This working revision integrates owner decisions made after the successful rc1 verification; it is not the reviewed rc1 or a frozen rc2. Preparing or committing it does not ratify it or establish compliance of any application. No further adversarial attack or final release-candidate freeze is authorized until the owner explicitly confirms: **“There is nothing else left to add.”** The owner-supplied four-app information architecture and Hermes blueprint is now integrated as candidate policy; owner policy-completion review remains outstanding under [section 30](#s30).
+This constitution governs ecosystem software through engineering invariants, deliberate ecosystem policies, and capability-specific requirements. The owner authorized Plan Freeze on 2026-10-13 after Green Flag closure and the final owner completeness review found no material universal policy gaps. This `1.0.0-rc2` preserves the substantive rules of source `1.0.0-working.1` at `6a0d89b6bb0bf57fe8c9f8b29f6c31e87ee22f4b`. It is frozen for a fresh Red Flag adversarial review, not ratified, released, or established as correct or secure. No Red attack was run during freeze. The [owner freeze record](governance/2026-10-plan-freeze.md) records authorization, scope and revision identification; [section 30](#s30) records continuation. Earlier integration-phase gates remain in the unchanged rule bodies; this explicit owner decision records satisfaction of their policy-completion/freeze prerequisite, not a waiver of substantive rules or ratification.
 
 Its purpose is to maximize the probability that applications remain maintainable, understandable, recoverable, portable, evolvable, AI-continuable, user-controlled, structurally coherent, and usable for as many years as reasonably possible. It is a blueprint and development system for discovering, challenging, documenting, building, verifying, and maintaining app-specific designs, not a requirement for identical features or content hierarchies. The development lifecycle is specified in [section 31](#s31).
 
@@ -43,7 +44,7 @@ Its purpose is to maximize the probability that applications remain maintainable
 27. [Verification and evidence](#s27)
 28. [Documentation, exceptions, and ratification](#s28)
 29. [Anti-pattern index — non-normative](#s29)
-30. [Pending design and integration plan — non-normative](#s30)
+30. [Freeze status and review continuation — non-normative](#s30)
 31. [Application planning, continuity, and conformance](#s31)
 32. [Universal Information Architecture Blueprint](#s32)
 33. [Reusable Universal Agent Skills governance](#s33)
@@ -1171,22 +1172,24 @@ This navigation index adds no requirements. Applicability, strength, and excepti
 | Unsupported or untested targets presented as verified | [TEST-1](#test-1), [PORT-1](#port-1) |
 
 <a id="s30"></a>
-## 30. Pending design and integration plan — non-normative
+## 30. Freeze status and review continuation — non-normative
 
-Rust-first, feature-first, modular-monolith default, applicable NAS support, local/offline-first, owner governance, scoped product platforms, the shared Rust core, UI strategies, device/NAS synchronization direction, and vector-asset policy are owner decisions integrated into this working candidate. Universal event sourcing, one database, per-action confirmation, and identical presentation across all devices are not pending requirements.
+Rust-first, feature-first, modular-monolith default, applicable NAS support, local/offline-first, owner governance, scoped product platforms, the shared Rust core, UI strategies, device/NAS synchronization direction, and vector-asset policy are owner decisions integrated into this frozen candidate. Universal event sourcing, one database, per-action confirmation, and identical presentation across all devices are not pending requirements.
 
 **Hermes / User-Adaptable File Structure Blueprint — INTEGRATED AS CANDIDATE POLICY; NO LONGER PENDING DESIGN.** The owner reports completion of the comparative design analysis of Mosaic, LMS / Studies, Accounting & Money, and Read & Watch and has supplied the approved generalized direction. [Section 32](#s32), [HERMES-1](#hermes-1), [HERMES-2](#hermes-2), [HERMES-3](#hermes-3), and the reconciled data, evidence, operation, and development rules integrate that blueprint. It standardizes discoverability and integrity rather than one user-facing content hierarchy. The development-artifact blueprint in [DEV-6](#dev-6) remains a separate responsibility.
 
 Those applications informed the owner's analysis; their repositories, plans, and domain-specific behavior are not normative sources or dependencies of this constitution. No application repositories were inspected during this integration. The [four-app integration record](reviews/2026-10-four-app-blueprint-integration.md) preserves self-contained design provenance and policy coverage. Earlier records accurately showing pending design remain historical and unchanged.
 
+**Current checkpoint: Green Flag complete; final owner completeness review complete; Material Universal Gaps: None; owner Plan Freeze recorded on 2026-10-13. Candidate `1.0.0-rc2` is frozen for review and unratified.** The [freeze record](governance/2026-10-plan-freeze.md) preserves the exact source revision, owner authorization and prior review outcome.
+
+Ordinary policy brainstorming is closed. Post-freeze changes are limited to justified defect correction or explicit owner-authorized reopening, as recorded in the freeze scope. No substantive rule was changed by freezing. The [research matrix](research/2026-10-ui-product-agent-skills.md#externally-verified-primary-web-sources) remains unchanged evidence distinguishing pinned repository inspection from externally verified owner-supplied summaries; its earlier next-action text describes its historical checkpoint.
+
 Remaining sequence:
 
-1. Have the owner review the resulting Universal Rules and discuss whether any universal policy is still missing. Keep the candidate open; the generalized Hermes blueprint integration is complete as candidate policy.
-2. Integrate any further owner decisions, resolve direct contradictions, update dispositions, and validate document structure and references without restarting completed work. Do not perform a new adversarial attack during this stage.
-3. Wait for the owner's explicit **“There is nothing else left to add.”** confirmation. Only then freeze the final release candidate and proceed to the final adversarial attack on an identified revision, with findings recorded separately from historical reviews.
-4. Resolve that review's findings and obtain a separate explicit owner ratification decision. Neither policy-completion confirmation nor a favorable attack automatically ratifies or authorizes merging/tagging.
-
-The owner reopened policy completion before freeze to add full UI/product and Agent Skill governance. Those policies are integrated as candidate wording in [UI-4](#ui-4)–[UI-7](#ui-7), [DEV-18](#dev-18), and [section 33](#s33). On 2026-10-13 the owner supplied externally verified live primary-source summaries and explicitly dispositioned the proxy access block. The [research matrix](research/2026-10-ui-product-agent-skills.md#externally-verified-primary-web-sources) distinguishes that external evidence from Codex’s pinned repository inspections and records narrow SKILL-1/UI-7 refinements. Green research reconciliation is complete; the next stage remains the separately authorized final owner policy-completion review against this updated candidate. No Plan Freeze or Red attack has occurred. The persisted protocol follows [GOV-5](#gov-5). Previous lifecycle and Raw/ClamAV integration reports remain historical; their completeness statements do not automatically renew for this revision.
+1. Start a fresh Red Flag task against the identified frozen normative candidate, following [GOV-5](#gov-5) and the [persisted protocol](governance/green-red-protocol.md). No Red lens or findings are part of this freeze task.
+2. Record independent read-only findings against the written candidate. Supporting history cannot excuse defective normative wording.
+3. If authorized, apply Green Fix only to validated findings, with finding ID/severity, affected rules, failure scenario, correction, regression impact, validation and resulting revision. Any normative repair invalidates prior clean Red status and requires a new attack.
+4. Preserve the requirement for two consecutive independent clean Red rounds after the last normative repair, all finding dispositions, and current regression/structural/factuality/proportionality evidence. Ratification remains a separate owner decision; no push, merge, tag or release is authorized here.
 
 The prior rc1 verdict was **RATIFY WITH NON-BLOCKING ISSUES**, with no blockers and four clarifications; its historical outcome is recorded [separately](reviews/2026-10-rc1-verification-outcome.md). Subsequent owner decisions required this integration before ratification. The rc1 verdict is not a review of this revision. Policy coverage is recorded in the [initial integration report](reviews/2026-10-pre-attack-integration.md) and subsequent [development-governance integration](reviews/2026-10-development-governance-integration.md).
 

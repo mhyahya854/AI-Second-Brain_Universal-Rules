@@ -4,11 +4,11 @@ This repository defines a governance constitution for software in this ecosystem
 
 The rules are a blueprint and development system intended to keep applications maintainable, understandable, recoverable, portable, evolvable, AI-continuable, user-controlled, coherent, and useful over many years. App designs remain specific to their users, domain, risk, data, platforms, and lifecycle.
 
-**Version: 1.0.0-working.1**
+**Version: 1.0.0-rc2**
 
-**Status: Pre-Ratification Working Candidate — Not Yet Ratified**
+**Status: Policy-Complete, Owner-Frozen Adversarial-Review Candidate — Not Yet Ratified**
 
-The reviewed `1.0.0-rc1` at `d9fc392ceddad5f760e0d4a71070bbc723609f77` received **RATIFY WITH NON-BLOCKING ISSUES**, with no blockers and four clarifications. This expanded working candidate integrates those clarifications and subsequent owner policy decisions. The prior verdict does not verify the new revision. No new attack, final release-candidate freeze, or ratification is part of this pass. A new attack must wait until the owner explicitly confirms **“There is nothing else left to add.”** No governed application has been inspected or certified by this integration.
+The reviewed `1.0.0-rc1` at `d9fc392ceddad5f760e0d4a71070bbc723609f77` received **RATIFY WITH NON-BLOCKING ISSUES**. Subsequent owner decisions expanded the candidate; that historical verdict does not verify this revision. Green Flag and the final owner completeness review are complete, with **Material Universal Gaps: None**. On 2026-10-13 the owner explicitly authorized Plan Freeze of source `6a0d89b6bb0bf57fe8c9f8b29f6c31e87ee22f4b`. See the [freeze record](governance/2026-10-plan-freeze.md). The next stage is a fresh Red Flag review; no attack or ratification occurred during freeze, and no governed application was inspected or certified.
 
 ## How to read the constitution
 
@@ -60,8 +60,8 @@ ADRs in [decisions/](decisions/) preserve significant decisions and rationale. T
 1. Identify the current base commit, affected rules, and applicable user decisions.
 2. Make proposed changes on a reviewable branch and preserve historical evidence.
 3. Record findings and their disposition, validate links and normative consistency, and distinguish documentation validation from runtime evidence.
-4. The owner reports completion of the four-app comparative design analysis; its generalized blueprint is integrated as candidate policy. Review the resulting Universal Rules with the owner and discuss whether any policy is still missing. Integrate further decisions if supplied. Keep the working candidate open until the owner explicitly says **“There is nothing else left to add.”**
-5. Only after that confirmation, freeze the final candidate and conduct its final adversarial review. Ratification requires a separate owner decision. Do not infer authority to inspect, migrate, or enforce rules in other repositories, merge into `main`, or tag `1.0.0`.
+4. Policy design is now owner-frozen. Ordinary brainstorming is closed; changes require the recorded defect-correction basis or explicit owner authorization to reopen design. Existing policy decisions are the review target.
+5. Conduct Red only in a fresh task against the identified frozen candidate under GOV-5. Authorized Green Fix records findings, corrections, validation and the new revision, invalidating earlier clean Red passes. Convergence and ratification remain separate; no authority to inspect other repositories, push, merge or release is implied.
 
 Rule anchors are preferred over old section numbers. Historical review section references refer to the recorded original commit, not this renumbered candidate.
 
@@ -69,11 +69,12 @@ Rule anchors are preferred over old section numbers. Historical review section r
 
 The [persisted protocol](governance/green-red-protocol.md) makes `GREEN FLAG`, `RED FLAG`, and `GREEN FIX` resumable under [GOV-5](UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#gov-5). Green integrates and validates; Red is an independent read-only attack requiring owner freeze authority; Green Fix repairs validated findings and invalidates earlier Red passes. Ratification recommendations require two consecutive independent clean Red rounds after the last normative repair, with evidence and residual risks. This does not authorize remote publication or ratification.
 
-The owner reopened completion to add these policies. On 2026-10-13, owner-supplied externally verified live primary-source summaries resolved the proxy `403` research block. The [research matrix](research/2026-10-ui-product-agent-skills.md#externally-verified-primary-web-sources) distinguishes 23 external source summaries from 18 previously pinned repository sources and records coverage/conflict dispositions. Codex did not retrieve the blocked live pages. Narrow SKILL-1/UI-7 refinements complete Green research reconciliation; the candidate is ready for final owner completeness review and remains unfrozen/unratified. No Red attack has occurred.
+The owner reopened completion to add these policies. On 2026-10-13, owner-supplied externally verified live primary-source summaries resolved the proxy `403` research block. The [research matrix](research/2026-10-ui-product-agent-skills.md#externally-verified-primary-web-sources) distinguishes 23 external source summaries from 18 previously pinned repository sources and records coverage/conflict dispositions. Codex did not retrieve the blocked live pages. Narrow SKILL-1/UI-7 refinements completed Green research reconciliation. The final owner completeness review subsequently found no material universal policy gap, and owner-authorized Plan Freeze now identifies `1.0.0-rc2`. No Red attack has occurred; the candidate remains unratified.
 
 ## Repository records
 
-- [Constitution](UNIVERSL%20RULES%20FOR%20ALL%20APPS.md): candidate normative source.
+- [Constitution](UNIVERSL%20RULES%20FOR%20ALL%20APPS.md): frozen candidate normative source.
+- [Owner Plan Freeze record](governance/2026-10-plan-freeze.md): authorization, source revision, completeness outcome, scope and revision identification.
 - [Changelog](CHANGELOG.md): known history and integration changes.
 - [Rust-first ADR](decisions/ADR-0001-rust-first.md): decision rationale and exceptions.
 - [Pre-ratification adversarial review](reviews/2026-10-astra-adversarial-review.md): preserved historical report.
@@ -89,4 +90,4 @@ The owner reopened completion to add these policies. On 2026-10-13, owner-suppli
 - [Primary-source reconciliation](reviews/2026-10-primary-source-reconciliation.md): owner-supplied external evidence, narrow refinements, research-block closure, validation and next stage.
 - [Initial-generation provenance](provenance/initial-generation-boundary.md): original drafting attestation, retained as historical claims rather than current rules.
 
-This is a documentation repository; it defines no application build or runtime test suite. Documentation checks do not certify implementations, NAS compatibility, source security or licensing. Green research reconciliation is complete; next conduct the separately authorized final policy-completion review before Plan Freeze under [section 30](UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#s30). The prior completion recommendation applies only to its reviewed revision. Earlier pending-Hermes reports remain historical; the blueprint is currently integrated.
+This is a documentation repository; it defines no application build or runtime test suite. Documentation checks do not certify implementations, NAS compatibility, source security or licensing. Green research, final owner completeness review and Plan Freeze are complete; next conduct a fresh Red Flag review under [section 30](UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#s30). The prior completion recommendation applies only to its reviewed revision. Earlier pending-Hermes reports remain historical; the blueprint is currently integrated.
