@@ -8,7 +8,7 @@ This is non-normative evidence. Static source reads were performed before furthe
 
 Owner policy governs. Tier A is relevant standards/primary guidance; Tier B is first-party/maintained implementation evidence; Tier C is practitioner/community hypothesis. Popularity cannot override accessibility, authority, or security. A first-party repository does not make its language/framework/host-specific mechanisms universal.
 
-Direct official web retrievals were blocked by the network proxy (`Tunnel connection failed: 403 Forbidden`). The mandatory live-source research is therefore not fully complete. Official repository alternatives provide useful partial evidence but cannot honestly be described as those inaccessible web pages. No claim of complete Green Flag research or source licensing/security certification is made.
+At the 2026-10-12 checkpoint, direct official web retrievals were blocked by the network proxy (`Tunnel connection failed: 403 Forbidden`) and the live-source requirement was incomplete. On 2026-10-13 the owner explicitly dispositioned that block with externally verified live primary-source summaries, reconciled below. Green research is now complete for this candidate integration; Codex has not directly retrieved those live pages or certified source licensing/security. Earlier pinned repository inspection and external verification remain distinct evidence classes.
 
 ## Pinned repository matrix
 
@@ -52,7 +52,7 @@ All ten candidates below are **reference only** for this pass. None is installed
 | vercel-labs/agent-skills | web-design-guidelines/SKILL.md explicitly fetches mutable remote main/command.md as rules/output instructions. Pin/record fetched content and constrain network; license not established by a root LICENSE in the inspected tree, verify before copying. Overlaps frontend/audit/polish or writing concerns; select one primary workflow. | skills/web-design-guidelines/SKILL.md: 176 words; host/platform assumptions must remain scoped. | Reference only; retain useful process, reject universal style/authority defaults. |
 | vercel-labs/web-interface-guidelines | MIT guidance inspected at pinned revision. Framework syntax, punctuation and numeric conventions remain scoped; avoid automatic mutable-main trust. Overlaps frontend/audit/polish or writing concerns; select one primary workflow. | Pinned command guidance, not SKILL.md; host/platform assumptions must remain scoped. | Reference only; retain useful process, reject universal style/authority defaults. |
 
-## Direct web attempts / research still outstanding
+## Historical direct web attempts — 2026-10-12
 
 | Required source or locator | Attempted URL | Result / limitation |
 |---|---|---|
@@ -75,16 +75,97 @@ All ten candidates below are **reference only** for this pass. None is installed
 
 The candidate URLs for the named OpenAI blog articles and UX by Example title are unverified locators, not established canonical identities. No search capability or accessible primary site resolved them. The owner-supplied Maya Brennan article title/date (September 29, 2026) and de-slopification/community observations were inspected as supplied text; authorship/publication/current page was not independently verified. Adopt deliberation, subtraction, references, workflow-first design, complementary skills, and product value as owner policy; do not cite the supplied observations as an independently retrieved standard.
 
-Outstanding required source coverage: live OpenAI Skills/prompt/security guidance; Anthropic live skill reference; current Apple HIG; Fluent 2 primary-site guidance beyond repository evidence; NNG usability/progressive-disclosure/error/heuristic material; UX by Example 60/30/10 title/canonical source. W3C, APG and Material have pinned official-repository evidence, with published/live pages unverified. These access limits must be resolved or explicitly dispositioned by the owner before claiming the master research gate complete.
+At that checkpoint the outstanding coverage was live OpenAI Skills/prompt/security guidance, Anthropic live skill reference, Apple HIG, Fluent 2 site guidance, NN/g usability material, and the UX by Example title. W3C/APG/Material had pinned official-repository evidence. The owner’s 2026-10-13 disposition below closes this research gate using external summaries plus direct pinned evidence; it does not retroactively turn the failed attempts into successful retrievals or establish canonical URLs for guessed locators.
 
 ## Conflicts and adopted boundary decisions
 
 - Standards/applicable accessibility and security outrank community aesthetic preferences. No universal font/color/card/gradient/sidebar bans, dial numbers, animation milliseconds, or vendor design systems.
-- 60/30/10 remains an owner-preferred heuristic, without independent current article verification; semantic colors and accessibility take priority.
+- 60/30/10 remains an owner-preferred heuristic; the 2026-10-12 pass lacked live article verification, now supplied externally by the owner below. Semantic colors and accessibility take priority.
 - First-party hooks can install dependencies and disclose source material. First-party provenance does not supply execution or disclosure authority.
 - Vercel mutable-main retrieval is a concrete reproducibility/supply-chain case: pin or identify and validate exact content before trusted adoption; project/owner contracts remain higher authority.
 - Complementary layering requires one primary workflow per concern, conflict precedence and a context budget. Skill count is not maturity.
 - Native/shared/web implementations remain product-appropriate; WCAG/APG web mechanisms and framework-specific packages are not universal requirements.
+
+## Externally Verified Primary Web Sources
+
+**External live-source verification date: 2026-10-13.**
+
+**Externally verified live primary-source evidence supplied during owner review because the Codex environment could not retrieve the pages directly.**
+
+The owner supplied independently retrieved live primary-source evidence for sources that Codex could not directly fetch because of proxy 403 responses. Codex did not claim direct retrieval. Codex reviewed the supplied summaries and reconciled them with actual candidate wording and previously inspected pinned sources; this is not an independent reinspection of the live pages.
+
+Provenance: owner upload titled “GREEN FLAG RESUMPTION — PRIMARY-SOURCE RESEARCH UNBLOCK AND FINAL RECONCILIATION”, supplied 2026-10-13, attachment ID `file_00000000f9348210b3b532ba0e1aea59`, SHA-256 `2670137802a8a470b6f1751611536acd60d0f208be5aefff8fe9598de26aba6f`. The summaries and dispositions below preserve the relevant evidence without requiring access to the original chat. Publication dates are as supplied by the owner; where absent, the retrieval date is used and no publication/change date is inferred. Exact canonical page URLs, page captures and page hashes were not supplied; earlier candidate URLs remain unverified locators. No canonical URL or quotation from an unseen page is invented.
+
+For **every source row below**, retrieval date is **2026-10-13**; evidence status is **EXTERNALLY VERIFIED — OWNER-SUPPLIED LIVE WEB RESEARCH**; Codex local retrieval status is **BLOCKED BY PROXY 403**. The local status denotes the recorded source/site access limitation, not a claim that every newly named subpage was separately attempted. No access retries or proxy bypasses were performed in this reconciliation. Conflict result for every row: **no unresolved conflict** after the outcome-level reconciliation recorded below.
+
+| Source title | Organization | Publication/change date supplied | Key externally reported findings | Candidate coverage | Normative disposition |
+|---|---|---|---|---|---|
+| OpenAI Developers — Skills \| OpenAI API | OpenAI | Not supplied | Discoverable SKILL.md and metadata; load full guidance when relevant; review supporting resources; user-prompt-level instructions confer no extra host authority. | [SKILL-1](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#skill-1), [SKILL-2](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#skill-2), [SKILL-3](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#skill-3), [AUTH-1](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#auth-1), [AI-2](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ai-2), [GOV-3](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#gov-3) | No change |
+| OpenAI Cookbook — Skills in OpenAI API | OpenAI | 2026-02-10 | Skills may include scripts, helper files, dependencies, assets, templates and samples; explicit API version IDs support revision tracking. | [SKILL-1](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#skill-1), [SKILL-3](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#skill-3) | No change |
+| Rethinking skills and prompts for GPT-6 Astra | OpenAI Developers | 2026-09-11 | Concise narrow metadata improves routing; compact roots disclose relevant workflows progressively; avoid unnecessary itineraries and indiscriminate repository-document loading; define completion/stops. | [SKILL-1](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#skill-1), [SKILL-2](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#skill-2), [SKILL-4](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#skill-4), [DEV-10](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#dev-10), [DEV-11](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#dev-11), [DEV-13](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#dev-13) | SKILL-1 refined: compact routing and proportionate procedure |
+| Designing AI agents to resist prompt injection | OpenAI | 2026-03-11 | Injection resembles social engineering; constrain effects even when manipulation succeeds rather than depend solely on string filtering. | [AUTH-1](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#auth-1), [AI-1](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ai-1), [AI-2](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ai-2), [HERMES-1](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#hermes-1), [SEC-1](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#sec-1), [SKILL-2](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#skill-2), [SKILL-3](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#skill-3) | No change |
+| Understanding prompt injections | OpenAI | Not supplied | Untrusted text is not authority; capability boundaries limit successful manipulation. | [AUTH-1](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#auth-1), [AI-1](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ai-1), [AI-2](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ai-2), [HERMES-1](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#hermes-1), [IO-1](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#io-1), [SKILL-3](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#skill-3) | No change |
+| Human Interface Guidelines — Design principles | Apple | Not supplied | Purpose, agency, flexibility, simplicity, craft and appropriate delight; accessibility from the start; deliberate platform/input adaptation. | [DEV-18](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#dev-18), [UI-1](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-1), [UI-2](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-2), [UI-3](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-3), [UI-4](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-4), [UI-5](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-5), [UI-7](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-7) | No change |
+| Human Interface Guidelines — Branding | Apple | Not supplied | Distinct identity and familiar platform behavior coexist; judicious accents, readable custom type and content-first branding. | [UI-2](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-2), [UI-4](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-4), [UI-5](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-5) | No change |
+| Human Interface Guidelines — Motion | Apple | Not supplied | Purposeful feedback/relationships; avoid distracting or uncomfortable motion, animation-only meaning and unnecessary interaction delays. | [UI-3](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-3), [UI-5](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-5), [UI-7](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-7) | No change |
+| Human Interface Guidelines — Writing | Apple | Not supplied | Product-specific consistent voice, appropriate vocabulary, plain language, accessible/localizable actionable labels and useful corrective errors. | [UI-4](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-4), [UI-6](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-6), [SKILL-4](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#skill-4), [DATA-4](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#data-4) | No change |
+| Human Interface Guidelines — Accessibility | Apple | Not supplied | Accessibility shapes design: text scaling, assistive technology, multiple input methods, predictable interaction and relevant timing/platform behavior. | [UI-3](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-3), [UI-7](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-7) | No change |
+| 10 Usability Heuristics for User Interface Design | Nielsen Norman Group | Not supplied | Status, real-world match, control, consistency, prevention, recognition, flexibility, minimalist focus, error recovery and help. | [UI-7](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-7), [SKILL-4](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#skill-4) | No change |
+| Progressive Disclosure | Nielsen Norman Group | Not supplied | Prioritize core/frequent functions, keep secondary progression discoverable; do not hide frequent functions for visual minimalism. | [UI-4](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-4), [UI-5](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-5), [UI-7](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-7) | No change |
+| Error-Message Guidelines | Nielsen Norman Group | 2023-05-14 | Visible constructive errors respect effort and help recognition, diagnosis and recovery. | [UI-5](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-5), [UI-6](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-6), [UI-7](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-7) | No change |
+| The Theory Behind Heuristic Evaluations | Nielsen Norman Group | Not supplied | Different evaluators find different usability problems; independent evaluation followed by aggregation improves coverage when cost is justified. | [UI-7](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-7), [SKILL-4](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#skill-4) | UI-7 refined: proportionate independent formal reviewers |
+| How to Conduct a Heuristic Evaluation | Nielsen Norman Group | Not supplied | Prefer multiple independent perspectives for warranted formal evaluation; no universal panel size for tiny interfaces. | [UI-7](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-7), [SKILL-4](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#skill-4), [GOV-5](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#gov-5) | UI-7 refined: proportionate independent formal reviewers |
+| Fluent 2 — Design principles | Microsoft | Not supplied | Platform familiarity, adaptive layouts, reduced clutter, inclusive design and recognizable personality. | [UI-1](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-1), [UI-2](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-2), [UI-3](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-3), [UI-4](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-4), [UI-5](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-5) | No change |
+| Fluent 2 — Color | Microsoft | Not supplied | Neutral hierarchy, scarce accents, semantic status colors, non-color-only meaning and consistent tokens. | [UI-3](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-3), [UI-5](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-5) | No change |
+| Fluent 2 — Typography | Microsoft | Not supplied | Navigable readable hierarchy; native/system fonts valid; adapt RTL and contrast; custom fonts not required. | [UI-3](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-3), [UI-5](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-5), [UI-7](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-7) | No change |
+| Fluent 2 — Accessibility | Microsoft | Not supplied | Continuous design/development attention to structure, keyboard/assistive technology, focus, contrast, scaling/reflow, media alternatives and meaningful language. | [UI-3](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-3), [UI-6](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-6), [UI-7](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-7) | No change |
+| Fluent 2 — Layout | Microsoft | Not supplied | Spacing/alignment express relationships; screen/platform/orientation adaptation preserves usable access and organization. | [UI-2](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-2), [UI-5](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-5), [UI-7](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-7) | No change |
+| Fluent 2 — Motion | Microsoft | Not supplied | Functional consistent changes; no-motion alternatives; avoid jarring, unnecessary or off-task distraction. | [UI-3](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-3), [UI-5](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-5), [UI-7](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-7) | No change |
+| WCAG 2.2 | W3C | Not supplied | Applicable keyboard, focus, target size with exceptions, dragging alternatives, contrast and non-color-only criteria; web values are not universal native-app law. | [UI-3](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-3), [UI-7](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-7), [TEST-1](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#test-1) | No change |
+| The 60-30-10 rule | UX by Example | 2026-08-20 | Approximate dominant/secondary/accent ratio expresses hierarchy and scarce emphasis; starting point, not law; accessibility/contrast take precedence. | [UI-5](../UNIVERSL%20RULES%20FOR%20ALL%20APPS.md#ui-5) | No change |
+
+### Source-category closure
+
+The 23 separately named primary sources above cover the 21 groups requested in the final report (two prompt-injection articles and two heuristic-evaluation articles are separate rows). The owner explicitly accepts external summaries as research evidence; no claim of Codex live-page access or complete page capture is made.
+
+- OpenAI Skills/API/cookbook/prompting/security: external primary summaries plus prior pinned official repository inspection. API host-specific instruction priority is evidence about that host, not a new override of actual system/developer authority or the project hierarchy in SKILL-2.
+- Apple, Fluent, NN/g, WCAG 2.2 and UX by Example: the externally verified summaries supply the previously missing live guidance. Fluent and WCAG also retain separate pinned repository evidence.
+- Anthropic Skills and APG: prior authentic pinned official repositories and selected workflow/accessibility documents satisfy the source categories under the owner's direct-pinned-or-external evidence criterion. The blocked live reference pages were not inspected; their mechanisms are not additional universal requirements.
+- Material: authentic `material-components/material-web` at `47adb655bd7a88c4d62e8faac2873084eed555dc`, with color/type/shape files and digests above/below, remains direct pinned evidence. The owner explicitly dispositioned live `m3.material.io` duplication as non-blocking. No policy relies solely on an unverifiable Material-specific assertion.
+- The ten community/practitioner candidates retain their prior static reference-only dispositions. The owner's earlier design notes remain owner material, not newly verified journalism. No downloaded workflow is approved for execution by this research closure.
+
+### Five refinement checks
+
+| Check | Before reconciliation | Disposition |
+|---|---|---|
+| A — Concise, narrowly applicable discovery metadata | SKILL-1 already exposes name/purpose/applicability, concise initial metadata, relevant-only loading and overlap/context management. | Covered; no duplicate wording. |
+| B — Progressive disclosure within complex skills | Progressive skill selection existed, but compact root routing within a large skill was less explicit. | Refine SKILL-1: compact root instructions route to relevant supporting documents/scripts when needed. No universal filename. |
+| C — Avoid unnecessary rigid itineraries | Explicit process was required; the limit on ceremonial sequencing was implicit. | Refine SKILL-1: avoid constraints without correctness/safety/evidence/reproducibility benefit; DEV-10 and validation/stop conditions remain intact. |
+| D — Mutable remote instructions | SKILL-3 already requires untrusted-until-validated treatment, exact content identity, permission review and no silent mutable-main replacement. | Covered; no change. |
+| E — Independent formal UI evaluation | UI-7 required proportionate heuristics/rendered evidence but did not explicitly prefer multiple independent formal evaluators. | Refine UI-7 for substantial/high-stakes interfaces where resources justify it, aggregate findings; no fixed headcount or automatic Red authority. |
+
+### Source conflict reconciliation
+
+| Potential tension | Outcome-level resolution in current candidate |
+|---|---|
+| Distinctiveness vs platform familiarity | UI-2/4/5 require deliberate product identity with familiar usable platform behavior; novelty is not an independent completion goal. |
+| Custom vs native/system type | UI-4/5 reject unexamined defaults, not system fonts. Deliberate readable type may be native or custom. |
+| Accent scarcity vs semantic status | UI-5 gives status/focus/selection meaning priority over decorative balance; accent scarcity cannot suppress warnings. |
+| 60/30/10 vs accessibility | UI-3/5 retain a SHOULD heuristic with semantic/accessibility priority, no pixel counting. |
+| Minimalism vs useful density | UI-4/5/7 require task-appropriate grouping and useful information; removing necessary controls is not successful subtraction. |
+| Progressive disclosure vs discoverability | UI-4/7 retain primary/frequent functions and usable progression, evaluated on actual representative tasks. |
+| Motion/delight vs reduced motion | UI-3/5/7 keep motion purposeful, accessible and non-exclusive as a meaning channel; no mandatory animation or timing values. |
+| Skills vs Phase Contracts | SKILL-2 and DEV-10 retain project-specific outcomes, constraints, evidence and stop conditions; reducing generic context cannot remove them. |
+| Modularity vs execution detail | Refined SKILL-1 routes to needed detail while preserving bounded small-model execution and completion/stop evidence. |
+| Automation vs authorization | AUTH-1, AI-1/2, SKILL-2/3 retain enforced capabilities even if malicious instructions succeed in influencing a model. |
+
+The refinements clarify process preferences rather than remedy a contradiction in the previously integrated protections. No unresolved material UI/product/skill policy gap was identified in this reconciliation. The Green/Red protocol and owner freeze/ratification gates are unchanged.
+
+### Reconciliation outcome and next action
+
+**GREEN FLAG COMPLETE — ALL REQUIRED RESEARCH EVIDENCE RECONCILED; CANDIDATE READY FOR FINAL OWNER COMPLETENESS REVIEW**
+
+The proxy limitation remains an access fact, but is no longer an outstanding research blocker under the owner's explicit disposition. Evidence summaries support policy reconciliation, not a certification of a skill package, runtime implementation, legal license compliance, or complete constitutional design. Next: the separately authorized final owner policy-completion review against the resulting candidate. No Plan Freeze, Red attack, ratification or remote publication is performed here.
 
 ## Exact inspected-file inventory
 
@@ -202,4 +283,4 @@ Each entry records retrieved bytes, not runtime verification. Large scripts were
 | vercel-labs/web-interface-guidelines | `LICENSE` | 1068 / `6cd1609c9c12233507cdd2ce0d32e9a721e3c27494951be06b90090deeeb7af2` |
 | vercel-labs/web-interface-guidelines | `README.md` | 19239 / `eda7dfa9998215267c7f920475d1773ea4129cb08ed088276ca598dd45d20aa5` |
 
-This record can be resumed without hidden chat: retrieve the blocked primary resources, verify canonical titles/URLs, record dates/source identity, compare principles with the pinned matrix, and disposition any changes before updating the Green verdict. Do not repeat completed static repository reads unless source changes or a concrete unresolved question requires it.
+The 2026-10-13 external-evidence reconciliation above supersedes the prior blocked-research continuation action. Resume with the separately authorized final owner completeness review, verifying the actual candidate revision first. Do not repeat completed source research without a changed source, a new policy question, or a concrete unresolved evidentiary need. Earlier source-access limits remain accurately recorded.

@@ -6,6 +6,15 @@ Dates use the available commit evidence or this conversation's integration date.
 
 Baseline: reviewed rc1 `d9fc392ceddad5f760e0d4a71070bbc723609f77`. Working branch: `constitution/pre-ratification-working`. This is an integration pass, not a new adversarial review, frozen rc2, ratification, merge, or release.
 
+### Primary-source research reconciliation — 2026-10-13
+
+Verified clean starting HEAD `32e7233ba91fd9667f90a1b857b9fd9740db7c77` on `constitution/pre-ratification-working`: 113 rules, 33 sections, candidate `1.0.0-working.1`.
+
+- Accepted the owner's explicit disposition of the prior proxy-403 research block. Recorded 23 externally verified primary-source summaries across the 21 requested report groups, external retrieval date/publication dates as supplied, rule mappings and conflict outcomes in the [research matrix](research/2026-10-ui-product-agent-skills.md#externally-verified-primary-web-sources). Codex did not fetch these live pages or bypass the proxy. Pinned Anthropic/APG/Material evidence remains accurately separate.
+- Refined only SKILL-1 (compact root routing and avoidance of unhelpful rigid itineraries, preserving detailed Phase Contracts) and UI-7 (proportionate independent formal heuristic reviewers, without a universal headcount). No rule IDs, classifications, applicability scopes or authority gates changed.
+- Updated current continuation status in README, constitution section 30 and the protocol checkpoint; historical reports and prior changelog entries remain unchanged. Added the [reconciliation report](reviews/2026-10-primary-source-reconciliation.md).
+- Green research reconciliation is complete. The candidate remains unfrozen/unratified; one separately authorized final owner completeness review remains next. No final completeness review, Red attack, ratification, push, merge, tag or release was performed.
+
 ### Green UI / product / Agent Skills integration — 2026-10-12
 
 Baseline HEAD `bb0fac006cee6637cd3f4dff36a10bd0d4275ab4`, branch `constitution/pre-ratification-working`, originally clean with 103 rules/32 sections. The earlier UI/skills request had produced an uncommitted draft when the owner supplied the controlling Green/Red master prompt followed by the detailed UI/skills prompt. Existing draft work was preserved. Research preceded further master-policy editing; no reset or source execution.
