@@ -1,19 +1,24 @@
-# Universal Rules for All Apps
+# Universal Rules for All Apps — MASTER PLAN
 
-> Version: 1.0.0-rc2.1<br>
-> Status: Owner-Authorized Repaired Frozen Candidate — Fresh Red Review Required — Not Yet Ratified<br>
-> Date: 2026-10-13<br>
-> Prior frozen review target: `e15191c1509facc3859b46c25cc8a1d1b7eaa12f`<br>
+> Version: **1.0.0-rc3**<br>
+> Status: **Single-file integration candidate — NOT RATIFIED; review outcomes are revision-bound external evidence**<br>
+> Integration started: 2026-10-14 UTC; consolidated: 2026-10-15 UTC<br>
 > Document identifier: ECOSYSTEM-CONST-001<br>
 > Source repository: https://github.com/mhyahya854/Universal-Rules<br>
-> Governance authority: repository owner/user, unless explicitly delegated<br>
-> Integration baseline: reviewed `1.0.0-rc1`, `d9fc392ceddad5f760e0d4a71070bbc723609f77`
+> Policy and ratification authority: repository owner/user, unless explicitly delegated<br>
+> Integration baseline: `a9c597c8f14536a4404a64494cf56e9015e1288a`, original SHA-256 `1c6471ab3ec5291b9cd4ec884912ccec10431d2e35e9e514ad29574b778b082d`<br>
+> Freeze identity and subsequent review results: revision-bound external receipt under section 42; never inferred from historical reviews
 
-This constitution governs ecosystem software through engineering invariants, deliberate ecosystem policies, and capability-specific requirements. Candidate `1.0.0-rc2.1` is the owner-authorized repaired frozen successor to `1.0.0-rc2` at `e15191c1509facc3859b46c25cc8a1d1b7eaa12f`. The owner authorized GREEN FIX for RF-01 and RF-02 only on 2026-10-13: DEV-5 clarifies bounded pre-freeze research experiments; GOV-5 conditions clean-result reporting and preserves universal residual-risk disclosure. No other normative rule changed. The [repair record](governance/2026-10-green-fix-rf01-rf02.md) identifies authorization, prior findings, dispositions, validation, and the new frozen revision. The [original freeze record](governance/2026-10-plan-freeze.md) remains historical evidence. The previous Red result does not count toward post-repair convergence; two consecutive independent clean Red rounds are required. This candidate is unratified and has not received a post-repair Red attack. Earlier integration gates remain historical prerequisites satisfied by the recorded owner freeze and scoped repair authorization, not waivers of substantive rules.
+This single document contains the current candidate constitution, application planning/execution instructions, Green/Red/Fix procedure, historical preservation map, and technical research evidence. Its purpose is durable, user-owned, understandable, recoverable, portable, maintainable software with truthful evidence and bounded authority. It improves the probability of long-term usefulness without promising indefinite operation or flawless AI execution.
 
-Its purpose is to maximize the probability that applications remain maintainable, understandable, recoverable, portable, evolvable, AI-continuable, user-controlled, structurally coherent, and usable for as many years as reasonably possible. It is a blueprint and development system for discovering, challenging, documenting, building, verifying, and maintaining app-specific designs, not a requirement for identical features or content hierarchies. The development lifecycle is specified in [section 31](#s31).
+**Two different repository contracts:** the active **Universal Rules** tree contains exactly `MASTER_PLAN.md`. Future **application** repositories use the multi-folder planning and Codebase blueprint in [section 39](#s39). Application folders shown here are instructions for future products, not additional files in this constitutional repository. Git metadata is not a tracked constitutional file.
 
-## Contents
+**NO FALLBACKS IN THE APP PLAN OR CODEBASE:** selected implementations fail honestly; [section 37](#s37) preserves explicit recovery, same-operation retries, independent local functionality, and deliberate platform/migration contracts without hidden substitution.
+
+For the owner: start with [scope/authority](#s01), [ordered planning](#s34), [technology selection](#s35), [data survival](#s36), [visual direction](#s38), and [candidate status](#s30). For execution: use [future project entry points](#blueprint-1), [Project State and Continue](#exec-4), [numbered subphase contracts](#exec-2), and [completion gates](#exec-5). For constitutional review: use [GOV-5](#gov-5) and the complete [operating procedure](#s42). Rule anchors remain stable even when subsection numbers evolve.
+
+<a id="contents"></a>
+## 0. Navigation
 
 1. [Scope and rule classification](#s01)
 2. [Foundations and domain hazards](#s02)
@@ -44,16 +49,27 @@ Its purpose is to maximize the probability that applications remain maintainable
 27. [Verification and evidence](#s27)
 28. [Documentation, exceptions, and ratification](#s28)
 29. [Anti-pattern index — non-normative](#s29)
-30. [Freeze status and review continuation — non-normative](#s30)
+30. [Candidate status and review continuation — non-normative](#s30)
 31. [Application planning, continuity, and conformance](#s31)
 32. [Universal Information Architecture Blueprint](#s32)
 33. [Reusable Universal Agent Skills governance](#s33)
+34. [Requirements-first planning and source reuse](#s34)
+35. [Technology preferences after requirements](#s35)
+36. [Data that survives the application](#s36)
+37. [NO FALLBACKS in the App Plan or Codebase](#s37)
+38. [Visual concepts, interaction modes, and named design guidance](#s38)
+39. [Future application repository blueprint and feature organization](#s39)
+40. [Beginner-readable implementation documentation and simplicity](#s40)
+41. [Exact execution, limited repair, and evidence-bearing completion](#s41)
+42. [Integrated constitutional operating procedure](#s42)
+43. [Authorization provenance and historical preservation — non-normative](#s43)
+44. [Technical factuality and source evidence — non-normative](#s44)
 
 <a id="s01"></a>
 ## 1. Scope and rule classification
 
 <a id="gov-1"></a>
-### GOV-1 — Interpretation and applicability
+### 1.1. GOV-1 — Interpretation and applicability
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** all ecosystem software and constitutional decisions
 
@@ -73,18 +89,20 @@ A UNIVERSAL INVARIANT expresses a language- and platform-independent outcome wit
 
 MUST describes candidate conformance, not proof of adoption. Examples, implementation notes, ADR rationale, and historical reviews add no normative obligations. Sections 3, 29, and 30 are interpretive or informative and defer to governing rules. Deviations and conflicts follow [GOV-3](#gov-3); approval cannot make an unsupported technical guarantee true.
 
+This file is the single current constitutional source. Sections 34–41 integrate later owner decisions; they refine the named earlier clauses rather than leaving superseded wording active. [Section 42](#s42) operationalizes GOV-3–GOV-5 without independent override authority. Sections 43–44 contain non-normative preservation/research evidence; external references are provenance, not missing operating instructions. When an actual contradiction remains, stop affected decisions and record it for authorized repair under GOV-3; do not silently select convenient wording. The constitution governs conformance; actual owner authority may amend policy or approve recorded scoped exceptions, while approval cannot make an unsupported engineering claim true.
+
 <a id="s02"></a>
 ## 2. Foundations and domain hazards
 
 <a id="safe-1"></a>
-### SAFE-1 — Integrity and truthful guarantees
+### 2.1. SAFE-1 — Integrity and truthful guarantees
 
 **Type:** UNIVERSAL INVARIANT | **Origin:** DERIVED ENGINEERING RULE | **Applies:** operations and retained information governed by an application contract
 
 Applications MUST protect retained user data according to declared integrity and lifecycle contracts and MUST NOT silently corrupt it or misrepresent known loss. Intentional loss, transformation, or deletion requires applicable authority and accurate semantics. Important operation outcomes MUST be truthful under [OUT-1](#out-1). Guarantees require appropriate evidence under [TEST-1](#test-1), with limits and uncertainty disclosed.
 
 <a id="safe-2"></a>
-### SAFE-2 — Domain-aware hazard decisions
+### 2.2. SAFE-2 — Domain-aware hazard decisions
 
 **Type:** UNIVERSAL INVARIANT | **Origin:** DERIVED ENGINEERING RULE | **Applies:** conflicts among safety, security, privacy, integrity, and operational obligations
 
@@ -93,7 +111,7 @@ Applications MUST identify material domain hazards and applicable obligations an
 Example: a hardware controller may stop an actuator before persisting telemetry; an archive may prioritize retention under a legitimate preservation duty. Neither priority becomes a universal ordering for other domains.
 
 <a id="safe-3"></a>
-### SAFE-3 — Explicit, testable core behavior
+### 2.3. SAFE-3 — Explicit, testable core behavior
 
 **Type:** DEFAULT | **Origin:** DERIVED ENGINEERING RULE | **Applies:** domain logic and authoritative decisions
 
@@ -116,12 +134,18 @@ Domain logic SHOULD make inputs, constraints, and transitions explicit and testa
 | NAS | A private storage/server environment accessed through one or more modes in [NAS-1](#nas-1), not synonymous with mounting raw database files. |
 | Drift | A relevant change outside the expected mutation/synchronization path; detection does not establish authorship or malicious intent. |
 | Atomicity | Indivisibility within a stated consistency boundary and observer model, distinct from durability and external completion. |
+| Universal Rules repository | This constitutional repository, whose active tree contains only `MASTER_PLAN.md`; historical Git refs preserve earlier supporting files. |
+| App Master Plan / App Plan / historical APP Plan | The authoritative intended product specification and its planning responsibility in a future application; the complete specification follows BLUEPRINT-2. “Master Plan” folder names do not refer to this constitution's one-file tree. |
+| Phase / subphase | Ordered bounded implementation contract and its smaller executable contracts, with validation gates, evidence, and numerical order under EXEC-1–EXEC-5. |
+| Frozen candidate | Exact committed document bytes bound to recorded owner freeze authority; its identifier/digest is recorded outside those bytes to avoid self-reference. Freeze is not ratification. |
+| Review convergence | Revision-bound satisfaction of GOV-5's findings, validation, regression, and two consecutive independent clean-round conditions; not a guarantee of correctness. |
+| Approved implementation | Deliberately selected capability implementation and declared platform/configuration contract; failure never silently authorizes an alternative under NOFALL-1. |
 
 <a id="s04"></a>
 ## 4. Principals and delegation
 
 <a id="auth-1"></a>
-### AUTH-1 — Effective authorization and integrity enforcement
+### 4.1. AUTH-1 — Effective authorization and integrity enforcement
 
 **Type:** UNIVERSAL INVARIANT | **Origin:** DERIVED ENGINEERING RULE | **Applies:** effects subject to authorization or integrity constraints
 
@@ -130,7 +154,7 @@ Permissions, domain constraints, and effect limits MUST be enforced at a boundar
 Enforcement can reside in functions, databases, services, sandboxes, operating-system boundaries, or combinations. An in-process convention does not establish protection against a malicious same-account process or host administrator.
 
 <a id="auth-2"></a>
-### AUTH-2 — Ownership, delegation, and attribution
+### 4.2. AUTH-2 — Ownership, delegation, and attribution
 
 **Type:** UNIVERSAL INVARIANT | **Origin:** DERIVED ENGINEERING RULE | **Applies:** operations requiring authority or accountability
 
@@ -142,7 +166,7 @@ Delegations MUST define relevant resources, allowed effects, duration or lifecyc
 ## 5. Rust-first implementation
 
 <a id="lang-1"></a>
-### LANG-1 — Rust as the mandatory ecosystem default
+### 5.1. LANG-1 — Rust as the mandatory ecosystem default
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** new software and components developed in this ecosystem
 
@@ -158,29 +182,29 @@ The decision MUST identify the component, selected language, concrete reason Rus
 
 This language-selection requirement governs authored implementation components. Importing a library or an FFI dependency written in another language does not by itself constitute authoring a new non-Rust application component; dependency and boundary responsibilities still apply. Generated bindings/code, SQL, configuration, shaders, schemas, platform resources, and frontend assets MUST be classified by their role rather than their file extension. They are not automatically separate application components requiring individual exceptions. Authored executable frontend or other implementation logic remains subject to this policy. A documented component-level or standing exception MAY cover related implementation artifacts within its approved scope; generated glue does not exempt independently authored domain logic. The shared product core follows [CORE-1](#core-1).
 
-Rust does not establish domain correctness, storage durability, distributed consistency, safe FFI, secure architecture, or correct concurrency semantics. Those remain architectural responsibilities. This policy does not itself mandate rewriting existing applications. Rationale and examples: [ADR-0001](decisions/ADR-0001-rust-first.md).
+Rust does not establish domain correctness, storage durability, distributed consistency, safe FFI, secure architecture, or correct concurrency semantics. Those remain architectural responsibilities. This policy does not itself mandate rewriting existing applications. Rationale and examples: [ADR-0001](https://github.com/mhyahya854/Universal-Rules/blob/a9c597c8f14536a4404a64494cf56e9015e1288a/decisions/ADR-0001-rust-first.md).
 
 <a id="s06"></a>
 ## 6. Feature-first architecture, shared core, and UI
 
 <a id="arch-1"></a>
-### ARCH-1 — Feature-first organization
+### 6.1. ARCH-1 — Feature-first organization
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** applications with multiple meaningful user or domain capabilities
 
 Feature-first organization is presumptive. Responsibility ownership, domain/capability boundaries, authoritative-state ownership, shared concepts, dependencies, and cross-boundary effects MUST be understandable and deliberate. A feature MUST NOT silently bypass another feature's applicable invariants. Policy departures require a scoped rationale and approval under [GOV-3](#gov-3).
 
-No fixed folders or files are prescribed. A tiny cohesive utility is outside the multi-capability trigger. Compiler passes, signal-processing pipelines, rendering engines, mathematical kernels, framework layers, hardware-oriented structures, and justified process boundaries are valid where appropriate. Different folder names or fewer layers are not policy exceptions.
+The detailed substantial-application default in [BLUEPRINT-1](#blueprint-1) prescribes discoverable planning/code responsibilities and a preferred physical layout, with justified engineering/framework adaptations. It does not impose one runtime user-data hierarchy. A tiny cohesive utility is outside the multi-capability trigger and may use the proportionate blueprint representation. Compiler passes, signal-processing pipelines, rendering engines, mathematical kernels, framework layers, hardware-oriented structures, and justified process boundaries are valid where appropriate. Mapped folder-name adaptations and justified fewer layers under that blueprint are not departures from feature-first policy.
 
 <a id="arch-2"></a>
-### ARCH-2 — Modular monolith by default
+### 6.2. ARCH-2 — Modular monolith by default
 
 **Type:** DEFAULT | **Origin:** USER POLICY | **Applies:** ordinary feature-rich application deployment
 
 A modular monolith SHOULD be preferred when it is the simplest design satisfying isolation, reliability, privilege boundaries, scaling, deployment, lifecycle, maintainability, and performance. Multiple processes/services may be justified by fault containment, plugin isolation, runtime incompatibility, independent lifecycle, hardware placement, operational economics, reliability, or scaling. Record the rationale; literal single-process impossibility is not required. Distribution adds network, transaction, deployment, and recovery responsibilities.
 
 <a id="arch-3"></a>
-### ARCH-3 — Contracts and shared code
+### 6.3. ARCH-3 — Contracts and shared code
 
 **Type:** DEFAULT | **Origin:** ARCHITECTURAL DECISION | **Applies:** modular codebases
 
@@ -189,7 +213,7 @@ Modules SHOULD communicate through explicit interfaces and avoid unnecessary dep
 Examples: typed application functions, query ports, commands, events, actor messages, callbacks, streams, and plugin protocols. A feature may contain domain logic, adapters, presentation, tests, and documentation without needing every category. An event bus can conceal coupling and does not by itself prove modularity.
 
 <a id="core-1"></a>
-### CORE-1 — One shared Rust product core
+### 6.4. CORE-1 — One shared Rust product core
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** products with multiple clients sharing domain or durable application behavior
 
@@ -202,23 +226,23 @@ Supported AI, native UI, web, CLI, and headless interfaces MUST operate on the s
 Technical departures MUST document the affected component, concrete constraint, scope, and consistency implications under [LANG-1](#lang-1) and [GOV-3](#gov-3). A shared core may consist of cohesive feature modules and target-specific builds; it does not require one giant module, identical binaries, or one process. [ARCH-3](#arch-3)'s general duplication discretion does not override this product-core policy. Shared code does not establish trusted execution: enforce authority at the effective boundary under [AUTH-1](#auth-1), including service-side enforcement where clients are untrusted.
 
 <a id="ui-1"></a>
-### UI-1 — Platform-appropriate or shared UI
+### 6.5. UI-1 — Platform-appropriate or shared UI
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** products with user interfaces across platform scopes
 
-When resources allow, products SHOULD prefer separate platform-appropriate UIs while preserving product identity, visual consistency, and applicable capabilities. Android-native UI technologies, Swift/SwiftUI on Apple platforms, and suitable desktop technologies are valid choices. Non-Rust platform UI components may meet [LANG-1](#lang-1)'s technical exception criteria; record the component or standing exception without treating it as permission to duplicate core behavior.
+Products MUST evaluate platform-appropriate native-appearing interfaces and deliberately shared/custom cross-platform interfaces against actual workflow, accessibility, platform integration, design fidelity, performance, and maintenance requirements. Preserve product identity, appropriate visual consistency, and applicable capabilities. Android-native UI technologies, Swift/SwiftUI on Apple platforms, and suitable desktop technologies are valid choices. Non-Rust platform UI components may meet [LANG-1](#lang-1)'s technical exception criteria; record the component or standing exception without treating it as permission to duplicate core behavior.
 
-When maintaining several UIs imposes excessive time or development cost, a shared cross-platform UI MAY be selected as a first-class compliant architecture. This is not an inferior compliance state and needs no exception to this UI strategy. Its implementation language still follows [LANG-1](#lang-1). Both strategies preserve the shared Rust core under [CORE-1](#core-1).
+A shared cross-platform UI is a first-class compliant architecture and needs no exception merely for sharing presentation. Select native, shared/custom, or a justified hybrid through the documented comparison under [TECH-3](#tech-3), rather than imposing one presentation strategy by default. The implementation language still follows [LANG-1](#lang-1), and both strategies preserve the shared Rust core under [CORE-1](#core-1). Platform-specific essential behavior and accessibility remain mandatory.
 
 <a id="ui-2"></a>
-### UI-2 — Reuse priorities and adaptive presentation
+### 6.6. UI-2 — Reuse priorities and adaptive presentation
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** products spanning device sizes or platform interaction models
 
 Products MUST share core logic under [CORE-1](#core-1), SHOULD share UI when beneficial, and MUST NOT sacrifice a materially better platform experience merely to maximize UI code reuse. Cross-platform does not mean identical presentation. Navigation, layouts, windowing, gestures, keyboard behavior, menus, share interfaces, and platform integrations may differ while representing the same underlying product and data. Phone and tablet interfaces MUST adapt to their interaction and layout needs rather than simply stretching a phone interface onto a tablet.
 
 <a id="ui-3"></a>
-### UI-3 — Accessible interaction as product correctness
+### 6.7. UI-3 — Accessible interaction as product correctness
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** user-facing capabilities, including administration and tooling interfaces where exposed
 
@@ -229,7 +253,7 @@ Native, shared cross-platform, and web UIs retain this outcome while adapting me
 Accessibility MUST be considered from relevant wireframe, component, interaction/state, and design-system decisions, not deferred entirely to final polish. Applicable criteria SHOULD address accessible names, focus order/visibility, screen-reader structure, target size, dragging alternatives, and non-color-only meaning. Use current platform/industry guidance and WCAG/APG where applicable without imposing web mechanisms on native/headless software.
 
 <a id="ui-4"></a>
-### UI-4 — Deliberate design brief, identity, and generic-aesthetic review
+### 6.8. UI-4 — Deliberate design brief, identity, and generic-aesthetic review
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** substantial user-facing interfaces before implementation and at design/completion review
 
@@ -256,13 +280,13 @@ Every generic-aesthetic review MUST ask what can be removed. Also inspect reflex
 References from software/screenshots/platforms, design systems, print, architecture, photography, physical products, typography, moodboards, or historical UI MAY inform composition, rhythm, hierarchy, interaction, and density. References do not authorize copying proprietary work. Prefer owner-created, properly licensed/open resources, public standards, and original design, preserving relevant provenance. Art-direction dials such as variance, motion intensity, or density MAY clarify the brief; no third-party numerical default becomes universal policy.
 
 <a id="ui-5"></a>
-### UI-5 — Coherent design system and purposeful presentation
+### 6.9. UI-5 — Coherent design system and purposeful presentation
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** substantial user-facing applications and supported themes/platform presentations
 
 Applications MUST define a reusable design system or equivalent coherent design contract for relevant typography, sizes/weights/line heights, spacing/grid/rhythm, colors/surfaces, borders/radii, elevation/shadows, icons, motion, focus, interaction states, and responsive behavior. Do not improvise these independently per screen. Semantic design tokens SHOULD represent reusable visual constants where practical; names such as `surface.primary`, `text.muted`, `action.primary`, `status.error`, `space.1`, or `motion.quick` are examples, not universal naming. Equivalent controls SHOULD share semantic behavior for primary/destructive actions, modal dismissal, validation, search, selection, navigation, and notifications instead of arbitrary conventions for novelty.
 
-The approximate **60 / 30 / 10** color balance SHOULD be a starting heuristic where appropriate: dominant/base canvas and large low-emphasis surfaces; secondary/supporting navigation, panels, and structural surfaces; scarce accent for primary actions, focus, and selected/active emphasis. No literal pixel counting or mathematical ratio enforcement is required. Semantic error/danger/warning/success/information/focus/selection communication and accessibility MUST take precedence over this decorative balance. Primary accent SHOULD retain meaning rather than indiscriminately color every icon, heading, card, border, and control.
+Color balance MUST follow the application's actual hierarchy, content, semantic states, and accessibility needs rather than a prescribed aesthetic ratio or formula. Deliberately identify base/supporting surfaces and emphasis where useful. Semantic error/danger/warning/success/information/focus/selection communication and accessibility MUST take precedence over decorative balance. Primary accent SHOULD retain meaning rather than indiscriminately color every icon, heading, card, border, and control. The product-specific direction and owner preferences follow [DESIGN-1](#design-1).
 
 Supported dark mode MUST be deliberately designed rather than blindly invert light mode: define relevant surfaces, hierarchy, contrast, text tones, borders, shadows/elevation, focus/semantic states, and image treatment. Themes retain product identity without requiring identical visual treatment. Typography SHOULD be deliberately selected for readability, hierarchy, platform, supported languages, weights, performance, licensing, and longevity; Inter, Roboto, or framework defaults are valid when reasoned. Iconography SHOULD use a coherent family/style with deliberate reasons for mixed strokes, filled/outline styles, or generated imagery; vector artwork remains subject to [ASSET-1](#asset-1).
 
@@ -271,7 +295,7 @@ Density SHOULD reflect task frequency, information complexity, expertise, device
 Establish the core design system before proliferating independently designed screens. Avoid artificial sparsity and chaotic density through grouping/hierarchy. Icon aggregators do not license every underlying asset; verify collection/asset licensing and provenance under [ASSET-2](#asset-2) and [SEC-3](#sec-3). Motion MUST NOT be the only channel of important meaning. Refine hover/pressed/focus/loading/transition/scroll/selection/drag/success/error micro-interactions after the interaction structure is sound; polish does not rescue missing information architecture.
 
 <a id="ui-6"></a>
-### UI-6 — Complete workflow states and actionable copy
+### 6.10. UI-6 — Complete workflow states and actionable copy
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** user-facing workflows and their materially relevant states
 
@@ -280,7 +304,7 @@ Design MUST cover relevant states beyond the ideal happy path: initial/empty, lo
 User-facing copy MUST be specific, understandable, context-aware, and concise where possible, explaining actual value, state, or action rather than generic AI marketing. Empty states SHOULD explain what belongs there, why it is empty, a useful next action, and whether content is expected automatically where relevant; generic “Nothing here yet!” filler and meaningless illustrations are insufficient when guidance is needed. Errors SHOULD explain what happened/was affected, whether anything changed, whether retry is safe, and the next action to the extent known. Raw implementation failures or “Something went wrong” MUST NOT be the sole explanation when they conceal known material information or uncertainty. Apply [PRIV-1](#priv-1) and [SEC-2](#sec-2) to disclosures.
 
 <a id="ui-7"></a>
-### UI-7 — Rendered UI evidence and completion gate
+### 6.11. UI-7 — Rendered UI evidence and completion gate
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** substantial interface completion and validation of supported sizes/workflows
 
@@ -298,14 +322,14 @@ For substantial or high-stakes interfaces where resources justify formal heurist
 ## 7. Data lifecycle and application replacement
 
 <a id="life-1"></a>
-### LIFE-1 — Preservation across supported replacement
+### 7.1. LIFE-1 — Preservation across supported replacement
 
 **Type:** UNIVERSAL INVARIANT | **Origin:** DERIVED ENGINEERING RULE | **Applies:** installation, update, replacement, or removal with retained state
 
 Lifecycle operations MUST honor declared preservation and deletion semantics. Retained data, user configuration, required keys, and required evidence MUST NOT be accidentally destroyed by an operation represented as preserving them. Reattachment claims MUST account for schemas, keys, permissions, formats, and required software.
 
 <a id="life-2"></a>
-### LIFE-2 — Long-term accessibility
+### 7.2. LIFE-2 — Long-term accessibility
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** information designated for long-term user retention
 
@@ -315,8 +339,10 @@ Where durable user information is retained, its lifecycle MUST be distinguished 
 
 The goal is **maintenance-minimal**, not maintenance-zero: documented schemas, portable data, replaceable components, the shared Rust core, stable identities, migration discipline, explicit dependencies, tests, reproducible builds where applicable, rebuildable derived state, and durable planning context reduce future work. Applications MUST NOT promise that they work forever without maintenance without supportable evidence.
 
+[SURVIVE-1](#survive-1)–[SURVIVE-2](#survive-2) require an actually preserved independent representation and app-disappearance evidence, including mobile uninstall/container/key risks.
+
 <a id="life-3"></a>
-### LIFE-3 — Logical storage separation
+### 7.3. LIFE-3 — Logical storage separation
 
 **Type:** RECOMMENDATION | **Origin:** ARCHITECTURAL DECISION | **Applies:** applications with multiple data lifecycles
 
@@ -328,7 +354,7 @@ Roles such as `app/`, `data/`, `config/`, `derived/`, `audit/`, `cache/`, `logs/
 ## 8. Authority, derivation, and reproducibility
 
 <a id="data-1"></a>
-### DATA-1 — Independent state dimensions
+### 8.1. DATA-1 — Independent state dimensions
 
 **Type:** UNIVERSAL INVARIANT | **Origin:** DERIVED ENGINEERING RULE | **Applies:** state whose authority or lifecycle matters
 
@@ -337,7 +363,7 @@ Applications MUST identify authoritative state and when other representations ma
 Storage technology does not determine authority: a vector database can hold authoritative originals and embeddings. An expendable cache must not hold the only copy of information promised preservation. Human edits or confirmation do not establish factual correctness of a whole record. Verification claims MUST identify the actual reviewed scope.
 
 <a id="data-2"></a>
-### DATA-2 — Honest regeneration claims
+### 8.2. DATA-2 — Honest regeneration claims
 
 **Type:** CONDITIONAL | **Origin:** DERIVED ENGINEERING RULE | **Applies:** artifacts claimed to be rebuildable through generation
 
@@ -350,7 +376,7 @@ Indexes, search/vector databases, embeddings, caches, previews, thumbnails, OCR 
 Editing a derived report, spreadsheet, index, dashboard, projection, cache, or generated view MUST NOT silently mutate canonical state. Supported bidirectional editing requires deliberately designed, validated adoption/import semantics under [EDIT-1](#edit-1), [IO-1](#io-1), and [AUTH-1](#auth-1); a projection is not automatically a write authority.
 
 <a id="data-3"></a>
-### DATA-3 — Originals, derivative lineage, and annotations
+### 8.3. DATA-3 — Originals, derivative lineage, and annotations
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** applications ingesting or preserving source artifacts and meaningful derivatives
 
@@ -361,7 +387,7 @@ Meaningful derivatives SHOULD retain proportionate lineage sufficient to identif
 Where originals are to be preserved, notes, highlights, comments, tags, review decisions, and AI annotations SHOULD normally be related overlays anchored to the original, rather than destructive alteration. Ordinary editable documents remain valid. Anchors and their source-context validity follow [INFO-4](#info-4).
 
 <a id="data-4"></a>
-### DATA-4 — Locale-independent durable meaning
+### 8.4. DATA-4 — Locale-independent durable meaning
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** durable or interchange values whose interpretation or identity can materially depend on locale or text conventions
 
@@ -370,7 +396,7 @@ Persistent/interchange meaning MUST NOT silently depend on the reading device's 
 Human-formatted imports/exports MUST declare parsing/interpretation assumptions, detect ambiguity where practical, and preserve source representation/provenance where meaningful under [IO-1](#io-1), [EVID-1](#evid-1), and [PRIV-1](#priv-1). An ambiguous value such as `1,234` MUST NOT silently be reinterpreted using the current device locale when durable meaning matters. No translation mandate, support for every locale, or locale metadata on every stored string is required.
 
 <a id="data-5"></a>
-### DATA-5 — Universal timezone policy and explicit temporal meaning
+### 8.5. DATA-5 — Universal timezone policy and explicit temporal meaning
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** every application's timezone planning, with temporal representations and controls determined by actual semantics
 
@@ -388,7 +414,7 @@ Leases, retries, deadlines, expirations, synchronization, idempotency, and order
 ## 9. Local and offline operation
 
 <a id="offline-1"></a>
-### OFFLINE-1 — Useful local operation by policy
+### 9.1. OFFLINE-1 — Useful local operation by policy
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** capability design and network dependencies
 
@@ -396,15 +422,17 @@ Applications SHOULD maximize useful local operation where the domain permits it.
 
 Search services, email delivery, streaming, live collaboration, market access, and other remote-native capabilities may need connectivity. Intrinsic documented dependence is not a policy exception. Preserve useful drafts, cached content, or inspection where appropriate; do not imply uncached or remotely authoritative information is current or available.
 
+Independent local capabilities and honest cached/pending states are distinguished from prohibited failure substitutions in [NOFALL-2](#nofall-2).
+
 <a id="offline-2"></a>
-### OFFLINE-2 — Safe delayed execution
+### 9.2. OFFLINE-2 — Safe delayed execution
 
 **Type:** CONDITIONAL | **Origin:** DERIVED ENGINEERING RULE | **Applies:** queued or offline operations
 
 Queueing MUST have domain-safe freshness, expiry, cancellation, authorization, replay, and conflict semantics. Time-sensitive orders, physical commands, or door-unlock actions MUST NOT replay automatically merely because connectivity returns. A domain may reject offline writes, allocate rights in advance, or restrict operations to preserve shared invariants. Distinguish queued intent from completed remote action under [OUT-1](#out-1).
 
 <a id="offline-3"></a>
-### OFFLINE-3 — Device-local personal operation
+### 9.3. OFFLINE-3 — Device-local personal operation
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** personal applications with ordinary local capabilities
 
@@ -414,14 +442,14 @@ Each applicable personal application MUST remain usable locally on its supported
 ## 10. Product platforms, portability, and visual assets
 
 <a id="port-1"></a>
-### PORT-1 — Avoid unnecessary platform lock-in
+### 10.1. PORT-1 — Avoid unnecessary platform lock-in
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** platform and deployment choices
 
 Applications SHOULD preserve portable architecture where practical and MUST document architectural portability, source portability, buildability, tested support, and official support separately. Product targets follow the declared scopes in [PORT-3](#port-3); platform-specific departures use documented exceptions under [GOV-3](#gov-3). A build is not runtime evidence. CPU architectures, OS versions, browser versions, BSD, and NAS platforms are not automatically one support matrix for every product. Declare concrete supported configurations and evidence. NAS obligations follow [NAS-1](#nas-1).
 
 <a id="port-2"></a>
-### PORT-2 — Portable references and faithful content
+### 10.2. PORT-2 — Portable references and faithful content
 
 **Type:** CONDITIONAL | **Origin:** DERIVED ENGINEERING RULE | **Applies:** filesystem references and portable/interchange data
 
@@ -432,25 +460,25 @@ Use runtime path APIs where appropriate. Claimed targets require consideration o
 Example: `attachments/doc1.pdf` can be relative when its base and escaping are specified. `file://attachments/doc1.pdf` places `attachments` in the URI authority; it is not an ordinary relative reference. Reversible mappings can avoid lossy sanitation.
 
 <a id="port-3"></a>
-### PORT-3 — Declared Product Platform Scope
+### 10.3. PORT-3 — Declared Product Platform Scope
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** application product scope and supported clients
 
-Each application MUST declare its Product Platform Scope or scopes and its concrete support matrix under [PORT-1](#port-1). Scopes describe the product being offered; they do not require every CLI, library, or service to acquire a mobile or graphical interface. Platform-specific applications may receive documented exceptions under [GOV-3](#gov-3).
+Each application MUST declare its actual Product Platform Scope or scopes and concrete support matrix under [PORT-1](#port-1), following requirements rather than assuming every product needs every platform. Desktop-only, mobile-only, desktop/mobile/tablet, web, and a justified narrower subset are valid product definitions. Scopes do not require every CLI, library, or service to acquire a graphical or mobile interface. Record technical reasons, intended users, supported configurations and limits; formal departures from an applicable ecosystem policy remain governed by [GOV-3](#gov-3).
 
-| Scope | Product targets |
+| Scope | Product targets and evidence |
 |---|---|
-| DESKTOP | Normal desktop/laptop products SHOULD support Windows, macOS, and Linux. Arch Linux, CachyOS, Ubuntu LTS, and Linux Mint — current stable Ubuntu-based release — are first-class tested Linux baselines for this scope. |
-| MOBILE | Mobile products SHOULD normally support Android, iOS/iPhone, iPadOS/iPad, and Android tablets where applicable, with adaptive phone/tablet layouts under [UI-2](#ui-2). |
-| UNIVERSAL DEVICE APPLICATION | The declared universal scope targets Windows, macOS, Linux, Android, iPhone/iOS, iPadOS, and applicable Android tablets. Its Linux targets include the desktop baselines. Web MAY additionally be included. |
-| WEB | Supported modern browsers, with explicit versions/capabilities and evidence. Web support is distinct from native application support. |
+| DESKTOP | Consider Windows, macOS, and Linux as the normal desktop/laptop scope; justify a narrower actual product scope. Where Linux is supported, assess Linux Mint's current stable Ubuntu-based release, Ubuntu LTS, Arch Linux, and CachyOS explicitly. |
+| MOBILE | Consider Android, iPhone/iOS, iPadOS/iPad, and applicable Android tablets; declare the actual phone/tablet subset and adaptive behavior under [UI-2](#ui-2). |
+| UNIVERSAL DEVICE APPLICATION | This claimed scope targets Windows, macOS, Linux, Android, iPhone/iOS, iPadOS, and applicable Android tablets. Name any incomplete targets accurately. Web MAY additionally be included. |
+| WEB | Declare supported browsers, versions/capabilities and evidence. Web support is distinct from native application support. |
 
-Arch Linux and CachyOS are particularly important first-class Linux targets; Ubuntu LTS provides the mainstream stable baseline. Linux Mint's current stable Ubuntu-based release has the same first-class support expectations as every other named Linux baseline. Each named baseline MUST receive applicable installation/packaging, launch, updates where applicable, filesystem behavior, permissions, core-feature, and native/system-integration support, with relevant automated/manual validation. Products MUST identify tested versions or rolling-release snapshots and material environment assumptions; a declared target awaiting implementation/testing MUST be labeled accordingly rather than reported as verified support. Evidence remains proportional under [TEST-1](#test-1).
+Linux Mint, Ubuntu LTS, Arch Linux, and CachyOS MUST NOT be casually omitted from desktop-Linux assessment or assumed interchangeable. For each, record first-class supported/tested, planned/unverified, compatibility/best-effort, or unsupported status, the concrete reason, versions or rolling snapshots, material environment assumptions, and the testing commitment. Arch Linux and CachyOS remain important targets; Ubuntu LTS and Linux Mint remain explicit stable-distribution assessment targets. An intentionally narrower support contract is a recorded product decision, not a claim that omitted systems passed.
 
-Passing Ubuntu or Linux Mint tests MUST NOT be represented as proof of compatibility with every other Linux distribution or as a substitute for validating the other named baselines. Other mainstream Linux distributions remain compatibility/best-effort targets where dependencies permit unless explicitly promoted to first-class support.
+Every declared first-class supported target MUST receive applicable installation/packaging, launch, updates, filesystem, permissions, core-feature, and native/system-integration validation. State automated/manual coverage and limits under [TEST-1](#test-1). A declared target awaiting implementation/testing MUST remain labeled accordingly. Passing Ubuntu or Mint tests does not validate Arch, CachyOS, or all Linux distributions. Framework support or a successful build is not verified runtime support. Within the declared desktop-Linux scope, other mainstream Linux distributions remain compatibility/best-effort targets where dependencies permit unless explicitly promoted to first-class support or excluded by the justified narrower support contract. Best-effort status is not verified support. [TECH-3](#tech-3) governs platform/frontend investigation.
 
 <a id="asset-1"></a>
-### ASSET-1 — Genuine vector source artwork
+### 10.4. ASSET-1 — Genuine vector source artwork
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** application-owned visual assets, including web UI assets
 
@@ -459,14 +487,14 @@ Naturally vector-representable assets SHOULD use genuine SVG as their source for
 Photographs, screenshots, scans, textures, camera images, complex photographic artwork, and other intrinsically raster content MAY remain raster in formats appropriate to the use case. They MUST NOT be converted into meaningless SVG merely to satisfy this policy. Required generated raster icon sizes and platform/store-specific containers are permitted; naturally vector artwork SHOULD retain vector source-of-truth artwork. Generated platform derivatives do not violate this policy.
 
 <a id="asset-2"></a>
-### ASSET-2 — Third-party brand fidelity
+### 10.5. ASSET-2 — Third-party brand fidelity
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** third-party trademarks and brand assets
 
 Products MUST NOT inaccurately redraw third-party trademarks from screenshots. Where permitted, use official brand assets and follow applicable brand requirements. The application-owned SVG preference does not authorize inaccurate conversion or disregard of asset licensing or brand constraints.
 
 <a id="asset-3"></a>
-### ASSET-3 — SVG trust boundaries
+### 10.6. ASSET-3 — SVG trust boundaries
 
 **Type:** CONDITIONAL | **Origin:** USER POLICY | **Applies:** SVG acceptance, rendering, and application-owned SVG assets
 
@@ -476,7 +504,7 @@ Untrusted SVG MUST NOT automatically be treated as harmless image data. Applicat
 ## 11. NAS support
 
 <a id="nas-1"></a>
-### NAS-1 — Mandatory ecosystem support policy
+### 11.1. NAS-1 — Mandatory ecosystem support policy
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** relevant hosting, storage, file-access, service-client, and backup roles
 
@@ -497,7 +525,7 @@ A NAS synchronization hub is a topology role under [SYNC-3](#sync-3), not an ass
 For important retained data, NAS-hub compromise MUST be included in the recovery risk assessment under [BACKUP-1](#backup-1). Consider protected snapshots/version history, separately protected backup, or another independent recovery mechanism so the hub does not unnecessarily become a single point whose compromise destroys every historical copy. Ordinary sync clients SHOULD NOT require unrestricted NAS administrator authority; [SEC-1](#sec-1) governs least privilege.
 
 <a id="nas-2"></a>
-### NAS-2 — Configuration-specific evidence
+### 11.2. NAS-2 — Configuration-specific evidence
 
 **Type:** CONDITIONAL | **Origin:** DERIVED ENGINEERING RULE | **Applies:** claimed NAS modes and network storage
 
@@ -515,7 +543,7 @@ Possible patterns include NAS-local database services, supported transactional e
 ## 12. Storage and crash consistency
 
 <a id="store-1"></a>
-### STORE-1 — Explicit storage contracts
+### 12.1. STORE-1 — Explicit storage contracts
 
 **Type:** CONDITIONAL | **Origin:** DERIVED ENGINEERING RULE | **Applies:** persistence backends
 
@@ -526,7 +554,7 @@ Visibility, atomicity, durability, replication, and external completion differ. 
 Storage MUST fit workload, transaction, concurrency, and recovery needs; a product name is not evidence. Open text and documented binary formats are valid. Parquet is an open binary columnar format, not human-readable text.
 
 <a id="store-2"></a>
-### STORE-2 — Mechanisms follow the contract
+### 12.2. STORE-2 — Mechanisms follow the contract
 
 **Type:** RECOMMENDATION | **Origin:** DERIVED ENGINEERING RULE | **Applies:** storage implementation choices
 
@@ -540,7 +568,7 @@ Append stores and databases may use different protocols, including protected in-
 ## 13. Concurrency and conflict semantics
 
 <a id="con-1"></a>
-### CON-1 — Prevent invalid interleavings
+### 13.1. CON-1 — Prevent invalid interleavings
 
 **Type:** CONDITIONAL | **Origin:** DERIVED ENGINEERING RULE | **Applies:** state reachable by concurrent actors/processes
 
@@ -551,7 +579,7 @@ MVCC, serialized services, transactions, optimistic concurrency, CRDTs, append p
 Lock scope/deadlines depend on engine and workload; relational writes do not universally need exclusive database locks. Define cancellation, timeout, and starvation behavior where material to correctness or availability.
 
 <a id="con-2"></a>
-### CON-2 — Domain-appropriate conflict resolution
+### 13.2. CON-2 — Domain-appropriate conflict resolution
 
 **Type:** CONDITIONAL | **Origin:** DERIVED ENGINEERING RULE | **Applies:** conflicting state changes
 
@@ -563,7 +591,7 @@ Lamport clocks order events consistently with causality but do not alone identif
 ## 14. Operation outcomes and acknowledgements
 
 <a id="out-1"></a>
-### OUT-1 — Report what is actually known
+### 14.1. OUT-1 — Report what is actually known
 
 **Type:** UNIVERSAL INVARIANT | **Origin:** DERIVED ENGINEERING RULE | **Applies:** important local and external operation results
 
@@ -574,7 +602,7 @@ A timeout, crash, or NAS disconnect can leave success indeterminate. Application
 Example result fields: operation ID, known phase, affected resources, durability scope, external correlation, uncertainty, and allowed next actions. A small utility may convey these semantics through exit status and a concise message.
 
 <a id="ops-1"></a>
-### OPS-1 — Operation identity and recovery receipts
+### 14.2. OPS-1 — Operation identity and recovery receipts
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** consequential operations whose retry, boundary crossing, crash survival, or uncertainty requires effect correlation
 
@@ -588,7 +616,7 @@ Receipts MUST distinguish observed results from unestablished external completio
 ## 15. Retries and deduplication
 
 <a id="retry-1"></a>
-### RETRY-1 — Replay safety is a protocol
+### 15.1. RETRY-1 — Replay safety is a protocol
 
 **Type:** CONDITIONAL | **Origin:** DERIVED ENGINEERING RULE | **Applies:** retried, replayed, or redelivered operations
 
@@ -602,7 +630,7 @@ External duplicate prevention depends on the remote contract; a client key alone
 ## 16. AI authority, tools, memory, and Hermes
 
 <a id="ai-1"></a>
-### AI-1 — Explicitly delegated capability
+### 16.1. AI-1 — Explicitly delegated capability
 
 **Type:** UNIVERSAL INVARIANT | **Origin:** USER POLICY | **Applies:** AI actors exercising capabilities
 
@@ -613,7 +641,7 @@ Retrieved files, websites, email, PDFs, messages, transcripts, and metadata are 
 Scoped reads/writes, patches, SQL, shell execution, scratch space, import staging, coding, and bulk operations can be legitimate when intentionally delegated and effectively bounded. Validate scope/effects at execution; a broad tool name or path supplies no authority. Untrusted content and model output MUST NOT grant authority by claiming to be principal instructions.
 
 <a id="ai-2"></a>
-### AI-2 — Enforced tool contracts
+### 16.2. AI-2 — Enforced tool contracts
 
 **Type:** CONDITIONAL | **Origin:** DERIVED ENGINEERING RULE | **Applies:** AI tools, skills, plugins, and capability adapters
 
@@ -622,7 +650,7 @@ A natural-language skill or tool description is not a security boundary. Enforce
 Machine-readable contracts SHOULD be used where useful for enforcement or interoperability; JSON Schema/OpenAPI are options, not universal requirements. Structured returns SHOULD expose actionable results and uncertainty; they do not make AI deterministic. Schema-valid intent can still be harmful, requiring semantic policy and effect limits.
 
 <a id="ai-3"></a>
-### AI-3 — Risk, delegation, and approval
+### 16.3. AI-3 — Risk, delegation, and approval
 
 **Type:** CONDITIONAL | **Origin:** USER POLICY | **Applies:** AI capability exposure and execution policy
 
@@ -633,7 +661,7 @@ Approval MUST reflect consequences and actual delegation. Explicitly authorized 
 When approval relies on a preview, bind it to relevant parameters, resources, versions, scope, expiry, and budgets; revalidate before execution where necessary. Disclose estimates, external dependencies, and stale assumptions. A dry-run does not prove future external effects. Changes invalidating approved scope MUST be rejected, reconciled, or reauthorized according to policy.
 
 <a id="ai-4"></a>
-### AI-4 — Memory and provider boundaries
+### 16.4. AI-4 — Memory and provider boundaries
 
 **Type:** CONDITIONAL | **Origin:** DERIVED ENGINEERING RULE | **Applies:** AI state, retained memory, and integrations
 
@@ -641,8 +669,10 @@ Domain consistency MUST NOT depend solely on hidden model memory or ephemeral co
 
 Provider integrations SHOULD isolate replaceable dependencies where useful and declare capabilities. Abstraction reduces coupling, not differences in model quality, interfaces, cost, licensing, or availability. Provider-specific tools may intentionally use unique capabilities. Optional AI failure SHOULD preserve independent functions; AI-native functions may become unavailable with truthful results. Protect retained data and contain failure within stated assumptions rather than promising immunity to all crashes or resource exhaustion.
 
+Replaceability means deliberate future selection/migration, not runtime provider substitution after failure. Optional AI unavailability and independent non-AI functionality follow [NOFALL-1](#nofall-1)–[NOFALL-2](#nofall-2).
+
 <a id="hermes-1"></a>
-### HERMES-1 — Optional, bounded intelligence
+### 16.5. HERMES-1 — Optional, bounded intelligence
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** applications integrating Hermes
 
@@ -657,7 +687,7 @@ Canonical data MUST NOT exist solely inside an opaque AI memory/vector database 
 Hermes embeddings, vector stores, semantic indexes, generated summaries, and retrieval caches are normally navigation aids. They SHOULD be reconstructable from retained sources and appropriate deterministic metadata under the actual [DATA-2](#data-2) reproduction contract, without assuming bit-for-bit regeneration of nondeterministic summaries. They MUST NOT silently become the sole repository of irreplaceable information. An explicit, justified authoritative classification is permitted under [DATA-1](#data-1), with independent access, retention, and recovery obligations; it does not excuse opaque model-only preservation.
 
 <a id="hermes-2"></a>
-### HERMES-2 — Structured, bounded small-model retrieval
+### 16.6. HERMES-2 — Structured, bounded small-model retrieval
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** information architecture and retrieval interfaces for Hermes or other AI clients
 
@@ -670,7 +700,7 @@ Where Hermes/local AI is part of the product, interfaces MUST be designed and te
 The **Hermes / User-Adaptable File Structure Blueprint is integrated as CANDIDATE policy**, together with [section 32](#s32). It standardizes discoverability and integrity while leaving user-facing organization domain-appropriate and adaptable. This product-use goal is distinct from the full-app development continuity goal in [DEV-11](#dev-11).
 
 <a id="hermes-3"></a>
-### HERMES-3 — Core resolution, ambiguity, and actionable failures
+### 16.7. HERMES-3 — Core resolution, ambiguity, and actionable failures
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** AI-facing lookup and application-operation interfaces
 
@@ -684,7 +714,7 @@ Failures SHOULD expose deterministic, actionable information where practical: wh
 ## 17. Audit and provenance
 
 <a id="audit-1"></a>
-### AUDIT-1 — Proportionate accountable evidence
+### 17.1. AUDIT-1 — Proportionate accountable evidence
 
 **Type:** CONDITIONAL | **Origin:** DERIVED ENGINEERING RULE | **Applies:** operations requiring accountability under domain, policy, or applicable obligations
 
@@ -695,7 +725,7 @@ Bulk events may reference an affected set; micro-events may be aggregated if acc
 Diagnostics and audit evidence have distinct purposes/lifecycles, without mandatory separate directories. Ordinary correction/reversal should retain its relation to earlier events. Authorized expiry/redaction follows [PRIV-1](#priv-1); append-only semantics do not forbid it.
 
 <a id="audit-2"></a>
-### AUDIT-2 — Mutation and evidence commit consistency
+### 17.2. AUDIT-2 — Mutation and evidence commit consistency
 
 **Type:** CONDITIONAL | **Origin:** DERIVED ENGINEERING RULE | **Applies:** evidence required for a committed mutation
 
@@ -716,14 +746,14 @@ deliver outbox evidence with retry-safe processing where applicable
 An outbox does not atomically execute a physical or remote API effect. Durable intent, correlation, observed outcome, and reconciliation remain necessary, and outcomes can remain unknown. Recoverable evidence needs sufficient information for the actual obligation; a lossy queue marker is not sufficient by definition.
 
 <a id="audit-3"></a>
-### AUDIT-3 — Integrity claims and trust anchors
+### 17.3. AUDIT-3 — Integrity claims and trust anchors
 
 **Type:** CONDITIONAL | **Origin:** DERIVED ENGINEERING RULE | **Applies:** claims of tamper evidence
 
 Claims MUST identify adversaries, protected references, verification, and recovery limits. Hashes detect changes relative to trusted references; attackers able to replace data and manifests can defeat comparison. Hash chains need protected anchors or independent evidence against wholesale rewriting. Encryption does not itself establish authorization or audit completeness. Authorized redaction/expiry MUST be distinguishable from unexplained alteration within the stated integrity model.
 
 <a id="evid-1"></a>
-### EVID-1 — Provenance, evidence status, and uncertainty
+### 17.4. EVID-1 — Provenance, evidence status, and uncertainty
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** imported/observed information and research whose provenance or evidence strength materially affects decisions or meaning
 
@@ -739,7 +769,7 @@ An upstream source changing or deleting its copy MUST NOT automatically destroy 
 ## 18. Privacy, retention, and deletion
 
 <a id="priv-1"></a>
-### PRIV-1 — Purpose-limited processing and retention
+### 18.1. PRIV-1 — Purpose-limited processing and retention
 
 **Type:** UNIVERSAL INVARIANT | **Origin:** DERIVED ENGINEERING RULE | **Applies:** sensitive/personal information collection, processing, disclosure, retention
 
@@ -750,7 +780,7 @@ Deletion/retention policies MUST define scope, timing, protected obligations, re
 Cryptographic erasure depends on effective key destruction and copies; it cannot recall disclosed plaintext. Soft deletion is not a universal substitute for erasure. Resolve conflicting rights and retention obligations through [SAFE-2](#safe-2) with a documented legitimate basis.
 
 <a id="priv-2"></a>
-### PRIV-2 — Local data and deliberate disclosure
+### 18.2. PRIV-2 — Local data and deliberate disclosure
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** user-data storage and external transmission
 
@@ -760,14 +790,14 @@ Local machine/private NAS storage is the default. External disclosure MUST have 
 ## 19. External editing and drift
 
 <a id="edit-1"></a>
-### EDIT-1 — User control and safe adoption
+### 19.1. EDIT-1 — User control and safe adoption
 
 **Type:** CONDITIONAL | **Origin:** USER POLICY | **Applies:** managed files/records accessible outside the ordinary runtime
 
 Users may edit their own Markdown, source, configuration, documents, and open formats subject to legitimate shared rights. Applications MUST define supported edits, validation, adoption, conflicts, and rejection. They MUST NOT silently adopt unsafe state merely because it is in an expected directory. Unsupported edits may be rejected/quarantined without claiming ownership over user files. Reconciliation MUST avoid overwriting newer valid work or destroying the only recoverable copy without authority.
 
 <a id="edit-2"></a>
-### EDIT-2 — Proportionate drift detection
+### 19.2. EDIT-2 — Proportionate drift detection
 
 **Type:** CONDITIONAL | **Origin:** DERIVED ENGINEERING RULE | **Applies:** storage models where external change affects claimed integrity
 
@@ -779,7 +809,7 @@ Drift does not prove maliciousness or authorship. Snapshots can roll back data a
 ## 20. Synchronization
 
 <a id="sync-1"></a>
-### SYNC-1 — Explicit distributed authority
+### 20.1. SYNC-1 — Explicit distributed authority
 
 **Type:** CONDITIONAL | **Origin:** DERIVED ENGINEERING RULE | **Applies:** synchronization or replicas of a logical dataset
 
@@ -792,14 +822,14 @@ Applications synchronizing large retained datasets MUST define a risk-based poli
 Where suspected compromise could propagate damage, the system MUST provide an appropriate containment route, such as sync pause, device revocation, replica isolation, read-only operation, connector disablement, or staged-import quarantine. Resume automatic propagation only after applicable validation/reconciliation under [RECOVER-1](#recover-1). Authorized bulk work and legitimate deletion/erasure remain supported under [AUTH-2](#auth-2) and [PRIV-1](#priv-1); containment is not indefinite retention authority.
 
 <a id="sync-2"></a>
-### SYNC-2 — Device continuity without a NAS
+### 20.2. SYNC-2 — Device continuity without a NAS
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** personal products requiring cross-device continuity
 
 Without a NAS, supported laptops, desktops, phones, and tablets MUST retain applicable local operation under [OFFLINE-3](#offline-3). Such products MUST support direct device synchronization or another explicitly selected local-first synchronization mechanism, for example Phone ↔ Laptop or Phone ↔ Laptop ↔ Tablet. A permanent central cloud server MUST NOT be required merely to synchronize the user's own devices. Optional selected intermediaries remain subject to declared dependencies, privacy, and authorization. Conflicts, offline changes, unknown outcomes, integrity, retries, and recovery follow [SYNC-1](#sync-1), [OUT-1](#out-1), and [RETRY-1](#retry-1).
 
 <a id="sync-3"></a>
-### SYNC-3 — Opt-in NAS synchronization hub
+### 20.3. SYNC-3 — Opt-in NAS synchronization hub
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** applicable personal products with a suitable NAS enabled by the user for shared synchronization
 
@@ -808,7 +838,7 @@ When a suitable NAS is available and the user enables this role, it MUST become 
 The NAS MUST NOT become a hard requirement for ordinary offline work. Temporary disconnection MUST preserve applicable local operation; reconnection MUST synchronize and reconcile according to the declared consistency model and current authority. Primary hub placement does not by itself transfer ownership or make every local write a globally final commit. Distinguish local persistence, hub acknowledgement, and reconciliation under [OUT-1](#out-1). NAS storage/service, backup, and hosting roles remain distinct under [NAS-1](#nas-1).
 
 <a id="sync-4"></a>
-### SYNC-4 — Safe topology transitions
+### 20.4. SYNC-4 — Safe topology transitions
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** applicable products transitioning between device-local/peer operation and a NAS synchronization hub
 
@@ -820,7 +850,7 @@ Authority transitions MUST define identity continuity, reconciliation of concurr
 ## 21. Reversal and recovery
 
 <a id="recover-1"></a>
-### RECOVER-1 — Honest recovery semantics
+### 21.1. RECOVER-1 — Honest recovery semantics
 
 **Type:** UNIVERSAL INVARIANT | **Origin:** DERIVED ENGINEERING RULE | **Applies:** undo, restoration, reversal, or compensation claims and recovery of important retained user state
 
@@ -835,7 +865,7 @@ Recovery MUST distinguish corruption detection/diagnosis, derived-state rebuildi
 Malware/ransomware recovery SHOULD, where applicable, contain affected clients/services, stop unsafe propagation, identify the best evidenced known-good canonical state/recovery points, validate backup integrity, restore or reconstruct canonical information, rebuild disposable derived state, reconcile legitimate newer information where safe, and rotate/revoke compromised credentials before validated sync resumption. Recovery MUST NOT overwrite the best surviving clean evidence merely for convenience. Recovery copies may themselves be corrupted, malicious, or already compromised; age or immutability does not establish cleanliness. Evidence and uncertainty follow [BACKUP-2](#backup-2) and [EVID-1](#evid-1), with privacy/deletion duties intact.
 
 <a id="recover-2"></a>
-### RECOVER-2 — Prefer bounded reversibility
+### 21.2. RECOVER-2 — Prefer bounded reversibility
 
 **Type:** DEFAULT | **Origin:** ARCHITECTURAL DECISION | **Applies:** mutations and consequential automation
 
@@ -847,7 +877,7 @@ For retained user-owned data, destructive deletion SHOULD normally include a rev
 ## 22. Backup and restoration
 
 <a id="backup-1"></a>
-### BACKUP-1 — Complete recovery dependency set
+### 22.1. BACKUP-1 — Complete recovery dependency set
 
 **Type:** CONDITIONAL | **Origin:** DERIVED ENGINEERING RULE | **Applies:** retained state with provided/claimed backup or recovery
 
@@ -858,7 +888,7 @@ No directory inclusion list or derived-data exclusion applies universally. NAS/f
 For important retained data, the backup strategy MUST distinguish active copies, synchronized replicas, NAS hubs, snapshot/version history, and backups, and consider a recovery copy not simultaneously destroyable through the same ordinary client credentials or failure mechanism. Document the chosen protection and residual risk proportionately. Immutable/write-protected history, offline/disconnected media, separately credentialed storage, append/versioned backup, or another justified isolation mechanism may fit; no topology is universally required. Ordinary client credentials SHOULD NOT automatically have unrestricted deletion authority over all independent backup generations unless genuinely required; separate retention/deletion authority where meaningful. Isolation does not override authorized erasure under [PRIV-1](#priv-1).
 
 <a id="backup-2"></a>
-### BACKUP-2 — Recovery evidence
+### 22.2. BACKUP-2 — Recovery evidence
 
 **Type:** CONDITIONAL | **Origin:** DERIVED ENGINEERING RULE | **Applies:** backup-readiness and recoverability claims
 
@@ -872,7 +902,7 @@ For important retained data, restoration or equivalent recoverability MUST be va
 ## 23. Import and export
 
 <a id="io-1"></a>
-### IO-1 — Controlled ingestion and faithful export
+### 23.1. IO-1 — Controlled ingestion and faithful export
 
 **Type:** CONDITIONAL | **Origin:** DERIVED ENGINEERING RULE | **Applies:** import/export capabilities
 
@@ -891,7 +921,7 @@ A portable-exit claim MUST preserve the declared meaning, not merely copy bytes:
 Canonical snapshots, human-readable reports, interchange formats, and diagnostics are useful categories, not four required features. JSON, Markdown, CSV, documented databases, and open binary formats serve different purposes. Scheduled export is optional unless the selected preservation contract relies on it.
 
 <a id="io-2"></a>
-### IO-2 — Untrusted Raw intake, promotion, and quarantine
+### 23.2. IO-2 — Untrusted Raw intake, promotion, and quarantine
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** applications ingesting, receiving, downloading, synchronizing, or otherwise accepting externally supplied file-like content
 
@@ -904,7 +934,7 @@ A scanner detection alone MUST NOT automatically destroy retained source content
 Promotion need not delete the Raw original. Retained originals may support evidence, provenance, reproduction, or recovery under [DATA-3](#data-3), but remain subject to untrusted-content handling and retention/privacy policy. A derived canonical record does not authorize executing or reinterpreting its original, and canonical authority does not mean malware safety under [DATA-1](#data-1).
 
 <a id="io-3"></a>
-### IO-3 — Incremental malware verification and visible scan state
+### 23.3. IO-3 — Incremental malware verification and visible scan state
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** applications with Raw/Intake malware-verification workflows
 
@@ -928,7 +958,7 @@ The App Plan MUST specify whether unscanned Raw content, quarantine state, and s
 ## 24. Schema evolution and migrations
 
 <a id="migrate-1"></a>
-### MIGRATE-1 — Versioned, recoverable evolution
+### 24.1. MIGRATE-1 — Versioned, recoverable evolution
 
 **Type:** CONDITIONAL | **Origin:** DERIVED ENGINEERING RULE | **Applies:** persistent format/schema evolution
 
@@ -939,7 +969,7 @@ Consistent snapshots/backups are useful safeguards; a local full copy is not req
 Retry safety may come from idempotent steps or a correctly recorded execution protocol. Safe downgrade may be unavailable; do not invent a non-destructive `down()` when information has been lost.
 
 <a id="migrate-2"></a>
-### MIGRATE-2 — Semantic compatibility
+### 24.2. MIGRATE-2 — Semantic compatibility
 
 **Type:** CONDITIONAL | **Origin:** DERIVED ENGINEERING RULE | **Applies:** evolving persistent formats and protocols
 
@@ -951,7 +981,7 @@ An older application MUST NOT silently write or downgrade a newer data/workspace
 ## 25. Security, secrets, and dependencies
 
 <a id="sec-1"></a>
-### SEC-1 — Threat-based boundaries and exposure
+### 25.1. SEC-1 — Threat-based boundaries and exposure
 
 **Type:** CONDITIONAL | **Origin:** DERIVED ENGINEERING RULE | **Applies:** resources exposed to actors or networks
 
@@ -966,7 +996,7 @@ Substantial retained-data applications MUST assess and limit unnecessary comprom
 Document trust assumptions and residual risk: controls reduce likelihood and blast radius; they do not guarantee virus-proof software, malware-free snapshots, or containment against a fully compromised OS/root/admin. Hashes and sandboxes alone do not establish malware immunity. Encryption at rest primarily addresses access to protected storage without an authorized unlocked session, including lost/stolen media or offline theft; malware with equivalent authority in an unlocked session may still read data. Encryption does not replace least privilege, isolation, safe parsing, integrity verification, independent recovery, or backup protection. Malware controls likewise do not replace appropriate privacy encryption; they address different threats.
 
 <a id="sec-2"></a>
-### SEC-2 — No accidental secret disclosure
+### 25.2. SEC-2 — No accidental secret disclosure
 
 **Type:** PROHIBITION | **Origin:** DERIVED ENGINEERING RULE | **Applies:** secrets and security credentials
 
@@ -975,7 +1005,7 @@ Applications MUST NOT disclose usable secrets through unintended source control,
 Ignore rules and permissions are not complete access or history-erasure controls. Disclosures need appropriate containment, including revocation where needed. Removing a file from a current tree does not remove every historical copy.
 
 <a id="sec-3"></a>
-### SEC-3 — Dependency and build discipline
+### 25.3. SEC-3 — Dependency and build discipline
 
 **Type:** ECOSYSTEM POLICY | **Origin:** ARCHITECTURAL DECISION | **Applies:** released application builds and third-party dependencies
 
@@ -986,7 +1016,7 @@ Use supported lock/resolution mechanisms and review updates. `go.sum` records ch
 Protect software delivery proportionately through dependency provenance, controlled resolution, source/release integrity verification, appropriately verifiable packages/updates, restricted build/release authority, vulnerability response, and review of critical third-party changes. No one signing system, SBOM format, package manager, or scanner is mandated. Automated updates MUST verify authorization and integrity before execution using an appropriate platform mechanism; arriving through the update path is not trust evidence by itself. Update failure MUST NOT silently authorize destructive data migration; [MIGRATE-1](#migrate-1) and [MIGRATE-2](#migrate-2) still apply. Reconstruction and material dependency-disappearance dispositions follow [SEC-5](#sec-5).
 
 <a id="sec-4"></a>
-### SEC-4 — Vendored or forked foundation provenance
+### 25.4. SEC-4 — Vendored or forked foundation provenance
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** third-party source snapshots vendored or forked as meaningful application foundations
 
@@ -995,7 +1025,7 @@ Projects MUST preserve durable provenance appropriate to the foundation: upstrea
 Explicitly decide whether the project tracks upstream, selectively merges changes, or owns a fixed independent fork/snapshot. Do not leave that maintenance responsibility ambiguous. This does not require vendoring dependencies; foundation evaluation follows [DEV-3](#dev-3) and dependency safety follows [SEC-3](#sec-3).
 
 <a id="sec-5"></a>
-### SEC-5 — Release reconstruction and critical-dependency continuity
+### 25.5. SEC-5 — Release reconstruction and critical-dependency continuity
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** software built/distributed as executables, and dependencies whose disappearance materially threatens building, operation, migration, recovery, or maintenance
 
@@ -1006,11 +1036,11 @@ For critical frameworks, runtimes, SDKs, toolchains, package ecosystems, librari
 State material reconstruction limits honestly, including proprietary SDKs, unavailable signing systems, hardware, closed platforms, discontinued services, and legal restrictions where relevant. No perpetual rebuild guarantee, bit-for-bit reproducibility, mandatory SBOM format, universal vendoring, permanent toolchain-binary retention, or archive of every historical release is required. Preservation does not require continued use of vulnerable obsolete components; distinguish preserved reference material from safe supported execution. No mandatory cloud build infrastructure is introduced. Protect signing secrets and respect access/retention constraints under [SEC-2](#sec-2) and [PRIV-1](#priv-1).
 
 <a id="sec-6"></a>
-### SEC-6 — Replaceable native malware-scanning capability
+### 25.6. SEC-6 — Replaceable native malware-scanning capability
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** applications/security components benefiting from file malware detection
 
-Projects SHOULD evaluate and prefer ClamAV as the default open-source malware engine where platform support, licensing, distribution, performance, and threat-model benefit are suitable. ClamAV is replaceable, not canonical architectural authority. Product code MUST depend on a generic malware-scanning capability boundary; engine-specific details belong in the adapter, not core product semantics. A suitable alternative or supplementary engine MAY be selected with documented rationale without requiring an exception merely for replacing this preferred implementation. Typed operations such as `scan_object`, `scan_stream`, `query_scan_status`, and `quarantine`, or equivalent contracts, preserve core-controlled authorization, outcomes, and promotion.
+Projects SHOULD evaluate and prefer ClamAV as the default open-source malware engine where platform support, licensing, distribution, performance, and threat-model benefit are suitable. ClamAV is replaceable, not canonical architectural authority. Product code MUST depend on a generic malware-scanning capability boundary; engine-specific details belong in the adapter, not core product semantics. A suitable alternative or supplementary engine MAY be deliberately selected with documented rationale without requiring an exception merely for replacing this preferred implementation. Selection, platform adapters, and any explicitly designed multi-engine pipeline MUST comply with [NOFALL-1](#nofall-1)–[NOFALL-2](#nofall-2): engine failure MUST NOT trigger substitute execution or turn an unmet scan gate into success. A future engine replacement follows deliberate planning, migration, and verification; it is not a hidden runtime fallback. Typed operations such as `scan_object`, `scan_stream`, `query_scan_status`, and `quarantine`, or equivalent contracts, preserve core-controlled authorization, outcomes, and promotion.
 
 Scanning SHOULD execute locally on the user's device or authorized local infrastructure. Ordinary scanning MUST NOT require uploading private files to a cloud scanner; cloud scanning may only be an explicitly authorized optional capability under [PRIV-2](#priv-2). Where practical, prefer a constrained scanner process/service behind protected local IPC for crash isolation, resource limits, bounded filesystem/network access, privilege separation, replaceability, and security updates. Direct library integration remains permissible with technical and licensing justification; neither integration mechanism is universal. [SEC-1](#sec-1) and [AUTH-1](#auth-1) still govern effective boundaries.
 
@@ -1022,14 +1052,14 @@ When a ClamAV source archive is incorporated into an application or shared secur
 ## 26. Configuration, observability, and runtime lifecycle
 
 <a id="run-1"></a>
-### RUN-1 — Explicit configuration and defaults
+### 26.1. RUN-1 — Explicit configuration and defaults
 
 **Type:** DEFAULT | **Origin:** ARCHITECTURAL DECISION | **Applies:** configurable applications
 
 Applications SHOULD separate environment-specific settings from portable logic and define deterministic resolution/validation. Built-in defaults are legitimate. CLI, environment, deployment file, user preferences, defaults is an illustrative order; managed policy may be non-overridable. Surface relevant effective non-secret settings and use supported host discovery or explicit configuration. Changing configuration does not imply environments have equivalent capabilities.
 
 <a id="run-2"></a>
-### RUN-2 — Proportionate diagnostics
+### 26.2. RUN-2 — Proportionate diagnostics
 
 **Type:** CONDITIONAL | **Origin:** DERIVED ENGINEERING RULE | **Applies:** failure reporting and operations
 
@@ -1038,7 +1068,7 @@ Applications MUST provide sufficient outcome/failure information without unneces
 Structured logging, correlation IDs, metrics, and health endpoints SHOULD be used where helpful; short-lived tools may need only exit status and diagnostics. Separate liveness, readiness, and deeper checks. Ordinary probes SHOULD be lightweight/non-destructive. Read-only probes cannot guarantee future writes; deliberate synthetic writes need explicit scope and cleanup.
 
 <a id="run-3"></a>
-### RUN-3 — Declared deployment and bounded lifecycle
+### 26.3. RUN-3 — Declared deployment and bounded lifecycle
 
 **Type:** CONDITIONAL | **Origin:** DERIVED ENGINEERING RULE | **Applies:** supported deployment modes and persistent services
 
@@ -1050,7 +1080,7 @@ Startup MUST verify prerequisites for safe operation, including relevant schema 
 ## 27. Verification and evidence
 
 <a id="test-1"></a>
-### TEST-1 — Evidence appropriate to the claim
+### 27.1. TEST-1 — Evidence appropriate to the claim
 
 **Type:** UNIVERSAL INVARIANT | **Origin:** DERIVED ENGINEERING RULE | **Applies:** claimed application guarantees
 
@@ -1059,7 +1089,7 @@ Applications MUST verify claims with evidence appropriate to scope, risk, and fa
 Non-AI apps need no AI tests; stateless formatters need no backup tests; NAS backup does not imply raw network-database support. Reuse engine/platform evidence only within its assumptions and verify integration. Tests reduce uncertainty rather than establish absence of all defects.
 
 <a id="test-2"></a>
-### TEST-2 — Practical verification patterns
+### 27.2. TEST-2 — Practical verification patterns
 
 **Type:** RECOMMENDATION | **Origin:** DERIVED ENGINEERING RULE | **Applies:** development/release verification choices
 
@@ -1071,7 +1101,7 @@ A shared conformance harness MAY help inspect declared applicability, links, sch
 ## 28. Documentation, exceptions, and ratification
 
 <a id="gov-2"></a>
-### GOV-2 — Proportional living contracts
+### 28.1. GOV-2 — Proportional living contracts
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** ecosystem repositories
 
@@ -1082,7 +1112,7 @@ Machine-readable contracts SHOULD be maintained where they improve interoperabil
 The specific development-governance obligations in [section 31](#s31) apply alongside this proportionality rule. Concise or combined records may satisfy them; proportionality does not waive idea refinement, the Plan Freeze Gate, current Project State, or phase conformance. The required machine-readable and human-readable Project State is governed by [DEV-9](#dev-9), not left optional by the general recommendation above.
 
 <a id="gov-3"></a>
-### GOV-3 — Policy authority and exceptions
+### 28.2. GOV-3 — Policy authority and exceptions
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** policy decisions, deviations, and ratification
 
@@ -1097,26 +1127,26 @@ Ordinary DEFAULT alternatives need a proportionate rationale, not impossibility 
 An exception MUST NOT present an unmet engineering guarantee as satisfied. A real domain conflict needs revised scope, affected claims, residual risk, and authority under [SAFE-2](#safe-2). Approval cannot waive physical constraints or applicable legal obligations by declaration.
 
 <a id="gov-4"></a>
-### GOV-4 — Reviewable evolution
+### 28.3. GOV-4 — Reviewable evolution
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** constitutional changes and adoption
 
 Changes MUST preserve reviewability through recorded versions, rationale, affected rule IDs, and evidence. Candidate status MUST remain explicit until owner ratification. Adoption should identify exact revision and applicability date. Preserve historical reviews rather than rewriting findings to fit the result. Substantive changes need appropriate adversarial review and disposition. Changes here do not authorize automatic migration or assessment of governed repositories.
 
-For this integration phase, a new adversarial attack and final release-candidate freeze MUST wait until the owner explicitly confirms **“There is nothing else left to add.”** Integration may resolve direct contradictions and validate documentation without conducting a hostile ratification review. The owner-supplied four-app blueprint is integrated as candidate policy; no final rc2 designation, ratification, merge, push, or release tag is authorized by this pass. Prior rc1 verification applies only to its reviewed revision, not automatically to this expanded working candidate.
+Constitutional work MUST use recorded actual authority for integration, freeze, review, scoped repair, publication, and adoption; one authorization may explicitly cover several stages. Do not require repetition of authority already supplied, infer ratification from publication, or treat a historical one-time waiting phrase as a perpetual gate. The 2026-10-14 owner mission explicitly reopens design for the supplied decisions and authorizes integration, candidate freeze, fresh adversarial review, substantiated repairs, commit/push, and safe normal promotion to main. It expressly withholds ratification. [Section 42](#s42) supplies the complete operating procedure and [section 43](#s43) records scope/provenance.
 
-The application Plan Freeze Gate in [DEV-5](#dev-5) does not trigger a constitutional attack or permit bypassing this gate. With the four-app blueprint integrated and subsequent UI/product/skill owner decisions supplied, finish authorized Green research/integration and completeness review, obtain explicit confirmation and candidate freeze, and only then conduct Red under [GOV-5](#gov-5). Earlier completeness recommendations apply only to their reviewed revision, not the expanded candidate. Adoption and authority to inspect another application's implementation remain separate decisions.
+The application Plan Freeze Gate in [DEV-5](#dev-5) remains separate from constitutional freeze. A constitutional candidate MUST have an identifiable frozen revision and owner authority before Red review; current-session or durable prior scoped delegation may supply that authority. Substantive revisions invalidate previous review credit and require the current convergence process under [GOV-5](#gov-5). Changes to this constitution do not authorize inspection, migration, or modification of unrelated application repositories.
 
-Supporting records: [Rust ADR](decisions/ADR-0001-rust-first.md), [historical review](reviews/2026-10-astra-adversarial-review.md), [integration disposition](reviews/2026-10-rc1-integration-disposition.md), [changelog](CHANGELOG.md), [historical attestation](provenance/initial-generation-boundary.md). Historical section numbers refer to their baseline, not this candidate.
+Historical ADRs, reviews, freeze/repair receipts, and provenance remain accessible through immutable links in [section 43](#s43). Their former no-push, no-review, or completion-phrase restrictions describe their own authorized task, not a veto over the owner's later explicit authorization. Historical section numbers refer to their own baseline.
 
 <a id="gov-5"></a>
-### GOV-5 — Green Flag, Red Flag, and review convergence
+### 28.4. GOV-5 — Green Flag, Red Flag, and review convergence
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** constitutional candidate integration, frozen-candidate attack, repair, and ratification recommendations
 
-**GREEN FLAG** researches, integrates, reconciles, validates, and may repair confirmed findings within authorized scope. **RED FLAG** independently attacks the written owner-frozen candidate and is read-only: no normative edits, repairs, repair commits, or favorable reinterpretation of ambiguity. **GREEN FIX**, when invoked by the owner after Red findings, verifies the exact report/revision, repairs only validated findings, preserves owner policy, records every disposition, validates regressions, commits locally, and reports the new candidate HEAD. It does not introduce unrelated policy or ratify. Operational instructions are persisted in the [Green/Red protocol](governance/green-red-protocol.md); this rule remains normative authority.
+**GREEN FLAG** researches, integrates, reconciles, validates, and may repair confirmed findings within authorized scope. **RED FLAG** independently attacks the written owner-frozen candidate and is read-only: no normative edits, repairs, repair commits, or favorable reinterpretation of ambiguity. **GREEN FIX**, when invoked by the owner after Red findings, verifies the exact report/revision, repairs only validated findings, preserves owner policy, records every disposition, validates regressions, creates an exact Git commit locally or, when publication is authorized, through the repository Git-object API, and reports the verified new candidate revision. It does not introduce unrelated policy or ratify. Operational instructions are contained in [section 42](#s42); this rule remains the governing authority for those procedures.
 
-Before RED FLAG, verify branch/HEAD/status, actual normative text, and explicit owner freeze evidence identifying the candidate. Without that evidence, STOP with **RED FLAG REQUIRES OWNER-AUTHORIZED PLAN FREEZE**. Prior completeness recommendations, integration reports, rule counts, historical favorable verdicts, or skill invocation do not authorize freeze/attack. After normative Green Fix, identify the exact repaired revision and verify that the owner freeze/repair authorization covers its review; do not transfer a prior verdict or infer authority for unrelated new policy. Scoped prior delegation may cover repair/review without a fresh prompt under [GOV-3](#gov-3). [GOV-4](#gov-4)'s completion-confirmation gate and separate ratification authority remain.
+Before RED FLAG, verify branch/HEAD/status, actual normative text, and explicit owner freeze evidence identifying the candidate. Without that evidence, STOP with **RED FLAG REQUIRES OWNER-AUTHORIZED PLAN FREEZE**. Prior completeness recommendations, integration reports, rule counts, historical favorable verdicts, or skill invocation do not authorize freeze/attack. After normative Green Fix, identify the exact repaired revision and verify that the owner freeze/repair authorization covers its review; do not transfer a prior verdict or infer authority for unrelated new policy. Scoped prior delegation may cover repair/review without a fresh prompt under [GOV-3](#gov-3). [GOV-4](#gov-4)'s actual-authority and reviewability requirements, and separate owner ratification authority, remain. The current integration mission supplies freeze/review/repair/publication authority within its stated scope; it does not supply ratification authority.
 
 Red review MUST exercise independent lenses below, using independent reviewers where available or distinct sequential passes with the independence limitation disclosed:
 
@@ -1141,7 +1171,7 @@ Red review MUST exercise independent lenses below, using independent reviewers w
 
 Classify every finding **BLOCKER** (unsafe ratification: material data loss/security/fundamental contradiction/unenforceable core/dangerous falsehood), **MATERIAL** (must repair before ratification), **NON-BLOCKING** (recorded improvement), or **NOT AN ISSUE** (rejected hypothesis). Give exact rule/section and wording, scenario, why existing rules do not resolve it, severity/confidence, smallest repair direction, and regression risk. Do not inflate taste into a defect or apply the repair during Red. Trust the frozen text rather than previous author/report claims.
 
-Every normative Green Fix invalidates an earlier Red pass and requires another attack. Recommend ratification only when zero BLOCKER/MATERIAL findings remain, prior findings have explicit dispositions, no old material defect regressed, current structural/factuality/proportionality checks pass, and **two consecutive independent Red rounds after the last normative repair** find no BLOCKER/MATERIAL defect. Disclose unavailable independence; a same-author replay is not independent. A recommendation is not ratification. No mode grants push, merge, remote-main/tag/release, or ratification authority without separate authorization.
+Every normative Green Fix invalidates an earlier Red pass and requires another attack. Recommend ratification only when zero BLOCKER/MATERIAL findings remain, prior findings have explicit dispositions, no old material defect regressed, current structural/factuality/proportionality checks pass, and **two consecutive independent Red rounds after the last normative repair** find no BLOCKER/MATERIAL defect. Disclose unavailable independence; a same-author replay is not independent. A recommendation is not ratification. A mode name alone grants no push, merge, remote-main/tag/release, or ratification authority. Actual owner authorization may already cover publication and promotion, as the current integration mission does; tags/releases and ratification remain separately scoped decisions.
 
 Every Red report MUST disclose that review does not prove absolute correctness, security, completeness, or immunity to future unknown conditions. Only when the review identifies zero BLOCKER and zero MATERIAL findings MUST it state: **No material defect was identified under the defined review battery. This does not prove absolute correctness, security, completeness, or immunity to future unknown conditions.** A report identifying any BLOCKER or MATERIAL finding MUST NOT assert the clean-result sentence as its outcome; it MUST truthfully report the material findings and state that other defects may still exist and the attack does not prove all defects were discovered.
 
@@ -1174,26 +1204,17 @@ This navigation index adds no requirements. Applicability, strength, and excepti
 | Unsupported or untested targets presented as verified | [TEST-1](#test-1), [PORT-1](#port-1) |
 
 <a id="s30"></a>
-## 30. Freeze status and review continuation — non-normative
+## 30. Candidate status and review continuation — non-normative
 
-Rust-first, feature-first, modular-monolith default, applicable NAS support, local/offline-first, owner governance, scoped product platforms, the shared Rust core, UI strategies, device/NAS synchronization direction, and vector-asset policy are owner decisions integrated into this frozen candidate. Universal event sourcing, one database, per-action confirmation, and identical presentation across all devices are not pending requirements.
+**1.0.0-rc3 — Single-file integration candidate — NOT RATIFIED.** This artifact is prepared for owner-authorized freeze and fresh adversarial review under [section 42](#s42). An external revision receipt identifies the exact committed frozen candidate and its checksum; this document does not invent its own future commit ID. Current review results belong in revision-bound evidence outside the active one-file tree, never silently appended to frozen normative bytes.
 
-**Hermes / User-Adaptable File Structure Blueprint — INTEGRATED AS CANDIDATE POLICY; NO LONGER PENDING DESIGN.** The owner reports completion of the comparative design analysis of Mosaic, LMS / Studies, Accounting & Money, and Read & Watch and has supplied the approved generalized direction. [Section 32](#s32), [HERMES-1](#hermes-1), [HERMES-2](#hermes-2), [HERMES-3](#hermes-3), and the reconciled data, evidence, operation, and development rules integrate that blueprint. It standardizes discoverability and integrity rather than one user-facing content hierarchy. The development-artifact blueprint in [DEV-6](#dev-6) remains a separate responsibility.
+The October 14, 2026 clean reviews and convergence audit apply only to `a9c597c8f14536a4404a64494cf56e9015e1288a` and SHA-256 `1c6471ab3ec5291b9cd4ec884912ccec10431d2e35e9e514ad29574b778b082d`. They provide **no convergence credit for rc3**. Their reviewer independence and model-identity limits remain visible in [section 43](#s43). The current candidate requires fresh review of its actual frozen bytes; consult the corresponding external receipt/reports for subsequently completed rounds rather than inferring success from this status page.
 
-Those applications informed the owner's analysis; their repositories, plans, and domain-specific behavior are not normative sources or dependencies of this constitution. No application repositories were inspected during this integration. The [four-app integration record](reviews/2026-10-four-app-blueprint-integration.md) preserves self-contained design provenance and policy coverage. Earlier records accurately showing pending design remain historical and unchanged.
+All original 113 stable rule IDs and metadata dimensions remain; 24 new rules integrate the owner's requirements. The preservation/refinement map in [section 43](#s43) explains explicit amendments and the new 137-rule inventory. The 33 original Skill families remain a policy catalog, not installed packages. The Hermes/User-Adaptable Information Architecture Blueprint remains integrated candidate policy under [section 32](#s32), separate from the future development repository blueprint under [section 39](#s39).
 
-**Current checkpoint: RF-01 and RF-02 repaired under explicit owner GREEN FIX authority; candidate `1.0.0-rc2.1` is frozen for fresh review and unratified.** The [repair record](governance/2026-10-green-fix-rf01-rf02.md) binds the two findings, scope, validation, and resulting revision. The original freeze, revision receipt, research, and historical reports remain preserved.
+The current owner mission authorizes integration, review/validated repair, commit/push, and safe normal main promotion of an **unratified** candidate. It does not authorize rewriting history, deleting historical branches, installing the named Skills, or ratifying. No governed application implementation or platform/runtime behavior is certified by this text.
 
-Ordinary policy brainstorming remains closed. Only DEV-5 and GOV-5 were normatively repaired. The previous Red review of `e15191c1509facc3859b46c25cc8a1d1b7eaa12f` found zero BLOCKER, zero MATERIAL, and two NON-BLOCKING findings; that historical result does not validate the repaired candidate or satisfy post-repair convergence.
-
-Remaining sequence:
-
-1. Conduct a fresh independently reviewed Red Flag round against the exact repaired frozen revision under [GOV-5](#gov-5) and the [persisted protocol](governance/green-red-protocol.md). No new Red attack occurred during this Green Fix.
-2. Preserve findings, evidence, and explicit dispositions; supporting history cannot excuse defective normative wording.
-3. Any further normative repair needs applicable authority and invalidates prior clean rounds again.
-4. Require two consecutive independent clean Red rounds after the last normative repair, with zero BLOCKER/MATERIAL findings and the remaining convergence checks. Ratification remains a separate owner decision; no push, merge, tag or release is authorized here.
-
-The prior rc1 verdict was **RATIFY WITH NON-BLOCKING ISSUES**, with no blockers and four clarifications; its historical outcome is recorded [separately](reviews/2026-10-rc1-verification-outcome.md). Subsequent owner decisions required this integration before ratification. The rc1 verdict is not a review of this revision. Policy coverage is recorded in the [initial integration report](reviews/2026-10-pre-attack-integration.md) and subsequent [development-governance integration](reviews/2026-10-development-governance-integration.md).
+Continuation: verify exact candidate identity and authority, complete fresh independent Red rounds, repair only substantiated issues within scope, restart convergence after normative repairs, preserve all dispositions, validate the published bytes/tree, and present the exact candidate for the owner's separate ratification decision. Publication and default-branch placement do not imply ratification.
 
 <a id="s31"></a>
 ## 31. Application planning, continuity, and conformance
@@ -1201,14 +1222,14 @@ The prior rc1 verdict was **RATIFY WITH NON-BLOCKING ISSUES**, with no blockers 
 These are intentional owner development-governance policies, not claims that a particular directory structure is a universal engineering invariant. They inherit CANDIDATE status. Their application to another repository requires the applicable adoption and task authority; this integration does not authorize inspecting or changing other apps.
 
 <a id="dev-1"></a>
-### DEV-1 — App-specific design and long-lived purpose
+### 31.1. DEV-1 — App-specific design and long-lived purpose
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** application design and development lifecycle
 
 The development process MUST pursue maintainability, understandability, recoverability, portability, evolvability, AI continuity, user control, structural coherence, and useful longevity. The constitution governs how designs are discovered, challenged, documented, built, verified, and maintained. It MUST NOT be interpreted as requiring identical application features or identical user-data structures. The design MUST reflect the idea, users, domain, risk, data, target platforms, and intended lifecycle. These goals improve the probability of long-term success; they do not guarantee indefinite usability.
 
 <a id="dev-2"></a>
-### DEV-2 — Refine the idea before implementation
+### 31.2. DEV-2 — Refine the idea before implementation
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** new applications before implementation begins
 
@@ -1216,8 +1237,10 @@ Implementation MUST NOT begin merely because an initial idea exists. Before impl
 
 Substantial product refinement MUST include actual value/differentiation under [DEV-18](#dev-18) before architecture freeze; private/internal fit does not require a commercial moat.
 
+The mandatory ordered workflow, including initial owner review before dedicated source discovery and final technology selection, is specified in [PLAN-1](#plan-1).
+
 <a id="dev-3"></a>
-### DEV-3 — Research before architecture freeze
+### 31.3. DEV-3 — Research before architecture freeze
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** new or substantially revised application architecture
 
@@ -1227,8 +1250,10 @@ If no better solution is found, refine and retain the design. If a superior patt
 
 Before rebuilding a difficult subsystem from scratch, research whether mature existing software solves the relevant problem substantially better. Deliberately evaluate use as a dependency, wrapping, adaptation, vendoring, forking, or rejection, considering architecture fit, security, maintenance, licensing, portability, long-term control, and integration cost. Existence alone does not require adoption. Significant source foundations need provenance under [SEC-4](#sec-4); Rust-first artifact/exception scope remains governed by [LANG-1](#lang-1).
 
+[PLAN-1](#plan-1) orders initial review, mandatory existing-project discovery, and final design/technology selection. Pinned ZIP reuse and actual source assessment follow [PLAN-2](#plan-2).
+
 <a id="dev-4"></a>
-### DEV-4 — Strongest reasonably available planning capability
+### 31.4. DEV-4 — Strongest reasonably available planning capability
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** creation or substantial redesign of an application Master Plan
 
@@ -1237,7 +1262,7 @@ Planning MUST use the highest-capability model reasonably available for research
 Reasoning, decisions, contracts, and requirements needed for implementation MUST be captured in durable project artifacts. The implementation process MUST NOT depend on continued access to the strongest model or on its hidden conversation history. Model selection does not itself establish correctness or authority.
 
 <a id="dev-5"></a>
-### DEV-5 — Candidate-plan review and Plan Freeze Gate
+### 31.5. DEV-5 — Candidate-plan review and Plan Freeze Gate
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** application plans before implementation and material architectural replanning
 
@@ -1249,16 +1274,16 @@ Authorized, bounded research experiments MAY precede Plan Freeze when needed to 
 
 Incorporation of experimental code or behavior into the product MUST pass the normal Plan Freeze, phase, conformance, security, testing, and evidence requirements. “Prototype” or “research” MUST NOT become a loophole for implementing substantial production scope before planning. Exploratory work MUST NOT silently become canonical architecture merely because it exists. Unresolved questions remain planning questions; this research route does not waive [DEV-11](#dev-11)'s stop-rather-than-guess rule or [DEV-13](#dev-13)'s completion gate.
 
-Material new architectural uncertainty during implementation returns the affected work to planning and this gate; do not silently improvise a different architecture. This application-plan review requirement does not authorize the constitution's final attack, which remains blocked under [GOV-4](#gov-4).
+Material new architectural uncertainty during implementation returns the affected work to planning and this gate; do not silently improvise a different architecture. This application-plan review requirement does not itself authorize a constitutional attack; constitutional review follows the actual owner authorization and identified freeze under [GOV-4](#gov-4), [GOV-5](#gov-5), and [section 42](#s42).
 
 Necessary emergency maintenance may temporarily precede complete planning only under [DEV-17](#dev-17), with bounded authority, evidence, and reconciliation before ordinary feature work resumes. This does not waive the gate for normal implementation.
 
 <a id="dev-6"></a>
-### DEV-6 — Discoverable planning and implementation responsibilities
+### 31.6. DEV-6 — Discoverable planning and implementation responsibilities
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** substantial application repositories, with proportionate representations for smaller applications
 
-Substantial applications SHOULD conceptually separate `App/APP Plan/` from `App/Codebase/`. The implementation belongs to Codebase; APP Plan holds durable specification, intelligence, state, decisions, and the roadmap. These logical responsibilities MUST remain clear and discoverable. Exact directory names and physical layout MAY be adapted; smaller projects may combine concise records without dropping applicable lifecycle gates.
+Substantial applications SHOULD conceptually separate `Application/Master Plan/` from `Application/Codebase/`, using the complete detailed default in [BLUEPRINT-1](#blueprint-1). The implementation belongs to Codebase; Master Plan holds durable specification, intelligence, state, decisions, and the roadmap. These logical responsibilities MUST remain clear and discoverable. Physical names/layout MAY be adapted when sound engineering or framework compatibility requires it, with an explicit navigation mapping; smaller projects may combine concise records without dropping applicable lifecycle gates. Historical references to “APP Plan” denote this planning responsibility, not a second required folder.
 
 The APP Plan blueprint MUST support these discoverable responsibilities, directly or by clear references:
 
@@ -1279,11 +1304,11 @@ The APP Plan blueprint MUST support these discoverable responsibilities, directl
 This is a development-artifact blueprint, distinct from the runtime user-data/workspace contract in [section 32](#s32). Organized APP Plan records do not establish that product data is discoverable, and a navigable runtime hierarchy does not replace a proper APP Plan. Evidence, Research, and completed execution records may share storage/references while retaining their distinct responsibilities. Equivalent domain-appropriate representations are allowed; names do not establish compliance.
 
 <a id="dev-7"></a>
-### DEV-7 — Authoritative current Master Plan
+### 31.7. DEV-7 — Authoritative current Master Plan
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** application planning and changes to intended architecture or behavior
 
-The Master Plan MUST state the current authoritative specification of the intended completed product, directly or through clear references. It MUST cover applicable product purpose, users, features, architecture, shared Rust core, platform scope, UI strategy, storage architecture, canonical data model, synchronization, NAS and local-only behavior, AI/Hermes, security, privacy, backup/recovery, migrations, testing, deployment, packaging, interfaces, extension points, constraints, and accepted exceptions.
+The App Master Plan MUST contain the complete current authoritative specification of the intended completed product under [BLUEPRINT-2](#blueprint-2); precise references MAY supply supporting technical detail and evidence but MUST NOT leave material product decisions scattered among competing specifications. It MUST cover applicable product purpose, users, features, architecture, shared Rust core, platform scope, UI strategy, storage architecture, canonical data model, synchronization, NAS and local-only behavior, AI/Hermes, security, privacy, backup/recovery, migrations, testing, deployment, packaging, interfaces, extension points, constraints, and accepted exceptions.
 
 Keep historical brainstorming and superseded rationale in Research, Decisions, Reviews, or provenance; do not make a reader infer current intent from chronology. Changes to intended behavior MUST update the plan deliberately with relevant decision and phase links. The Master Plan specifies intended product truth; it does not claim unbuilt features exist or supersede the constitution without an approved exception.
 
@@ -1296,7 +1321,7 @@ Applicable file-intake plans MUST make the [IO-2](#io-2), [IO-3](#io-3), and [SE
 For relevant user-facing work, the plan MUST include or reference the design responsibilities under [UI-4](#ui-4)–[UI-7](#ui-7) and product value under [DEV-18](#dev-18). Development metadata SHOULD identify applicable skill families, trusted versions, local changes/provenance and permissions under [section 33](#s33), without duplicating unchanged central guidance.
 
 <a id="dev-8"></a>
-### DEV-8 — Comparative research and explicit decisions
+### 31.8. DEV-8 — Comparative research and explicit decisions
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** significant researched alternatives and architectural decisions
 
@@ -1307,7 +1332,7 @@ Research claims MUST distinguish verified evidence, inference/conditional eviden
 Important architectural decisions MUST be explicit and individually discoverable, including applicable Rust-core, storage-engine, sync-model, NAS-topology, UI, identity, AI/Hermes-boundary, and backup choices. A weaker model must not need to infer them from hundreds of pages of historical text. Decision records MUST identify current versus superseded decisions and link to the Master Plan where needed.
 
 <a id="dev-9"></a>
-### DEV-9 — Project State as the current execution entry point
+### 31.9. DEV-9 — Project State as the current execution entry point
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** every active application
 
@@ -1315,8 +1340,10 @@ Each active application MUST maintain a concise machine-readable and human-reada
 
 Without prior conversation, it MUST reveal the current phase, last completed phase, completed capabilities, work in progress, work not started, known blockers, current branch/revision where applicable, next authoritative action, and the active phase specification's location. Identify the revision actually observed rather than inventing a self-referential commit identifier. Update status when work, blockers, phase completion, or next action changes; distinguish verified completion from claims awaiting verification. State/implementation contradictions MUST be reconciled before relying on that state to proceed.
 
+Current and last verified completed subphases, unresolved errors, actual implementation status, exact next authorized action, and bare “Continue” behavior additionally follow [EXEC-4](#exec-4). A structured Markdown record with a documented stable field schema may satisfy both machine-readable and human-readable requirements; a prose-only status narrative without reliably identifiable fields does not satisfy the machine-readable duty.
+
 <a id="dev-10"></a>
-### DEV-10 — Phases as executable implementation specifications
+### 31.10. DEV-10 — Phases as executable implementation specifications
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** planned implementation and conformance phases
 
@@ -1324,14 +1351,14 @@ Each phase MUST be sufficiently specified for bounded execution rather than a lo
 
 If major architecture must still be invented during execution, the phase is insufficiently specified and affected implementation MUST stop for planning resolution. A phase MUST distinguish delegated implementation choices from unresolved architectural decisions. Acceptance criteria and validation MUST describe outcomes that can actually be checked under [TEST-1](#test-1), not merely the presence of code.
 
-Large phases MAY be decomposed into bounded tasks. As applicable, a task SHOULD state its ID, objective, prerequisites, scope, permitted and forbidden changes, expected result, validation, and stop conditions. The phase remains the governing specification and conformance boundary. Tiny phases need no artificial task hierarchy.
+Substantial phases MUST be decomposed into individually numbered, bounded subphases under [EXEC-1](#exec-1), each carrying the concrete 33-field execution contract under [EXEC-2](#exec-2). The parent phase remains the governing specification and conformance boundary. Tiny phases may contain one numbered executable subphase in the same file without artificial folders; proportionate representations do not waive required fields, acceptance evidence, numerical order, or stop conditions.
 
 The temporary emergency path in [DEV-17](#dev-17) may defer only necessary normal planning steps; its durable emergency record and subsequent repair contract do not grant permission to invent unknown architecture.
 
 Phase specifications MAY name relevant process skills for bounded loading, but MUST retain their actual project-specific specification under [SKILL-2](#skill-2). Substantial UI phase acceptance MUST include applicable rendered review under [UI-7](#ui-7); “use frontend-design skill” alone is not a phase contract.
 
 <a id="dev-11"></a>
-### DEV-11 — Full-build small-model continuity and safe resumption
+### 31.11. DEV-11 — Full-build small-model continuity and safe resumption
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** application plans, phase execution, and AI-assisted continuation
 
@@ -1343,8 +1370,10 @@ Every phase MUST support zero-conversation resumption: locate Project State; est
 
 This **product-development** goal concerns building/continuing software from APP Plan, phases, Project State, tests, and Codebase. The separate **product-use** goal under [HERMES-2](#hermes-2) concerns navigating and using supported application tools through structured, bounded retrieval. Both apply where relevant; satisfying either one does not prove the other.
 
+The owner’s measurable development-execution target includes approximately 4B-class models under [EXEC-6](#exec-6). This is distinct from the approximately 1B product-use retrieval target in HERMES-2, and neither parameter count guarantees success.
+
 <a id="dev-12"></a>
-### DEV-12 — Evidence-bearing Done Phases
+### 31.12. DEV-12 — Evidence-bearing Done Phases
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** phases that have passed the completion gate
 
@@ -1356,8 +1385,10 @@ For substantial tasks/phases, preserve execution evidence during work as well as
 
 Evidence MAY include tests, builds, static checks, runtime validation, relevant screenshots, schemas, hashes, migration comparisons, commit IDs, and operation receipts as appropriate. Evidence supports the actual claim and the [Three-Layer Conformance Gate](#dev-13); its mere existence or a screenshot cannot establish unrelated guarantees.
 
+Subphase evidence, verified ✅ heading markers, and parent phase completion additionally follow [EXEC-5](#exec-5); no marker precedes actual acceptance verification.
+
 <a id="dev-13"></a>
-### DEV-13 — Three-Layer Conformance Gate after every phase
+### 31.13. DEV-13 — Three-Layer Conformance Gate after every phase
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** completion of every implementation or conformance phase
 
@@ -1374,7 +1405,7 @@ The continuing cycle is **Implement → Verify → Universal Rules → Master Pl
 Emergency containment/repair follows [DEV-17](#dev-17)'s temporary procedure and post-emergency reconciliation gate; it does not count as verified phase completion merely because it was urgent.
 
 <a id="dev-14"></a>
-### DEV-14 — Brownfield assessment and conformance before features
+### 31.14. DEV-14 — Brownfield assessment and conformance before features
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** existing or partially built applications when these rules are applied with appropriate authority
 
@@ -1385,7 +1416,7 @@ An Existing App Assessment or equivalent MUST classify inherited implementation 
 Conformance Phases MUST precede new feature phases and use [DEV-10](#dev-10) and [DEV-13](#dev-13). They bring the inherited implemented scope into alignment with the constitution and current Master Plan; they do not require all future roadmap features to exist before development can resume. A failed gate permits scoped repair, not ordinary feature expansion. Following aggregate conformance verification, every subsequent phase remains subject to the same three-layer gate. Applicable safety/containment actions under [SAFE-2](#safe-2) remain possible; they are not a feature-development bypass.
 
 <a id="dev-15"></a>
-### DEV-15 — Repository memory and the longevity test
+### 31.15. DEV-15 — Repository memory and the longevity test
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** application planning, documentation, and long-term continuation
 
@@ -1394,7 +1425,7 @@ Planning MUST ask: **Could another human or AI understand, maintain, repair, mig
 The repository MUST carry durable development memory sufficient to establish what the app is, why major decisions were made, what is implemented, what remains, what was rejected, known risks, how to validate, and how to continue. Conversation history may assist planning but MUST NOT be required for continuation. Avoid unnecessary dependence on one developer's memory, one AI conversation, one model provider, one computer, undocumented file locations/decisions, or unsupported proprietary assumptions. Document necessary external dependencies and recovery/access requirements without committing secrets or retaining unnecessary sensitive conversation payloads; [PRIV-1](#priv-1) and [SEC-2](#sec-2) still apply.
 
 <a id="dev-16"></a>
-### DEV-16 — Lifetime growth envelope and maintenance validation
+### 31.16. DEV-16 — Lifetime growth envelope and maintenance validation
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** planning and verification where retained data, history, media, logs, indexes, or relationships may materially grow
 
@@ -1403,7 +1434,7 @@ The App Plan MUST define a reasonable expected lifetime growth envelope and its 
 Validation under [TEST-1](#test-1) MUST consider applicable ordinary and lifecycle operations at expected scale: startup, query/search, index rebuilding, backup, restore, migration, sync, recovery, export, integrity scans, and compaction/retention. The App Plan defines suitable resource/time budgets and supporting evidence, including limitations of estimates or representative samples. Tiny or inherently bounded applications may state that bound and its rationale without special scaling architecture or meaningless benchmarks.
 
 <a id="dev-17"></a>
-### DEV-17 — Emergency maintenance and reconciliation
+### 31.17. DEV-17 — Emergency maintenance and reconciliation
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** urgent maintenance where delay materially increases security, data-loss, privacy, safety, or unrecoverable operational risk
 
@@ -1414,7 +1445,7 @@ Maintain a proportionate durable record of trigger, scope, authorization, affect
 Before ordinary feature development resumes after a material emergency change, reconcile the applicable Master Plan, Project State, Decisions, phase/execution history, tests, architecture, compatibility expectations, migration implications, and documentation. Establish or update the repair's phase contract and run the applicable [Three-Layer Conformance Gate](#dev-13); deferred required checks are not passes. Outstanding failures require repair or an actually approved scoped exception under [GOV-3](#gov-3), not silent permanent drift. Emergency repair may temporarily precede complete planning; it MUST NOT permanently bypass project truth or mark an unverified phase complete.
 
 <a id="dev-18"></a>
-### DEV-18 — Product value and differentiation before architecture freeze
+### 31.18. DEV-18 — Product value and differentiation before architecture freeze
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** idea refinement and planning of substantial applications
 
@@ -1428,7 +1459,7 @@ The answer MUST influence relevant workflows, feature priorities, UX/UI, archite
 This candidate blueprint standardizes discoverability and integrity contracts across applicable products, not domain features or one universal folder tree. The owner-supplied four-app analysis provides design provenance, not external normative dependencies. These rules complement existing data, storage, recovery, privacy, synchronization, and AI authority contracts.
 
 <a id="info-1"></a>
-### INFO-1 — Logical information architecture independent of storage layout
+### 32.1. INFO-1 — Logical information architecture independent of storage layout
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** applications managing durable user information
 
@@ -1439,7 +1470,7 @@ Files, SQLite, PostgreSQL, embedded object stores, services, and other justified
 Where practical, retained information SHOULD support both human comprehension through meaningful names, metadata, documentation, relationships, readers or exports, and machine reliability through structured IDs, schemas, manifests, catalogs, or typed records. Do not sacrifice deterministic interfaces for attractive folders or long-term comprehensibility merely for AI indexing convenience. Documented binary stores are compatible with these outcomes under [LIFE-2](#life-2) and [STORE-1](#store-1).
 
 <a id="info-2"></a>
-### INFO-2 — Discoverable workspace entry contract
+### 32.2. INFO-2 — Discoverable workspace entry contract
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** substantial durable workspaces, including equivalent database/service-managed datasets
 
@@ -1448,7 +1479,7 @@ A workspace MUST expose a predictable logical entry point through which authoriz
 A root manifest, workspace catalog, typed API, database schema plus discovery endpoint, or equivalent deterministic mechanism may implement this capability. No physical root filename or public disclosure of private metadata/secrets is required. Discovery is subject to authorization; version handling follows [MIGRATE-2](#migrate-2). Supported offline discovery and synchronization follow the existing local-first and sync contracts.
 
 <a id="info-3"></a>
-### INFO-3 — Durable identity, organization, and relationships
+### 32.3. INFO-3 — Durable identity, organization, and relationships
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** important durable logical objects whose identity must survive organization changes
 
@@ -1457,7 +1488,7 @@ Such objects MUST have durable product-owned logical identity or an equivalent d
 When an object participates in multiple views or relationships, prefer explicit references/relationships over uncontrolled canonical duplication. Canonical information SHOULD NOT be duplicated merely to appear in multiple organizational views when references preserve the same meaning safely. Deliberate replicas, snapshots, backups, and derivatives remain valid with declared authority and lifecycle. Where byte identity or deduplication matters, content hashes or equivalents may assist integrity, provenance, and tracking; content-addressing is not universally required, and byte equality is not automatically logical identity or authenticated origin.
 
 <a id="info-4"></a>
-### INFO-4 — Precise sub-object addressing and source context
+### 32.4. INFO-4 — Precise sub-object addressing and source context
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** large or heterogeneous content where sub-object addressing materially improves retrieval, citation, annotation, or verification
 
@@ -1471,7 +1502,7 @@ Anchors to mutable content MUST retain enough source context to determine validi
 These owner policies define a reusable workflow library and its trust/authority contracts. This constitutional catalog is not a claim that operational skill packages have already been authored, installed, reviewed, or tested. An Agent Skill means inspectable workflow guidance and any supporting resources/scripts; calling it a prompt does not remove supply-chain or execution risk.
 
 <a id="skill-1"></a>
-### SKILL-1 — Modular, discoverable, portable process expertise
+### 33.1. SKILL-1 — Modular, discoverable, portable process expertise
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** design and maintenance of ecosystem/project Agent Skill libraries
 
@@ -1486,16 +1517,16 @@ Critical workflow instructions MUST remain reviewable text or equivalent inspect
 Initial discovery SHOULD expose concise metadata, loading detailed instructions only for relevant tasks. Prefer one primary skill per concern with complementary specialized/project/review layers, rather than competing frontend/color/architecture/testing/writing foundations. Where skills overlap, record priority, why both are needed, and conflict behavior; governing product/design contracts and constitution prevail. Manage context budget for small models; skill/prompt/plugin count is not a quality metric. Centrally maintained references MUST remain revision-resolvable and support future continuation without silent disappearance; dependency continuity follows [SEC-5](#sec-5).
 
 <a id="skill-2"></a>
-### SKILL-2 — Subordinate guidance and bounded skill execution
+### 33.2. SKILL-2 — Subordinate guidance and bounded skill execution
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** selection, invocation, and output of Agent Skills during development or application operations
 
 The execution hierarchy is **Universal Rules → owner policy → App Master Plan → Phase/Task Contract → project-specific design/system rules → relevant Agent Skills → implementation**, subject to actual owner authority/approved exceptions under [GOV-3](#gov-3). A skill MUST NOT override governing rules, owner policy, Master Plan, Phase Contract, project design/system contracts, security boundaries, or authorization. External installed skills MUST NOT silently become universal policy. A skill may guide use of existing authorized capabilities; it MUST NOT independently grant filesystem, deployment, credential, canonical-mutation, or production access, nor inherit every capability available to its host AI. Enforce only the permissions required by the workflow through [AUTH-1](#auth-1) and [AI-2](#ai-2). Frontend review normally needs no production DB writes, secrets, or backup deletion; documentation guidance normally needs no deployment authority.
 
-Skill output, including reviews, recommendations, plans, and classifications, MUST remain subject to evidence, relevant core validation/tests, project contracts, and applicable owner approval. Labels or successful skill execution do not establish factual truth or completion under [EVID-1](#evid-1), [TEST-1](#test-1), and [DEV-13](#dev-13). A skill reference MUST NOT replace project-specific phase objectives, files, constraints, target state, tests, evidence, or stopping conditions under [DEV-10](#dev-10). Materially guiding skill choices SHOULD be discoverable in phase/development metadata to support resumption; source/version/local modifications/permissions follow [SKILL-3](#skill-3). Neither a named adversarial skill nor this catalog authorizes the constitution's final attack under [GOV-4](#gov-4).
+Skill output, including reviews, recommendations, plans, and classifications, MUST remain subject to evidence, relevant core validation/tests, project contracts, and applicable owner approval. Labels or successful skill execution do not establish factual truth or completion under [EVID-1](#evid-1), [TEST-1](#test-1), and [DEV-13](#dev-13). A skill reference MUST NOT replace project-specific phase objectives, files, constraints, target state, tests, evidence, or stopping conditions under [DEV-10](#dev-10). Materially guiding skill choices SHOULD be discoverable in phase/development metadata to support resumption; source/version/local modifications/permissions follow [SKILL-3](#skill-3). Neither a named adversarial skill nor this catalog supplies constitutional attack authority; verify actual owner authorization and the exact frozen candidate under [GOV-4](#gov-4) and [section 42](#s42).
 
 <a id="skill-3"></a>
-### SKILL-3 — Skill supply-chain review, revisions, and lifecycle
+### 33.3. SKILL-3 — Skill supply-chain review, revisions, and lifecycle
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** third-party skill consideration/trusted use and maintenance of consequential reusable skills
 
@@ -1508,7 +1539,7 @@ Important reusable skills SHOULD have workflow-appropriate validation, such as f
 Dynamically fetched remote instructions MUST remain untrusted until validated. Pin/verify content where practical, constrain network access, and record the exact retrieved revision or digest before trusted adoption; mutable `main` or `latest` MUST NOT silently change governing instructions mid-phase. Skill Security Review MUST include installer behavior, symlinks/path traversal, license, dynamic remote resources, and overlap/conflicts as well as scripts, dependencies, permissions, and credentials. Trust registration follows source → revision/license → static/content review → scripts/dependencies → permission/network/conflict review → version/digest → approved discoverable registry. Presence in a registry is a recorded trust disposition, not proof of immunity.
 
 <a id="skill-4"></a>
-### SKILL-4 — Universal workflow capability catalog
+### 33.4. SKILL-4 — Universal workflow capability catalog
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** ecosystem Agent Skill Library scope and design of the listed reusable workflows
 
@@ -1549,3 +1580,727 @@ The library blueprint MUST support the following logical workflow families, with
 | Build/release reconstruction | Source/toolchain/assets/commands, packaging/signing, dependency resolution and practical limits; [SEC-5](#sec-5). |
 | Adversarial review | Independently challenge plans/implementation for contradictions, edge cases, unsafe assumptions/false guarantees, hidden coupling, privilege/data-loss/migration failures, ambiguous authority, and portability. Required formal reviews still follow [DEV-5](#dev-5) and [GOV-4](#gov-4); skill invocation neither substitutes for nor automatically authorizes the constitutional final review. |
 | Skill security review | Mandatory workflow before third-party trusted use: provenance → instruction/content review → scripts/dependencies → permissions → version/digest → discoverable trusted registration. Apply [SKILL-3](#skill-3), [AI-1](#ai-1), and [AUTH-1](#auth-1); never infer broad shell/credential authority from a downloaded skill. |
+
+<a id="s34"></a>
+## 34. Requirements-first planning and source reuse
+
+This section makes [DEV-2](#dev-2)–[DEV-8](#dev-8) operational. It supplies the owner's ordered application workflow; it does not create a competing product specification or waive the Plan Freeze Gate.
+
+<a id="plan-1"></a>
+### 34.1. PLAN-1 — Nine ordered planning and implementation steps
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** new applications and substantial product replanning
+
+Planning MUST establish what the application must do before final technology selection. The following steps MUST occur in order. Research may revisit earlier assumptions; material changes MUST be reconciled with affected decisions before advancing. Bounded research prototypes follow [DEV-5](#dev-5), and emergency maintenance remains limited by [DEV-17](#dev-17).
+
+1. **Receive the idea.** Accept a short, vague, natural-language description. Programming vocabulary is not a prerequisite.
+2. **Investigate the problem.** Research relevant direct solutions, adjacent domains, user difficulties, workflows, papers, GitHub projects, standards, failures, and innovations. Breadth MUST follow relevance and material uncertainty; arbitrary caps on repositories, features, or technical alternatives MUST NOT replace adequate investigation. “Search everything” means exhaustive relevant exploration within actual access and practical evidence limits, not a claim to have searched the entire Internet or authority to access restricted material. Record coverage, remaining gaps, and why the evidence is sufficient to proceed.
+3. **Connect the evidence.** Identify plausible needs, relationships, gaps, contradictions, opportunities, risks, and hidden dependencies. Distinguish explicit requirements, strongly supported inferences, research-backed recommendations, speculation, and rejected alternatives under [EVID-1](#evid-1). Inference is not owner approval.
+4. **Review consequential product decisions.** Present a coherent recommended scope. Resolve material open questions about purpose, values, experience, privacy, risk, or authority with the owner or within already delegated authority. Ordinary technical choices SHOULD be resolved through research and engineering judgment rather than transferring microscopic decisions to a non-programmer.
+5. **Discover existing projects and reusable source.** After initial user review and before final design/technology selection, search GitHub and relevant technical sources beyond exact title matches and obvious categories. Consider whole solutions, partial solutions, libraries, algorithms, design/architecture examples, known failures, and neglected functionality. Apply [PLAN-2](#plan-2), assess actual source before planning its modification, and present adoption/reuse recommendations and meaningful alternatives.
+6. **Investigate design and technology.** Apply [TECH-1](#tech-1)–[TECH-3](#tech-3) and [DESIGN-1](#design-1)–[DESIGN-3](#design-3) to the understood workflows and requirements. Use bounded prototypes where evidence is needed before freeze.
+7. **Write the comprehensive App Master Plan.** Produce the authoritative intended specification, with meaningful numbered headings, technical records, decisions, and executable phases under [BLUEPRINT-1](#blueprint-1), [BLUEPRINT-2](#blueprint-2), and [EXEC-2](#exec-2).
+8. **Attack, repair, and freeze the plan.** Use the strongest reasonably available planning/review capability, targeted research, and independent criticism where possible. Resolve substantiated issues and pass the authorized [Plan Freeze Gate](#dev-5). Ordinary production implementation MUST NOT begin before that gate.
+9. **Implement through verified phases.** Execute the authorized numerical sequence under [EXEC-1](#exec-1)–[EXEC-6](#exec-6), preserving actual evidence and the Three-Layer Conformance Gate.
+
+<a id="plan-2"></a>
+### 34.2. PLAN-2 — Pinned source ZIP reuse and assessment
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** application planning that considers existing projects and adoption of third-party source foundations
+
+Promising projects MUST be assessed for suitability, source history, maintenance, code quality, security, licensing, platforms, portability, and adaptation cost. The preferred reuse mechanism is a **pinned source ZIP**, rather than creating a GitHub fork. Use a different acquisition mechanism only with a recorded concrete reason and applicable authority; source reuse does not require creating a fork.
+
+An adopted source snapshot MUST record repository URL, exact revision/commit, ZIP origin, checksum or equivalent integrity evidence, license and obligations, imported scope, attribution retained, security-review disposition, and local modifications. Record available authentic source/signature evidence separately: a checksum alone does not authenticate an author. A public repository without an applicable license MUST NOT be assumed to grant modification or redistribution rights. Acquisition, dependencies, continuity, and redistribution remain subject to [SEC-3](#sec-3)–[SEC-5](#sec-5), [IO-1](#io-1), and [SKILL-3](#skill-3) where relevant.
+
+Untrusted downloaded scripts/installers MUST NOT be executed before review. Inspect the actual adopted implementation and apply [DEV-14](#dev-14): preserve correct work, assess gaps, and repair deficiencies without indiscriminate rewriting. The App Plan MUST distinguish imported, modified, replaced, and newly implemented responsibilities.
+
+<a id="s35"></a>
+## 35. Technology preferences after requirements
+
+<a id="tech-1"></a>
+### 35.1. TECH-1 — Requirements justify the selected stack
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** application and component technology selection
+
+After requirements analysis, evaluate **Rust first for implementation, Tauri 2 first as an application framework, SQLite first when a database is appropriate, and open-source or public-domain solutions first across the relevant stack**. Prefer a feature-first modular monolith where suitable and practical resource efficiency. These preferences are strong starting points, not evidence of suitability. [LANG-1](#lang-1)'s Rust policy and [CORE-1](#core-1)'s shared product core remain controlling.
+
+Concrete evidence of a substantial improvement in required functionality, reliability, platform compatibility, accessibility, maintainability, or user experience may justify another choice. Record affected components, alternatives, requirements, evidence, tradeoffs, and applicable approval under [GOV-3](#gov-3). Popularity or fashion alone is insufficient. Avoid heavyweight technology without demonstrated benefit, and avoid lightweight choices that demonstrably harm essential usability or functionality. A database MUST NOT be introduced merely to satisfy a database preference when documented files meet the requirements better.
+
+<a id="tech-2"></a>
+### 35.2. TECH-2 — Open-source scope and actual licensing
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** selection and distribution of technology dependencies
+
+The open-source-first evaluation MUST cover relevant languages/toolchains, frameworks, databases, libraries/components, build systems, developer tools, processing infrastructure, local AI tools/runtimes, and other critical dependencies. Record actual licenses, applicable obligations, compatibility with intended use/distribution, and justified departures. Public GitHub visibility, downloadable source, and marketing descriptions do not establish an open-source license.
+
+Dependency licensing MUST be evaluated for the actual integration and distribution model. Using open-source dependencies does not by itself require publishing the owner's application source; some applicable licenses and arrangements may impose source or other obligations. Do not promise either automatic publication requirements or automatic exemption. Preserve attribution, evidence, dependency provenance, and release continuity under [SEC-3](#sec-3)–[SEC-5](#sec-5).
+
+<a id="tech-3"></a>
+### 35.3. TECH-3 — Explicit platform commitments and frontend evidence
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** supported-platform definition and frontend selection
+
+Each product MUST choose its actual desktop/mobile/tablet scope under [PORT-3](#port-3), rather than imply universal support. Where desktop Linux is supported, explicitly assess **Linux Mint, Ubuntu LTS, Arch Linux, and CachyOS** and record supported versions/configurations, test commitments, unsupported cases, and reasons. This requires a disposition for these distributions, not an unsupported guarantee that every distribution works identically.
+
+Explain a selected Tauri architecture accurately: it uses a web-rendered interface with native integration; Rust application logic does not make every frontend component Rust. The owner's preference for web-inspired visual design does not require web languages for every app. Select frontend technology through demonstrated design fidelity, performance, accessibility, integration, and platform suitability, using prototypes when necessary. Compare native-appearing, platform-specific UI and deliberately shared/custom appearance on their merits under [UI-1](#ui-1)–[UI-3](#ui-3). Hybrid strategies require explicit reasons rather than becoming an automatic default. Preserve essential platform behavior and accessibility. Relevant future phone/tablet constraints SHOULD inform desktop-first architecture without claiming unimplemented mobile support.
+
+<a id="s36"></a>
+## 36. Data that survives the application
+
+<a id="survive-1"></a>
+### 36.1. SURVIVE-1 — Independent retained information
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** retained user-owned information
+
+Retained user-owned information **MUST NOT depend for its existence on the continued installation, availability, or development of the original application**. Provide an independently preserved, documented, practically recoverable representation outside disposable installation state. A format being open or a database being SQLite does not alone satisfy this requirement. The representation MUST be obtainable and recoverable without the original app within the declared retention and recovery contract, including relationships, identifiers, required originals, and interpretation dependencies.
+
+The App Plan MUST document authoritative locations; ownership; actual engine and file formats; appropriate human-readable and machine-readable representations; schemas, identifiers, and relationships; export/import; access without the original app; uninstall behavior; mobile container deletion; encryption/key recovery; backup/restore; replacement/migration; retention/legitimate deletion; and offline, NAS, and synchronization responsibilities. SQL is a language, not a storage engine. SQLite, PostgreSQL, JSON, Markdown, HTML, original documents/media, and justified combinations are possible representations; no one format is universally mandatory.
+
+A recoverable representation may be an independently accessible authoritative dataset or an independent recoverable copy. Declare when it becomes durable, what information it covers, its freshness and permitted recovery-point loss, and the dependencies and failure domains. Required preservation MUST be established and verified before claiming retained data is protected; an export button that has never produced an independent copy is insufficient. Recovery claims MUST disclose limits rather than promise immunity to all loss. Data preservation does not override authorized erasure, privacy obligations, or expiration under [PRIV-1](#priv-1).
+
+<a id="survive-2"></a>
+### 36.2. SURVIVE-2 — Mobile uninstall and disappearance rehearsal
+
+**Type:** CONDITIONAL | **Origin:** USER POLICY | **Applies:** applications retaining user information, including platforms with disposable app containers
+
+The App Plan MUST identify which storage and keys the supported operating system may remove on uninstall, reset, account loss, or device failure. App-private mobile storage MUST NOT be the sole claimed independent representation. Select a platform-supported, authorized preservation route outside that disposable state, such as user-controlled files or independently maintained storage/service copies, with documented access and restoration procedures. Do not assume an uninstall hook, shared-folder name, OS backup setting, export format, or removable app key proves survival. If the required route cannot be established, report the unmet preservation requirement and stop claiming the platform configuration satisfies it; resolve the product/storage contract through planning.
+
+Validate an actual app-disappearance scenario using representative retained information: make the original app/runtime unavailable in an isolated test environment, obtain the independent representation and required keys/schema, recover with documented independent means, and verify meaning, relationships, identifiers, and the declared recovery point. Relevant mobile claims require evidence for actual supported uninstall/container behavior rather than desktop extrapolation. Do not delete the owner's live data to run this rehearsal.
+
+[RECOVER-1](#recover-1), [BACKUP-1](#backup-1), and [BACKUP-2](#backup-2) continue to require complete dependencies, independently appropriate failure domains, and restoration evidence. External location or synchronization alone is not backup safety. `Codebase/Database/` contains implementation artifacts such as schemas, migrations, queries, and storage code/configuration; it is not automatically the location of private user data. Keep private data out of source repositories unless specifically authorized and appropriate under privacy policy.
+
+<a id="s37"></a>
+## 37. NO FALLBACKS in the App Plan or Codebase
+
+<a id="nofall-1"></a>
+### 37.1. NOFALL-1 — One approved implementation and honest failure
+
+**Type:** PROHIBITION | **Origin:** USER POLICY | **Applies:** planned and implemented application capabilities after implementation selection
+
+**NO FALLBACKS IN THE APP PLAN OR CODEBASE.** Once a capability's implementation is selected and approved, an executor MUST NOT introduce an alternative execution implementation to conceal or work around that implementation's failure. Prohibited behavior includes silent alternate algorithms or providers, hidden secondary databases, replacement execution paths triggered by primary failure, dummy implementations or mock results presented as functioning behavior, disabling required functionality or tests to claim success, fabricated success, silent error swallowing, and undocumented degraded substitutes. Merely naming a substitute an “adapter,” “resilience mode,” “recovery,” or “approved fallback” does not make it compliant.
+
+Define the capability's selected implementation, configuration/platform scope, success criteria, and failure contract in the authoritative App Plan. On failure, report what is known, unknown, blocked, and safely recoverable under [OUT-1](#out-1), [RUN-2](#run-2), and [OPS-1](#ops-1). Implement error paths without falsifying effects or acknowledgements. Test fixtures, mocks, and simulations MAY be used in explicitly identified isolated tests/research; their outputs MUST NOT satisfy claims that real production behavior ran successfully.
+
+<a id="nofall-2"></a>
+### 37.2. NOFALL-2 — Safety, offline operation, and platform boundaries
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** interpretation and verification of NOFALL-1 across recovery, platform, offline, security, and synchronization contracts
+
+The following distinctions MUST govern implementation and review:
+
+| Existing responsibility | Compliant meaning under the prohibition |
+|---|---|
+| Errors, interruption, and rollback | Explicit failure, safe interruption, transaction rollback, security containment, and bounded crash recovery preserve the approved operation/state contract; they do not report substitute success. |
+| Retry | A validated retry of the **same approved operation** remains subject to [RETRY-1](#retry-1), effect identity, uncertainty, authorization, and retry bounds. Switching providers/algorithms after failure is not a retry. |
+| Backup and restoration | Independent backups and authorized restoration recover retained state under the declared recovery contract. Recovery MUST disclose restored points, losses, conflicts, and unknowns; it does not silently execute the failed capability through a second implementation. |
+| Platforms and adapters | Deliberately selected platform adapters may differ by supported target while enforcing the same shared core contract. Their selection is based on the declared platform/configuration, not failure-triggered substitution. No requirement for identical binaries or one physical module is introduced. |
+| Local/offline operation | Approved local capabilities are normal capabilities with their own contracts, available independently of online services. A network-dependent action that cannot complete stays failed, pending, or unknown as appropriate. Showing a cached view is permitted only as an explicitly designed view with disclosed freshness; it cannot masquerade as fresh remote success. |
+| Synchronization and topology | Declared replicas, authorized topology transitions, and delayed operation queues preserve the same approved sync/authority semantics under [SYNC-1](#sync-1)–[SYNC-4](#sync-4). NAS loss MUST NOT silently create a new canonical database, weaken conflict rules, or acknowledge undelivered remote effects. |
+| Optional AI/Hermes | Independent ordinary functionality remains available without optional AI. An AI-native operation remains unavailable/failed/unknown when its approved model cannot perform it; silently switching model/provider or inventing a result is prohibited. HERMES-1 and AI-4 retain their distinct scope. |
+| Malware verification | Required gates under [IO-2](#io-2)–[IO-3](#io-3) remain enforced on scanner/signature failure. Independent local capabilities may continue; affected intake stays gated and protection state stays visible. A missing scanner MUST NOT activate an alternate engine or clean-result stub. An explicitly designed multi-engine scan pipeline, if justified, must require its specified stages/results and cannot treat one failed stage as success supplied by another. |
+| Replacement and migration | An alternative may be researched, selected, and deliberately adopted as a future version/configuration through the normal planning, authority, migration, and verification gates. This is an explicit change to the approved implementation, not a dormant runtime rescue path. |
+
+These distinctions preserve availability where honestly supported, recovery, privacy, malware containment, the shared core, and data integrity. They do not weaken existing gates. No fallback design is approved merely by listing two implementations in a plan; the plan MUST specify the independent legitimate responsibility of each or select one. Any genuine unresolved conflict MUST stop affected design/implementation and receive an explicit scoped decision under [GOV-3](#gov-3), without silent weakening of either rule.
+
+<a id="s38"></a>
+## 38. Visual concepts, interaction modes, and named design guidance
+
+<a id="design-1"></a>
+### 38.1. DESIGN-1 — Three rendered concepts and deliberate direction
+
+**Type:** DEFAULT | **Origin:** USER POLICY | **Applies:** substantial new user interfaces and material visual redesign
+
+After understanding actual features and workflows, the design process SHOULD produce **three genuinely different rendered concepts** for representative real application workflows. Superficial theme variations, empty moodboards, and generic dashboards do not satisfy the concept purpose. Each direction SHOULD make its information hierarchy, typography, layout, identity, interaction assumptions, and meaningful states assessable. The owner may choose, combine, refine, or delegate selection. When selection is delegated, the AI MAY compare alternatives internally and present the strongest justified direction, recording the decision and why it fits.
+
+Prioritize refined typography, intentional negative space, elegant layout, strong hierarchy, purposeful motion, accessible interactions, thoughtful identity, responsive adaptation, and polished real states. Airy, calm design and the full Notion color palette are owner preference references, not compulsory themes or claims of license to copy proprietary work. Applications MUST NOT be forced into identical fonts, colors, cards, navigation, or design language. Aesthetic formulas, generic generated layouts, arbitrary anti-card bans, and compulsory decorative imagery MUST NOT replace product-specific reasoning. Measurable accessibility standards and justified technical budgets remain applicable; “no aesthetic formulas” does not prohibit contrast, target-size, or performance acceptance criteria. Apply [UI-4](#ui-4)–[UI-7](#ui-7), including actual rendered review.
+
+<a id="design-2"></a>
+### 38.2. DESIGN-2 — Modes A, B, and C with accessible motion
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** product visual and interaction design
+
+Design plans MUST distinguish these modes when selecting their direction:
+
+| Mode | Meaning and authorization |
+|---|---|
+| **A — Refined foundation** | Typography, predictable interaction, accessibility, foundational design quality, and shared motion engineering. |
+| **B — Distinctive identity** | App-specific visual identity and expressive presentation; unconventional interactions are not required. A and B may coexist. |
+| **C — Experimental interaction** | Unconventional interaction models. **Disabled by default; activation requires an owner request for experimentation.** It never overrides core usability, accessibility, authority, or data protections. |
+
+The shared motion foundation supplies reusable mechanisms, while choreography may differ by app. Preserve reduced-motion behavior and meaningful state communication under [UI-3](#ui-3). Relevant desktop, phone, and tablet layouts MUST adapt workflows and controls to their actual constraints; scaling a desktop screenshot is not responsive design.
+
+<a id="design-3"></a>
+### 38.3. DESIGN-3 — Named upstream Skills and future ZIP review
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** consideration and later authorized use of the owner's design Skills
+
+The owner's named upstream workflow references are **Taste Skill** (`Leonxlnx/taste-skill`, `skills/taste-skill`), **Image-to-Code Skill** (`Leonxlnx/taste-skill`, `skills/image-to-code-skill`), and **Apple Design Skill** (`dickwu/apple-design-skill`). These names are owner-provided research references; their presence here is not proof of current source identity, revision, license, instructions, capabilities, installation, or trust.
+
+For this constitution-only integration, these Skills MUST NOT be installed, executed, modified, or imported. Future installation/use awaits the owner's supplied local ZIPs at the appropriate authorized stage. Before trusted use, verify source identity, pinned revision/digest, actual instructions/resources, license/obligations, permissions, scripts/dependencies, dynamic fetches, and conflicts using [SKILL-3](#skill-3). Compare supplied archives with verified upstream evidence; a filename is not identity verification.
+
+Preserve original upstream instructions as supplied for personal use, together with provenance and the reviewed revision. Apply authority/security controls externally through the trusted invocation contract rather than silently rewriting upstream instructions. Unsafe or conflicting instructions remain inapplicable and MUST NOT execute; unresolved conflicts block the affected use. Skills remain subordinate to the constitution, owner decisions, App Master Plan, and phase contract under [SKILL-2](#skill-2).
+
+<a id="s39"></a>
+## 39. Future application repository blueprint and feature organization
+
+The one-file Universal Rules repository and a future application's repository have different purposes. This section's folders belong to **future applications**, not the active constitutional repository, whose sole tracked file is `MASTER_PLAN.md`.
+
+<a id="blueprint-1"></a>
+### 39.1. BLUEPRINT-1 — Complete substantial-application blueprint
+
+**Type:** DEFAULT | **Origin:** USER POLICY | **Applies:** substantial future application repositories, with proportionate physical simplification for tiny applications
+
+The following is the detailed default conceptual blueprint implementing [DEV-6](#dev-6). Preserve its discoverable responsibilities. Physical names/layout MAY change when sound engineering or framework compatibility requires it, with an explicit mapping in repository entry instructions. Do not create meaningless empty folders, duplicate implementation areas that have no responsibility, or treat folder presence as evidence of implemented behavior. Tiny apps MAY simplify the hierarchy while preserving applicable safety, continuity, specification, and verification obligations.
+
+```text
+Application/
+│
+├── AGENTS.md
+├── README.md
+│
+├── Master Plan/
+│   │
+│   ├── Languages and Data/
+│   │   ├── 1- stack and languages used.md
+│   │   └── 2- How the data is stored.md
+│   │
+│   ├── Master Plan/
+│   │   └── master plan.md
+│   │
+│   ├── Research and Decisions/
+│   │   ├── GitHub Research/
+│   │   ├── Technical Comparisons/
+│   │   ├── Architecture Decisions/
+│   │   ├── Rejected Alternatives/
+│   │   └── Evidence/
+│   │
+│   ├── Design/
+│   │   ├── Visual Concepts/
+│   │   ├── Approved Design/
+│   │   ├── Design System/
+│   │   ├── Motion/
+│   │   └── Accessibility/
+│   │
+│   ├── Reviews/
+│   │   ├── Frontend Reviews/
+│   │   ├── Backend Reviews/
+│   │   ├── Database Reviews/
+│   │   ├── Architecture Reviews/
+│   │   ├── Security Reviews/
+│   │   ├── Performance Reviews/
+│   │   ├── Integration Reviews/
+│   │   └── Final Reviews/
+│   │
+│   ├── Phases/
+│   │   ├── To Be Executed Phases/
+│   │   │   ├── Phase-001/
+│   │   │   │   ├── phase-001.md
+│   │   │   │   ├── subphase-001-001.md
+│   │   │   │   ├── subphase-001-002.md
+│   │   │   │   └── subphase-001-003.md
+│   │   │   └── Phase-002/
+│   │   │
+│   │   └── Done Phases/
+│   │
+│   └── project-state.md
+│
+└── Codebase/
+    ├── Frontend/
+    │   ├── Features/
+    │   └── Shared/
+    │
+    ├── Backend/
+    │   ├── Features/
+    │   └── Shared/
+    │
+    ├── Database/
+    │   ├── Schemas/
+    │   ├── Migrations/
+    │   └── Storage/
+    │
+    └── Documentation/
+        ├── code-map.md
+        ├── feature-map.md
+        └── dependency-map.md
+```
+
+`AGENTS.md` MUST route an executor to applicable authority, the current App Master Plan, Project State, and the next authorized phase. `README.md` MUST provide a beginner-readable project entry point. Existing-app assessment under [DEV-14](#dev-14), relevant Skill metadata under [SKILL-1](#skill-1)–[SKILL-3](#skill-3), and additional review disciplines MUST remain discoverable even where the illustrated tree has no dedicated folder. Links or meaningful records may satisfy these responsibilities without empty scaffolding.
+
+<a id="blueprint-2"></a>
+### 39.2. BLUEPRINT-2 — One complete authoritative App Master Plan
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** application specification and related technical documentation
+
+`Master Plan/Master Plan/master plan.md`, or its explicitly mapped equivalent, MUST contain the complete authoritative intended application specification, with extensive meaningful hierarchical numbered headings. Supporting documents supply evidence, detailed technical explanations, and execution records; they MUST NOT become competing sources of intended product behavior. Use direct explanations and precise links for detail while ensuring the Master Plan states every material product decision and governing contract. No arbitrary heading cap is permitted, and empty/redundant headings MUST NOT inflate apparent completeness.
+
+Coverage MUST include, where applicable: vision/purpose; users/problems; success criteria; differentiation; research; GitHub comparisons/reuse; requirements/assumptions; complete feature inventory and individual feature specifications; workflows/navigation/interactions; screens and states; platforms/accessibility; identity/design system/motion; architecture/boundaries; technology; structures/storage; import/export; offline/NAS/sync; security/privacy; AI capabilities/permissions; failure/no-fallback behavior; data survival/recovery; performance/testing/integration; deployment/updates/migrations/maintenance; risks/rejected alternatives; development phases; and acceptance/evidence. The additional contracts already required by [DEV-7](#dev-7), including timezone, locale, dependency disappearance, hostile intake, emergency maintenance, and lifetime growth, remain mandatory where applicable.
+
+`Languages and Data/1- stack and languages used.md` MUST explain final languages, frameworks, components, versions, responsibilities, licensing, platform suitability, decisions, and justified deviations. `Languages and Data/2- How the data is stored.md` MUST explain engine choices, actual formats, paths, schemas, ownership, independent lifecycle, backup, recovery, export, migration, and app-disappearance survival. Their first position in the reading order does not authorize selecting technology before requirements. Update affected technical records and the Master Plan together when intended behavior changes; preserve historical decisions as explicitly superseded evidence under [DEV-8](#dev-8).
+
+<a id="blueprint-3"></a>
+### 39.3. BLUEPRINT-3 — Feature-first code with real shared boundaries
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** substantial application codebases
+
+Organize code primarily by meaningful feature/domain responsibility under [ARCH-1](#arch-1)–[ARCH-3](#arch-3), with discoverable frontend and backend feature areas where their responsibilities exist. Examples such as Search, Collections, Import, and Settings illustrate feature names, not compulsory features. Shared areas MUST represent actual shared responsibilities; possible examples include motion/components/accessibility/design-system mechanisms and backend authorization/validation/error contracts.
+
+Do not duplicate frontend/backend areas merely for visual symmetry, create a giant universal backend, or add unnecessary layers. The shared Rust core under [CORE-1](#core-1) may be composed of cohesive feature modules; feature-first organization does not authorize parallel product truths. Each boundary MUST have deliberate contracts and effective permissions. A feature MUST NOT bypass another feature's canonical-state, validation, or authorization invariants. Database schemas/migrations/storage implementation remain discoverable, independently of actual private data locations under [SURVIVE-2](#survive-2).
+
+<a id="s40"></a>
+## 40. Beginner-readable implementation documentation and simplicity
+
+<a id="doc-1"></a>
+### 40.1. DOC-1 — File and function explanations for non-programmers
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** meaningful application source files and important functions
+
+Every meaningful source file MUST begin with appropriate language-native file/module documentation, using clear separators and plain language understandable to a reader without programming experience. Explain, as applicable: **(1)** identity/location, **(2)** purpose, **(3)** what it does, **(4)** what it deliberately does not do, **(5)** owning feature/component, **(6)** actual users/callers, **(7)** dependencies/interfaces, **(8)** data read/modified, **(9)** permissions/boundaries, **(10)** invariants, **(11)** errors/failure, **(12)** relevant tests, **(13)** related Master Plan sections, **(14)** maintenance warnings, and **(15)** relevant architectural decisions. Omit inapplicable detail with care; do not replace an explanation with an unexplained acronym or boilerplate slogan.
+
+Important functions MUST document purpose, inputs, outputs, meaningful callers/interfaces, side effects, data mutations, error conditions, assumptions, security/integrity effects, and dependencies. Explain non-obvious internal operations in simple numbered steps. Do not narrate trivial syntax, invent connections, or let comments substitute for types, tests, contracts, or verification. For generated or externally vendored code whose regeneration, upstream preservation, or language syntax prevents safe inline headers, provide a clearly linked adjacent explanation and provenance mapping; the exception is to placement, not to understandability or traceability.
+
+<a id="doc-2"></a>
+### 40.2. DOC-2 — Real relationship maps and synchronized documentation
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** implementation relationships, shared components, and changes affecting documented behavior
+
+Maintain accurate `code-map.md`, `feature-map.md`, and `dependency-map.md` or mapped equivalents under `Codebase/Documentation/`, alongside relevant headers, function documentation, and precise source links. A shared motion module used by actual Search, Collections, Import, and Settings implementations MUST identify those verified consumers. Do not invent these consumers when the features do not exist.
+
+Distinguish direct imports/calls, interface contracts, event paths, data dependencies, and indirect semantic effects. A backend operation that changes UI state does not by itself establish a direct dependency between a frontend animation module and that backend module; document the actual connection path. Use automated extraction/link checks where practical and explicitly record dynamic or semantic relationships that static analysis cannot prove. Relevant documentation MUST be updated during the same verified work that changes its truth. Phase verification MUST detect material documentation drift rather than accepting stale maps silently.
+
+<a id="simple-1"></a>
+### 40.3. SIMPLE-1 — Simplicity and the identity-verified Ponytail role
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** code simplification and consideration of the owner's named Ponytail aid
+
+Optimize for understandability, simplicity, appropriate reuse, minimal unnecessary abstraction, maintainability, clear responsibilities, and correctness. Necessary tests, error handling, comments, security checks, accessibility behavior, and documented contracts MUST NOT be removed merely to reduce line count. Simplification preserves [ARCH-3](#arch-3), [TEST-1](#test-1), and the current phase's approved behavior.
+
+The owner intends **Ponytail** to assist code simplicity and maintainability. [Section 44](#s44) identifies an actually inspected relevant upstream project and pinned revision; that evidence does not establish which later archive the owner will supply or authorize trusted execution. Before declaring or invoking its capabilities, verify the relevant Skill/project identity, source, revision, license, scope, and actual instructions; record the evidence and approved bounded role through [SKILL-3](#skill-3). Match the future supplied artifact to verified source; if that identity is unresolved, retain an explicit pending reference and do not substitute an unrelated similarly named project. General code-simplification work remains available under the verified contracts above. Ponytail MUST NOT be installed during this constitution-only mission. Later trusted use remains within the approved phase and cannot expand authority, erase safeguards, or change architecture by itself.
+
+<a id="s41"></a>
+## 41. Exact execution, limited repair, and evidence-bearing completion
+
+<a id="exec-1"></a>
+### 41.1. EXEC-1 — Strict numerical phases and subphases
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** planned application implementation and conformance execution
+
+Phases MUST execute in ascending numerical order; subphases MUST execute in ascending numerical order within their parent phase. An executor MUST NOT skip unfinished required work, jump from `001.002` to `001.005`, or begin a later phase before the current phase passes its completion gate. A substantial phase MUST have a parent Markdown specification, individually numbered subphase specifications, explicit dependencies, evidence references, and completion status in its folder. Keep phases meaningfully verifiable and subphases independently understandable, bounded tasks. Tiny phases may use one numbered executable subphase in the same file rather than artificial folders; the execution contract still applies.
+
+When a newly discovered dependency or necessary repair changes the sequence, stop affected progression and revise the authorized plan through [DEV-5](#dev-5), [DEV-7](#dev-7), and [GOV-3](#gov-3). Preserve old identifiers and evidence through a supersession/mapping record, assign unambiguous numerical execution order to the revised unfinished sequence, and reconcile Project State before resuming. The executor MUST NOT invent a new order. Bounded in-subphase repair is governed by [EXEC-3](#exec-3). [DEV-17](#dev-17)'s urgent containment path is the existing narrowly scoped exception to ordinary scheduling, not a way to mark skipped work done or resume ordinary features before reconciliation.
+
+<a id="exec-2"></a>
+### 41.2. EXEC-2 — Mandatory 33-field executable subphase contract
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** every executable application subphase
+
+Each executable subphase MUST contain these numbered headings with concrete task-specific details. Explicitly explain inapplicability where a field has no relevant content; omission, unexplained placeholders, or “implement correctly” do not satisfy the contract. Additional meaningful headings MAY be added.
+
+1. **Objective.** The exact bounded outcome.
+2. **Purpose and rationale.** Why the work is needed and its intended value.
+3. **Preconditions.** Required authority, environment, prior evidence, tools, and dependencies.
+4. **Previous required subphase.** Exact predecessor and verified completion requirement, or explicit first-task status.
+5. **Exact repository starting state.** Branch/revision or resolvable baseline, relevant dirty state, and conditions that must be checked before editing.
+6. **Exact files to read.** Paths and relevant sections/symbols, with a bounded navigation route.
+7. **Exact files to create.** Paths and ownership/responsibility.
+8. **Exact files to modify.** Paths and permitted regions or interfaces.
+9. **Files forbidden from modification.** Protected files, systems, data, and boundaries.
+10. **Related Master Plan sections.** Exact governing numbered sections/anchors.
+11. **Relevant existing implementation.** Reusable components, current behavior, and gaps assessed from actual code.
+12. **Required inputs.** Types, examples, provenance, and validity constraints.
+13. **Required outputs.** Artifacts, values, observable behavior, and persistence expectations.
+14. **Exact implementation steps.** Ordered concrete actions and any expressly delegated ordinary choices.
+15. **Required interfaces and signatures.** Names, types, contracts, callers, and compatibility constraints.
+16. **Relevant data types and schemas.** Structures, identifiers, versioning, and applicable migrations.
+17. **State transitions and side effects.** Preconditions, mutations, external effects, atomicity, and acknowledgement boundaries.
+18. **Validation.** Input/domain/state validation and required invariants.
+19. **Error handling.** Failure classes, truthful reporting, safe interruption, and recovery behavior.
+20. **Security and authorization.** Effective principals, permissions, trust boundaries, privacy, and secret handling.
+21. **Edge cases.** Applicable empty, invalid, duplicate, large, concurrent, interrupted, and platform cases.
+22. **No-fallback restrictions.** Selected implementation and the prohibited substitutions relevant to this task.
+23. **Required comments and file headers.** Applicable explanations and exact documentation updates under [DOC-1](#doc-1).
+24. **Connected files and dependencies.** Actual connection paths and affected maps under [DOC-2](#doc-2).
+25. **Required tests.** Relevant existing/new test cases and their actual claims; justified inapplicability where appropriate.
+26. **Exact validation commands.** Working directory, commands, prerequisites, fixtures, and necessary environment details without disclosing secrets.
+27. **Expected results.** Checkable outputs, acceptance conditions, and justified tolerances rather than invented future results.
+28. **Repair scope.** Permitted correction areas plus finite attempt/time bounds and escalation threshold.
+29. **Conditions requiring escalation.** Missing contracts, authority, incompatible evidence, architectural changes, repeated failure, and other specific stop conditions.
+30. **Completion checklist.** All acceptance conditions and applicable conformance checks.
+31. **Evidence recording.** Where to record actual changes, commands, outcomes, errors, repairs, unresolved issues, and tested revision.
+32. **Project State update.** Exact status, paths, evidence pointers, and next-action changes required.
+33. **Next subphase.** Exact next authorized identifier/path, or the parent completion gate when this is the last subphase.
+
+The planning capability MUST resolve major architecture beforehand and provide concrete contracts, examples, expected outputs, and verified commands wherever possible. Distinguish a proposed command from one already executed successfully; commands requiring a future environment must identify that prerequisite. If required information is missing, contradictory, or cannot safely be established, the execution model MUST stop affected work and record the precise unresolved issue. A stronger planning/review process must resolve material ambiguity; an executor MUST NOT invent interfaces, widen permissions, silently change requirements, or guess architecture under [DEV-11](#dev-11).
+
+<a id="exec-3"></a>
+### 41.3. EXEC-3 — Evidence-based bounded repair
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** compiler failures, test failures, and similar execution defects during a subphase
+
+An executor MAY attempt correction within the current subphase's expressly authorized repair scope. Before execution, that scope MUST establish finite attempt and/or time limits appropriate to the task, with an unambiguous stop condition; a repair loop MUST NOT reset its budget by relabeling the same failure. Use actual compiler/test/runtime evidence to identify or narrow the cause, make a bounded correction, and rerun the affected validation and required regression checks. Record attempts, evidence, changes, results, and remaining uncertainty.
+
+Repair MUST NOT rewrite unrelated components, disable or weaken required tests/acceptance, add dummy code or prohibited fallbacks, alter requirements, or change architecture without applicable authority. Escalate when the limit is reached, cause cannot be safely resolved, or repair exceeds scope. Record the precise blocker and needed planning decision in Project State. Endless error-repair loops are not progress; a failed repair leaves the subphase unfinished.
+
+<a id="exec-4"></a>
+### 41.4. EXEC-4 — Project State and a bare “Continue” request
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** every active application and new-session continuation
+
+The concise Project State required by [DEV-9](#dev-9) MUST expose current phase/subphase; last verified completed phase/subphase; completed capabilities; work in progress and not started; actual implementation status; known blockers and important unresolved errors; applicable observed repository revision and relevant dirty state; next authorized action; phase/subphase paths; and continuation instructions. Its human-readable and machine-readable representations MUST agree; one structured Markdown record may serve both. Do not invent the future commit that will contain a state update.
+
+On receiving only **“Continue,”** an executor MUST read repository entry instructions and Project State, reconcile them against actual files/revision/evidence, locate the first unfinished authorized phase and its first unfinished subphase, load its full contract, and inspect existing partial work before acting. A partial subphase MUST NOT automatically restart from scratch. After passing its gate, the executor MAY continue to the next ordered authorized subphase in the same session. Existing delegation persists; “Continue” does not grant new production, destructive, credential, or other ungranted authority. If observed state contradicts recorded state, reconcile evidence and authorization before proceeding; do not select an easier later task.
+
+<a id="exec-5"></a>
+### 41.5. EXEC-5 — Verified checkmarks, Done Phases, and technical reviews
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** subphase/phase completion and application reviews
+
+A phase/subphase heading MUST receive **✅ only after actual verification** of its applicable acceptance criteria. Example: `# ✅ SUBPHASE-001.003 — Database Initialization`. A checkmark is evidence-backed status, not decoration or prediction. Record changes, tests/checks actually performed, actual outcomes, errors, repairs, remaining issues, relevant tested commit/revision, and confirmation of passed acceptance criteria. Unrun checks are not passes; unknown results and incomplete work MUST NOT be marked done.
+
+After all subphases and phase-level checks pass the [Three-Layer Conformance Gate](#dev-13)—Universal Rules, current App Master Plan, and current phase/subphase contract—move or record the parent phase in `Done Phases`, preserve original specifications and evidence, and update Project State. Verify actual implementation rather than the executor's confidence. Material regressions require correction or an explicit authorized disposition under [GOV-3](#gov-3) and [DEV-13](#dev-13); an allowed exception MUST be visible and cannot present an unmet engineering guarantee as satisfied. Historical evidence MUST NOT be erased to make progress appear cleaner. A later discovered regression must be recorded with its affected revision and current status, without falsifying what an earlier check established.
+
+Review records MUST be discoverable by applicable technical responsibility: frontend, backend, database, architecture, security, performance, integration, accessibility/rendered UI, recovery/migration, and final application review. Each review MUST state scope, revision, applicable specification, findings, severity, evidence, required repair, disposition, verification result, and remaining uncertainty. Proportional combined records are allowed where responsibilities remain explicit. Reviews supply findings and evidence; intended product behavior remains authoritative in the App Master Plan. Constitutional reviews additionally follow [GOV-5](#gov-5) and its integrated procedure.
+
+<a id="exec-6"></a>
+### 41.6. EXEC-6 — Measurable execution target around four billion parameters
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** application planning and evaluation of small-model execution continuity
+
+Use the strongest reasonably available capability for complex planning under [DEV-4](#dev-4). Design execution artifacts for substantially weaker coding models, including a target class around **4 billion parameters**, by shifting architecture and ambiguity resolution into precise plans, examples, interfaces, bounded context, deterministic tooling, and acceptance evidence. This is a measurable full-build engineering target under [DEV-11](#dev-11), not a guarantee that every model of a particular size can build arbitrary software.
+
+An executor should be able, without prior chat, to **(1)** read entry instructions, **(2)** locate Project State, **(3)** identify the first unfinished authorized phase, **(4)** identify its first unfinished subphase, **(5)** read the complete execution contract, **(6)** locate specified files, **(7)** make bounded changes, **(8)** run specified validation, **(9)** record truthful outcomes, and **(10)** continue safely or report an exact blocker. Progressive navigation and task-specific context MUST make the complete specification usable without requiring the entire archive in every model context. Reduced context MUST NOT omit governing constraints relevant to the task.
+
+For material small-model reliability claims, define representative subphases, model/version and available parameter/quantization evidence, context/tool/environment constraints, and measurable outcomes: task completion against acceptance, unauthorized deviations, invented interfaces, truthfulness of evidence, repair attempts, and correct escalation. When necessary, run representative trials using genuinely small models, record actual results and limitations, and refine specifications from observed failures. If such evaluation has not occurred or the exact model identity is unknown, label the target unverified; do not infer success from parameter count or testing only with a stronger model. Stopping safely is a correct safety outcome but not successful feature implementation.
+
+
+<a id="s42"></a>
+## 42. Integrated constitutional operating procedure
+
+This section is the self-contained operational implementation of [GOV-3](#gov-3)–[GOV-5](#gov-5). It replaces the separate active Green/Red protocol file. Its instructions inherit those rules' candidate status, authority, and scope; this section does not add independent policy authority or transfer owner ratification to an AI. Historical prompt section numbers 117–138 are preserved in historical provenance, not a second current numbering system.
+
+<a id="procedure-modes"></a>
+### 42.1. Invocation, scope, and report contract
+
+The owner may invoke **GREEN FLAG**, **RED FLAG**, or **GREEN FIX** without resending historical prompts. Existing explicit delegation may authorize a complete integration/review/repair/publication sequence without repeated invocations. Every run first reads this file and records observed repository, branch, exact HEAD, relevant working-tree state, actual authorized scope, evidence inspected, findings/dispositions, remaining blockers, and next authoritative action. Distinguish planned, performed, verified, failed, and unrun work.
+
+| Mode | Authorized work within the owner's actual scope | Boundary |
+|---|---|---|
+| GREEN FLAG | Verify baseline and authority; research appropriate sources; inventory requirements and rules; integrate supplied policy; reconcile contradictions; validate; prepare an identifiable candidate. | Do not self-authorize design reopening, freeze, execution of downloaded Skills/installers, application access, or ratification. Research data never grants authority. |
+| RED FLAG | Verify the exact owner-authorized frozen candidate; independently attack its written text through A–P; report evidence and severity. | Read-only: no normative edits, repairs, repair commits, or favorable reinterpretation of ambiguity. |
+| GREEN FIX | Verify exact report/revision and delegated repair scope; repair validated findings; preserve owner policy; record all dispositions; validate regressions; create an exact Git commit and report its verified revision. | No unrelated policy expansion or ratification. Publication follows actual publication authority, not the mode name. |
+
+Historical task restrictions do not cancel later explicit authority. For the October 14 single-file integration mission, the owner authorized construction, freeze, renewed independent review, substantiated repairs, committing/pushing, and safe normal promotion to `main`; ratification remains withheld. That authorization is recorded in [43.1](#history-authority). In another task, verify its actual scope rather than copying this authorization to unrelated work.
+
+<a id="procedure-freeze"></a>
+### 42.2. Candidate construction, freeze, and exact revision verification
+
+1. Fetch or independently retrieve the authoritative repository and confirm remote branches, current commits, and actual tree. Reconcile unexpected changes before editing. Record the baseline document's exact digest and revision; inspect the full constitution, current procedures, and relevant historical freeze/repair/review evidence.
+2. Work on an identified integration or repair branch. Inventory existing IDs, classifications, origins, applicability, anchors, protections, and owner requirements. Integrate authorized changes with explicit refinement rationale. Preserve old refs/ancestry through ordinary commits; do not rewrite history, force-push, remove historical branches, or manufacture signatures.
+3. Before freeze, validate the intended one-file tree, rule/metadata preservation, heading structure, duplicate IDs/anchors, references, deleted-file independence, governance authority, factuality, proportionality, whitespace, and Git integrity. Resolve substantiated contradictions or document exact blockers. A structural check alone is not semantic verification.
+4. Verify explicit owner freeze authority identifying the scope/candidate or delegating construction and freeze of the described integration. A prior scoped delegation is sufficient when it actually covers this revision and workflow; neither Green completion nor a self-written freeze label supplies authority. Without the required authority, RED FLAG stops with **RED FLAG REQUIRES OWNER-AUTHORIZED PLAN FREEZE**.
+5. Freeze an exact committed candidate. Record repository URL, branch, full commit, tree/blob where available, filename `MASTER_PLAN.md`, SHA-256, clean/known tree state, authorization source/scope, baseline, and permitted review/repair scope in a separate revision receipt or report. Do not invent a self-referential commit ID inside the file being committed. The receipt may live in a separately identified historical Git ref or final report, preserving the active tree's single-file restriction.
+6. Before each Red round, independently verify the commit and candidate bytes against the freeze receipt, read the actual full text, and identify any branch movement or dirty changes. A matching filename, branch name, candidate label, or earlier review summary is insufficient. Do not silently switch to a newer HEAD. Record retrieval or verification failures honestly.
+7. Keep review outcomes outside frozen candidate bytes. A report commit on a separate historical ref may advance without changing the target. Any normative repair creates a new target and resets the two-round count. Even a purportedly non-normative byte change requires explicit identity/diff verification and a new receipt; do not claim reviewers examined bytes they did not examine.
+
+Freeze closes ordinary policy brainstorming for the specified candidate. Post-freeze normative change requires a traceable validated defect, demonstrated contradiction, technically false claim, unsafe ambiguity, material incompleteness exposed during attack, or explicit owner reopening authority. A defect discovered outside a full Red round first receives a finding record and applicable repair authority; do not invent a completed Red report. Preserve all earlier target identities and findings.
+
+<a id="procedure-red"></a>
+### 42.3. Read-only independent Red battery
+
+The source order is **actual frozen normative text → this integrated operating procedure → supporting historical evidence**. Previous assistant explanations, Green reports, rule counts, favorable verdicts, tools, prompts, or outside intent cannot supply missing wording or excuse defects. Attack what is written. Do not infer correctness from Rust, SQLite, ClamAV, source licenses, backups, strong models, Skills, accessible-looking design, or passing syntax checks.
+
+Exercise every **A–P lens in [GOV-5](#gov-5)** and meaningful interactions among them. These 16 named scopes are mandatory battery coverage: A normative logic; B proportionality; C 20–50-year lifecycle; D loss/ransomware/sync; E malware/Raw/ClamAV; F Skill supply chain; G Hermes/AI authority; H UI/UX/anti-slop; I accessibility; J locale/time; K platforms/Rust; L local-first/NAS; M migration/recovery; N build/release/supply chain; O development governance; and P technical factuality. The detailed attack table in GOV-5 is part of this same document and supplies each scope.
+
+For this integration, additionally attack no-fallback versus independent local/recovery behavior; mobile uninstall and key loss; source ZIP integrity and rights; requirements-first Rust/Tauri/frontend selection; shared-core feature boundaries; complete App Plan versus small-model context; comments and relationship drift; mandatory sequential subphases versus repair/replanning; experimental design versus accessibility; one-file constitution versus future-app folders; and historical convergence wrongly reused for new bytes.
+
+Use independently tasked reviewers with fresh contexts where available. A reviewer must not silently repair its own target or serve as an independent reviewer of its own authored/ repaired candidate. Record author/reviewer roles, attributable task/session identities, context separation, material information shared, evidence access, and any configured versus actually observable model identity. Different model labels alone do not prove independent deployed models. Focused helpers contribute coverage; they do not count as separate complete rounds unless they actually perform and report the complete required scope.
+
+If independent reviewers are unavailable, use distinct sequential passes for useful coverage and disclose that independence is unavailable. Same-author or repeated same-reviewer passes do not satisfy two independent-round convergence by relabeling them. Reviews may use targeted primary-source research; distinguish evidence verified from assumptions. Do not execute untrusted source or install Skills merely to review text.
+
+<a id="procedure-findings"></a>
+### 42.4. Finding record and truthful residual-risk statement
+
+Every proposed finding receives a stable report-local identifier, target revision/digest, lens/scope, exact rule/section and problematic quotation, concrete failure scenario, why existing clauses do not resolve it, severity and confidence, smallest viable repair direction, and possible regression risk. Preserve rejected hypotheses proportionately as **NOT AN ISSUE** with reasons. Taste or a preferred alternative is not itself a defect.
+
+| Classification | Meaning |
+|---|---|
+| BLOCKER | Unsafe ratification: material data-loss/security risk, fundamental contradiction, unenforceable core requirement, or dangerous falsehood. |
+| MATERIAL | Substantiated defect requiring correction before ratification even when not immediately catastrophic. |
+| NON-BLOCKING | Recorded improvement that does not by itself prevent candidate progress. |
+| NOT AN ISSUE | Attack hypothesis rejected after examining wording, applicability, and evidence. |
+
+Every Red report gives counts, exact scope/coverage, sources, uncertainty, reviewer independence limits, and whether it is one round or an evidenced convergence assessment. A report with zero BLOCKER and zero MATERIAL findings states exactly:
+
+> No material defect was identified under the defined review battery. This does not prove absolute correctness, security, completeness, or immunity to future unknown conditions.
+
+When either material class is nonzero, do not assert that clean-result sentence as the review outcome. Report the actual material findings and disclose that other defects may remain and the attack does not prove all defects were discovered. No report calls the constitution unbeatable or permanently secure. These residual limitations apply regardless of convergence.
+
+<a id="procedure-fix"></a>
+### 42.5. Green Fix and regression validation
+
+1. Verify the exact Red report, target bytes, findings, current branch/tree, and actual owner repair authority. A later current-session delegation may cover repeated repair/review rounds; it does not authorize unrelated policy.
+2. Validate each finding against the text/evidence. Record accepted/repaired, rejected with evidence, duplicate, deferred NON-BLOCKING, or unresolved disposition as appropriate. No BLOCKER/MATERIAL item silently disappears or becomes resolved merely by renaming its severity. An accepted residual engineering constraint requires accurate claims and applicable authority; it cannot create a false satisfied guarantee.
+3. Repair only substantiated issues within scope. Preserve owner policy, unaffected rule obligations/metadata/IDs, provenance, and historical reports. When materially new policy is genuinely required outside delegation, record the exact missing authority and stop that affected change.
+4. Record each finding's severity, affected rules, scenario, repair, regression impact, evidence, remaining uncertainty, and changed candidate identity. A defect established outside a completed Red round is recorded as such.
+5. Re-run applicable rule preservation, reference/tree, factuality, proportionality, conflict, regression, whitespace and Git checks. Inspect the actual patch against the reviewed revision. Do not disable validation or fabricate clean outcomes.
+6. Create a Git commit for the repaired candidate and return its exact verified revision/digest. This may be a local commit or, under actual publication authority, a repository Git-object API commit followed by a normal non-destructive ref update. Verify parent ancestry, exact tree/blob bytes, and the resulting ref; describe the operation actually performed rather than claiming a local commit when only a remote API commit was created. Bind the new freeze receipt to the repair/review delegation and new bytes. **Every normative repair invalidates all earlier clean-round credit; attack the changed candidate again.** The repairer's own checks are Green verification, not independent Red review.
+
+<a id="procedure-convergence"></a>
+### 42.6. Convergence and owner ratification
+
+A ratification recommendation requires all of the following for the exact current candidate: zero remaining BLOCKER; zero remaining MATERIAL; explicit dispositions of earlier findings; no material regression; passing current structural, technical factuality, and proportionality review; and **two consecutive independent complete Red rounds after the last normative repair with no BLOCKER or MATERIAL findings**. A new material finding breaks the clean sequence. Non-blocking issues remain visible even when the candidate is eligible for recommendation.
+
+If this cannot be completed with available resources, report the exact incomplete scope and review count. An authorized accurately labeled unratified candidate may be published without claiming convergence. Historical rounds on other bytes do not count. A clean report is evidence, not proof of permanent correctness or a grant of adoption authority.
+
+Only the owner or an explicitly delegated ratification authority can ratify. Obtain a separate explicit decision identifying the exact revision/digest, status, applicability/effective date, and any approved scope/conditions. Integration authorization, a phrase such as “Continue,” default-branch promotion, a review recommendation, or a push does not ratify. Until that decision, candidate status remains **NOT RATIFIED**. Preserve the actual decision in revision-bound evidence; do not fabricate a signature or externally verified identity. If status metadata is later changed, distinguish the ratified content from the subsequent record commit and accurately bind the decision to the approved bytes.
+
+<a id="procedure-publish"></a>
+### 42.7. Publication and independent remote verification
+
+Publication needs actual owner authority, which the current single-file mission provides for the integration branch and normal safe `main` promotion. Verify repository permissions, branch protection, divergence, and ancestry before promotion. Use ordinary non-destructive commits and ref updates; do not force-push, rewrite old history, delete preserved branches, or bypass protections. If main cannot safely advance, publish the completed integration branch, leave main intact, and report the precise blocker. Tags and releases are not implicit in candidate publication.
+
+The final active/default tree contains **only `MASTER_PLAN.md`**, with no tracked supporting files or folders. New review/verification receipts may be committed to separately identified historical refs; such a ref is explicitly evidence storage, not a second active constitution. Verify candidate identity when using evidence refs that also contain an older historical constitution. Former local documents remain recoverable through Git ancestry and immutable links; active operation never requires them to fill a missing rule or procedure.
+
+After persistence, use a fresh checkout or equivalent independent GitHub retrieval to verify repository/branch, exact remote commit, sole tracked file, absent unexpected files/folders/untracked artifacts in the verification checkout, current structural checks, historical candidate/review recoverability, file SHA-256 matching the tested artifact, and NOT RATIFIED status. Report actual commits and outcomes, including failed/unrun checks and limitations. A successful API response alone is not independent verification of final remote contents.
+
+<a id="procedure-amend"></a>
+### 42.8. Future amendments and durable continuation
+
+An amendment starts from the current authoritative revision and actual owner authorization. Record the problem/owner decision, impacted IDs, requirement inventory, technical evidence, proposed precise wording, preserved obligations, explicit replacements, compatibility/transition implications, and remaining uncertainty. Preserve stable IDs wherever compatible; an intentionally retired ID retains a historical disposition and replacement mapping rather than silently disappearing. Preserve classifications, origins, applicability, and separate ratification status accurately.
+
+Integrate on an identified branch, keep the active one-file tree, update cross-references and the preservation map, and perform Green validation. Obtain or verify scoped freeze authority, bind exact bytes, and run the same independent Red/Fix/convergence procedure. Substantive amendments cannot inherit old convergence, and ratification of an earlier version does not ratify the amendment. Do not propagate a constitutional change automatically into unrelated application repositories; each application needs applicable adoption/task authority and its own conformance workflow.
+
+A new session reads this document, the exact revision-bound freeze/review/repair receipts, actual Git state, and current delegation. It resumes the next authorized stage supported by evidence. It does not reconstruct missing authority from historical assistant claims or ask the owner to repeat an already documented decision.
+
+<a id="s43"></a>
+## 43. Authorization provenance and historical preservation — non-normative
+
+This section records evidence and change dispositions. It does not create additional normative rules, repeat superseded instructions as active policy, ratify the candidate, or certify subsequent publication/review. Current operating obligations are fully stated in this file; historical sources explain their lineage and remain independently recoverable through Git.
+
+<a id="history-authority"></a>
+### 43.1. Current integration authority and its limits
+
+The owner supplied **“GPT-6 ASTRA — UNIVERSAL RULES: FINAL INTEGRATION AND SINGLE-FILE CONSOLIDATION MISSION”** for the authoritative repository `mhyahya854/Universal-Rules`. The integration began October 14, 2026. This is a recorded user instruction, not an inferred authorization from a tool, previous assistant verdict, or downloaded source. The source mission says:
+
+> You are authorized to perform this repository integration now. Do not stop after producing recommendations or a theoretical plan. Inspect, consolidate, implement, verify, commit, and push the actual work to GitHub.
+
+> The owner authorizes making the final active/default branch conform to the one-file structure, provided this can be accomplished safely through normal, non-destructive Git operations.
+
+> This is authorization to publish a new unratified candidate, not authorization to declare constitutional ratification.
+
+The same mission directs a new integration branch; exact baseline verification; consolidation of all governing information into `MASTER_PLAN.md`; fresh independent A–P review of the materially changed candidate; substantiated repairs and renewed review; and safe normal `main` promotion after applicable validation. Its Stage G permits accurately labeled publication with incomplete convergence if resources prevent completing the review process, with the limitation disclosed. It preserves owner ratification as a separate exact-candidate decision. It forbids history rewriting, force pushes, deletion of historical review branches, manufactured signatures, and installation/execution/modification/import of the named design Skills during this mission; it also forbids Ponytail installation. No tag, release, unrelated application access, or implicit application migration is authorized by this mission.
+
+The complete active policy resulting from that instruction is included in the governing sections here. The source message need not be present as an additional active file to operate these rules. A source attachment digest identifies received evidence without authenticating an external identity or granting broader authority: **SHA-256 `7658f2762fe3b96f7002000c03ec08339c255aaa6bdf083ff4c5daa984978755`**. The authoring process resumed from existing work artifacts after a session interruption on October 15, 2026; the resumed editor remains the same logical Green author role and does not become an independent Red reviewer through that restart.
+
+Old one-time instructions to wait for a completion phrase, keep work local, restrict a particular repair to RF-01/RF-02, or refrain from review described earlier tasks. Their historical records remain intact; the later explicit mission supplies the current scoped authority under [GOV-3](#gov-3)–[GOV-5](#gov-5). General authority, exact-freeze, read-only Red, repair-scope, review-invalidation, and separate-ratification controls remain active in [section 42](#s42).
+
+<a id="history-baseline"></a>
+### 43.2. Exact baseline and historical review scope
+
+| Historical item | Identity and interpretation |
+|---|---|
+| Earlier default-branch draft | `c2fd9e3d8ac8c41a2ec1e336d2ec097314ef80a5`; 112,709-byte original constitution, SHA-256 `21a6c3b807457a910787425af845324e52783f2e48bf00efb55ef6d9b224e459`. It is an ancestor, not a later competing policy. Its obsolete absolutes are not restored into this candidate. |
+| Reviewed integration baseline | `constitution/pre-ratification-working` at `a9c597c8f14536a4404a64494cf56e9015e1288a`; 211,799-byte `UNIVERSL RULES FOR ALL APPS.md`, SHA-256 `1c6471ab3ec5291b9cd4ec884912ccec10431d2e35e9e514ad29574b778b082d`; 113 rules, 33 substantive sections, 146 explicit anchors, 33 Skill families, 21 tracked Markdown files. |
+| Earlier freeze and repair | The freeze identified `e15191c1509facc3859b46c25cc8a1d1b7eaa12f`; the subsequent RF-01/02 repair produced the a9c597c baseline. DEV-5 preserved bounded planning experiments without production bypass; GOV-5 corrected the residual-risk statement for non-clean reviews. Their exact receipts remain linked below. |
+| Historical review evidence | `review-history/universal-rules-convergence` at `b5ac54fb98304515ae394507ae8dbcd0f6fe54d7`, containing six additional review/verification records. Preserve that historical ref and ancestry; do not treat its older constitution as a second current governing source. |
+| Historical convergence only | October 14 round 1 and round 2 each reported zero BLOCKER, zero MATERIAL, and zero NON-BLOCKING for the exact a9c597c candidate/digest. The audit concerns only those bytes. These rounds provide no clean-round credit for this materially revised candidate. |
+
+The historical reports document separate reviewer task/context boundaries, a shared model family/environment, limited helper contexts and prior repair-topic exposure, and unverified exact deployed model variants. A scoped A–F helper and targeted ClamAV supplement are not additional complete rounds. One unsuccessful reviewer task was excluded from convergence. The initial-generation provenance record contains an explicitly unverified historical attestation; this appendix preserves its status and does not recertify it. New review outcomes and publication identities belong to exact-revision receipts under [42.2](#procedure-freeze), with actual independence limitations under [42.3](#procedure-red).
+
+<a id="history-rules"></a>
+### 43.3. Original rule preservation and explicit refinement ledger
+
+All **113 original stable IDs, titles, Type, Origin, and Applies fields** remain. The inventory contains **92 original rule bodies preserved without semantic change, 21 original rules explicitly refined, and 24 new rules: 137 total**. No original rule ID is retired or superseded. Numbered subsection prefixes and conversion of former local provenance links to exact historical URLs are editorial changes and do not count as semantic refinement. Additions and clarification within the 21 listed rules count as refinement even when they remove no obligation.
+
+The 92 unchanged bodies preserve their full applicability, qualifiers, tables, examples, and cross-references. Their IDs, grouped for navigation, are:
+
+| Original family | Unchanged rule bodies |
+|---|---|
+| SAFE | [SAFE-1](#safe-1), [SAFE-2](#safe-2), [SAFE-3](#safe-3) |
+| AUTH | [AUTH-1](#auth-1), [AUTH-2](#auth-2) |
+| LANG | [LANG-1](#lang-1) |
+| ARCH | [ARCH-2](#arch-2), [ARCH-3](#arch-3) |
+| CORE | [CORE-1](#core-1) |
+| UI | [UI-2](#ui-2), [UI-3](#ui-3), [UI-4](#ui-4), [UI-6](#ui-6), [UI-7](#ui-7) |
+| LIFE | [LIFE-1](#life-1), [LIFE-3](#life-3) |
+| DATA | [DATA-1](#data-1), [DATA-2](#data-2), [DATA-3](#data-3), [DATA-4](#data-4), [DATA-5](#data-5) |
+| OFFLINE | [OFFLINE-2](#offline-2), [OFFLINE-3](#offline-3) |
+| PORT | [PORT-1](#port-1), [PORT-2](#port-2) |
+| ASSET | [ASSET-1](#asset-1), [ASSET-2](#asset-2), [ASSET-3](#asset-3) |
+| NAS | [NAS-1](#nas-1), [NAS-2](#nas-2) |
+| STORE | [STORE-1](#store-1), [STORE-2](#store-2) |
+| CON | [CON-1](#con-1), [CON-2](#con-2) |
+| OUT | [OUT-1](#out-1) |
+| OPS | [OPS-1](#ops-1) |
+| RETRY | [RETRY-1](#retry-1) |
+| AI | [AI-1](#ai-1), [AI-2](#ai-2), [AI-3](#ai-3) |
+| HERMES | [HERMES-1](#hermes-1), [HERMES-2](#hermes-2), [HERMES-3](#hermes-3) |
+| AUDIT | [AUDIT-1](#audit-1), [AUDIT-2](#audit-2), [AUDIT-3](#audit-3) |
+| EVID | [EVID-1](#evid-1) |
+| PRIV | [PRIV-1](#priv-1), [PRIV-2](#priv-2) |
+| EDIT | [EDIT-1](#edit-1), [EDIT-2](#edit-2) |
+| SYNC | [SYNC-1](#sync-1), [SYNC-2](#sync-2), [SYNC-3](#sync-3), [SYNC-4](#sync-4) |
+| RECOVER | [RECOVER-1](#recover-1), [RECOVER-2](#recover-2) |
+| BACKUP | [BACKUP-1](#backup-1), [BACKUP-2](#backup-2) |
+| IO | [IO-1](#io-1), [IO-2](#io-2), [IO-3](#io-3) |
+| MIGRATE | [MIGRATE-1](#migrate-1), [MIGRATE-2](#migrate-2) |
+| SEC | [SEC-1](#sec-1), [SEC-2](#sec-2), [SEC-3](#sec-3), [SEC-4](#sec-4), [SEC-5](#sec-5) |
+| RUN | [RUN-1](#run-1), [RUN-2](#run-2), [RUN-3](#run-3) |
+| TEST | [TEST-1](#test-1), [TEST-2](#test-2) |
+| GOV | [GOV-2](#gov-2), [GOV-3](#gov-3) |
+| DEV | [DEV-1](#dev-1), [DEV-4](#dev-4), [DEV-8](#dev-8), [DEV-13](#dev-13), [DEV-14](#dev-14), [DEV-15](#dev-15), [DEV-16](#dev-16), [DEV-17](#dev-17), [DEV-18](#dev-18) |
+| INFO | [INFO-1](#info-1), [INFO-2](#info-2), [INFO-3](#info-3), [INFO-4](#info-4) |
+| SKILL | [SKILL-1](#skill-1), [SKILL-3](#skill-3), [SKILL-4](#skill-4) |
+
+The following refinements state their exact integration purpose; unaffected obligations in each rule remain active:
+
+| Refined original rule | Explicit change and retained protection |
+|---|---|
+| [GOV-1](#gov-1) | Declare the single current file, integrated-procedure precedence, informative history/research, and explicit conflict disposition; retain every original classification, applicability, candidate-status, and exception distinction. |
+| [ARCH-1](#arch-1) | Replace the old no-prescribed-folders statement with the detailed substantial-app blueprint and justified mapped adaptations; retain feature ownership, invariants, proportionality and non-folder architecture choices. |
+| [UI-1](#ui-1) | Replace automatic native-presentation preference with the owner’s required native versus shared/custom comparison and justified hybrid selection; retain accessibility, platform behavior, Rust selection and shared-core protections. |
+| [UI-5](#ui-5) | Replace the numerical 60/30/10 aesthetic default with product-specific color hierarchy because the new owner instruction rejects aesthetic formulas; retain semantic states, accessible communication, design-system coherence, motion and all other safeguards. |
+| [LIFE-2](#life-2) | Add the stronger independent representation and app-disappearance evidence requirements; retain bounded retention, portability, dependencies and maintenance-minimal claims. |
+| [OFFLINE-1](#offline-1) | Link honest independent local/cached/pending behavior to the no-fallback boundary; retain useful local operation and genuine remote dependence. |
+| [PORT-3](#port-3) | Integrate the explicit permission for app-specific narrower platform scope. Preserve named assessment of Mint, Ubuntu LTS, Arch and CachyOS, reasons/status/testing commitments and actual validation for declared supported targets. The prior blanket first-class baseline expectation is expressly refined by this owner decision; unsupported scope is never reported as tested support, and policy departures retain GOV-3 authority. |
+| [AI-4](#ai-4) | Clarify deliberate provider migration versus runtime failure substitution; retain independent ordinary functions, AI-native unavailability, memory inspection/privacy and replaceability boundaries. |
+| [SEC-6](#sec-6) | Clarify deliberate scanner selection/composition or future migration versus forbidden failure-triggered engine substitution; retain ClamAV preference, generic capability boundary, platform/IPC/security, private local scanning, provenance and actual licensing review. |
+| [GOV-4](#gov-4) | Retain version/rationale/ID/evidence, explicit status and no automatic application adoption; replace obsolete one-time completion/waiting gates with actual scoped current authority and exact freeze/review/repair/publication records. |
+| [GOV-5](#gov-5) | Inline the operating procedure; reconcile later authorized freeze/review/publication with old task gates; permit exact verified Git commits through local Git or the authorized repository Git-object API. Preserve read-only Red, all A–P lenses, severity/evidence, repair restriction, review reset, two independent clean rounds and owner-only ratification. |
+| [DEV-2](#dev-2) | Add the PLAN-1 link to the mandatory ordered workflow; retain complete initial refinement and no premature implementation. |
+| [DEV-3](#dev-3) | Add ordered initial review, dedicated project discovery and pinned ZIP/source-assessment links; retain all research/adoption/alternative and provenance obligations. |
+| [DEV-5](#dev-5) | Replace the stale statement that constitutional review remains blocked with actual owner-authorized exact-freeze review. Retain all application Plan Freeze requirements, bounded research experiments, stop gates and emergency limits. |
+| [DEV-6](#dev-6) | Replace the old broad APP Plan layout example with the owner’s Master Plan/Codebase blueprint and mapped engineering adaptations; retain every discoverable responsibility, including brownfield assessment and Skill metadata. |
+| [DEV-7](#dev-7) | Require the complete authoritative intended product specification in the App Master Plan; supporting references cannot hide material decisions. Retain all original product, time, data, security, research and lifecycle coverage. |
+| [DEV-9](#dev-9) | Add subphase/error/Continue details and clarify a stable structured Markdown schema can satisfy both machine and human readability; retain all original current-state and revision reconciliation obligations. |
+| [DEV-10](#dev-10) | Replace optional decomposition with mandatory numbered bounded subphases and their detailed execution contracts, with proportionate tiny representations; retain parent contracts, stop/escalation gates, authorized choices and emergency limits. |
+| [DEV-11](#dev-11) | Add the measurable approximately 4B development target, distinct from the approximately 1B Hermes product-use target; retain full-build continuity, no hidden context, authority and stop-rather-than-guess safeguards. |
+| [DEV-12](#dev-12) | Add subphase evidence and verified checkmark/parent completion references; retain original specifications, actual outcome history, acceptance evidence and no false Done status. |
+| [SKILL-2](#skill-2) | Replace the historical final-attack block with verification of actual review authority and exact frozen candidate; retain subordinate Skill authority, effective permission boundaries and evidence requirements. |
+
+<a id="history-new-rules"></a>
+### 43.4. New rule and owner-decision map
+
+| New rules | Integrated owner decision |
+|---|---|
+| [PLAN-1](#plan-1), [PLAN-2](#plan-2) | Ordered nine-step planning; broad relevant investigation; consequential owner review; post-review existing-project discovery; source ZIP provenance, licensing and actual implementation assessment. |
+| [TECH-1](#tech-1)–[TECH-3](#tech-3) | Requirements before technology; Rust/Tauri 2/SQLite/open-source preferences; actual license scope; platform commitments and frontend evidence. |
+| [SURVIVE-1](#survive-1), [SURVIVE-2](#survive-2) | Retained information independent of app installation, actual preserved representation, keys/relationships/formats, mobile deletion and app-disappearance recovery. |
+| [NOFALL-1](#nofall-1), [NOFALL-2](#nofall-2) | Enforceable prohibition of failure substitution and false success, with precise same-operation retry, recovery, local/offline, platform, sync and scanner boundaries. |
+| [DESIGN-1](#design-1)–[DESIGN-3](#design-3) | Three genuinely distinct rendered concepts; owner delegation; intentional visual direction; A/B/C modes; motion/accessibility; named Skills, later ZIP review and unchanged upstream instruction provenance. |
+| [BLUEPRINT-1](#blueprint-1)–[BLUEPRINT-3](#blueprint-3) | Complete future-app folder responsibilities, single authoritative App Plan, technical records, feature organization and shared-core boundaries. |
+| [DOC-1](#doc-1), [DOC-2](#doc-2), [SIMPLE-1](#simple-1) | Beginner-readable file/function explanations, truthful dependency maps and same-change drift correction; evidenced Ponytail role and protection against destructive shortening. |
+| [EXEC-1](#exec-1)–[EXEC-6](#exec-6) | Strict numbered sequence; all 33 subphase fields; finite repair; Project State and bare Continue; verified checkmarks, completion gates and review disciplines; measurable approximately 4B execution target. |
+
+The integrated governance procedure adds no new stable rule IDs: it operationalizes GOV-3–GOV-5. The 33 original Skill families remain intact under SKILL-4. Retained safeguards also cover domain hazards, effective authority, durable storage/consistency/concurrency, original-versus-derived meaning, privacy/erasure, NAS/sync/conflicts, audit/provenance, Hermes independence, untrusted intake, backups/recovery, migrations, release reconstruction, tests, accessibility, emergency/brownfield work, locale and timezone semantics. This ledger supports review; counts and author assertions do not prove semantic correctness or convergence.
+
+<a id="history-files"></a>
+### 43.5. Complete former-file preservation and consolidation map
+
+The baseline’s 21 tracked files are removed only from the new active tree after consolidation. Their bytes remain available at the immutable baseline links below and through ancestry; the six later review records remain at the separately pinned review-history commit. Historical files retain their own wording and section numbers. No former local file supplies a missing active instruction.
+
+| Pinned historical source | Classification and current preservation/consolidation disposition |
+|---|---|
+| [UNIVERSL RULES FOR ALL APPS.md](https://github.com/mhyahya854/Universal-Rules/blob/a9c597c8f14536a4404a64494cf56e9015e1288a/UNIVERSL%20RULES%20FOR%20ALL%20APPS.md) | Entire original rule foundation consolidated in sections 1–33 with the explicit refinements above; old section 30 status is historical. Original IDs/metadata remain; no duplicate active constitution. |
+| [README.md](https://github.com/mhyahya854/Universal-Rules/blob/a9c597c8f14536a4404a64494cf56e9015e1288a/README.md) | Navigation and summaries; no independent stronger authority. Move useful current reader orientation and lifecycle guidance inline; discard stale current checkpoint as current instruction, retain historical link. |
+| [CHANGELOG.md](https://github.com/mhyahya854/Universal-Rules/blob/a9c597c8f14536a4404a64494cf56e9015e1288a/CHANGELOG.md) | Chronology and provenance. Summarize important lineage and link exact historical blob; old pending/blocked/no-push statuses are not current obligations. |
+| [decisions/ADR-0001-rust-first.md](https://github.com/mhyahya854/Universal-Rules/blob/a9c597c8f14536a4404a64494cf56e9015e1288a/decisions/ADR-0001-rust-first.md) | Rationale/examples subordinate to LANG-1/GOV-3/CORE-1. Existing governing decisions stay in rules. Optionally summarize useful memory-safety limits and exception rationale inline; examples do not create extra obligations. |
+| [governance/green-red-protocol.md](https://github.com/mhyahya854/Universal-Rules/blob/a9c597c8f14536a4404a64494cf56e9015e1288a/governance/green-red-protocol.md) | Active operational substance listed above; must be inline. Source prompt section numbers 117–138 are historical identifiers, not constitution section numbering. Old no-push boundary is conditional on absent authorization. |
+| [governance/2026-10-plan-freeze.md](https://github.com/mhyahya854/Universal-Rules/blob/a9c597c8f14536a4404a64494cf56e9015e1288a/governance/2026-10-plan-freeze.md) | Original owner authorization, limits and 6a0d89b→e15191c lineage are historical evidence. Preserve general freeze/repair authority procedure inline. Old design complete/next Red status applies only then. |
+| [governance/2026-10-plan-freeze-revision.md](https://github.com/mhyahya854/Universal-Rules/blob/a9c597c8f14536a4404a64494cf56e9015e1288a/governance/2026-10-plan-freeze-revision.md) | Historical exact commit/blob/checksum receipt and non-self-referential revision identification example; no current 827-link target or new review credit. |
+| [governance/2026-10-green-fix-rf01-rf02.md](https://github.com/mhyahya854/Universal-Rules/blob/a9c597c8f14536a4404a64494cf56e9015e1288a/governance/2026-10-green-fix-rf01-rf02.md) | Historical authorized RF-01/02 dispositions. Preserve resulting DEV-5/GOV-5 requirements; do not carry 'only these two rules may ever change' into reopened mission. |
+| [provenance/initial-generation-boundary.md](https://github.com/mhyahya854/Universal-Rules/blob/a9c597c8f14536a4404a64494cf56e9015e1288a/provenance/initial-generation-boundary.md) | Explicitly unverified historical drafting attestation, never an active directory-access prohibition or current agent attestation. Preserve recoverability, don't recertify. |
+| [research/2026-10-ui-product-agent-skills.md](https://github.com/mhyahya854/Universal-Rules/blob/a9c597c8f14536a4404a64494cf56e9015e1288a/research/2026-10-ui-product-agent-skills.md) | Historical 18 pinned repository assessments, 109 inspected-file inventory, 23 externally supplied primary summaries, blocked retrievals and reference-only trust dispositions. Preserve evidence distinctions in provenance. No install permission, mandatory vendor style, or current trust certificate follows. Governing source/security/outcome rules already live in SKILL/UI/AI/SEC/EVID. |
+| [reviews/2026-10-astra-adversarial-review.md](https://github.com/mhyahya854/Universal-Rules/blob/a9c597c8f14536a4404a64494cf56e9015e1288a/reviews/2026-10-astra-adversarial-review.md) | Original c2fd9e3 attack, findings/tables and 20 priorities. Historical regression leads, not competing current rules or proof of exact model identity. |
+| [reviews/2026-10-rc1-integration-disposition.md](https://github.com/mhyahya854/Universal-Rules/blob/a9c597c8f14536a4404a64494cf56e9015e1288a/reviews/2026-10-rc1-integration-disposition.md) | F01–F56 accepted/modified dispositions and 34 factual corrections mapped to rc1. Preserve lineage; don't revive old absolutes or treat old validation as new artifact validation. |
+| [reviews/2026-10-rc1-verification-outcome.md](https://github.com/mhyahya854/Universal-Rules/blob/a9c597c8f14536a4404a64494cf56e9015e1288a/reviews/2026-10-rc1-verification-outcome.md) | Historical d9fc392 recommendation and N1–N4, not actual ratification or current review. N1 language artifact scope, N2 exception lifecycle, N3 WAL qualification, N4 independent dimensions remain in normative rules. |
+| [reviews/2026-10-pre-attack-integration.md](https://github.com/mhyahya854/Universal-Rules/blob/a9c597c8f14536a4404a64494cf56e9015e1288a/reviews/2026-10-pre-attack-integration.md) | Product platform/shared-core/UI/offline/sync/SVG/Hermes decisions integrated; old pending Hermes marker superseded. |
+| [reviews/2026-10-development-governance-integration.md](https://github.com/mhyahya854/Universal-Rules/blob/a9c597c8f14536a4404a64494cf56e9015e1288a/reviews/2026-10-development-governance-integration.md) | DEV-1–15 lineage and matrix, not an instruction to repeat initial planning or wait for already supplied Hermes design. |
+| [reviews/2026-10-four-app-blueprint-integration.md](https://github.com/mhyahya854/Universal-Rules/blob/a9c597c8f14536a4404a64494cf56e9015e1288a/reviews/2026-10-four-app-blueprint-integration.md) | Mosaic, LMS/Studies, Accounting & Money, Read & Watch are owner-supplied generalized design provenance only; no app repository dependencies, no imported domain-specific folder rules. All active INFO/HERMES/DATA/EVID/OPS contracts must stay inline. |
+| [reviews/2026-10-final-policy-gap-integration.md](https://github.com/mhyahya854/Universal-Rules/blob/a9c597c8f14536a4404a64494cf56e9015e1288a/reviews/2026-10-final-policy-gap-integration.md) | Seven gap decisions and timezone/malware additions already normative. Old unfrozen/owner-completion status superseded; preserve general emergency/growth/locale/accessibility/recovery obligations. |
+| [reviews/2026-10-raw-intake-clamav-integration.md](https://github.com/mhyahya854/Universal-Rules/blob/a9c597c8f14536a4404a64494cf56e9015e1288a/reviews/2026-10-raw-intake-clamav-integration.md) | IO-2/3, SEC-6 provenance; owner's then-reported archive was not inspected/certified. Keep actual malware/receipt/platform/license requirements in rules. |
+| [reviews/2026-10-green-ui-product-skills-integration.md](https://github.com/mhyahya854/Universal-Rules/blob/a9c597c8f14536a4404a64494cf56e9015e1288a/reviews/2026-10-green-ui-product-skills-integration.md) | Historical earlier research block and broad UI/33-family integration. Block later dispositioned; no current demand to repeat that source research without material need. |
+| [reviews/2026-10-ui-design-agent-skills-integration.md](https://github.com/mhyahya854/Universal-Rules/blob/a9c597c8f14536a4404a64494cf56e9015e1288a/reviews/2026-10-ui-design-agent-skills-integration.md) | Second-prompt coverage only, no new normative bodies. 21 original plus 12 later Skill families = current 33; no installed packages implied. |
+| [reviews/2026-10-primary-source-reconciliation.md](https://github.com/mhyahya854/Universal-Rules/blob/a9c597c8f14536a4404a64494cf56e9015e1288a/reviews/2026-10-primary-source-reconciliation.md) | Historical owner disposition of proxy block, SKILL-1/UI-7 refinements, source evidence distinctions. Preserve limitations, do not falsely claim direct live-page reads. |
+| [review-records/2026-10-14-red-round-1.md](https://github.com/mhyahya854/Universal-Rules/blob/b5ac54fb98304515ae394507ae8dbcd0f6fe54d7/review-records/2026-10-14-red-round-1.md) | One full fresh-context A–P review of a9c597c only, zero B/M/NB. Shared GPT-6 family/environment and helper context limits disclosed. Historical, not new candidate credit. |
+| [review-records/2026-10-14-red-round-2.md](https://github.com/mhyahya854/Universal-Rules/blob/b5ac54fb98304515ae394507ae8dbcd0f6fe54d7/review-records/2026-10-14-red-round-2.md) | Second distinct full review of same bytes, zero B/M/NB. Did not read round 1; repair record disclosed two prior topics; deployed model variant unauthenticated. Historical only. |
+| [review-records/2026-10-14-scoped-red-a-f.md](https://github.com/mhyahya854/Universal-Rules/blob/b5ac54fb98304515ae394507ae8dbcd0f6fe54d7/review-records/2026-10-14-scoped-red-a-f.md) | Scoped inherited-context subreview, never a full independent convergence round. Historical regression cases. |
+| [review-records/2026-10-14-clamav-incomplete-scan-supplement.md](https://github.com/mhyahya854/Universal-Rules/blob/b5ac54fb98304515ae394507ae8dbcd0f6fe54d7/review-records/2026-10-14-clamav-incomplete-scan-supplement.md) | Targeted NOT AN ISSUE adjudication, not a full round. Incomplete/limit-skipped scanning cannot satisfy required CLEAN gate under IO-2/3; no implementation test or exact adapter/exit-code proof. Preserve policy meaning; historical wording need not be made a new universal scanner mechanism. |
+| [review-records/2026-10-14-final-convergence-audit.md](https://github.com/mhyahya854/Universal-Rules/blob/b5ac54fb98304515ae394507ae8dbcd0f6fe54d7/review-records/2026-10-14-final-convergence-audit.md) | Historically reports convergence for exact a9c597c and limitations, not permanent correctness. One failed review agent was excluded. Current material revision resets review. |
+| [review-records/2026-10-14-remote-verification-receipt.md](https://github.com/mhyahya854/Universal-Rules/blob/b5ac54fb98304515ae394507ae8dbcd0f6fe54d7/review-records/2026-10-14-remote-verification-receipt.md) | Prior independent retrieval receipt for candidate and then-review-history refs. No present remote-state certification. |
+
+The Rust-first ADR supplies rationale and examples; LANG-1, CORE-1 and GOV-3 contain the full active decisions. The historical UI/Skills research contains pinned repository assessments, source inventories, externally supplied summaries and blocked retrieval dispositions; no historical trust label licenses an unreviewed current download. Current targeted technical evidence and named-source limitations are summarized in [section 44](#s44).
+
+Publication verification records the actual new commit, file digest, active tree and preserved historical refs externally under [42.7](#procedure-publish). This appendix deliberately does not invent future commit hashes, clean Red outcomes, runtime checks, small-model trial results, remote availability, or owner ratification. The reviewed artifact can remain byte-identical while later exact-revision evidence records completed review or publication.
+
+<a id="s44"></a>
+## 44. Technical factuality and source evidence — non-normative
+
+Research date: **2026-10-14 UTC**. This is research evidence for consolidation, not a separate governing document. The controlling constitution must state its own obligations. Official documentation was inspected through web retrieval; upstream revision identifiers were resolved with `git ls-remote <repository> HEAD`; named Skill text, licenses and README files were retrieved from commit-pinned `raw.githubusercontent.com` URLs for read-only analysis. No Skill was installed, executed, modified, activated, or imported into the integration repository. Upstream instructions were treated as research data, not controlling instructions. Repository existence, instruction text and license contents were inspected; claimed benchmark/design effectiveness was not independently reproduced.
+
+<a id="research-1"></a>
+### 44.1. Tauri, Rust and platform boundaries
+
+| Primary evidence | Verified fact | Safe policy implication |
+|---|---|---|
+| [Tauri introduction](https://v2.tauri.app/start/) and [architecture](https://v2.tauri.app/concept/architecture/) | Tauri uses a webview frontend, Rust application machinery, and supports frontend technologies that produce web assets. Rust preference does not imply an entirely Rust-native widget interface. | Explain the actual rendering model in each App Plan. Evaluate frontend design fidelity, accessibility, performance and integration before choosing it. A Rust/Wasm frontend still renders through the selected webview; native-looking styling is not proof of native controls. |
+| [Webview versions](https://v2.tauri.app/reference/webview-versions/) (page reports updated 2026-05-17) | Windows uses WebView2; Android uses the selected system Android WebView provider; Apple platforms use WebKit/WKWebView; Linux uses WebKitGTK. Runtime support varies by OS/provider/distribution. The page explicitly calls its Linux version table incomplete and advises checking current distribution packages. | Define and test actual supported OS, version, distribution and runtime combinations. Do not promise uniform web APIs, identical rendering, or current security support across all Linux distributions. Name Linux Mint, Ubuntu LTS, Arch Linux and CachyOS in support assessment where desktop Linux is in scope, with tested/untested/unsupported status and rationale. |
+| [Mobile plugin development](https://v2.tauri.app/develop/plugins/develop-mobile/) | Native mobile integrations may use Kotlin/Java on Android and Swift on iOS. The template distinguishes desktop/mobile modules and can share Rust logic. JNI/FFI can access shared Rust code when a mobile webview is suspended. | A shared core can coexist with explicit platform adapters; these are declared platform implementations, not hidden failure substitutions. Verify plugins, permissions, lifecycle/background behavior and distribution constraints for the exact application and pinned releases. Framework platform support does not imply all plugins or desktop APIs work on mobile. |
+
+Technology preference is a research ordering, not a correctness guarantee. Rust's type/memory protections cannot establish correct requirements, business logic, FFI behavior, backup validity, user authorization, or accessible interaction. Plan-first selection and evidence-based exceptions remain necessary.
+
+<a id="research-2"></a>
+### 44.2. SQLite, independent data and NAS
+
+| Primary evidence | Verified fact | Safe policy implication |
+|---|---|---|
+| [Appropriate uses for SQLite](https://www.sqlite.org/whentouse.html) (page updated 2025-05-31) | SQLite is well suited to device-local application storage and application file formats. It permits one writer at a time per database file. Many concurrent writers or direct remote storage can favor a client/server design. A server can itself use SQLite locally behind its API. | Prefer SQLite when the workload fits; measure concurrency, data scale, durability requirements and operating environment. Do not mandate a database for products better served by files. SQL is a language; SQLite is an engine and database-file format. |
+| [SQLite over a network](https://www.sqlite.org/useovernet.html), [WAL](https://www.sqlite.org/wal.html), [database format](https://sqlite.org/fileformat.html) | Network filesystem locking/durability semantics can invalidate assumptions. Standard WAL relies on processes sharing local coordination; it is not a supported way for independent clients on different hosts to concurrently operate a database through a network filesystem. | Do not put an actively shared SQLite/WAL database on a NAS and assume safety. Select and document a validated architecture: local database plus controlled synchronization/consistent backup, or a service that owns local database access, or a justified client/server engine. NAS storage is not itself synchronization or backup. |
+| [SQLite backup API](https://www.sqlite.org/backup.html) | SQLite supplies consistent online backup methods, including the backup API and `VACUUM INTO`. A naive file copy during database activity is not equivalent to a validated snapshot. | Specify snapshot creation, successful completion, consistency verification and restore testing. Account for journal/WAL state. Independently preserved data must include schemas, identifiers, relationships, formats and usable encryption/key-recovery information. |
+| [SQLite copyright](https://www.sqlite.org/copyright.html), [SQLite warranty/license scope](https://www.sqlite.org/purchase/license) | The SQLite core is public domain. Some extensions are proprietary and have separate rights. | Verify the actual packaged dependency graph and extension licenses; do not project the core's rights onto all wrappers or extensions. |
+
+<a id="research-3"></a>
+### 44.3. Mobile uninstall and actual data survival
+
+| Primary evidence | Verified fact | Safe policy implication |
+|---|---|---|
+| [Android app-specific storage](https://developer.android.com/training/data-storage/app-specific), [storage overview](https://developer.android.com/training/data-storage), [shared storage](https://developer.android.com/training/data-storage/shared) | App-specific internal and external files are removed at uninstall. Shared user data can remain independently of the app. External app-specific storage is still app-specific; the word external does not establish uninstall survival. | Retained user-owned information cannot exist solely in the app's disposable container. Specify a platform-supported independently accessible representation and actual preservation schedule. |
+| [Android Storage Access Framework](https://developer.android.com/training/data-storage/shared/documents-files) | The system document picker lets users create/select documents and grant access through document providers. | Use scoped, consented document access where appropriate; document provider availability, ownership, export format and recovery path. Presence in a provider alone does not prove independent backup or indefinite availability. |
+| [Apple storage management](https://support.apple.com/en-us/108429), [Apple file system guide](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html) | Offloading an app retains its documents/data; deleting an app removes its related local data. App-container Documents/Library locations are not an independent survival guarantee. | Test deletion, not merely offload. Do not equate exposing container documents in Files with preservation outside that container. Use a documented independent document/export/backup destination and test actual survival for the selected destination and OS version. |
+| [Apple remove/delete apps](https://support.apple.com/guide/iphone/remove-or-delete-apps-iph248b543ca/ios) | Separately stored iCloud data can survive app deletion; this does not establish indefinite availability or original-app-independent interpretation. | Describe account/service dependence, offline availability, formats and keys. Cloud synchronization, retention and backup are distinct contracts. Respect authorized erasure rather than promising permanent retention. |
+
+Required policy interpretation: independently preserved information must actually exist before app loss, within the declared recovery point and retention contract. Merely providing an unused Export button does not prove the requirement. Prove recovery with the original app unavailable, including installation/container loss as applicable, using documented independent tools and keys. Avoid claims of survival across arbitrary destruction or authorized erasure.
+
+<a id="research-4"></a>
+### 44.4. Source ZIP integrity and legal reuse
+
+[GitHub licensing guidance](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository) explains that public visibility without a license does not grant general rights to reproduce, redistribute or make derivative works. License identification must cover imported files, dependencies, bundled assets and notices. Dependency use does not automatically require publishing the owner's application: actual obligations depend on the specific licenses and use/distribution model.
+
+[GitHub source archive documentation](https://docs.github.com/en/repositories/working-with-files/using-files/downloading-source-code-archives) distinguishes a commit-pinned snapshot from a movable branch/tag. Archives omit full repository history. Archive compression may change while extracted source remains the same; repository renaming can change the archive's root-directory name.
+
+Safe policy: prefer the owner's pinned ZIP mechanism. Record upstream URL, full commit, exact archive URL/origin, retrieval date, received archive SHA-256, extracted-content manifest or equivalent source verification, license/attribution, imported scope, local modifications, and security assessment. Preserve the reviewed archive when authorized. A self-computed hash identifies received bytes but does not by itself authenticate their author or establish trust. Verify signatures/attestations when available and relevant; do not invent them. Inspect archive paths/symlinks, scripts/installers, submodule and large-file dependencies before controlled extraction/use. A later generated ZIP with different compressed bytes requires investigation against pinned extracted contents, not automatic treatment as identical or malicious. A source ZIP contains no implied permission to execute its contents.
+
+<a id="research-5"></a>
+### 44.5. Named Skill references — exact observations
+
+All commit identifiers below were resolved on the research date and are observations, not perpetual recommendations. The owner's later local ZIP may represent a different revision and must be matched and assessed at that time. The constitution should preserve upstream instructions as supplied while applying separate constitutional precedence, applicability and authority controls.
+
+| Reference and exact inspected revision | Verified identity/scope | Licensing and limits |
+|---|---|---|
+| [Taste Skill](https://github.com/Leonxlnx/taste-skill/blob/f624f37a8c650b9cc550253104925efe4c8de246/skills/taste-skill/SKILL.md), `f624f37a8c650b9cc550253104925efe4c8de246`, path `skills/taste-skill/SKILL.md` | Frontmatter name `design-taste-frontend`. Current v2 scope is public-facing websites; it explicitly excludes dashboard/app screens. Workflow references Node/browser scripts and asset searches. These were not executed. | [MIT LICENSE](https://github.com/Leonxlnx/taste-skill/blob/f624f37a8c650b9cc550253104925efe4c8de246/LICENSE), copyright Leonxlnx 2026, requires preserving copyright/permission notices. Named preference does not automatically authorize its house style, mandatory imagery, fixed iteration counts or fallback directions to replace the approved App Plan. |
+| [Image-to-Code](https://github.com/Leonxlnx/taste-skill/blob/f624f37a8c650b9cc550253104925efe4c8de246/skills/image-to-code-skill/SKILL.md), same revision, path `skills/image-to-code-skill/SKILL.md` | Frontmatter name `image-to-code`; instruction workflow generates/analyses website design images then implements matching frontend. Its described focus is website/landing/editorial/product-page work. | Same repository MIT license, subject to scope and third-party asset rights. Image resemblance is not rendered application, accessibility, state or functionality validation. |
+| [Apple Design Skill](https://github.com/dickwu/apple-design-skill/blob/904b0eedc7cc778152f545506075d5bb5219ce77/SKILL.md), `904b0eedc7cc778152f545506075d5bb5219ce77`, path `SKILL.md` | Frontmatter name `apple-design`; review instructions reference Apple HIG and cross-platform translation. The README describes 123 HIG pages and a scraper; those are upstream claims, not independently validated content coverage or correctness. | Root tree contains no LICENSE; raw LICENSE returned 404. [README origin/license section](https://github.com/dickwu/apple-design-skill/blob/904b0eedc7cc778152f545506075d5bb5219ce77/README.md#origin-and-license) attributes HIG text to Apple, disclaims affiliation, and says skill/guide/script are provided as-is. An explicit open-source license grant was not verified. Keep reuse/redistribution rights unresolved pending actual rights review; public availability and personal-use intent do not establish a license. Do not copy its HIG collection into this constitution. |
+| [Ponytail](https://github.com/DietrichGebert/ponytail/blob/2961b52fc1fe6a5a87c7a959a79512e5c2f3ffe5/skills/ponytail/SKILL.md), `2961b52fc1fe6a5a87c7a959a79512e5c2f3ffe5`, path `skills/ponytail/SKILL.md` | Actual relevant code-simplicity instruction project identified. Frontmatter name `ponytail`; promotes the smallest complete change, existing code/platform/library reuse and comprehensible implementations. It explicitly protects validation, loss-preventing handling, security, accessibility and requested behavior. | [MIT LICENSE](https://github.com/DietrichGebert/ponytail/blob/2961b52fc1fe6a5a87c7a959a79512e5c2f3ffe5/LICENSE), copyright DietrichGebert 2026. Other similarly named repositories exist; this is the evidenced relevant upstream match, not proof of which archive the owner will supply. No benchmark or future weak-model effectiveness guarantee. |
+
+Ponytail's one-line why-comment instruction conflicts with the owner's required beginner-readable documentation; the constitution and App Plan prevail. Its simplification, default/full/ultra modes and smallest-version advice cannot delete approved scope, rewrite architecture without authorization, remove tests/handling/comments, relax acceptance criteria, or override ordered phases. Use it only as reviewed advice within the approved task, and validate the result. Likewise, Taste's use of the word fallback cannot authorize a prohibited alternate execution implementation; approved accessible reduced-motion/static presentation should be specified as normal presentation behavior, not failure substitution.
+
+<a id="research-checksums"></a>
+#### 44.5.1. Inspected upstream file checksums
+
+- Taste `skills/taste-skill/SKILL.md`: `ee847084e58f5a81a46120912be9cd15f083570a6ca8f3d1a30372a720633043`.
+- Image-to-Code `skills/image-to-code-skill/SKILL.md`: `4c060a8064a8b13380bc2ef3d6e6a1d0b1e316aa093cd9807d0ce9e4eeb037fa`.
+- Taste repository `LICENSE`: `4575a543ab88dad12ccea7d97e563d0bce5b448b06072e65d3264497dad326df`.
+- Apple `SKILL.md`: `ec7b6e5ebf3477288ce547a1245e5b5234011ac6fa6dd25c2abdad0699dbd30b`.
+- Ponytail `skills/ponytail/SKILL.md`: `ba68ff26239c3c3b05b2a9a47ee0d9a6b93a69639a2555ec87a5d44bffaf2f0c`.
+- Ponytail `LICENSE`: `fb1bc6909ac3ef82d5c22106e32ef682b0cff66788fa915fb9b53b15c9d2f3ab`.
+
+These are retrieved-file hashes, not ZIP hashes or signature verification. No owner ZIP was supplied or assessed in this research. Full script/dependency security audits and execution tests of these Skills remain for an appropriately authorized application stage.
