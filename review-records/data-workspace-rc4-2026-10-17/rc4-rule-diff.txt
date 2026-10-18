@@ -1,0 +1,385 @@
+RC3 to candidate full rule-body diff; subordinate headings included.
+--- rc3/GOV-1
++++ candidate/GOV-1
+@@ -18,4 +18,4 @@
+ 
+ MUST describes candidate conformance, not proof of adoption. Examples, implementation notes, ADR rationale, and historical reviews add no normative obligations. Sections 3, 29, and 30 are interpretive or informative and defer to governing rules. Deviations and conflicts follow [GOV-3](#gov-3); approval cannot make an unsupported technical guarantee true.
+ 
+-This file is the single current constitutional source. Sections 34–41 integrate later owner decisions; they refine the named earlier clauses rather than leaving superseded wording active. [Section 42](#s42) operationalizes GOV-3–GOV-5 without independent override authority. Sections 43–44 contain non-normative preservation/research evidence; external references are provenance, not missing operating instructions. When an actual contradiction remains, stop affected decisions and record it for authorized repair under GOV-3; do not silently select convenient wording. The constitution governs conformance; actual owner authority may amend policy or approve recorded scoped exceptions, while approval cannot make an unsupported engineering claim true.+This file is the single current constitutional source. Sections 34–41 integrate later owner decisions; they refine the named earlier clauses rather than leaving superseded wording active. [Section 42](#s42) operationalizes GOV-3–GOV-5 without independent override authority. Sections 45–49 integrate the later RC4 workspace decisions within their stated applicability; sections 50–51 contain non-normative examples, open decisions and coverage. Sections 43–44 contain historical non-normative preservation/research evidence; external references are provenance, not missing operating instructions. When an actual contradiction remains, stop affected decisions and record it for authorized repair under GOV-3; do not silently select convenient wording. The constitution governs conformance; actual owner authority may amend policy or approve recorded scoped exceptions, while approval cannot make an unsupported engineering claim true.
+--- rc3/LIFE-3
++++ candidate/LIFE-3
+@@ -2,6 +2,6 @@
+ 
+ **Type:** RECOMMENDATION | **Origin:** ARCHITECTURAL DECISION | **Applies:** applications with multiple data lifecycles
+ 
+-Applications SHOULD distinguish replaceable code, retained data, configuration, generated artifacts, audit evidence, operational logs, backups, and exports. Directories, tables, object namespaces, or platform-managed stores may implement the distinction. Executables and data may be colocated if lifecycle operations preserve their contracts.
++Applications SHOULD distinguish replaceable code, retained data, configuration, generated artifacts, audit evidence, operational logs, backups, and exports. Directories, tables, object namespaces, or platform-managed stores may implement the distinction. Executables and data may be colocated if lifecycle operations preserve their contracts; for retained user-owned information, [WORKSPACE-1](#workspace-1) requires separation from disposable installation state and independently accessible preservation. Colocation cannot make that disposable state the only retained copy.
+ 
+ Roles such as `app/`, `data/`, `config/`, `derived/`, `audit/`, `cache/`, `logs/`, `backups/`, and `exports/` are illustrative. An export is not automatically disposable staging. Git may intentionally store canonical documents; it is not automatically a suitable database or independent backup. Prevent unintended inclusion in unrelated source repositories using suitable ignore rules, controls, and review; `.gitignore` is not an enforcement boundary.
+--- rc3/SYNC-3
++++ candidate/SYNC-3
+@@ -4,4 +4,4 @@
+ 
+ When a suitable NAS is available and the user enables this role, it MUST become the primary shared synchronization hub for application data. All applicable retained/shared data SHOULD synchronize to it according to the declared data scope, permissions, retention, and synchronization contract. Desktop, mobile, and tablet instances act as clients of that shared system while retaining appropriate local working copies. This policy does not silently upload data excluded by user scope, authority, or privacy rules.
+ 
+-The NAS MUST NOT become a hard requirement for ordinary offline work. Temporary disconnection MUST preserve applicable local operation; reconnection MUST synchronize and reconcile according to the declared consistency model and current authority. Primary hub placement does not by itself transfer ownership or make every local write a globally final commit. Distinguish local persistence, hub acknowledgement, and reconciliation under [OUT-1](#out-1). NAS storage/service, backup, and hosting roles remain distinct under [NAS-1](#nas-1).+The NAS MUST NOT become a hard requirement for ordinary offline work. Temporary disconnection MUST preserve applicable local operation; reconnection MUST synchronize and reconcile according to the declared consistency model and current authority. Primary hub placement does not by itself transfer ownership or make every local write a globally final commit. This enabled-NAS hub policy remains active; it does not finalize a universal authoritative-copy topology or require every device to hold the complete workspace. The App Plan must settle actual write authority and placement under [JSON-4](#json-4), without inferring a decision from the hub role. Distinguish local persistence, hub acknowledgement, and reconciliation under [OUT-1](#out-1). NAS storage/service, backup, and hosting roles remain distinct under [NAS-1](#nas-1).
+--- rc3/GOV-4
++++ candidate/GOV-4
+@@ -4,7 +4,7 @@
+ 
+ Changes MUST preserve reviewability through recorded versions, rationale, affected rule IDs, and evidence. Candidate status MUST remain explicit until owner ratification. Adoption should identify exact revision and applicability date. Preserve historical reviews rather than rewriting findings to fit the result. Substantive changes need appropriate adversarial review and disposition. Changes here do not authorize automatic migration or assessment of governed repositories.
+ 
+-Constitutional work MUST use recorded actual authority for integration, freeze, review, scoped repair, publication, and adoption; one authorization may explicitly cover several stages. Do not require repetition of authority already supplied, infer ratification from publication, or treat a historical one-time waiting phrase as a perpetual gate. The 2026-10-14 owner mission explicitly reopens design for the supplied decisions and authorizes integration, candidate freeze, fresh adversarial review, substantiated repairs, commit/push, and safe normal promotion to main. It expressly withholds ratification. [Section 42](#s42) supplies the complete operating procedure and [section 43](#s43) records scope/provenance.
++Constitutional work MUST use recorded actual authority for integration, freeze, review, scoped repair, publication, and adoption; one authorization may explicitly cover several stages. Do not require repetition of authority already supplied, infer ratification from publication, or treat a historical one-time waiting phrase as a perpetual gate. The 2026-10-17 RC4 owner mission reopens design for its settled workspace decisions and authorizes integration, identifiable candidate review under the existing freeze procedure, substantiated repairs, commit/push, and safe non-destructive publication/promotion within repository protections; [section 51](#s51) records that current scope. The 2026-10-14 mission remains historical authority for rc3. It expressly withholds ratification. [Section 42](#s42) supplies the complete operating procedure and [section 43](#s43) records scope/provenance.
+ 
+ The application Plan Freeze Gate in [DEV-5](#dev-5) remains separate from constitutional freeze. A constitutional candidate MUST have an identifiable frozen revision and owner authority before Red review; current-session or durable prior scoped delegation may supply that authority. Substantive revisions invalidate previous review credit and require the current convergence process under [GOV-5](#gov-5). Changes to this constitution do not authorize inspection, migration, or modification of unrelated application repositories.
+ 
+
+--- rc3/INFO-1
++++ candidate/INFO-1
+@@ -4,6 +4,6 @@
+ 
+ The logical information model MUST support deterministic discovery/resolution, identity, provenance where meaningful, relationships, documented access, recovery, continuation, rebuildability where claimed, and portability where required. Human-facing hierarchy MUST remain application/domain-appropriate and MAY be user-configurable. **Standardize the discoverability and integrity contract, not every user's folder names.**
+ 
+-Files, SQLite, PostgreSQL, embedded object stores, services, and other justified architectures may satisfy this contract through manifests, catalogs, schemas, APIs, export contracts, deterministic indexes, or equivalent mechanisms. Filesystem-backed canonical storage, Markdown, any particular database, and universal filenames are not required. “Deterministic” here concerns lookup and explicit contracts, not proof that facts, AI outputs, or all application behavior are deterministic.
++Files, SQLite, PostgreSQL, embedded object stores and services remain available for justified operational responsibilities. For retained user-owned information, the RC4 owner decision expressly strengthens the former format-neutral policy: the independently accessible workspace in [WORKSPACE-1](#workspace-1) and complete literal individual/global JSON representations in [JSON-1](#json-1) are mandatory. Operational databases, catalogs, APIs, hashes, or export buttons alone do not replace them. The preferred entry filenames and mapped physical adaptations follow [WORKSPACE-4](#workspace-4); no single domain folder tree or operational database is mandated. “Deterministic” here concerns lookup and explicit contracts, not proof that facts, AI outputs, or all application behavior are deterministic.
+ 
+ Where practical, retained information SHOULD support both human comprehension through meaningful names, metadata, documentation, relationships, readers or exports, and machine reliability through structured IDs, schemas, manifests, catalogs, or typed records. Do not sacrifice deterministic interfaces for attractive folders or long-term comprehensibility merely for AI indexing convenience. Documented binary stores are compatible with these outcomes under [LIFE-2](#life-2) and [STORE-1](#store-1).
+--- rc3/INFO-2
++++ candidate/INFO-2
+@@ -4,4 +4,4 @@
+ 
+ A workspace MUST expose a predictable logical entry point through which authorized deterministic software and suitably constrained AI can discover applicable workspace identity, schema/format version, major domains/collections, registered data roots, important catalogs/indexes, supported operations, migration/version state, relevant policy/configuration, and lineage where required.
+ 
+-A root manifest, workspace catalog, typed API, database schema plus discovery endpoint, or equivalent deterministic mechanism may implement this capability. No physical root filename or public disclosure of private metadata/secrets is required. Discovery is subject to authorization; version handling follows [MIGRATE-2](#migrate-2). Supported offline discovery and synchronization follow the existing local-first and sync contracts.+A root manifest, workspace catalog, typed API, database schema plus discovery endpoint, or equivalent deterministic mechanism may implement this capability. The preferred physical entry pattern and technically necessary mapped adaptations for retained-data workspaces follow [WORKSPACE-4](#workspace-4). No public disclosure of private metadata/secrets is required. Discovery is subject to authorization; version handling follows [MIGRATE-2](#migrate-2). Supported offline discovery and synchronization follow the existing local-first and sync contracts.
+--- rc3/INFO-3
++++ candidate/INFO-3
+@@ -4,4 +4,4 @@
+ 
+ Such objects MUST have durable product-owned logical identity or an equivalent documented identity contract independent of mutable filenames, display names, paths, categories, statuses, or UI locations. The product SHOULD resolve **stable identity → current location** where location applies. Ordinary renaming or movement between folders, collections, statuses, categories, and views MUST NOT unnecessarily create a new identity or destroy relationships, provenance, or retained history. Explicit copy/new-object and migration operations may have distinct documented identity semantics.
+ 
+-When an object participates in multiple views or relationships, prefer explicit references/relationships over uncontrolled canonical duplication. Canonical information SHOULD NOT be duplicated merely to appear in multiple organizational views when references preserve the same meaning safely. Deliberate replicas, snapshots, backups, and derivatives remain valid with declared authority and lifecycle. Where byte identity or deduplication matters, content hashes or equivalents may assist integrity, provenance, and tracking; content-addressing is not universally required, and byte equality is not automatically logical identity or authenticated origin.+When an object participates in multiple views or relationships, prefer explicit references/relationships over uncontrolled canonical duplication. Canonical information SHOULD NOT be duplicated merely to appear in multiple organizational views when references preserve the same meaning safely. Deliberate replicas, snapshots, backups, and derivatives remain valid with declared authority and lifecycle. The mandatory literal dual-JSON payload duplication under [JSON-1](#json-1) serves recovery, not organizational views; this anti-duplication preference MUST NOT remove those required payloads. Where byte identity or deduplication matters, content hashes or equivalents may assist integrity, provenance, and tracking; content-addressing is not universally required, and byte equality is not automatically logical identity or authenticated origin.
+--- rc3/SURVIVE-1
++++ candidate/SURVIVE-1
+@@ -4,6 +4,6 @@
+ 
+ Retained user-owned information **MUST NOT depend for its existence on the continued installation, availability, or development of the original application**. Provide an independently preserved, documented, practically recoverable representation outside disposable installation state. A format being open or a database being SQLite does not alone satisfy this requirement. The representation MUST be obtainable and recoverable without the original app within the declared retention and recovery contract, including relationships, identifiers, required originals, and interpretation dependencies.
+ 
+-The App Plan MUST document authoritative locations; ownership; actual engine and file formats; appropriate human-readable and machine-readable representations; schemas, identifiers, and relationships; export/import; access without the original app; uninstall behavior; mobile container deletion; encryption/key recovery; backup/restore; replacement/migration; retention/legitimate deletion; and offline, NAS, and synchronization responsibilities. SQL is a language, not a storage engine. SQLite, PostgreSQL, JSON, Markdown, HTML, original documents/media, and justified combinations are possible representations; no one format is universally mandatory.
++The App Plan MUST document authoritative locations; ownership; actual engine and file formats; appropriate human-readable and machine-readable representations; schemas, identifiers, and relationships; export/import; access without the original app; uninstall behavior; mobile container deletion; encryption/key recovery; backup/restore; replacement/migration; retention/legitimate deletion; and offline, NAS, and synchronization responsibilities. SQL is a language, not a storage engine. SQLite, PostgreSQL, Markdown, HTML, original documents/media, and justified combinations may serve appropriate responsibilities. For retained user-owned information the later RC4 decision requires the accessible workspace and literal complete individual/global JSON recovery representations under [WORKSPACE-1](#workspace-1) and [JSON-1](#json-1); operational format choice cannot waive that scoped requirement. Stateless utilities retaining no user information need no such machinery.
+ 
+ A recoverable representation may be an independently accessible authoritative dataset or an independent recoverable copy. Declare when it becomes durable, what information it covers, its freshness and permitted recovery-point loss, and the dependencies and failure domains. Required preservation MUST be established and verified before claiming retained data is protected; an export button that has never produced an independent copy is insufficient. Recovery claims MUST disclose limits rather than promise immunity to all loss. Data preservation does not override authorized erasure, privacy obligations, or expiration under [PRIV-1](#priv-1).
+--- rc3/NOFALL-2
++++ candidate/NOFALL-2
+@@ -16,4 +16,6 @@
+ | Malware verification | Required gates under [IO-2](#io-2)–[IO-3](#io-3) remain enforced on scanner/signature failure. Independent local capabilities may continue; affected intake stays gated and protection state stays visible. A missing scanner MUST NOT activate an alternate engine or clean-result stub. An explicitly designed multi-engine scan pipeline, if justified, must require its specified stages/results and cannot treat one failed stage as success supplied by another. |
+ | Replacement and migration | An alternative may be researched, selected, and deliberately adopted as a future version/configuration through the normal planning, authority, migration, and verification gates. This is an explicit change to the approved implementation, not a dormant runtime rescue path. |
+ 
+-These distinctions preserve availability where honestly supported, recovery, privacy, malware containment, the shared core, and data integrity. They do not weaken existing gates. No fallback design is approved merely by listing two implementations in a plan; the plan MUST specify the independent legitimate responsibility of each or select one. Any genuine unresolved conflict MUST stop affected design/implementation and receive an explicit scoped decision under [GOV-3](#gov-3), without silent weakening of either rule.+These distinctions preserve availability where honestly supported, recovery, privacy, malware containment, the shared core, and data integrity. They do not weaken existing gates. No fallback design is approved merely by listing two implementations in a plan; the plan MUST specify the independent legitimate responsibility of each or select one. Any genuine unresolved conflict MUST stop affected design/implementation and receive an explicit scoped decision under [GOV-3](#gov-3), without silent weakening of either rule.
++
++The two required JSON layers are complementary first-class recovery representations, not alternate execution implementations. Verified restoration under [JSON-1](#json-1)–[JSON-4](#json-4) remains permitted; a stale or incomplete representation MUST NOT silently count as successful saving or justify hidden reduced storage.
+--- rc3/BLUEPRINT-2
++++ candidate/BLUEPRINT-2
+@@ -6,4 +6,6 @@
+ 
+ Coverage MUST include, where applicable: vision/purpose; users/problems; success criteria; differentiation; research; GitHub comparisons/reuse; requirements/assumptions; complete feature inventory and individual feature specifications; workflows/navigation/interactions; screens and states; platforms/accessibility; identity/design system/motion; architecture/boundaries; technology; structures/storage; import/export; offline/NAS/sync; security/privacy; AI capabilities/permissions; failure/no-fallback behavior; data survival/recovery; performance/testing/integration; deployment/updates/migrations/maintenance; risks/rejected alternatives; development phases; and acceptance/evidence. The additional contracts already required by [DEV-7](#dev-7), including timezone, locale, dependency disappearance, hostile intake, emergency maintenance, and lifetime growth, remain mandatory where applicable.
+ 
+-`Languages and Data/1- stack and languages used.md` MUST explain final languages, frameworks, components, versions, responsibilities, licensing, platform suitability, decisions, and justified deviations. `Languages and Data/2- How the data is stored.md` MUST explain engine choices, actual formats, paths, schemas, ownership, independent lifecycle, backup, recovery, export, migration, and app-disappearance survival. Their first position in the reading order does not authorize selecting technology before requirements. Update affected technical records and the Master Plan together when intended behavior changes; preserve historical decisions as explicitly superseded evidence under [DEV-8](#dev-8).+`Languages and Data/1- stack and languages used.md` MUST explain final languages, frameworks, components, versions, responsibilities, licensing, platform suitability, decisions, and justified deviations. `Languages and Data/2- How the data is stored.md` MUST explain engine choices, actual formats, paths, schemas, ownership, independent lifecycle, backup, recovery, export, migration, and app-disappearance survival. Their first position in the reading order does not authorize selecting technology before requirements. Update affected technical records and the Master Plan together when intended behavior changes; preserve historical decisions as explicitly superseded evidence under [DEV-8](#dev-8).
++
++For substantial persistent-data applications, this specification MUST separately assess the User Data Workspace, Master Plan, and Codebase architectures and their cross-references under [WORKSPACE-3](#workspace-3). Folder planning, dual-JSON reconstruction, location selection, simulations, and deferred decisions belong in the current specification, not only in historical research.
+--- rc3/JSON-1
++++ candidate/JSON-1
+@@ -0,0 +1,18 @@
++### 46.1. JSON-1 — Complete individual and global payloads
++
++**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** retained-user-data workspaces
++
++<a id="json-scope"></a>
++#### 46.1.1. Complete logical scope and partial replicas
++
++Each retained logical record or appropriately scoped data component MUST have a self-contained individual JSON recovery representation. **One complete global JSON representation, `master-data.json`, MUST contain the actual recoverable contents of the entire retained logical workspace.** Both are first-class complementary recovery sources. Each individual representation MUST reconstruct all retained original files/information within its explicitly defined scope; the global representation MUST reconstruct all retained workspace content. Scope inventories MUST account for every retained component without gaps, including workspace-level components outside domain records. Partial device working copies do not redefine the logical workspace or excuse the complete global representation; placement and coordination remain App Plan decisions under [JSON-4](#json-4).
++
++<a id="json-literal-payload"></a>
++#### 46.1.2. Actual payloads and accessible originals
++
++Literal full duplication is required: retain actual payloads, including reversible binary-to-text encoding such as Base64 where needed. Paths, hashes, object-store references, diffs, or content-addressed pointers alone MUST NOT substitute for complete payloads. Git-inspired identification supplements full contents. Original audio, images, documents, Markdown and other normal files MUST remain independently available under [WORKSPACE-1](#workspace-1).
++
++<a id="json-exact-bytes"></a>
++#### 46.1.3. Exact original bytes and portable metadata
++
++The reconstruction contract MUST preserve exact original file bytes where retained, including text encoding, line endings and binary content, together with required metadata, identifiers, relationships and meaning. For user-created or imported JSON originals, parsing and reserializing can change whitespace, escaping, member order, number spelling/precision, BOM, encoding or line endings. Preserve a reversible original-byte representation separately from any parsed interpretation; canonicalization alone cannot reconstruct arbitrary original JSON bytes. JSON parse equivalence or a successfully opened restored file alone is insufficient. Define byte encoding/decoding, lengths, integrity checks, format/schema versions and safe interpretation, including binary-text alphabet, padding and invalid-input handling. Define parser duplicate-member, numeric-precision, depth, string/token-size and resource-limit behavior without silent truncation of accepted retained content. Required platform metadata not reproducible on a target MUST remain preserved in a documented representation and its restoration limits disclosed; do not claim unsupported exact native metadata restoration.
+--- rc3/JSON-2
++++ candidate/JSON-2
+@@ -0,0 +1,18 @@
++### 46.2. JSON-2 — Payload schema, coverage, privacy, and no diminution
++
++**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** individual and global JSON schemas and retained-content lifecycle
++
++<a id="json-schema"></a>
++#### 46.2.1. Payload and application information
++
++Use well-defined versioned schemas conceptually separating **`actual_data`**, retained original content and information necessary for exact reconstruction, from **`app_data`**, application metadata and relationships. Important retained information remains covered even when operational or labeled metadata. Each scope inventory MUST classify original documents/media, transcripts, notes, metadata, settings, file-path records, relationships, IDs, user edits, relevant histories/logs and necessary recovery information. Derived indexes and transient processing artifacts require explicit authority, retention and rebuild contracts; neither filename nor derived origin makes authoritative information disposable.
++
++<a id="json-retention"></a>
++#### 46.2.2. No silent loss and legitimate erasure
++
++“No diminution” means no silent loss, omission, truncation, corruption, unapproved replacement or premature deletion of required retained information. It does **not** mean monotonically increasing physical file size. Authorized erasure, lawful retention expiry, compact serialization and deliberate validated migrations remain supported. Coverage applies to information legitimately retained at the declared recovery point; [PRIV-1](#priv-1) and [SAFE-2](#safe-2) govern deletion, minimization and conflicting obligations across originals, both JSON layers, histories, replicas and backups. Restoration MUST reconcile deletion decisions and MUST NOT resurrect erased payloads contrary to policy.
++
++<a id="json-secrets"></a>
++#### 46.2.3. Privacy, credentials, and recovery keys
++
++JSON completeness MUST NOT expose credentials or bypass access boundaries. Do not store usable credentials insecurely in ordinary readable JSON. Define protected credential/key storage and independently recoverable key-access paths under [SEC-2](#sec-2) and [BACKUP-1](#backup-1). Where sensitive retained content requires encryption, complete recoverable payloads remain required in protected form; document algorithms/formats and legitimate independent access dependencies without packaging decryption secrets with public copies. A credential reference is not a substitute for retained media/document payloads. Report unrecoverability honestly if required keys are unavailable.
+--- rc3/JSON-3
++++ candidate/JSON-3
+@@ -0,0 +1,20 @@
++### 46.3. JSON-3 — Finite serialization and reconstruction boundaries
++
++**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** JSON self-reference, generated envelopes, and historical recovery packaging
++
++<a id="json-generated-envelopes"></a>
++#### 46.3.1. Finite generated-envelope reconstruction
++
++The App Plan MUST define a mathematically finite serialization and reconstruction policy. Individual and global JSON representations MUST be reproducible from their defined payload, schema and documented deterministic envelope rules without recursively embedding exact copies of themselves. Define which recovery envelopes are reconstructed, what their byte/semantic reconstruction target is, and preserve any non-derivable retained information they carry. Exact original-file reconstruction under [JSON-1](#json-1) remains mandatory; a serialization boundary cannot discard ordinary retained user content.
++
++<a id="json-finite-history"></a>
++#### 46.3.2. Retained history and packaging boundaries
++
++The current global representation MUST NOT recursively embed itself, unbounded historical snapshots containing themselves, or recursively nested temporary transaction machinery. Distinguish retained user/domain history and necessary recovery information, which remain covered, from separately protected snapshot generations and reconstructible recovery packaging. Document each exclusion's reconstruction or independent retention/access contract, keys/readers and failure limits; exclude only the recursive/generated or genuinely transient packaging, not user data hidden inside it. All still-retained historical user payloads and history/log information belong in the individual/component and global literal coverage inventory; a separate protected generation or history pointer alone does not satisfy that current coverage. A packaging exclusion cannot remove these payloads. Temporary staging is not an ordinary retained original, but any pending user information or operation evidence needed for the declared durable recovery point requires an explicit preservation and reconstruction contract. Historical points themselves MUST have finite, complete declared recovery scopes and accessible dependencies. Reference chains with missing content are not complete recovery payloads.
++
++<a id="json-hash-domain"></a>
++#### 46.3.3. Self-hashes and deterministic serialization
++
++Hash domains MUST be explicit and reproducibly verifiable, including how self-generated digest fields and revision identifiers are treated. Do not presume a field can contain the digest of the entire finalized byte string including that same field. Payload-only or explicitly excluded-field domains are examples to evaluate, not a selected universal mechanism. Deterministic envelope serialization must include all necessary version/metadata inputs when exact generated-envelope bytes are promised; semantic reconstruction must be labeled separately.
++
++This rule requires coherent finite boundaries and evidence, not a selected universal serialization, staging, commit or history algorithm. Decisions remain under [section 50.2](#open-engineering).
+--- rc3/JSON-4
++++ candidate/JSON-4
+@@ -0,0 +1,28 @@
++### 46.4. JSON-4 — Committed revision, distributed state, and verified restoration
++
++**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** saving, synchronization, conflict resolution, and restoration of retained-data workspaces
++
++<a id="json-commit-evidence"></a>
++#### 46.4.1. Committed revision and legitimate authority
++
++The App Plan MUST define how a valid committed revision is established and how originals, individual JSON, global JSON, catalog, and required evidence relate to that revision. Both JSON layers are first-class recovery sources; conflicting copies MUST NOT independently declare incompatible states authoritative. A newer timestamp, matching hash, syntactically valid JSON or equal copies alone does not establish legitimacy, factual correctness or successful commit. Use enforced authority, current-state coordination and validation under [AUTH-1](#auth-1), [CON-1](#con-1), [STORE-1](#store-1), [AUDIT-2](#audit-2) and [OUT-1](#out-1).
++
++<a id="json-reconciliation"></a>
++#### 46.4.2. Continuous checking and evidenced reconciliation
++
++Continuous integrity checking and reconciliation MUST have a documented schedule and trust/commit boundaries appropriate to the supported workload. The authorized, tested reconciliation procedure MUST compare relevant current records/revisions, detect mismatches, determine the last verified common state where establishable, examine durable operation evidence, distinguish committed changes from incomplete updates, preserve disputed versions when necessary and lawful, prevent automatic propagation of unvalidated corruption, verify the resulting representations, and record the actual outcome. If common state or legitimacy cannot be established, report uncertainty and preserve safe evidence; do not invent a winner or perform unrestricted mutual overwriting.
++
++<a id="json-pending"></a>
++#### 46.4.3. Pending states and unresolved saving decisions
++
++Saving/acknowledgement timing, staging format, write protocol and universal authoritative-copy topology remain unresolved. An App Plan MUST resolve material choices through research and applicable owner authority before affected production implementation under [DEV-5](#dev-5). Do not infer permission either for early pending-state acknowledgement or a universal wait-for-both-copies policy. Honest statuses MUST describe the actual durable recovery point and pending/incomplete/unknown state; no incomplete JSON may masquerade as a complete committed recovery representation. Deferral MUST NOT waive eventual complete individual/global payload obligations or approve hidden fallback storage.
++
++<a id="json-distribution"></a>
++#### 46.4.4. Multi-device and storage-provider boundaries
++
++For supported laptop, phone, desktop/mobile, NAS, selected cloud or multi-device configurations, define write coordination, working copies, revision IDs, synchronization boundaries, offline operations, conflicts, delayed updates, connection/permission failures, recovery and movement between configurations. Preserve the enabled NAS hub policy under [SYNC-3](#sync-3) without treating it as final universal copy authority. Do not assume a shared physical writable filesystem works everywhere, ordinary cloud-folder sync atomically publishes huge JSON, or independent devices may edit a live SQLite/WAL database on unsupported network filesystems.
++
++<a id="json-restore"></a>
++#### 46.4.5. Failure scenarios and safe restoration
++
++Recovery procedures MUST distinguish missing original files; corrupted individual/global/both current JSONs; valid-but-semantically-wrong copies; disagreement; interrupted writes; disk exhaustion; moved/unavailable storage; external edits; multi-record AI mistakes; app disappearance; and missing decryption keys. Select and validate an evidenced recovery point, preserve recoverable damaged originals before potentially destructive restoration, and never overwrite the only surviving damaged source merely for convenience. Offer supported same-location or separately selected restoration destinations with understandable consequences; use isolated validation where appropriate. Verify restored bytes, metadata, relationships, IDs and declared recovery point before adoption. Restored paths and symlinks MUST NOT escape the selected destination or overwrite unrelated/unapproved files. Detect absolute-path/traversal escapes, reserved names, case/Unicode collisions and target permission differences; preserve original names and required unsupported metadata through documented reversible mappings or report the unsupported restoration, rather than silently merging distinct files. Apply safe path confinement, symlink/traversal handling, collision/name mapping and current authorization under [IO-1](#io-1), [PORT-2](#port-2) and [RECOVER-1](#recover-1). If no surviving authorized source/key/dependency supports recovery, report the limitation without invented data or false guarantees.
+--- rc3/REV-1
++++ candidate/REV-1
+@@ -0,0 +1,23 @@
++### 47.1. REV-1 — Git-inspired content and revision evidence
++
++**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** retained-data workspace change tracking and external modification reconciliation
++
++<a id="revision-records"></a>
++#### 47.1.1. Revision and change evidence
++
++Use stable revision identities, cryptographic content hashes, content comparisons, change manifests, structured differences where meaningful, recorded timestamps and previous-version relationships, content provenance and links to protected immutable verified history. Evaluate chunk-level hashing where useful for large content. Relevant change records MUST capture record identity, previous/new revision, affected fields/files, measured change size, recorded time and temporal context, old/new hashes, authorized operation identity where established, outcome, historical-content relationships and validation status where applicable. Unknown actors or times remain unknown; [DATA-5](#data-5), [AUDIT-1](#audit-1) and [EVID-1](#evid-1) govern evidence and retention.
++
++<a id="revision-hash-limits"></a>
++#### 47.1.2. What hashes establish
++
++Hashes identify/compare bytes against expected values; they neither store recoverable payloads nor prove authorship, time, legitimacy or factual correctness. Hashes/diffs MUST supplement, not replace, complete JSON payloads. Integrity against malicious rewriting requires the protected references/threat assumptions of [AUDIT-3](#audit-3).
++
++<a id="revision-detection"></a>
++#### 47.1.3. External changes and detection latency
++
++External changes by editors, other programs, AI filesystem writes, cloud sync or NAS clients MUST be promptly flagged where supported. Define expected identities/revisions, watcher monitoring where available, hash/version verification, rescan/reconciliation and clear user-visible discrepancies. Watchers may miss events; the application may be stopped; remote changes may not yet have propagated. Mandatory integrity reconciliation at relevant trust/commit boundaries MUST precede destructive overwrite or authoritative adoption, coupled to transitions under [CON-1](#con-1); do not promise instantaneous detection everywhere.
++
++<a id="revision-adoption"></a>
++#### 47.1.4. Legitimate edits and safe adoption
++
++An external edit is not automatically malicious. Preserve its version within legitimate retention/privacy limits, compare with verified state, and provide safe authorized adoption, rejection or preserved alternatives. An older JSON MUST NOT silently overwrite the user's changed original, and unvalidated external bytes MUST NOT blindly propagate into both JSON layers. Report unresolved conflicts and containment through [EDIT-1](#edit-1), [EDIT-2](#edit-2) and [SYNC-1](#sync-1).
+--- rc3/REV-2
++++ candidate/REV-2
+@@ -0,0 +1,13 @@
++### 47.2. REV-2 — Protected earlier revisions beyond current duplication
++
++**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** historical recovery protection for retained-user-data workspaces
++
++<a id="history-failure-domains"></a>
++#### 47.2.1. Independent historical recovery points
++
++Provide independently protected historical recovery points in addition to the two current JSON layers. Equal current copies cannot undo an incorrect change already propagated to both. The design MUST address AI mistakes, deletion, incorrect transcript/user edits, corrupted JSON, synchronization errors, malicious changes, overwrites and storage failures, with declared failure domains, retention and platform capabilities.
++
++<a id="history-deletion-authority"></a>
++#### 47.2.2. Deletion authority and finite retention
++
++Normal application and AI editing credentials SHOULD NOT automatically have unrestricted deletion authority over every protected backup generation. Define meaningful separation of normal mutation and historical deletion authority, protected content/revision verification, recovery dependencies and actual residual risk under [BACKUP-1](#backup-1). Immutable verified history means protected recorded revisions under the declared threat/retention model, not perpetual retention, proof of factual correctness or immunity to root compromise. Authorized erasure/expiry remains enforceable under [PRIV-1](#priv-1), including prevention of forbidden resurrection. Finite snapshot scope follows [JSON-3](#json-3). No recovery guarantee survives destruction of all independent copies, required keys and dependencies.
+--- rc3/WORKSPACE-1
++++ candidate/WORKSPACE-1
+@@ -0,0 +1,13 @@
++### 45.1. WORKSPACE-1 — Independently accessible durable workspace
++
++**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** applications retaining user-owned information
++
++<a id="workspace-access"></a>
++#### 45.1.1. Independent access and physical adaptation
++
++The App Plan MUST define one logical, discoverable, documented, independently accessible user-owned data workspace, separate from disposable application installation state. It SHOULD use a real user-accessible folder structure wherever the supported platform permits it. A technically necessary physical adaptation MUST document its mapping and preserve independent discovery, access and recovery outcomes; hidden opaque storage is not an equivalent substitute. Ordinary original documents/media and human-readable files MUST remain present and independently accessible within the supported storage/security contract. SQLite and other operational stores MAY serve appropriate responsibilities but MUST NOT replace [JSON-1](#json-1)'s recovery representations.
++
++<a id="workspace-survival"></a>
++#### 45.1.2. Planning priorities and platform survival
++
++Planning MUST prioritize human comprehension, information preservation, independent recovery, clear folder relationships, deterministic machine navigation, safe AI operations, scalability, and long-term compatibility. Document access without the original application, schemas/readers, retention and key dependencies under [SURVIVE-1](#survive-1)–[SURVIVE-2](#survive-2). An independently preserved recovery representation must actually survive the declared application-disappearance scenario; exposing app-private files through a picker or calling them external does not establish survival. Supported phone/provider access, permission persistence, offline availability and uninstall behavior MUST be researched and validated; arbitrary permanent filesystem access MUST NOT be promised for every phone or cloud service.
+--- rc3/WORKSPACE-2
++++ candidate/WORKSPACE-2
+@@ -0,0 +1,18 @@
++### 45.2. WORKSPACE-2 — Selected location, identity, movement, and reconnection
++
++**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** setup and lifecycle of retained-user-data workspaces
++
++<a id="workspace-selection"></a>
++#### 45.2.1. Setup and stable identity
++
++Every applicable App Plan MUST identify where actual data lives. First setup SHOULD ask the user to select or approve a persistent workspace location: a suitable local folder or another supported storage arrangement. Remember the approved location and stable workspace identity, and use it until a deliberate authorized change. The application MUST NOT silently change authoritative location or create a replacement empty workspace when the configured location is unavailable.
++
++<a id="workspace-missing"></a>
++#### 45.2.2. Missing location and damaged information
++
++For an unavailable configured location, report **“Data location not found.”** Provide understandable reconnection steps and verify the candidate workspace's stable identity and contents before adoption. Distinguish missing/unreachable location, revoked permission, and damaged information; diagnostics must not claim corruption merely because access failed. For detected damage, report **“Data integrity issue detected.”** and offer verified recovery under [JSON-4](#json-4).
++
++<a id="workspace-movement"></a>
++#### 45.2.3. Verified movement and rebinding
++
++Movement between folders, drives, devices, NAS, and supported cloud arrangements MUST have documented and verified migration/reconnection procedures. Prefer relative internal references with an explicit base; stable record identities MUST survive physical folder/name changes. Rebind host-specific paths deliberately, verify permissions/schema/identity/contents and reconcile pending/concurrent changes before adopting a relocated workspace. Document rollback and incomplete movement without silently declaring success. Respect [PORT-2](#port-2), [MIGRATE-1](#migrate-1), and [SYNC-4](#sync-4).
+--- rc3/WORKSPACE-3
++++ candidate/WORKSPACE-3
+@@ -0,0 +1,15 @@
++### 45.3. WORKSPACE-3 — Three architectures and meaningful folder contracts
++
++**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** substantial application planning, with workspace detail required for persistent-data applications
++
++<a id="workspace-three-architectures"></a>
++#### 45.3.1. Workspace, planning, and implementation responsibilities
++
++Planning MUST separately assess and validate **A: User Data Workspace**, **B: Master Plan**, and **C: Codebase**, including cross-references and distinct ownership/responsibilities. If no user information is retained, document A as inapplicable. Master Plan retains [BLUEPRINT-1](#blueprint-1)'s Languages and Data, complete specification, Research and Decisions, Design, Reviews, Project State and sequential phases/subphases. Codebase retains feature-first frontend, backend, database and genuine shared responsibilities. `Codebase/Database/` schemas/migrations are development artifacts, not actual user data by default.
++
++<a id="workspace-folder-contract"></a>
++#### 45.3.2. Per-folder and per-file design contract
++
++For substantial persistent-data applications, the data hierarchy MUST be explicitly designed, explained, challenged and validated before plan approval. An attractive tree alone is insufficient. Use extensive meaningful headings/subheadings without arbitrary heading limits. Each meaningful folder/file or documented homogeneous class MUST establish purpose, ownership, contents, format, naming, relationships, dependencies, authority/replica/projection/historical-evidence role, rebuildability, discovery, human reading, AI reading, permitted modification, change detection, corruption detection, recovery, relocation behavior, access controls, and retention. Class-level contracts must resolve every actual member's role; they cannot hide exceptional authoritative content.
++
++Do not create customary or empty folders without a demonstrated responsibility. Validate the hierarchy through [WORKSPACE-TEST-1](#workspace-test-1), and keep the complete intended specification and its technical records consistent under [BLUEPRINT-2](#blueprint-2).
+--- rc3/WORKSPACE-4
++++ candidate/WORKSPACE-4
+@@ -0,0 +1,21 @@
++### 45.4. WORKSPACE-4 — Human and machine entry documents
++
++**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** substantial retained-data workspaces and their independent discovery/recovery interfaces
++
++<a id="workspace-entry-pattern"></a>
++#### 45.4.1. Five discoverable entry responsibilities
++
++The preferred human-facing filesystem entry pattern is the following four primary information documents plus the complete global recovery representation. A technically necessary physical adaptation MUST explicitly map each responsibility and retain the same user-facing discovery and recovery outcome; it cannot omit the literal JSON obligation.
++
++| Entry | Required responsibility |
++|---|---|
++| `00-START-HERE.md` | Plain-English, non-programmer guidance: what this workspace contains, where to begin, major folders, finding information, and recovery when the original application no longer exists. |
++| `01-FOLDER-GUIDE.md` | Complete directory architecture, purposes, relationships, identity/navigation conventions and concrete examples; link each meaningful folder/file contract. |
++| `02-DATA-DICTIONARY.md` | Actual formats, fields, relationships, IDs, provenance, timestamp meaning, schema/revision versions, encodings and recovery concepts/dependencies. |
++| `catalog.json` | Validated navigable catalog resolving stable records to current logical locations through bounded machine retrieval; explicit authority, update/consistency policy, validation and reconstruction procedure. |
++| `master-data.json` | One complete literal global JSON recovery representation under [JSON-1](#json-1), not a hash list or pointer catalog. |
++
++<a id="workspace-bootstrap"></a>
++#### 45.4.2. Independent bootstrap and protected discovery
++
++Documentation and recovery schemas MUST remain obtainable and usable without the original application or AI Skill. Catalog reconstruction and recovery discovery MUST not depend circularly on an intact catalog or global JSON: document bootstrap procedures using surviving individual records, protected history or independent recovery dependencies as appropriate. Routine AI retrieval uses bounded catalog/index interfaces, not full scans; authorized deterministic reconstruction may scan with declared costs. Private metadata and credentials remain protected under [AUTH-1](#auth-1), [PRIV-1](#priv-1) and [SEC-2](#sec-2).
+--- rc3/WORKSPACE-AI-1
++++ candidate/WORKSPACE-AI-1
+@@ -0,0 +1,13 @@
++### 48.1. WORKSPACE-AI-1 — One discoverable primary application Skill
++
++**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** AI-accessible applications with retained-user-data workspaces
++
++<a id="ai-entry-contract"></a>
++#### 48.1.1. Primary Skill navigation and operation contract
++
++Expose one clearly named discoverable primary trusted application Skill, for example `Menemora/SKILL.md`. It MUST explain application purpose, approved workspace location/discovery, entry point, folders, record discovery, bounded retrieval, schema/revision interpretation, edit requests, source-data versus instruction boundaries, approval requirements, enforced permissions, error/ambiguity handling, change verification, objects never directly modified, and reporting of uncertain/blocked outcomes. It MAY route to justified bounded subordinate Skills/documentation; one primary entry does not prohibit specialized expertise.
++
++<a id="ai-entry-trust"></a>
++#### 48.1.2. Trusted registration and enforced permissions
++
++Trust and invocation MUST follow [SKILL-1](#skill-1)–[SKILL-3](#skill-3). An editable workspace file, including a file named SKILL.md, cannot authenticate itself or elevate authority. Trusted registration/revision and enforced permission boundaries remain separate from its text. AI application operations MUST use approved permission-enforced application interfaces; the Skill alone grants no direct filesystem mutation, credential access, deletion, production or other elevated authority. Existing separately delegated coding/scratch capabilities remain scoped under [AI-1](#ai-1) and do not bypass runtime data protections. Human workspace documentation MUST remain usable without the Skill.
+--- rc3/WORKSPACE-AI-2
++++ candidate/WORKSPACE-AI-2
+@@ -0,0 +1,13 @@
++### 48.2. WORKSPACE-AI-2 — Measurable one-billion-parameter navigation target
++
++**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** AI workspace navigation design and material small-model capability claims
++
++<a id="ai-navigation-route"></a>
++#### 48.2.1. Bounded retrieval route
++
++Design for appropriately scoped data navigation by a suitably capable model around **1 billion parameters**. The preferred route is **AI → trusted application Skill → 00-START-HERE.md → folder guide and catalog → bounded retrieval operation → relevant record and precise content**. Supply clear entry points, stable IDs, readable names, bounded indexes/catalogs, precise sub-object addresses, deterministic lookup, limited outputs, ambiguity reporting, enforced authorization, task-specific examples and documented errors. A model MUST NOT need to read the complete global JSON, massive database or thousands of files merely to retrieve one ordinary record.
++
++<a id="ai-navigation-evidence"></a>
++#### 48.2.2. Actual evaluation and separate development target
++
++Material capability claims MUST identify model/version and available parameter/quantization evidence, environment/tools/context limits, representative tasks and actual evaluation. Measure retrieval accuracy, errors, hallucinated paths, unauthorized mutations, context budget and correct escalation. Record passed/failed/unrun results and limits; parameter count alone proves no capability. Preserve [HERMES-2](#hermes-2)'s local constrained-model testing and [EXEC-6](#exec-6)'s separate approximately 4B code-execution target. Navigating data and implementing an application are distinct evaluations.
+--- rc3/WORKSPACE-TEST-1
++++ candidate/WORKSPACE-TEST-1
+@@ -0,0 +1,18 @@
++### 49.1. WORKSPACE-TEST-1 — Navigation, restoration, and aggressive failure trials
++
++**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** design and implementation verification of retained-data workspaces
++
++<a id="workspace-design-trials"></a>
++#### 49.1.1. Design simulations and implemented scenarios
++
++Plans MUST simulate, then implementations MUST verify representative scenarios: human and small-AI record location; understanding folders without the app; moving the entire workspace; restoring a deleted original; corrupt individual JSON; corrupt global JSON; external modification detection; application-disappearance recovery; large-dataset navigation; interrupted/conflicting NAS/cloud changes; and restoration to another selected location. Mark design-time simulation separately from actual implementation testing; a plan is not demonstrated recovery.
++
++<a id="workspace-fault-trials"></a>
++#### 49.1.2. Failure battery and acceptance criteria
++
++Define demanding documented acceptance criteria and appropriate fault injection, crashes, disk-full conditions, malformed/truncated JSON, missing originals, concurrent writes, interrupted commits, power-loss assumptions, NAS/cloud disconnection, remote conflicts, destructive AI mistakes, large media, lifetime-scale datasets, failed migrations, app-disappearance recovery, small-model navigation, memory/CPU, startup/search performance, and backup/restore checks. Include valid-but-wrong JSON and propagated mistakes, not only parse failures. Verify authorization, privacy/deletion, keys, recovery-point truth and no-fallback boundaries alongside successful reconstruction.
++
++<a id="workspace-test-safety"></a>
++#### 49.1.3. Isolated fixtures and finite repair
++
++Use isolated fixtures and authorized test environments; never deliberately damage live user data. Test, repair, retest and repeat until the documented quality baseline is met or a material unresolved limitation is accurately reported. A compilation or happy-path demo alone is insufficient. Testing is finite and risk-based, with actual outcomes under [TEST-1](#test-1); it does not prove absence of all future defects or waive [EXEC-3](#exec-3)'s bounded repair/escalation contract.
+--- rc3/WORKSPACE-TEST-2
++++ candidate/WORKSPACE-TEST-2
+@@ -0,0 +1,23 @@
++### 49.2. WORKSPACE-TEST-2 — Literal JSON capacity and feasible workload
++
++**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** workload planning and performance claims for literal dual-JSON storage
++
++<a id="workspace-workload"></a>
++#### 49.2.1. Workload and lifetime costs
++
++Evaluate capacity, storage amplification, temporary write space, write frequency, serialization time, crash consistency, memory, backup growth, cloud upload/transfer cost, NAS bandwidth, mobile constraints, concurrent access and lifetime growth under [DEV-16](#dev-16). State assumptions and measured or estimated evidence, including workload and target-platform limits. A small edit may require producing a new complete global JSON representation; hashing alone cannot remove the payload requirement.
++
++<a id="workspace-storage-math"></a>
++#### 49.2.2. Logical storage amplification
++
++For illustration, 100 GB of binary originals plus approximately 133 GB of Base64 payloads in individual JSON and 133 GB in global JSON totals about **366 GB** before other overhead, temporary generations and history. This is approximate logical storage accounting, not a measured universal physical requirement. For binary lengths nᵢ, N = Σnᵢ and B = Σ(4 × ceil(nᵢ/3)), originals plus two single-encoded layers require approximately N + 2B; for large inputs this approaches 11N/3, so 100 decimal GB is approximately 366.7 GB. The rounded 366 GB illustration assumes each layer encodes each original payload once. Encoding an already encoded individual JSON envelope again inside the global layer adds expansion; separately encoded chunks add padding/framing. The actual schema must account for these costs rather than assume this estimate universally. Git uses separately stored content objects and references, unlike one literal complete JSON payload.
++
++<a id="workspace-streaming"></a>
++#### 49.2.3. Peak resources and streaming limits
++
++Memory estimates MUST include the largest parser/encoder token and buffers: streaming records does not bound memory if an enormous Base64 string is allocated at once. Measure or bound peak disk while prior valid state and staging coexist, total bytes written/transferred, CPU, latency and growth; bounded memory does not remove total serialization, validation or I/O costs.
++
++<a id="workspace-optimization"></a>
++#### 49.2.4. Measured optimizations and material conflicts
++
++Streaming serialization, compression, copy-on-write, snapshots, sparse files, reflinks and other optimizations MAY be evaluated within the eventual approved design, but their portability, actual savings, crash behavior and recovery dependencies require evidence. None is universally selected here or excuses complete payloads. If literal duplication cannot meet the agreed workload, present the material conflict honestly to the owner and resolve affected planning under [GOV-3](#gov-3) and [DEV-5](#dev-5); do not silently replace payloads with pointers, invent capacity, hide loss or implement a fallback.
