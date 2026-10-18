@@ -1,0 +1,7 @@
+# RC4 first qualified clean Red round — coordinator disposition
+
+Target `aac66fa5ea1de8579b860f8833725c531317fde2`, MASTER_PLAN.md SHA-256 `4796b0f7ba168650cedde615a3382fe475cc64de14784bf6445849ec1a1fb53f`.
+
+Attributable task `/root/rc4-red-clean1` was instantiated in a fresh context with `fork_turns:none`, configured `gpt-6-luna` and maximum reasoning effort. The exact deployed model variant and serving parameters cannot be independently attested from within the reviewer session. The reviewer used its own fresh clone, confirmed target and clean tree, read the complete candidate, did not author or repair it, did not read the author checkout, author coverage, preliminary Red report, or other current review. It independently retrieved relevant primary-source documentation. The shared execution infrastructure and model family remain limitations; separate task context/checkout is procedural isolation, not a cryptographic barrier.
+
+The complete A–P, RC4 18-topic, rc3 regression and multi-rule report records 0 BLOCKER, 0 MATERIAL, 0 NON-BLOCKING and 34 NOT AN ISSUE dispositions. The coordinator checked its exact report digest `f457f269580dcebf98601353d8a6a42f94e250362aaca17688243b00b31aba02`, target clone identity and clean status. No normative repair followed. This round qualifies as the first clean round for the exact frozen candidate. It does not establish convergence alone; a second separately isolated complete Red review of identical bytes is required. The earlier preliminary report `/root/rc4_red1` remains preserved but has no clean-round credit.
