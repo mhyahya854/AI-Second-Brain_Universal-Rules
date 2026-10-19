@@ -71,6 +71,7 @@ For the owner: start with [scope/authority](#s01), [ordered planning](#s34), [te
 49. [Workspace validation and lifetime feasibility](#s49)
 50. [Menemora illustration and Open Engineering Decisions — non-normative](#s50)
 51. [RC4 authority, reconciliation, and requirement coverage — non-normative](#s51)
+52. [Topic 2: Optional Dual-JSON Recovery and Complete On-Site Backup — unratified design record](#s52)
 
 <a id="s01"></a>
 ## 1. Scope and rule classification
@@ -2878,3 +2879,247 @@ Mobile app-specific storage and keys may disappear on deletion; a persisted docu
 This document states policy and provenance. It does not certify an application, prove successful restoration, report unrun tests as passed, or predict an exact future commit. The revision-bound report records actual baseline/remote verification, rule/metadata/33 Skill preservation, additions/modifications, complete coverage, structural/factuality checks, git/history verification, exact Red rounds and dispositions, and independent publication retrieval. RC3 reviews and the Green author's own checks cannot satisfy RC4 independent review.
 
 The final mission report provides all 17 requested items: executive outcome; repository/branch status; exact final commit; document SHA-256; final tree; original rule counts; added/modified rules; full coverage matrix; research findings; reconciled contradictions; explicit deferred decisions; structural results; Red results; historical preservation; residual risks; NOT RATIFIED status; and the owner's next action. Review and publication failures/unrun work remain explicit. Any ratification request is a separate exact-revision decision after the evidence is available, never inferred from this candidate's publication.
+
+<a id="s52"></a>
+## 52. Topic 2: Optional Dual-JSON Recovery and Complete On-Site Backup — unratified design record
+
+**Status:** Post-RC4 owner-agreed design direction; **NOT RATIFIED and not an active amendment**. This non-normative record captures the proposed behavior and its open implementation questions. It adds no rule to RC4's 151 normative rules, changes no existing rule, and grants no application implementation or data-migration authority. The ratified baseline remains commit `aac66fa5ea1de8579b860f8833725c531317fde2` with `MASTER_PLAN.md` SHA-256 `4796b0f7ba168650cedde615a3382fe475cc64de14784bf6445849ec1a1fb53f`.
+
+This design uses Menemora, a voice-recording and transcription application, as an example. Its folder names illustrate one workspace; they do not authorize moving existing data or impose the same domain folders on other products. Current requirements for the workspace, literal JSON payloads, restoration, history, backup, privacy, and honest outcomes remain in [sections 45–49](#s45), especially [JSON-1 through JSON-4](#json-1), [REV-1 and REV-2](#rev-1), [BACKUP-1 and BACKUP-2](#backup-1), [RECOVER-1](#recover-1), [NOFALL-1 and NOFALL-2](#nofall-1), [PRIV-1](#priv-1), and [AUDIT-2](#audit-2).
+
+<a id="topic2-status"></a>
+### 52.1. What the owner has agreed, and what this record does
+
+The proposed product has two separately controlled workspace protections:
+
+1. **Workspace Dual JSON** keeps a complete individual JSON representation for each applicable record or component and a complete global `master-data.json` inside the primary workspace.
+2. **Complete On-Site Backup** creates full, standalone physical copies of the declared retained workspace in a separately selected destination.
+
+The owner controls each setting independently. The proposed future constitutional direction is that qualifying applications support the approved Dual-JSON capability while each user may choose whether active Dual-JSON redundancy is enabled for a workspace. External complete backup remains an independent user choice. This policy has not been integrated into or approved as a replacement for RC4.
+
+<a id="topic2-configurations"></a>
+#### 52.1.1. Four independent settings combinations
+
+| Workspace Dual JSON | Complete On-Site Backup | Proposed workspace state |
+|---|---|---|
+| OFF | OFF | Original workspace data, plus any separate protections still required by the governing constitution and application contract. Do not imply that no protection is required. |
+| ON | OFF | Original workspace data and its active individual and global JSON representations. No Complete On-Site Backup is being created by this feature. |
+| OFF | ON | Original workspace data and independently versioned complete external backups. Do not generate new complete JSON representations merely because backup runs. |
+| ON | ON | Original workspace data, active individual and global JSON representations, and complete external backups. |
+
+Turning either setting OFF does not itself authorize deleting data already produced by that feature. The user must be told what is paused, retained, or unavailable. Deletion and retention follow [PRIV-1](#priv-1) and any future approved policy. Pausing, resuming, and separately deleting historical JSON representations remain open decisions.
+
+<a id="topic2-conflict"></a>
+#### 52.1.2. Explicit conflict with ratified RC4
+
+RC4 [JSON-1](#json-1), [INFO-1](#info-1), and [SURVIVE-1](#survive-1) currently require accessible retained-workspace data and complete literal individual and global JSON recovery representations for applicable retained-user-data workspaces. Making active Dual JSON optional conflicts with those current requirements. The proposed option cannot silently take effect as current RC4 policy; a future formal amendment must state which clauses change, what protection remains when the option is OFF, and how affected requirements are reconciled.
+
+The term “JSON recovery source” describes a data-recovery representation, not an alternate execution implementation. RC4 [NOFALL-2](#nofall-2) expressly treats its two JSON layers as complementary recovery representations and permits verified restoration. This proposal does not authorize a hidden secondary database or other substitute to satisfy JSON-1, nor a concealed execution path after failure. Operational databases may retain their separately defined responsibilities under existing workspace rules.
+
+The proposed one- or two-version Complete On-Site Backup retention modes also need reconciliation with RC4 [REV-2](#rev-2)'s independent protected historical recovery points and [BACKUP-1](#backup-1)'s failure-domain and deletion-authority protections. A single retained copy, or two copies removable through the same ordinary credentials, cannot be presumed to satisfy those requirements. The future amendment must define whether another mechanism continues to meet RC4 when this feature is OFF or in Single Backup mode; the proposed retention count does not waive existing protection.
+
+<a id="topic2-locations"></a>
+### 52.2. Primary workspace, JSON locations, and external destination
+
+The primary workspace remains the location of original user data. When Dual JSON is active, its individual and global recovery representations also remain in that workspace. They are not moved into the external backup destination. A complete external backup copies the declared workspace contents, including whichever JSON files exist at the captured recovery point.
+
+An illustrative Menemora layout is:
+
+    Menemora/
+    ├── 00-START-HERE.md
+    ├── 01-FOLDER-GUIDE.md
+    ├── 02-DATA-DICTIONARY.md
+    ├── catalog.json
+    ├── master-data.json                 (when Dual JSON is active)
+    ├── Recordings/
+    │   └── 2026/October/Interview_A7F2/
+    │       ├── recording.m4a
+    │       ├── recording.json            (when Dual JSON is active)
+    │       ├── transcript.md
+    │       ├── Notes/notes.md
+    │       └── History/changes.json
+    └── Settings/
+        ├── settings.json
+        └── System/
+            └── Recovery/
+                ├── recovery-state.json
+                ├── Transactions/
+                └── Incidents/
+
+    Selected external destination/
+    └── Menemora/
+        ├── Backup-Version-<identity>/
+        └── Backup-Version-<previous-identity>/    (Two Backups mode)
+
+The paths, filenames, and physical transaction layout are examples, not finalized storage protocol. Settings, retained histories, recovery evidence, credentials, and derived state each need the scope, access, retention, and recovery treatment required by their purpose. Do not expose credentials in ordinary readable JSON. Any backup exclusions—such as transient caches, incomplete staging, or the backup destination itself—must be explicit, justified, and safe from recursive inclusion.
+
+<a id="topic2-first-run"></a>
+### 52.3. First-run setup and ongoing controls
+
+Before initial storage configuration, the application is to show the user the primary workspace location and proposed folder structure; where original data, settings, history, recovery information, and individual/global JSON would reside; any storage outside the selected workspace; whether existing data was detected and may be adopted; and relevant capacity and permission information. It should clearly identify which files are originals and which are recovery representations.
+
+The user separately chooses **Workspace Dual JSON: ON or OFF** and **Complete On-Site Backup: ON or OFF**. Neither is silently selected on the user's behalf during first-time setup. If external backup is enabled, the user selects a supported destination, such as an external SSD, external HDD, NAS share, or another validated folder. The application checks the destination and explains whether it is physically independent from the primary workspace and the failure risks that remain. A different path, drive letter, mount, or NAS label alone does not establish independence.
+
+After setup, both controls remain available through **Settings → Data Management**. Recovery approval and urgent integrity notices may appear in context while configuration remains discoverable there. The precise interface may differ by application; the settings and consequences must remain understandable.
+
+If the application detects an existing workspace, it must distinguish adopting and validating that workspace from creating a new one. It must not silently reorganize files or overwrite an existing workspace during setup.
+
+<a id="topic2-json-init"></a>
+### 52.4. Enabling Dual JSON for an existing workspace
+
+If the user enables Dual JSON after the workspace already contains data, the initial complete representation is **Workspace JSON Version 1**. Initialization is complete only after the application has:
+
+1. Inventoried the retained data and declared recovery scope.
+2. Validated relevant files, relationships, and the selected workspace identity.
+3. Established a logically consistent baseline boundary.
+4. Constructed all applicable complete individual JSON representations and the complete global `master-data.json`.
+5. Verified the representation contents and their ability to reconstruct the declared retained data.
+6. Published the verified baseline as Workspace JSON Version 1 and continued under the selected save policies.
+
+Initialization must not assemble a mixed-time baseline while the application or external programs change files. The physical consistency method and the handling of edits during the build are not settled here. A process start, partial set of JSON files, or syntactically valid output is not a verified Version 1. An interrupted attempt must leave original data protected, report incomplete work, and preserve any safely recoverable evidence. Keep the application usable where doing so is safe.
+
+<a id="topic2-json-scheduling"></a>
+### 52.5. Edit protection, JSON schedules, and resource reporting
+
+The agreed saving discussion has three layers, whose exact transaction protocol remains open:
+
+1. **Durable edit protection.** Acknowledged edits need durable protection under the applicable data-safety policy without waiting for a potentially large full JSON rebuild. How this minimum durability works when optional Dual JSON is OFF has not been resolved. The future amendment must reconcile the user toggle with the applicable minimum durability and [OUT-1](#out-1); it must not imply that OFF makes acknowledged edits disposable.
+2. **Individual JSON.** When Dual JSON is ON, the discussed user choices are immediate updates, updates every five minutes, or updates when the user becomes idle. These choices apply to individual JSON representations, not automatically to the full global JSON.
+3. **Global JSON.** The complete `master-data.json` has its own schedule. Smart/Adaptive is the preferred mode discussed: an eligible update may start when pending changes exist and resource and execution conditions permit. Scheduled and manual updates were also discussed. Each published global JSON must represent a complete verified retained-workspace revision.
+
+Individual JSON and global JSON may have separate resource profiles: **Memory Saver**, **Balanced**, and **Priority**. Values, triggers, fairness, capacity limits, and behavior when resources are unavailable are not selected by this record.
+
+The interface is to distinguish the latest durably recorded edit, individual JSON revision, global JSON revision, pending changes, verification state, resource mode, failures, and recovery requirements. A generic “Saved” indicator must not imply that all layers are current when only an edit or one JSON layer is durable.
+
+No resource-intensive saving or backup job silently continues after the application closes. Any post-close completion worker must be visible and explicitly authorized, then stop when its approved job finishes. No universal post-close execution guarantee is claimed for unsupported operating systems.
+
+<a id="topic2-backup-init"></a>
+### 52.6. Complete On-Site Backup and its first verified version
+
+Complete On-Site Backup is separate from Dual JSON. It is user-controlled and has its own destination, schedule, resource policy, version identities, and retention choice. Each completed backup is a full, standalone physical copy of the entire declared retained-workspace scope, browsable as ordinary folders wherever the retained items are ordinary files. It is neither incremental nor a hybrid that requires an earlier backup to reconstruct the declared contents.
+
+The complete scope may include original recordings and other files, transcripts, notes, folder structure, settings, retained histories, relevant manifests and documentation, recovery metadata, individual JSON files if present, the global JSON if present, and every other retained item included in the defined scope. Any exclusions must be documented as described in [section 22](#s22). A manifest or hash may support inventory and verification, but cannot replace missing payload.
+
+Each backup has an identity in a namespace separate from Workspace JSON versions. If backup is enabled for a workspace that already contains years of data, the first successfully verified complete backup is **External Backup Version 1**. Initialization is not complete until both the copied contents and the published recovery point have been verified. A started, partial, inaccessible, or unverified copy is not a completed backup.
+
+The backup process captures a consistent workspace state under a mechanism to be selected and tested for the target platform. It copies the JSON revisions that actually exist at that state and reports any lag or pending changes. A backup run does not silently trigger full regeneration of `master-data.json`. A disconnected drive, unavailable NAS, access denial, or uncertain copy result cannot be reported as success.
+
+<a id="topic2-backup-schedule"></a>
+### 52.7. Complete backup schedule
+
+The five discussed frequency choices are **Daily**, **Weekly**, **Smart / Adaptive**, **Manual**, and **Custom**. Daily and weekly express an aim to create a complete backup each day or week; they do not promise execution when the destination, resources, permission, or authorized execution window is unavailable. Smart/Adaptive may start an eligible complete backup when changes, resources, destination availability, and authorized execution conditions permit. Manual runs only on an explicit request. Custom lets the user choose a supported schedule. All modes expose **Back Up Now**.
+
+Backup frequency is independent of both JSON schedules and of retention mode. A missed run is shown as overdue and follows a transparent execution policy; a failed attempt is not a successful cycle. Execution and resource use remain bounded. The exact time zone, retry limits, catch-up behavior, and custom schedule syntax remain open.
+
+<a id="topic2-backup-retention"></a>
+### 52.8. Single Backup and Two Backups retention
+
+The two proposed normal retention choices are:
+
+| Mode | Completed versions retained after a successful safe rotation |
+|---|---|
+| **Single Backup** | The latest successfully verified complete backup. |
+| **Two Backups** | The latest successfully verified complete backup and its immediately preceding successfully verified complete backup. |
+
+For example, Two Backups advances from Current V1; then Current V2 / Previous V1; then Current V3 / Previous V2, with V1 retired after V3 is safely published. A failed attempt does not advance rotation.
+
+The replacement must be fully copied, verified, and durably published before an older protected version is retired. Safe construction may temporarily require space for existing completed versions plus the staged candidate: Single Backup may need two physical copies during construction, and Two Backups may need three. The configured limit applies to completed retained versions after successful cleanup, not every staging instant. If capacity is insufficient, stop and report it; do not delete the only verified copy early to make room.
+
+Pause automatic retirement of potentially valuable versions when corruption, unresolved missing files, or significant integrity conflicts have been detected. Show the hold and temporary extra storage clearly. Disclose that undetected corruption can be copied into a newer full backup. Turning backup OFF does not silently remove existing verified backups. Exact crash-safe publication and retirement mechanisms remain unresolved.
+
+<a id="topic2-everyday-recovery"></a>
+### 52.9. JSON-first everyday recovery and complete disaster recovery
+
+For ordinary repair when Dual JSON is active, the proposed investigation order is: examine the relevant individual JSON; durable pending changes and revision relationships; the global `master-data.json` as needed; then other verified retained historical sources. Prepare the best-supported candidate. A newest timestamp alone does not establish the correct revision. An older individual JSON must not cause newer valid durable changes to be ignored. If only one file is damaged, repair only that file unless evidence justifies a wider operation.
+
+Detection, investigation, and preparation may be automatic when safely supported. Replacing an existing original requires explicit user approval under [JSON-4](#json-4), [RECOVER-1](#recover-1), and the exact-target safeguards in [section 52.11](#topic2-restoration-safety).
+
+Complete On-Site Backup primarily supports disasters such as loss of the primary drive, severe workspace destruction, large-scale unrecoverable loss, or reconstruction on replacement hardware. The proposed flow validates the selected backup and its versions; shows recovery-point information; lets the user choose a safe destination; avoids silently overwriting an existing workspace; restores the complete retained folder structure; verifies files and dependencies; reestablishes appropriate workspace identity and settings; reports unavailable, missing, or incompatible contents; and records the operation. A physically failed source drive whose original bytes cannot be accessed cannot have those bytes preserved by the software. The external destination protects against that failure only if it survives in a genuinely separate failure domain.
+
+<a id="topic2-selective-compare"></a>
+### 52.10. User-requested missing-file comparison
+
+The proposed action is discoverable at **Settings → Data Management → Recovery & Restoration → I Think I'm Missing a File**. It is an explicit, read-only comparison and selective-recovery workflow:
+
+1. Identify the active primary workspace and its stable identity.
+2. Ask the user to select the external backup drive or folder, optionally suggesting a previously configured destination.
+3. Validate the backup and identify available verified versions. In Two Backups mode, allow comparison with both current and previous versions.
+4. Compare the current workspace with the selected version or versions and present a clear report.
+5. Let the user inspect differences, choose files, and approve any proposed workspace changes.
+
+Scanning and comparison do not change the workspace or external backup. A missing path can reflect intentional deletion, disconnected storage, revoked permission, or a different workspace; it is not automatically corruption, and an inaccessible workspace must not appear as an empty one.
+
+At minimum, classify items as missing from current workspace, different, present only in current workspace, matching, or uncertain/inaccessible. Identify potential moves or renames only when trustworthy evidence supports that conclusion. Prefer a bounded inventory/manifest comparison using trusted relative paths, stable identities when available, sizes, revision metadata, recorded hashes, backup manifests, and current inventory. Investigate bytes more deeply where needed. Do not reread hundreds of gigabytes when a cheaper comparison can answer the question; manifest agreement alone is not a claim of fresh byte-by-byte verification.
+
+Show missing, different, workspace-only, matching where useful, uncertain items, and the backup versions compared. Each item can be inspected by name, original relative path, current and backup locations, size, available hashes, backup version, relevant revision, available history, verification state, and conflicts. Permit individual selection and safe bulk selection. Treat ambiguous or conflicting items separately.
+
+<a id="topic2-selective-restore"></a>
+### 52.11. Selective restoration from a complete backup
+
+The owner-approved design direction permits a user to restore one or more explicitly selected files from a complete backup without restoring the entire workspace. This is an intentional, user-requested path alongside ordinary JSON-first repair. For example, a transcript missing from the current workspace may be inspected in Backup V12 and restored from V12, or from V11 if V12 lacks it. The application never silently chooses an older copy or restores every absent file.
+
+The proposed operation validates the selected version and target relative path; treats the external backup as read-only; stages and verifies the selected content; rechecks destination identity and current state; detects a file that appeared or changed since comparison; seeks renewed approval if the proposal's conditions changed; installs only the approved items; verifies the result; records provenance; and updates relevant recovery metadata and JSON status if Dual JSON is active. A genuinely absent target has no existing target bytes to preserve. If a target exists, treat it as a replacement conflict and apply the exact-byte safeguards below. Do not silently overwrite newer work or modify the backup during comparison or restore.
+
+<a id="topic2-restoration-safety"></a>
+### 52.12. Exact-byte preservation and explicit replacement approval
+
+Before replacing an existing original, the proposed procedure identifies the trusted workspace and exact target; inspects current contents and revision information; validates the recovery source; reconstructs the candidate in isolated staging; verifies its bytes and required metadata; checks available capacity; and explains the recovery point, consequences, and conflicts. Approval is bound to the exact target, its observed current state, selected source revision, and proposed replacement bytes. Revalidate immediately before mutation. If the target changed after review or approval, stop and present a new proposal; do not silently overwrite it.
+
+Preserve the original's exact existing bytes before replacement and verify that preservation. Then apply the authorized replacement through a recoverable transaction, verify the active result, record the outcome, and update revision/JSON states truthfully. Restoring an earlier point creates a new recovery revision with provenance; it does not rewrite history to imply the incident never occurred. After JSON-based repair, promptly synchronize the affected individual JSON when Dual JSON is ON using recovery-specific durability safeguards. The global JSON retains its separate schedule. Restoration never silently turns Dual JSON ON.
+
+The proposal accounts for traversal, malicious filenames, symlinks, junctions/reparse points, escapes from the chosen workspace, collisions, destination changes, concurrent external edits, insufficient space, interrupted copy, crashes, partial completion, and failed readback. Do not assume one rename makes a multi-file operation atomic or durable. For multi-file repair, maintain durable per-file and batch transaction state. On partial failure, state exactly what was preserved, changed, verified, or left uncertain, and retain safely recoverable evidence.
+
+For bulk restoration, present a closed list, validate each item, and use one understandable batch approval where appropriate. Exclude ambiguous, unsafe, or changed items; never add files after approval; report partial outcomes; and preserve exact damaged bytes before replacing any approved existing file. Incident archives may hold evidence, provenance, verified identities, hashes, decisions, and failure details. Archive naming must not blindly inherit an untrusted source filename. The illustrative Recovery/Incidents layout in [section 50](#s50) is not a finalized protocol.
+
+<a id="topic2-states"></a>
+### 52.13. Disabled, incomplete, and conflicting states
+
+| State | Proposed truthful behavior |
+|---|---|
+| Dual JSON OFF | Do not assume complete JSON recovery exists. An available external backup may support user-initiated selective restore. Do not silently enable JSON. |
+| External backup OFF | JSON recovery may be available if Dual JSON is ON. Do not imply that JSON on the failed primary drive survives physical loss of that drive. |
+| Both OFF | Explain recovery limitations while retaining any other protections required by the applicable constitution and product contract. Do not invent a source. |
+| JSON Version 1 incomplete | Do not call it verified. Individually verified artifacts may be considered only under a qualified recovery procedure. |
+| Backup creation incomplete | Do not publish it as verified; protect the previous verified backups. |
+| Requested historical revision unavailable | Say it is unavailable and offer evidenced alternatives without silently substituting another revision. |
+| Evidence inadequate or conflicting | Do not automatically replace originals. Offer investigation, safe export, comparison, or restoration to a separate destination where appropriate. |
+| Destination unavailable or inaccessible | Report the actual access/connectivity state; do not label the workspace empty or claim a completed backup. |
+
+<a id="topic2-reporting"></a>
+### 52.14. Status, integrity, and security limits
+
+Status distinguishes original edit durability; individual and global JSON revision and verification; pending work; selected resource mode; backup schedule and overdue state; selected destination and access; current and previous backup identities; verification and publication state; retirement hold; recovery requirements; and errors or unknown outcomes. “Saved,” “protected,” “verified,” and “recoverable” must describe the specific evidence and boundary they actually establish.
+
+Hashes support byte comparison and accidental-corruption detection when compared with an appropriate expected value. A hash stored beside a compromised file is not independent proof of authenticity, authorship, factual correctness, or clean history. Distinguish byte integrity, revision consistency, authenticity, physical independence, and disaster recovery. NAS or external storage is not independent merely because it has another path. Stronger defenses may need separately protected trust anchors, access control, or immutable protection; those designs are open.
+
+<a id="topic2-open"></a>
+### 52.15. Agreed direction versus unresolved decisions
+
+The feature separation and user controls, the four setting combinations, in-workspace JSON locations, no deletion merely from switching OFF, full standalone external backups, separate version namespaces and schedules, five backup frequency choices, two normal retention modes, JSON-first ordinary repair, complete disaster recovery, user-requested read-only comparison, selective restore, explicit approval, exact-byte preservation, and honest partial/failure states are the design direction recorded here.
+
+The following choices remain open; this section does not select mechanisms or defaults on the owner's behalf:
+
+| Open decision | Still to be established |
+|---|---|
+| Durable transaction protocol | How acknowledged edits, originals, JSONs, backup publication, metadata, and operation evidence reach a truthful durable boundary. |
+| Consistent snapshots | Platform-appropriate point-in-time consistency across files and stores, including external writers. |
+| Locking and coordination | Local, NAS, removable-storage, cloud-provider, and multi-device writer coordination; stale-writer exclusion and offline changes. |
+| Crash recovery and replay | Durable transaction state, recovery ordering, idempotency, uncertain outcomes, and safe cleanup after interruption. |
+| Approval persistence and invalidation | What approval survives restart, how it binds to exact state/bytes, expires, and becomes invalid after external change. |
+| Incident retention and protected originals | Retention limits, capacity, privacy, access separation, encryption, and deletion authority. |
+| Verification and trust anchors | Which checks are freshly performed, independent evidence, tamper assumptions, key handling, and what “verified” means by operation. |
+| Backup publication and retirement | Crash-safe promotion, catalog updates, cleanup, and proof the replacement is usable before retirement. |
+| Insufficient space and interruption | Preflight limits, cancellation, required staging capacity, partial-state handling, and recovery without premature deletion. |
+| Damaged storage | Behavior when reads fail, storage degrades during copy, or the source may be failing physically. |
+| First-run validation | Supported destination types, permission/capacity checks, identity and existing-workspace adoption, and accurate independence disclosures. |
+| Optional JSON and minimum durability | How the user toggle coexists with mandatory edit durability and the current RC4 JSON-1/INFO-1/SURVIVE-1 requirements. |
+| Retention and RC4 protection | How Single/Two Backups satisfies or coexists with REV-2's independently protected history and BACKUP-1's failure-domain/deletion protections, including when this feature is OFF. |
+| Constitutional amendment | Exact future wording, affected rule dispositions, transition behavior, and separate owner ratification process. |
+| Adversarial validation | Test cases for hostile paths, races, crashes, power loss, tampering, partial batch operations, and supported platform/storage combinations. |
+
+<a id="topic2-amendment"></a>
+### 52.16. Future amendment implications
+
+Before any part of this design becomes active constitutional policy, a separately authorized amendment should start from the then-authoritative revision and identify the affected rules. At minimum, it must reconcile the proposed optional active Dual JSON with [JSON-1](#json-1), [INFO-1](#info-1), and [SURVIVE-1](#survive-1); preserve the recovery-source distinction and [NOFALL-2](#nofall-2); define how minimum edit durability remains protected; and reconcile optional external backup and its Single/Two retention modes with [REV-2](#rev-2), [BACKUP-1](#backup-1), [BACKUP-2](#backup-2), [PRIV-1](#priv-1), and [RECOVER-1](#recover-1). It must state retained protections in every setting combination and distinguish proposed policy from platform-specific engineering decisions.
+
+This section records the owner's post-RC4 design direction for future discussion. It does not edit, renumber, replace, or ratify any RC4 rule; change the existing count of ratified rules; authorize implementation against user data; or resolve any open question above. Ratification remains a separate owner decision under [GOV-3 through GOV-5](#gov-3).
