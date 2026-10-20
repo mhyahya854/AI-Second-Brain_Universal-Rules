@@ -65,14 +65,14 @@ For the owner: start with [scope/authority](#s01), [ordered planning](#s34), [te
 43. [Authorization provenance and historical preservation — non-normative](#s43)
 44. [Technical factuality and source evidence — non-normative](#s44)
 45. [User-owned data workspace and folder architecture](#s45)
-46. [Literal dual-JSON recovery](#s46)
+46. [Mandatory per-file Current JSON, verified Folder JSON, optional global Master JSON](#s46)
 47. [Revision integrity, external edits, and protected history](#s47)
 48. [Trusted AI entry and bounded navigation](#s48)
 49. [Workspace validation and lifetime feasibility](#s49)
 50. [Menemora illustration and Open Engineering Decisions — non-normative](#s50)
 51. [RC4 authority, reconciliation, and requirement coverage — non-normative](#s51)
 52. [Topic 2: Optional Dual-JSON Recovery and Complete On-Site Backup — unratified design record](#s52)
-53. [Topic 2 constitutional integration candidate — unratified](#s53)
+53. [Universal Current JSON, Folder JSON and selective reconciliation — owner-locked unratified candidate](#s53)
 
 <a id="s01"></a>
 ## 1. Scope and rule classification
@@ -2333,7 +2333,7 @@ The information is the durable product; the application is a replaceable interfa
 <a id="workspace-access"></a>
 #### 45.1.1. Independent access and physical adaptation
 
-The App Plan MUST define one logical, discoverable, documented, independently accessible user-owned data workspace, separate from disposable application installation state. It SHOULD use a real user-accessible folder structure wherever the supported platform permits it. A technically necessary physical adaptation MUST document its mapping and preserve independent discovery, access and recovery outcomes; hidden opaque storage is not an equivalent substitute. Ordinary original documents/media and human-readable files MUST remain present and independently accessible within the supported storage/security contract. SQLite and other operational stores MAY serve appropriate responsibilities but MUST NOT replace the original independently accessible workspace, or substitute for [JSON-1](#json-1)'s complete literal recovery representations when Dual JSON is enabled.
+The App Plan MUST define one logical, discoverable, documented, independently accessible user-owned data workspace, separate from disposable application installation state. It SHOULD use a real user-accessible folder structure wherever the supported platform permits it. A technically necessary physical adaptation MUST document its mapping and preserve independent discovery, access and recovery outcomes; hidden opaque storage is not an equivalent substitute. Ordinary original documents/media and human-readable files MUST remain present and independently accessible within the supported storage/security contract. SQLite and other operational stores MAY serve appropriate responsibilities but MUST NOT replace the original independently accessible workspace, mandatory per-file Current JSON, verified Folder JSON or enabled optional full global Master JSON under [JSON-1](#json-1).
 
 <a id="workspace-survival"></a>
 #### 45.1.2. Planning priorities and platform survival
@@ -2348,12 +2348,12 @@ Planning MUST prioritize human comprehension, information preservation, independ
 <a id="workspace-selection"></a>
 #### 45.2.1. Setup and stable identity
 
-Every applicable App Plan MUST identify where actual data lives. First setup MUST present the proposed persistent workspace location, major folder paths, settings, history, JSON and recovery locations, any data outside the workspace, and adoption of existing data for explicit user inspection and approval. The user MUST select or approve a suitable local folder or other supported storage arrangement and explicitly choose ON or OFF independently for Dual-JSON Recovery and Complete On-Site Backup; neither choice may be silently preselected. When backup is ON, the user MUST choose a separate validated backup destination, such as an external drive, NAS or other supported folder. These choices remain adjustable in Settings → Data Management under the safeguards of [section 53](#s53). Remember the approved location and stable workspace identity, and use it until a deliberate authorized change. The application MUST NOT silently change authoritative location or create a replacement empty workspace when the configured location is unavailable.
+Every applicable App Plan MUST identify where actual data lives. First setup MUST present the proposed persistent workspace location, major folder paths, settings, history, JSON and recovery locations, any data outside the workspace, and adoption of existing data for explicit user inspection and approval. The user MUST select or approve a suitable local folder or other supported storage arrangement and understand that Current JSON and Folder JSON are always-on parts of the app, then explicitly choose ON or OFF independently for optional Master JSON and Complete On-Site Backup; neither optional choice may be silently preselected. When backup is ON, the user MUST choose a separate validated backup destination, such as an external drive, NAS or other supported folder. These choices remain adjustable in Settings → Data Management under the safeguards of [section 53](#s53). Remember the approved location and stable workspace identity, and use it until a deliberate authorized change. The application MUST NOT silently change authoritative location or create a replacement empty workspace when the configured location is unavailable.
 
 <a id="workspace-missing"></a>
 #### 45.2.2. Missing location and damaged information
 
-For an unavailable configured location, report **“Data location not found.”** Provide understandable reconnection steps and verify the candidate workspace's stable identity and contents before adoption. Distinguish missing/unreachable location, revoked permission, and damaged information; diagnostics must not claim corruption merely because access failed. For detected damage, report **“Data integrity issue detected.”** and offer verified recovery under [JSON-4](#json-4) when Dual JSON is active, or another actually available authorized recovery route. Never claim a JSON recovery source exists merely because the application supports Dual JSON.
+For an unavailable configured location, report **“Data location not found.”** Provide understandable reconnection steps and verify the candidate workspace's stable identity and contents before adoption. Distinguish missing/unreachable location, revoked permission, and damaged information; diagnostics must not claim corruption merely because access failed. For detected damage, report **“Data integrity issue detected.”** and investigate the mandatory Current JSON recovery source under [JSON-4](#json-4), checking its verified revision and genuine availability. Consider optional verified Master JSON and external backup only when actually present; never assume a stale, incomplete or absent representation can restore the requested bytes.
 
 <a id="workspace-movement"></a>
 #### 45.2.3. Verified movement and rebinding
@@ -2408,7 +2408,7 @@ Documentation and recovery schemas MUST remain obtainable and usable without the
 Every qualifying application MUST maintain per-file Current JSONs containing complete literal reconstructible bytes and verified per-folder lightweight Folder JSON manifests. Neither protection may be disabled. Synchronization of a changed Current JSON begins promptly for that file only; Folder JSON is asynchronously verified against a consistent revision boundary. The complete standalone global `master-data.json` remains independently optional under [section 53](#s53). These obligations exclude stateless utilities, do not eliminate original files, do not duplicate file payloads in folder manifests, and do not select a universal operational database.
 
 <a id="json-1"></a>
-### 46.1. JSON-1 — Complete individual and global payloads
+### 46.1. JSON-1 — Complete Current JSON payloads, verified Folder JSON manifests, and optional global payload
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** mandatory live per-file Current JSON and per-folder Folder JSON for retained-data applications; independently optional global Master JSON
 
@@ -2440,7 +2440,7 @@ Use well-defined versioned schemas conceptually separating **`actual_data`**, re
 <a id="json-retention"></a>
 #### 46.2.2. No silent loss and legitimate erasure
 
-“No diminution” means no silent loss, omission, truncation, corruption, unapproved replacement or premature deletion of required retained information. It does **not** mean monotonically increasing physical file size. Authorized erasure, lawful retention expiry, compact serialization and deliberate validated migrations remain supported. Coverage applies to information legitimately retained at the declared recovery point; [PRIV-1](#priv-1) and [SAFE-2](#safe-2) govern deletion, minimization and conflicting obligations across originals, both JSON layers, histories, replicas and backups. Restoration MUST reconcile deletion decisions and MUST NOT resurrect erased payloads contrary to policy.
+“No diminution” means no silent loss, omission, truncation, corruption, unapproved replacement or premature deletion of required retained information. It does **not** mean monotonically increasing physical file size. Authorized erasure, lawful retention expiry, compact serialization and deliberate validated migrations remain supported. Coverage applies to information legitimately retained at the declared recovery point; [PRIV-1](#priv-1) and [SAFE-2](#safe-2) govern deletion, minimization and conflicting obligations across originals, mandatory Current JSON and Folder JSON, optional Master JSON, histories, replicas and backups. Restoration MUST reconcile deletion decisions and MUST NOT resurrect erased payloads contrary to policy.
 
 <a id="json-secrets"></a>
 #### 46.2.3. Privacy, credentials, and recovery keys
@@ -2470,7 +2470,7 @@ Hash domains MUST be explicit and reproducibly verifiable, including how self-ge
 This rule requires coherent finite boundaries and evidence, not a selected universal serialization, staging, commit or history algorithm. Decisions remain under [section 50.2](#open-engineering).
 
 <a id="json-4"></a>
-### 46.4. JSON-4 — Committed revision, distributed state, and verified restoration
+### 46.4. JSON-4 — Current/Folder revision coordination, distributed state, and verified restoration
 
 **Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** saving, synchronization, conflict resolution, and restoration of retained-data workspaces
 
@@ -2704,8 +2704,8 @@ Transcription, transcript correction, AI summaries, audio processing, notes and 
 
 | Open choice | Evidence and decision still needed |
 |---|---|
-| Acknowledgement timing | Whether edits are acknowledged only after both full JSON copies are committed, or an earlier independently durable pending state is permitted; define actual recovery point, caller-visible status and completion boundary. Neither option is selected here. |
-| Durable staging and commit format | Format, publication ordering, reader visibility, interruption handling and retained operation evidence across originals, both JSON layers, catalog and relevant history. A successful rename or database commit alone does not settle cross-artifact durability. |
+| Acknowledgement timing | How edits can be durably acknowledged independently of completion of a large mandatory Current JSON, asynchronous Folder JSON, and optional Master JSON; define actual recovery point, caller-visible status and safe close boundary. Exact physical protocol is not yet selected. |
+| Durable staging and commit format | Format, publication ordering, reader visibility, interruption handling and retained operation evidence across originals, mandatory Current JSON, verified Folder JSON, optional global Master JSON, catalog and history. A successful rename or database commit alone does not settle cross-artifact durability. |
 | Write coordination protocol | Writer authority, stale-writer exclusion, concurrent/offline changes, conflict handling and evidence of valid committed revisions on actual supported backends. |
 | Efficient enormous global updates | A complete-payload generation/update approach with measured lifetime I/O, memory, CPU, latency, temporary space and failure behavior. No references-only substitution is approved. |
 | Universally required storage optimization | Whether any specific streaming, compression, snapshot, reflink, sparse or copy-on-write optimization should become mandatory; actual platform availability and recovery behavior remain to be established. |
@@ -2714,7 +2714,7 @@ Transcription, transcript correction, AI summaries, audio processing, notes and 
 | Universal timeout/retry budgets | Backend/workload timing, cancellation, uncertain outcomes, safe retries and measurable limits. The same-operation/replay safeguards remain active without a newly invented universal budget. |
 | Exact history retention across apps | Domain-specific duration, protected generations, privacy/erasure, history growth, recovery points, independent access and finite reconstruction boundaries. No perpetual retention or universal generation count is selected. |
 
-Material decisions return to the future research and authorized App Plan decision process under DEV-5/DEV-8/GOV-3 before affected implementation. Engineering choices already within delegated authority need no repeated request; unresolved owner policy cannot be inferred from an example. These open questions do not weaken settled literal payload obligations. Research, prototypes and estimates remain evidence with stated limits, not approval or demonstrated production guarantees.
+Material decisions return to the future research and authorized App Plan decision process under DEV-5/DEV-8/GOV-3 before affected implementation. Engineering choices already within delegated authority need no repeated request; unresolved owner policy cannot be inferred from an example. These open questions do not weaken mandatory per-file literal payload obligations or enabled optional global payload obligations. Research, prototypes and estimates remain evidence with stated limits, not approval or demonstrated production guarantees.
 
 <a id="s51"></a>
 ## 51. RC4 authority, reconciliation, and requirement coverage — non-normative
@@ -3098,7 +3098,7 @@ Hashes support byte comparison and accidental-corruption detection when compared
 <a id="topic2-open"></a>
 ### 52.15. Agreed direction versus unresolved decisions
 
-The feature separation and user controls, the four setting combinations, in-workspace JSON locations, no deletion merely from switching OFF, full standalone external backups, separate version namespaces and schedules, five backup frequency choices, two normal retention modes, JSON-first ordinary repair, complete disaster recovery, user-requested read-only comparison, selective restore, explicit approval, exact-byte preservation, and honest partial/failure states are the design direction recorded here.
+This paragraph records the historical earlier option as originally discussed. The **later owner-locked requirements in section 53** supersede its optional Dual JSON toggle, four configuration descriptions and individual JSON scheduling decisions: Current JSON and lightweight verified Folder JSON are always-on, whereas only complete global Master JSON and external physical backup remain optional. Other enduring safety decisions here (complete backups, selective restore, exact-byte preservation, truthful failure states) remain applicable as reconciled by section 53.
 
 The following choices remain open; this section does not select mechanisms or defaults on the owner's behalf:
 
@@ -3129,7 +3129,7 @@ This section records the owner's post-RC4 design direction for future discussion
 
 
 <a id="s53"></a>
-## 53. Topic 2 constitutional integration candidate — UNRATIFIED
+## 53. Universal Current JSON, verified Folder JSON and selective reconciliation — OWNER-LOCKED / UNRATIFIED
 
 **Authority boundary:** The owner has LOCKED the universal mandatory Current JSON, verified Folder JSON (Option B), and highlighted selective-diff reconciliation decisions. This section and its edits to earlier rules constitute an **unratified constitutional amendment candidate**, not separate formal ratification. Ratified RC4 continues to govern until separately approved through [GOV-3](#gov-3)–[GOV-5](#gov-5). The ratified source is commit \`aac66fa5ea1de8579b860f8833725c531317fde2\` and remains unchanged. [Section 52](#s52) is the owner's design-decision record. If this candidate's explicit controls conflict with preexisting language in this candidate, those clauses must be reconciled before ratification rather than treated as silently overridden. No current application, user-data migration, backup deletion, rollout, or source-code implementation is authorized by this document alone.
 
@@ -3168,7 +3168,7 @@ The UI MUST separately report original edit durability, per-file Current JSON ve
 
 ### 53.4. Complete On-Site Backup — full copies, schedules and versions
 
-A Complete On-Site Backup is a **complete standalone physical workspace copy** in the user's separately selected destination, preserving ordinary files/folders for direct browsing and independent restoration. It is **not incremental, differential or hybrid**, and it never requires prior backup versions to reconstruct a published version. It covers all declared retained original files and associated settings, metadata, documentation, histories, recovery information, mandatory Current JSONs and Folder JSON manifests, and global Master JSON **when enabled or otherwise retained**. Excluded temporary artifacts and recursive backup containers must be specifically documented with complete retention/reconstruction consequences. Backup copies must have an independently verified consistent source boundary; copying a moving collection of files into an inconsistent mixed-time representation is not a valid complete recovery point. A new backup DOES NOT silently force regeneration of individual/global JSON; record their actual saved revisions and any lag.
+A Complete On-Site Backup is a **complete standalone physical workspace copy** in the user's separately selected destination, preserving ordinary files/folders for direct browsing and independent restoration. It is **not incremental, differential or hybrid**, and it never requires prior backup versions to reconstruct a published version. It covers all declared retained original files and associated settings, metadata, documentation, histories, recovery information, mandatory Current JSONs and Folder JSON manifests, and global Master JSON **when enabled or otherwise retained**. Excluded temporary artifacts and recursive backup containers must be specifically documented with complete retention/reconstruction consequences. Backup copies must have an independently verified consistent source boundary; copying a moving collection of files into an inconsistent mixed-time representation is not a valid complete recovery point. A new backup DOES NOT silently force regeneration of mandatory per-file Current JSON or optional global Master JSON, nor complete pending Folder JSON verifications; it records the actual snapshot's verified revisions and any lag.
 
 The first successfully verified complete backup of existing data is **External Backup Version 1**, distinct from mandatory per-file Current JSON and per-folder manifest revisions and optional Global Master JSON Version 1. No started, staged, interrupted or partially verified candidate may masquerade as a completed backup. Backup frequency is user-configurable independently of JSON schedules and retention: **Daily**, **Weekly**, **Smart / Adaptive**, **Manual**, or **Custom**. All modes expose **Back Up Now**. Schedules are eligibility targets, not guarantees when the NAS, external drive, authorization or resources are unavailable. Report due/overdue/failure/unknown accurately. Reconnection must verify destination identity before a resumed operation; no hidden post-close worker is implied.
 
@@ -3209,7 +3209,7 @@ If source integrity, keys, revision legitimacy, target control or sufficient sto
 
 ### 53.8. State reporting and technical implementation gates
 
-Status MUST independently show durable original revision, mandatory per-file Current JSON freshness and verification, affected Folder JSON's last verified vs pending/conflict revision, enabled Master JSON revision/pending state, configured backup connectivity/versions/schedule, retirement holds, staging, recovery incidents and genuine unknown results. An optional ON toggle means user intent, **not evidence of completed verification**. An optional OFF feature cannot be represented as providing backup/global recovery; an unresolved folder conflict may not appear as a verified healthy latest revision.
+Status MUST independently show durable original revision, mandatory per-file Current JSON freshness and verification, affected Folder JSON's last verified vs pending/conflict revision, enabled Master JSON revision/pending state, configured backup connectivity/versions/schedule, retirement holds, staging, recovery incidents and genuine unknown results. An optional ON toggle means user intent, **not evidence of completed verification**. Current JSON and Folder JSON must never be represented as user-disableable. An optional OFF feature cannot be represented as providing backup/global recovery; an unresolved folder conflict may not appear as a verified healthy latest revision.
 
 Before production implementation or declaring this candidate ready for constitutional adoption, the App Plan and appropriate owner-authorized review MUST still resolve and verify: crash-durable edit protocol and multi-file consistency; physical snapshots and external-writer locking; per-platform paths and supported providers; NAS disconnections and partial writes; approval binding/expiry; exact-byte incident preservation and lawful retention; backup staging/publishing/retirement durability; capacity preflight; failure during cleanup; independent authenticity trust anchors where claimed; malicious filenames/paths and TOCTOU races; key access; deletion/privacy propagation; unattended worker lifecycle; and adversarial tests including power loss and partial recovery. Do not substitute a default implementation or assume these mechanisms have already been technically proven.
 
@@ -3218,7 +3218,7 @@ Before production implementation or declaring this candidate ready for constitut
 | Existing RC4 rule | Candidate disposition (requires separate ratification) |
 |---|---|
 | INFO-1, SURVIVE-1, WORKSPACE-1/2/4 | Keep independently accessible originals and discoverability; explicitly expose mandatory Current/Folder JSON paths and independently optional Master JSON/backup; absence of \`master-data.json\` is acceptable when optional Master JSON is OFF. |
-| JSON-1 through JSON-4 | Always-active per-file Current JSON literal copies, lightweight verified Folder JSON manifests, immediate affected-file sync initiation, and separately optional full Master JSON; truthful independent per-layer status and JSON-first controlled recovery. |
+| JSON-1 through JSON-4 | Always-active per-file Current JSON literal copies, lightweight verified Folder JSON manifests, immediate affected-file sync initiation, and separately optional full Master JSON; truthful independent per-layer status, preservation of competing versions when review is required, highlighted per-hunk user reconciliation and JSON-first controlled recovery. |
 | REV-1/REV-2 | Retain revision evidence and competing old/new contents when needed for conflict review; independent full external backup retained only if selected, with disclosed risks and no silent deletion on OFF. |
 | BACKUP-1/BACKUP-2 | When a complete backup is ON or claimed, the full standalone scoped copy, completeness, verification, isolation limits and restoration evidence remain binding; with OFF, no fictional backup. |
 | RECOVER-1, PRIV-1, NOFALL-2 | Preserve original bytes before approved replacement, block unsafe repair, respect lawful deletion, and distinguish approved recovery sources from forbidden implementation fallbacks. |
