@@ -1,0 +1,20 @@
+<a id="s33"></a>
+## 33. Reusable Universal Agent Skills governance
+
+These owner policies define a reusable workflow library and its trust/authority contracts. This constitutional catalog is not a claim that operational skill packages have already been authored, installed, reviewed, or tested. An Agent Skill means inspectable workflow guidance and any supporting resources/scripts; calling it a prompt does not remove supply-chain or execution risk.
+
+<a id="skill-1"></a>
+### 33.1. SKILL-1 — Modular, discoverable, portable process expertise
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** design and maintenance of ecosystem/project Agent Skill libraries
+
+The ecosystem Agent Skill Library MUST organize reusable engineering process expertise rather than encode each application's product truth. Universal skills and project-specific/domain skills MUST remain distinguishable; project-specific workflows remain under that project's Master Plan and authority. A catalog/manifest or equivalent discovery contract MUST expose skill name/purpose, applicability, needed permissions, source/provenance and current trusted revision/review state where relevant, plus availability and deprecated/superseded status. No universal directory tree, filename, or copy of each unchanged global skill inside every project is required; reliable versioned references may suffice.
+
+Skills SHOULD be cohesive modules loaded progressively for the current task rather than one universal super-prompt containing frontend, security, deployment, databases, planning, UX, tests, and legal disciplines at once. Identify relevant guidance, load only what is needed, execute within the phase, and leave irrelevant material out of active context where tooling permits. Trivial work needs no dozens of skills. Supporting templates, checklists, scripts, examples, schemas, and references MAY be included, while governing instructions and permissions remain understandable.
+
+Complex skills SHOULD use compact root instructions that route to relevant supporting documents or scripts when needed, instead of loading every workflow or repository document for every task. Reusable guidance SHOULD avoid rigid itineraries that add context or constraints without improving correctness, safety, evidence, or reproducibility. This does not weaken the executable Phase Contract under [DEV-10](#dev-10), required validation, or stop conditions; reusable process guidance and project-specific execution specifications have different responsibilities.
+
+Critical workflow instructions MUST remain reviewable text or equivalent inspectable durable process documentation; an opaque proprietary prompt/service MUST NOT be their only representation. Core expertise SHOULD be portable across current/future cloud models, local models, and human developers, with provider-specific wrappers where useful. Skills SHOULD supply explicit procedure, expected inputs/outputs, stop conditions, validation, and evidence for bounded small-model execution under [DEV-11](#dev-11); limited capability does not justify broader authority.
+
+Initial discovery SHOULD expose concise metadata, loading detailed instructions only for relevant tasks. Prefer one primary skill per concern with complementary specialized/project/review layers, rather than competing frontend/color/architecture/testing/writing foundations. Where skills overlap, record priority, why both are needed, and conflict behavior; governing product/design contracts and constitution prevail. Manage context budget for small models; skill/prompt/plugin count is not a quality metric. Centrally maintained references MUST remain revision-resolvable and support future continuation without silent disappearance; dependency continuity follows [SEC-5](#sec-5).
+

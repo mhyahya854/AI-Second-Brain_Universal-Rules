@@ -1,0 +1,17 @@
+<a id="dev-7"></a>
+### 31.7. DEV-7 — Authoritative current Master Plan
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** application planning and changes to intended architecture or behavior
+
+The App Master Plan MUST contain the complete current authoritative specification of the intended completed product under [BLUEPRINT-2](#blueprint-2); precise references MAY supply supporting technical detail and evidence but MUST NOT leave material product decisions scattered among competing specifications. It MUST cover applicable product purpose, users, features, architecture, shared Rust core, platform scope, UI strategy, storage architecture, canonical data model, synchronization, NAS and local-only behavior, AI/Hermes, security, privacy, backup/recovery, migrations, testing, deployment, packaging, interfaces, extension points, constraints, and accepted exceptions.
+
+Keep historical brainstorming and superseded rationale in Research, Decisions, Reviews, or provenance; do not make a reader infer current intent from chronology. Changes to intended behavior MUST update the plan deliberately with relevant decision and phase links. The Master Plan specifies intended product truth; it does not claim unbuilt features exist or supersede the constitution without an approved exception.
+
+Every App Plan MUST state the timezone policy under [DATA-5](#data-5). It MUST also specify, where applicable, release reconstruction and dependency-disappearance dispositions ([SEC-5](#sec-5)), recovery without normal startup ([RECOVER-1](#recover-1)), lifetime growth/validation assumptions ([DEV-16](#dev-16)), emergency repair/reconciliation ([DEV-17](#dev-17)), accessibility acceptance criteria ([UI-3](#ui-3)), and locale parsing/identity semantics ([DATA-4](#data-4)). Make procedures, limits, and criteria discoverable without inferring them from code; no separate empty documents are required.
+
+For substantial retained-data applications, security planning MUST address relevant hostile inputs and exposed processors, their access and compromise consequences, destructive sync propagation, NAS-history protection, actual backup copies/deletion authority, restore validation, update integrity, suspected-compromise containment, and evidence for known-good recovery points. Reference the contracts in [SEC-1](#sec-1), [SEC-3](#sec-3), [IO-1](#io-1), [SYNC-1](#sync-1), [NAS-1](#nas-1), [BACKUP-1](#backup-1), [BACKUP-2](#backup-2), and [RECOVER-1](#recover-1) rather than duplicating a parallel security plan. Scope effort to retained-data value, attack surface, and architecture.
+
+Applicable file-intake plans MUST make the [IO-2](#io-2), [IO-3](#io-3), and [SEC-6](#sec-6) contracts discoverable: logical boundary, required promotion gates, scanner selection/transport/authority, verdict reuse and rescan policy, signature maintenance, quarantine controls, status reporting, cross-device trust, lifetime performance, source provenance, and distribution-license verification. Concise references may satisfy this without a separate scanner governance system.
+
+For relevant user-facing work, the plan MUST include or reference the design responsibilities under [UI-4](#ui-4)–[UI-7](#ui-7) and product value under [DEV-18](#dev-18). Development metadata SHOULD identify applicable skill families, trusted versions, local changes/provenance and permissions under [section 33](#s33), without duplicating unchanged central guidance.
+

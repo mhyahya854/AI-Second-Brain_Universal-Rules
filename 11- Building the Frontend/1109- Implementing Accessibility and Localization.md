@@ -1,0 +1,24 @@
+<a id="data-4"></a>
+### 8.4. DATA-4 — Locale-independent durable meaning
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** durable or interchange values whose interpretation or identity can materially depend on locale or text conventions
+
+Persistent/interchange meaning MUST NOT silently depend on the reading device's current display locale. Use typed or otherwise unambiguous representations where needed, separating semantic values from locale-aware presentation. The App Plan MUST declare relevant number, date, currency, percentage, unit, sorting/collation, encoding, Unicode normalization, case, and identifier semantics where these affect durable meaning or identity across supported platforms. [PORT-2](#port-2) governs filesystem differences; no universal normalization algorithm is prescribed.
+
+Human-formatted imports/exports MUST declare parsing/interpretation assumptions, detect ambiguity where practical, and preserve source representation/provenance where meaningful under [IO-1](#io-1), [EVID-1](#evid-1), and [PRIV-1](#priv-1). An ambiguous value such as `1,234` MUST NOT silently be reinterpreted using the current device locale when durable meaning matters. No translation mandate, support for every locale, or locale metadata on every stored string is required.
+
+<a id="data-5"></a>
+### 8.5. DATA-5 — Universal timezone policy and explicit temporal meaning
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** every application's timezone planning, with temporal representations and controls determined by actual semantics
+
+Every App Plan MUST explicitly state its timezone policy, regardless of domain or presence of scheduling features. Define how timezone-sensitive values are represented, converted, persisted, compared, displayed, imported, exported, synchronized, and migrated wherever those operations occur. Consider logs, audit events, backups, sync, filesystem observations, migrations, certificates/security events, scheduled jobs, reports, APIs, receipts, provenance, and diagnostics as well as user-visible domain values. A small application may use a concise statement identifying its actual temporal inputs/outputs and absent operations; lack of scheduling MUST NOT be used to omit timezone planning.
+
+Distinguish relevant event/effective time, source observation, ingestion, creation/modification, due time, absolute instants, local civil date/time, timezone-relative schedules, recurring local times, date-only values, elapsed durations, and monotonic runtime intervals. Only relevant concepts need representation. Date-only birthdays, elapsed durations, and monotonic timers MUST NOT acquire arbitrary timezone meaning or conversions. UTC instants are appropriate for many events, not a universal representation for every temporal concept.
+
+Changes to OS timezone, travel location, device, NAS, or locale MUST NOT silently reinterpret persisted historical meaning. Conversions MUST retain enough source context to reconstruct or explain the relevant original meaning where required by the domain/retention contract, distinguishing source timezone, canonical instant, and display timezone where significant. For example, a deadline defined as 23:59 Asia/Bahrain does not become 23:59 Europe/London because a laptop travels; a converted display may differ while preserving declared meaning. Retention remains subject to [PRIV-1](#priv-1).
+
+An observed offset such as UTC+03:00 and a timezone-rule identity such as Asia/Riyadh are not interchangeable concepts. Where future rule changes affect meaning, the App Plan SHOULD use durable timezone semantics rather than relying solely on today's numeric offset, and MUST define how relevant rule changes are handled. No single storage representation or timezone database is prescribed. Where wall-clock correctness matters, account proportionately for skew, unsynchronized devices, source-provided timestamps, device clock changes, uncertain zones, and daylight-saving/rule changes; an OS timestamp is not automatically verified truth under [EVID-1](#evid-1).
+
+Leases, retries, deadlines, expirations, synchronization, idempotency, and ordering MUST use time semantics appropriate to their correctness contracts. Distinguish wall-clock readings from monotonic elapsed-time measurement where conflation could break correctness; document relevant clock, restart, and cross-device assumptions. No one clock mechanism provides distributed ordering or stale-writer exclusion by itself; [CON-1](#con-1), [CON-2](#con-2), and [RETRY-1](#retry-1) continue to apply.
+
