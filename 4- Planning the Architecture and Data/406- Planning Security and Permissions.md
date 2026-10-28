@@ -10,6 +10,8 @@ Delegations MUST define relevant resources, allowed effects, duration or lifecyc
 <a id="s16"></a>
 ## 16. AI authority, tools, memory, and Hermes
 
+*Section 16 rules across lifecycle files: [AI-1](#ai-1), [AI-2](404-%20Defining%20APIs%20and%20Interfaces.md#ai-2), [AI-3](#ai-3), [AI-4](#ai-4), [HERMES-1](../10-%20Building%20the%20Core%20and%20Backend/1008-%20Implementing%20Required%20Core%20Capabilities.md#hermes-1), [HERMES-2](../0-%20Start%20Here%20and%20Universal%20Rules/007-%20Context%20Memory%20and%20Token%20Efficiency.md#hermes-2), [HERMES-3](../10-%20Building%20the%20Core%20and%20Backend/1009-%20Implementing%20Error%20and%20Failure%20Handling.md#hermes-3).*
+
 <a id="ai-1"></a>
 ### 16.1. AI-1 — Explicitly delegated capability
 

@@ -1,7 +1,9 @@
 <a id="s39"></a>
 ## 39. Future application repository blueprint and feature organization
 
-The one-file Universal Rules repository and a future application's repository have different purposes. This section's folders belong to **future applications**, not the active constitutional repository, whose sole tracked file is `MASTER_PLAN.md`.
+The 18-stage, 180-file Universal Rules constitutional repository (reorganized from the historical one-file `MASTER_PLAN.md` baseline) and a future application's repository have different purposes. This section's folders belong to **future applications**, not the active constitutional repository.
+
+*Section 39 rules across lifecycle files: [BLUEPRINT-1](#blueprint-1), [BLUEPRINT-2](602-%20Documenting%20Every%20Feature.md#blueprint-2), [BLUEPRINT-3](../9-%20Preparing%20the%20Development%20Environment/902-%20Creating%20the%20Approved%20Project%20Structure.md#blueprint-3).*
 
 <a id="blueprint-1"></a>
 ### 39.1. BLUEPRINT-1 — Complete substantial-application blueprint
@@ -82,5 +84,5 @@ Application/
         └── dependency-map.md
 ```
 
-`AGENTS.md` MUST route an executor to applicable authority, the current App Master Plan, Project State, and the next authorized phase. `README.md` MUST provide a beginner-readable project entry point. Existing-app assessment under [DEV-14](../9-%20Preparing%20the%20Development%20Environment/901-%20Verifying%20the%20Repository%20Starting%20State.md#dev-14), relevant Skill metadata under [SKILL-1](../0-%20Start%20Here%20and%20Universal%20Rules/006-%20Global%20Skills%20and%20Always-On%20Rules.md#skill-1)–[SKILL-3](../7-%20Attacking%20and%20Freezing%20the%20Master%20Plan/706-%20Checking%20Skills%20Dependencies%20and%20Conflicts.md#skill-3), and additional review disciplines MUST remain discoverable even where the illustrated tree has no dedicated folder. Links or meaningful records may satisfy these responsibilities without empty scaffolding.
+`AGENTS.md` MUST route an executor to applicable authority, the current App Master Plan, Project State, and the next authorized phase. `README.md` MUST provide a beginner-readable project entry point. Existing-app assessment under [DEV-14](../9-%20Preparing%20the%20Development%20Environment/901-%20Verifying%20the%20Repository%20Starting%20State.md#dev-14), relevant Skill metadata under [SKILL-1](../0-%20Start%20Here%20and%20Universal%20Rules/006-%20Global%20Skills%20and%20Always-On%20Rules.md#skill-1), [SKILL-2](../8-%20Dividing%20the%20Project%20Into%20Executable%20Steps/806-%20Selecting%20Compatible%20Skills%20for%20Each%20Task.md#skill-2), [SKILL-3](../7-%20Attacking%20and%20Freezing%20the%20Master%20Plan/706-%20Checking%20Skills%20Dependencies%20and%20Conflicts.md#skill-3), and additional review disciplines MUST remain discoverable even where the illustrated tree has no dedicated folder. Links or meaningful records may satisfy these responsibilities without empty scaffolding.
 

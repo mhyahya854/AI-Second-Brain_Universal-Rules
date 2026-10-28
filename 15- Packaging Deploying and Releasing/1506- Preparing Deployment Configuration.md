@@ -1,6 +1,8 @@
 <a id="s26"></a>
 ## 26. Configuration, observability, and runtime lifecycle
 
+*Section 26 rules across lifecycle files: [RUN-1](#run-1), [RUN-2](../16-%20Maintaining%20Updating%20and%20Recovering/1601-%20Monitoring%20Application%20Health.md#run-2), [RUN-3](#run-3).*
+
 <a id="run-1"></a>
 ### 26.1. RUN-1 — Explicit configuration and defaults
 

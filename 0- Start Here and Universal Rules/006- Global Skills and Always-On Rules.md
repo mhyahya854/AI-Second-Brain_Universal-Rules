@@ -3,6 +3,8 @@
 
 These owner policies define a reusable workflow library and its trust/authority contracts. This constitutional catalog is not a claim that operational skill packages have already been authored, installed, reviewed, or tested. An Agent Skill means inspectable workflow guidance and any supporting resources/scripts; calling it a prompt does not remove supply-chain or execution risk.
 
+*Section 33 rules across lifecycle files: [SKILL-1](#skill-1), [SKILL-2](../8-%20Dividing%20the%20Project%20Into%20Executable%20Steps/806-%20Selecting%20Compatible%20Skills%20for%20Each%20Task.md#skill-2), [SKILL-3](../7-%20Attacking%20and%20Freezing%20the%20Master%20Plan/706-%20Checking%20Skills%20Dependencies%20and%20Conflicts.md#skill-3), [SKILL-4](../2-%20Researching%20Existing%20Projects%20and%20Filling%20the%20Gaps/208-%20Discovering%20Relevant%20Skills%20and%20Resources.md#skill-4).*
+
 <a id="skill-1"></a>
 ### 33.1. SKILL-1 — Modular, discoverable, portable process expertise
 

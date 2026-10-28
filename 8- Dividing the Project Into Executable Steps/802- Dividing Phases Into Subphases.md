@@ -1,6 +1,8 @@
 <a id="s41"></a>
 ## 41. Exact execution, limited repair, and evidence-bearing completion
 
+*Section 41 rules across lifecycle files: [EXEC-1](#exec-1), [EXEC-2](803-%20Dividing%20Subphases%20Into%20Atomic%20Tasks.md#exec-2), [EXEC-3](../13-%20Testing%20Debugging%20and%20Repairing/1309-%20Repairing%20Issues%20Without%20Regressions.md#exec-3), [EXEC-4](../0-%20Start%20Here%20and%20Universal%20Rules/008-%20Continuing%20Previous%20Work.md#exec-4), [EXEC-5](../14-%20Reviewing%20the%20Entire%20Application/1409-%20Performing%20Independent%20Final%20Reviews.md#exec-5), [EXEC-6](809-%20Allocating%20Context%20and%20Memory%20Budgets.md#exec-6).*
+
 <a id="exec-1"></a>
 ### 41.1. EXEC-1 — Strict numerical phases and subphases
 

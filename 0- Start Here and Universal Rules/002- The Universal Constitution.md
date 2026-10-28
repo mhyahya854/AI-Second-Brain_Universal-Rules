@@ -1,6 +1,8 @@
 <a id="s02"></a>
 ## 2. Foundations and domain hazards
 
+*Section 2 rules across lifecycle files: [SAFE-1](#safe-1), [SAFE-2](#safe-2), [SAFE-3](../10-%20Building%20the%20Core%20and%20Backend/1003-%20Implementing%20Business%20Logic.md#safe-3).*
+
 <a id="safe-1"></a>
 ### 2.1. SAFE-1 — Integrity and truthful guarantees
 
@@ -34,9 +36,9 @@ Example: a hardware controller may stop an actuator before persisting telemetry;
 | NAS | A private storage/server environment accessed through one or more modes in [NAS-1](../4-%20Planning%20the%20Architecture%20and%20Data/407-%20Planning%20Offline%20and%20Sync%20Behavior.md#nas-1), not synonymous with mounting raw database files. |
 | Drift | A relevant change outside the expected mutation/synchronization path; detection does not establish authorship or malicious intent. |
 | Atomicity | Indivisibility within a stated consistency boundary and observer model, distinct from durability and external completion. |
-| Universal Rules repository | This constitutional repository, whose active tree contains only `MASTER_PLAN.md`; historical Git refs preserve earlier supporting files. |
-| App Master Plan / App Plan / historical APP Plan | The authoritative intended product specification and its planning responsibility in a future application; the complete specification follows BLUEPRINT-2. “Master Plan” folder names do not refer to this constitution's one-file tree. |
-| Phase / subphase | Ordered bounded implementation contract and its smaller executable contracts, with validation gates, evidence, and numerical order under EXEC-1–EXEC-5. |
+| Universal Rules repository | This constitutional repository, whose active tree is organized into 18 numbered lifecycle folders containing 180 numbered Markdown files (`103` populated files and `77` reserved zero-byte topic files); historical Git refs preserve the prior single-file `MASTER_PLAN.md` baseline and earlier supporting files. |
+| App Master Plan / App Plan / historical APP Plan | The authoritative intended product specification and its planning responsibility in a future application; the complete specification follows [BLUEPRINT-2](../6-%20Writing%20the%20Complete%20Master%20Plan/602-%20Documenting%20Every%20Feature.md#blueprint-2). “Master Plan” folder names do not refer to this constitutional repository's 18-stage lifecycle tree (or its historical one-file `MASTER_PLAN.md` baseline). |
+| Phase / subphase | Ordered bounded implementation contract and its smaller executable contracts, with validation gates, evidence, and numerical order under [EXEC-1](../8-%20Dividing%20the%20Project%20Into%20Executable%20Steps/802-%20Dividing%20Phases%20Into%20Subphases.md#exec-1), [EXEC-2](../8-%20Dividing%20the%20Project%20Into%20Executable%20Steps/803-%20Dividing%20Subphases%20Into%20Atomic%20Tasks.md#exec-2), [EXEC-3](../13-%20Testing%20Debugging%20and%20Repairing/1309-%20Repairing%20Issues%20Without%20Regressions.md#exec-3), [EXEC-4](008-%20Continuing%20Previous%20Work.md#exec-4), and [EXEC-5](../14-%20Reviewing%20the%20Entire%20Application/1409-%20Performing%20Independent%20Final%20Reviews.md#exec-5). |
 | Frozen candidate | Exact committed document bytes bound to recorded owner freeze authority; its identifier/digest is recorded outside those bytes to avoid self-reference. Freeze is not ratification. |
 | Review convergence | Revision-bound satisfaction of GOV-5's findings, validation, regression, and two consecutive independent clean-round conditions; not a guarantee of correctness. |
 | Approved implementation | Deliberately selected capability implementation and declared platform/configuration contract; failure never silently authorizes an alternative under NOFALL-1. |

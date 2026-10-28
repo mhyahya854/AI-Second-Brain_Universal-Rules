@@ -1,6 +1,8 @@
 <a id="s10"></a>
 ## 10. Product platforms, portability, and visual assets
 
+*Section 10 rules across lifecycle files: [PORT-1](#port-1), [PORT-2](#port-2), [PORT-3](302-%20Choosing%20Supported%20Platforms.md#port-3), [ASSET-1](../11-%20Building%20the%20Frontend/1101-%20Implementing%20Design%20System%20Foundations.md#asset-1), [ASSET-2](../11-%20Building%20the%20Frontend/1101-%20Implementing%20Design%20System%20Foundations.md#asset-2), [ASSET-3](../11-%20Building%20the%20Frontend/1101-%20Implementing%20Design%20System%20Foundations.md#asset-3).*
+
 <a id="port-1"></a>
 ### 10.1. PORT-1 — Avoid unnecessary platform lock-in
 

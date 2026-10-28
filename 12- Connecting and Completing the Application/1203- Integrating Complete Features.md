@@ -1,6 +1,8 @@
 <a id="s40"></a>
 ## 40. Beginner-readable implementation documentation and simplicity
 
+*Section 40 rules across lifecycle files: [DOC-1](#doc-1), [DOC-2](1201-%20Reviewing%20the%20Integration%20Map.md#doc-2), [SIMPLE-1](../14-%20Reviewing%20the%20Entire%20Application/1402-%20Reviewing%20Code%20Quality%20and%20Maintainability.md#simple-1).*
+
 <a id="doc-1"></a>
 ### 40.1. DOC-1 — File and function explanations for non-programmers
 

@@ -32,6 +32,8 @@ A root manifest, workspace catalog, typed API, database schema plus discovery en
 <a id="s36"></a>
 ## 36. Data that survives the application
 
+*Section 36 rules across lifecycle files: [SURVIVE-1](#survive-1), [SURVIVE-2](../16-%20Maintaining%20Updating%20and%20Recovering/1606-%20Testing%20Backup%20and%20Restoration.md#survive-2).*
+
 <a id="survive-1"></a>
 ### 36.1. SURVIVE-1 — Independent retained information
 
@@ -47,6 +49,8 @@ A recoverable representation may be an independently accessible authoritative da
 ## 45. User-owned data workspace and folder architecture
 
 The information is the durable product; the application is a replaceable interface for accessing, interpreting, editing, and managing it. The following are owner policies for applicable retained-data applications, not requirements for stateless utilities retaining no user information. All new rules inherit CANDIDATE status under GOV-1.
+
+*Section 45 rules across lifecycle files: [WORKSPACE-1](#workspace-1), [WORKSPACE-2](#workspace-2), [WORKSPACE-3](401-%20Designing%20the%20Application%20Architecture.md#workspace-3), [WORKSPACE-4](#workspace-4).*
 
 <a id="workspace-1"></a>
 ### 45.1. WORKSPACE-1 — Independently accessible durable workspace
@@ -106,5 +110,5 @@ The preferred human-facing filesystem entry pattern is the following four primar
 <a id="workspace-bootstrap"></a>
 #### 45.4.2. Independent bootstrap and protected discovery
 
-Documentation and recovery schemas MUST remain obtainable and usable without the original application or AI Skill. Catalog reconstruction and recovery discovery MUST not depend circularly on an intact catalog or global JSON: document bootstrap procedures using surviving individual records, protected history or independent recovery dependencies as appropriate. Routine AI retrieval uses bounded catalog/index interfaces, not full scans; authorized deterministic reconstruction may scan with declared costs. Private metadata and credentials remain protected under [AUTH-1](../10-%20Building%20the%20Core%20and%20Backend/1007-%20Implementing%20Security%20and%20Authorization.md#auth-1), [PRIV-1](../6-%20Writing%20the%20Complete%20Master%20Plan/606-%20Documenting%20Data%20Security%20and%20Recovery.md#priv-1) and [SEC-2](../9-%20Preparing%20the%20Development%20Environment/908-%20Establishing%20Permissions%20and%20Secrets.md#sec-2).
+Documentation and recovery schemas MUST remain obtainable and usable without the original application or AI Skill. Catalog reconstruction and recovery discovery MUST not depend circularly on an intact catalog or optional global Master JSON: document bootstrap procedures using surviving originals, per-file Current JSON records, verified Folder JSON manifests, protected history or independent recovery dependencies as appropriate. Routine AI retrieval uses bounded catalog/index interfaces, not full scans; authorized deterministic reconstruction may scan with declared costs. Private metadata and credentials remain protected under [AUTH-1](../10-%20Building%20the%20Core%20and%20Backend/1007-%20Implementing%20Security%20and%20Authorization.md#auth-1), [PRIV-1](../6-%20Writing%20the%20Complete%20Master%20Plan/606-%20Documenting%20Data%20Security%20and%20Recovery.md#priv-1) and [SEC-2](../9-%20Preparing%20the%20Development%20Environment/908-%20Establishing%20Permissions%20and%20Secrets.md#sec-2).
 

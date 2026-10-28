@@ -1,6 +1,8 @@
 <a id="s06"></a>
 ## 6. Feature-first architecture, shared core, and UI
 
+*Section 6 rules across lifecycle files: [ARCH-1](#arch-1), [ARCH-2](401-%20Designing%20the%20Application%20Architecture.md#arch-2), [ARCH-3](404-%20Defining%20APIs%20and%20Interfaces.md#arch-3), [CORE-1](403-%20Designing%20the%20Shared%20Core.md#core-1), [UI-1](../3-%20Deciding%20the%20Stack/305-%20Choosing%20Frontend%20Technologies.md#ui-1), [UI-2](../5-%20Designing%20the%20UI%20and%20UX/507-%20Designing%20Screens%20and%20Responsive%20Layouts.md#ui-2), [UI-3](../5-%20Designing%20the%20UI%20and%20UX/509-%20Applying%20Accessibility%20and%20Localization.md#ui-3), [UI-4](../5-%20Designing%20the%20UI%20and%20UX/501-%20Understanding%20the%20Desired%20Experience.md#ui-4), [UI-5](../5-%20Designing%20the%20UI%20and%20UX/506-%20Building%20the%20Design%20System.md#ui-5), [UI-6](../11-%20Building%20the%20Frontend/1106-%20Implementing%20Loading%20Empty%20and%20Error%20States.md#ui-6), [UI-7](../5-%20Designing%20the%20UI%20and%20UX/510-%20Reviewing%20and%20Approving%20the%20Design.md#ui-7).*
+
 <a id="arch-1"></a>
 ### 6.1. ARCH-1 — Feature-first organization
 

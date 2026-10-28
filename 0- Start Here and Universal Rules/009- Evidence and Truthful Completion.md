@@ -1,6 +1,8 @@
 <a id="s14"></a>
 ## 14. Operation outcomes and acknowledgements
 
+*Section 14 rules across lifecycle files: [OUT-1](#out-1), [OPS-1](../10-%20Building%20the%20Core%20and%20Backend/1006-%20Implementing%20APIs%20and%20Services.md#ops-1).*
+
 <a id="out-1"></a>
 ### 14.1. OUT-1 — Report what is actually known
 

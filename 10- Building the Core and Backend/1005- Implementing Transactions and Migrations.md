@@ -24,6 +24,8 @@ Lamport clocks order events consistently with causality but do not alone identif
 <a id="s17"></a>
 ## 17. Audit and provenance
 
+*Section 17 rules across lifecycle files: [AUDIT-1](#audit-1), [AUDIT-2](#audit-2), [AUDIT-3](../14-%20Reviewing%20the%20Entire%20Application/1405-%20Reviewing%20Security%20and%20Data%20Safety.md#audit-3), [EVID-1](../0-%20Start%20Here%20and%20Universal%20Rules/009-%20Evidence%20and%20Truthful%20Completion.md#evid-1).*
+
 <a id="audit-1"></a>
 ### 17.1. AUDIT-1 — Proportionate accountable evidence
 

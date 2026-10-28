@@ -1,6 +1,8 @@
 <a id="s08"></a>
 ## 8. Authority, derivation, and reproducibility
 
+*Section 8 rules across lifecycle files: [DATA-1](#data-1), [DATA-2](#data-2), [DATA-3](1002-%20Implementing%20Domain%20Models.md#data-3), [DATA-4](../11-%20Building%20the%20Frontend/1109-%20Implementing%20Accessibility%20and%20Localization.md#data-4), [DATA-5](../11-%20Building%20the%20Frontend/1109-%20Implementing%20Accessibility%20and%20Localization.md#data-5).*
+
 <a id="data-1"></a>
 ### 8.1. DATA-1 — Independent state dimensions
 

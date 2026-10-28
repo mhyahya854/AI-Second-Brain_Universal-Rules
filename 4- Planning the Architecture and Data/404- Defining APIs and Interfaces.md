@@ -19,6 +19,8 @@ Machine-readable contracts SHOULD be used where useful for enforcement or intero
 <a id="s48"></a>
 ## 48. Trusted AI entry and bounded navigation
 
+*Section 48 rules across lifecycle files: [WORKSPACE-AI-1](#workspace-ai-1), [WORKSPACE-AI-2](../0-%20Start%20Here%20and%20Universal%20Rules/007-%20Context%20Memory%20and%20Token%20Efficiency.md#workspace-ai-2).*
+
 <a id="workspace-ai-1"></a>
 ### 48.1. WORKSPACE-AI-1 — One discoverable primary application Skill
 
@@ -32,5 +34,5 @@ Expose one clearly named discoverable primary trusted application Skill, for exa
 <a id="ai-entry-trust"></a>
 #### 48.1.2. Trusted registration and enforced permissions
 
-Trust and invocation MUST follow [SKILL-1](../0-%20Start%20Here%20and%20Universal%20Rules/006-%20Global%20Skills%20and%20Always-On%20Rules.md#skill-1)–[SKILL-3](../7-%20Attacking%20and%20Freezing%20the%20Master%20Plan/706-%20Checking%20Skills%20Dependencies%20and%20Conflicts.md#skill-3). An editable workspace file, including a file named SKILL.md, cannot authenticate itself or elevate authority. Trusted registration/revision and enforced permission boundaries remain separate from its text. AI application operations MUST use approved permission-enforced application interfaces; the Skill alone grants no direct filesystem mutation, credential access, deletion, production or other elevated authority. Existing separately delegated coding/scratch capabilities remain scoped under [AI-1](406-%20Planning%20Security%20and%20Permissions.md#ai-1) and do not bypass runtime data protections. Human workspace documentation MUST remain usable without the Skill.
+Trust and invocation MUST follow [SKILL-1](../0-%20Start%20Here%20and%20Universal%20Rules/006-%20Global%20Skills%20and%20Always-On%20Rules.md#skill-1), [SKILL-2](../8-%20Dividing%20the%20Project%20Into%20Executable%20Steps/806-%20Selecting%20Compatible%20Skills%20for%20Each%20Task.md#skill-2), [SKILL-3](../7-%20Attacking%20and%20Freezing%20the%20Master%20Plan/706-%20Checking%20Skills%20Dependencies%20and%20Conflicts.md#skill-3). An editable workspace file, including a file named SKILL.md, cannot authenticate itself or elevate authority. Trusted registration/revision and enforced permission boundaries remain separate from its text. AI application operations MUST use approved permission-enforced application interfaces; the Skill alone grants no direct filesystem mutation, credential access, deletion, production or other elevated authority. Existing separately delegated coding/scratch capabilities remain scoped under [AI-1](406-%20Planning%20Security%20and%20Permissions.md#ai-1) and do not bypass runtime data protections. Human workspace documentation MUST remain usable without the Skill.
 

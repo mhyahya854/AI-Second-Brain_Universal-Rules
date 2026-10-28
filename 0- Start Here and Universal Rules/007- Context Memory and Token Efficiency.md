@@ -19,7 +19,7 @@ The **Hermes / User-Adaptable File Structure Blueprint is integrated as CANDIDAT
 <a id="ai-navigation-route"></a>
 #### 48.2.1. Bounded retrieval route
 
-Design for appropriately scoped data navigation by a suitably capable model around **1 billion parameters**. The preferred route is **AI → trusted application Skill → 00-START-HERE.md → folder guide and catalog → bounded retrieval operation → relevant record and precise content**. Supply clear entry points, stable IDs, readable names, bounded indexes/catalogs, precise sub-object addresses, deterministic lookup, limited outputs, ambiguity reporting, enforced authorization, task-specific examples and documented errors. A model MUST NOT need to read the complete global JSON, massive database or thousands of files merely to retrieve one ordinary record.
+Design for appropriately scoped data navigation by a suitably capable model around **1 billion parameters**. The preferred route is **AI → trusted application Skill → 00-START-HERE.md → folder guide, catalog, and verified Folder JSON manifests → bounded retrieval operation → relevant record and precise content**. Supply clear entry points, stable IDs, readable names, bounded indexes/catalogs, precise sub-object addresses, deterministic lookup, limited outputs, ambiguity reporting, enforced authorization, task-specific examples and documented errors. A model MUST NOT need to read an enabled complete global Master JSON, massive database or thousands of files merely to retrieve one ordinary record.
 
 <a id="ai-navigation-evidence"></a>
 #### 48.2.2. Actual evaluation and separate development target

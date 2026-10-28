@@ -1,6 +1,8 @@
 <a id="s25"></a>
 ## 25. Security, secrets, and dependencies
 
+*Section 25 rules across lifecycle files: [SEC-1](#sec-1), [SEC-2](../9-%20Preparing%20the%20Development%20Environment/908-%20Establishing%20Permissions%20and%20Secrets.md#sec-2), [SEC-3](../3-%20Deciding%20the%20Stack/307-%20Choosing%20Libraries%20and%20Dependencies.md#sec-3), [SEC-4](../2-%20Researching%20Existing%20Projects%20and%20Filling%20the%20Gaps/209-%20Choosing%20What%20to%20Reuse%20or%20Build.md#sec-4), [SEC-5](../15-%20Packaging%20Deploying%20and%20Releasing/1502-%20Preparing%20Reproducible%20Production%20Builds.md#sec-5), [SEC-6](../15-%20Packaging%20Deploying%20and%20Releasing/1504-%20Verifying%20Installers%20and%20Signatures.md#sec-6).*
+
 <a id="sec-1"></a>
 ### 25.1. SEC-1 — Threat-based boundaries and exposure
 

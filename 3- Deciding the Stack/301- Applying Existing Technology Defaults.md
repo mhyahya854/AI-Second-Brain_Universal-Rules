@@ -1,6 +1,8 @@
 <a id="s35"></a>
 ## 35. Technology preferences after requirements
 
+*Section 35 rules across lifecycle files: [TECH-1](#tech-1), [TECH-2](309-%20Verifying%20Licensing%20and%20Security.md#tech-2), [TECH-3](304-%20Choosing%20Frameworks%20and%20Runtimes.md#tech-3).*
+
 <a id="tech-1"></a>
 ### 35.1. TECH-1 — Requirements justify the selected stack
 

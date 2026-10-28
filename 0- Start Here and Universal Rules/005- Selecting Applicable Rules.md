@@ -1,6 +1,8 @@
 <a id="s28"></a>
 ## 28. Documentation, exceptions, and ratification
 
+*Section 28 rules across lifecycle files: [GOV-2](#gov-2), [GOV-3](003-%20Rule%20Priority%20and%20Authority.md#gov-3), [GOV-4](../17-%20Preserving%20Memory%20and%20Learning/1710-%20Improving%20the%20Universal%20Rules%20System.md#gov-4), [GOV-5](../7-%20Attacking%20and%20Freezing%20the%20Master%20Plan/708-%20Performing%20Independent%20Adversarial%20Reviews.md#gov-5).*
+
 <a id="gov-2"></a>
 ### 28.1. GOV-2 — Proportional living contracts
 

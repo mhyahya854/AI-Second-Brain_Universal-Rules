@@ -6,7 +6,7 @@ This section preserves the owner's organizational example and explicitly unfinis
 <a id="menemora-blueprint"></a>
 ### 50.1. Approved illustrative Menemora workspace
 
-Menemora, a voice recording and transcription application, supplied the owner's concrete design context. The following is the exact illustrative hierarchy from the mission. Domain folder names do not become mandatory in unrelated applications.
+Menemora, a voice recording and transcription application, supplied the owner's concrete design context. The following is the exact illustrative hierarchy from the RC4 mission (under the newer owner-locked candidate in [section 53](408-%20Planning%20Backup%20Migration%20and%20Recovery.md#s53), per-file Current JSON such as `recording.json` and per-folder `folder.json` manifests under [WORKSPACE-4](405-%20Designing%20Data%20Models%20and%20Storage.md#workspace-4) are always mandatory, while root `master-data.json` is present when optional Master JSON is enabled). Domain folder names do not become mandatory in unrelated applications.
 
 ```text
 Menemora/

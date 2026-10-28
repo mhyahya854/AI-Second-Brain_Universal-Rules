@@ -1,6 +1,8 @@
 <a id="s27"></a>
 ## 27. Verification and evidence
 
+*Section 27 rules across lifecycle files: [TEST-1](#test-1), [TEST-2](1303-%20Running%20Integration%20Tests.md#test-2).*
+
 <a id="test-1"></a>
 ### 27.1. TEST-1 — Evidence appropriate to the claim
 

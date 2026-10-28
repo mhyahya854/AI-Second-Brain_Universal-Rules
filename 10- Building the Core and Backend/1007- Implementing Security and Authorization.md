@@ -1,6 +1,8 @@
 <a id="s04"></a>
 ## 4. Principals and delegation
 
+*Section 4 rules across lifecycle files: [AUTH-1](#auth-1), [AUTH-2](../4-%20Planning%20the%20Architecture%20and%20Data/406-%20Planning%20Security%20and%20Permissions.md#auth-2).*
+
 <a id="auth-1"></a>
 ### 4.1. AUTH-1 — Effective authorization and integrity enforcement
 
