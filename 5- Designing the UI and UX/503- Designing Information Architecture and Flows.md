@@ -1,0 +1,18 @@
+<a id="s32"></a>
+## 32. Universal Information Architecture Blueprint
+
+This candidate blueprint standardizes discoverability and integrity contracts across applicable products, not domain features or one universal folder tree. The owner-supplied four-app analysis provides design provenance, not external normative dependencies. These rules complement existing data, storage, recovery, privacy, synchronization, and AI authority contracts.
+
+*Section 32 rules across lifecycle files: [INFO-1](#info-1), [INFO-2](../4-%20Planning%20the%20Architecture%20and%20Data/405-%20Designing%20Data%20Models%20and%20Storage.md#info-2), [INFO-3](../10-%20Building%20the%20Core%20and%20Backend/1002-%20Implementing%20Domain%20Models.md#info-3), [INFO-4](../10-%20Building%20the%20Core%20and%20Backend/1002-%20Implementing%20Domain%20Models.md#info-4).*
+
+<a id="info-1"></a>
+### 32.1. INFO-1 — Logical information architecture independent of storage layout
+
+**Type:** ECOSYSTEM POLICY | **Origin:** USER POLICY | **Applies:** applications managing durable user information
+
+The logical information model MUST support deterministic discovery/resolution, identity, provenance where meaningful, relationships, documented access, recovery, continuation, rebuildability where claimed, and portability where required. Human-facing hierarchy MUST remain application/domain-appropriate and MAY be user-configurable. **Standardize the discoverability and integrity contract, not every user's folder names.**
+
+Files, SQLite, PostgreSQL, embedded object stores and services remain available for justified operational responsibilities. For retained user-owned information, an independently accessible durable workspace under [WORKSPACE-1](../4-%20Planning%20the%20Architecture%20and%20Data/405-%20Designing%20Data%20Models%20and%20Storage.md#workspace-1) remains mandatory. Every qualifying application MUST maintain complete **Current JSON** recovery representations for each retained original file (or a justified equivalent durable logical object), plus a verified **Folder JSON** manifest for each relevant folder under [JSON-1](../4-%20Planning%20the%20Architecture%20and%20Data/408-%20Planning%20Backup%20Migration%20and%20Recovery.md#json-1) and [section 53](../4-%20Planning%20the%20Architecture%20and%20Data/408-%20Planning%20Backup%20Migration%20and%20Recovery.md#s53). Neither can be disabled. A complete standalone global `master-data.json` remains user-optional. Operational stores, catalogs, APIs, hashes and manifest pointers cannot replace actual recoverable payloads in mandatory Current JSONs or enabled global Master JSON. The preferred entry filenames and mapped physical adaptations follow [WORKSPACE-4](../4-%20Planning%20the%20Architecture%20and%20Data/405-%20Designing%20Data%20Models%20and%20Storage.md#workspace-4); no single domain folder tree or operational database is mandated. “Deterministic” here concerns lookup and explicit contracts, not proof that facts, AI outputs, or all application behavior are deterministic.
+
+Where practical, retained information SHOULD support both human comprehension through meaningful names, metadata, documentation, relationships, readers or exports, and machine reliability through structured IDs, schemas, manifests, catalogs, or typed records. Do not sacrifice deterministic interfaces for attractive folders or long-term comprehensibility merely for AI indexing convenience. Documented binary stores are compatible with these outcomes under [LIFE-2](../4-%20Planning%20the%20Architecture%20and%20Data/405-%20Designing%20Data%20Models%20and%20Storage.md#life-2) and [STORE-1](../10-%20Building%20the%20Core%20and%20Backend/1004-%20Implementing%20Storage%20and%20Persistence.md#store-1).
+
