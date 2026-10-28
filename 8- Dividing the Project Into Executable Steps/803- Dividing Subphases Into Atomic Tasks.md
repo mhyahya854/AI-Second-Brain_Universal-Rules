@@ -27,8 +27,8 @@ Each executable subphase MUST contain these numbered headings with concrete task
 20. **Security and authorization.** Effective principals, permissions, trust boundaries, privacy, and secret handling.
 21. **Edge cases.** Applicable empty, invalid, duplicate, large, concurrent, interrupted, and platform cases.
 22. **No-fallback restrictions.** Selected implementation and the prohibited substitutions relevant to this task.
-23. **Required comments and file headers.** Applicable explanations and exact documentation updates under [DOC-1](#doc-1).
-24. **Connected files and dependencies.** Actual connection paths and affected maps under [DOC-2](#doc-2).
+23. **Required comments and file headers.** Applicable explanations and exact documentation updates under [DOC-1](../12-%20Connecting%20and%20Completing%20the%20Application/1203-%20Integrating%20Complete%20Features.md#doc-1).
+24. **Connected files and dependencies.** Actual connection paths and affected maps under [DOC-2](../12-%20Connecting%20and%20Completing%20the%20Application/1201-%20Reviewing%20the%20Integration%20Map.md#doc-2).
 25. **Required tests.** Relevant existing/new test cases and their actual claims; justified inapplicability where appropriate.
 26. **Exact validation commands.** Working directory, commands, prerequisites, fixtures, and necessary environment details without disclosing secrets.
 27. **Expected results.** Checkable outputs, acceptance conditions, and justified tolerances rather than invented future results.
@@ -39,5 +39,5 @@ Each executable subphase MUST contain these numbered headings with concrete task
 32. **Project State update.** Exact status, paths, evidence pointers, and next-action changes required.
 33. **Next subphase.** Exact next authorized identifier/path, or the parent completion gate when this is the last subphase.
 
-The planning capability MUST resolve major architecture beforehand and provide concrete contracts, examples, expected outputs, and verified commands wherever possible. Distinguish a proposed command from one already executed successfully; commands requiring a future environment must identify that prerequisite. If required information is missing, contradictory, or cannot safely be established, the execution model MUST stop affected work and record the precise unresolved issue. A stronger planning/review process must resolve material ambiguity; an executor MUST NOT invent interfaces, widen permissions, silently change requirements, or guess architecture under [DEV-11](#dev-11).
+The planning capability MUST resolve major architecture beforehand and provide concrete contracts, examples, expected outputs, and verified commands wherever possible. Distinguish a proposed command from one already executed successfully; commands requiring a future environment must identify that prerequisite. If required information is missing, contradictory, or cannot safely be established, the execution model MUST stop affected work and record the precise unresolved issue. A stronger planning/review process must resolve material ambiguity; an executor MUST NOT invent interfaces, widen permissions, silently change requirements, or guess architecture under [DEV-11](808-%20Creating%20Small%20Model%20Execution%20Packets.md#dev-11).
 

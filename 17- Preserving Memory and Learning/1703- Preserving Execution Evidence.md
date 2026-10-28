@@ -9,7 +9,7 @@ Done Phases complements Git and other version history with understandable eviden
 
 For substantial tasks/phases, preserve execution evidence during work as well as at completion: what was attempted, what actually changed, validation performed, passed/failed outcomes, remaining uncertainty, and the containing revision/commit where relevant. Interrupted or failed work needs an accurate continuation record rather than a false Done entry. Project State points to this evidence; completion incorporates or references it in Done Phases without unnecessary duplication or a mandatory `Operations/` directory.
 
-Evidence MAY include tests, builds, static checks, runtime validation, relevant screenshots, schemas, hashes, migration comparisons, commit IDs, and operation receipts as appropriate. Evidence supports the actual claim and the [Three-Layer Conformance Gate](#dev-13); its mere existence or a screenshot cannot establish unrelated guarantees.
+Evidence MAY include tests, builds, static checks, runtime validation, relevant screenshots, schemas, hashes, migration comparisons, commit IDs, and operation receipts as appropriate. Evidence supports the actual claim and the [Three-Layer Conformance Gate](../14-%20Reviewing%20the%20Entire%20Application/1408-%20Checking%20Rule%20and%20Requirement%20Compliance.md#dev-13); its mere existence or a screenshot cannot establish unrelated guarantees.
 
-Subphase evidence, verified ✅ heading markers, and parent phase completion additionally follow [EXEC-5](#exec-5); no marker precedes actual acceptance verification.
+Subphase evidence, verified ✅ heading markers, and parent phase completion additionally follow [EXEC-5](../14-%20Reviewing%20the%20Entire%20Application/1409-%20Performing%20Independent%20Final%20Reviews.md#exec-5); no marker precedes actual acceptance verification.
 

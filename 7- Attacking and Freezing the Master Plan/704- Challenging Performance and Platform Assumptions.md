@@ -6,7 +6,7 @@
 <a id="workspace-workload"></a>
 #### 49.2.1. Workload and lifetime costs
 
-Evaluate capacity, storage amplification, temporary write space, write frequency, serialization time, crash consistency, memory, backup growth, cloud upload/transfer cost, NAS bandwidth, mobile constraints, concurrent access and lifetime growth under [DEV-16](#dev-16). State assumptions and measured or estimated evidence, including workload and target-platform limits. A small edit may require producing a new complete global JSON representation; hashing alone cannot remove the payload requirement.
+Evaluate capacity, storage amplification, temporary write space, write frequency, serialization time, crash consistency, memory, backup growth, cloud upload/transfer cost, NAS bandwidth, mobile constraints, concurrent access and lifetime growth under [DEV-16](../13-%20Testing%20Debugging%20and%20Repairing/1306-%20Testing%20Performance%20and%20Reliability.md#dev-16). State assumptions and measured or estimated evidence, including workload and target-platform limits. A small edit may require producing a new complete global JSON representation; hashing alone cannot remove the payload requirement.
 
 <a id="workspace-storage-math"></a>
 #### 49.2.2. Logical storage amplification
@@ -21,5 +21,5 @@ Memory estimates MUST include the largest parser/encoder token and buffers: stre
 <a id="workspace-optimization"></a>
 #### 49.2.4. Measured optimizations and material conflicts
 
-Streaming serialization, compression, copy-on-write, snapshots, sparse files, reflinks and other optimizations MAY be evaluated within the eventual approved design, but their portability, actual savings, crash behavior and recovery dependencies require evidence. None is universally selected here or excuses complete payloads. If literal duplication cannot meet the agreed workload, present the material conflict honestly to the owner and resolve affected planning under [GOV-3](#gov-3) and [DEV-5](#dev-5); do not silently replace payloads with pointers, invent capacity, hide loss or implement a fallback.
+Streaming serialization, compression, copy-on-write, snapshots, sparse files, reflinks and other optimizations MAY be evaluated within the eventual approved design, but their portability, actual savings, crash behavior and recovery dependencies require evidence. None is universally selected here or excuses complete payloads. If literal duplication cannot meet the agreed workload, present the material conflict honestly to the owner and resolve affected planning under [GOV-3](../0-%20Start%20Here%20and%20Universal%20Rules/003-%20Rule%20Priority%20and%20Authority.md#gov-3) and [DEV-5](710-%20Freezing%20the%20Approved%20Master%20Plan.md#dev-5); do not silently replace payloads with pointers, invent capacity, hide loss or implement a fallback.
 

@@ -11,5 +11,5 @@ Design plans MUST distinguish these modes when selecting their direction:
 | **B — Distinctive identity** | App-specific visual identity and expressive presentation; unconventional interactions are not required. A and B may coexist. |
 | **C — Experimental interaction** | Unconventional interaction models. **Disabled by default; activation requires an owner request for experimentation.** It never overrides core usability, accessibility, authority, or data protections. |
 
-The shared motion foundation supplies reusable mechanisms, while choreography may differ by app. Preserve reduced-motion behavior and meaningful state communication under [UI-3](#ui-3). Relevant desktop, phone, and tablet layouts MUST adapt workflows and controls to their actual constraints; scaling a desktop screenshot is not responsive design.
+The shared motion foundation supplies reusable mechanisms, while choreography may differ by app. Preserve reduced-motion behavior and meaningful state communication under [UI-3](509-%20Applying%20Accessibility%20and%20Localization.md#ui-3). Relevant desktop, phone, and tablet layouts MUST adapt workflows and controls to their actual constraints; scaling a desktop screenshot is not responsive design.
 

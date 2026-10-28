@@ -8,7 +8,7 @@ The one-file Universal Rules repository and a future application's repository ha
 
 **Type:** DEFAULT | **Origin:** USER POLICY | **Applies:** substantial future application repositories, with proportionate physical simplification for tiny applications
 
-The following is the detailed default conceptual blueprint implementing [DEV-6](#dev-6). Preserve its discoverable responsibilities. Physical names/layout MAY change when sound engineering or framework compatibility requires it, with an explicit mapping in repository entry instructions. Do not create meaningless empty folders, duplicate implementation areas that have no responsibility, or treat folder presence as evidence of implemented behavior. Tiny apps MAY simplify the hierarchy while preserving applicable safety, continuity, specification, and verification obligations.
+The following is the detailed default conceptual blueprint implementing [DEV-6](../1-%20Deciding%20a%20Project/108-%20Selecting%20a%20Preliminary%20Project%20Blueprint.md#dev-6). Preserve its discoverable responsibilities. Physical names/layout MAY change when sound engineering or framework compatibility requires it, with an explicit mapping in repository entry instructions. Do not create meaningless empty folders, duplicate implementation areas that have no responsibility, or treat folder presence as evidence of implemented behavior. Tiny apps MAY simplify the hierarchy while preserving applicable safety, continuity, specification, and verification obligations.
 
 ```text
 Application/
@@ -82,5 +82,5 @@ Application/
         └── dependency-map.md
 ```
 
-`AGENTS.md` MUST route an executor to applicable authority, the current App Master Plan, Project State, and the next authorized phase. `README.md` MUST provide a beginner-readable project entry point. Existing-app assessment under [DEV-14](#dev-14), relevant Skill metadata under [SKILL-1](#skill-1)–[SKILL-3](#skill-3), and additional review disciplines MUST remain discoverable even where the illustrated tree has no dedicated folder. Links or meaningful records may satisfy these responsibilities without empty scaffolding.
+`AGENTS.md` MUST route an executor to applicable authority, the current App Master Plan, Project State, and the next authorized phase. `README.md` MUST provide a beginner-readable project entry point. Existing-app assessment under [DEV-14](../9-%20Preparing%20the%20Development%20Environment/901-%20Verifying%20the%20Repository%20Starting%20State.md#dev-14), relevant Skill metadata under [SKILL-1](../0-%20Start%20Here%20and%20Universal%20Rules/006-%20Global%20Skills%20and%20Always-On%20Rules.md#skill-1)–[SKILL-3](../7-%20Attacking%20and%20Freezing%20the%20Master%20Plan/706-%20Checking%20Skills%20Dependencies%20and%20Conflicts.md#skill-3), and additional review disciplines MUST remain discoverable even where the illustrated tree has no dedicated folder. Links or meaningful records may satisfy these responsibilities without empty scaffolding.
 

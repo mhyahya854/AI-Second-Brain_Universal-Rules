@@ -19,5 +19,5 @@ Define demanding documented acceptance criteria and appropriate fault injection,
 <a id="workspace-test-safety"></a>
 #### 49.1.3. Isolated fixtures and finite repair
 
-Use isolated fixtures and authorized test environments; never deliberately damage live user data. Test, repair, retest and repeat until the documented quality baseline is met or a material unresolved limitation is accurately reported. A compilation or happy-path demo alone is insufficient. Testing is finite and risk-based, with actual outcomes under [TEST-1](#test-1); it does not prove absence of all future defects or waive [EXEC-3](#exec-3)'s bounded repair/escalation contract.
+Use isolated fixtures and authorized test environments; never deliberately damage live user data. Test, repair, retest and repeat until the documented quality baseline is met or a material unresolved limitation is accurately reported. A compilation or happy-path demo alone is insufficient. Testing is finite and risk-based, with actual outcomes under [TEST-1](1301-%20Preparing%20the%20Complete%20Test%20Environment.md#test-1); it does not prove absence of all future defects or waive [EXEC-3](1309-%20Repairing%20Issues%20Without%20Regressions.md#exec-3)'s bounded repair/escalation contract.
 
