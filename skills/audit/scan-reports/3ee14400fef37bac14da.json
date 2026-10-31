@@ -1,0 +1,737 @@
+{
+  "skill": {
+    "name": "benchmark-models",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\garrytan\\gstack\\benchmark-models",
+    "scanned_at": "2026-10-31T21:16:54.110725+00:00"
+  },
+  "risk_assessment": {
+    "score": 88,
+    "severity": "CRITICAL",
+    "recommendation": "DO_NOT_INSTALL",
+    "max_issue_severity": "HIGH"
+  },
+  "components": [
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 280,
+      "executable": false,
+      "size_bytes": 15635,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "SKILL.md.tmpl",
+      "type": "other",
+      "lines": 155,
+      "executable": false,
+      "size_bytes": 7093,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "EA5",
+      "finding_id": "finding-fb116dc4633446769bb7b04426cc7220",
+      "category": "Excessive Agency",
+      "pattern": "External Model or Provider Selection",
+      "severity": "HIGH",
+      "confidence": 0.9,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 22,
+        "end_line": 22,
+        "start_column": 0,
+        "end_column": 90
+      },
+      "finding": "~/.claude/skills/gstack/bin/gstack-skill-start --skill \"benchmark-models\" --model \"claude\"",
+      "explanation": "Skill selects an external model or provider that may use a different account or billing plan than the operator expects. Undisclosed model switches can cause unexpected cost or quota consumption.",
+      "remediation": "Remove the model/provider override or disclose it prominently and require explicit operator approval before invoking an external coding CLI or billed model.",
+      "code_snippet": "## Preamble (run first)\n\n```bash\n~/.claude/skills/gstack/bin/gstack-skill-start --skill \"benchmark-models\" --model \"claude\"\n```\n\nRead the echoed `KEY: value` STATUS lines — they drive every preamble rule",
+      "intent": null,
+      "tags": [
+        "Excessive Agency"
+      ],
+      "evidence": {
+        "selection_surface": "command"
+      },
+      "match_fingerprint": "460d680442c7f79e78e098bdd388f981351cabe29c4658c0bf628ad4d5a034ec",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 22,
+          "end_line": 22,
+          "start_column": 0,
+          "end_column": 90
+        }
+      ]
+    },
+    {
+      "id": "AS1",
+      "finding_id": "finding-d73d59f19f714d75add035105ef9bd0a",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "severity": "HIGH",
+      "confidence": 0.85,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 219,
+        "end_line": null,
+        "start_column": 31
+      },
+      "finding": "grep -q 'ANTHROPIC' \"$HOME/.claude/",
+      "explanation": "Skill reads from agent configuration directories (.claude/, .codex/, .gemini/). These directories may contain API keys, personal settings, and other credentials that the skill has no legitimate need to access.",
+      "remediation": "Remove all code or instructions that access agent configuration directories (.claude/, .codex/, .gemini/). If configuration values are needed, pass them explicitly as parameters or environment variables — never read the agent's own config files.",
+      "code_snippet": "## Step 3: Decide on judge\n\n```bash\n[ -n \"$ANTHROPIC_API_KEY\" ] || grep -q 'ANTHROPIC' \"$HOME/.claude/.credentials.json\" 2>/dev/null && echo \"JUDGE_AVAILABLE\" || echo \"JUDGE_UNAVAILABLE\"\n```\n\nIf judge is available, AskUserQuestion:",
+      "intent": null,
+      "tags": [
+        "Agent Snooping"
+      ],
+      "evidence": {},
+      "match_fingerprint": "de0e9f422ec3025aecc219394205a8d79381d7001ff6396af74f82e02cc03a21",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 219,
+          "end_line": null,
+          "start_column": 31
+        }
+      ]
+    },
+    {
+      "id": "AS1",
+      "finding_id": "finding-78a88a99aae34f85b5111a7934e83586",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "severity": "HIGH",
+      "confidence": 0.85,
+      "location": {
+        "file": "SKILL.md.tmpl",
+        "start_line": 94,
+        "end_line": null,
+        "start_column": 31
+      },
+      "finding": "grep -q 'ANTHROPIC' \"$HOME/.claude/",
+      "explanation": "Skill reads from agent configuration directories (.claude/, .codex/, .gemini/). These directories may contain API keys, personal settings, and other credentials that the skill has no legitimate need to access.",
+      "remediation": "Remove all code or instructions that access agent configuration directories (.claude/, .codex/, .gemini/). If configuration values are needed, pass them explicitly as parameters or environment variables — never read the agent's own config files.",
+      "code_snippet": "## Step 3: Decide on judge\n\n```bash\n[ -n \"$ANTHROPIC_API_KEY\" ] || grep -q 'ANTHROPIC' \"$HOME/.claude/.credentials.json\" 2>/dev/null && echo \"JUDGE_AVAILABLE\" || echo \"JUDGE_UNAVAILABLE\"\n```\n\nIf judge is available, AskUserQuestion:",
+      "intent": null,
+      "tags": [
+        "Agent Snooping"
+      ],
+      "evidence": {},
+      "match_fingerprint": "de0e9f422ec3025aecc219394205a8d79381d7001ff6396af74f82e02cc03a21",
+      "occurrences": [
+        {
+          "file": "SKILL.md.tmpl",
+          "start_line": 94,
+          "end_line": null,
+          "start_column": 31
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-b7161e0a6a5a4b2aa123c760ca5f413f",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 219,
+        "end_line": null,
+        "start_column": 67
+      },
+      "finding": "credentials.json",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "## Step 3: Decide on judge\n\n```bash\n[ -n \"$ANTHROPIC_API_KEY\" ] || grep -q 'ANTHROPIC' \"$HOME/.claude/.credentials.json\" 2>/dev/null && echo \"JUDGE_AVAILABLE\" || echo \"JUDGE_UNAVAILABLE\"\n```\n\nIf judge is available, AskUserQuestion:",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "07a0b37ad28a14919446682ad9b1f38223a950eb02c424e48b49fe75c25268c0",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 219,
+          "end_line": null,
+          "start_column": 67
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-35def1d76e9a4558907b939f5efc8e90",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md.tmpl",
+        "start_line": 94,
+        "end_line": null,
+        "start_column": 67
+      },
+      "finding": "credentials.json",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "## Step 3: Decide on judge\n\n```bash\n[ -n \"$ANTHROPIC_API_KEY\" ] || grep -q 'ANTHROPIC' \"$HOME/.claude/.credentials.json\" 2>/dev/null && echo \"JUDGE_AVAILABLE\" || echo \"JUDGE_UNAVAILABLE\"\n```\n\nIf judge is available, AskUserQuestion:",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "07a0b37ad28a14919446682ad9b1f38223a950eb02c424e48b49fe75c25268c0",
+      "occurrences": [
+        {
+          "file": "SKILL.md.tmpl",
+          "start_line": 94,
+          "end_line": null,
+          "start_column": 67
+        }
+      ]
+    },
+    {
+      "id": "PE2",
+      "finding_id": "finding-16ef1e19e9f44115a9b93ab3b9605dc1",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "severity": "MEDIUM",
+      "confidence": 0.8,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 185,
+        "end_line": null,
+        "start_column": 19
+      },
+      "finding": "chmod 700",
+      "explanation": "Commands invoke sudo or root privileges. Verify this elevated access is necessary and justified.",
+      "remediation": "Avoid sudo/root unless strictly required. Prefer least-privilege patterns. If elevation is needed, document the justification and scope.",
+      "code_snippet": "\n```bash\n_GT=\"$(git rev-parse --show-toplevel 2>/dev/null || pwd)/.gstack/tmp\"\nmkdir -p \"$_GT\" && chmod 700 \"$_GT\" || { echo \"Not sent: cannot create $_GT for the text file.\" >&2; exit 1; }\n_EX=$(git rev-parse --git-path info/exclude 2>/dev/null) && mkdir -p \"$(dirname \"$_EX\")\" && { grep -qxF '/.gstack/tmp/' \"$_EX\" 2>/dev/null || echo '/.gstack/tmp/' >> \"$_EX\"; }\nPROMPT_FILE=$(mktemp \"${_GT:?}/benchmark-prompt.XXXXXX\") || { echo \"Not sent: mktemp failed in $_GT.\" >&2; exit 1; }; echo \"PROMPT_FILE: $PROMPT_FILE (name: ${PROMPT_FILE##*/})\"\n```",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation",
+        "contextual-triage",
+        "likely-benign-context"
+      ],
+      "evidence": {},
+      "match_fingerprint": "6bed9d1d0486d5131ef68ab16b0104a5ea40d35575946e82db1dac741be2c028",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 185,
+          "end_line": null,
+          "start_column": 19
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": false,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 2,
+    "scanned_components": 2,
+    "coverage_percent": 100.0,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 2,
+    "partially_inspected_files": 0,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 31,
+        "end_line": 31,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 160,
+        "end_line": 160,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 219,
+        "end_line": 219,
+        "fatal": false
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 31,
+        "column": 18,
+        "evidence": "the user to run `./setup` or `/gstack-upgrade`, and proceed with their task.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 160,
+        "column": 71,
+        "evidence": "[ -x \"$BIN\" ] || { echo \"ERROR: gstack-model-benchmark not found. Run ./setup in the gstack install dir.\" >&2; exit 1; }",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 179,
+        "column": 114,
+        "evidence": "s that have SKILL.md files (from `find . -maxdepth 2 -name SKILL.md -not -path './.*'`), ask the user to pick one via a second AskUserQuestion. Use the picked S",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 219,
+        "column": 54,
+        "evidence": "[ -n \"$ANTHROPIC_API_KEY\" ] || grep -q 'ANTHROPIC' \"$HOME/.claude/.credentials.json\" 2>/dev/null && echo \"JUDGE_AVAILABLE\" || echo \"JUDGE_UNAVAILABLE\"",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      }
+    ],
+    "limitations": [],
+    "findings_before_filtering": 6,
+    "findings_after_filtering": 6
+  }
+}

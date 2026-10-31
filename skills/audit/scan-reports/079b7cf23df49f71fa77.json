@@ -1,0 +1,1429 @@
+{
+  "skill": {
+    "name": "figma-variables-tokens-generator",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\Shanmus4\\figma-variables-tokens-generator\\figma-variables-tokens-generator",
+    "scanned_at": "2026-10-31T21:47:36.437101+00:00"
+  },
+  "risk_assessment": {
+    "score": 100,
+    "severity": "CRITICAL",
+    "recommendation": "DO_NOT_INSTALL",
+    "max_issue_severity": "HIGH"
+  },
+  "components": [
+    {
+      "path": "LICENSE",
+      "type": "other",
+      "lines": 25,
+      "executable": false,
+      "size_bytes": 2089,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 117,
+      "executable": false,
+      "size_bytes": 6813,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "evals/evals.json",
+      "type": "json",
+      "lines": 143,
+      "executable": false,
+      "size_bytes": 7896,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "instructions/01-interview-setup.md",
+      "type": "markdown",
+      "lines": 137,
+      "executable": false,
+      "size_bytes": 7397,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "instructions/02-questionnaire-and-generation.md",
+      "type": "markdown",
+      "lines": 496,
+      "executable": false,
+      "size_bytes": 29737,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "instructions/03-import-and-handoff.md",
+      "type": "markdown",
+      "lines": 76,
+      "executable": false,
+      "size_bytes": 4373,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/01-architecture.md",
+      "type": "markdown",
+      "lines": 267,
+      "executable": false,
+      "size_bytes": 10907,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/02-scoping-rules.md",
+      "type": "markdown",
+      "lines": 162,
+      "executable": false,
+      "size_bytes": 8539,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/03-json-format.md",
+      "type": "markdown",
+      "lines": 474,
+      "executable": false,
+      "size_bytes": 16336,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/04-primitives.md",
+      "type": "markdown",
+      "lines": 238,
+      "executable": false,
+      "size_bytes": 10847,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/05a-collections-core.md",
+      "type": "markdown",
+      "lines": 321,
+      "executable": false,
+      "size_bytes": 17212,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/05b-collections-semantic-components.md",
+      "type": "markdown",
+      "lines": 413,
+      "executable": false,
+      "size_bytes": 22099,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/06-generator-utility.md",
+      "type": "markdown",
+      "lines": 348,
+      "executable": false,
+      "size_bytes": 13205,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/07-custom-collections.md",
+      "type": "markdown",
+      "lines": 138,
+      "executable": false,
+      "size_bytes": 8339,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/generator_core.py",
+      "type": "python",
+      "lines": 1895,
+      "executable": true,
+      "size_bytes": 89937,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/token-extractor.js",
+      "type": "javascript",
+      "lines": 273,
+      "executable": true,
+      "size_bytes": 4164,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/validate_generator_core.py",
+      "type": "python",
+      "lines": 338,
+      "executable": true,
+      "size_bytes": 14821,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/__pycache__/generator_core.cpython-313.pyc",
+      "type": "other",
+      "lines": 0,
+      "executable": true,
+      "size_bytes": 14917,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "P6",
+      "finding_id": "finding-5526b362c957442da6562f42d4ae1e2a",
+      "category": "System Prompt Leakage",
+      "pattern": "Direct Prompt Extraction",
+      "severity": "HIGH",
+      "confidence": 0.85,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 74,
+        "end_line": null,
+        "start_column": 19
+      },
+      "finding": "Output Rule",
+      "explanation": "Skill contains instructions that could directly expose system prompts, internal rules, or hidden instructions to users or external parties.",
+      "remediation": "Remove any instructions that reveal, print, or output system prompts or internal rules. System instructions should never be exposed to end users.",
+      "code_snippet": "\n**Output format:** Deliver only `.zip` files containing the JSON tokens. Do not output `.skill` files or dump raw Python scripts — users expect ready-to-import ZIPs, not code, and dumping scripts into the chat causes context truncation that breaks the generation.\n\n## Local IDE / CLI Output Rule\n\nWhen running in a local IDE or CLI workspace:\n- Always create an `exports/` folder if it does not exist",
+      "intent": null,
+      "tags": [
+        "System Prompt Leakage"
+      ],
+      "evidence": {},
+      "match_fingerprint": "1eadffba8287847b024919545c92dffb10221dc2e79b8a56e23dd10ea8b1c4a5",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 74,
+          "end_line": null,
+          "start_column": 19
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-8616e355f86148da92f2c3e0fb4155fb",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 100,
+        "end_line": null
+      },
+      "finding": "references/05a-collections-core.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "| 4 | `references/05a-collections-core.md` | Design specs for Core collections |",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/05a-collections-core.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "2087585273e57fd02e438a198494f061af10e7117254f6957f3f33fb45ad4f65",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 100,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-9c17fa4246b74f9db9cf187a1f66570a",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 107,
+        "end_line": null
+      },
+      "finding": "references/03-json-format.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "| 7 | `references/03-json-format.md` | Exact W3C JSON structure |",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/03-json-format.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "a8fb7002c8234e8177434bc58e06fecd31cf4898dbfb0fb97561b42d06ab4d3d",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 107,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-d31e3158b879445890bd08d7e95cb251",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 108,
+        "end_line": null
+      },
+      "finding": "references/04-primitives.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "| 8 | `references/04-primitives.md` | Raw hex/spacing/font data |",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/04-primitives.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "03fb338388762ece55df9fa9384c67de2688f137ac212aa02b15d5a7e1a049cc",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 108,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-66754dfaabd84f4e8446343bb103bbdf",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 109,
+        "end_line": null
+      },
+      "finding": "references/06-generator-utility.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the target's analysis-completeness ledger and resolve all limitations. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "| 9 | `references/06-generator-utility.md` | Python generation script patterns |",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/06-generator-utility.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_agent_snooping"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_anti_refusal"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_deserialization"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_excessive_agency"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_harmful_content"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_memory_poisoning"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_privilege_escalation"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_prompt_injection"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_rogue_agent"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_ssrf"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_supply_chain"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_system_prompt_leakage"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "579e4f822d95113dd7d8bc877f90e8645bc1d4c1306536f499441c70fe254a3c",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 109,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "P6",
+      "finding_id": "finding-98127f0192f6427ebc2faf92c4aaa5da",
+      "category": "System Prompt Leakage",
+      "pattern": "Direct Prompt Extraction",
+      "severity": "HIGH",
+      "confidence": 0.85,
+      "location": {
+        "file": "instructions/03-import-and-handoff.md",
+        "start_line": 22,
+        "end_line": null,
+        "start_column": 14
+      },
+      "finding": "output rule",
+      "explanation": "Skill contains instructions that could directly expose system prompts, internal rules, or hidden instructions to users or external parties.",
+      "remediation": "Remove any instructions that reveal, print, or output system prompts or internal rules. System instructions should never be exposed to end users.",
+      "code_snippet": "> [!IMPORTANT]\n> **For the AI:** The ZIP's numbered folder prefixes (e.g. `1. Primitives/`, `2. Semantic/`) are critical — the plugin uses them to determine import order. Always generate folders with correct numbering as shown in the import order tables for each tier in `01-architecture.md`.\n\n> **Workspace output rule for local IDE/CLI environments:** Save the final ZIP to an `exports/` folder in the workspace. Do not leave the final deliverable loose in the project root unless the user explicitly asked for that.\n\n> **ZIP structure clarification for the AI:** This is about the ZIP's internal file paths, not the workspace folder layout. The plugin reads numbered paths such as `1. Primitives/primitives.tokens.json` to determine import order. Explicit standalone empty directory records inside the ZIP are optional; the numbered file paths are the real import contract.\n",
+      "intent": null,
+      "tags": [
+        "System Prompt Leakage"
+      ],
+      "evidence": {},
+      "match_fingerprint": "6ce3211e83de74db2e371f732f5fb65a1a412c115b65906325af0bc78c25f6df",
+      "occurrences": [
+        {
+          "file": "instructions/03-import-and-handoff.md",
+          "start_line": 22,
+          "end_line": null,
+          "start_column": 14
+        }
+      ]
+    },
+    {
+      "id": "SC8",
+      "finding_id": "finding-44af370d15ad4de59a2b01ff00082dce",
+      "category": "Supply Chain",
+      "pattern": "Skill ships a __pycache__ directory that normal discovery skips",
+      "severity": "HIGH",
+      "confidence": 0.95,
+      "location": {
+        "file": "scripts/__pycache__/",
+        "start_line": 1,
+        "end_line": null
+      },
+      "finding": "scripts/__pycache__/",
+      "explanation": "Skill ships Python bytecode (__pycache__/ or .pyc/.pyo). Discovery skips these paths, so malicious bytecode can score SAFE while decoy sources look clean.",
+      "remediation": "Do not ship __pycache__/ or .pyc/.pyo in skills. Delete bytecode before packaging; if presence is intentional for a lab fixture, quarantine it outside the skill install path.",
+      "code_snippet": "Python may load .pyc from this directory even when decoy .py sources look clean (PEP 552 UNCHECKED_HASH).",
+      "intent": null,
+      "tags": [
+        "Supply Chain"
+      ],
+      "evidence": {},
+      "match_fingerprint": "299f9f171154b75a66074dec2dce3f3cabfac25c3a3f80bc21832f76e6f1f1a6",
+      "occurrences": [
+        {
+          "file": "scripts/__pycache__/",
+          "start_line": 1,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "SC8",
+      "finding_id": "finding-175a8f9f487441fd88a66b8ccac8c4d5",
+      "category": "Supply Chain",
+      "pattern": "Skill ships Python bytecode (.pyc/.pyo) that normal analysis skips",
+      "severity": "HIGH",
+      "confidence": 0.95,
+      "location": {
+        "file": "scripts/__pycache__/generator_core.cpython-313.pyc",
+        "start_line": 1,
+        "end_line": null
+      },
+      "finding": "generator_core.cpython-313.pyc",
+      "explanation": "Skill ships Python bytecode (__pycache__/ or .pyc/.pyo). Discovery skips these paths, so malicious bytecode can score SAFE while decoy sources look clean.",
+      "remediation": "Do not ship __pycache__/ or .pyc/.pyo in skills. Delete bytecode before packaging; if presence is intentional for a lab fixture, quarantine it outside the skill install path.",
+      "code_snippet": "Bytecode is excluded from content analysis; a malicious .pyc can execute while source decoys remain clean.",
+      "intent": null,
+      "tags": [
+        "Supply Chain"
+      ],
+      "evidence": {},
+      "match_fingerprint": "efb77578f0a6deec09dc30cf9429685886f1cc13be0b951b96559c7f915ece8e",
+      "occurrences": [
+        {
+          "file": "scripts/__pycache__/generator_core.cpython-313.pyc",
+          "start_line": 1,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "SC9",
+      "finding_id": "finding-42e67a34206043b09dbec208e38af0a8",
+      "category": "Supply Chain",
+      "pattern": "Concealed Executable Artifact",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "scripts/__pycache__/generator_core.cpython-313.pyc",
+        "start_line": 1,
+        "end_line": null
+      },
+      "finding": "scripts/__pycache__/generator_core.cpython-313.pyc",
+      "explanation": "An executable artifact remains available under the skill install path but its content is outside analyzer coverage.",
+      "remediation": "Review the artifact provenance and the reason executable content is packaged in this location; keep executable files explicit and directly reviewable.",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "supply-chain",
+        "concealed-executable",
+        "local-only"
+      ],
+      "evidence": {
+        "outer_path": "scripts/__pycache__/generator_core.cpython-313.pyc",
+        "nested_path": "scripts/__pycache__/generator_core.cpython-313.pyc",
+        "container_type": "filesystem",
+        "container_ancestry": [
+          "filesystem"
+        ],
+        "container_depth": 0,
+        "concealment": "excluded_directory",
+        "concealment_reasons": [
+          "excluded_directory"
+        ],
+        "local_only": true,
+        "referenced": false,
+        "excluded_from_analysis": true,
+        "partially_analyzed_executable": false,
+        "excluded_inspection_incomplete": false,
+        "inherited_exclusion_reason": "excluded_directory",
+        "inspection_limitation_reason": null
+      },
+      "match_fingerprint": "bcc37392167ad11ac4cff8992352bc712ba1930202b98877e76a6c3f2c5b4ea2",
+      "occurrences": [
+        {
+          "file": "scripts/__pycache__/generator_core.cpython-313.pyc",
+          "start_line": 1,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "EA2",
+      "finding_id": "finding-9759e1b8601945f39ffe358256108555",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "severity": "MEDIUM",
+      "confidence": 0.8,
+      "location": {
+        "file": "instructions/02-questionnaire-and-generation.md",
+        "start_line": 79,
+        "end_line": null,
+        "start_column": 112
+      },
+      "finding": "Do NOT ask the user",
+      "explanation": "Skill enables autonomous high-impact decisions without human-in-the-loop verification. Critical operations (destructive commands, financial transactions, data deletion) should require explicit user confirmation.",
+      "remediation": "Add human-in-the-loop confirmation for destructive, irreversible, or high-impact operations. Never auto-execute commands that modify files, send data, or alter system state.",
+      "code_snippet": "- `3-Tier — Primitives + Semantic (light/dark modes) + Component Colors + Typography (e.g. Production systems with component variables)`\n- `4-Tier — Primitives + Theme + Semantic + Component Colors + Typography (e.g. Enterprise / multi-brand with separate palette switching)`\n\n> ARCHITECTURE NOTE: Component Colors AND Component Dimensions are automatically included in 3-Tier and 4-Tier. Do NOT ask the user again if they want these collections when they have already chosen 3 or 4 Tier.\n> THEME CLARIFICATION: If a user says \"I want a Theme collection\" but chose 2-Tier or 3-Tier, explain: *\"In industry-standard practice (Material Design, etc.), the mode-switching layer is called Semantic in 2/3-Tier systems. Theme only exists as a separate collection in 4-Tier for multi-brand enterprise systems. Do you want light/dark modes on Semantic (2/3-Tier) or a separate palette-switching layer (4-Tier)?\"*\n\n**Q7b** *(ask_user_input — single_select)*: \"How comprehensive should your token system be? [R",
+      "intent": null,
+      "tags": [
+        "Excessive Agency"
+      ],
+      "evidence": {},
+      "match_fingerprint": "3e6d2470cd79db40290bf565b9000be6e8d6033acd7afb984d59587324307bd2",
+      "occurrences": [
+        {
+          "file": "instructions/02-questionnaire-and-generation.md",
+          "start_line": 79,
+          "end_line": null,
+          "start_column": 112
+        }
+      ]
+    },
+    {
+      "id": "EA3",
+      "finding_id": "finding-2d31cfeb05ea4ea2a3189fc80c6af0ef",
+      "category": "Excessive Agency",
+      "pattern": "Scope Creep",
+      "severity": "LOW",
+      "confidence": 0.7,
+      "location": {
+        "file": "LICENSE",
+        "start_line": 25,
+        "end_line": null,
+        "start_column": 95
+      },
+      "finding": "NOT LIMITED TO",
+      "explanation": "Skill's behavior or capabilities extend beyond its stated purpose. Scope creep allows an agent to perform actions unrelated to its documented functionality, increasing the attack surface.",
+      "remediation": "Limit the skill's scope to its documented purpose. Remove instructions that enable the agent to perform actions outside its stated functionality.",
+      "code_snippet": "The unique methodology of \"Phased Generation,\" \"Sequential Interview Logic,\" and \"Dynamic Dropdown Injection\" as implemented in these instructions are protected as original works of authorship.\n\n## 5. NO WARRANTY\nTHE SKILL IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SKILL OR THE USE OR OTHER DEALINGS IN THE SKILL.",
+      "intent": null,
+      "tags": [
+        "Excessive Agency"
+      ],
+      "evidence": {},
+      "match_fingerprint": "e89530c367266aa328ed88bf9475086c891da0ff38badf80bf35bae6b13345e0",
+      "occurrences": [
+        {
+          "file": "LICENSE",
+          "start_line": 25,
+          "end_line": null,
+          "start_column": 95
+        }
+      ]
+    },
+    {
+      "id": "EA3",
+      "finding_id": "finding-63595b31173b41f79af67435c68380c1",
+      "category": "Excessive Agency",
+      "pattern": "Scope Creep",
+      "severity": "LOW",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/05a-collections-core.md",
+        "start_line": 77,
+        "end_line": null,
+        "start_column": 12
+      },
+      "finding": "NOT limited to",
+      "explanation": "Skill's behavior or capabilities extend beyond its stated purpose. Scope creep allows an agent to perform actions unrelated to its documented functionality, increasing the attack surface.",
+      "remediation": "Limit the skill's scope to its documented purpose. Remove instructions that enable the agent to perform actions outside its stated functionality.",
+      "code_snippet": "When generating Theme: take every group from 05b, keep the same paths, change alias targets from `semantic/*` to `primitives/*` with appropriate light/dark shade mappings.\n\n> [!IMPORTANT]\n> **You are NOT limited to the 94 paths listed in 05b.** If the user's needs (component list, density, custom collections) require additional Semantic/Theme paths, ADD them. The 05b paths are the production floor, not the ceiling. Always expand when the alias chain demands it.\n\n### shadow colors → EFFECT_COLOR (syntax reference)\n```",
+      "intent": null,
+      "tags": [
+        "Excessive Agency"
+      ],
+      "evidence": {},
+      "match_fingerprint": "9ab8deb5711a77900e8d00a3885ab3a0824b44814e53be3a9760afe4e1c44289",
+      "occurrences": [
+        {
+          "file": "references/05a-collections-core.md",
+          "start_line": 77,
+          "end_line": null,
+          "start_column": 12
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": true,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 17,
+    "scanned_components": 13,
+    "coverage_percent": 76.5,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 13,
+    "partially_inspected_files": 4,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 38,
+        "end_line": 38,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "references/03-json-format.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "references/04-primitives.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "references/05a-collections-core.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "obfuscated_instruction_text",
+        "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+        "path": "references/06-generator-utility.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_agent_snooping",
+          "static_patterns_anti_refusal",
+          "static_patterns_deserialization",
+          "static_patterns_excessive_agency",
+          "static_patterns_harmful_content",
+          "static_patterns_memory_poisoning",
+          "static_patterns_privilege_escalation",
+          "static_patterns_prompt_injection",
+          "static_patterns_rogue_agent",
+          "static_patterns_ssrf",
+          "static_patterns_supply_chain",
+          "static_patterns_system_prompt_leakage",
+          "static_patterns_tool_misuse"
+        ]
+      },
+      {
+        "outcome": "partial",
+        "phase": "exclusion_audit",
+        "reason_code": "excluded_executable_content",
+        "message": "Executable content was inventoried but excluded from content analysis.",
+        "path": "scripts/__pycache__/generator_core.cpython-313.pyc",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false
+      }
+    ],
+    "scope_exclusions": [
+      {
+        "outcome": "out_of_scope",
+        "phase": "discovery",
+        "reason_code": "excluded_directory",
+        "message": "Directory tree is excluded from the configured scan scope.",
+        "path": "scripts/__pycache__/",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false
+      },
+      {
+        "outcome": "out_of_scope",
+        "phase": "exclusion_audit",
+        "reason_code": "excluded_directory",
+        "message": "Directory tree is excluded from the configured scan scope.",
+        "path": "scripts/__pycache__/generator_core.cpython-313.pyc",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false
+      }
+    ],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 17,
+        "completed": 17,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 17,
+        "completed": 17,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "reference_coverage",
+        "status": "completed",
+        "planned_work": 4,
+        "completed": 4,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "degraded",
+        "planned_work": 17,
+        "completed": 16,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "degraded",
+        "planned_work": 17,
+        "completed": 16,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 17,
+        "completed": 17,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "degraded",
+        "planned_work": 17,
+        "completed": 16,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "degraded",
+        "planned_work": 17,
+        "completed": 16,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "degraded",
+        "planned_work": 17,
+        "completed": 16,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "degraded",
+        "planned_work": 17,
+        "completed": 16,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 17,
+        "completed": 17,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "degraded",
+        "planned_work": 17,
+        "completed": 16,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "degraded",
+        "planned_work": 17,
+        "completed": 16,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "degraded",
+        "planned_work": 17,
+        "completed": 16,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "degraded",
+        "planned_work": 17,
+        "completed": 16,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "degraded",
+        "planned_work": 19,
+        "completed": 18,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "degraded",
+        "planned_work": 17,
+        "completed": 16,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "degraded",
+        "planned_work": 17,
+        "completed": 13,
+        "partial": 4,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 17,
+        "completed": 17,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 8,
+        "column": 61,
+        "evidence": "dedicated plugin ([Variables Tokens Collections Importer](https://www.figma.com/community/plugin/1619733963699677957)) to instantly",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 38,
+        "column": 7,
+        "evidence": "- `com.figma.codeSyntax` may be camelCase, kebab-case, CSS custom properties, Android, or iOS.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 93,
+        "column": 8,
+        "evidence": "| 1 | `instructions/01-interview-setup.md` | Initial setup & Turns 1–3 |",
+        "target_path": "instructions/01-interview-setup.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 94,
+        "column": 8,
+        "evidence": "| 2 | `instructions/02-questionnaire-and-generation.md` | Questionnaire Turns 4–10, generation |",
+        "target_path": "instructions/02-questionnaire-and-generation.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 95,
+        "column": 8,
+        "evidence": "| 3 | `references/01-architecture.md` | **Mandatory Strategy:** Understanding Tiers and alias rules. |",
+        "target_path": "references/01-architecture.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 100,
+        "column": 8,
+        "evidence": "| 4 | `references/05a-collections-core.md` | Design specs for Core collections |",
+        "target_path": "references/05a-collections-core.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 101,
+        "column": 8,
+        "evidence": "| 5 | `references/05b-collections-semantic-components.md` | Design specs for Semantic/Component collections |",
+        "target_path": "references/05b-collections-semantic-components.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 106,
+        "column": 8,
+        "evidence": "| 6 | `references/02-scoping-rules.md` | Technical scoping tables |",
+        "target_path": "references/02-scoping-rules.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 107,
+        "column": 8,
+        "evidence": "| 7 | `references/03-json-format.md` | Exact W3C JSON structure |",
+        "target_path": "references/03-json-format.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 108,
+        "column": 8,
+        "evidence": "| 8 | `references/04-primitives.md` | Raw hex/spacing/font data |",
+        "target_path": "references/04-primitives.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 109,
+        "column": 8,
+        "evidence": "| 9 | `references/06-generator-utility.md` | Python generation script patterns |",
+        "target_path": "references/06-generator-utility.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 110,
+        "column": 9,
+        "evidence": "| 10 | `scripts/generator_core.py` | Executable Python engine (for local/IDE environments) |",
+        "target_path": "scripts/generator_core.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 115,
+        "column": 8,
+        "evidence": "| 11| `instructions/03-import-and-handoff.md` | Import guide & ZIP reference table |",
+        "target_path": "instructions/03-import-and-handoff.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      }
+    ],
+    "limitations": [
+      "Analyzer static_patterns_agent_snooping status: degraded.",
+      "Analyzer static_patterns_anti_refusal status: degraded.",
+      "Analyzer static_patterns_deserialization status: degraded.",
+      "Analyzer static_patterns_excessive_agency status: degraded.",
+      "Analyzer static_patterns_harmful_content status: degraded.",
+      "Analyzer static_patterns_memory_poisoning status: degraded.",
+      "Analyzer static_patterns_privilege_escalation status: degraded.",
+      "Analyzer static_patterns_prompt_injection status: degraded.",
+      "Analyzer static_patterns_rogue_agent status: degraded.",
+      "Analyzer static_patterns_ssrf status: degraded.",
+      "Analyzer static_patterns_supply_chain status: degraded.",
+      "Analyzer static_patterns_system_prompt_leakage status: degraded.",
+      "Analyzer static_patterns_tool_misuse status: degraded."
+    ],
+    "findings_before_filtering": 12,
+    "findings_after_filtering": 12
+  }
+}

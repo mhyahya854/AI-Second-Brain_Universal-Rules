@@ -1,0 +1,1071 @@
+{
+  "skill": {
+    "name": "caveman-compress",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\JuliusBrussee\\caveman\\caveman-compress",
+    "scanned_at": "2026-10-31T21:17:28.816098+00:00"
+  },
+  "risk_assessment": {
+    "score": 100,
+    "severity": "CRITICAL",
+    "recommendation": "DO_NOT_INSTALL",
+    "max_issue_severity": "CRITICAL"
+  },
+  "components": [
+    {
+      "path": "README.md",
+      "type": "markdown",
+      "lines": 228,
+      "executable": false,
+      "size_bytes": 8198,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "SECURITY.md",
+      "type": "markdown",
+      "lines": 41,
+      "executable": false,
+      "size_bytes": 4344,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 114,
+      "executable": false,
+      "size_bytes": 5578,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/__init__.py",
+      "type": "python",
+      "lines": 9,
+      "executable": true,
+      "size_bytes": 224,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/__main__.py",
+      "type": "python",
+      "lines": 3,
+      "executable": true,
+      "size_bytes": 30,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/benchmark.py",
+      "type": "python",
+      "lines": 80,
+      "executable": true,
+      "size_bytes": 2491,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/cli.py",
+      "type": "python",
+      "lines": 94,
+      "executable": true,
+      "size_bytes": 2965,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/compress.py",
+      "type": "python",
+      "lines": 1167,
+      "executable": true,
+      "size_bytes": 51313,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/detect.py",
+      "type": "python",
+      "lines": 144,
+      "executable": true,
+      "size_bytes": 5169,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/validate.py",
+      "type": "python",
+      "lines": 439,
+      "executable": true,
+      "size_bytes": 16284,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "TT3",
+      "finding_id": "finding-42ebfa65189641ef87a9fafce19e47d0",
+      "category": "Data Flow",
+      "pattern": "Tainted flow: 'request' from os.environ.get (line 703, credential/environment) → urllib.request.urlopen (network output)",
+      "severity": "CRITICAL",
+      "confidence": 0.9,
+      "location": {
+        "file": "scripts/compress.py",
+        "start_line": 714,
+        "end_line": 714,
+        "start_column": 13,
+        "end_column": 81
+      },
+      "finding": "urllib.request.urlopen(request, timeout=CLAUDE_CALL_TIMEOUT_SECONDS)",
+      "explanation": "Credentials or environment variables flow to a network sink. This is a high-confidence indicator of credential exfiltration.",
+      "remediation": "Never send credentials or environment variables over the network. Use secure credential stores and avoid transmitting secrets in request bodies or URLs.",
+      "code_snippet": "        # one to another host.\n        request.add_unredirected_header(\"Authorization\", f\"Bearer {api_key}\")\n    try:\n        with urllib.request.urlopen(request, timeout=CLAUDE_CALL_TIMEOUT_SECONDS) as response:\n            raw = response.read()\n    except urllib.error.HTTPError as error:\n        detail = error.read().decode(\"utf-8\", \"replace\")[:500]",
+      "intent": null,
+      "tags": [
+        "Data Flow"
+      ],
+      "evidence": {},
+      "match_fingerprint": "0afb4c318ee3a88d07a9efc7e6cc8ac37606999168c46f114608af02ca813a97",
+      "occurrences": [
+        {
+          "file": "scripts/compress.py",
+          "start_line": 714,
+          "end_line": 714,
+          "start_column": 13,
+          "end_column": 81
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-6fc2c9b9c3a54d28bce04c28a6025a1f",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 13,
+        "end_line": null
+      },
+      "finding": "scripts/compress.py (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "e machine.** Compression sends the file's full text to the model provider that `scripts/compress.py` is configured for: the `claude` CLI, the Anthropic API, or ",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "scripts/compress.py",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "b94a195617e2dec375e715177c1bebde75ce0ef54e5a1aa3997d7fdfc431a626",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 13,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-e2e5fdc9f7ab478c978b7464a9d50a62",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.8,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 13,
+        "end_line": null,
+        "start_column": 281
+      },
+      "finding": ".netrc",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "\n## Purpose\n\n> **Data leaves the machine.** Compression sends the file's full text to the model provider that `scripts/compress.py` is configured for: the `claude` CLI, the Anthropic API, or an OpenAI-compatible endpoint. Files whose names look like secrets (`.env`, `credentials`, `secrets`, `.netrc`, …) are refused before they are read. Don't compress a file the provider shouldn't see.\n\nCompress natural language files (CLAUDE.md, todos, preferences) into caveman-speak to reduce input tokens. Compressed version overwrites original. Human-readable backup saved as `<filename>.original.md`, but NOT beside the source file — it lives in an out-of-tree data dir (`$XDG_DATA_HOME/caveman-compress/backups/<parent-dir-name>/`, or `%LOCALAPPDATA%\\caveman-compress\\backups\\<parent-dir-name>\\` on Windows) so skill auto-loaders don't re-ingest it as a live file.\n",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "a0de24714987e8ee8ad6b39e0fe5cd9cf88d0084409b8fb6b190fbb29638b0f0",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 13,
+          "end_line": null,
+          "start_column": 281
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-d61153cb782a4176aa131a62d4659e13",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.8,
+      "location": {
+        "file": "scripts/compress.py",
+        "start_line": 74,
+        "end_line": null,
+        "start_column": 8
+      },
+      "finding": ".netrc",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "SENSITIVE_BASENAME_REGEX = re.compile(\n    r\"(?ix)^(\"\n    r\"\\.env(\\..+)?\"\n    r\"|\\.netrc\"\n    r\"|\\.(npmrc|pypirc|pgpass|s3cfg|boto)\"\n    r\"|credentials(\\..+)?\"\n    r\"|secrets?(\\..+)?\"",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "a0de24714987e8ee8ad6b39e0fe5cd9cf88d0084409b8fb6b190fbb29638b0f0",
+      "occurrences": [
+        {
+          "file": "scripts/compress.py",
+          "start_line": 74,
+          "end_line": null,
+          "start_column": 8
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-bc4e80fb069a460db1ae53bce54cb564",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.6,
+      "location": {
+        "file": "scripts/compress.py",
+        "start_line": 68,
+        "end_line": null,
+        "start_column": 74
+      },
+      "finding": ".env\n",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "\n# Filenames and paths that almost certainly hold secrets or PII. Compressing\n# them ships raw bytes to the Anthropic API — a third-party data boundary that\n# developers on sensitive codebases cannot cross. detect.py already skips .env\n# by extension, but credentials.md / secrets.txt / ~/.aws/credentials would\n# slip through the natural-language filter. This is a hard refuse before read.\nSENSITIVE_BASENAME_REGEX = re.compile(",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "66ef81c27c03406fd9935e5fc86fc4126d7150c15b8d076fdc528d05cea7c7bf",
+      "occurrences": [
+        {
+          "file": "scripts/compress.py",
+          "start_line": 68,
+          "end_line": null,
+          "start_column": 74
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-44cdd1bc0c1741639f45f47007365c5e",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.9,
+      "location": {
+        "file": "scripts/compress.py",
+        "start_line": 69,
+        "end_line": null,
+        "start_column": 51
+      },
+      "finding": "~/.aws/credentials",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "# Filenames and paths that almost certainly hold secrets or PII. Compressing\n# them ships raw bytes to the Anthropic API — a third-party data boundary that\n# developers on sensitive codebases cannot cross. detect.py already skips .env\n# by extension, but credentials.md / secrets.txt / ~/.aws/credentials would\n# slip through the natural-language filter. This is a hard refuse before read.\nSENSITIVE_BASENAME_REGEX = re.compile(\n    r\"(?ix)^(\"",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "416c4471a97875978538ed61458dd171562145cc5ad2f94bc943d7296b54faa4",
+      "occurrences": [
+        {
+          "file": "scripts/compress.py",
+          "start_line": 69,
+          "end_line": null,
+          "start_column": 51
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-d6a204d018d542bc82ad876b24a460d4",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "scripts/compress.py",
+        "start_line": 69,
+        "end_line": null,
+        "start_column": 37
+      },
+      "finding": "secrets.txt",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "# Filenames and paths that almost certainly hold secrets or PII. Compressing\n# them ships raw bytes to the Anthropic API — a third-party data boundary that\n# developers on sensitive codebases cannot cross. detect.py already skips .env\n# by extension, but credentials.md / secrets.txt / ~/.aws/credentials would\n# slip through the natural-language filter. This is a hard refuse before read.\nSENSITIVE_BASENAME_REGEX = re.compile(\n    r\"(?ix)^(\"",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "db50644d65e5ecc416cdb372cb2fb6e37e9f361ff6b95eaaea6b4aa9c2e792fa",
+      "occurrences": [
+        {
+          "file": "scripts/compress.py",
+          "start_line": 69,
+          "end_line": null,
+          "start_column": 37
+        }
+      ]
+    },
+    {
+      "id": "E2",
+      "finding_id": "finding-5bafcf9f947b4fc6a6bf3797afaf86d7",
+      "category": "Data Exfiltration",
+      "pattern": "Env Variable Harvesting",
+      "severity": "HIGH",
+      "confidence": 0.6,
+      "location": {
+        "file": "scripts/compress.py",
+        "start_line": 663,
+        "end_line": 663,
+        "start_column": 10
+      },
+      "finding": "{**os.environ, \"OPENCODE_CONFIG_CONTENT\": json.dumps(config)}",
+      "explanation": "Code enumerates, copies, or searches environment variables for secrets. Bulk environment access can collect credentials unrelated to the skill's stated purpose.",
+      "remediation": "Read only explicitly required environment variables by name. Avoid enumerating or copying the full environment, and never log or transmit credentials to untrusted destinations.",
+      "code_snippet": "        **agents,\n        OPENCODE_AGENT: {\"permission\": OPENCODE_PERMISSION_DENY},\n    }\n    env = {**os.environ, \"OPENCODE_CONFIG_CONTENT\": json.dumps(config)}\n\n    prompt_path = None\n    try:",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "2a31e9a1a8786f720a3a8521ff802fcc6a0ce5639ae0b2f06b1f99ec6430aeff",
+      "occurrences": [
+        {
+          "file": "scripts/compress.py",
+          "start_line": 663,
+          "end_line": 663,
+          "start_column": 10
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-e102a4c840214396b0e721c3e9173e04",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.6,
+      "location": {
+        "file": "scripts/detect.py",
+        "start_line": 18,
+        "end_line": null,
+        "start_column": 14
+      },
+      "finding": ".env\"",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "# Extensions that are code/config and should be skipped\nSKIP_EXTENSIONS = {\n    \".py\", \".js\", \".ts\", \".tsx\", \".jsx\", \".json\", \".yaml\", \".yml\",\n    \".toml\", \".env\", \".lock\", \".css\", \".scss\", \".html\", \".xml\",\n    \".sql\", \".sh\", \".bash\", \".zsh\", \".go\", \".rs\", \".java\", \".c\",\n    \".cpp\", \".h\", \".hpp\", \".rb\", \".php\", \".swift\", \".kt\", \".lua\",\n    \".dockerfile\", \".makefile\", \".csv\", \".ini\", \".cfg\",",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "933e7e6dda63d615cb9ac0846682521855cd79c351e84f3fa87d934c18b752db",
+      "occurrences": [
+        {
+          "file": "scripts/detect.py",
+          "start_line": 18,
+          "end_line": null,
+          "start_column": 14
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-59cc869d8c0c4ae7873e5f408e57e566",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.6,
+      "location": {
+        "file": "scripts/detect.py",
+        "start_line": 93,
+        "end_line": null,
+        "start_column": 89
+      },
+      "finding": ".env\"",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "    if ext in COMPRESSIBLE_EXTENSIONS:\n        return \"natural_language\"\n    if ext in SKIP_EXTENSIONS:\n        return \"code\" if ext not in {\".json\", \".yaml\", \".yml\", \".toml\", \".ini\", \".cfg\", \".env\"} else \"config\"\n\n    # Extensionless files (like CLAUDE.md, TODO) — check content\n    if not ext:",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "933e7e6dda63d615cb9ac0846682521855cd79c351e84f3fa87d934c18b752db",
+      "occurrences": [
+        {
+          "file": "scripts/detect.py",
+          "start_line": 93,
+          "end_line": null,
+          "start_column": 89
+        }
+      ]
+    },
+    {
+      "id": "EA1",
+      "finding_id": "finding-3df1a7b136554ca194465b015d85e5ef",
+      "category": "Excessive Agency",
+      "pattern": "Unrestricted Tool Access",
+      "severity": "MEDIUM",
+      "confidence": 0.8,
+      "location": {
+        "file": "SECURITY.md",
+        "start_line": 11,
+        "end_line": null,
+        "start_column": 82
+      },
+      "finding": "use every tool",
+      "explanation": "Skill grants unrestricted tool access without appropriate constraints. An agent with unfettered tool access can perform arbitrary actions including file modification, network requests, and code execution.",
+      "remediation": "Restrict tool access to only the tools required for the skill's stated purpose. Use an explicit allowlist rather than granting blanket access.",
+      "code_snippet": "**: The skill calls the `claude` CLI via `subprocess.run()` as a fallback when `ANTHROPIC_API_KEY` is not set. It can also call `opencode run` when `CAVEMAN_COMPRESS_PROVIDER=opencode`. Subprocess calls use fixed argument lists — no shell interpolation occurs. Claude receives user file content via stdin; opencode receives the generated prompt through a temporary `--file` attachment that is deleted after the call.\n\n   The file being compressed is untrusted input, and opencode 2.x lets its agents use every tool that is not explicitly denied: shell, file edits, web search and fetch, MCP tools from your opencode config, subagents. Compression needs none of them. Compress therefore runs `opencode run --standalone --agent caveman-compress` with `OPENCODE_CONFIG_CONTENT` denying every permission (`\"*\": \"deny\"`) both globally and for that agent, and never passes `--auto`. The dedicated agent matters because opencode applies a per-agent rule after the global one, so an `agent.build.permission` ",
+      "intent": null,
+      "tags": [
+        "Excessive Agency"
+      ],
+      "evidence": {},
+      "match_fingerprint": "bcc07bbe68ac8ab1f51a914184d3afe99af56ff9fed5a9007ad274bbc5f50b87",
+      "occurrences": [
+        {
+          "file": "SECURITY.md",
+          "start_line": 11,
+          "end_line": null,
+          "start_column": 82
+        }
+      ]
+    },
+    {
+      "id": "LP3",
+      "finding_id": "finding-04730f3778624730a35e0ae7b34f38b7",
+      "category": "MCP Least Privilege",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 1,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "Without declared permissions the skill's intent is opaque and cannot be validated.",
+      "remediation": "Declare the skill's tool scope: for Claude Code / Agent Skills SKILL.md, list the tools the skill may invoke in the 'allowed-tools' frontmatter field; for MCP server manifests, add a 'permissions' list naming the required capabilities.",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI02"
+      ],
+      "evidence": {},
+      "match_fingerprint": null,
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 1,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AST4",
+      "finding_id": "finding-8c40734eb799427fbb9db7a4615109dc",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "scripts/compress.py",
+        "start_line": 556,
+        "end_line": 556,
+        "start_column": 17,
+        "end_column": 54
+      },
+      "finding": "subprocess.run(command, **run_kwargs)",
+      "explanation": "subprocess module calls execute external commands. Without careful input validation, this enables command injection.",
+      "remediation": "Use subprocess.run() with shell=False and an explicit argument list. Validate all inputs and avoid passing user-controlled data to commands.",
+      "code_snippet": "    if env is not None:\n        run_kwargs[\"env\"] = env\n    try:\n        result = subprocess.run(command, **run_kwargs)\n        return strip_llm_wrapper(result.stdout.strip())\n    except FileNotFoundError as error:\n        raise RuntimeError(f\"{binary_name} CLI not found on PATH\") from error",
+      "intent": null,
+      "tags": [
+        "Dangerous Code Execution"
+      ],
+      "evidence": {},
+      "match_fingerprint": "b0db787b67132fc0f19766e7a857d7991c9a68aef3e00f9c354945bba0fdf169",
+      "occurrences": [
+        {
+          "file": "scripts/compress.py",
+          "start_line": 556,
+          "end_line": 556,
+          "start_column": 17,
+          "end_column": 54
+        }
+      ]
+    },
+    {
+      "id": "P7",
+      "finding_id": "finding-c0bf856dcedb4d85b68e096ec27a31ea",
+      "category": "System Prompt Leakage",
+      "pattern": "Indirect Prompt Extraction",
+      "severity": "MEDIUM",
+      "confidence": 0.85,
+      "location": {
+        "file": "scripts/compress.py",
+        "start_line": 688,
+        "end_line": null,
+        "start_column": 60
+      },
+      "finding": "encode prompt",
+      "explanation": "Skill contains patterns that could indirectly extract system prompts through rephrasing, translation, summarization, or side-channel techniques.",
+      "remediation": "Guard against indirect extraction by refusing to summarize, translate, or rephrase system instructions. Add explicit anti-extraction clauses.",
+      "code_snippet": "                prompt_path.unlink(missing_ok=True)\n            except OSError:\n                print(\n                    f\"warning: could not delete temporary opencode prompt {prompt_path}\",\n                    file=sys.stderr,\n                )\n",
+      "intent": null,
+      "tags": [
+        "System Prompt Leakage"
+      ],
+      "evidence": {},
+      "match_fingerprint": "270c1bdc97074de4f2fd73ba340acee8168c6def7023a10062d0d313a5841863",
+      "occurrences": [
+        {
+          "file": "scripts/compress.py",
+          "start_line": 688,
+          "end_line": null,
+          "start_column": 60
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": true,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 10,
+    "scanned_components": 9,
+    "coverage_percent": 90.0,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 9,
+    "partially_inspected_files": 1,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 55,
+        "end_line": 55,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "scripts/compress.py",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "reference_coverage",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "degraded",
+        "planned_work": 10,
+        "completed": 9,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 13,
+        "column": 99,
+        "evidence": "e machine.** Compression sends the file's full text to the model provider that `scripts/compress.py` is configured for: the `claude` CLI, the Anthropic API, or ",
+        "target_path": "scripts/compress.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 25,
+        "column": 130,
+        "evidence": "jacent to this SKILL.md). If the path is not immediately available, search for `scripts/__main__.py` next to this SKILL.md.",
+        "target_path": "scripts/__main__.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 55,
+        "column": 39,
+        "evidence": "- File paths (`/src/components/...`, `./config.yaml`)",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      }
+    ],
+    "limitations": [
+      "Analyzer static_patterns_tool_misuse status: degraded."
+    ],
+    "findings_before_filtering": 14,
+    "findings_after_filtering": 14
+  }
+}

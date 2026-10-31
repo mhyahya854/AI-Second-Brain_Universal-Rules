@@ -1,0 +1,2073 @@
+{
+  "skill": {
+    "name": "careful",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\garrytan\\gstack\\careful",
+    "scanned_at": "2026-10-31T21:07:58.402585+00:00"
+  },
+  "risk_assessment": {
+    "score": 100,
+    "severity": "CRITICAL",
+    "recommendation": "DO_NOT_INSTALL",
+    "max_issue_severity": "HIGH"
+  },
+  "components": [
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 103,
+      "executable": false,
+      "size_bytes": 4739,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "SKILL.md.tmpl",
+      "type": "other",
+      "lines": 107,
+      "executable": false,
+      "size_bytes": 4965,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "bin/check-careful.sh",
+      "type": "shell",
+      "lines": 424,
+      "executable": true,
+      "size_bytes": 20796,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "bin/hook-extract.sh",
+      "type": "shell",
+      "lines": 198,
+      "executable": true,
+      "size_bytes": 10474,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "bin/mask-commit-message.awk",
+      "type": "other",
+      "lines": 125,
+      "executable": false,
+      "size_bytes": 4996,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "TM1",
+      "finding_id": "finding-54ac8671745b4ce388439013f79861b4",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.9,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 44,
+        "end_line": null,
+        "start_column": 43
+      },
+      "finding": "rm -rf /var/data",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "\n| Pattern | Example | Risk |\n|---------|---------|------|\n| `rm -rf` / `rm -r` / `rm --recursive` | `rm -rf /var/data` | Recursive delete |\n| `DROP TABLE` / `DROP DATABASE` | `DROP TABLE users;` | Data loss |\n| `TRUNCATE` | `TRUNCATE orders;` | Data loss |\n| `git push --force` / `-f` | `git push -f origin main` | History rewrite |",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "e03d844087813c193744d1dc852d4bd75c1d86faad959cf61aeecf55f5090c2d",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 44,
+          "end_line": null,
+          "start_column": 43
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-4617edab5ec44e63827f061f620f8c8f",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.9,
+      "location": {
+        "file": "SKILL.md.tmpl",
+        "start_line": 48,
+        "end_line": null,
+        "start_column": 43
+      },
+      "finding": "rm -rf /var/data",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "\n| Pattern | Example | Risk |\n|---------|---------|------|\n| `rm -rf` / `rm -r` / `rm --recursive` | `rm -rf /var/data` | Recursive delete |\n| `DROP TABLE` / `DROP DATABASE` | `DROP TABLE users;` | Data loss |\n| `TRUNCATE` | `TRUNCATE orders;` | Data loss |\n| `git push --force` / `-f` | `git push -f origin main` | History rewrite |",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "e03d844087813c193744d1dc852d4bd75c1d86faad959cf61aeecf55f5090c2d",
+      "occurrences": [
+        {
+          "file": "SKILL.md.tmpl",
+          "start_line": 48,
+          "end_line": null,
+          "start_column": 43
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-b34ef51340e34af3828255470c44858c",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.85,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 44,
+        "end_line": null,
+        "start_column": 43
+      },
+      "finding": "rm -rf /var/data`",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "\n| Pattern | Example | Risk |\n|---------|---------|------|\n| `rm -rf` / `rm -r` / `rm --recursive` | `rm -rf /var/data` | Recursive delete |\n| `DROP TABLE` / `DROP DATABASE` | `DROP TABLE users;` | Data loss |\n| `TRUNCATE` | `TRUNCATE orders;` | Data loss |\n| `git push --force` / `-f` | `git push -f origin main` | History rewrite |",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "45b53529bb8bbc42c88198ca9b3af2f1bc7a2e9f279a4c23d17e8ba261b1192d",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 44,
+          "end_line": null,
+          "start_column": 43
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-f4a1c03c68654d0b93a1e912d8003b56",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.85,
+      "location": {
+        "file": "SKILL.md.tmpl",
+        "start_line": 48,
+        "end_line": null,
+        "start_column": 43
+      },
+      "finding": "rm -rf /var/data`",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "\n| Pattern | Example | Risk |\n|---------|---------|------|\n| `rm -rf` / `rm -r` / `rm --recursive` | `rm -rf /var/data` | Recursive delete |\n| `DROP TABLE` / `DROP DATABASE` | `DROP TABLE users;` | Data loss |\n| `TRUNCATE` | `TRUNCATE orders;` | Data loss |\n| `git push --force` / `-f` | `git push -f origin main` | History rewrite |",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "45b53529bb8bbc42c88198ca9b3af2f1bc7a2e9f279a4c23d17e8ba261b1192d",
+      "occurrences": [
+        {
+          "file": "SKILL.md.tmpl",
+          "start_line": 48,
+          "end_line": null,
+          "start_column": 43
+        }
+      ]
+    },
+    {
+      "id": "AR2",
+      "finding_id": "finding-0e74876d80e341338e9e7ddfb8c5e1b1",
+      "category": "Anti-Refusal",
+      "pattern": "Anti-Refusal Statement",
+      "severity": "HIGH",
+      "confidence": 0.8,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 74,
+        "end_line": 74,
+        "start_column": 27,
+        "end_column": 42
+      },
+      "finding": "without warning",
+      "explanation": "Skill instructs the agent to omit warnings, disclaimers, or ethical commentary. Stripping safety caveats hides risk from the user and is a common jailbreak preamble.",
+      "remediation": "Remove instructions that suppress warnings, disclaimers, or ethical commentary. Let the agent surface safety-relevant caveats to the user.",
+      "code_snippet": "\n## Safe exceptions\n\nThese patterns are allowed without warning:\n- `rm -rf node_modules` / `.next` / `dist` / `__pycache__` / `.cache` / `build` / `.turbo` / `coverage`\n\n## How it works",
+      "intent": null,
+      "tags": [
+        "Anti-Refusal"
+      ],
+      "evidence": {},
+      "match_fingerprint": "e1c52694e854c5bd049e3a3ae66f3efcfe098f61a8ee160655ad3b90035f67fd",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 74,
+          "end_line": 74,
+          "start_column": 27,
+          "end_column": 42
+        }
+      ]
+    },
+    {
+      "id": "AR2",
+      "finding_id": "finding-4ca54638ad264c80a7b66fe9e6fc63c5",
+      "category": "Anti-Refusal",
+      "pattern": "Anti-Refusal Statement",
+      "severity": "HIGH",
+      "confidence": 0.8,
+      "location": {
+        "file": "SKILL.md.tmpl",
+        "start_line": 78,
+        "end_line": 78,
+        "start_column": 27,
+        "end_column": 42
+      },
+      "finding": "without warning",
+      "explanation": "Skill instructs the agent to omit warnings, disclaimers, or ethical commentary. Stripping safety caveats hides risk from the user and is a common jailbreak preamble.",
+      "remediation": "Remove instructions that suppress warnings, disclaimers, or ethical commentary. Let the agent surface safety-relevant caveats to the user.",
+      "code_snippet": "\n## Safe exceptions\n\nThese patterns are allowed without warning:\n- `rm -rf node_modules` / `.next` / `dist` / `__pycache__` / `.cache` / `build` / `.turbo` / `coverage`\n\n## How it works",
+      "intent": null,
+      "tags": [
+        "Anti-Refusal"
+      ],
+      "evidence": {},
+      "match_fingerprint": "e1c52694e854c5bd049e3a3ae66f3efcfe098f61a8ee160655ad3b90035f67fd",
+      "occurrences": [
+        {
+          "file": "SKILL.md.tmpl",
+          "start_line": 78,
+          "end_line": 78,
+          "start_column": 27,
+          "end_column": 42
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-0f30331e6a78449e9fccc9b8d361577c",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.85,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 88,
+        "end_line": null,
+        "start_column": 52
+      },
+      "finding": "rm -r`/`-R`",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "\n## HIGH tier (hard deny)\n\nTwo catastrophic shapes are **denied**, not asked: `rm -r`/`-R` of exactly\n`/`, `~`, or `$HOME`, and force-push to the repo's **default branch**. SIMPLE\ncommands only (no `;`, `&&`, `||`, `|`, newline) — compound shapes fall\nthrough to the MEDIUM ask; `--force-with-lease` is never HIGH. A best-effort",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "f1e25288487849da4390d39b073da7279004977c44e32050540b006efeec41f2",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 88,
+          "end_line": null,
+          "start_column": 52
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-705e04a905bb40fda402b3bfd8151546",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.85,
+      "location": {
+        "file": "SKILL.md.tmpl",
+        "start_line": 92,
+        "end_line": null,
+        "start_column": 52
+      },
+      "finding": "rm -r`/`-R`",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "\n## HIGH tier (hard deny)\n\nTwo catastrophic shapes are **denied**, not asked: `rm -r`/`-R` of exactly\n`/`, `~`, or `$HOME`, and force-push to the repo's **default branch**. SIMPLE\ncommands only (no `;`, `&&`, `||`, `|`, newline) — compound shapes fall\nthrough to the MEDIUM ask; `--force-with-lease` is never HIGH. A best-effort",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "f1e25288487849da4390d39b073da7279004977c44e32050540b006efeec41f2",
+      "occurrences": [
+        {
+          "file": "SKILL.md.tmpl",
+          "start_line": 92,
+          "end_line": null,
+          "start_column": 52
+        }
+      ]
+    },
+    {
+      "id": "YR1",
+      "finding_id": "finding-8b71aaa11b8f4d5d96c4edecdc8c2b8b",
+      "category": "YARA Match",
+      "pattern": "YARA rule 'agent_skill_destructive_autonomous_actions': Autonomous destructive filesystem, shell history, or repository actions in AI agent skills [agent_skills]",
+      "severity": "HIGH",
+      "confidence": 0.75,
+      "location": {
+        "file": "bin/check-careful.sh",
+        "start_line": 10,
+        "end_line": null
+      },
+      "finding": "rm -rf / ; rm -rf / ; rm -rf / ; rm -r / ; rm -R / ; rm -f / ; git push --force; git push --force; git push --force; git reset --hard; git reset --hard; silently; non-interactive; unattended; silently",
+      "explanation": "YARA rule matched a known malware signature (reverse shell, backdoor, ransomware, C2 framework, or info stealer).",
+      "remediation": "Remove the malware payload or compromised file entirely. Investigate how it entered the skill and audit all other artifacts for additional indicators of compromise.",
+      "code_snippet": " string matching, not a security boundary).\n# Two tiers:\n#   HIGH   — a tiny set of catastrophic SIMPLE commands returns \"deny\"\n#            (best-effort advisory hard-stop, not a policy boundary).\n#   MEDIUM — the destructive families below return \"ask\" (always overridable).\n# The decision MUST be nested under hookSpecificOutput — Claude Code ignores a\n# top-level permissionDecision, which silently no-ops the warning.\nset -euo pipefail\n\n# Read stdin (JSON with tool_input)\nINPUT=$(cat)\n\n# Shared JSON helpers (extractor + encoder) — one copy for careful AND freeze.\n# See hook-extract.sh for the drift history that motivated the shared file.\n_HOOK_DIR=\"$(cd \"$(dirname \"${BASH_SOURCE[0]}\")\" && pwd)\"\n# shellcheck source=careful/bin/hook-extract.sh\n# bash treats `.` on a MISSING file as fatal non-interactively; a partial\n# install must degrade to an ASK (this is the ask-tier hook), never silence.\n_HOOK_HELPER=\"$_HOOK_DIR/hook-extract.sh\"\nif [ ! -f \"$_HOOK_HELPER\" ] || ! . \"$_HOOK_HEL",
+      "intent": null,
+      "tags": [
+        "YARA Match"
+      ],
+      "evidence": {},
+      "match_fingerprint": "207af81b511b65de4c336287951bdfbe4a54eb1e78fd764a8ab41758d59890bd",
+      "occurrences": [
+        {
+          "file": "bin/check-careful.sh",
+          "start_line": 10,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-ab146de5c09c40a6ad384692ab8de9f0",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 44,
+        "end_line": null,
+        "start_column": 43
+      },
+      "finding": "rm -rf /",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "\n| Pattern | Example | Risk |\n|---------|---------|------|\n| `rm -rf` / `rm -r` / `rm --recursive` | `rm -rf /var/data` | Recursive delete |\n| `DROP TABLE` / `DROP DATABASE` | `DROP TABLE users;` | Data loss |\n| `TRUNCATE` | `TRUNCATE orders;` | Data loss |\n| `git push --force` / `-f` | `git push -f origin main` | History rewrite |",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "f3ff4d6cfbe1b7f6b23dd4d1379edae984c14738c5f5b14db40e215beb673f08",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 44,
+          "end_line": null,
+          "start_column": 43
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-557785cdee8046b6b7057116fb5bea52",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md.tmpl",
+        "start_line": 48,
+        "end_line": null,
+        "start_column": 43
+      },
+      "finding": "rm -rf /",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "\n| Pattern | Example | Risk |\n|---------|---------|------|\n| `rm -rf` / `rm -r` / `rm --recursive` | `rm -rf /var/data` | Recursive delete |\n| `DROP TABLE` / `DROP DATABASE` | `DROP TABLE users;` | Data loss |\n| `TRUNCATE` | `TRUNCATE orders;` | Data loss |\n| `git push --force` / `-f` | `git push -f origin main` | History rewrite |",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "f3ff4d6cfbe1b7f6b23dd4d1379edae984c14738c5f5b14db40e215beb673f08",
+      "occurrences": [
+        {
+          "file": "SKILL.md.tmpl",
+          "start_line": 48,
+          "end_line": null,
+          "start_column": 43
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-913e5b8e32db4f95b59f6d07afc5433b",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "bin/check-careful.sh",
+        "start_line": 36,
+        "end_line": null,
+        "start_column": 27
+      },
+      "finding": "rm -rf /",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "# destructive command preceded by a quoted argument was therefore truncated\n# away before the pattern checks ever ran:\n#\n#   git commit -m \"wip\" && rm -rf /   ->  CMD='git commit -m \\'   -> allowed\n#   bash -c \"rm -rf /\"                ->  CMD='bash -c \\'         -> allowed\n#   echo \"x\"; rm -rf ~                ->  CMD='echo \\'            -> allowed\n#",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "f3ff4d6cfbe1b7f6b23dd4d1379edae984c14738c5f5b14db40e215beb673f08",
+      "occurrences": [
+        {
+          "file": "bin/check-careful.sh",
+          "start_line": 36,
+          "end_line": null,
+          "start_column": 27
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-7be6bac4c98c466c82477e46d1fd251f",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "bin/check-careful.sh",
+        "start_line": 37,
+        "end_line": null,
+        "start_column": 13
+      },
+      "finding": "rm -rf /",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "# away before the pattern checks ever ran:\n#\n#   git commit -m \"wip\" && rm -rf /   ->  CMD='git commit -m \\'   -> allowed\n#   bash -c \"rm -rf /\"                ->  CMD='bash -c \\'         -> allowed\n#   echo \"x\"; rm -rf ~                ->  CMD='echo \\'            -> allowed\n#\n# Parse the payload properly instead, and fail CLOSED when it cannot be parsed",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "f3ff4d6cfbe1b7f6b23dd4d1379edae984c14738c5f5b14db40e215beb673f08",
+      "occurrences": [
+        {
+          "file": "bin/check-careful.sh",
+          "start_line": 37,
+          "end_line": null,
+          "start_column": 13
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-4dc09a79ec694f64a2d8c5388069235d",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "bin/check-careful.sh",
+        "start_line": 199,
+        "end_line": null,
+        "start_column": 4
+      },
+      "finding": "rm -rf /",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "# --- Check for safe exceptions (one standalone rm of build artifacts) ---\n# Match the complete command. Parsing only the last rm is unsafe because shell\n# syntax or comments can hide an earlier destructive command, for example:\n#   rm -rf / # rm -rf node_modules\n# Unknown syntax fails closed and falls through to the destructive checks.\n# Two hardenings on top of the anchored shape (#2039 wave):\n#   - flag cluster accepts capital -R (BSD/macOS recursive), so a single",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "f3ff4d6cfbe1b7f6b23dd4d1379edae984c14738c5f5b14db40e215beb673f08",
+      "occurrences": [
+        {
+          "file": "bin/check-careful.sh",
+          "start_line": 199,
+          "end_line": null,
+          "start_column": 4
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-48fb3a12146245f6975d395057c62c45",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "bin/check-careful.sh",
+        "start_line": 209,
+        "end_line": null,
+        "start_column": 35
+      },
+      "finding": "rm -rf /",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "#     cannot ride the whitelist. Plain $VAR expansion (no parenthesis) is\n#     still allowed.\n#   - multi-line commands never ride the whitelist: grep matches the anchored\n#     shape against EACH line, so `rm -rf /\\nrm -rf node_modules` would be\n#     allowed by its second line. With the JSON-parser extraction the \\n in\n#     the payload is a real newline (the old grep extractor kept it as two\n#     literal characters, which broke the anchored match by accident).",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "f3ff4d6cfbe1b7f6b23dd4d1379edae984c14738c5f5b14db40e215beb673f08",
+      "occurrences": [
+        {
+          "file": "bin/check-careful.sh",
+          "start_line": 209,
+          "end_line": null,
+          "start_column": 35
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-c1e56c9d270047e2a99c4e11b81beeda",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "bin/check-careful.sh",
+        "start_line": 322,
+        "end_line": null,
+        "start_column": 2
+      },
+      "finding": "rm -rf /",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "  done\nfi\n\n# rm -rf / rm -r / rm -R / rm --recursive (capital -R is BSD/macOS recursive)\nif [ -z \"$WARN\" ] && grep -qE 'rm\\s+(-[a-zA-Z]*[rR]|--recursive)' <<< \"$CMD_MEDIUM\" 2>/dev/null; then\n  WARN=\"Destructive: recursive delete (rm -r). This permanently removes files.\"\n  PATTERN=\"rm_recursive\"",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "f3ff4d6cfbe1b7f6b23dd4d1379edae984c14738c5f5b14db40e215beb673f08",
+      "occurrences": [
+        {
+          "file": "bin/check-careful.sh",
+          "start_line": 322,
+          "end_line": null,
+          "start_column": 2
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-86c215026f114ba487861caa85db47ee",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "bin/check-careful.sh",
+        "start_line": 36,
+        "end_line": null,
+        "start_column": 27
+      },
+      "finding": "rm -rf /   ->  CMD='git commit -m \\'   -> allowed",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "# destructive command preceded by a quoted argument was therefore truncated\n# away before the pattern checks ever ran:\n#\n#   git commit -m \"wip\" && rm -rf /   ->  CMD='git commit -m \\'   -> allowed\n#   bash -c \"rm -rf /\"                ->  CMD='bash -c \\'         -> allowed\n#   echo \"x\"; rm -rf ~                ->  CMD='echo \\'            -> allowed\n#",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "fe6f50c37d3a75e9aa504f78a5deb8ad854cb0d0625cb84096e418deae6ae8a0",
+      "occurrences": [
+        {
+          "file": "bin/check-careful.sh",
+          "start_line": 36,
+          "end_line": null,
+          "start_column": 27
+        }
+      ]
+    },
+    {
+      "id": "TM2",
+      "finding_id": "finding-8949a9b5988e4c01964df3ade61ac879",
+      "category": "Tool Misuse",
+      "pattern": "Chaining Abuse",
+      "severity": "HIGH",
+      "confidence": 0.75,
+      "location": {
+        "file": "bin/check-careful.sh",
+        "start_line": 36,
+        "end_line": null,
+        "start_column": 24
+      },
+      "finding": "&& rm -",
+      "explanation": "Tool calls are chained to bypass individual safety checks or escalate capabilities beyond what any single tool call would allow.",
+      "remediation": "Limit tool chaining depth and validate the output of each tool before passing it to the next. Require explicit user approval for multi-step chains.",
+      "code_snippet": "# destructive command preceded by a quoted argument was therefore truncated\n# away before the pattern checks ever ran:\n#\n#   git commit -m \"wip\" && rm -rf /   ->  CMD='git commit -m \\'   -> allowed\n#   bash -c \"rm -rf /\"                ->  CMD='bash -c \\'         -> allowed\n#   echo \"x\"; rm -rf ~                ->  CMD='echo \\'            -> allowed\n#",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "da42bed49ba667f4edac8a3628fa28e5cc6bbc20fc757fb7d1ddbddd9a531ec0",
+      "occurrences": [
+        {
+          "file": "bin/check-careful.sh",
+          "start_line": 36,
+          "end_line": null,
+          "start_column": 24
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-c6c70628800a4908811def983177af90",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.95,
+      "location": {
+        "file": "bin/check-careful.sh",
+        "start_line": 37,
+        "end_line": null,
+        "start_column": 13
+      },
+      "finding": "rm -rf /\"",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "# away before the pattern checks ever ran:\n#\n#   git commit -m \"wip\" && rm -rf /   ->  CMD='git commit -m \\'   -> allowed\n#   bash -c \"rm -rf /\"                ->  CMD='bash -c \\'         -> allowed\n#   echo \"x\"; rm -rf ~                ->  CMD='echo \\'            -> allowed\n#\n# Parse the payload properly instead, and fail CLOSED when it cannot be parsed",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "27e76377cb5ff2d68171e047ecb47c1c1268da1cb778111906599044cb2ca492",
+      "occurrences": [
+        {
+          "file": "bin/check-careful.sh",
+          "start_line": 37,
+          "end_line": null,
+          "start_column": 13
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-2abcc3cf4707483a8b35802971c697fc",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "bin/check-careful.sh",
+        "start_line": 38,
+        "end_line": null,
+        "start_column": 14
+      },
+      "finding": "rm -rf ~",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "#\n#   git commit -m \"wip\" && rm -rf /   ->  CMD='git commit -m \\'   -> allowed\n#   bash -c \"rm -rf /\"                ->  CMD='bash -c \\'         -> allowed\n#   echo \"x\"; rm -rf ~                ->  CMD='echo \\'            -> allowed\n#\n# Parse the payload properly instead, and fail CLOSED when it cannot be parsed\n# at all — a hook that gates destructive commands must not allow-by-default on",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "26e22f4cfd2aa77cd384519bed5efdd6f6dba6aab2e61d67ae29c1cbcadc466e",
+      "occurrences": [
+        {
+          "file": "bin/check-careful.sh",
+          "start_line": 38,
+          "end_line": null,
+          "start_column": 14
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-1ee5d8f9b9894e86bdd78d419836e53a",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "bin/check-careful.sh",
+        "start_line": 38,
+        "end_line": null,
+        "start_column": 14
+      },
+      "finding": "rm -rf ~                ->  CMD='echo \\'            -> allowed",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "#\n#   git commit -m \"wip\" && rm -rf /   ->  CMD='git commit -m \\'   -> allowed\n#   bash -c \"rm -rf /\"                ->  CMD='bash -c \\'         -> allowed\n#   echo \"x\"; rm -rf ~                ->  CMD='echo \\'            -> allowed\n#\n# Parse the payload properly instead, and fail CLOSED when it cannot be parsed\n# at all — a hook that gates destructive commands must not allow-by-default on",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "ff603acfd27cf3d62a816cabef16fa6fb99c8394b402007f72d37383dd8f5425",
+      "occurrences": [
+        {
+          "file": "bin/check-careful.sh",
+          "start_line": 38,
+          "end_line": null,
+          "start_column": 14
+        }
+      ]
+    },
+    {
+      "id": "TM2",
+      "finding_id": "finding-354f3085bf2e44d99adfd53f61244626",
+      "category": "Tool Misuse",
+      "pattern": "Chaining Abuse",
+      "severity": "HIGH",
+      "confidence": 0.75,
+      "location": {
+        "file": "bin/check-careful.sh",
+        "start_line": 38,
+        "end_line": null,
+        "start_column": 12
+      },
+      "finding": "; rm -",
+      "explanation": "Tool calls are chained to bypass individual safety checks or escalate capabilities beyond what any single tool call would allow.",
+      "remediation": "Limit tool chaining depth and validate the output of each tool before passing it to the next. Require explicit user approval for multi-step chains.",
+      "code_snippet": "#\n#   git commit -m \"wip\" && rm -rf /   ->  CMD='git commit -m \\'   -> allowed\n#   bash -c \"rm -rf /\"                ->  CMD='bash -c \\'         -> allowed\n#   echo \"x\"; rm -rf ~                ->  CMD='echo \\'            -> allowed\n#\n# Parse the payload properly instead, and fail CLOSED when it cannot be parsed\n# at all — a hook that gates destructive commands must not allow-by-default on",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "653c73eb47bd50a95878b88c727b3b22838d19b40be7e0c38ee04dc79d87f76f",
+      "occurrences": [
+        {
+          "file": "bin/check-careful.sh",
+          "start_line": 38,
+          "end_line": null,
+          "start_column": 12
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-308596b67fb846acaf9dda20b6f153a6",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "bin/check-careful.sh",
+        "start_line": 86,
+        "end_line": null,
+        "start_column": 4
+      },
+      "finding": "rm${IFS}-rf${IFS}/",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "# string MEANS after expansion. ${IFS} holds the default field separator and\n# contains no literal whitespace, so\n#\n#   rm${IFS}-rf${IFS}/\n#\n# matches none of the `rm\\s+` patterns while executing as a full recursive\n# delete. The same holds for a command assembled by a base64 decode piped to a",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "5b26e2381949a47998669562897494cb1e4e6fdeba4228542b62e954d15289fe",
+      "occurrences": [
+        {
+          "file": "bin/check-careful.sh",
+          "start_line": 86,
+          "end_line": null,
+          "start_column": 4
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-eca1844325ad470e934fa4349fddcb24",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.7999999999999999,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 47,
+        "end_line": null,
+        "start_column": 3
+      },
+      "finding": "git push --force",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "| `rm -rf` / `rm -r` / `rm --recursive` | `rm -rf /var/data` | Recursive delete |\n| `DROP TABLE` / `DROP DATABASE` | `DROP TABLE users;` | Data loss |\n| `TRUNCATE` | `TRUNCATE orders;` | Data loss |\n| `git push --force` / `-f` | `git push -f origin main` | History rewrite |\n| `git reset --hard` | `git reset --hard HEAD~3` | Uncommitted work loss |\n| `git checkout .` / `git restore .` | `git checkout .` | Uncommitted work loss |\n| `kubectl delete` | `kubectl delete pod` | Production impact |",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "588985d404a57a20e57a9346ad923a32f942548b83c815a3d0565b5856c6609c",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 47,
+          "end_line": null,
+          "start_column": 3
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-ba39bda34dd846dd8e11e16eacd95ad4",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.7999999999999999,
+      "location": {
+        "file": "SKILL.md.tmpl",
+        "start_line": 51,
+        "end_line": null,
+        "start_column": 3
+      },
+      "finding": "git push --force",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "| `rm -rf` / `rm -r` / `rm --recursive` | `rm -rf /var/data` | Recursive delete |\n| `DROP TABLE` / `DROP DATABASE` | `DROP TABLE users;` | Data loss |\n| `TRUNCATE` | `TRUNCATE orders;` | Data loss |\n| `git push --force` / `-f` | `git push -f origin main` | History rewrite |\n| `git reset --hard` | `git reset --hard HEAD~3` | Uncommitted work loss |\n| `git checkout .` / `git restore .` | `git checkout .` | Uncommitted work loss |\n| `kubectl delete` | `kubectl delete pod` | Production impact |",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "588985d404a57a20e57a9346ad923a32f942548b83c815a3d0565b5856c6609c",
+      "occurrences": [
+        {
+          "file": "SKILL.md.tmpl",
+          "start_line": 51,
+          "end_line": null,
+          "start_column": 3
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-1ad23d1e724d4ba68d818f4ff1ee56c2",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.7999999999999999,
+      "location": {
+        "file": "bin/check-careful.sh",
+        "start_line": 100,
+        "end_line": null,
+        "start_column": 34
+      },
+      "finding": "git push --force",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "\n# --- HIGH tier: hard deny (best-effort advisory hard-stop, NOT a policy boundary) ---\n# Only SIMPLE commands are eligible: string matching cannot resolve what a\n# compound command does (`cd X && git push --force` — whose cwd? which repo?),\n# so anything containing ; && || | or a newline falls through to the MEDIUM ask\n# families below — conservative failure = ask, never guess.\n# --force-with-lease is deliberately NOT matched here (it is the safe variant).",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "588985d404a57a20e57a9346ad923a32f942548b83c815a3d0565b5856c6609c",
+      "occurrences": [
+        {
+          "file": "bin/check-careful.sh",
+          "start_line": 100,
+          "end_line": null,
+          "start_column": 34
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-7eebb9ca2963418ba821e7eaad39f3f1",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.7999999999999999,
+      "location": {
+        "file": "bin/check-careful.sh",
+        "start_line": 181,
+        "end_line": null,
+        "start_column": 18
+      },
+      "finding": "git push --force",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "        done\n        set +f\n        if [ \"$_TARGETS_DEFAULT\" -eq 0 ] && grep -qE '^[[:space:]]*git[[:space:]]+push([[:space:]]+(-f|--force))*[[:space:]]*$' <<< \"$CMD\" 2>/dev/null; then\n          # Bare `git push --force` (force flags only, no remote/ref): targets\n          # the current branch's upstream — the default branch only when ON it.\n          _CURRENT_BRANCH=$(git branch --show-current 2>/dev/null || true)\n          [ -n \"$_CURRENT_BRANCH\" ] && [ \"$_CURRENT_BRANCH\" = \"$_DEFAULT_BRANCH\" ] && _TARGETS_DEFAULT=1",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "588985d404a57a20e57a9346ad923a32f942548b83c815a3d0565b5856c6609c",
+      "occurrences": [
+        {
+          "file": "bin/check-careful.sh",
+          "start_line": 181,
+          "end_line": null,
+          "start_column": 18
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-ac6c08f1fd3146cda98d64e810b2817c",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.7999999999999999,
+      "location": {
+        "file": "bin/check-careful.sh",
+        "start_line": 340,
+        "end_line": null,
+        "start_column": 2
+      },
+      "finding": "git push --force",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "  PATTERN=\"truncate\"\nfi\n\n# git push --force / git push -f / plus-refspec force (git push origin +ref)\nif [ -z \"$WARN\" ] && grep -qE 'git\\s+push\\s' <<< \"$CMD_MEDIUM\" 2>/dev/null \\\n  && grep -qE '(-f\\b|--force|(^|[[:space:]])\\+[^[:space:]])' <<< \"$CMD_MEDIUM\" 2>/dev/null; then\n  WARN=\"Destructive: git force-push rewrites remote history. Other contributors may lose work.\"",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "588985d404a57a20e57a9346ad923a32f942548b83c815a3d0565b5856c6609c",
+      "occurrences": [
+        {
+          "file": "bin/check-careful.sh",
+          "start_line": 340,
+          "end_line": null,
+          "start_column": 2
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-5dbda8edc6ca4585b175c97601d57cc0",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "bin/check-careful.sh",
+        "start_line": 122,
+        "end_line": null,
+        "start_column": 47
+      },
+      "finding": "rm -rf \"/\" is still rm -rf /",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "    _SAFE_TARGETS=0\n    set -f\n    for _TOK in $CMD; do\n      # Strip one layer of surrounding quotes: rm -rf \"/\" is still rm -rf /.\n      _TOK=\"${_TOK#\\\"}\"; _TOK=\"${_TOK%\\\"}\"; _TOK=\"${_TOK#\\'}\"; _TOK=\"${_TOK%\\'}\"\n      case \"$_TOK\" in\n        # Skip non-target decoration: options, `--`, redirections (2>/dev/null",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "36cc15af2365102d08d52061cd1bcf7ba499251e63559ce580665c70442b658e",
+      "occurrences": [
+        {
+          "file": "bin/check-careful.sh",
+          "start_line": 122,
+          "end_line": null,
+          "start_column": 47
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-99b809247f8e42219abfff70e96fe5db",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "bin/check-careful.sh",
+        "start_line": 122,
+        "end_line": null,
+        "start_column": 47
+      },
+      "finding": "rm -rf \"/\" is still rm -rf /.",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "    _SAFE_TARGETS=0\n    set -f\n    for _TOK in $CMD; do\n      # Strip one layer of surrounding quotes: rm -rf \"/\" is still rm -rf /.\n      _TOK=\"${_TOK#\\\"}\"; _TOK=\"${_TOK%\\\"}\"; _TOK=\"${_TOK#\\'}\"; _TOK=\"${_TOK%\\'}\"\n      case \"$_TOK\" in\n        # Skip non-target decoration: options, `--`, redirections (2>/dev/null",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "aff1d4e81b8020a36a649bac8b3afdc500f750eebfe55e27d28f221e337ae0ce",
+      "occurrences": [
+        {
+          "file": "bin/check-careful.sh",
+          "start_line": 122,
+          "end_line": null,
+          "start_column": 47
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-2d4d6b7e2b394003a0d437e7cbca3d33",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.95,
+      "location": {
+        "file": "bin/check-careful.sh",
+        "start_line": 122,
+        "end_line": null,
+        "start_column": 47
+      },
+      "finding": "rm -rf \"/\"",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "    _SAFE_TARGETS=0\n    set -f\n    for _TOK in $CMD; do\n      # Strip one layer of surrounding quotes: rm -rf \"/\" is still rm -rf /.\n      _TOK=\"${_TOK#\\\"}\"; _TOK=\"${_TOK%\\\"}\"; _TOK=\"${_TOK#\\'}\"; _TOK=\"${_TOK%\\'}\"\n      case \"$_TOK\" in\n        # Skip non-target decoration: options, `--`, redirections (2>/dev/null",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "814612fe0408722f8be75dae0db2efcef667c5fc5643d3e376ae335bed2b4a16",
+      "occurrences": [
+        {
+          "file": "bin/check-careful.sh",
+          "start_line": 122,
+          "end_line": null,
+          "start_column": 47
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-68217f3b11c24fe8b8c47be37e3a9bd9",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.95,
+      "location": {
+        "file": "bin/check-careful.sh",
+        "start_line": 122,
+        "end_line": null,
+        "start_column": 67
+      },
+      "finding": "rm -rf /.",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "    _SAFE_TARGETS=0\n    set -f\n    for _TOK in $CMD; do\n      # Strip one layer of surrounding quotes: rm -rf \"/\" is still rm -rf /.\n      _TOK=\"${_TOK#\\\"}\"; _TOK=\"${_TOK%\\\"}\"; _TOK=\"${_TOK#\\'}\"; _TOK=\"${_TOK%\\'}\"\n      case \"$_TOK\" in\n        # Skip non-target decoration: options, `--`, redirections (2>/dev/null",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "d5f9cea90e1343477c2285ddd2822a3cc0cc3ae1410ccd0eeb87687fa11a7fa2",
+      "occurrences": [
+        {
+          "file": "bin/check-careful.sh",
+          "start_line": 122,
+          "end_line": null,
+          "start_column": 67
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-7d842bfee7174978aa141dd945a793ad",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.95,
+      "location": {
+        "file": "bin/check-careful.sh",
+        "start_line": 205,
+        "end_line": null,
+        "start_column": 37
+      },
+      "finding": "rm -rf $(./wipe-all)/node_modules`)",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "#   - flag cluster accepts capital -R (BSD/macOS recursive), so a single\n#     `rm -Rf node_modules` stays allowed instead of prompting;\n#   - target tokens exclude `(` and backtick, so command substitution that\n#     ENDS in a whitelisted suffix (`rm -rf $(./wipe-all)/node_modules`)\n#     cannot ride the whitelist. Plain $VAR expansion (no parenthesis) is\n#     still allowed.\n#   - multi-line commands never ride the whitelist: grep matches the anchored",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "0dc5587dc116db48a2d34f455a3652ae069547fcbde9bd813072cb42490c322d",
+      "occurrences": [
+        {
+          "file": "bin/check-careful.sh",
+          "start_line": 205,
+          "end_line": null,
+          "start_column": 37
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-2def4229609846318eb5fb78fb89c19f",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "bin/check-careful.sh",
+        "start_line": 209,
+        "end_line": null,
+        "start_column": 35
+      },
+      "finding": "rm -rf /\\nrm -rf node_modules",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "#     cannot ride the whitelist. Plain $VAR expansion (no parenthesis) is\n#     still allowed.\n#   - multi-line commands never ride the whitelist: grep matches the anchored\n#     shape against EACH line, so `rm -rf /\\nrm -rf node_modules` would be\n#     allowed by its second line. With the JSON-parser extraction the \\n in\n#     the payload is a real newline (the old grep extractor kept it as two\n#     literal characters, which broke the anchored match by accident).",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "52f3469b9b1da7df50e9a6f64590a460e37bddfe9a76211ff31657cf9265f4d8",
+      "occurrences": [
+        {
+          "file": "bin/check-careful.sh",
+          "start_line": 209,
+          "end_line": null,
+          "start_column": 35
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-93755bf1187d43b0b5c9b9d81e012835",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.95,
+      "location": {
+        "file": "bin/check-careful.sh",
+        "start_line": 209,
+        "end_line": null,
+        "start_column": 35
+      },
+      "finding": "rm -rf /\\nrm",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "#     cannot ride the whitelist. Plain $VAR expansion (no parenthesis) is\n#     still allowed.\n#   - multi-line commands never ride the whitelist: grep matches the anchored\n#     shape against EACH line, so `rm -rf /\\nrm -rf node_modules` would be\n#     allowed by its second line. With the JSON-parser extraction the \\n in\n#     the payload is a real newline (the old grep extractor kept it as two\n#     literal characters, which broke the anchored match by accident).",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "709cdc79105019465ae4730cc2a75d1b5e924e63e5e9604b43eb3084b62cca86",
+      "occurrences": [
+        {
+          "file": "bin/check-careful.sh",
+          "start_line": 209,
+          "end_line": null,
+          "start_column": 35
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-6086a2fec4ad41379510aa9d4705c37f",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "bin/check-careful.sh",
+        "start_line": 322,
+        "end_line": null,
+        "start_column": 2
+      },
+      "finding": "rm -rf / rm -r / rm -R /",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "  done\nfi\n\n# rm -rf / rm -r / rm -R / rm --recursive (capital -R is BSD/macOS recursive)\nif [ -z \"$WARN\" ] && grep -qE 'rm\\s+(-[a-zA-Z]*[rR]|--recursive)' <<< \"$CMD_MEDIUM\" 2>/dev/null; then\n  WARN=\"Destructive: recursive delete (rm -r). This permanently removes files.\"\n  PATTERN=\"rm_recursive\"",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "3d2e6d96f0373400a7d6e1620d20f4d09c742addfd44820d040e0cd59e9d67cd",
+      "occurrences": [
+        {
+          "file": "bin/check-careful.sh",
+          "start_line": 322,
+          "end_line": null,
+          "start_column": 2
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-6e3028b4219e4dd1976e2cfce4cdc17e",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "bin/check-careful.sh",
+        "start_line": 322,
+        "end_line": null,
+        "start_column": 2
+      },
+      "finding": "rm -rf / rm -r / rm -R / rm --recursive ",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "  done\nfi\n\n# rm -rf / rm -r / rm -R / rm --recursive (capital -R is BSD/macOS recursive)\nif [ -z \"$WARN\" ] && grep -qE 'rm\\s+(-[a-zA-Z]*[rR]|--recursive)' <<< \"$CMD_MEDIUM\" 2>/dev/null; then\n  WARN=\"Destructive: recursive delete (rm -r). This permanently removes files.\"\n  PATTERN=\"rm_recursive\"",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "82ef585ac5144a386293990d2e8559f9184018cb91b32f5910c8828b908cf2e0",
+      "occurrences": [
+        {
+          "file": "bin/check-careful.sh",
+          "start_line": 322,
+          "end_line": null,
+          "start_column": 2
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-ada5a51a93954042858cca8672d3aa0b",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.95,
+      "location": {
+        "file": "bin/check-careful.sh",
+        "start_line": 322,
+        "end_line": null,
+        "start_column": 11
+      },
+      "finding": "rm -r /",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "  done\nfi\n\n# rm -rf / rm -r / rm -R / rm --recursive (capital -R is BSD/macOS recursive)\nif [ -z \"$WARN\" ] && grep -qE 'rm\\s+(-[a-zA-Z]*[rR]|--recursive)' <<< \"$CMD_MEDIUM\" 2>/dev/null; then\n  WARN=\"Destructive: recursive delete (rm -r). This permanently removes files.\"\n  PATTERN=\"rm_recursive\"",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "10484ded26a01a50e7dc2b4d10b5465500f13f27d4e0bef3b0445675cb5c70af",
+      "occurrences": [
+        {
+          "file": "bin/check-careful.sh",
+          "start_line": 322,
+          "end_line": null,
+          "start_column": 11
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-e9d54adfaaf741958f1580888799a2d2",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.95,
+      "location": {
+        "file": "bin/check-careful.sh",
+        "start_line": 322,
+        "end_line": null,
+        "start_column": 19
+      },
+      "finding": "rm -R /",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "  done\nfi\n\n# rm -rf / rm -r / rm -R / rm --recursive (capital -R is BSD/macOS recursive)\nif [ -z \"$WARN\" ] && grep -qE 'rm\\s+(-[a-zA-Z]*[rR]|--recursive)' <<< \"$CMD_MEDIUM\" 2>/dev/null; then\n  WARN=\"Destructive: recursive delete (rm -r). This permanently removes files.\"\n  PATTERN=\"rm_recursive\"",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "e7e8bf0a456767bad6d43672126ad72bbc089a0de6a25a64cd58f9b49bbb2f7d",
+      "occurrences": [
+        {
+          "file": "bin/check-careful.sh",
+          "start_line": 322,
+          "end_line": null,
+          "start_column": 19
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-567757c8cc58466897fe540ce9f6e6b9",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.75,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 48,
+        "end_line": null,
+        "start_column": 3
+      },
+      "finding": "git reset --hard",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "| `DROP TABLE` / `DROP DATABASE` | `DROP TABLE users;` | Data loss |\n| `TRUNCATE` | `TRUNCATE orders;` | Data loss |\n| `git push --force` / `-f` | `git push -f origin main` | History rewrite |\n| `git reset --hard` | `git reset --hard HEAD~3` | Uncommitted work loss |\n| `git checkout .` / `git restore .` | `git checkout .` | Uncommitted work loss |\n| `kubectl delete` | `kubectl delete pod` | Production impact |\n| `docker rm -f` / `docker system prune` | `docker system prune -a` | Container/image loss |",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "f21f5124192a6ca491d13034d2b1dcaae69642decbd659201773b11a2bc5c2a5",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 48,
+          "end_line": null,
+          "start_column": 3
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-75a5f2a257d640049b9a0f79ec084fc4",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.75,
+      "location": {
+        "file": "SKILL.md.tmpl",
+        "start_line": 6,
+        "end_line": null,
+        "start_column": 14
+      },
+      "finding": "git reset --hard",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "version: 0.1.0\ndescription: |\n  Safety guardrails for destructive commands. Warns before rm -rf, DROP TABLE,\n  force-push, git reset --hard, kubectl delete, and similar destructive operations.\n  User can override each warning. Use when touching prod, debugging live systems,\n  or working in a shared environment. Use when asked to \"be careful\", \"safety mode\",\n  \"prod mode\", or \"careful mode\". (gstack)",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "f21f5124192a6ca491d13034d2b1dcaae69642decbd659201773b11a2bc5c2a5",
+      "occurrences": [
+        {
+          "file": "SKILL.md.tmpl",
+          "start_line": 6,
+          "end_line": null,
+          "start_column": 14
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-7dd14145621d426ba7d8f09015488df8",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.75,
+      "location": {
+        "file": "SKILL.md.tmpl",
+        "start_line": 52,
+        "end_line": null,
+        "start_column": 3
+      },
+      "finding": "git reset --hard",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "| `DROP TABLE` / `DROP DATABASE` | `DROP TABLE users;` | Data loss |\n| `TRUNCATE` | `TRUNCATE orders;` | Data loss |\n| `git push --force` / `-f` | `git push -f origin main` | History rewrite |\n| `git reset --hard` | `git reset --hard HEAD~3` | Uncommitted work loss |\n| `git checkout .` / `git restore .` | `git checkout .` | Uncommitted work loss |\n| `kubectl delete` | `kubectl delete pod` | Production impact |\n| `docker rm -f` / `docker system prune` | `docker system prune -a` | Container/image loss |",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "f21f5124192a6ca491d13034d2b1dcaae69642decbd659201773b11a2bc5c2a5",
+      "occurrences": [
+        {
+          "file": "SKILL.md.tmpl",
+          "start_line": 52,
+          "end_line": null,
+          "start_column": 3
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-8245915e61c647808d2196de9ff24cb7",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.75,
+      "location": {
+        "file": "bin/check-careful.sh",
+        "start_line": 347,
+        "end_line": null,
+        "start_column": 2
+      },
+      "finding": "git reset --hard",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "  PATTERN=\"git_force_push\"\nfi\n\n# git reset --hard\nif [ -z \"$WARN\" ] && grep -qE 'git\\s+reset\\s+--hard' <<< \"$CMD_MEDIUM\" 2>/dev/null; then\n  WARN=\"Destructive: git reset --hard discards all uncommitted changes.\"\n  PATTERN=\"git_reset_hard\"",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "f21f5124192a6ca491d13034d2b1dcaae69642decbd659201773b11a2bc5c2a5",
+      "occurrences": [
+        {
+          "file": "bin/check-careful.sh",
+          "start_line": 347,
+          "end_line": null,
+          "start_column": 2
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-abe9e2823e494d43b06108fa6f24e4d9",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.75,
+      "location": {
+        "file": "bin/check-careful.sh",
+        "start_line": 349,
+        "end_line": null,
+        "start_column": 21
+      },
+      "finding": "git reset --hard",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "\n# git reset --hard\nif [ -z \"$WARN\" ] && grep -qE 'git\\s+reset\\s+--hard' <<< \"$CMD_MEDIUM\" 2>/dev/null; then\n  WARN=\"Destructive: git reset --hard discards all uncommitted changes.\"\n  PATTERN=\"git_reset_hard\"\nfi\n",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "f21f5124192a6ca491d13034d2b1dcaae69642decbd659201773b11a2bc5c2a5",
+      "occurrences": [
+        {
+          "file": "bin/check-careful.sh",
+          "start_line": 349,
+          "end_line": null,
+          "start_column": 21
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-4c2671de252946a79c5086763269a67a",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.95,
+      "location": {
+        "file": "bin/check-careful.sh",
+        "start_line": 365,
+        "end_line": null,
+        "start_column": 9
+      },
+      "finding": "rm -f /",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "  PATTERN=\"kubectl_delete\"\nfi\n\n# docker rm -f / docker system prune\nif [ -z \"$WARN\" ] && grep -qE 'docker\\s+(rm\\s+-f|system\\s+prune)' <<< \"$CMD_MEDIUM\" 2>/dev/null; then\n  WARN=\"Destructive: Docker force-remove or prune. May delete running containers or cached images.\"\n  PATTERN=\"docker_destructive\"",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "41d7dc4c5bef30d149fc8e0846f59f56c19df5009ddd59c467d3cfa9ea2f96e1",
+      "occurrences": [
+        {
+          "file": "bin/check-careful.sh",
+          "start_line": 365,
+          "end_line": null,
+          "start_column": 9
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": true,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 5,
+    "scanned_components": 1,
+    "coverage_percent": 20.0,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 1,
+    "partially_inspected_files": 4,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "SKILL.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 17,
+        "end_line": 17,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 22,
+        "end_line": 22,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 35,
+        "end_line": 35,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 70,
+        "end_line": 70,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "SKILL.md.tmpl",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "bin/check-careful.sh",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "bin/hook-extract.sh",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "degraded",
+        "planned_work": 5,
+        "completed": 1,
+        "partial": 4,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 17,
+        "column": 43,
+        "evidence": "command: 'bash -c \"exec bash \\\"$HOME/.claude/skills/gstack/careful/bin/check-careful.sh\\\"\"'",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 22,
+        "column": 43,
+        "evidence": "command: 'bash -c \"exec bash \\\"$HOME/.claude/skills/gstack/careful/bin/check-careful.sh\\\"\"'",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 35,
+        "column": 148,
+        "evidence": "GSTACK_STATE_ROOT); : \"${GSTACK_STATE_ROOT:?gstack-paths failed; reinstall with ./setup or /gstack-upgrade}\"",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 70,
+        "column": 2,
+        "evidence": "`.claude/settings.json`. The hook runs through `bash`, so Windows needs Git Bash.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      }
+    ],
+    "limitations": [
+      "Analyzer static_patterns_tool_misuse status: degraded."
+    ],
+    "findings_before_filtering": 45,
+    "findings_after_filtering": 45
+  }
+}

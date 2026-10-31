@@ -1,0 +1,1083 @@
+{
+  "skill": {
+    "name": "configure-notifications",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\Yeachan-Heo\\oh-my-claudecode\\configure-notifications",
+    "scanned_at": "2026-10-31T21:41:55.854842+00:00"
+  },
+  "risk_assessment": {
+    "score": 21,
+    "severity": "MEDIUM",
+    "recommendation": "CAUTION",
+    "max_issue_severity": "MEDIUM"
+  },
+  "components": [
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 1214,
+      "executable": false,
+      "size_bytes": 36372,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "RA2",
+      "finding_id": "finding-13254f2bce484d04a96c4eedd426a36d",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 46,
+        "end_line": null,
+        "start_column": 132
+      },
+      "finding": "Write the result to `${CLAUDE_CONFIG_DIR:-~/.claude",
+      "explanation": "Skill establishes unauthorized persistence across sessions via cron jobs, startup scripts, or state files. Session persistence allows an attacker to maintain access beyond the current interaction.",
+      "remediation": "Remove any persistence mechanisms (cron jobs, startup scripts, state files). Skills should not maintain state across sessions without explicit user consent.",
+      "code_snippet": "\n### How This Skill Works\n\nThis is an interactive, natural-language configuration skill. Walk the user through setup by asking questions with AskUserQuestion. Write the result to `${CLAUDE_CONFIG_DIR:-~/.claude}/.omc-config.json`.\n\n### Step 1: Detect Existing Configuration\n",
+      "intent": null,
+      "tags": [
+        "Rogue Agent"
+      ],
+      "evidence": {},
+      "match_fingerprint": "8119da171ada0172d8d83a6083759bf45adc27dcede3ed35fc4a1cea358706dd",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 46,
+          "end_line": null,
+          "start_column": 132
+        }
+      ]
+    },
+    {
+      "id": "RA2",
+      "finding_id": "finding-a23846a738274ce7baccb426be004d7c",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 272,
+        "end_line": null,
+        "start_column": 132
+      },
+      "finding": "Write the result to `${CLAUDE_CONFIG_DIR:-~/.claude",
+      "explanation": "Skill establishes unauthorized persistence across sessions via cron jobs, startup scripts, or state files. Session persistence allows an attacker to maintain access beyond the current interaction.",
+      "remediation": "Remove any persistence mechanisms (cron jobs, startup scripts, state files). Skills should not maintain state across sessions without explicit user consent.",
+      "code_snippet": "\n### How This Skill Works\n\nThis is an interactive, natural-language configuration skill. Walk the user through setup by asking questions with AskUserQuestion. Write the result to `${CLAUDE_CONFIG_DIR:-~/.claude}/.omc-config.json`.\n\n### Step 1: Detect Existing Configuration\n",
+      "intent": null,
+      "tags": [
+        "Rogue Agent"
+      ],
+      "evidence": {},
+      "match_fingerprint": "8119da171ada0172d8d83a6083759bf45adc27dcede3ed35fc4a1cea358706dd",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 272,
+          "end_line": null,
+          "start_column": 132
+        }
+      ]
+    },
+    {
+      "id": "RA2",
+      "finding_id": "finding-29b6e9459f284a63b33bc2b2bf1a901c",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 522,
+        "end_line": null,
+        "start_column": 132
+      },
+      "finding": "Write the result to `${CLAUDE_CONFIG_DIR:-~/.claude",
+      "explanation": "Skill establishes unauthorized persistence across sessions via cron jobs, startup scripts, or state files. Session persistence allows an attacker to maintain access beyond the current interaction.",
+      "remediation": "Remove any persistence mechanisms (cron jobs, startup scripts, state files). Skills should not maintain state across sessions without explicit user consent.",
+      "code_snippet": "\n### How This Skill Works\n\nThis is an interactive, natural-language configuration skill. Walk the user through setup by asking questions with AskUserQuestion. Write the result to `${CLAUDE_CONFIG_DIR:-~/.claude}/.omc-config.json`.\n\n### Step 1: Detect Existing Configuration\n",
+      "intent": null,
+      "tags": [
+        "Rogue Agent"
+      ],
+      "evidence": {},
+      "match_fingerprint": "8119da171ada0172d8d83a6083759bf45adc27dcede3ed35fc4a1cea358706dd",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 522,
+          "end_line": null,
+          "start_column": 132
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-c55b830ee1854324b529dbc9a0a0b626",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 88,
+        "end_line": null,
+        "start_column": 10
+      },
+      "finding": "https://api.telegram.org/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "\nGET YOUR CHAT ID:\n1. Start a chat with your new bot (send /start)\n2. Visit: https://api.telegram.org/bot<YOUR_TOKEN>/getUpdates\n3. Look for \"chat\":{\"id\":YOUR_CHAT_ID}\n   - Personal chat IDs are positive numbers (e.g., 123456789)\n   - Group chat IDs are negative numbers (e.g., -1001234567890)",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "d1722fcc0c5cf141b1c885b58699ddda4e965c747efc4181c0b7b8b90221ef7d",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 88,
+          "end_line": null,
+          "start_column": 10
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-a5a2e277b86a4da19181b54e32e9308b",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 122,
+        "end_line": null,
+        "start_column": 9
+      },
+      "finding": "https://api.telegram.org/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "# Help user find their chat ID\nBOT_TOKEN=\"USER_PROVIDED_TOKEN\"\necho \"Fetching recent messages to find your chat ID...\"\ncurl -s \"https://api.telegram.org/bot${BOT_TOKEN}/getUpdates\" | jq '.result[-1].message.chat.id // .result[-1].message.from.id // \"No messages found - send /start to your bot first\"'\n```\n\n### Step 5: Choose Parse Mode",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "d1722fcc0c5cf141b1c885b58699ddda4e965c747efc4181c0b7b8b90221ef7d",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 122,
+          "end_line": null,
+          "start_column": 9
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-d4df64ad85824101bb5a50bb83090428",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 209,
+        "end_line": null,
+        "start_column": 3
+      },
+      "finding": "https://api.telegram.org/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "PARSE_MODE=\"Markdown\"\n\nRESPONSE=$(curl -s -w \"\\n%{http_code}\" \\\n  \"https://api.telegram.org/bot${BOT_TOKEN}/sendMessage\" \\\n  -d \"chat_id=${CHAT_ID}\" \\\n  -d \"parse_mode=${PARSE_MODE}\" \\\n  -d \"text=OMC test notification - Telegram is configured!\")",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "d1722fcc0c5cf141b1c885b58699ddda4e965c747efc4181c0b7b8b90221ef7d",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 209,
+          "end_line": null,
+          "start_column": 3
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-04bc7a9036bc49faa6c64e1541bfb429",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 208,
+        "end_line": null,
+        "start_column": 11
+      },
+      "finding": "curl -s -w \"\\n%{http_code}\" \\\n  \"https://api.telegram.org/bot${BOT_TOKEN}/sendMessage\" \\\n  -d \"chat_id=${CHAT_ID}\" \\\n  -d \"parse_mode=${PARSE_MODE}\" \\\n  -d ",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "CHAT_ID=\"USER_PROVIDED_CHAT_ID\"\nPARSE_MODE=\"Markdown\"\n\nRESPONSE=$(curl -s -w \"\\n%{http_code}\" \\\n  \"https://api.telegram.org/bot${BOT_TOKEN}/sendMessage\" \\\n  -d \"chat_id=${CHAT_ID}\" \\\n  -d \"parse_mode=${PARSE_MODE}\" \\",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "a4d9c861da3206f92200d00cb7ee28e7e15d49fb660b56c09738e17114ee4300",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 208,
+          "end_line": null,
+          "start_column": 11
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-f1013f727fe64020b629625334b99d14",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 464,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": "curl -s -o /dev/null -w \"%{http_code}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d ",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "\n```bash\n# For webhook:\ncurl -s -o /dev/null -w \"%{http_code}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"{\\\"content\\\": \\\"${MENTION:+$MENTION\\\\n}OMC test notification - Discord is configured!\\\"}\" \\\n  \"$WEBHOOK_URL\"",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "abe007baa0261d1fadf5813e396897ee0dc7cb25ae04075fb5726fd0c2096eca",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 464,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-eb42b658dacf4e7c8e090e3e595d270d",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 706,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": "curl -s -o /dev/null -w \"%{http_code}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d ",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "  MENTION_PREFIX=\"${MENTION}\\n\"\nfi\n\ncurl -s -o /dev/null -w \"%{http_code}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"{\\\"text\\\": \\\"${MENTION_PREFIX}OMC test notification - Slack is configured!\\\"}\" \\\n  \"$WEBHOOK_URL\"",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "abe007baa0261d1fadf5813e396897ee0dc7cb25ae04075fb5726fd0c2096eca",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 706,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-78db460eb0c04a8eb164a12be6c5f32e",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 558,
+        "end_line": null,
+        "start_column": 9
+      },
+      "finding": "https://api.slack.com/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "To set up Slack notifications, you need a Slack incoming webhook URL.\n\nCREATE A WEBHOOK:\n1. Go to https://api.slack.com/apps\n2. Click \"Create New App\" > \"From scratch\"\n3. Name your app (e.g., \"OMC Notifier\") and select your workspace\n4. Go to \"Incoming Webhooks\" in the left sidebar",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "54807bf1e593d8a0cc2075eb2f016094e809cf68a673b9516da7feba6fc052ea",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 558,
+          "end_line": null,
+          "start_column": 9
+        }
+      ]
+    },
+    {
+      "id": "RA2",
+      "finding_id": "finding-7f75d5622f94434b83dd194584a9b489",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 880,
+        "end_line": null,
+        "start_column": 12
+      },
+      "finding": "Write Configuration\n\nRead or create `${CLAUDE_CONFIG_DIR:-~/.claude",
+      "explanation": "Skill establishes unauthorized persistence across sessions via cron jobs, startup scripts, or state files. Session persistence allows an attacker to maintain access beyond the current interaction.",
+      "remediation": "Remove any persistence mechanisms (cron jobs, startup scripts, state files). Skills should not maintain state across sessions without explicit user consent.",
+      "code_snippet": "\nIf per-platform: ask for each enabled platform's template separately.\n\n### Step 6: Write Configuration\n\nRead or create `${CLAUDE_CONFIG_DIR:-~/.claude}/omc_config.hook.json` and merge the new settings:\n",
+      "intent": null,
+      "tags": [
+        "Rogue Agent"
+      ],
+      "evidence": {},
+      "match_fingerprint": "3b8f1013af538bb05f802846bc9bd3052913d787d0a5299ea3d4f2d0c0314d87",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 880,
+          "end_line": null,
+          "start_column": 12
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-203aa48993a144919643121dcb97ecda",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 1049,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": "curl -X POST \\\n  -H \"Content-Type: application/json\" \\\n  ${AUTH_HEADER:+\"-H \\\"$AUTH_HEADER\\\"\"} \\\n  -d '{\"event\":\"test\",\"instruction\":\"OMC test notification\",\"timestamp\":\"'$(date -u +%Y-%m-%dT%H:%M:%SZ",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "If test:\n```bash\n# For webhook integrations\ncurl -X POST \\\n  -H \"Content-Type: application/json\" \\\n  ${AUTH_HEADER:+\"-H \\\"$AUTH_HEADER\\\"\"} \\\n  -d '{\"event\":\"test\",\"instruction\":\"OMC test notification\",\"timestamp\":\"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'\"}' \\",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "c96b83cceaa6c29d89df0d90e2c5c994d32bee684922fc789a0966f8b057c5c8",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 1049,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": false,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 1,
+    "scanned_components": 1,
+    "coverage_percent": 100.0,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 1,
+    "partially_inspected_files": 0,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 262,
+        "end_line": 262,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 400,
+        "end_line": 400,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 512,
+        "end_line": 512,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 751,
+        "end_line": 751,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 787,
+        "end_line": 787,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 981,
+        "end_line": 981,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 983,
+        "end_line": 983,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 984,
+        "end_line": 984,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 1060,
+        "end_line": 1060,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 1212,
+        "end_line": 1212,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 1213,
+        "end_line": 1213,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 1214,
+        "end_line": 1214,
+        "fatal": false
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 262,
+        "column": 72,
+        "evidence": "Env vars are auto-detected by the notification system without needing `.omc-config.json`.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 400,
+        "column": 74,
+        "evidence": "Build the notifications object with the collected values and merge into `.omc-config.json` using jq:",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 512,
+        "column": 72,
+        "evidence": "Env vars are auto-detected by the notification system without needing `.omc-config.json`.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 751,
+        "column": 72,
+        "evidence": "Env vars are auto-detected by the notification system without needing `.omc-config.json`.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 787,
+        "column": 67,
+        "evidence": "Customize notification messages per event and per platform using `omc_config.hook.json`.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 981,
+        "column": 9,
+        "evidence": "- Read `omc_config.openclaw.json`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 983,
+        "column": 12,
+        "evidence": "- Save to `.omc-config.json`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 984,
+        "column": 21,
+        "evidence": "- Backup legacy to `omc_config.openclaw.json.bak`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 1060,
+        "column": 13,
+        "evidence": "Merge into `.omc-config.json`:",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 1212,
+        "column": 24,
+        "evidence": "- Template variables: `src/notifications/template-variables.ts`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 1213,
+        "column": 16,
+        "evidence": "- Validation: `src/notifications/validation.ts`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 1214,
+        "column": 13,
+        "evidence": "- Presets: `src/notifications/presets.ts`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      }
+    ],
+    "limitations": [],
+    "findings_before_filtering": 12,
+    "findings_after_filtering": 12
+  }
+}

@@ -1,0 +1,908 @@
+{
+  "skill": {
+    "name": "gstack",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\garrytan\\gstack\\gstack-8e4a97f4",
+    "scanned_at": "2026-10-31T21:08:29.224203+00:00"
+  },
+  "risk_assessment": {
+    "score": 28,
+    "severity": "MEDIUM",
+    "recommendation": "CAUTION",
+    "max_issue_severity": "MEDIUM"
+  },
+  "components": [
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 81,
+      "executable": false,
+      "size_bytes": 17287,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "captain.md",
+      "type": "markdown",
+      "lines": 144,
+      "executable": false,
+      "size_bytes": 10116,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/install.sh",
+      "type": "shell",
+      "lines": 164,
+      "executable": true,
+      "size_bytes": 9889,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "RA2",
+      "finding_id": "finding-baed4c445734420f824f469d453ae690",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 21,
+        "end_line": null,
+        "start_column": 278
+      },
+      "finding": "write the skill folder yourself.\n\n## Launch every gstack command with the GSTACK_LAUNCH line\n\nEvery successful run, `--check` included, prints `GSTACK_LAUNCH: PATH=<dir>:$PATH GSTACK_SESSION_KIND=unat",
+      "explanation": "Skill establishes unauthorized persistence across sessions via cron jobs, startup scripts, or state files. Session persistence allows an attacker to maintain access beyond the current interaction.",
+      "remediation": "Remove any persistence mechanisms (cron jobs, startup scripts, state files). Skills should not maintain state across sessions without explicit user consent.",
+      "code_snippet": "ef a reviewer that no install is needed. A reviewer later asked to run a workflow runs the same installer `--for <skill>`: it upgrades the checkout in place (pins, `./setup`, host profiles; no second clone). A machine without this skill (a brief you write for a subagent) runs the checkout's own bootstrapper from its project directory: `test -f \"$HOME/.local/share/gstack/setup\" || git clone --quiet --single-branch --depth 1 https://github.com/garrytan/gstack.git \"$HOME/.local/share/gstack\" && GSTACK_CAPY_ROOT=\"$HOME/.local/share/gstack\" bash \"$HOME/.local/share/gstack/capy/skill/gstack/scripts/install.sh\" --for <skill>`.\n\n`gstack-capy-skill: owner action — Drive copy is wrapper <n>, minimum <m>; copy <root>/capy/skill/gstack/ (CAPY_WRAPPER_STALE)` means this skill folder is older than the checkout wants. The run still works; tell the owner, who copies that directory over the skill folder. Never write the skill folder yourself.\n\n## Launch every gstack command with the GSTACK_LAUNCH line\n",
+      "intent": null,
+      "tags": [
+        "Rogue Agent"
+      ],
+      "evidence": {},
+      "match_fingerprint": "2b8fc8960525899e55f134445dde6e1e969b125e4aaaca45b4c9345103a87a8f",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 21,
+          "end_line": null,
+          "start_column": 278
+        }
+      ]
+    },
+    {
+      "id": "RA2",
+      "finding_id": "finding-94a49f072f5a4378a5df03eedc14114a",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 21,
+        "end_line": null,
+        "start_column": 278
+      },
+      "finding": "write the skill folder yourself.\n\n## Launch every gstack command with the GSTACK_LAUNCH line\n\nEvery successful run, `--check` included, prints `GSTACK_LAUNCH: PATH=<dir>:$PATH GSTACK_SESSION_KIND=unat",
+      "explanation": "Skill establishes unauthorized persistence across sessions via cron jobs, startup scripts, or state files. Session persistence allows an attacker to maintain access beyond the current interaction.",
+      "remediation": "Remove any persistence mechanisms (cron jobs, startup scripts, state files). Skills should not maintain state across sessions without explicit user consent.",
+      "code_snippet": "ef a reviewer that no install is needed. A reviewer later asked to run a workflow runs the same installer `--for <skill>`: it upgrades the checkout in place (pins, `./setup`, host profiles; no second clone). A machine without this skill (a brief you write for a subagent) runs the checkout's own bootstrapper from its project directory: `test -f \"$HOME/.local/share/gstack/setup\" || git clone --quiet --single-branch --depth 1 https://github.com/garrytan/gstack.git \"$HOME/.local/share/gstack\" && GSTACK_CAPY_ROOT=\"$HOME/.local/share/gstack\" bash \"$HOME/.local/share/gstack/capy/skill/gstack/scripts/install.sh\" --for <skill>`.\n\n`gstack-capy-skill: owner action — Drive copy is wrapper <n>, minimum <m>; copy <root>/capy/skill/gstack/ (CAPY_WRAPPER_STALE)` means this skill folder is older than the checkout wants. The run still works; tell the owner, who copies that directory over the skill folder. Never write the skill folder yourself.\n\n## Launch every gstack command with the GSTACK_LAUNCH line\n",
+      "intent": null,
+      "tags": [
+        "Rogue Agent",
+        "normalized-view"
+      ],
+      "evidence": {},
+      "match_fingerprint": "9add6b0b25ad6078b867c61e201f0a2c79a7f810a4254e9d75c43f0095fe792b",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 21,
+          "end_line": null,
+          "start_column": 278
+        }
+      ]
+    },
+    {
+      "id": "AS3",
+      "finding_id": "finding-b90ef64c9da04200b5c2b178ff7b9301",
+      "category": "Agent Snooping",
+      "pattern": "Skill Enumeration",
+      "severity": "MEDIUM",
+      "confidence": 0.8,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 31,
+        "end_line": null,
+        "start_column": 64
+      },
+      "finding": "skills/gstack/SKILL.md",
+      "explanation": "Skill enumerates or reads other installed skills. Access to other skills' SKILL.md files or the skills directory reveals prompt instructions, capabilities, and secrets that should be invisible to peer skills.",
+      "remediation": "Remove all code or instructions that list or read other skills' files or directories. Skills should operate independently; cross-skill access is a privilege escalation.",
+      "code_snippet": "\n## Load the right workflow\n\nFor Capy running GPT-6 Astra, read `${CODEX_HOME:-$HOME/.codex}/skills/gstack/SKILL.md` for routing, then `${CODEX_HOME:-$HOME/.codex}/skills/gstack-<skill>/SKILL.md` for the selected workflow. These are the generated GPT-6 Astra instructions, not the Claude source files.\n\nFor Claude Code, read `~/.claude/skills/gstack/SKILL.md` for routing and `~/.claude/skills/<skill>/SKILL.md` for the selected workflow. When launching a Claude Code session, tell it to load gstack and name the intended workflow. For Capy running a Claude model, the Claude instruction files can be read directly with the Capy adaptations below; that does not turn Capy into the Claude Code harness.\n",
+      "intent": null,
+      "tags": [
+        "Agent Snooping"
+      ],
+      "evidence": {},
+      "match_fingerprint": "4ea097081a05e23334e62218b7b10e230b2ad425a58350f851e677a33647ec25",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 31,
+          "end_line": null,
+          "start_column": 64
+        }
+      ]
+    },
+    {
+      "id": "AS3",
+      "finding_id": "finding-a9fc9480f422477483ae8ddfd0158f8b",
+      "category": "Agent Snooping",
+      "pattern": "Skill Enumeration",
+      "severity": "MEDIUM",
+      "confidence": 0.8,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 33,
+        "end_line": null,
+        "start_column": 33
+      },
+      "finding": "skills/gstack/SKILL.md",
+      "explanation": "Skill enumerates or reads other installed skills. Access to other skills' SKILL.md files or the skills directory reveals prompt instructions, capabilities, and secrets that should be invisible to peer skills.",
+      "remediation": "Remove all code or instructions that list or read other skills' files or directories. Skills should operate independently; cross-skill access is a privilege escalation.",
+      "code_snippet": "\nFor Capy running GPT-6 Astra, read `${CODEX_HOME:-$HOME/.codex}/skills/gstack/SKILL.md` for routing, then `${CODEX_HOME:-$HOME/.codex}/skills/gstack-<skill>/SKILL.md` for the selected workflow. These are the generated GPT-6 Astra instructions, not the Claude source files.\n\nFor Claude Code, read `~/.claude/skills/gstack/SKILL.md` for routing and `~/.claude/skills/<skill>/SKILL.md` for the selected workflow. When launching a Claude Code session, tell it to load gstack and name the intended workflow. For Capy running a Claude model, the Claude instruction files can be read directly with the Capy adaptations below; that does not turn Capy into the Claude Code harness.\n\nIf no specific skill was requested, use the router's task-to-skill mapping. Read only the selected workflow and its referenced files. For other models, use the closest applicable instruction profile without claiming a model-specific profile was generated or evaluated for them.\n",
+      "intent": null,
+      "tags": [
+        "Agent Snooping"
+      ],
+      "evidence": {},
+      "match_fingerprint": "4ea097081a05e23334e62218b7b10e230b2ad425a58350f851e677a33647ec25",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 33,
+          "end_line": null,
+          "start_column": 33
+        }
+      ]
+    },
+    {
+      "id": "EA2",
+      "finding_id": "finding-73e04efb0ac9481ab961d7523b938f7c",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "severity": "MEDIUM",
+      "confidence": 0.75,
+      "location": {
+        "file": "captain.md",
+        "start_line": 68,
+        "end_line": null,
+        "start_column": 24
+      },
+      "finding": "No approval",
+      "explanation": "Skill enables autonomous high-impact decisions without human-in-the-loop verification. Critical operations (destructive commands, financial transactions, data deletion) should require explicit user confirmation.",
+      "remediation": "Add human-in-the-loop confirmation for destructive, irreversible, or high-impact operations. Never auto-execute commands that modify files, send data, or alter system state.",
+      "code_snippet": "- **Display only.** The rendered table escapes mentions, links, images, HTML and anything shaped like an\n  `Approved by … via …` citation. gstack's enforced approval classes still need their own citation line\n  (docs/ship-policy.md#approval-classes).\n- An empty table means \"No approvals recorded\". On a fresh Capy machine with no record and no mirror it says\n  \"Record unavailable\" instead (`APPROVAL_RECORD_UNAVAILABLE`), because a lost record is not an empty one.\n\n## 3. Plan approvals: the shape",
+      "intent": null,
+      "tags": [
+        "Excessive Agency"
+      ],
+      "evidence": {},
+      "match_fingerprint": "8ed0018db558cc0590a2fbc023f27edafbed8847701edabcbc5290e760c26e6f",
+      "occurrences": [
+        {
+          "file": "captain.md",
+          "start_line": 68,
+          "end_line": null,
+          "start_column": 24
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": true,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 3,
+    "scanned_components": 3,
+    "coverage_percent": 100.0,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 3,
+    "partially_inspected_files": 0,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 13,
+        "end_line": 13,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 19,
+        "end_line": 19,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 39,
+        "end_line": 39,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 47,
+        "end_line": 47,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 69,
+        "end_line": 69,
+        "fatal": false
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 10,
+        "column": 10,
+        "evidence": "Resolve `scripts/install.sh` relative to this SKILL.md, not the working repository. It is a frozen bootstrapper: it prints `gstack-capy-skill: wrapper <n> (<pat",
+        "target_path": "scripts/install.sh",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 12,
+        "column": 31,
+        "evidence": "1. At session start run `bash scripts/install.sh --check`, adding `--for <skill>` when you know the workflow (`--for autoplan`, `--for review`, `--for qa`). It ",
+        "target_path": "scripts/install.sh",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "inline_command"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 13,
+        "column": 475,
+        "evidence": "t declares a newer gstack than this machine holds (`min_gstack_version` in its `.gstack/ship-policy.json`; the `WARN floor` row): run the fix before the first w",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 14,
+        "column": 199,
+        "evidence": "tinue; nothing is installed. Install right before the first workflow with `bash scripts/install.sh --for <skill>` (about 30 s cold: clone, a SHA-256-verified Bu",
+        "target_path": "scripts/install.sh",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "inline_command"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 19,
+        "column": 367,
+        "evidence": "ce, a second opinion) runs `--for review-voice` instead: seconds when warm, no `./setup`, no host profiles, Bun at gstack's own minimum, and a trailer that cert",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 19,
+        "column": 806,
+        "evidence": "s the same installer `--for <skill>`: it upgrades the checkout in place (pins, `./setup`, host profiles; no second clone). A machine without this skill (a brief",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 19,
+        "column": 1190,
+        "evidence": "OME/.local/share/gstack\" && GSTACK_CAPY_ROOT=\"$HOME/.local/share/gstack\" bash \"$HOME/.local/share/gstack/capy/skill/gstack/scripts/install.sh\" --for <skill>`.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 39,
+        "column": 41,
+        "evidence": "For `/autoplan` driven from Capy, read `autoplan/DRIVER.md` in the checkout (`~/.local/share/gstack/autoplan/DRIVER.md`): the compact phase loop, artifact contr",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 39,
+        "column": 272,
+        "evidence": "the interactive preamble. A checkout without that file predates it; follow its `autoplan/SKILL.md` instead. Run every command with the `GSTACK_LAUNCH` assignmen",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 39,
+        "column": 418,
+        "evidence": "NCH` assignments and read outputs as files, not prose: the run directory holds `run.json`, `decisions.jsonl`, `findings.jsonl`, `tasks.jsonl`, `timing.json`, `p",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 39,
+        "column": 430,
+        "evidence": "ents and read outputs as files, not prose: the run directory holds `run.json`, `decisions.jsonl`, `findings.jsonl`, `tasks.jsonl`, `timing.json`, `plan.md` and ",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 39,
+        "column": 449,
+        "evidence": "ts as files, not prose: the run directory holds `run.json`, `decisions.jsonl`, `findings.jsonl`, `tasks.jsonl`, `timing.json`, `plan.md` and `review-record.md`,",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 39,
+        "column": 467,
+        "evidence": "rose: the run directory holds `run.json`, `decisions.jsonl`, `findings.jsonl`, `tasks.jsonl`, `timing.json`, `plan.md` and `review-record.md`, and the run ends ",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 39,
+        "column": 482,
+        "evidence": "irectory holds `run.json`, `decisions.jsonl`, `findings.jsonl`, `tasks.jsonl`, `timing.json`, `plan.md` and `review-record.md`, and the run ends with `GSTACK_RE",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 39,
+        "column": 497,
+        "evidence": "`run.json`, `decisions.jsonl`, `findings.jsonl`, `tasks.jsonl`, `timing.json`, `plan.md` and `review-record.md`, and the run ends with `GSTACK_RESULT: skill=aut",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 39,
+        "column": 511,
+        "evidence": "ecisions.jsonl`, `findings.jsonl`, `tasks.jsonl`, `timing.json`, `plan.md` and `review-record.md`, and the run ends with `GSTACK_RESULT: skill=autoplan status=g",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 39,
+        "column": 864,
+        "evidence": "`) with the printed `gate_rev`; an unattended run never approves its own gate. `docs/unattended.md` in the checkout is the contract.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 47,
+        "column": 116,
+        "evidence": "follows these for new work, under a Captain or on its own. The rule in full is `docs/captain.md`, \"Plan before build\"; the lane side is section 3 of captain.md ",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 58,
+        "column": 319,
+        "evidence": " The full guide, with worked examples and copy-paste templates, is [captain.md](captain.md) in this folder.",
+        "target_path": "captain.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 69,
+        "column": 69,
+        "evidence": "In a repository with a sealed configuration (a `sealed` key in its `.gstack/pregate.json`), run `~/.local/share/gstack/bin/gstack-pregate sealed` before every p",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 81,
+        "column": 7,
+        "evidence": "`bash scripts/install.sh --check` is the health check; `bash scripts/install.sh` installs or repairs and fast-forwards a checkout below the supported minimum. B",
+        "target_path": "scripts/install.sh",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "inline_command"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 81,
+        "column": 62,
+        "evidence": "`bash scripts/install.sh --check` is the health check; `bash scripts/install.sh` installs or repairs and fast-forwards a checkout below the supported minimum. B",
+        "target_path": "scripts/install.sh",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "inline_command"
+      }
+    ],
+    "limitations": [],
+    "findings_before_filtering": 5,
+    "findings_after_filtering": 5
+  }
+}

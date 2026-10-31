@@ -1,0 +1,1099 @@
+{
+  "skill": {
+    "name": "workload-manager-basics",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\google\\skills\\workload-manager-basics",
+    "scanned_at": "2026-10-31T21:20:55.771898+00:00"
+  },
+  "risk_assessment": {
+    "score": 41,
+    "severity": "MEDIUM",
+    "recommendation": "CAUTION",
+    "max_issue_severity": "HIGH"
+  },
+  "components": [
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 169,
+      "executable": false,
+      "size_bytes": 7405,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/attribution.md",
+      "type": "markdown",
+      "lines": 39,
+      "executable": false,
+      "size_bytes": 1909,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/client-library-usage.md",
+      "type": "markdown",
+      "lines": 425,
+      "executable": false,
+      "size_bytes": 12164,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/core-concepts.md",
+      "type": "markdown",
+      "lines": 100,
+      "executable": false,
+      "size_bytes": 3982,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/general-best-practices.md",
+      "type": "markdown",
+      "lines": 132,
+      "executable": false,
+      "size_bytes": 5152,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/iam-security.md",
+      "type": "markdown",
+      "lines": 104,
+      "executable": false,
+      "size_bytes": 5270,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/public-cli-status.md",
+      "type": "markdown",
+      "lines": 66,
+      "executable": false,
+      "size_bytes": 2010,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/public-mcp-status.md",
+      "type": "markdown",
+      "lines": 26,
+      "executable": false,
+      "size_bytes": 935,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/rest-usage.md",
+      "type": "markdown",
+      "lines": 259,
+      "executable": false,
+      "size_bytes": 7119,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/setup-prerequisites.md",
+      "type": "markdown",
+      "lines": 100,
+      "executable": false,
+      "size_bytes": 3122,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "PE3",
+      "finding_id": "finding-3b5e4214f69b4e48bb579a3937c6fe7b",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 61,
+        "end_line": null,
+        "start_column": 45
+      },
+      "finding": "Access token",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "    assignment, and fetching raw REST tokens.\n*   **Sandbox Execution Robustness (Auth/Mock Fallbacks):** When gcloud\n    authentication or Workload Manager API calls fail in sandboxed or restricted\n    environments (e.g., due to Context Aware Access token blocks, missing API\n    enablement, or\n    mock resources returning 404/403), immediately fall back to presenting\n    example code and static findings from your references instead of entering",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "3b44ed6c6dd5554cfb788a5fc40a816e8ca835abfc203917124861c340486044",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 61,
+          "end_line": null,
+          "start_column": 45
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-1fa5c7997adb42e8a66e8c524ee85967",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/iam-security.md",
+        "start_line": 91,
+        "end_line": null,
+        "start_column": 39
+      },
+      "finding": "keyRing",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "`Evaluation.kms_key` accepts a key in this format:\n\n```text\nprojects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY\n```\n\nMake sure the Workload Manager service agent has the needed KMS permissions",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "31bfb8706a90fe04c7cbe3f5bba0871683cdc109f647299c520466ec6232ebff",
+      "occurrences": [
+        {
+          "file": "references/iam-security.md",
+          "start_line": 91,
+          "end_line": null,
+          "start_column": 39
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-1d70ed0e6cc047a9bb8d7ef7b0e3eecb",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/setup-prerequisites.md",
+        "start_line": 82,
+        "end_line": null,
+        "start_column": 39
+      },
+      "finding": "keyRing",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "`Evaluation.kms_key` in this format:\n\n```text\nprojects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY\n```\n\n## Automation Boundary",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "31bfb8706a90fe04c7cbe3f5bba0871683cdc109f647299c520466ec6232ebff",
+      "occurrences": [
+        {
+          "file": "references/setup-prerequisites.md",
+          "start_line": 82,
+          "end_line": null,
+          "start_column": 39
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-e16ebaa201fd4347844c2d9f2d7a25a0",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/public-cli-status.md",
+        "start_line": 9,
+        "end_line": null,
+        "start_column": 45
+      },
+      "finding": "access tokens",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "managed through a service-specific `gcloud` command.\n\nUse `gcloud` only for adjacent Google Cloud setup tasks: project configuration,\nauthentication, IAM, service enablement, and access tokens. Use public client\nlibraries or the REST API for Workload Manager resources.\n\n## Enable the API",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation",
+        "contextual-triage",
+        "likely-benign-context"
+      ],
+      "evidence": {},
+      "match_fingerprint": "5059bb7b75e9337932d45472816371182dc6083e9db6060d8b737da812751493",
+      "occurrences": [
+        {
+          "file": "references/public-cli-status.md",
+          "start_line": 9,
+          "end_line": null,
+          "start_column": 45
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-f6b0a4c2f4f143b894b4e1118d3de20c",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "references/rest-usage.md",
+        "start_line": 59,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": "curl -sS -X POST \\\n  -H \"Authorization: Bearer ${TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  \"${BASE_URL}/projects/${PROJECT_ID}/locations/${LOCATION}/evaluations?evaluationId=${EVALUATION_ID}",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "export REQUEST_ID=\"$(uuidgen | tr '[:upper:]' '[:lower:]')\"\nexport ORG_ID=\"ORG_ID\"\n\ncurl -sS -X POST \\\n  -H \"Authorization: Bearer ${TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  \"${BASE_URL}/projects/${PROJECT_ID}/locations/${LOCATION}/evaluations?evaluationId=${EVALUATION_ID}&requestId=${REQUEST_ID}\" \\",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "6a1d0d04960ed1d3669f1f523725b0e982b76afe6d22330e766359b595b1fbe2",
+      "occurrences": [
+        {
+          "file": "references/rest-usage.md",
+          "start_line": 59,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-ba6609a9a0cd4343a86315156291daa3",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "references/rest-usage.md",
+        "start_line": 92,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": "curl -sS -X POST \\\n  -H \"Authorization: Bearer ${TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  \"${BASE_URL}/projects/${PROJECT_ID}/locations/${LOCATION}/evaluations?evaluationId=${EVALUATION_ID}",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "export EVALUATION_ID=\"sql-server-prod-project\"\nexport REQUEST_ID=\"$(uuidgen | tr '[:upper:]' '[:lower:]')\"\n\ncurl -sS -X POST \\\n  -H \"Authorization: Bearer ${TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  \"${BASE_URL}/projects/${PROJECT_ID}/locations/${LOCATION}/evaluations?evaluationId=${EVALUATION_ID}&requestId=${REQUEST_ID}\" \\",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "6a1d0d04960ed1d3669f1f523725b0e982b76afe6d22330e766359b595b1fbe2",
+      "occurrences": [
+        {
+          "file": "references/rest-usage.md",
+          "start_line": 92,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-0c8ea8db3ae74404b252c3ea5838e80d",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "references/rest-usage.md",
+        "start_line": 125,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": "curl -sS -X POST \\\n  -H \"Authorization: Bearer ${TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  \"${BASE_URL}/projects/${PROJECT_ID}/locations/${LOCATION}/evaluations?evaluationId=${EVALUATION_ID}",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "export REQUEST_ID=\"$(uuidgen | tr '[:upper:]' '[:lower:]')\"\nexport ORG_ID=\"ORG_ID\"\n\ncurl -sS -X POST \\\n  -H \"Authorization: Bearer ${TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  \"${BASE_URL}/projects/${PROJECT_ID}/locations/${LOCATION}/evaluations?evaluationId=${EVALUATION_ID}&requestId=${REQUEST_ID}\" \\",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "6a1d0d04960ed1d3669f1f523725b0e982b76afe6d22330e766359b595b1fbe2",
+      "occurrences": [
+        {
+          "file": "references/rest-usage.md",
+          "start_line": 125,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-f6166f7d4b0941c489860f150ce40a77",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "references/rest-usage.md",
+        "start_line": 156,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": "curl -sS -X POST \\\n  -H \"Authorization: Bearer ${TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  \"${BASE_URL}/projects/${PROJECT_ID}/locations/${LOCATION}/evaluations?evaluationId=${EVALUATION_ID}",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "export EVALUATION_ID=\"general-posture-project\"\nexport REQUEST_ID=\"$(uuidgen | tr '[:upper:]' '[:lower:]')\"\n\ncurl -sS -X POST \\\n  -H \"Authorization: Bearer ${TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  \"${BASE_URL}/projects/${PROJECT_ID}/locations/${LOCATION}/evaluations?evaluationId=${EVALUATION_ID}&requestId=${REQUEST_ID}\" \\",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "6a1d0d04960ed1d3669f1f523725b0e982b76afe6d22330e766359b595b1fbe2",
+      "occurrences": [
+        {
+          "file": "references/rest-usage.md",
+          "start_line": 156,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-272ddc49f6a946928d41189ca1a10d43",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "references/rest-usage.md",
+        "start_line": 199,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": "curl -sS -X POST \\\n  -H \"Authorization: Bearer ${TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  \"${BASE_URL}/projects/${PROJECT_ID}/locations/${LOCATION}/evaluations/${EVALUATION_ID}/executions:r",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "export EXECUTION_ID=\"manual-run-001\"\nexport REQUEST_ID=\"$(uuidgen | tr '[:upper:]' '[:lower:]')\"\n\ncurl -sS -X POST \\\n  -H \"Authorization: Bearer ${TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  \"${BASE_URL}/projects/${PROJECT_ID}/locations/${LOCATION}/evaluations/${EVALUATION_ID}/executions:run\" \\",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "5640f1a43cd654697d0ac3c39bcc0d75c2d6a68a3abd54445093e0a910553afd",
+      "occurrences": [
+        {
+          "file": "references/rest-usage.md",
+          "start_line": 199,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": false,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 10,
+    "scanned_components": 10,
+    "coverage_percent": 100.0,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 10,
+    "partially_inspected_files": 0,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 31,
+        "end_line": 31,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 32,
+        "end_line": 32,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 89,
+        "end_line": 89,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 91,
+        "end_line": 91,
+        "fatal": false
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 28,
+        "column": 31,
+        "evidence": "MUST read [Usage Attribution](references/attribution.md). For commands executed",
+        "target_path": "references/attribution.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 31,
+        "column": 40,
+        "evidence": "`CLOUDSDK_METRICS_REQUEST_ATTRIBUTION=\"agent-skills/1.0 (skill:workload-manager-basics)\"`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 32,
+        "column": 13,
+        "evidence": "and append `agent-skills/1.0 (skill:workload-manager-basics)` to `User-Agent` headers.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 86,
+        "column": 22,
+        "evidence": "[IAM & Security](references/iam-security.md)).",
+        "target_path": "references/iam-security.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 89,
+        "column": 6,
+        "evidence": "`roles/workloadmanager.viewer` for read-only access to evaluation resources",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 91,
+        "column": 6,
+        "evidence": "`roles/workloadmanager.admin` only when creating, updating, running, or",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 124,
+        "column": 21,
+        "evidence": "- [Core Concepts](references/core-concepts.md): Evaluations, rules, results,",
+        "target_path": "references/core-concepts.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 127,
+        "column": 30,
+        "evidence": "- [General Best Practices](references/general-best-practices.md): Google Cloud",
+        "target_path": "references/general-best-practices.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 131,
+        "column": 24,
+        "evidence": "- [Client Libraries](references/client-library-usage.md): Python and Go client",
+        "target_path": "references/client-library-usage.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 135,
+        "column": 18,
+        "evidence": "- [REST Usage](references/rest-usage.md): Direct REST examples for the public",
+        "target_path": "references/rest-usage.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 138,
+        "column": 25,
+        "evidence": "- [Public CLI Status](references/public-cli-status.md): No documented",
+        "target_path": "references/public-cli-status.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 142,
+        "column": 25,
+        "evidence": "- [Public MCP Status](references/public-mcp-status.md): No documented public",
+        "target_path": "references/public-mcp-status.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 145,
+        "column": 27,
+        "evidence": "- [Setup Prerequisites](references/setup-prerequisites.md): Terraform examples",
+        "target_path": "references/setup-prerequisites.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 149,
+        "column": 22,
+        "evidence": "- [IAM & Security](references/iam-security.md): Workload Manager roles,",
+        "target_path": "references/iam-security.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 158,
+        "column": 33,
+        "evidence": "- [Workload Manager overview](https://docs.cloud.google.com/workload-manager/docs/overview)",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 159,
+        "column": 35,
+        "evidence": "- [Google Cloud best practices](https://docs.cloud.google.com/workload-manager/docs/reference/best-practices-general)",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 160,
+        "column": 33,
+        "evidence": "- [Workload Manager REST API](https://docs.cloud.google.com/workload-manager/docs/reference/rest)",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 161,
+        "column": 26,
+        "evidence": "- [About custom rules](https://docs.cloud.google.com/workload-manager/docs/evaluate/custom-rules/about-custom-rules)",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 162,
+        "column": 37,
+        "evidence": "- [Write custom rules using Rego](https://docs.cloud.google.com/workload-manager/docs/evaluate/custom-rules/rego-custom-rules)",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 163,
+        "column": 22,
+        "evidence": "- [Python package](https://pypi.org/project/google-cloud-workloadmanager/)",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 164,
+        "column": 34,
+        "evidence": "- [Workload Manager IAM roles](https://docs.cloud.google.com/iam/docs/roles-permissions/workloadmanager)",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 169,
+        "column": 64,
+        "evidence": "- [Mastering cloud posture management with Workload Manager](https://discuss.google.dev/t/mastering-cloud-posture-management-security-reliability-and-finops-wit",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      }
+    ],
+    "limitations": [],
+    "findings_before_filtering": 9,
+    "findings_after_filtering": 9
+  }
+}

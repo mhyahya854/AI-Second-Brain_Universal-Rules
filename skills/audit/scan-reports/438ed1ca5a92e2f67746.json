@@ -1,0 +1,1670 @@
+{
+  "skill": {
+    "name": "application-integration-troubleshooting",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\google\\skills\\application-integration-troubleshooting",
+    "scanned_at": "2026-10-31T21:21:57.455397+00:00"
+  },
+  "risk_assessment": {
+    "score": 71,
+    "severity": "HIGH",
+    "recommendation": "DO_NOT_INSTALL",
+    "max_issue_severity": "HIGH"
+  },
+  "components": [
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 205,
+      "executable": false,
+      "size_bytes": 24229,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/attribution.md",
+      "type": "markdown",
+      "lines": 96,
+      "executable": false,
+      "size_bytes": 5115,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/common-errors.md",
+      "type": "markdown",
+      "lines": 129,
+      "executable": false,
+      "size_bytes": 17106,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/connectors-health.md",
+      "type": "markdown",
+      "lines": 131,
+      "executable": false,
+      "size_bytes": 10619,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/execution-states.md",
+      "type": "markdown",
+      "lines": 179,
+      "executable": false,
+      "size_bytes": 14724,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/logging-and-monitoring.md",
+      "type": "markdown",
+      "lines": 147,
+      "executable": false,
+      "size_bytes": 10098,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/suspensions.md",
+      "type": "markdown",
+      "lines": 113,
+      "executable": false,
+      "size_bytes": 10815,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "AE1",
+      "finding_id": "finding-4c81289795614b76b5d681de965b7287",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 23,
+        "end_line": null
+      },
+      "finding": "references/attribution.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "[Usage Attribution](references/attribution.md). For commands executed directly",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/attribution.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "76b81cf4befea46ebddc99841bf9cd8e37e10910dde3d7cf028ed313b303fa65",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 23,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-d767f093ed664b3e9b49e090a0dc34c6",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 200,
+        "end_line": null
+      },
+      "finding": "references/attribution.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "- [Usage Attribution](references/attribution.md): Usage attribution for `gcloud` CLI commands, direct `curl` REST calls, and Python discovery-client snippets ru",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/attribution.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "76b81cf4befea46ebddc99841bf9cd8e37e10910dde3d7cf028ed313b303fa65",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 200,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-f7c32b2760cc4ec4a0c5bc299b05f4a9",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 131,
+        "end_line": null
+      },
+      "finding": "references/connectors-health.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "Types` require a `filter` and reject unfiltered calls). See [Connectors Health](references/connectors-health.md) for connection states, schema metadata checks, ",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/connectors-health.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "723e98a60f231a3fc45f1e7932aeecd906cd669ed1610a49901b0fe3618b2b84",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 131,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-afb338ec2bdd491db237a1b588b70ee5",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 204,
+        "end_line": null
+      },
+      "finding": "references/connectors-health.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "- [Connectors Health](references/connectors-health.md): `ConnectionStatus.state`, `EventingStatus.state`, `connectionSchemaMetadata` probes, runtime v2 readines",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/connectors-health.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "723e98a60f231a3fc45f1e7932aeecd906cd669ed1610a49901b0fe3618b2b84",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 204,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-b6060b0a0fd54e77815fda77e1bdc3d9",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/common-errors.md",
+        "start_line": 18,
+        "end_line": null,
+        "start_column": 65
+      },
+      "finding": "access token",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "| HTTP | `google.rpc.Code` | Common cause in Application Integration |\n|---|---|---|\n| `400` | `FAILED_PRECONDITION` / `INVALID_ARGUMENT` | Invalid request payload, parameter type mismatch, or failed precondition. |\n| `401` | `UNAUTHENTICATED` | Missing, invalid, or expired OAuth access token. Refresh with `gcloud auth print-access-token`. |\n| `403` | `PERMISSION_DENIED` | Missing caller IAM role, missing `roles/iam.serviceAccountUser` on the run-as service account, run-as SA missing downstream access, wrong OAuth scope, or required API not enabled. |\n| `404` | `NOT_FOUND` | Wrong `PROJECT_ID`, `LOCATION`, `INTEGRATION_NAME`, `VERSION_ID`, or `CONNECTION_NAME`. |\n| `409` | `ALREADY_EXISTS` | Resource already exists. |",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "903a9f18e7222d4c1e39fcf76dec31bef3fd46b6332f4bc5bc823999d287548b",
+      "occurrences": [
+        {
+          "file": "references/common-errors.md",
+          "start_line": 18,
+          "end_line": null,
+          "start_column": 65
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-d27b31c9f2704d2e9d34ba572ea55fe3",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 122,
+        "end_line": null,
+        "start_column": 3
+      },
+      "finding": "curl -sS -H \"Authorization: Bearer $(gcloud auth print-access-token)\" \\\n     \"https://integrations.googleapis.com/v2/projects/PROJECT_ID/locations/LOCATION/integrations/INTEGRATION_NAME/executions/EXE",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "\n1. **Run AI Troubleshoot (v2 REST API)** on a failed execution to get a structured root-cause summary (requires `integrations.executions.get`):\n   ```bash\n   curl -sS -H \"Authorization: Bearer $(gcloud auth print-access-token)\" \\\n     \"https://integrations.googleapis.com/v2/projects/PROJECT_ID/locations/LOCATION/integrations/INTEGRATION_NAME/executions/EXECUTION_ID:troubleshoot\"\n   ```\n2. **Query Cloud Logging** if Cloud Logging was enabled on the version. Note that Cloud Logging is **disabled by default** and writes nothing if local logging is disabled. See [Logging and Monitoring](references/logging-and-monitoring.md) for how to enable it, severity behavior, and exact queries.",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "8373263e83ef45aa14eab3261eb26f6d690d9d39981b1037d08b14815dd79a10",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 122,
+          "end_line": null,
+          "start_column": 3
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-ddde34bf54e94dea84ee7e970da45a69",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "references/connectors-health.md",
+        "start_line": 53,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": "curl -X POST \\\n  -H \"Authorization: Bearer $(gcloud auth print-access-token)\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{}' \\\n  \"https://connectors.googleapis.com/v1/projects/PROJECT_ID/location",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "To repair event subscriptions (state-changing; show command and get user confirmation first):\n\n```bash\ncurl -X POST \\\n  -H \"Authorization: Bearer $(gcloud auth print-access-token)\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{}' \\",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "7dcd852d8f599b39dbf4382a606f7ef7200fe7b38ffa0e6f2231405e4e6015a4",
+      "occurrences": [
+        {
+          "file": "references/connectors-health.md",
+          "start_line": 53,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-6dbd4316a923427ea2b61e0f7b1a3136",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "references/execution-states.md",
+        "start_line": 114,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": "curl -sS -H \"Authorization: Bearer $(gcloud auth print-access-token)\" \\\n  \"https://integrations.googleapis.com/v1/projects/PROJECT_ID/locations/LOCATION/integrations/INTEGRATION_NAME/executions?filter=",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "\n```bash\n# Step 1: List recent failed executions without parameter payloads\ncurl -sS -H \"Authorization: Bearer $(gcloud auth print-access-token)\" \\\n  \"https://integrations.googleapis.com/v1/projects/PROJECT_ID/locations/LOCATION/integrations/INTEGRATION_NAME/executions?filter=state%3DFAILED&snapshotMetadataWithoutParams=true&pageSize=20\"\n\n# Step 2: Fetch full details for one EXECUTION_ID across any integration in LOCATION",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "c7fb0210bc0120aa363c9be8fba13f3a27a204c9a11941925bc191d4a5a45462",
+      "occurrences": [
+        {
+          "file": "references/execution-states.md",
+          "start_line": 114,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-ae1208d3973944e6b8f1fe4af88be62e",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "references/suspensions.md",
+        "start_line": 44,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": "curl -sS -H \"Authorization: Bearer $(gcloud auth print-access-token)\" \\\n  \"https://integrations.googleapis.com/v1/projects/PROJECT_ID/locations/LOCATION/integrations/INTEGRATION_NAME/executions/EXECUT",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "Use `suspensions.list` (read-only; requires `integrations.suspensions.list`, included in `roles/integrations.suspensionResolver`) to inspect pending suspensions for an execution.\n\n```bash\ncurl -sS -H \"Authorization: Bearer $(gcloud auth print-access-token)\" \\\n  \"https://integrations.googleapis.com/v1/projects/PROJECT_ID/locations/LOCATION/integrations/INTEGRATION_NAME/executions/EXECUTION_ID/suspensions\"\n```\n",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "7d54eca5633446c62c85b847bb57e07767fdbf0fc760a2b3cba110d6d6b037e4",
+      "occurrences": [
+        {
+          "file": "references/suspensions.md",
+          "start_line": 44,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": false,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 7,
+    "scanned_components": 4,
+    "coverage_percent": 57.1,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 4,
+    "partially_inspected_files": 3,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "SKILL.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 26,
+        "end_line": 26,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 27,
+        "end_line": 27,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 34,
+        "end_line": 34,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 41,
+        "end_line": 41,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 70,
+        "end_line": 70,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 71,
+        "end_line": 71,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 83,
+        "end_line": 83,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 90,
+        "end_line": 90,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 94,
+        "end_line": 94,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 104,
+        "end_line": 104,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 108,
+        "end_line": 108,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 120,
+        "end_line": 120,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 131,
+        "end_line": 131,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 142,
+        "end_line": 142,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 143,
+        "end_line": 143,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 144,
+        "end_line": 144,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 155,
+        "end_line": 155,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 161,
+        "end_line": 161,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 162,
+        "end_line": 162,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 175,
+        "end_line": 175,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 201,
+        "end_line": 201,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 204,
+        "end_line": 204,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 205,
+        "end_line": 205,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "references/attribution.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "references/connectors-health.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "reference_coverage",
+        "status": "completed",
+        "planned_work": 4,
+        "completed": 4,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "degraded",
+        "planned_work": 7,
+        "completed": 4,
+        "partial": 3,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 23,
+        "column": 21,
+        "evidence": "[Usage Attribution](references/attribution.md). For commands executed directly",
+        "target_path": "references/attribution.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 26,
+        "column": 40,
+        "evidence": "`CLOUDSDK_METRICS_REQUEST_ATTRIBUTION=\"agent-skills/1.0 (skill:application-integration-troubleshooting)\"`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 27,
+        "column": 10,
+        "evidence": "and add `agent-skills/1.0 (skill:application-integration-troubleshooting)` to",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 34,
+        "column": 332,
+        "evidence": "tegration is deployed in. If they don't know, start with `us-central1` and, if `executions.list` is empty there, check the other [Application Integration locati",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 34,
+        "column": 417,
+        "evidence": "tions.list` is empty there, check the other [Application Integration locations](https://docs.cloud.google.com/application-integration/docs/locations.md.txt) bef",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 41,
+        "column": 37,
+        "evidence": "- **Read-only checks run freely:** `executions.list`, `suspensions.list`, `connections.get`, `connectionSchemaMetadata` get calls, runtime v2 `actions.list` / `",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 41,
+        "column": 56,
+        "evidence": "- **Read-only checks run freely:** `executions.list`, `suspensions.list`, `connections.get`, `connectionSchemaMetadata` get calls, runtime v2 `actions.list` / `",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 41,
+        "column": 76,
+        "evidence": "- **Read-only checks run freely:** `executions.list`, `suspensions.list`, `connections.get`, `connectionSchemaMetadata` get calls, runtime v2 `actions.list` / `",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 41,
+        "column": 144,
+        "evidence": "ons.list`, `connections.get`, `connectionSchemaMetadata` get calls, runtime v2 `actions.list` / `entityTypes.list`, `gcloud logging read`, and `v2` `executions:",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 41,
+        "column": 161,
+        "evidence": "ctions.get`, `connectionSchemaMetadata` get calls, runtime v2 `actions.list` / `entityTypes.list`, `gcloud logging read`, and `v2` `executions:troubleshoot`.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 61,
+        "column": 173,
+        "evidence": "ys within the monthly free tier; see the [Application Integration pricing page](https://cloud.google.com/application-integration/pricing)).",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 70,
+        "column": 163,
+        "evidence": "ed (note: `integrations:test` also exists in the v1 REST API, but its required `TestIntegrationsRequest.clientId` value is not publicly documented, so do not in",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 71,
+        "column": 120,
+        "evidence": "ution record from `executions.list?filter=execution_id=\"EXECUTION_ID\"`—inspect `executionDetails.state`, each task's `taskExecutionState`, and `ErrorInfo` in `r",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 83,
+        "column": 161,
+        "evidence": " states (use `filter`, `snapshotMetadataWithoutParams=true`, and `readMask` on `executions.list`—never the deprecated `truncateParams` [UI-only] or `filterParam",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 90,
+        "column": 12,
+        "evidence": "To filter `executions.list` by state, use the `state` field (`=` or `!=`) with unquoted `ExecutionDetails.state` values (for example, `filter=state=FAILED`, `fi",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 90,
+        "column": 90,
+        "evidence": " `executions.list` by state, use the `state` field (`=` or `!=`) with unquoted `ExecutionDetails.state` values (for example, `filter=state=FAILED`, `filter=stat",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 94,
+        "column": 5,
+        "evidence": "If `executions.list` returns no matching run, check these five causes before assuming the trigger never fired:",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 104,
+        "column": 41,
+        "evidence": "### Step 3: Branch by Execution State (`ExecutionDetails.state`)",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 106,
+        "column": 24,
+        "evidence": "See [Execution States](references/execution-states.md) for the full state reference, task-level states (`TaskExecutionDetails.taskExecutionState`), filter synta",
+        "target_path": "references/execution-states.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 108,
+        "column": 4,
+        "evidence": "| `ExecutionDetails.state` | Console status | Meaning and next step |",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 113,
+        "column": 195,
+        "evidence": "solve`) or a Suspend task (resumable via `suspensions:lift`). See [Suspensions](references/suspensions.md). |",
+        "target_path": "references/suspensions.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 120,
+        "column": 114,
+        "evidence": "1. **Run AI Troubleshoot (v2 REST API)** on a failed execution to get a structured root-cause summary (requires `integrations.executions.get`):",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 125,
+        "column": 202,
+        "evidence": "* and writes nothing if local logging is disabled. See [Logging and Monitoring](references/logging-and-monitoring.md) for how to enable it, severity behavior, a",
+        "target_path": "references/logging-and-monitoring.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 131,
+        "column": 126,
+        "evidence": "ess whether the connector or IAM is at fault. Inspect the connection resource (`connections.get`) and its schema metadata (`GET .../connections/CONNECTION_NAME/",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 131,
+        "column": 504,
+        "evidence": "Types` require a `filter` and reject unfiltered calls). See [Connectors Health](references/connectors-health.md) for connection states, schema metadata checks, ",
+        "target_path": "references/connectors-health.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 136,
+        "column": 712,
+        "evidence": "ing the version needs `roles/iam.serviceAccountUser` on it. See [Common Errors](references/common-errors.md) for the two-sided 403 checklist, error codes, task ",
+        "target_path": "references/common-errors.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 142,
+        "column": 9,
+        "evidence": "1. Run `connections.get` with `view=FULL` (command above) and inspect `status.state` and `status.status`.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 142,
+        "column": 72,
+        "evidence": "1. Run `connections.get` with `view=FULL` (command above) and inspect `status.state` and `status.status`.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 142,
+        "column": 91,
+        "evidence": "1. Run `connections.get` with `view=FULL` (command above) and inspect `status.state` and `status.status`.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 143,
+        "column": 10,
+        "evidence": "2. **If `status.state` is `ERROR` or `AUTHORIZATION_REQUIRED`:** the connection itself cannot reach or authenticate to the target backend. Fix the connection's ",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 144,
+        "column": 10,
+        "evidence": "3. **If `status.state` is `ACTIVE`:** the connection is healthy. Check whether the identity running the task (the integration's `runAsServiceAccount`, or if uns",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 144,
+        "column": 288,
+        "evidence": ".iam.gserviceaccount.com`) has a required Integration Connectors role (such as `roles/connectors.invoker` or `roles/connectors.admin`) in the connection's proje",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 144,
+        "column": 318,
+        "evidence": " a required Integration Connectors role (such as `roles/connectors.invoker` or `roles/connectors.admin`) in the connection's project.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 155,
+        "column": 124,
+        "evidence": " from `taskExecutionDetails` and list pending suspensions (read-only; requires `integrations.suspensions.list`, included in `roles/integrations.suspensionResolv",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 155,
+        "column": 338,
+        "evidence": "roles/integrations.suspensionResolver` alone cannot read execution records (no `integrations.executions.list` or `integrations.executions.get`, returning HTTP 4",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 155,
+        "column": 372,
+        "evidence": "ver` alone cannot read execution records (no `integrations.executions.list` or `integrations.executions.get`, returning HTTP 403 on `executions.list` and v2 `:t",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 155,
+        "column": 425,
+        "evidence": "tions.executions.list` or `integrations.executions.get`, returning HTTP 403 on `executions.list` and v2 `:troubleshoot`); to inspect `taskExecutionDetails` (or ",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 155,
+        "column": 671,
+        "evidence": "proval email link, which carries the execution and task IDs). See [Suspensions](references/suspensions.md) for full details.",
+        "target_path": "references/suspensions.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 161,
+        "column": 557,
+        "evidence": " make). Always confirm with the user before resolving. Verify the caller holds `integrations.suspensions.resolve` (included in `roles/integrations.suspensionRes",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 162,
+        "column": 72,
+        "evidence": "3. **Suspend task:** `:lift` is the Suspend-task variant and requires `integrations.suspensions.lift` (included in `roles/integrations.suspensionResolver`) plus",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 175,
+        "column": 144,
+        "evidence": "efore running `:cancel`, `:replay`, `:lift`, or `:resolve`. `:cancel` requires `integrations.executions.cancel` and `:replay` requires `integrations.executions.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 175,
+        "column": 200,
+        "evidence": "e`. `:cancel` requires `integrations.executions.cancel` and `:replay` requires `integrations.executions.replay` (both are held by `roles/integrations.integratio",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 200,
+        "column": 23,
+        "evidence": "- [Usage Attribution](references/attribution.md): Usage attribution for `gcloud` CLI commands, direct `curl` REST calls, and Python discovery-client snippets ru",
+        "target_path": "references/attribution.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 201,
+        "column": 22,
+        "evidence": "- [Execution States](references/execution-states.md): `ExecutionDetails.state` and `TaskExecutionDetails.taskExecutionState` enums, `executions.list` filter ope",
+        "target_path": "references/execution-states.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 201,
+        "column": 56,
+        "evidence": "- [Execution States](references/execution-states.md): `ExecutionDetails.state` and `TaskExecutionDetails.taskExecutionState` enums, `executions.list` filter ope",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 201,
+        "column": 134,
+        "evidence": " `ExecutionDetails.state` and `TaskExecutionDetails.taskExecutionState` enums, `executions.list` filter operators, large-log workarounds (> 300 MB), and `:cance",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 202,
+        "column": 28,
+        "evidence": "- [Logging and Monitoring](references/logging-and-monitoring.md): Local logging vs Cloud Logging interactions, enabling Cloud Logging on a draft version, Logs E",
+        "target_path": "references/logging-and-monitoring.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 203,
+        "column": 19,
+        "evidence": "- [Common Errors](references/common-errors.md): HTTP/gRPC error codes, the two-sided 403 checklist, the October 15, 2026 run-as service account requirement, tas",
+        "target_path": "references/common-errors.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 204,
+        "column": 23,
+        "evidence": "- [Connectors Health](references/connectors-health.md): `ConnectionStatus.state`, `EventingStatus.state`, `connectionSchemaMetadata` probes, runtime v2 readines",
+        "target_path": "references/connectors-health.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 204,
+        "column": 58,
+        "evidence": "- [Connectors Health](references/connectors-health.md): `ConnectionStatus.state`, `EventingStatus.state`, `connectionSchemaMetadata` probes, runtime v2 readines",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 204,
+        "column": 84,
+        "evidence": "Connectors Health](references/connectors-health.md): `ConnectionStatus.state`, `EventingStatus.state`, `connectionSchemaMetadata` probes, runtime v2 readiness c",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 205,
+        "column": 17,
+        "evidence": "- [Suspensions](references/suspensions.md): Suspend vs Approval vs Timer behavior, `suspensions.list` / `:lift` / `:resolve` payloads, expiration settings, and ",
+        "target_path": "references/suspensions.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 205,
+        "column": 85,
+        "evidence": "uspensions](references/suspensions.md): Suspend vs Approval vs Timer behavior, `suspensions.list` / `:lift` / `:resolve` payloads, expiration settings, and why ",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      }
+    ],
+    "limitations": [
+      "Analyzer static_patterns_tool_misuse status: degraded."
+    ],
+    "findings_before_filtering": 9,
+    "findings_after_filtering": 9
+  }
+}

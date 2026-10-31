@@ -1,0 +1,1201 @@
+{
+  "skill": {
+    "name": "gbro-collage-broll",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\pyang5166\\gbro-collage-broll\\gbro-collage-broll",
+    "scanned_at": "2026-10-31T22:13:47.418453+00:00"
+  },
+  "risk_assessment": {
+    "score": 100,
+    "severity": "CRITICAL",
+    "recommendation": "DO_NOT_INSTALL",
+    "max_issue_severity": "CRITICAL"
+  },
+  "components": [
+    {
+      "path": "LICENSE",
+      "type": "other",
+      "lines": 21,
+      "executable": false,
+      "size_bytes": 1069,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "README.md",
+      "type": "markdown",
+      "lines": 87,
+      "executable": false,
+      "size_bytes": 4216,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 402,
+      "executable": false,
+      "size_bytes": 16457,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "assets/demo-purple.gif",
+      "type": "other",
+      "lines": 62934,
+      "executable": false,
+      "size_bytes": 1788883,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "assets/demo-red.gif",
+      "type": "other",
+      "lines": 44459,
+      "executable": false,
+      "size_bytes": 1466143,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "assets/demo-teal.gif",
+      "type": "other",
+      "lines": 58595,
+      "executable": false,
+      "size_bytes": 1805174,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "assets/demo-yellow.gif",
+      "type": "other",
+      "lines": 68861,
+      "executable": false,
+      "size_bytes": 1862212,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/check_setup.sh",
+      "type": "shell",
+      "lines": 47,
+      "executable": true,
+      "size_bytes": 1539,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/generate_veo_first_last.py",
+      "type": "python",
+      "lines": 146,
+      "executable": true,
+      "size_bytes": 4756,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/generate_video.py",
+      "type": "python",
+      "lines": 439,
+      "executable": true,
+      "size_bytes": 18772,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/upload_file.py",
+      "type": "python",
+      "lines": 218,
+      "executable": true,
+      "size_bytes": 9737,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "TT3",
+      "finding_id": "finding-988087cf54324a13af194a2026ad1b67",
+      "category": "Data Flow",
+      "pattern": "Tainted flow: 'req' from os.environ.get (line 164, credential/environment) → urllib.request.urlopen (network output)",
+      "severity": "CRITICAL",
+      "confidence": 0.9,
+      "location": {
+        "file": "scripts/generate_video.py",
+        "start_line": 168,
+        "end_line": 168,
+        "start_column": 13,
+        "end_column": 53
+      },
+      "finding": "urllib.request.urlopen(req, timeout=480)",
+      "explanation": "Credentials or environment variables flow to a network sink. This is a high-confidence indicator of credential exfiltration.",
+      "remediation": "Never send credentials or environment variables over the network. Use secure credential stores and avoid transmitting secrets in request bodies or URLs.",
+      "code_snippet": "    req.add_header(\"x-goog-api-key\", api_key)\n    \n    try:\n        with urllib.request.urlopen(req, timeout=480) as resp:\n            parent_dir = os.path.dirname(output_path)\n            if parent_dir:\n                os.makedirs(parent_dir, exist_ok=True)",
+      "intent": null,
+      "tags": [
+        "Data Flow"
+      ],
+      "evidence": {},
+      "match_fingerprint": "319e34a98d1c9860234cee26842f38c46f69955b708c675b3c834feed1a0659b",
+      "occurrences": [
+        {
+          "file": "scripts/generate_video.py",
+          "start_line": 168,
+          "end_line": 168,
+          "start_column": 13,
+          "end_column": 53
+        }
+      ]
+    },
+    {
+      "id": "AS3",
+      "finding_id": "finding-9390b6f4a7fe4eb8a1059b19254b3056",
+      "category": "Agent Snooping",
+      "pattern": "Skill Enumeration",
+      "severity": "MEDIUM",
+      "confidence": 0.85,
+      "location": {
+        "file": "README.md",
+        "start_line": 46,
+        "end_line": null,
+        "start_column": 20
+      },
+      "finding": "ls 目录(例如 `~/.agents/skills/` 或 `~/.claude/skills",
+      "explanation": "Skill enumerates or reads other installed skills. Access to other skills' SKILL.md files or the skills directory reveals prompt instructions, capabilities, and secrets that should be invisible to peer skills.",
+      "remediation": "Remove all code or instructions that list or read other skills' files or directories. Skills should operate independently; cross-skill access is a privilege escalation.",
+      "code_snippet": "\n## 安装\n\n把整个目录放进你的 agent skills 目录(例如 `~/.agents/skills/` 或 `~/.claude/skills/`):\n\n```bash\ngit clone https://github.com/pyang5166/gbro-collage-broll.git ~/.agents/skills/gbro-collage-broll",
+      "intent": null,
+      "tags": [
+        "Agent Snooping",
+        "normalized-view"
+      ],
+      "evidence": {},
+      "match_fingerprint": "268eb12e22af21cd0c1a1b328f350a6d3b780e3648106c4348f67a4c6eb28771",
+      "occurrences": [
+        {
+          "file": "README.md",
+          "start_line": 46,
+          "end_line": null,
+          "start_column": 20
+        }
+      ]
+    },
+    {
+      "id": "AS3",
+      "finding_id": "finding-ac70659a2cb447189fe9de7959153c2b",
+      "category": "Agent Snooping",
+      "pattern": "Skill Enumeration",
+      "severity": "MEDIUM",
+      "confidence": 0.85,
+      "location": {
+        "file": "README.md",
+        "start_line": 46,
+        "end_line": null,
+        "start_column": 20
+      },
+      "finding": "ls 目录（例如 `~/.agents/skills/` 或 `~/.claude/skills",
+      "explanation": "Skill enumerates or reads other installed skills. Access to other skills' SKILL.md files or the skills directory reveals prompt instructions, capabilities, and secrets that should be invisible to peer skills.",
+      "remediation": "Remove all code or instructions that list or read other skills' files or directories. Skills should operate independently; cross-skill access is a privilege escalation.",
+      "code_snippet": "\n## 安装\n\n把整个目录放进你的 agent skills 目录（例如 `~/.agents/skills/` 或 `~/.claude/skills/`）：\n\n```bash\ngit clone https://github.com/pyang5166/gbro-collage-broll.git ~/.agents/skills/gbro-collage-broll",
+      "intent": null,
+      "tags": [
+        "Agent Snooping"
+      ],
+      "evidence": {},
+      "match_fingerprint": "f7f4bfd000c75525b29a3c445f7e535449831c23b59718659e01b26ca3bb1194",
+      "occurrences": [
+        {
+          "file": "README.md",
+          "start_line": 46,
+          "end_line": null,
+          "start_column": 20
+        }
+      ]
+    },
+    {
+      "id": "LP3",
+      "finding_id": "finding-f974d1bbf6ab4e349028ab4f606dce30",
+      "category": "MCP Least Privilege",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 1,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "Without declared permissions the skill's intent is opaque and cannot be validated.",
+      "remediation": "Declare the skill's tool scope: for Claude Code / Agent Skills SKILL.md, list the tools the skill may invoke in the 'allowed-tools' frontmatter field; for MCP server manifests, add a 'permissions' list naming the required capabilities.",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI02"
+      ],
+      "evidence": {},
+      "match_fingerprint": null,
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 1,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "PE2",
+      "finding_id": "finding-a29cdb766ba6456297f458604ff1ea05",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 41,
+        "end_line": null,
+        "start_column": 46
+      },
+      "finding": "sudo ",
+      "explanation": "Commands invoke sudo or root privileges. Verify this elevated access is necessary and justified.",
+      "remediation": "Avoid sudo/root unless strictly required. Prefer least-privilege patterns. If elevation is needed, document the justification and scope.",
+      "code_snippet": "   注意：视频生成按量计费，由这个 key 对应的 Google 账号承担。\n\n2. **ffmpeg / ffprobe 缺失**\n   macOS：`brew install ffmpeg`；Debian/Ubuntu：`sudo apt install ffmpeg`。\n\n3. **Python 环境缺失或版本过旧**（需要 >= 3.10）\n   macOS：`brew install python3`；或从 python.org 安装。",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "16746f7044f347c6322d4c5b879b3fb06b2f205cbf1c9a209b43d52b34b3afd7",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 41,
+          "end_line": null,
+          "start_column": 46
+        }
+      ]
+    },
+    {
+      "id": "PE2",
+      "finding_id": "finding-ea0ee6125a004729935eb0bab3a4422b",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "scripts/check_setup.sh",
+        "start_line": 24,
+        "end_line": null,
+        "start_column": 69
+      },
+      "finding": "sudo ",
+      "explanation": "Commands invoke sudo or root privileges. Verify this elevated access is necessary and justified.",
+      "remediation": "Avoid sudo/root unless strictly required. Prefer least-privilege patterns. If elevation is needed, document the justification and scope.",
+      "code_snippet": "if command -v ffmpeg >/dev/null 2>&1 && command -v ffprobe >/dev/null 2>&1; then\n  ok \"ffmpeg / ffprobe 可用\"\nelse\n  bad \"ffmpeg / ffprobe 缺失（macOS: brew install ffmpeg；Debian/Ubuntu: sudo apt install ffmpeg）\"\nfi\n\n# 3. Python >= 3.10",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "16746f7044f347c6322d4c5b879b3fb06b2f205cbf1c9a209b43d52b34b3afd7",
+      "occurrences": [
+        {
+          "file": "scripts/check_setup.sh",
+          "start_line": 24,
+          "end_line": null,
+          "start_column": 69
+        }
+      ]
+    },
+    {
+      "id": "AST4",
+      "finding_id": "finding-2d975f8b85ad408d84bb8cc88db1383f",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "scripts/generate_veo_first_last.py",
+        "start_line": 24,
+        "end_line": 24,
+        "start_column": 8,
+        "end_column": 59
+      },
+      "finding": "subprocess.run([\"ffmpeg\", \"-y\", *args], check=True)",
+      "explanation": "subprocess module calls execute external commands. Without careful input validation, this enables command injection.",
+      "remediation": "Use subprocess.run() with shell=False and an explicit argument list. Validate all inputs and avoid passing user-controlled data to commands.",
+      "code_snippet": "\ndef run_ffmpeg(args):\n    if shutil.which(\"ffmpeg\"):\n        subprocess.run([\"ffmpeg\", \"-y\", *args], check=True)\n\n\ndef main():",
+      "intent": null,
+      "tags": [
+        "Dangerous Code Execution"
+      ],
+      "evidence": {},
+      "match_fingerprint": "a751a2b9b25ef3c47957de42fda8ad8d82a07624cd98ea68e31d9bb77d9cac65",
+      "occurrences": [
+        {
+          "file": "scripts/generate_veo_first_last.py",
+          "start_line": 24,
+          "end_line": 24,
+          "start_column": 8,
+          "end_column": 59
+        }
+      ]
+    },
+    {
+      "id": "AST4",
+      "finding_id": "finding-4cc1548a9b8247f9bee1f33de5c5e078",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "scripts/generate_veo_first_last.py",
+        "start_line": 97,
+        "end_line": 97,
+        "start_column": 4,
+        "end_column": 83
+      },
+      "finding": "subprocess.run([\"gcloud\", \"storage\", \"cp\", uri, str(native_video)], check=True)",
+      "explanation": "subprocess module calls execute external commands. Without careful input validation, this enables command injection.",
+      "remediation": "Use subprocess.run() with shell=False and an explicit argument list. Validate all inputs and avoid passing user-controlled data to commands.",
+      "code_snippet": "    uri = operation.result.generated_videos[0].video.uri\n    native_video = output / f\"veo-native-{args.native_duration}s.mp4\"\n    final_video = output / f\"final-{args.final_duration}s.mp4\"\n    subprocess.run([\"gcloud\", \"storage\", \"cp\", uri, str(native_video)], check=True)\n\n    if args.final_duration > args.native_duration:\n        pad = args.final_duration - args.native_duration",
+      "intent": null,
+      "tags": [
+        "Dangerous Code Execution"
+      ],
+      "evidence": {},
+      "match_fingerprint": "1498c43080ad4a91a92ae96c8e9f0835b5e6ddf137cec4c60e683ca8b4ed68e5",
+      "occurrences": [
+        {
+          "file": "scripts/generate_veo_first_last.py",
+          "start_line": 97,
+          "end_line": 97,
+          "start_column": 4,
+          "end_column": 83
+        }
+      ]
+    },
+    {
+      "id": "TT2",
+      "finding_id": "finding-75c6d1ef976846a8af70b9f678a119b2",
+      "category": "Data Flow",
+      "pattern": "Tainted flow: 'uri' from os.environ.get (line 94, credential/environment) → subprocess.run (code execution)",
+      "severity": "MEDIUM",
+      "confidence": 0.65,
+      "location": {
+        "file": "scripts/generate_veo_first_last.py",
+        "start_line": 97,
+        "end_line": 97,
+        "start_column": 4,
+        "end_column": 83
+      },
+      "finding": "subprocess.run([\"gcloud\", \"storage\", \"cp\", uri, str(native_video)], check=True)",
+      "explanation": "Data from a source is assigned to a variable that is later passed to a sink, creating a variable-mediated taint flow.",
+      "remediation": "Validate tainted variables before passing them to sinks. Use allowlists, type checks, or sanitization functions on data from external sources.",
+      "code_snippet": "    uri = operation.result.generated_videos[0].video.uri\n    native_video = output / f\"veo-native-{args.native_duration}s.mp4\"\n    final_video = output / f\"final-{args.final_duration}s.mp4\"\n    subprocess.run([\"gcloud\", \"storage\", \"cp\", uri, str(native_video)], check=True)\n\n    if args.final_duration > args.native_duration:\n        pad = args.final_duration - args.native_duration",
+      "intent": null,
+      "tags": [
+        "Data Flow"
+      ],
+      "evidence": {},
+      "match_fingerprint": "8d217dc24e4226149cc7ffc1059b45f5f115385034869b42b6eaa1b8688022ba",
+      "occurrences": [
+        {
+          "file": "scripts/generate_veo_first_last.py",
+          "start_line": 97,
+          "end_line": 97,
+          "start_column": 4,
+          "end_column": 83
+        }
+      ]
+    },
+    {
+      "id": "AST4",
+      "finding_id": "finding-2b69aff847a54e95b702017e973a5b88",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "scripts/generate_video.py",
+        "start_line": 114,
+        "end_line": 114,
+        "start_column": 16,
+        "end_column": 120
+      },
+      "finding": "subprocess.run([\"ffmpeg\", \"-version\"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)",
+      "explanation": "subprocess module calls execute external commands. Without careful input validation, this enables command injection.",
+      "remediation": "Use subprocess.run() with shell=False and an explicit argument list. Validate all inputs and avoid passing user-controlled data to commands.",
+      "code_snippet": "            # Check if ffmpeg is available\n            import subprocess\n            try:\n                subprocess.run([\"ffmpeg\", \"-version\"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)\n            except (subprocess.SubprocessError, FileNotFoundError):\n                raise RuntimeError(\n                    \"Error: ffmpeg is not installed or not found in system PATH. \"",
+      "intent": null,
+      "tags": [
+        "Dangerous Code Execution"
+      ],
+      "evidence": {},
+      "match_fingerprint": "0e5246684509fe460cd045e65bf0818b36fdaac70b93971e6918359fcbefc63c",
+      "occurrences": [
+        {
+          "file": "scripts/generate_video.py",
+          "start_line": 114,
+          "end_line": 114,
+          "start_column": 16,
+          "end_column": 120
+        }
+      ]
+    },
+    {
+      "id": "AST4",
+      "finding_id": "finding-de82559ff12c4e43848f67ca9caef9f7",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "scripts/generate_video.py",
+        "start_line": 129,
+        "end_line": 129,
+        "start_column": 16,
+        "end_column": 95
+      },
+      "finding": "subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)",
+      "explanation": "subprocess module calls execute external commands. Without careful input validation, this enables command injection.",
+      "remediation": "Use subprocess.run() with shell=False and an explicit argument list. Validate all inputs and avoid passing user-controlled data to commands.",
+      "code_snippet": "\n                # Fast stream-copy audio stripping\n                cmd = [\"ffmpeg\", \"-y\", \"-i\", asset_path, \"-c:v\", \"copy\", \"-an\", temp_stripped_path]\n                subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)\n\n                print(f\"Successfully stripped audio. Temporary video file created at: {temp_stripped_path}\")\n                upload_path = temp_stripped_path",
+      "intent": null,
+      "tags": [
+        "Dangerous Code Execution"
+      ],
+      "evidence": {},
+      "match_fingerprint": "8ea8e4eaa84804487dc5ec07455d5bffe5aeabe72fe37158720a35efc9265f17",
+      "occurrences": [
+        {
+          "file": "scripts/generate_video.py",
+          "start_line": 129,
+          "end_line": 129,
+          "start_column": 16,
+          "end_column": 95
+        }
+      ]
+    },
+    {
+      "id": "AST4",
+      "finding_id": "finding-c79dda7b7c254654b6bf1b691c3059bb",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "scripts/upload_file.py",
+        "start_line": 79,
+        "end_line": 79,
+        "start_column": 33,
+        "end_column": 52
+      },
+      "finding": "subprocess.run(cmd)",
+      "explanation": "subprocess module calls execute external commands. Without careful input validation, this enables command injection.",
+      "remediation": "Use subprocess.run() with shell=False and an explicit argument list. Validate all inputs and avoid passing user-controlled data to commands.",
+      "code_snippet": "                    print(f\"Running: {' '.join(cmd)}\")\n                    \n                    try:\n                        result = subprocess.run(cmd)\n                        if result.returncode == 0 and os.path.exists(prepped_output_path):\n                            file_path = prepped_output_path\n                            file_size = os.path.getsize(file_path)",
+      "intent": null,
+      "tags": [
+        "Dangerous Code Execution"
+      ],
+      "evidence": {},
+      "match_fingerprint": "2331cdf7b4297f484e05309da6ae9b70bd15b46c04013cdc1a22b18bc6cf04d8",
+      "occurrences": [
+        {
+          "file": "scripts/upload_file.py",
+          "start_line": 79,
+          "end_line": 79,
+          "start_column": 33,
+          "end_column": 52
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": true,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 7,
+    "scanned_components": 7,
+    "coverage_percent": 100.0,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 7,
+    "partially_inspected_files": 0,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 179,
+        "end_line": 179,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 251,
+        "end_line": 251,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 313,
+        "end_line": 313,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 349,
+        "end_line": 349,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 372,
+        "end_line": 372,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 374,
+        "end_line": 374,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 375,
+        "end_line": 375,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 376,
+        "end_line": 376,
+        "fatal": false
+      }
+    ],
+    "scope_exclusions": [
+      {
+        "outcome": "out_of_scope",
+        "phase": "cache",
+        "reason_code": "binary_text_projection",
+        "message": "Only bounded printable text was inspected; binary structure and behavior are outside scope.",
+        "path": "assets/demo-purple.gif",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false
+      },
+      {
+        "outcome": "out_of_scope",
+        "phase": "cache",
+        "reason_code": "binary_text_projection",
+        "message": "Only bounded printable text was inspected; binary structure and behavior are outside scope.",
+        "path": "assets/demo-red.gif",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false
+      },
+      {
+        "outcome": "out_of_scope",
+        "phase": "cache",
+        "reason_code": "binary_text_projection",
+        "message": "Only bounded printable text was inspected; binary structure and behavior are outside scope.",
+        "path": "assets/demo-teal.gif",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false
+      },
+      {
+        "outcome": "out_of_scope",
+        "phase": "cache",
+        "reason_code": "binary_text_projection",
+        "message": "Only bounded printable text was inspected; binary structure and behavior are outside scope.",
+        "path": "assets/demo-yellow.gif",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false
+      }
+    ],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 4,
+        "column": 71,
+        "evidence": "compatibility: 在 Codex 环境运行（Gate 2 依赖内置 image_gen）。视频生成脚本已随本 skill 自带（scripts/generate_video.py），另需 Python >= 3.10、google-genai >= 2.10.0、已配置的 GEMINI_API_KEY，以及",
+        "target_path": "scripts/generate_video.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 32,
+        "column": 25,
+        "evidence": "到 [Google AI Studio](https://aistudio.google.com/apikey) 创建 API key，然后写入 shell 配置：",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 86,
+        "column": 37,
+        "evidence": "静帧确认后，不再询问使用哪个视频模型，直接使用本 skill 自带的 `scripts/generate_video.py`，默认调用：",
+        "target_path": "scripts/generate_video.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 179,
+        "column": 15,
+        "evidence": "隐喻确认后，先写自包含的 `visual-spec.json`，再写 imagegen prompt。",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 251,
+        "column": 21,
+        "evidence": "如果用户要求重生部分静帧，重生后生成 `still-contact-sheet-v2.jpg`（后续轮次递增 v3、v4…），保留旧版 contact sheet 不覆盖，方便对比。",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 313,
+        "column": 5,
+        "evidence": "创建 `omni-jobs.json`。每个 job 使用两张图片做关键帧插值：",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 349,
+        "column": 7,
+        "evidence": "默认交付 `final-5s-noaudio.mp4`，保留原始 `final-5s.mp4` 作为中间产物。",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 349,
+        "column": 35,
+        "evidence": "默认交付 `final-5s-noaudio.mp4`，保留原始 `final-5s.mp4` 作为中间产物。",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 372,
+        "column": 21,
+        "evidence": "另外抽取视频末帧，与确认静帧并排生成 `end-frame-comparison.jpg`。批量项目再合并三张总览图：",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 374,
+        "column": 4,
+        "evidence": "- `omni-contact-sheet-all.jpg`：全部成片逐秒抽帧",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 375,
+        "column": 4,
+        "evidence": "- `video-first-frame-all.jpg`：全部成片实际首帧，验证真的从空色场开始",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 376,
+        "column": 4,
+        "evidence": "- `end-frame-comparison-all.jpg`：确认静帧与视频末帧并排对照",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 402,
+        "column": 7,
+        "evidence": "目录中的 `scripts/generate_veo_first_last.py` 仅为旧项目兼容保留。不要在默认流程中调用它。只有用户明确要求 Veo 时才使用。",
+        "target_path": "scripts/generate_veo_first_last.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      }
+    ],
+    "limitations": [],
+    "findings_before_filtering": 12,
+    "findings_after_filtering": 12
+  }
+}

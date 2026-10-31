@@ -1,0 +1,1097 @@
+{
+  "skill": {
+    "name": "learn",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\AEndrix03\\Graft\\learn",
+    "scanned_at": "2026-10-31T20:58:11.901249+00:00"
+  },
+  "risk_assessment": {
+    "score": 48,
+    "severity": "MEDIUM",
+    "recommendation": "CAUTION",
+    "max_issue_severity": "HIGH"
+  },
+  "components": [
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 505,
+      "executable": false,
+      "size_bytes": 35996,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "PE3",
+      "finding_id": "finding-a830dccd85a243e99c672b7f134b07b1",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.9,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 374,
+        "end_line": null,
+        "start_column": 261
+      },
+      "finding": ".git-credentials",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "\n| Skip | Rule |\n| ---- | ---- |\n| **secrets — never open** | `.env*` (except `*.example` / `*.sample` / `*.template`, and then only variable *names*), `*.pem`, `*.key`, `*.p12`, `*.pfx`, `*.jks`, `*.keystore`, `id_rsa*`, `id_ed25519*`, `*.tfvars`, `*.tfstate`, `.npmrc`, `.pypirc`, `.netrc`, `.git-credentials`, `kubeconfig*`, `credentials*`, `secrets*`, `*secret*.y*ml` |\n| lockfiles, binaries, media | `*.lock`, `package-lock.json`, `go.sum`, archives, images, fonts, models, anything non-text |\n| generated code | protobuf/OpenAPI/ORM output, `*.min.*`, `*.pb.*`, `*_generated.*`, migrations snapshots, files saying `generated` / `do not edit` in their first lines |\n| bulk data | fixtures, datasets, `*.csv` / `*.jsonl` corpora, snapshots, test data |",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "18b122440da33d414f0c771fdbdbc7a90a51e8ec9a883a3c000a81ac637c5996",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 374,
+          "end_line": null,
+          "start_column": 261
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-8f2c691e451c4ae6ad9c607f51a76e77",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.8,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 374,
+        "end_line": null,
+        "start_column": 251
+      },
+      "finding": ".netrc",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "\n| Skip | Rule |\n| ---- | ---- |\n| **secrets — never open** | `.env*` (except `*.example` / `*.sample` / `*.template`, and then only variable *names*), `*.pem`, `*.key`, `*.p12`, `*.pfx`, `*.jks`, `*.keystore`, `id_rsa*`, `id_ed25519*`, `*.tfvars`, `*.tfstate`, `.npmrc`, `.pypirc`, `.netrc`, `.git-credentials`, `kubeconfig*`, `credentials*`, `secrets*`, `*secret*.y*ml` |\n| lockfiles, binaries, media | `*.lock`, `package-lock.json`, `go.sum`, archives, images, fonts, models, anything non-text |\n| generated code | protobuf/OpenAPI/ORM output, `*.min.*`, `*.pb.*`, `*_generated.*`, migrations snapshots, files saying `generated` / `do not edit` in their first lines |\n| bulk data | fixtures, datasets, `*.csv` / `*.jsonl` corpora, snapshots, test data |",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "a0de24714987e8ee8ad6b39e0fe5cd9cf88d0084409b8fb6b190fbb29638b0f0",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 374,
+          "end_line": null,
+          "start_column": 251
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-3e3a97b6905842f9b9b17969d6bb3995",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 374,
+        "end_line": null,
+        "start_column": 230
+      },
+      "finding": ".npmrc",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "\n| Skip | Rule |\n| ---- | ---- |\n| **secrets — never open** | `.env*` (except `*.example` / `*.sample` / `*.template`, and then only variable *names*), `*.pem`, `*.key`, `*.p12`, `*.pfx`, `*.jks`, `*.keystore`, `id_rsa*`, `id_ed25519*`, `*.tfvars`, `*.tfstate`, `.npmrc`, `.pypirc`, `.netrc`, `.git-credentials`, `kubeconfig*`, `credentials*`, `secrets*`, `*secret*.y*ml` |\n| lockfiles, binaries, media | `*.lock`, `package-lock.json`, `go.sum`, archives, images, fonts, models, anything non-text |\n| generated code | protobuf/OpenAPI/ORM output, `*.min.*`, `*.pb.*`, `*_generated.*`, migrations snapshots, files saying `generated` / `do not edit` in their first lines |\n| bulk data | fixtures, datasets, `*.csv` / `*.jsonl` corpora, snapshots, test data |",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "90db6f55d69f559161a2849fde8edffb507139938d60d5919717abb304e0abfe",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 374,
+          "end_line": null,
+          "start_column": 230
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-eaaaaf7816dc4e3f953133bae3cdc61e",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.6,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 374,
+        "end_line": null,
+        "start_column": 281
+      },
+      "finding": "kubeconfig",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "\n| Skip | Rule |\n| ---- | ---- |\n| **secrets — never open** | `.env*` (except `*.example` / `*.sample` / `*.template`, and then only variable *names*), `*.pem`, `*.key`, `*.p12`, `*.pfx`, `*.jks`, `*.keystore`, `id_rsa*`, `id_ed25519*`, `*.tfvars`, `*.tfstate`, `.npmrc`, `.pypirc`, `.netrc`, `.git-credentials`, `kubeconfig*`, `credentials*`, `secrets*`, `*secret*.y*ml` |\n| lockfiles, binaries, media | `*.lock`, `package-lock.json`, `go.sum`, archives, images, fonts, models, anything non-text |\n| generated code | protobuf/OpenAPI/ORM output, `*.min.*`, `*.pb.*`, `*_generated.*`, migrations snapshots, files saying `generated` / `do not edit` in their first lines |\n| bulk data | fixtures, datasets, `*.csv` / `*.jsonl` corpora, snapshots, test data |",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "14883fb854849dcb81ed03e7c9b31e64261a0d6165a5a776dbc43d7a344ad47d",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 374,
+          "end_line": null,
+          "start_column": 281
+        }
+      ]
+    },
+    {
+      "id": "YR1",
+      "finding_id": "finding-71008bc5c7e54b9397874fe8701c3964",
+      "category": "YARA Match",
+      "pattern": "YARA rule 'info_stealer': Information stealer patterns (credential harvesting, browser data theft) [malware]",
+      "severity": "HIGH",
+      "confidence": 0.75,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 380,
+        "end_line": null
+      },
+      "finding": "cookies, or `.env` values in a title or body. If a file you read holds one, the knowledge",
+      "explanation": "YARA rule matched a known malware signature (reverse shell, backdoor, ransomware, C2 framework, or info stealer).",
+      "remediation": "Remove the malware payload or compromised file entirely. Investigate how it entered the skill and audit all other artifacts for additional indicators of compromise.",
+      "code_snippet": "s saying `generated` / `do not edit` in their first lines |\n| bulk data | fixtures, datasets, `*.csv` / `*.jsonl` corpora, snapshots, test data |\n| examples per language | `examples/` trees that repeat one usage in N languages: read one, skip the rest |\n\n**Secrets are never stored**, whatever the file: no credentials, tokens, API keys, passwords, private URLs with credentials, connection strings, cookies, or `.env` values in a title or body. If a file you read holds one, the knowledge you keep is at most \"X is configured through the env var `NAME`, set in <where>\"; the value never leaves the file.\n\nSort the survivors into source classes, in this reading order:\n\n1. **overview** — root `README*`, `ARCHITECTURE*`, the docs index, `CONTRIBUTING*` (docs-mode rules).\n2. **manifests** — `package.json`, `pyproject.toml`, `Cargo.toml`, `go.mod`, `pom.xml`, `build.gradle*`, `CMakeLists.txt`, `Makefile`, `Dockerfile`, `docker-compose*`, CI workflows: what is built, how, with which toolchain, ",
+      "intent": null,
+      "tags": [
+        "YARA Match"
+      ],
+      "evidence": {},
+      "match_fingerprint": "aadcbe4afb922bd7fc8e7a96b0182afb75976a0c75a521bf42f1d205e8726522",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 380,
+          "end_line": null
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": false,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 1,
+    "scanned_components": 1,
+    "coverage_percent": 100.0,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 1,
+    "partially_inspected_files": 0,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 56,
+        "end_line": 56,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 70,
+        "end_line": 70,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 98,
+        "end_line": 98,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 257,
+        "end_line": 257,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 258,
+        "end_line": 258,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 330,
+        "end_line": 330,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 332,
+        "end_line": 332,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 375,
+        "end_line": 375,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 385,
+        "end_line": 385,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 399,
+        "end_line": 399,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 400,
+        "end_line": 400,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 401,
+        "end_line": 401,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 402,
+        "end_line": 402,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 413,
+        "end_line": 413,
+        "fatal": false
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 56,
+        "column": 19,
+        "evidence": "- Lock files: `package-lock.json`, `yarn.lock`, `poetry.lock`, `Cargo.lock`, `go.sum`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 56,
+        "column": 40,
+        "evidence": "- Lock files: `package-lock.json`, `yarn.lock`, `poetry.lock`, `Cargo.lock`, `go.sum`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 56,
+        "column": 53,
+        "evidence": "- Lock files: `package-lock.json`, `yarn.lock`, `poetry.lock`, `Cargo.lock`, `go.sum`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 56,
+        "column": 68,
+        "evidence": "- Lock files: `package-lock.json`, `yarn.lock`, `poetry.lock`, `Cargo.lock`, `go.sum`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 56,
+        "column": 82,
+        "evidence": "- Lock files: `package-lock.json`, `yarn.lock`, `poetry.lock`, `Cargo.lock`, `go.sum`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 70,
+        "column": 106,
+        "evidence": "`README*`, top-level `docs/index*`, `ARCHITECTURE*`, `CHANGELOG*`, `*.adr.md`, `pom.xml`, `package.json`, `Cargo.toml`, top-level Makefiles, `*.openapi.{yaml,js",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 70,
+        "column": 117,
+        "evidence": "top-level `docs/index*`, `ARCHITECTURE*`, `CHANGELOG*`, `*.adr.md`, `pom.xml`, `package.json`, `Cargo.toml`, top-level Makefiles, `*.openapi.{yaml,json}`. These",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 70,
+        "column": 133,
+        "evidence": "index*`, `ARCHITECTURE*`, `CHANGELOG*`, `*.adr.md`, `pom.xml`, `package.json`, `Cargo.toml`, top-level Makefiles, `*.openapi.{yaml,json}`. These are high-levera",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 98,
+        "column": 19,
+        "evidence": "path_origins: [\"src/auth/JwtService.java\", \"src/auth/RefreshTokenStore.java\"],",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 98,
+        "column": 47,
+        "evidence": "path_origins: [\"src/auth/JwtService.java\", \"src/auth/RefreshTokenStore.java\"],",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 257,
+        "column": 138,
+        "evidence": "lder (`docs/`, `doc/`, `documentation/`, `adr/`, `decisions/`, `rfcs/`) except `README.txt`; always `CMakeLists.txt`, `requirements*.txt`, `robots.txt` |",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 257,
+        "column": 159,
+        "evidence": ", `documentation/`, `adr/`, `decisions/`, `rfcs/`) except `README.txt`; always `CMakeLists.txt`, `requirements*.txt`, `robots.txt` |",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 257,
+        "column": 198,
+        "evidence": "`, `rfcs/`) except `README.txt`; always `CMakeLists.txt`, `requirements*.txt`, `robots.txt` |",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 258,
+        "column": 25,
+        "evidence": "| agent instructions | `CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, `SKILL.md`, `.claude/**`, `.codex/**`, `.cursor/**`, `.github/copilot-instructions.md` — already i",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 258,
+        "column": 38,
+        "evidence": "| agent instructions | `CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, `SKILL.md`, `.claude/**`, `.codex/**`, `.cursor/**`, `.github/copilot-instructions.md` — already i",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 258,
+        "column": 51,
+        "evidence": "| agent instructions | `CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, `SKILL.md`, `.claude/**`, `.codex/**`, `.cursor/**`, `.github/copilot-instructions.md` — already i",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 258,
+        "column": 64,
+        "evidence": "| agent instructions | `CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, `SKILL.md`, `.claude/**`, `.codex/**`, `.cursor/**`, `.github/copilot-instructions.md` — already i",
+        "target_path": "SKILL.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 258,
+        "column": 117,
+        "evidence": "`AGENTS.md`, `GEMINI.md`, `SKILL.md`, `.claude/**`, `.codex/**`, `.cursor/**`, `.github/copilot-instructions.md` — already in the agent's context every session ",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 330,
+        "column": 15,
+        "evidence": "their source (docs/old-setup.md removed): 019e0a44..., 019e0a51... — delete or keep?",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 332,
+        "column": 33,
+        "evidence": "Continue with: /learn docs from docs/storage/README.md",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 375,
+        "column": 43,
+        "evidence": "| lockfiles, binaries, media | `*.lock`, `package-lock.json`, `go.sum`, archives, images, fonts, models, anything non-text |",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 375,
+        "column": 64,
+        "evidence": "| lockfiles, binaries, media | `*.lock`, `package-lock.json`, `go.sum`, archives, images, fonts, models, anything non-text |",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 385,
+        "column": 21,
+        "evidence": "2. **manifests** — `package.json`, `pyproject.toml`, `Cargo.toml`, `go.mod`, `pom.xml`, `build.gradle*`, `CMakeLists.txt`, `Makefile`, `Dockerfile`, `docker-com",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 385,
+        "column": 37,
+        "evidence": "2. **manifests** — `package.json`, `pyproject.toml`, `Cargo.toml`, `go.mod`, `pom.xml`, `build.gradle*`, `CMakeLists.txt`, `Makefile`, `Dockerfile`, `docker-com",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 385,
+        "column": 55,
+        "evidence": "2. **manifests** — `package.json`, `pyproject.toml`, `Cargo.toml`, `go.mod`, `pom.xml`, `build.gradle*`, `CMakeLists.txt`, `Makefile`, `Dockerfile`, `docker-com",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 385,
+        "column": 69,
+        "evidence": "2. **manifests** — `package.json`, `pyproject.toml`, `Cargo.toml`, `go.mod`, `pom.xml`, `build.gradle*`, `CMakeLists.txt`, `Makefile`, `Dockerfile`, `docker-com",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 385,
+        "column": 79,
+        "evidence": "2. **manifests** — `package.json`, `pyproject.toml`, `Cargo.toml`, `go.mod`, `pom.xml`, `build.gradle*`, `CMakeLists.txt`, `Makefile`, `Dockerfile`, `docker-com",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 385,
+        "column": 107,
+        "evidence": "e.json`, `pyproject.toml`, `Cargo.toml`, `go.mod`, `pom.xml`, `build.gradle*`, `CMakeLists.txt`, `Makefile`, `Dockerfile`, `docker-compose*`, CI workflows: what",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 399,
+        "column": 65,
+        "evidence": "overview high overview README.md, docs/architecture/README.md",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 400,
+        "column": 90,
+        "evidence": "build-and-toolchain high procedure CMakeLists.txt, scripts/build-*.sh, .github/workflows/ci.yml",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 401,
+        "column": 68,
+        "evidence": "storage high module src/storage/, include/graft/storage.h, docs/storage/",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 402,
+        "column": 54,
+        "evidence": "cli-json-contract high contract src/cli/main.c, docs/cli/README.md",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 402,
+        "column": 70,
+        "evidence": "cli-json-contract high contract src/cli/main.c, docs/cli/README.md",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 413,
+        "column": 42,
+        "evidence": "--note \"src/storage/, include/graft/storage.h, docs/storage/\"",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      }
+    ],
+    "limitations": [],
+    "findings_before_filtering": 5,
+    "findings_after_filtering": 5
+  }
+}

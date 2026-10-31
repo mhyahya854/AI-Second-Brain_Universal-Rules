@@ -1,0 +1,843 @@
+{
+  "skill": {
+    "name": "qa",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\browser-use\\browser-use\\qa",
+    "scanned_at": "2026-10-31T20:59:57.540788+00:00"
+  },
+  "risk_assessment": {
+    "score": 62,
+    "severity": "HIGH",
+    "recommendation": "DO_NOT_INSTALL",
+    "max_issue_severity": "HIGH"
+  },
+  "components": [
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 86,
+      "executable": false,
+      "size_bytes": 9154,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/browser-use-v2.md",
+      "type": "markdown",
+      "lines": 213,
+      "executable": false,
+      "size_bytes": 11879,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/methodology.md",
+      "type": "markdown",
+      "lines": 158,
+      "executable": false,
+      "size_bytes": 15995,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "SC2",
+      "finding_id": "finding-f3c7f2e4ff6c426f8898fff187ac953d",
+      "category": "Supply Chain",
+      "pattern": "External Script Fetching",
+      "severity": "HIGH",
+      "confidence": 0.9,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 57,
+        "end_line": null,
+        "start_column": 20
+      },
+      "finding": "curl | sh",
+      "explanation": "Remote code is downloaded and executed. This bypasses code review and could introduce malicious code.",
+      "remediation": "Avoid downloading and executing remote scripts. Use trusted packages from PyPI/npm. If remote fetch is required, verify checksums and use HTTPS.",
+      "code_snippet": "command -v browser-harness                                         # verify it's on PATH now\n```\n\n(No `uv` and can't `curl | sh`? Install uv per https://docs.astral.sh/uv/getting-started/installation/ then re-run the `uv tool install` line — or `pipx install \"git+https://github.com/browser-use/browser-harness\"`.)\n\nThe only other thing a run needs is a `BROWSER_USE_API_KEY`, and that **also** auto-resolves with no human — see `references/methodology.md` step 0 (it can self-sign-up for a free key). So a fresh machine goes from \"just installed `qa`\" to a working test without the user doing any setup.\n",
+      "intent": null,
+      "tags": [
+        "Supply Chain"
+      ],
+      "evidence": {},
+      "match_fingerprint": "ebbef685b1c1efc2c831bcdb8c1073d0ef4e35ed2ec5ba08fa7bc9c205d8407f",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 57,
+          "end_line": null,
+          "start_column": 20
+        }
+      ]
+    },
+    {
+      "id": "SC2",
+      "finding_id": "finding-f3eb0c4cb105454fb0a124042e07fbfa",
+      "category": "Supply Chain",
+      "pattern": "External Script Fetching",
+      "severity": "HIGH",
+      "confidence": 0.9,
+      "location": {
+        "file": "references/methodology.md",
+        "start_line": 38,
+        "end_line": null,
+        "start_column": 13
+      },
+      "finding": "curl -s http://localhost:4040/api/tunnels \\\n  | python",
+      "explanation": "Remote code is downloaded and executed. This bypasses code review and could introduce malicious code.",
+      "remediation": "Avoid downloading and executing remote scripts. Use trusted packages from PyPI/npm. If remote fetch is required, verify checksums and use HTTPS.",
+      "code_snippet": "# dev server is on, say, http://localhost:3000\nngrok http 3000 --host-header=rewrite --log=stdout > /tmp/qa-ngrok.log 2>&1 &\nsleep 3\nPUBLIC_URL=$(curl -s http://localhost:4040/api/tunnels \\\n  | python3 -c 'import sys,json; print(json.load(sys.stdin)[\"tunnels\"][0][\"public_url\"])')\necho \"$PUBLIC_URL\" | tee /tmp/qa-public-url.txt\n# Verify the tunnel reaches the APP, not a 403/interstitial, before spending a cloud browser:",
+      "intent": null,
+      "tags": [
+        "Supply Chain"
+      ],
+      "evidence": {},
+      "match_fingerprint": "b73ed2e02d36b522c9403d178926c057d9fffbb0ae99ae04f42c326f6843a6cd",
+      "occurrences": [
+        {
+          "file": "references/methodology.md",
+          "start_line": 38,
+          "end_line": null,
+          "start_column": 13
+        }
+      ]
+    },
+    {
+      "id": "MP3",
+      "finding_id": "finding-1dc07ab6ec584fb1a65dca3855de6057",
+      "category": "Memory Poisoning",
+      "pattern": "Memory Manipulation",
+      "severity": "HIGH",
+      "confidence": 0.8,
+      "location": {
+        "file": "references/methodology.md",
+        "start_line": 154,
+        "end_line": null,
+        "start_column": 4
+      },
+      "finding": "Reset state",
+      "explanation": "Skill manipulates agent memory, state, or stored context. Memory corruption can alter personality, override safety rules, or cause unpredictable behavior.",
+      "remediation": "Protect agent memory and state from modification by untrusted content. Use read-only memory for critical instructions and validate all state changes.",
+      "code_snippet": "## Tips\n\n- **Don't over-trust a clean screenshot.** Always `drain_events()` — many failures (analytics crashes, 4xx/5xx APIs, unhandled promise rejections) are invisible in pixels.\n- **Reset state between runs** when a flow is one-shot (signup with a used email): use a fresh email/value, or a clean tab, so a failure is the *site's* fault not stale state.\n- **Time things that matter.** A 12-second load or a spinner that never resolves is a scoring fact, not a footnote.\n- **Stop at auth/payment walls you can't legitimately pass.** Score what you could verify, and state plainly what you couldn't reach and why.\n- **Mind real, billed, or destructive actions.** When the app under test itself provisions resources (spins up VMs/browsers, sends emails, charges cards), exercise the path *minimally* — one item, not a burst — and avoid bulk-destructive controls (\"delete all\", \"stop all\") that could nuke state you didn't create (including your own test harness or the user's pre-existing data). Clea",
+      "intent": null,
+      "tags": [
+        "Memory Poisoning"
+      ],
+      "evidence": {},
+      "match_fingerprint": "5c17c6fcab1d2c097bdd17902df205d38bd84f57cf06ac3bdf440a9330b1b9c6",
+      "occurrences": [
+        {
+          "file": "references/methodology.md",
+          "start_line": 154,
+          "end_line": null,
+          "start_column": 4
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-26e99b5af9ea4130ae032f3ee42cdab3",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "references/browser-use-v2.md",
+        "start_line": 19,
+        "end_line": null,
+        "start_column": 20
+      },
+      "finding": "https://api.browser-use.com/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "\n## The endpoints\n\n- **Create:** `POST https://api.browser-use.com/api/v2/tasks` → `202 {id, sessionId}`\n- **Poll:** `GET https://api.browser-use.com/api/v2/tasks/{id}` → `status` ∈ `created → started →\n  finished | failed | stopped`, plus `output`, `judgeVerdict`, `judgement`, `steps[]`, `cost`.\n- Auth header on both: `X-Browser-Use-API-Key`.",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "58c5c466b9b49db9c08de45368308c7abfdaf17239d91a04fb2e05ff93653a54",
+      "occurrences": [
+        {
+          "file": "references/browser-use-v2.md",
+          "start_line": 19,
+          "end_line": null,
+          "start_column": 20
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-8d5cbbfccbbc4668bf8bc220a1fb5597",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "references/browser-use-v2.md",
+        "start_line": 20,
+        "end_line": null,
+        "start_column": 17
+      },
+      "finding": "https://api.browser-use.com/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "## The endpoints\n\n- **Create:** `POST https://api.browser-use.com/api/v2/tasks` → `202 {id, sessionId}`\n- **Poll:** `GET https://api.browser-use.com/api/v2/tasks/{id}` → `status` ∈ `created → started →\n  finished | failed | stopped`, plus `output`, `judgeVerdict`, `judgement`, `steps[]`, `cost`.\n- Auth header on both: `X-Browser-Use-API-Key`.\n",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "58c5c466b9b49db9c08de45368308c7abfdaf17239d91a04fb2e05ff93653a54",
+      "occurrences": [
+        {
+          "file": "references/browser-use-v2.md",
+          "start_line": 20,
+          "end_line": null,
+          "start_column": 17
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-676bbd18cb4445c899d7091ca364cfb0",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "references/browser-use-v2.md",
+        "start_line": 44,
+        "end_line": null,
+        "start_column": 8
+      },
+      "finding": "https://api.browser-use.com/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "import os, json, time, urllib.request, urllib.error, subprocess, sys\nKEY = os.environ.get(\"BROWSER_USE_API_KEY\")\nassert KEY, \"no BROWSER_USE_API_KEY — resolve it per methodology.md step 0\"\nBASE = \"https://api.browser-use.com/api/v2\"\n\ndef open_local(url):\n    \"\"\"Open a URL in the user's LOCAL browser (Chrome first) so they can watch the cloud agent run.",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "58c5c466b9b49db9c08de45368308c7abfdaf17239d91a04fb2e05ff93653a54",
+      "occurrences": [
+        {
+          "file": "references/browser-use-v2.md",
+          "start_line": 44,
+          "end_line": null,
+          "start_column": 8
+        }
+      ]
+    },
+    {
+      "id": "SC2",
+      "finding_id": "finding-dd8a8c229df24c12afe5e1698bf8a6f3",
+      "category": "Supply Chain",
+      "pattern": "External Script Fetching",
+      "severity": "LOW",
+      "confidence": 0.15,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 52,
+        "end_line": null,
+        "start_column": 17
+      },
+      "finding": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "explanation": "Remote code is downloaded and executed. This bypasses code review and could introduce malicious code.",
+      "remediation": "Avoid downloading and executing remote scripts. Use trusted packages from PyPI/npm. If remote fetch is required, verify checksums and use HTTPS.",
+      "code_snippet": "If `browser-harness` is **not** on `PATH`, **install it yourself — don't make the user do it.** QA runs on a *cloud* browser, so the CLI is all you need: **none** of browser-harness's local-browser setup (`chrome://inspect`, `--remote-debugging-port`, the \"Allow remote debugging\" popup) applies here — skip all of it. The install is one-time (~30s), no clone:\n\n```bash\ncommand -v uv || curl -LsSf https://astral.sh/uv/install.sh | sh   # the uv installer, only if missing\nuv tool install \"git+https://github.com/browser-use/browser-harness\"\ncommand -v browser-harness                                         # verify it's on PATH now\n```",
+      "intent": null,
+      "tags": [
+        "Supply Chain"
+      ],
+      "evidence": {},
+      "match_fingerprint": "5fd8b8523ba79a27734ebf6d819dd3afafc6b9f34042d0028fa9671115b66391",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 52,
+          "end_line": null,
+          "start_column": 17
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": false,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 3,
+    "scanned_components": 3,
+    "coverage_percent": 100.0,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 3,
+    "partially_inspected_files": 0,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 63,
+        "end_line": 63,
+        "fatal": false
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 22,
+        "column": 394,
+        "evidence": "a 1–5 `structuredOutput`). Use v2 for **every** flow — even a single one — per `references/browser-use-v2.md`. Do **not** drive `browser-harness` yourself to re",
+        "target_path": "references/browser-use-v2.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 30,
+        "column": 125,
+        "evidence": "ther with subagents — **drive `browser-harness` directly** yourself, following `references/methodology.md`. That's the right, lowest-overhead tool for a single ",
+        "target_path": "references/methodology.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 32,
+        "column": 357,
+        "evidence": ".01/task + ~$0.006/step + $0.02/hr browser). Per-task flow + how to fan out: `references/browser-use-v2.md`.",
+        "target_path": "references/browser-use-v2.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 33,
+        "column": 131,
+        "evidence": "aude Code subagents (the Agent tool), each driving `browser-harness` through `references/methodology.md`. No Browser Use *task* credits; uses your agent's own u",
+        "target_path": "references/methodology.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 59,
+        "column": 115,
+        "evidence": "s a `BROWSER_USE_API_KEY`, and that **also** auto-resolves with no human — see `references/methodology.md` step 0 (it can self-sign-up for a free key). So a fre",
+        "target_path": "references/methodology.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 63,
+        "column": 71,
+        "evidence": "> Set up https://github.com/browser-use/browser-harness for me. Read `install.md` first to install and connect this repo to my real browser. Then read `SKILL.md",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 63,
+        "column": 153,
+        "evidence": "stall.md` first to install and connect this repo to my real browser. Then read `SKILL.md` for normal usage. Always read `helpers.py` because that is where the f",
+        "target_path": "SKILL.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 63,
+        "column": 194,
+        "evidence": "is repo to my real browser. Then read `SKILL.md` for normal usage. Always read `helpers.py` because that is where the functions are. When you open a setup or ve",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 73,
+        "column": 149,
+        "evidence": "* (one v2 task per flow, each with `judge` + a 1–5 `structuredOutput`), per `references/browser-use-v2.md`. Skip the single-flow/subagent split below — it's v2 ",
+        "target_path": "references/browser-use-v2.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 74,
+        "column": 69,
+        "evidence": "- **Vision, one flow** → drive **browser-harness directly** per `references/methodology.md`: resolve the key, tunnel localhost, and run the test loop with the f",
+        "target_path": "references/methodology.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 76,
+        "column": 43,
+        "evidence": "- **v2 agents (recommended)** → per `references/browser-use-v2.md`, create one task per flow (each with `judge` + a 1–5 `structuredOutput` schema), poll them al",
+        "target_path": "references/browser-use-v2.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 77,
+        "column": 73,
+        "evidence": "- **Claude subagents** → spawn one Agent per flow, each following `references/methodology.md` on browser-harness.",
+        "target_path": "references/methodology.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 84,
+        "column": 165,
+        "evidence": "ssues (tagged), edge cases, and evidence — per the rubric and output format in `references/methodology.md`. **Fanning out?** Give a per-flow `Score: N/5` line a",
+        "target_path": "references/methodology.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      }
+    ],
+    "limitations": [],
+    "findings_before_filtering": 7,
+    "findings_after_filtering": 7
+  }
+}

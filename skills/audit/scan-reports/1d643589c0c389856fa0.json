@@ -1,0 +1,1516 @@
+{
+  "skill": {
+    "name": "agent-platform-eval-flywheel",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\google\\skills\\agent-platform-eval-flywheel",
+    "scanned_at": "2026-10-31T21:12:18.172376+00:00"
+  },
+  "risk_assessment": {
+    "score": 100,
+    "severity": "CRITICAL",
+    "recommendation": "DO_NOT_INSTALL",
+    "max_issue_severity": "HIGH"
+  },
+  "components": [
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 592,
+      "executable": false,
+      "size_bytes": 29798,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/dataset_schema.md",
+      "type": "markdown",
+      "lines": 307,
+      "executable": false,
+      "size_bytes": 11281,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/deployment.md",
+      "type": "markdown",
+      "lines": 205,
+      "executable": false,
+      "size_bytes": 7244,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/failure_patterns.md",
+      "type": "markdown",
+      "lines": 184,
+      "executable": false,
+      "size_bytes": 6356,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/metric_registry.md",
+      "type": "markdown",
+      "lines": 354,
+      "executable": false,
+      "size_bytes": 16457,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/sdk_patterns.md",
+      "type": "markdown",
+      "lines": 346,
+      "executable": false,
+      "size_bytes": 11460,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/compare_results.py",
+      "type": "python",
+      "lines": 205,
+      "executable": true,
+      "size_bytes": 6328,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/endpoint_evaluation.py",
+      "type": "python",
+      "lines": 189,
+      "executable": true,
+      "size_bytes": 5410,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/inspect_results.py",
+      "type": "python",
+      "lines": 217,
+      "executable": true,
+      "size_bytes": 6824,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/maas_evaluation.py",
+      "type": "python",
+      "lines": 92,
+      "executable": true,
+      "size_bytes": 2344,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/parse_adk_traces.py",
+      "type": "python",
+      "lines": 275,
+      "executable": true,
+      "size_bytes": 8639,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/render_html_report.py",
+      "type": "python",
+      "lines": 119,
+      "executable": true,
+      "size_bytes": 3768,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/validate_dataset.py",
+      "type": "python",
+      "lines": 397,
+      "executable": true,
+      "size_bytes": 11205,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "AE1",
+      "finding_id": "finding-3280dad2d5ae4732ac61669d7105da54",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 280,
+        "end_line": null
+      },
+      "finding": "references/metric_registry.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "[references/metric_registry.md](references/metric_registry.md).",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/metric_registry.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "cc3eb6e6cf26d9e38cd7142a727145944cb831422653f698c944fb9bc672fcda",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 280,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-6236b7f8ba0e429c87de7eefe7565b48",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 362,
+        "end_line": null
+      },
+      "finding": "references/metric_registry.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "[references/metric_registry.md](references/metric_registry.md) (\"What the",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/metric_registry.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "cc3eb6e6cf26d9e38cd7142a727145944cb831422653f698c944fb9bc672fcda",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 362,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-3074fbbf37034751860fadd57553764a",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "scripts/endpoint_evaluation.py",
+        "start_line": 18,
+        "end_line": null,
+        "start_column": 24
+      },
+      "finding": "access token",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "  Args:\n      prompt: The prompt to send to the model.\n      endpoint_url: The URL of the Agent Platform endpoint.\n      token: The gcloud access token.\n\n  Returns:\n      The model's response.",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "903a9f18e7222d4c1e39fcf76dec31bef3fd46b6332f4bc5bc823999d287548b",
+      "occurrences": [
+        {
+          "file": "scripts/endpoint_evaluation.py",
+          "start_line": 18,
+          "end_line": null,
+          "start_column": 24
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-3e083dc5c2084d71b6d855df11ec6a57",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "scripts/endpoint_evaluation.py",
+        "start_line": 114,
+        "end_line": null,
+        "start_column": 45
+      },
+      "finding": "access token",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "        check=True,\n    ).stdout.strip()\n  except subprocess.CalledProcessError as e:\n    raise RuntimeError(\"Error getting gcloud access token.\") from e\n\n  try:\n    jsonl_content = subprocess.run(",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "903a9f18e7222d4c1e39fcf76dec31bef3fd46b6332f4bc5bc823999d287548b",
+      "occurrences": [
+        {
+          "file": "scripts/endpoint_evaluation.py",
+          "start_line": 114,
+          "end_line": null,
+          "start_column": 45
+        }
+      ]
+    },
+    {
+      "id": "LP3",
+      "finding_id": "finding-f38f5feb03ba4ef8ba8c0095bb562fb4",
+      "category": "MCP Least Privilege",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 1,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "Without declared permissions the skill's intent is opaque and cannot be validated.",
+      "remediation": "Declare the skill's tool scope: for Claude Code / Agent Skills SKILL.md, list the tools the skill may invoke in the 'allowed-tools' frontmatter field; for MCP server manifests, add a 'permissions' list naming the required capabilities.",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI02"
+      ],
+      "evidence": {},
+      "match_fingerprint": null,
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 1,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "EA2",
+      "finding_id": "finding-51fe4fcbc3a04e3182601b87c4ef2ce2",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "severity": "MEDIUM",
+      "confidence": 0.75,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 44,
+        "end_line": null,
+        "start_column": 18
+      },
+      "finding": "No confirmation",
+      "explanation": "Skill enables autonomous high-impact decisions without human-in-the-loop verification. Critical operations (destructive commands, financial transactions, data deletion) should require explicit user confirmation.",
+      "remediation": "Add human-in-the-loop confirmation for destructive, irreversible, or high-impact operations. Never auto-execute commands that modify files, send data, or alter system state.",
+      "code_snippet": "\n1.  **Tier R**: Read-only (`inspect_results.py`, `compare_results.py`,\n    `validate_dataset.py`, `parse_adk_traces.py`, `render_html_report.py`)\n    *   **Rule**: No confirmation needed. You may execute these helper scripts\n        immediately to inspect data, validate schemas, parse traces, or compare\n        evaluation results.\n2.  **Tier M: Read-only with Compute Costs (`client.evals.run_inference`,",
+      "intent": null,
+      "tags": [
+        "Excessive Agency"
+      ],
+      "evidence": {},
+      "match_fingerprint": "afca04afeb75db76cbddc1ffb2a73598f31d2d03b5941c69a9de6af31da2733a",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 44,
+          "end_line": null,
+          "start_column": 18
+        }
+      ]
+    },
+    {
+      "id": "EA1",
+      "finding_id": "finding-d288e43721d14ef18997954d288e2b50",
+      "category": "Excessive Agency",
+      "pattern": "Unrestricted Tool Access",
+      "severity": "MEDIUM",
+      "confidence": 0.8,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 66,
+        "end_line": null,
+        "start_column": 61
+      },
+      "finding": "run any script",
+      "explanation": "Skill grants unrestricted tool access without appropriate constraints. An agent with unfettered tool access can perform arbitrary actions including file modification, network requests, and code execution.",
+      "remediation": "Restrict tool access to only the tools required for the skill's stated purpose. Use an explicit allowlist rather than granting blanket access.",
+      "code_snippet": "        does not count as obtaining confirmation.\n    *   **No Pre-Execution of Remote Evaluation**: NEVER execute\n        `client.evals.evaluate()`, `client.evals.run_inference()`,\n        `client.evals.generate_conversation_scenarios()`, or run any script\n        invoking these remote operations before user confirmation. In the\n        initial turn, you may prepare local data structures and compose the\n        script, but you MUST present the dry-run preview card and obtain",
+      "intent": null,
+      "tags": [
+        "Excessive Agency"
+      ],
+      "evidence": {},
+      "match_fingerprint": "8fc6c5547c75aafd07d01a75e802702937f6e95449931ad8541c39737fc41251",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 66,
+          "end_line": null,
+          "start_column": 61
+        }
+      ]
+    },
+    {
+      "id": "EA2",
+      "finding_id": "finding-b853efcfcc194494a5aa0ad49753b3fd",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "severity": "MEDIUM",
+      "confidence": 0.75,
+      "location": {
+        "file": "references/deployment.md",
+        "start_line": 111,
+        "end_line": null,
+        "start_column": 65
+      },
+      "finding": "without asking",
+      "explanation": "Skill enables autonomous high-impact decisions without human-in-the-loop verification. Critical operations (destructive commands, financial transactions, data deletion) should require explicit user confirmation.",
+      "remediation": "Add human-in-the-loop confirmation for destructive, irreversible, or high-impact operations. Never auto-execute commands that modify files, send data, or alter system state.",
+      "code_snippet": "gcloud ai operations describe $OPERATION_ID --region=$LOCATION_ID\n```\n\nReport the status to the user — including the \"not found\" case — without asking\nfor confirmation first.\n\n## 3. Run Inference and Evaluation",
+      "intent": null,
+      "tags": [
+        "Excessive Agency"
+      ],
+      "evidence": {},
+      "match_fingerprint": "8dc77d3dce9ba1f2672e813265a1b1a0c8594866ef38a4e978bf4f4451795465",
+      "occurrences": [
+        {
+          "file": "references/deployment.md",
+          "start_line": 111,
+          "end_line": null,
+          "start_column": 65
+        }
+      ]
+    },
+    {
+      "id": "AE4",
+      "finding_id": "finding-58d91371ca3647eea821e49386052a39",
+      "category": "analysis-evasion",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.8,
+      "location": {
+        "file": "scripts/compare_results.py",
+        "start_line": 1,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "Suspicious Unicode normalization or mixed-script content",
+      "remediation": "Review the flagged content for security risks. Ensure no credentials, secrets, or sensitive data are exposed.",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "artifact-integrity"
+      ],
+      "evidence": {},
+      "match_fingerprint": null,
+      "occurrences": [
+        {
+          "file": "scripts/compare_results.py",
+          "start_line": 1,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AST4",
+      "finding_id": "finding-9880aaf3bfcf48409ae68f3685486d50",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "scripts/endpoint_evaluation.py",
+        "start_line": 107,
+        "end_line": 112,
+        "start_column": 12,
+        "end_column": 5
+      },
+      "finding": "subprocess.run(\n        [\"gcloud\", \"auth\", \"print-access-token\"],\n        capture_output=True,\n        text=True,\n        check=True,\n    )",
+      "explanation": "subprocess module calls execute external commands. Without careful input validation, this enables command injection.",
+      "remediation": "Use subprocess.run() with shell=False and an explicit argument list. Validate all inputs and avoid passing user-controlled data to commands.",
+      "code_snippet": "  else:\n    endpoint_url = f\"https://{location}-aiplatform.googleapis.com/v1/projects/{project_id}/locations/{location}/endpoints/{endpoint_id}:predict\"\n  try:\n    token = subprocess.run(\n        [\"gcloud\", \"auth\", \"print-access-token\"],\n        capture_output=True,\n        text=True,",
+      "intent": null,
+      "tags": [
+        "Dangerous Code Execution"
+      ],
+      "evidence": {},
+      "match_fingerprint": "aa25753b699e9c4b63737b7feeca636b4ee8768f8821b2f6a93fb3c246a29f71",
+      "occurrences": [
+        {
+          "file": "scripts/endpoint_evaluation.py",
+          "start_line": 107,
+          "end_line": 112,
+          "start_column": 12,
+          "end_column": 5
+        }
+      ]
+    },
+    {
+      "id": "AST4",
+      "finding_id": "finding-2e6e910a09554068a8f5c9d1410ba5e2",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "scripts/endpoint_evaluation.py",
+        "start_line": 117,
+        "end_line": 122,
+        "start_column": 20,
+        "end_column": 5
+      },
+      "finding": "subprocess.run(\n        [\"gsutil\", \"cat\", dataset],\n        capture_output=True,\n        text=True,\n        check=True,\n    )",
+      "explanation": "subprocess module calls execute external commands. Without careful input validation, this enables command injection.",
+      "remediation": "Use subprocess.run() with shell=False and an explicit argument list. Validate all inputs and avoid passing user-controlled data to commands.",
+      "code_snippet": "    raise RuntimeError(\"Error getting gcloud access token.\") from e\n\n  try:\n    jsonl_content = subprocess.run(\n        [\"gsutil\", \"cat\", dataset],\n        capture_output=True,\n        text=True,",
+      "intent": null,
+      "tags": [
+        "Dangerous Code Execution"
+      ],
+      "evidence": {},
+      "match_fingerprint": "e658cccb7329037b215d778bc426f9577277a1221bd73456b421f76ab5d37e36",
+      "occurrences": [
+        {
+          "file": "scripts/endpoint_evaluation.py",
+          "start_line": 117,
+          "end_line": 122,
+          "start_column": 20,
+          "end_column": 5
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": true,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 13,
+    "scanned_components": 12,
+    "coverage_percent": 92.3,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 12,
+    "partially_inspected_files": 1,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 20,
+        "end_line": 20,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 48,
+        "end_line": 48,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 288,
+        "end_line": 288,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 347,
+        "end_line": 347,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 359,
+        "end_line": 359,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "references/metric_registry.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 13,
+        "completed": 13,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 13,
+        "completed": 13,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "reference_coverage",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "completed",
+        "planned_work": 13,
+        "completed": 13,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "completed",
+        "planned_work": 13,
+        "completed": 13,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 13,
+        "completed": 13,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "completed",
+        "planned_work": 13,
+        "completed": 13,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "completed",
+        "planned_work": 13,
+        "completed": 13,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "completed",
+        "planned_work": 13,
+        "completed": 13,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "completed",
+        "planned_work": 13,
+        "completed": 13,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 13,
+        "completed": 13,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "completed",
+        "planned_work": 13,
+        "completed": 13,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "completed",
+        "planned_work": 13,
+        "completed": 13,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "completed",
+        "planned_work": 13,
+        "completed": 13,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "completed",
+        "planned_work": 13,
+        "completed": 13,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "completed",
+        "planned_work": 13,
+        "completed": 13,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "completed",
+        "planned_work": 13,
+        "completed": 13,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "degraded",
+        "planned_work": 13,
+        "completed": 12,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 13,
+        "completed": 13,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 20,
+        "column": 39,
+        "evidence": "Agent Platform GenAI Evaluation SDK (`google.genai` / `agentplatform`).",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 34,
+        "column": 32,
+        "evidence": "[references/deployment.md](references/deployment.md) and use the",
+        "target_path": "references/deployment.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 34,
+        "column": 6,
+        "evidence": "[references/deployment.md](references/deployment.md) and use the",
+        "target_path": "references/deployment.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 35,
+        "column": 6,
+        "evidence": "`endpoint_evaluation.py` / `maas_evaluation.py` scripts.",
+        "target_path": "scripts/endpoint_evaluation.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 35,
+        "column": 33,
+        "evidence": "`endpoint_evaluation.py` / `maas_evaluation.py` scripts.",
+        "target_path": "scripts/maas_evaluation.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 42,
+        "column": 29,
+        "evidence": "1. **Tier R**: Read-only (`inspect_results.py`, `compare_results.py`,",
+        "target_path": "scripts/inspect_results.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 42,
+        "column": 51,
+        "evidence": "1. **Tier R**: Read-only (`inspect_results.py`, `compare_results.py`,",
+        "target_path": "scripts/compare_results.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 43,
+        "column": 6,
+        "evidence": "`validate_dataset.py`, `parse_adk_traces.py`, `render_html_report.py`)",
+        "target_path": "scripts/validate_dataset.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 43,
+        "column": 29,
+        "evidence": "`validate_dataset.py`, `parse_adk_traces.py`, `render_html_report.py`)",
+        "target_path": "scripts/parse_adk_traces.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 43,
+        "column": 52,
+        "evidence": "`validate_dataset.py`, `parse_adk_traces.py`, `render_html_report.py`)",
+        "target_path": "scripts/render_html_report.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 48,
+        "column": 6,
+        "evidence": "`client.evals.evaluate`, `client.evals.generate_conversation_scenarios`,",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 173,
+        "column": 36,
+        "evidence": "[references/dataset_schema.md](references/dataset_schema.md) for the full",
+        "target_path": "references/dataset_schema.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 173,
+        "column": 6,
+        "evidence": "[references/dataset_schema.md](references/dataset_schema.md) for the full",
+        "target_path": "references/dataset_schema.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 191,
+        "column": 36,
+        "evidence": "[references/dataset_schema.md](references/dataset_schema.md) for the",
+        "target_path": "references/dataset_schema.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 191,
+        "column": 6,
+        "evidence": "[references/dataset_schema.md](references/dataset_schema.md) for the",
+        "target_path": "references/dataset_schema.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 229,
+        "column": 26,
+        "evidence": "[Managed Agents API](https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/managed-agents).",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 235,
+        "column": 34,
+        "evidence": "[references/sdk_patterns.md](references/sdk_patterns.md) Pattern 8 for the",
+        "target_path": "references/sdk_patterns.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 235,
+        "column": 6,
+        "evidence": "[references/sdk_patterns.md](references/sdk_patterns.md) Pattern 8 for the",
+        "target_path": "references/sdk_patterns.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 238,
+        "column": 29,
+        "evidence": "For ADK session dumps, use `scripts/parse_adk_traces.py` instead of writing the",
+        "target_path": "scripts/parse_adk_traces.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 280,
+        "column": 33,
+        "evidence": "[references/metric_registry.md](references/metric_registry.md).",
+        "target_path": "references/metric_registry.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 280,
+        "column": 2,
+        "evidence": "[references/metric_registry.md](references/metric_registry.md).",
+        "target_path": "references/metric_registry.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 288,
+        "column": 2,
+        "evidence": "`vertexai.evaluation.EvalTask` / `PointwiseMetric` /",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 347,
+        "column": 33,
+        "evidence": "- **Custom LLM-as-a-judge:** `types.LLMMetric` with `prompt_template` or",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 359,
+        "column": 6,
+        "evidence": "`types.Metric` with `custom_function=<callable>` for local execution. The",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 362,
+        "column": 37,
+        "evidence": "[references/metric_registry.md](references/metric_registry.md) (\"What the",
+        "target_path": "references/metric_registry.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 362,
+        "column": 6,
+        "evidence": "[references/metric_registry.md](references/metric_registry.md) (\"What the",
+        "target_path": "references/metric_registry.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 387,
+        "column": 21,
+        "evidence": "Or after the fact: `scripts/render_html_report.py --type evaluation` or",
+        "target_path": "scripts/render_html_report.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 388,
+        "column": 2,
+        "evidence": "`scripts/inspect_results.py --save-html`.",
+        "target_path": "scripts/inspect_results.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 393,
+        "column": 2,
+        "evidence": "`scripts/inspect_results.py --failing-only` to filter to failures.",
+        "target_path": "scripts/inspect_results.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 396,
+        "column": 34,
+        "evidence": "[references/failure_patterns.md](references/failure_patterns.md) for deeper",
+        "target_path": "references/failure_patterns.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 396,
+        "column": 2,
+        "evidence": "[references/failure_patterns.md](references/failure_patterns.md) for deeper",
+        "target_path": "references/failure_patterns.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 461,
+        "column": 52,
+        "evidence": "Save `response.model_dump_json()` and render with `scripts/render_html_report.py",
+        "target_path": "scripts/render_html_report.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 467,
+        "column": 2,
+        "evidence": "`scripts/compare_results.py --baseline <prev> --candidate <new>` to confirm the",
+        "target_path": "scripts/compare_results.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 486,
+        "column": 7,
+        "evidence": "(`scripts/inspect_results.py`).",
+        "target_path": "scripts/inspect_results.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 487,
+        "column": 41,
+        "evidence": "- After a fix, show before/after via `scripts/compare_results.py`.",
+        "target_path": "scripts/compare_results.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 531,
+        "column": 38,
+        "evidence": "# Verbose and easy to get wrong; see references/dataset_schema.md for the",
+        "target_path": "references/dataset_schema.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 578,
+        "column": 34,
+        "evidence": "See [references/sdk_patterns.md](references/sdk_patterns.md) for advanced",
+        "target_path": "references/sdk_patterns.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 578,
+        "column": 6,
+        "evidence": "See [references/sdk_patterns.md](references/sdk_patterns.md) for advanced",
+        "target_path": "references/sdk_patterns.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 586,
+        "column": 2,
+        "evidence": "`validate_dataset.py` | Before Stage 3 — catch malformed `EvaluationDataset` JSON.",
+        "target_path": "scripts/validate_dataset.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 587,
+        "column": 2,
+        "evidence": "`parse_adk_traces.py` | Stage 1 — convert ADK session dumps to the canonical dataset shape.",
+        "target_path": "scripts/parse_adk_traces.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 588,
+        "column": 2,
+        "evidence": "`inspect_results.py` | Stages 3/4 — render summary + per-case scores. `--save-html` for a browsable report.",
+        "target_path": "scripts/inspect_results.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 589,
+        "column": 2,
+        "evidence": "`compare_results.py` | Stage 5 — diff baseline vs. candidate, detect regressions.",
+        "target_path": "scripts/compare_results.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 590,
+        "column": 2,
+        "evidence": "`render_html_report.py` | Render HTML from a saved result JSON or loss-clusters JSON.",
+        "target_path": "scripts/render_html_report.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 591,
+        "column": 2,
+        "evidence": "`endpoint_evaluation.py` | Stages 2/3 against a deployed Agent Platform endpoint (BYOM). See [references/deployment.md](references/deployment.md).",
+        "target_path": "scripts/endpoint_evaluation.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 591,
+        "column": 121,
+        "evidence": "`endpoint_evaluation.py` | Stages 2/3 against a deployed Agent Platform endpoint (BYOM). See [references/deployment.md](references/deployment.md).",
+        "target_path": "references/deployment.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 591,
+        "column": 95,
+        "evidence": "`endpoint_evaluation.py` | Stages 2/3 against a deployed Agent Platform endpoint (BYOM). See [references/deployment.md](references/deployment.md).",
+        "target_path": "references/deployment.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 592,
+        "column": 2,
+        "evidence": "`maas_evaluation.py` | Stages 2/3 against a Model-as-a-Service model by ID. See [references/deployment.md](references/deployment.md).",
+        "target_path": "scripts/maas_evaluation.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 592,
+        "column": 112,
+        "evidence": "`maas_evaluation.py` | Stages 2/3 against a Model-as-a-Service model by ID. See [references/deployment.md](references/deployment.md).",
+        "target_path": "references/deployment.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 592,
+        "column": 86,
+        "evidence": "`maas_evaluation.py` | Stages 2/3 against a Model-as-a-Service model by ID. See [references/deployment.md](references/deployment.md).",
+        "target_path": "references/deployment.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      }
+    ],
+    "limitations": [
+      "Analyzer static_patterns_tool_misuse status: degraded."
+    ],
+    "findings_before_filtering": 11,
+    "findings_after_filtering": 11
+  }
+}

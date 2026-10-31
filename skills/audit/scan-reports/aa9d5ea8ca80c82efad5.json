@@ -1,0 +1,1261 @@
+{
+  "skill": {
+    "name": "api-gateway-backend-security-and-rate-limiting",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\google\\skills\\api-gateway-backend-security-and-rate-limiting",
+    "scanned_at": "2026-10-31T21:34:41.766933+00:00"
+  },
+  "risk_assessment": {
+    "score": 56,
+    "severity": "HIGH",
+    "recommendation": "DO_NOT_INSTALL",
+    "max_issue_severity": "HIGH"
+  },
+  "components": [
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 125,
+      "executable": false,
+      "size_bytes": 11452,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/attribution.md",
+      "type": "markdown",
+      "lines": 41,
+      "executable": false,
+      "size_bytes": 1986,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/backend-security.md",
+      "type": "markdown",
+      "lines": 102,
+      "executable": false,
+      "size_bytes": 8016,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/client-authentication.md",
+      "type": "markdown",
+      "lines": 136,
+      "executable": false,
+      "size_bytes": 9267,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/mcp-traffic-security.md",
+      "type": "markdown",
+      "lines": 115,
+      "executable": false,
+      "size_bytes": 9690,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/quotas-and-rate-limiting.md",
+      "type": "markdown",
+      "lines": 150,
+      "executable": false,
+      "size_bytes": 7704,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/check_quota_metrics.py",
+      "type": "python",
+      "lines": 458,
+      "executable": true,
+      "size_bytes": 16093,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "PE3",
+      "finding_id": "finding-1498a7f061734c9ba6fc0825b8bad1b3",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/client-authentication.md",
+        "start_line": 11,
+        "end_line": null,
+        "start_column": 301
+      },
+      "finding": "extract API keys from",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "\n## API Key Configuration\n\nUse an API key to identify the calling Google Cloud consumer project for quota enforcement, billing, and usage tracking. Do not use an API key alone to authenticate end-user identity. **Rationale:** An API key identifies a Google Cloud project rather than a user or service principal, and callers can extract API keys from client applications.\n\nPass the API key in the `x-api-key` HTTP header as the standard convention. Use the `key` query parameter only as an escape hatch when the client cannot set custom HTTP headers. **Rationale:** URL query parameters appear in proxy logs, browser history, and access logs.\n",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "3476f10ed38d6b5b0b7e5fa6296a5cd3a1b555519c3c0aa7971aac0645eb92b0",
+      "occurrences": [
+        {
+          "file": "references/client-authentication.md",
+          "start_line": 11,
+          "end_line": null,
+          "start_column": 301
+        }
+      ]
+    },
+    {
+      "id": "LP3",
+      "finding_id": "finding-3a687d34ab114d04a30e563b2a13be05",
+      "category": "MCP Least Privilege",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 1,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "Without declared permissions the skill's intent is opaque and cannot be validated.",
+      "remediation": "Declare the skill's tool scope: for Claude Code / Agent Skills SKILL.md, list the tools the skill may invoke in the 'allowed-tools' frontmatter field; for MCP server manifests, add a 'permissions' list naming the required capabilities.",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI02"
+      ],
+      "evidence": {},
+      "match_fingerprint": null,
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 1,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "TM3",
+      "finding_id": "finding-f149289584264271a4652a86253a97a4",
+      "category": "Tool Misuse",
+      "pattern": "Unsafe Defaults",
+      "severity": "MEDIUM",
+      "confidence": 0.8,
+      "location": {
+        "file": "references/backend-security.md",
+        "start_line": 55,
+        "end_line": null,
+        "start_column": 318
+      },
+      "finding": "disableAuth",
+      "explanation": "Tool defaults are unsafe or overly permissive (e.g. disabled TLS verification, no authentication, world-writable permissions). Unsafe defaults widen the attack surface.",
+      "remediation": "Override unsafe defaults with secure settings (verify=True, auth required, restrictive permissions). Review and harden all tool configurations.",
+      "code_snippet": "\n## Backend Authentication Extensions (OpenAPI 2.0 vs 3.x)\n\nIn OpenAPI 2.0, `x-google-backend` is an inline object with `snake_case` fields. In OpenAPI 3.x, you MUST define named backends inside the root `x-google-api-management.backends` map, and set `x-google-backend` to the string name of that backend. Use the documented `camelCase` field names (such as `jwtAudience` and `disableAuth`). **Rationale:** OpenAPI 3.x configs reject inline `x-google-backend` objects.\n\n| Setting | OpenAPI 2.0 (`x-google-backend`) | OpenAPI 3.x (`x-google-api-management.backends.{name}`) | Behavior |\n| --- | --- | --- | --- |",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "26803002c199de076dd4932684648ea256042218bb39db26c3a6f0df8017f47f",
+      "occurrences": [
+        {
+          "file": "references/backend-security.md",
+          "start_line": 55,
+          "end_line": null,
+          "start_column": 318
+        }
+      ]
+    },
+    {
+      "id": "TM3",
+      "finding_id": "finding-7f620cbdf03b45b9ba4ae0cfe25e70f9",
+      "category": "Tool Misuse",
+      "pattern": "Unsafe Defaults",
+      "severity": "MEDIUM",
+      "confidence": 0.8,
+      "location": {
+        "file": "references/backend-security.md",
+        "start_line": 61,
+        "end_line": null,
+        "start_column": 43
+      },
+      "finding": "disableAuth",
+      "explanation": "Tool defaults are unsafe or overly permissive (e.g. disabled TLS verification, no authentication, world-writable permissions). Unsafe defaults widen the attack surface.",
+      "remediation": "Override unsafe defaults with secure settings (verify=True, auth required, restrictive permissions). Review and harden all tool configurations.",
+      "code_snippet": "| --- | --- | --- | --- |\n| Backend URL | `address` | `address` | Required target backend URL. |\n| OIDC JWT Audience | `jwt_audience` | `jwtAudience` | Defaults to `address`. Set this field to the OAuth 2.0 client ID when the backend is protected by Identity-Aware Proxy (IAP) or runs on App Engine. |\n| Disable Backend Auth | `disable_auth` | `disableAuth` | Defaults to `false`. Set to `true` to prevent the gateway proxy from obtaining and attaching an instance OIDC ID token (leaving any client `Authorization` header unreplaced by a gateway ID token). |\n| Path Translation | `path_translation` | `pathTranslation` | Defaults to `APPEND_PATH_TO_ADDRESS` when `x-google-backend` is at the root level, and `CONSTANT_ADDRESS` when set at the operation level. |\n| Deadline | `deadline` | `deadline` | Defaults to `15.0` seconds. Configurable up to `3600` seconds on streaming endpoints or `600` seconds on non-streaming gateways (values above `600` on non-streaming gateways are rejected at `gateways",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "26803002c199de076dd4932684648ea256042218bb39db26c3a6f0df8017f47f",
+      "occurrences": [
+        {
+          "file": "references/backend-security.md",
+          "start_line": 61,
+          "end_line": null,
+          "start_column": 43
+        }
+      ]
+    },
+    {
+      "id": "TM3",
+      "finding_id": "finding-3d8c4c1ee34948669b143d3f9b67c296",
+      "category": "Tool Misuse",
+      "pattern": "Unsafe Defaults",
+      "severity": "MEDIUM",
+      "confidence": 0.8,
+      "location": {
+        "file": "references/backend-security.md",
+        "start_line": 61,
+        "end_line": null,
+        "start_column": 26
+      },
+      "finding": "disable_auth",
+      "explanation": "Tool defaults are unsafe or overly permissive (e.g. disabled TLS verification, no authentication, world-writable permissions). Unsafe defaults widen the attack surface.",
+      "remediation": "Override unsafe defaults with secure settings (verify=True, auth required, restrictive permissions). Review and harden all tool configurations.",
+      "code_snippet": "| --- | --- | --- | --- |\n| Backend URL | `address` | `address` | Required target backend URL. |\n| OIDC JWT Audience | `jwt_audience` | `jwtAudience` | Defaults to `address`. Set this field to the OAuth 2.0 client ID when the backend is protected by Identity-Aware Proxy (IAP) or runs on App Engine. |\n| Disable Backend Auth | `disable_auth` | `disableAuth` | Defaults to `false`. Set to `true` to prevent the gateway proxy from obtaining and attaching an instance OIDC ID token (leaving any client `Authorization` header unreplaced by a gateway ID token). |\n| Path Translation | `path_translation` | `pathTranslation` | Defaults to `APPEND_PATH_TO_ADDRESS` when `x-google-backend` is at the root level, and `CONSTANT_ADDRESS` when set at the operation level. |\n| Deadline | `deadline` | `deadline` | Defaults to `15.0` seconds. Configurable up to `3600` seconds on streaming endpoints or `600` seconds on non-streaming gateways (values above `600` on non-streaming gateways are rejected at `gateways",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "3d367c22a273c779d3f43ca7de293a9b2dacd42a02136b3006d5e2db3a522174",
+      "occurrences": [
+        {
+          "file": "references/backend-security.md",
+          "start_line": 61,
+          "end_line": null,
+          "start_column": 26
+        }
+      ]
+    },
+    {
+      "id": "AST4",
+      "finding_id": "finding-e994e3872442489da53a600db91f5d3a",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "scripts/check_quota_metrics.py",
+        "start_line": 214,
+        "end_line": 221,
+        "start_column": 20,
+        "end_column": 3
+      },
+      "finding": "subprocess.run(\n      gateways_command,\n      capture_output=True,\n      text=True,\n      check=False,\n      stdin=subprocess.DEVNULL,\n      timeout=_GCLOUD_TIMEOUT_SECONDS,\n  )",
+      "explanation": "subprocess module calls execute external commands. Without careful input validation, this enables command injection.",
+      "remediation": "Use subprocess.run() with shell=False and an explicit argument list. Validate all inputs and avoid passing user-controlled data to commands.",
+      "code_snippet": "      f'--project={project}',\n      '--format=json',\n  ]\n  gateways_result = subprocess.run(\n      gateways_command,\n      capture_output=True,\n      text=True,",
+      "intent": null,
+      "tags": [
+        "Dangerous Code Execution"
+      ],
+      "evidence": {},
+      "match_fingerprint": "bb95a328b582592335eb12c5b0bc31199f8bd7f9178913d426289ae56595ed4f",
+      "occurrences": [
+        {
+          "file": "scripts/check_quota_metrics.py",
+          "start_line": 214,
+          "end_line": 221,
+          "start_column": 20,
+          "end_column": 3
+        }
+      ]
+    },
+    {
+      "id": "AST4",
+      "finding_id": "finding-56656cc56e0842e6835f9848567c38bf",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "scripts/check_quota_metrics.py",
+        "start_line": 249,
+        "end_line": 256,
+        "start_column": 20,
+        "end_column": 5
+      },
+      "finding": "subprocess.run(\n        config_command,\n        capture_output=True,\n        text=True,\n        check=False,\n        stdin=subprocess.DEVNULL,\n        timeout=_GCLOUD_TIMEOUT_SECONDS,\n    )",
+      "explanation": "subprocess module calls execute external commands. Without careful input validation, this enables command injection.",
+      "remediation": "Use subprocess.run() with shell=False and an explicit argument list. Validate all inputs and avoid passing user-controlled data to commands.",
+      "code_snippet": "        '--view=FULL',\n        '--format=json',\n    ]\n    config_result = subprocess.run(\n        config_command,\n        capture_output=True,\n        text=True,",
+      "intent": null,
+      "tags": [
+        "Dangerous Code Execution"
+      ],
+      "evidence": {},
+      "match_fingerprint": "d910ddfd2f73fcc3c9e1cb81a9f4adfc416aa1877b729d93b467a2e9f57e3cf7",
+      "occurrences": [
+        {
+          "file": "scripts/check_quota_metrics.py",
+          "start_line": 249,
+          "end_line": 256,
+          "start_column": 20,
+          "end_column": 5
+        }
+      ]
+    },
+    {
+      "id": "PE1",
+      "finding_id": "finding-43a83109cbad4651a8ebaf6a0e745a40",
+      "category": "Privilege Escalation",
+      "pattern": "Excessive Permissions",
+      "severity": "LOW",
+      "confidence": 0.8,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 79,
+        "end_line": null,
+        "start_column": 66
+      },
+      "finding": "permissions:*",
+      "explanation": "Skill requests more permissions than appear necessary for its stated functionality. Review if elevated access is justified.",
+      "remediation": "Request only the minimum permissions required. Document why each permission is needed. Remove broad permissions like '*' or 'all'.",
+      "code_snippet": "\nFollow this zero-downtime sequence when authoring or updating an API Gateway security or quota configuration:\n\n1. **Create the gateway service account and grant backend invoker permissions:**\n   - Follow Steps 1–3 of [Backend Security](references/backend-security.md) to create `{gateway_sa_name}` and request human approval before granting `roles/run.invoker` on `{backend_service}`.\n   - Update backend handler code to decode verified user claims from `X-Apigateway-Api-Userinfo` (`base64url`-encoded JSON) instead of `Authorization`.\n2. **Author the OpenAPI authentication and quota definitions:**",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "7e06ebda296bbeedb4b6c38cfbaea0ac27f9fa01ddf0a23a30d90d135d9575ca",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 79,
+          "end_line": null,
+          "start_column": 66
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": true,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 7,
+    "scanned_components": 7,
+    "coverage_percent": 100.0,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 7,
+    "partially_inspected_files": 0,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 19,
+        "end_line": 19,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 27,
+        "end_line": 27,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 28,
+        "end_line": 28,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 58,
+        "end_line": 58,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 60,
+        "end_line": 60,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 61,
+        "end_line": 61,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 71,
+        "end_line": 71,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 73,
+        "end_line": 73,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 80,
+        "end_line": 80,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 84,
+        "end_line": 84,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 86,
+        "end_line": 86,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 109,
+        "end_line": 109,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 114,
+        "end_line": 114,
+        "fatal": false
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 19,
+        "column": 178,
+        "evidence": "ate limits (quotas) for Google Cloud API Gateway across OpenAPI 2.0 (`swagger: \"2.0\"`) and OpenAPI 3.0.x (`openapi: 3.0.4`), including gateways with Model Conte",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 24,
+        "column": 31,
+        "evidence": "MUST read [Usage Attribution](references/attribution.md). For commands executed",
+        "target_path": "references/attribution.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 27,
+        "column": 40,
+        "evidence": "`CLOUDSDK_METRICS_REQUEST_ATTRIBUTION=\"agent-skills/1.0 (skill:api-gateway-backend-security-and-rate-limiting)\"`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 28,
+        "column": 13,
+        "evidence": "and append `agent-skills/1.0 (skill:api-gateway-backend-security-and-rate-limiting)` to `User-Agent` headers.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 33,
+        "column": 47,
+        "evidence": "- Install or update the [Google Cloud SDK](https://docs.cloud.google.com/sdk/docs/install-sdk.md.txt).",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 44,
+        "column": 143,
+        "evidence": "_id}` (required even when staying within the [API Gateway pricing free tier](https://cloud.google.com/api-gateway/pricing)).",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 45,
+        "column": 146,
+        "evidence": "ommands. For the other supported regions, see [API Gateway deployment model](https://docs.cloud.google.com/api-gateway/docs/deployment-model.md.txt).",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 58,
+        "column": 60,
+        "evidence": "- To manage API Gateway resources and enable services: `roles/apigateway.admin` and `roles/serviceusage.serviceUsageAdmin`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 60,
+        "column": 48,
+        "evidence": "- To manage API keys in consumer projects: `roles/serviceusage.apiKeysAdmin`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 61,
+        "column": 62,
+        "evidence": "- For the gateway service account to invoke the backend: `roles/run.invoker` (Cloud Run or 2nd gen functions) or `roles/cloudfunctions.invoker` (1st gen functio",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 61,
+        "column": 118,
+        "evidence": "invoke the backend: `roles/run.invoker` (Cloud Run or 2nd gen functions) or `roles/cloudfunctions.invoker` (1st gen functions)",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 69,
+        "column": 342,
+        "evidence": "ect rather than a user, and clients can extract them. | [Client Authentication](references/client-authentication.md) |",
+        "target_path": "references/client-authentication.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 70,
+        "column": 374,
+        "evidence": "when an endpoint needs both user identity and quotas. | [Client Authentication](references/client-authentication.md) |",
+        "target_path": "references/client-authentication.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 71,
+        "column": 119,
+        "evidence": "rvice | Dedicated gateway service account (`--backend-auth-service-account`) + `roles/run.invoker` + backend `--no-allow-unauthenticated` | Roll out the gateway",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 71,
+        "column": 353,
+        "evidence": "nauthenticated` on a live backend to avoid `403` downtime. | [Backend Security](references/backend-security.md) |",
+        "target_path": "references/backend-security.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 72,
+        "column": 483,
+        "evidence": " to call Service Control Quota` on older gateways. | [Quotas and Rate Limiting](references/quotas-and-rate-limiting.md) |",
+        "target_path": "references/quotas-and-rate-limiting.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 73,
+        "column": 74,
+        "evidence": "| Secure MCP `tools/list` and `tools/call` on `/mcp` (Public Preview) | `x-google-api-management.mcp.tools-list.security` (exactly one JWT or API key scheme) + ",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 73,
+        "column": 367,
+        "evidence": "ing REST route remains live unless secured or removed. | [MCP Traffic Security](references/mcp-traffic-security.md) |",
+        "target_path": "references/mcp-traffic-security.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 80,
+        "column": 45,
+        "evidence": "- Follow Steps 1–3 of [Backend Security](references/backend-security.md) to create `{gateway_sa_name}` and request human approval before granting `roles/run.inv",
+        "target_path": "references/backend-security.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 80,
+        "column": 151,
+        "evidence": "d) to create `{gateway_sa_name}` and request human approval before granting `roles/run.invoker` on `{backend_service}`.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 83,
+        "column": 100,
+        "evidence": ".0 or OpenAPI 3.0.x templates and provider tables in [Client Authentication](references/client-authentication.md) and [Quotas and Rate Limiting](references/quot",
+        "target_path": "references/client-authentication.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 83,
+        "column": 168,
+        "evidence": "ication](references/client-authentication.md) and [Quotas and Rate Limiting](references/quotas-and-rate-limiting.md).",
+        "target_path": "references/quotas-and-rate-limiting.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 84,
+        "column": 41,
+        "evidence": "- If the specification enables MCP (`x-google-api-management.mcp`), configure exactly one JWT or API key scheme on `tools-list` (also list a JWT scheme in the r",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 84,
+        "column": 245,
+        "evidence": "`security` list), and review operation opt-outs using [MCP Traffic Security](references/mcp-traffic-security.md).",
+        "target_path": "references/mcp-traffic-security.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 86,
+        "column": 88,
+        "evidence": "ither the active specs nor `{candidate_openapi_spec}` define quota metrics (`x-google-management.metrics` or `x-google-api-management.metrics`), skip this step.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 86,
+        "column": 121,
+        "evidence": "idate_openapi_spec}` define quota metrics (`x-google-management.metrics` or `x-google-api-management.metrics`), skip this step.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 88,
+        "column": 23,
+        "evidence": "- By default, run `scripts/check_quota_metrics.py` against all active gateways deployed for `{api_id}` in `{project_id}`:",
+        "target_path": "scripts/check_quota_metrics.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 90,
+        "column": 14,
+        "evidence": "python3 scripts/check_quota_metrics.py \\",
+        "target_path": "scripts/check_quota_metrics.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 97,
+        "column": 14,
+        "evidence": "python3 scripts/check_quota_metrics.py \\",
+        "target_path": "scripts/check_quota_metrics.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 102,
+        "column": 10,
+        "evidence": "- If `scripts/check_quota_metrics.py` exits with code `1` (`status: \"FAIL\"`), add the missing metrics and limits back to `{candidate_openapi_spec}`, move each `",
+        "target_path": "scripts/check_quota_metrics.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 104,
+        "column": 45,
+        "evidence": "- Follow Steps 4–5 of [Backend Security](references/backend-security.md) to run `gcloud api-gateway api-configs create` and `gcloud api-gateway gateways update`",
+        "target_path": "references/backend-security.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 104,
+        "column": 308,
+        "evidence": "ble the API's `managedService` in consumer projects ([Client Authentication](references/client-authentication.md)), and then restrict `{backend_service}` with `",
+        "target_path": "references/client-authentication.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 109,
+        "column": 49,
+        "evidence": "- [ ] Dedicated `{gateway_sa_name}` is granted `roles/run.invoker` (or `roles/cloudfunctions.invoker`), and `--no-allow-unauthenticated` is applied after the ga",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 109,
+        "column": 73,
+        "evidence": "- [ ] Dedicated `{gateway_sa_name}` is granted `roles/run.invoker` (or `roles/cloudfunctions.invoker`), and `--no-allow-unauthenticated` is applied after the ga",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 113,
+        "column": 16,
+        "evidence": "- [ ] `python3 scripts/check_quota_metrics.py` returns `status: \"PASS\"` (exit code `0`) against active gateway configs or all baseline specs before `api-configs",
+        "target_path": "scripts/check_quota_metrics.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "inline_command"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 114,
+        "column": 27,
+        "evidence": "- [ ] If MCP is enabled, `x-google-api-management.mcp.tools-list.security` names exactly one JWT or API key scheme (a JWT scheme is also in the root `security` ",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      }
+    ],
+    "limitations": [],
+    "findings_before_filtering": 8,
+    "findings_after_filtering": 8
+  }
+}

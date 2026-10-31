@@ -1,0 +1,948 @@
+{
+  "skill": {
+    "name": "subagent-driven-development",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\obra\\superpowers\\subagent-driven-development",
+    "scanned_at": "2026-10-31T21:46:59.205938+00:00"
+  },
+  "risk_assessment": {
+    "score": 17,
+    "severity": "LOW",
+    "recommendation": "SAFE",
+    "max_issue_severity": "HIGH"
+  },
+  "components": [
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 336,
+      "executable": false,
+      "size_bytes": 19506,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "implementer-prompt.md",
+      "type": "markdown",
+      "lines": 154,
+      "executable": false,
+      "size_bytes": 6335,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "re-review-prompt.md",
+      "type": "markdown",
+      "lines": 115,
+      "executable": false,
+      "size_bytes": 4761,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/batching.md",
+      "type": "markdown",
+      "lines": 11,
+      "executable": false,
+      "size_bytes": 583,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/cannot-verify.md",
+      "type": "markdown",
+      "lines": 10,
+      "executable": false,
+      "size_bytes": 513,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/final-review.md",
+      "type": "markdown",
+      "lines": 47,
+      "executable": false,
+      "size_bytes": 2447,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/fix-loop.md",
+      "type": "markdown",
+      "lines": 77,
+      "executable": false,
+      "size_bytes": 4249,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/handling-reports.md",
+      "type": "markdown",
+      "lines": 15,
+      "executable": false,
+      "size_bytes": 1062,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/preflight.md",
+      "type": "markdown",
+      "lines": 26,
+      "executable": false,
+      "size_bytes": 1353,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/resuming.md",
+      "type": "markdown",
+      "lines": 12,
+      "executable": false,
+      "size_bytes": 614,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/review-package",
+      "type": "other",
+      "lines": 53,
+      "executable": true,
+      "size_bytes": 2029,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/sdd-workspace",
+      "type": "other",
+      "lines": 87,
+      "executable": true,
+      "size_bytes": 3684,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/task-brief",
+      "type": "other",
+      "lines": 43,
+      "executable": true,
+      "size_bytes": 1322,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "task-reviewer-prompt.md",
+      "type": "markdown",
+      "lines": 207,
+      "executable": false,
+      "size_bytes": 9031,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "TM1",
+      "finding_id": "finding-45f7005d303340a289d497d161bbbfe7",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 126,
+        "end_line": null,
+        "start_column": 3
+      },
+      "finding": "git clean -fdx",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "- The ledger is your recovery map: the commits it names exist in git even\n  when your context no longer remembers creating them. After compaction,\n  trust the ledger and `git log` over your own recollection.\n- `git clean -fdx` will destroy the workspace (it's git-ignored scratch); if\n  that happens, recover from `git log`.\n\nRead the plan once, note its context and Global Constraints, and create a",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "efb9e433433f7feeafc94a70d7a4ebc72e8bc2a0ebf1ce213586ba7ff5744db8",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 126,
+          "end_line": null,
+          "start_column": 3
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": true,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 14,
+    "scanned_components": 14,
+    "coverage_percent": 100.0,
+    "is_complete": true,
+    "status": "complete",
+    "execution_successful": true,
+    "fully_inspected_files": 14,
+    "partially_inspected_files": 0,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "completed",
+        "planned_work": 4,
+        "completed": 4,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 67,
+        "column": 41,
+        "evidence": "\"Dispatch implementer subagent (./implementer-prompt.md)\" [shape=box];",
+        "target_path": "implementer-prompt.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 71,
+        "column": 59,
+        "evidence": "\"Generate review package, dispatch task reviewer (./task-reviewer-prompt.md)\" [shape=box];",
+        "target_path": "task-reviewer-prompt.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 73,
+        "column": 25,
+        "evidence": "\"Fix loop: read references/fix-loop.md before every round\" [shape=box];",
+        "target_path": "references/fix-loop.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 79,
+        "column": 36,
+        "evidence": "\"Final review and finish: read references/final-review.md\" [shape=box];",
+        "target_path": "references/final-review.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 83,
+        "column": 102,
+        "evidence": "\"Setup: worktree, ledger check, read plan, pre-flight review\" -> \"Dispatch implementer subagent (./implementer-prompt.md)\";",
+        "target_path": "implementer-prompt.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 84,
+        "column": 37,
+        "evidence": "\"Dispatch implementer subagent (./implementer-prompt.md)\" -> \"Implementer asks questions?\";",
+        "target_path": "implementer-prompt.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 88,
+        "column": 113,
+        "evidence": "\"Implementer implements, tests, commits, self-reviews\" -> \"Generate review package, dispatch task reviewer (./task-reviewer-prompt.md)\";",
+        "target_path": "task-reviewer-prompt.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 89,
+        "column": 55,
+        "evidence": "\"Generate review package, dispatch task reviewer (./task-reviewer-prompt.md)\" -> \"Spec ✅ and quality approved?\";",
+        "target_path": "task-reviewer-prompt.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 91,
+        "column": 55,
+        "evidence": "\"Spec ✅ and quality approved?\" -> \"Fix loop: read references/fix-loop.md before every round\" [label=\"no\"];",
+        "target_path": "references/fix-loop.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 92,
+        "column": 21,
+        "evidence": "\"Fix loop: read references/fix-loop.md before every round\" -> \"Append completion to ledger, mark todo complete\" [label=\"addressed, or parked at the cap\"];",
+        "target_path": "references/fix-loop.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 94,
+        "column": 61,
+        "evidence": "\"More tasks remain?\" -> \"Dispatch implementer subagent (./implementer-prompt.md)\" [label=\"yes\"];",
+        "target_path": "implementer-prompt.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 95,
+        "column": 60,
+        "evidence": "\"More tasks remain?\" -> \"Final review and finish: read references/final-review.md\" [label=\"no\"];",
+        "target_path": "references/final-review.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 96,
+        "column": 36,
+        "evidence": "\"Final review and finish: read references/final-review.md\" -> \"Final review clean: delete this plan's workspace\";",
+        "target_path": "references/final-review.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 114,
+        "column": 9,
+        "evidence": "`bash scripts/sdd-workspace PLAN_FILE` — it prints the plan's git-ignored",
+        "target_path": "scripts/sdd-workspace",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "inline_command"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 119,
+        "column": 33,
+        "evidence": "read [references/resuming.md](references/resuming.md) before anything",
+        "target_path": "references/resuming.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 119,
+        "column": 9,
+        "evidence": "read [references/resuming.md](references/resuming.md) before anything",
+        "target_path": "references/resuming.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 135,
+        "column": 59,
+        "evidence": "Before dispatching Task 1, read [references/preflight.md](references/preflight.md)",
+        "target_path": "references/preflight.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 135,
+        "column": 34,
+        "evidence": "Before dispatching Task 1, read [references/preflight.md](references/preflight.md)",
+        "target_path": "references/preflight.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 179,
+        "column": 55,
+        "evidence": "same kind across files, read [references/batching.md](references/batching.md)",
+        "target_path": "references/batching.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 179,
+        "column": 31,
+        "evidence": "same kind across files, read [references/batching.md](references/batching.md)",
+        "target_path": "references/batching.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 203,
+        "column": 9,
+        "evidence": "`bash scripts/task-brief PLAN_FILE N` — it extracts the task's full text to a",
+        "target_path": "scripts/task-brief",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "inline_command"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 235,
+        "column": 35,
+        "evidence": "Template: [implementer-prompt.md](implementer-prompt.md)",
+        "target_path": "implementer-prompt.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 241,
+        "column": 46,
+        "evidence": "**DONE:** Generate the review package (`bash scripts/review-package PLAN_FILE BASE HEAD`, from this skill's directory — it prints the unique file path it wrote;",
+        "target_path": "scripts/review-package",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "inline_command"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 244,
+        "column": 34,
+        "evidence": "[references/handling-reports.md](references/handling-reports.md) and follow",
+        "target_path": "references/handling-reports.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 244,
+        "column": 2,
+        "evidence": "[references/handling-reports.md](references/handling-reports.md) and follow",
+        "target_path": "references/handling-reports.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 260,
+        "column": 9,
+        "evidence": "`bash scripts/review-package PLAN_FILE BASE HEAD` and pass the reviewer the file path",
+        "target_path": "scripts/review-package",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "inline_command"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 289,
+        "column": 31,
+        "evidence": "[references/cannot-verify.md](references/cannot-verify.md) before you mark",
+        "target_path": "references/cannot-verify.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 289,
+        "column": 2,
+        "evidence": "[references/cannot-verify.md](references/cannot-verify.md) before you mark",
+        "target_path": "references/cannot-verify.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 292,
+        "column": 37,
+        "evidence": "Template: [task-reviewer-prompt.md](task-reviewer-prompt.md)",
+        "target_path": "task-reviewer-prompt.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 299,
+        "column": 49,
+        "evidence": "When it triggers, read [references/fix-loop.md](references/fix-loop.md) and",
+        "target_path": "references/fix-loop.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 299,
+        "column": 25,
+        "evidence": "When it triggers, read [references/fix-loop.md](references/fix-loop.md) and",
+        "target_path": "references/fix-loop.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 321,
+        "column": 30,
+        "evidence": "[references/final-review.md](references/final-review.md) and follow it. It",
+        "target_path": "references/final-review.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 321,
+        "column": 2,
+        "evidence": "[references/final-review.md](references/final-review.md) and follow it. It",
+        "target_path": "references/final-review.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      }
+    ],
+    "limitations": [],
+    "findings_before_filtering": 1,
+    "findings_after_filtering": 1
+  }
+}

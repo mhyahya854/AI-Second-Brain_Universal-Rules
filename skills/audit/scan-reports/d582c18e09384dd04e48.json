@@ -1,0 +1,1340 @@
+{
+  "skill": {
+    "name": "agent-platform-inference",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\google\\skills\\agent-platform-inference",
+    "scanned_at": "2026-10-31T21:21:30.220247+00:00"
+  },
+  "risk_assessment": {
+    "score": 61,
+    "severity": "HIGH",
+    "recommendation": "DO_NOT_INSTALL",
+    "max_issue_severity": "HIGH"
+  },
+  "components": [
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 837,
+      "executable": false,
+      "size_bytes": 37929,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/gemini_genai_sdk.py",
+      "type": "python",
+      "lines": 16,
+      "executable": true,
+      "size_bytes": 505,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/gemini_openai_sdk.py",
+      "type": "python",
+      "lines": 28,
+      "executable": true,
+      "size_bytes": 875,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/gemini_vertexai_sdk.py",
+      "type": "python",
+      "lines": 14,
+      "executable": true,
+      "size_bytes": 425,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/openmaas_genai_sdk.py",
+      "type": "python",
+      "lines": 21,
+      "executable": true,
+      "size_bytes": 607,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/openmaas_openai_sdk.py",
+      "type": "python",
+      "lines": 33,
+      "executable": true,
+      "size_bytes": 917,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/openmaas_vertexai_sdk.py",
+      "type": "python",
+      "lines": 15,
+      "executable": true,
+      "size_bytes": 527,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/requirements.txt",
+      "type": "text",
+      "lines": 4,
+      "executable": false,
+      "size_bytes": 56,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/verify_all.sh",
+      "type": "shell",
+      "lines": 32,
+      "executable": true,
+      "size_bytes": 864,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "PE3",
+      "finding_id": "finding-98cca4b19578433490e1e77416f57957",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 363,
+        "end_line": null,
+        "start_column": 38
+      },
+      "finding": "access token",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "\n### Authentication for OpenAI SDK\n\nYou **MUST** use a Google Cloud OAuth access token as the API key for the OpenAI\nSDK.\n\n```python",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "903a9f18e7222d4c1e39fcf76dec31bef3fd46b6332f4bc5bc823999d287548b",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 363,
+          "end_line": null,
+          "start_column": 38
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-eae4804cdabb4598ad70a4715663be1f",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 379,
+        "end_line": null,
+        "start_column": 15
+      },
+      "finding": "access token",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "> `get_gcp_access_token()` function above retrieves a *fresh* token at the time\n> it is called. For long-running\n> applications, you implement a refresh mechanism. See\n> [Refresh the access token](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/migrate/openai/auth-and-credentials?hl=en)\n> for details.\n\n### Configuration (Base URL)",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "903a9f18e7222d4c1e39fcf76dec31bef3fd46b6332f4bc5bc823999d287548b",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 379,
+          "end_line": null,
+          "start_column": 15
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-dfc5ba1a79774481bb445a5438040171",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "scripts/gemini_openai_sdk.py",
+        "start_line": 11,
+        "end_line": null,
+        "start_column": 10
+      },
+      "finding": "access token",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "def get_gcp_access_token():\n  creds, _ = google.auth.default()\n  # Refresh credentials using a Request transport object to obtain a fresh\n  # OAuth access token for the OpenAI client authorization header.\n  creds.refresh(google.auth.transport.requests.Request())\n  return creds.token\n",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "903a9f18e7222d4c1e39fcf76dec31bef3fd46b6332f4bc5bc823999d287548b",
+      "occurrences": [
+        {
+          "file": "scripts/gemini_openai_sdk.py",
+          "start_line": 11,
+          "end_line": null,
+          "start_column": 10
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-7f07f2c527c14b619b39bd464b4cdcff",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 375,
+        "end_line": null,
+        "start_column": 23
+      },
+      "finding": "access tokens",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "    ).decode(\"utf-8\").strip()\n```\n\n> [!NOTE] Google Cloud access tokens typically expire after 1 hour. The\n> `get_gcp_access_token()` function above retrieves a *fresh* token at the time\n> it is called. For long-running\n> applications, you implement a refresh mechanism. See",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "5059bb7b75e9337932d45472816371182dc6083e9db6060d8b737da812751493",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 375,
+          "end_line": null,
+          "start_column": 23
+        }
+      ]
+    },
+    {
+      "id": "LP3",
+      "finding_id": "finding-10c25fa026ca4b48b2626a441f285f89",
+      "category": "MCP Least Privilege",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 1,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "Without declared permissions the skill's intent is opaque and cannot be validated.",
+      "remediation": "Declare the skill's tool scope: for Claude Code / Agent Skills SKILL.md, list the tools the skill may invoke in the 'allowed-tools' frontmatter field; for MCP server manifests, add a 'permissions' list naming the required capabilities.",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI02"
+      ],
+      "evidence": {},
+      "match_fingerprint": null,
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 1,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "EA2",
+      "finding_id": "finding-898bc4031d84415ca6eeebed3da2bf0a",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "severity": "MEDIUM",
+      "confidence": 0.75,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 161,
+        "end_line": null,
+        "start_column": 59
+      },
+      "finding": "without asking",
+      "explanation": "Skill enables autonomous high-impact decisions without human-in-the-loop verification. Critical operations (destructive commands, financial transactions, data deletion) should require explicit user confirmation.",
+      "remediation": "Add human-in-the-loop confirmation for destructive, irreversible, or high-impact operations. Never auto-execute commands that modify files, send data, or alter system state.",
+      "code_snippet": "        SDK preference:\n    *   **NEVER** guess, volunteer, or default to a model (such as\n        `gemini-2.5-flash`, `gemini-2.5-pro`, or `deepseek-v3.2-maas`).\n        Proposing a defaulted model in a confirmation card without asking\n        violates parameter grounding.\n    *   **YOU MUST STOP AND ASK THE USER**: \"Which model (or model family,\n        such as Gemini, Llama, DeepSeek, or Qwen) and SDK preference (such as",
+      "intent": null,
+      "tags": [
+        "Excessive Agency"
+      ],
+      "evidence": {},
+      "match_fingerprint": "8dc77d3dce9ba1f2672e813265a1b1a0c8594866ef38a4e978bf4f4451795465",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 161,
+          "end_line": null,
+          "start_column": 59
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-aa245d98a05c4bfea90adb65c77b91a7",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 198,
+        "end_line": null,
+        "start_column": 23
+      },
+      "finding": "curl commands for final inference execution.\n\n## Workflow Decision Tree\n\n1.  **Model Specified?**\n    *   **No** (user omitted model name/family) -> **Ask the user** which model\n        or model famil",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "    *   When executing model inference in the sandbox via `run_command`,\n        **ALWAYS** run Python code using the official SDKs (e.g., writing and\n        running a Python script with `google-genai`, `openai`, or `vertexai`).\n        Do not use raw curl commands for final inference execution.\n\n## Workflow Decision Tree\n",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "54b2972539123ef7b422f7ea79ea5936d01666b76e3de713796c835ef26c2f08",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 198,
+          "end_line": null,
+          "start_column": 23
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-ad2519c0fef44e47a1735a28f6a13eb7",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 594,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": "curl -sS -X POST \\\n  -H \"Authorization: Bearer $TOKEN\" \\\n  -H \"Content-Type: application/json\" \\\n  \"https://${region}-aiplatform.googleapis.com/v1/projects/${PROJECT_ID}/locations/${REGION}/endpoints/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "REGION=us-central1\nTOKEN=$(gcloud auth application-default print-access-token)\n\ncurl -sS -X POST \\\n  -H \"Authorization: Bearer $TOKEN\" \\\n  -H \"Content-Type: application/json\" \\\n  \"https://${region}-aiplatform.googleapis.com/v1/projects/${PROJECT_ID}/locations/${REGION}/endpoints/${ENDPOINT_ID}:generateContent\" \\",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "7726c976d27f1ba6bf0741a37e133b4ea2c34e35c1c8024b0b9bef72724c796a",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 594,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    },
+    {
+      "id": "SC1",
+      "finding_id": "finding-f5ca917bdf114a7c8b0ad9ed2b1df38a",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "severity": "LOW",
+      "confidence": 0.6,
+      "location": {
+        "file": "scripts/requirements.txt",
+        "start_line": 1,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": "google-genai",
+      "explanation": "Dependencies lack version pinning, allowing potential malicious package updates. Consider pinning versions.",
+      "remediation": "Pin all dependency versions in requirements.txt or pyproject.toml. Use exact versions (==) or compatible ranges. Run pip-audit regularly.",
+      "code_snippet": "google-genai\ngoogle-cloud-aiplatform\nopenai\ngoogle-auth",
+      "intent": null,
+      "tags": [
+        "Supply Chain"
+      ],
+      "evidence": {},
+      "match_fingerprint": "e53a5b48108df8b376712b226eb65dbe120fd26c47933431a7bed8adb8a732a2",
+      "occurrences": [
+        {
+          "file": "scripts/requirements.txt",
+          "start_line": 1,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    },
+    {
+      "id": "SC1",
+      "finding_id": "finding-c0de4a78deca45b3b37e2fb1957f1ba6",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "severity": "LOW",
+      "confidence": 0.6,
+      "location": {
+        "file": "scripts/requirements.txt",
+        "start_line": 2,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": "google-cloud-aiplatform",
+      "explanation": "Dependencies lack version pinning, allowing potential malicious package updates. Consider pinning versions.",
+      "remediation": "Pin all dependency versions in requirements.txt or pyproject.toml. Use exact versions (==) or compatible ranges. Run pip-audit regularly.",
+      "code_snippet": "google-genai\ngoogle-cloud-aiplatform\nopenai\ngoogle-auth",
+      "intent": null,
+      "tags": [
+        "Supply Chain"
+      ],
+      "evidence": {},
+      "match_fingerprint": "ad53ae8ae99932c1d0d116dd5542f8acf4ea74bc437b3591500b89a3a9c86976",
+      "occurrences": [
+        {
+          "file": "scripts/requirements.txt",
+          "start_line": 2,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    },
+    {
+      "id": "SC4",
+      "finding_id": "finding-01e9f7fb719d4e41b46f901108be8c7d",
+      "category": "Supply Chain",
+      "pattern": "Unverifiable Dependency: google-cloud-aiplatform has 4 known advisory(ies) (CVE-2026-2472 (Google Cloud Vertex AI SDK affected by Stored Cross-Site Scripting (XSS)); CVE-2026-2473 (Google Cloud Vertex AI has a a vulnerability involving predictable bucket naming); CVE-2026-2472 (Google Cloud Vertex AI SDK affected by Stored Cross-Site Scripting (XSS)) +1 more), but the manifest does not pin a version, so it is unknown whether the installed release is affected",
+      "severity": "LOW",
+      "confidence": 0.4,
+      "location": {
+        "file": "scripts/requirements.txt",
+        "start_line": 2,
+        "end_line": null
+      },
+      "finding": "google-cloud-aiplatform",
+      "explanation": "Dependency has known vulnerabilities (CVEs). Using packages with unpatched security flaws exposes the environment to known exploits.",
+      "remediation": "Update the dependency to a patched version that addresses the known CVE. Check OSV (osv.dev) or NVD for details on the vulnerability.",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "Supply Chain"
+      ],
+      "evidence": {},
+      "match_fingerprint": "442ba00ead8f46e6007740f96b9098d8a8b2ca6980cf3c19efbc21df4a01d568",
+      "occurrences": [
+        {
+          "file": "scripts/requirements.txt",
+          "start_line": 2,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "SC1",
+      "finding_id": "finding-dc94f280c8cc4b2da992c2a490323844",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "severity": "LOW",
+      "confidence": 0.6,
+      "location": {
+        "file": "scripts/requirements.txt",
+        "start_line": 3,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": "openai",
+      "explanation": "Dependencies lack version pinning, allowing potential malicious package updates. Consider pinning versions.",
+      "remediation": "Pin all dependency versions in requirements.txt or pyproject.toml. Use exact versions (==) or compatible ranges. Run pip-audit regularly.",
+      "code_snippet": "google-genai\ngoogle-cloud-aiplatform\nopenai\ngoogle-auth",
+      "intent": null,
+      "tags": [
+        "Supply Chain"
+      ],
+      "evidence": {},
+      "match_fingerprint": "ff4a1b11ac57446bbf24d343db79b88e1cb876ce3284b6360f7904a04dc73e98",
+      "occurrences": [
+        {
+          "file": "scripts/requirements.txt",
+          "start_line": 3,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    },
+    {
+      "id": "SC1",
+      "finding_id": "finding-231198fc4a2e4864a29f955a4108ccba",
+      "category": "Supply Chain",
+      "pattern": "Unpinned Dependencies",
+      "severity": "LOW",
+      "confidence": 0.6,
+      "location": {
+        "file": "scripts/requirements.txt",
+        "start_line": 4,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": "google-auth\n",
+      "explanation": "Dependencies lack version pinning, allowing potential malicious package updates. Consider pinning versions.",
+      "remediation": "Pin all dependency versions in requirements.txt or pyproject.toml. Use exact versions (==) or compatible ranges. Run pip-audit regularly.",
+      "code_snippet": "google-genai\ngoogle-cloud-aiplatform\nopenai\ngoogle-auth",
+      "intent": null,
+      "tags": [
+        "Supply Chain"
+      ],
+      "evidence": {},
+      "match_fingerprint": "1fd76f81a1ed2ea391c67bc1771eefa474a377555823c808a33af05666249812",
+      "occurrences": [
+        {
+          "file": "scripts/requirements.txt",
+          "start_line": 4,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": true,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 9,
+    "scanned_components": 8,
+    "coverage_percent": 88.9,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 8,
+    "partially_inspected_files": 1,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "SKILL.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 38,
+        "end_line": 38,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 39,
+        "end_line": 39,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 131,
+        "end_line": 131,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 533,
+        "end_line": 533,
+        "fatal": false
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "degraded",
+        "planned_work": 9,
+        "completed": 8,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 38,
+        "column": 6,
+        "evidence": "`client.chat.completions.create`, `client.completions.create`,",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 38,
+        "column": 40,
+        "evidence": "`client.chat.completions.create`, `client.completions.create`,",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 39,
+        "column": 6,
+        "evidence": "`client.embeddings.create`)**",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 91,
+        "column": 19,
+        "evidence": "directory (e.g., `scripts/openmaas_openai_sdk.py`), you MUST ensure the",
+        "target_path": "scripts/openmaas_openai_sdk.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 117,
+        "column": 25,
+        "evidence": "|| pip install -r scripts/requirements.txt",
+        "target_path": "scripts/requirements.txt",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 120,
+        "column": 6,
+        "evidence": "`scripts/requirements.txt` is a fallback for an environment that does not",
+        "target_path": "scripts/requirements.txt",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 128,
+        "column": 5,
+        "evidence": "./scripts/verify_all.sh",
+        "target_path": "scripts/verify_all.sh",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 131,
+        "column": 58,
+        "evidence": "5. **Execution**: Run the scripts with a plain `python3 scripts/...`. There is",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "inline_command"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 139,
+        "column": 39,
+        "evidence": "> [Use Open Models on Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/maas/use-open-models)",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 321,
+        "column": 37,
+        "evidence": "See [`scripts/gemini_genai_sdk.py`](scripts/gemini_genai_sdk.py) for the",
+        "target_path": "scripts/gemini_genai_sdk.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 321,
+        "column": 7,
+        "evidence": "See [`scripts/gemini_genai_sdk.py`](scripts/gemini_genai_sdk.py) for the",
+        "target_path": "scripts/gemini_genai_sdk.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 329,
+        "column": 38,
+        "evidence": "See [`scripts/gemini_openai_sdk.py`](scripts/gemini_openai_sdk.py) for the",
+        "target_path": "scripts/gemini_openai_sdk.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 329,
+        "column": 7,
+        "evidence": "See [`scripts/gemini_openai_sdk.py`](scripts/gemini_openai_sdk.py) for the",
+        "target_path": "scripts/gemini_openai_sdk.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 337,
+        "column": 40,
+        "evidence": "See [`scripts/gemini_vertexai_sdk.py`](scripts/gemini_vertexai_sdk.py) for the",
+        "target_path": "scripts/gemini_vertexai_sdk.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 337,
+        "column": 7,
+        "evidence": "See [`scripts/gemini_vertexai_sdk.py`](scripts/gemini_vertexai_sdk.py) for the",
+        "target_path": "scripts/gemini_vertexai_sdk.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 341,
+        "column": 20,
+        "evidence": "[Google GenAI SDK](https://github.com/googleapis/python-genai)",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 344,
+        "column": 32,
+        "evidence": "[Agent Platform Gemini Models](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/google-models)",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 379,
+        "column": 30,
+        "evidence": "> [Refresh the access token](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/migrate/openai/auth-and-credentials?hl=en#refresh_your_creden",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 395,
+        "column": 40,
+        "evidence": "See [`scripts/openmaas_openai_sdk.py`](scripts/openmaas_openai_sdk.py) for the",
+        "target_path": "scripts/openmaas_openai_sdk.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 395,
+        "column": 7,
+        "evidence": "See [`scripts/openmaas_openai_sdk.py`](scripts/openmaas_openai_sdk.py) for the",
+        "target_path": "scripts/openmaas_openai_sdk.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 441,
+        "column": 39,
+        "evidence": "See [`scripts/openmaas_genai_sdk.py`](scripts/openmaas_genai_sdk.py) for the",
+        "target_path": "scripts/openmaas_genai_sdk.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 441,
+        "column": 7,
+        "evidence": "See [`scripts/openmaas_genai_sdk.py`](scripts/openmaas_genai_sdk.py) for the",
+        "target_path": "scripts/openmaas_genai_sdk.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 453,
+        "column": 42,
+        "evidence": "See [`scripts/openmaas_vertexai_sdk.py`](scripts/openmaas_vertexai_sdk.py) for",
+        "target_path": "scripts/openmaas_vertexai_sdk.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 453,
+        "column": 7,
+        "evidence": "See [`scripts/openmaas_vertexai_sdk.py`](scripts/openmaas_vertexai_sdk.py) for",
+        "target_path": "scripts/openmaas_vertexai_sdk.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 462,
+        "column": 37,
+        "evidence": "[Use Open Models on Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/maas/use-open-models)",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 477,
+        "column": 39,
+        "evidence": "> [Use Open Models on Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/maas/use-open-models)",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 484,
+        "column": 39,
+        "evidence": "> [Use Open Models on Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/maas/use-open-models)",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 533,
+        "column": 34,
+        "evidence": "> * Do NOT rely on historical `job.tunedModel.endpoint` identifiers from past",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 580,
+        "column": 31,
+        "evidence": "> [Gemma deployment notebook](https://github.com/GoogleCloudPlatform/vertex-ai-samples/blob/main/notebooks/community/model_garden/model_garden_gemma_deployment_",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 677,
+        "column": 29,
+        "evidence": "[Gemma deployment notebook](https://github.com/GoogleCloudPlatform/vertex-ai-samples/blob/main/notebooks/community/model_garden/model_garden_gemma_deployment_on",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 775,
+        "column": 31,
+        "evidence": "[Quotas and limits (DSQ)](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/quotas)",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 821,
+        "column": 46,
+        "evidence": "[Model Availability by Location](https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations#genai-open-models).",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 824,
+        "column": 42,
+        "evidence": "[Gemini Model Locations](https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations#google-models)",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 835,
+        "column": 24,
+        "evidence": "[Model Garden](https://console.cloud.google.com/agent-platform/model-garden),",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      }
+    ],
+    "limitations": [
+      "Analyzer static_patterns_tool_misuse status: degraded."
+    ],
+    "findings_before_filtering": 13,
+    "findings_after_filtering": 13
+  }
+}

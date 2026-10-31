@@ -1,0 +1,2173 @@
+{
+  "skill": {
+    "name": "devcontainer-setup",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\trailofbits\\skills\\devcontainer-setup",
+    "scanned_at": "2026-10-31T21:48:12.844049+00:00"
+  },
+  "risk_assessment": {
+    "score": 100,
+    "severity": "CRITICAL",
+    "recommendation": "DO_NOT_INSTALL",
+    "max_issue_severity": "HIGH"
+  },
+  "components": [
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 303,
+      "executable": false,
+      "size_bytes": 8060,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "agents/openai.yaml",
+      "type": "yaml",
+      "lines": 6,
+      "executable": false,
+      "size_bytes": 239,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "assets/trail-of-bits-mark.svg",
+      "type": "other",
+      "lines": 1,
+      "executable": true,
+      "size_bytes": 3084,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/dockerfile-best-practices.md",
+      "type": "markdown",
+      "lines": 100,
+      "executable": false,
+      "size_bytes": 3341,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/features-vs-dockerfile.md",
+      "type": "markdown",
+      "lines": 22,
+      "executable": false,
+      "size_bytes": 675,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "resources/.zshrc",
+      "type": "other",
+      "lines": 56,
+      "executable": false,
+      "size_bytes": 1869,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "resources/Dockerfile",
+      "type": "other",
+      "lines": 112,
+      "executable": false,
+      "size_bytes": 3885,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "resources/devcontainer.json",
+      "type": "json",
+      "lines": 74,
+      "executable": false,
+      "size_bytes": 2584,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "resources/install.sh",
+      "type": "shell",
+      "lines": 863,
+      "executable": true,
+      "size_bytes": 23116,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "resources/post_install.py",
+      "type": "python",
+      "lines": 299,
+      "executable": true,
+      "size_bytes": 8606,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "SC2",
+      "finding_id": "finding-a3e29a83ddfd4234bdbc72f981b60c0a",
+      "category": "Supply Chain",
+      "pattern": "External Script Fetching",
+      "severity": "HIGH",
+      "confidence": 0.9,
+      "location": {
+        "file": "references/dockerfile-best-practices.md",
+        "start_line": 36,
+        "end_line": null,
+        "start_column": 4
+      },
+      "finding": "curl \\\n    git \\\n    vim \\\n    && rm -rf /var/lib/apt/lists/*\n```\n\n**Why combine?** Keeping them separate causes Docker to cache the `update` layer, potentially installing outdated packages on subsequ",
+      "explanation": "Remote code is downloaded and executed. This bypasses code review and could introduce malicious code.",
+      "remediation": "Avoid downloading and executing remote scripts. Use trusted packages from PyPI/npm. If remote fetch is required, verify checksums and use HTTPS.",
+      "code_snippet": "\n```dockerfile\nRUN apt-get update && apt-get install -y --no-install-recommends \\\n    curl \\\n    git \\\n    vim \\\n    && rm -rf /var/lib/apt/lists/*",
+      "intent": null,
+      "tags": [
+        "Supply Chain"
+      ],
+      "evidence": {},
+      "match_fingerprint": "9c8d1378219e9ad23735fccadf54c2c19107d286db7d1b00a272e78507f10ba6",
+      "occurrences": [
+        {
+          "file": "references/dockerfile-best-practices.md",
+          "start_line": 36,
+          "end_line": null,
+          "start_column": 4
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-8e779e5f01c141a8a19e1b075231ebc3",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.9,
+      "location": {
+        "file": "references/dockerfile-best-practices.md",
+        "start_line": 39,
+        "end_line": null,
+        "start_column": 7
+      },
+      "finding": "rm -rf /",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "    curl \\\n    git \\\n    vim \\\n    && rm -rf /var/lib/apt/lists/*\n```\n\n**Why combine?** Keeping them separate causes Docker to cache the `update` layer, potentially installing outdated packages on subsequent builds.",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "f3ff4d6cfbe1b7f6b23dd4d1379edae984c14738c5f5b14db40e215beb673f08",
+      "occurrences": [
+        {
+          "file": "references/dockerfile-best-practices.md",
+          "start_line": 39,
+          "end_line": null,
+          "start_column": 7
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-a29896682b10463284f06792f0f81478",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.9,
+      "location": {
+        "file": "references/dockerfile-best-practices.md",
+        "start_line": 47,
+        "end_line": null,
+        "start_column": 17
+      },
+      "finding": "rm -rf /",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "**Best practices:**\n- Use `--no-install-recommends` to minimize installed packages\n- Sort packages alphabetically within each section for easier maintenance and PR reviews\n- Clean up with `rm -rf /var/lib/apt/lists/*` in the same layer\n\n## Pipe Safety\n",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "f3ff4d6cfbe1b7f6b23dd4d1379edae984c14738c5f5b14db40e215beb673f08",
+      "occurrences": [
+        {
+          "file": "references/dockerfile-best-practices.md",
+          "start_line": 47,
+          "end_line": null,
+          "start_column": 17
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-f25e908917c34d849e973e3a094cc7e1",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.9,
+      "location": {
+        "file": "references/dockerfile-best-practices.md",
+        "start_line": 39,
+        "end_line": null,
+        "start_column": 7
+      },
+      "finding": "rm -rf /var/lib/apt/lists/*",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "    curl \\\n    git \\\n    vim \\\n    && rm -rf /var/lib/apt/lists/*\n```\n\n**Why combine?** Keeping them separate causes Docker to cache the `update` layer, potentially installing outdated packages on subsequent builds.",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "95e9afa11fed54a53f28b6f446bbc3a2db2288e67b4d456b256a99ab81fe73f6",
+      "occurrences": [
+        {
+          "file": "references/dockerfile-best-practices.md",
+          "start_line": 39,
+          "end_line": null,
+          "start_column": 7
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-6ca5861a1dcf433ba83e6d01b05c9209",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.9,
+      "location": {
+        "file": "references/dockerfile-best-practices.md",
+        "start_line": 47,
+        "end_line": null,
+        "start_column": 17
+      },
+      "finding": "rm -rf /var/lib/apt/lists/*",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "**Best practices:**\n- Use `--no-install-recommends` to minimize installed packages\n- Sort packages alphabetically within each section for easier maintenance and PR reviews\n- Clean up with `rm -rf /var/lib/apt/lists/*` in the same layer\n\n## Pipe Safety\n",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "95e9afa11fed54a53f28b6f446bbc3a2db2288e67b4d456b256a99ab81fe73f6",
+      "occurrences": [
+        {
+          "file": "references/dockerfile-best-practices.md",
+          "start_line": 47,
+          "end_line": null,
+          "start_column": 17
+        }
+      ]
+    },
+    {
+      "id": "TM2",
+      "finding_id": "finding-779eff49394148b18078946657b128f7",
+      "category": "Tool Misuse",
+      "pattern": "Chaining Abuse",
+      "severity": "HIGH",
+      "confidence": 0.75,
+      "location": {
+        "file": "references/dockerfile-best-practices.md",
+        "start_line": 39,
+        "end_line": null,
+        "start_column": 4
+      },
+      "finding": "&& rm -",
+      "explanation": "Tool calls are chained to bypass individual safety checks or escalate capabilities beyond what any single tool call would allow.",
+      "remediation": "Limit tool chaining depth and validate the output of each tool before passing it to the next. Require explicit user approval for multi-step chains.",
+      "code_snippet": "    curl \\\n    git \\\n    vim \\\n    && rm -rf /var/lib/apt/lists/*\n```\n\n**Why combine?** Keeping them separate causes Docker to cache the `update` layer, potentially installing outdated packages on subsequent builds.",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "da42bed49ba667f4edac8a3628fa28e5cc6bbc20fc757fb7d1ddbddd9a531ec0",
+      "occurrences": [
+        {
+          "file": "references/dockerfile-best-practices.md",
+          "start_line": 39,
+          "end_line": null,
+          "start_column": 4
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-1633a81823d7400d8b6936c86b97e024",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.85,
+      "location": {
+        "file": "references/dockerfile-best-practices.md",
+        "start_line": 47,
+        "end_line": null,
+        "start_column": 17
+      },
+      "finding": "rm -rf /var/lib/apt/lists/*`",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "**Best practices:**\n- Use `--no-install-recommends` to minimize installed packages\n- Sort packages alphabetically within each section for easier maintenance and PR reviews\n- Clean up with `rm -rf /var/lib/apt/lists/*` in the same layer\n\n## Pipe Safety\n",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "433d4c0c8579df29cc0c2bb8136644e806509353ff419381d70af83a893ee947",
+      "occurrences": [
+        {
+          "file": "references/dockerfile-best-practices.md",
+          "start_line": 47,
+          "end_line": null,
+          "start_column": 17
+        }
+      ]
+    },
+    {
+      "id": "TM2",
+      "finding_id": "finding-ee5345a6ef8741439ee6ca601fe75b50",
+      "category": "Tool Misuse",
+      "pattern": "Chaining Abuse",
+      "severity": "HIGH",
+      "confidence": 0.9,
+      "location": {
+        "file": "references/dockerfile-best-practices.md",
+        "start_line": 54,
+        "end_line": null,
+        "start_column": 20
+      },
+      "finding": "&& curl -fsSL https://example.com/install.sh | bash",
+      "explanation": "Tool calls are chained to bypass individual safety checks or escalate capabilities beyond what any single tool call would allow.",
+      "remediation": "Limit tool chaining depth and validate the output of each tool before passing it to the next. Require explicit user approval for multi-step chains.",
+      "code_snippet": "When using pipes, prepend `set -o pipefail &&` to fail if any command fails:\n\n```dockerfile\nRUN set -o pipefail && curl -fsSL https://example.com/install.sh | bash\n```\n\nWithout this, a failed `curl` would be masked by a successful `bash`.",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "a27d743654817ba40c76ffc73d60b5c90167f51909c3be27c02fc5232ae43f1e",
+      "occurrences": [
+        {
+          "file": "references/dockerfile-best-practices.md",
+          "start_line": 54,
+          "end_line": null,
+          "start_column": 20
+        }
+      ]
+    },
+    {
+      "id": "TM2",
+      "finding_id": "finding-01e2f8b79cd84d2783edc3bc01e7833a",
+      "category": "Tool Misuse",
+      "pattern": "Chaining Abuse",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/dockerfile-best-practices.md",
+        "start_line": 54,
+        "end_line": null,
+        "start_column": 65
+      },
+      "finding": "| bash",
+      "explanation": "Tool calls are chained to bypass individual safety checks or escalate capabilities beyond what any single tool call would allow.",
+      "remediation": "Limit tool chaining depth and validate the output of each tool before passing it to the next. Require explicit user approval for multi-step chains.",
+      "code_snippet": "When using pipes, prepend `set -o pipefail &&` to fail if any command fails:\n\n```dockerfile\nRUN set -o pipefail && curl -fsSL https://example.com/install.sh | bash\n```\n\nWithout this, a failed `curl` would be masked by a successful `bash`.",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "04c6c3d162d775e86218721a59c0fde586c2bacf502ea9bb612977f2736a0c66",
+      "occurrences": [
+        {
+          "file": "references/dockerfile-best-practices.md",
+          "start_line": 54,
+          "end_line": null,
+          "start_column": 65
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-b41ea8fd971045e883c9724ee00ff5b2",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.85,
+      "location": {
+        "file": "resources/Dockerfile",
+        "start_line": 40,
+        "end_line": null,
+        "start_column": 2
+      },
+      "finding": "rm /tmp/git-delta.deb",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "RUN ARCH=$(dpkg --print-architecture) && \\\n  curl -fsSL \"https://github.com/dandavison/delta/releases/download/${GIT_DELTA_VERSION}/git-delta_${GIT_DELTA_VERSION}_${ARCH}.deb\" -o /tmp/git-delta.deb && \\\n  dpkg -i /tmp/git-delta.deb && \\\n  rm /tmp/git-delta.deb\n\n# Install uv (Python package manager) via multi-stage copy\nCOPY --from=uv /uv /usr/local/bin/uv",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "1fa2d4df05378a37bfba3c4bac674800cccb17f07682937efa466338c4b0ccce",
+      "occurrences": [
+        {
+          "file": "resources/Dockerfile",
+          "start_line": 40,
+          "end_line": null,
+          "start_column": 2
+        }
+      ]
+    },
+    {
+      "id": "SC2",
+      "finding_id": "finding-7b99ce6c3c624262aa09dc343496dc54",
+      "category": "Supply Chain",
+      "pattern": "External Script Fetching",
+      "severity": "HIGH",
+      "confidence": 0.9,
+      "location": {
+        "file": "resources/Dockerfile",
+        "start_line": 76,
+        "end_line": null,
+        "start_column": 4
+      },
+      "finding": "curl -fsSL https://claude.ai/install.sh | bash",
+      "explanation": "Remote code is downloaded and executed. This bypasses code review and could introduce malicious code.",
+      "remediation": "Avoid downloading and executing remote scripts. Use trusted packages from PyPI/npm. If remote fetch is required, verify checksums and use HTTPS.",
+      "code_snippet": "ENV PATH=\"/home/vscode/.local/bin:$PATH\"\n\n# Install Claude Code natively with marketplace plugins\nRUN curl -fsSL https://claude.ai/install.sh | bash && \\\n  claude plugin marketplace add anthropics/skills && \\\n  claude plugin marketplace add trailofbits/skills && \\\n  claude plugin marketplace add trailofbits/skills-curated",
+      "intent": null,
+      "tags": [
+        "Supply Chain"
+      ],
+      "evidence": {},
+      "match_fingerprint": "93a423ead90b575613fc14f4593b12d63810b109799475dd953837aea97b0d87",
+      "occurrences": [
+        {
+          "file": "resources/Dockerfile",
+          "start_line": 76,
+          "end_line": null,
+          "start_column": 4
+        }
+      ]
+    },
+    {
+      "id": "SC2",
+      "finding_id": "finding-ceb486d5475442cb8bbb97aa3d6ec06e",
+      "category": "Supply Chain",
+      "pattern": "External Script Fetching",
+      "severity": "HIGH",
+      "confidence": 0.9,
+      "location": {
+        "file": "resources/Dockerfile",
+        "start_line": 93,
+        "end_line": null,
+        "start_column": 4
+      },
+      "finding": "curl -fsSL https://fnm.vercel.app/install | bash",
+      "explanation": "Remote code is downloaded and executed. This bypasses code review and could introduce malicious code.",
+      "remediation": "Avoid downloading and executing remote scripts. Use trusted packages from PyPI/npm. If remote fetch is required, verify checksums and use HTTPS.",
+      "code_snippet": "# versioned installs above. The installer's --release flag selects the tag.\nARG FNM_VERSION=1.39.0\nENV FNM_DIR=\"/home/vscode/.fnm\"\nRUN curl -fsSL https://fnm.vercel.app/install | bash -s -- --install-dir \"$FNM_DIR\" --skip-shell --release \"v${FNM_VERSION}\" && \\\n  export PATH=\"$FNM_DIR:$PATH\" && \\\n  eval \"$(fnm env)\" && \\\n  fnm install ${NODE_VERSION} && \\",
+      "intent": null,
+      "tags": [
+        "Supply Chain"
+      ],
+      "evidence": {},
+      "match_fingerprint": "c1c3b5cd7aa661b646c11202522ce048e16e24000bf1c2f1265b5465a0422fae",
+      "occurrences": [
+        {
+          "file": "resources/Dockerfile",
+          "start_line": 93,
+          "end_line": null,
+          "start_column": 4
+        }
+      ]
+    },
+    {
+      "id": "PE5",
+      "finding_id": "finding-7b89d0e659864e9d956096603f66864d",
+      "category": "Privilege Escalation",
+      "pattern": "Privileged Container / Container Escape",
+      "severity": "HIGH",
+      "confidence": 0.85,
+      "location": {
+        "file": "resources/devcontainer.json",
+        "start_line": 16,
+        "end_line": null,
+        "start_column": 5
+      },
+      "finding": "--cap-add=NET_ADMIN",
+      "explanation": "Potential security issue detected. Manual review is recommended.",
+      "remediation": "Review the flagged content for security risks. Ensure no credentials, secrets, or sensitive data are exposed.",
+      "code_snippet": "    \"ghcr.io/devcontainers/features/github-cli:1\": {}\n  },\n  \"runArgs\": [\n    \"--cap-add=NET_ADMIN\",\n    \"--cap-add=NET_RAW\"\n  ],\n  \"init\": true,",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "c7bdb56d3fb207e640fc0800c369bfaac9159a2edd16abada1fc0ee1ad97f88b",
+      "occurrences": [
+        {
+          "file": "resources/devcontainer.json",
+          "start_line": 16,
+          "end_line": null,
+          "start_column": 5
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-6b9daca331614c91bd70a38efb53e08b",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "resources/install.sh",
+        "start_line": 771,
+        "end_line": null,
+        "start_column": 29
+      },
+      "finding": "rm -rf ~",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "\n  if ! git -C \"$SCRIPT_DIR\" rev-parse --is-inside-work-tree &>/dev/null; then\n    log_error \"Not a git repository: $SCRIPT_DIR\"\n    log_info \"Re-clone with: rm -rf ~/.claude-devcontainer && git clone https://github.com/trailofbits/claude-code-devcontainer ~/.claude-devcontainer\"\n    exit 1\n  fi\n",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "26e22f4cfd2aa77cd384519bed5efdd6f6dba6aab2e61d67ae29c1cbcadc466e",
+      "occurrences": [
+        {
+          "file": "resources/install.sh",
+          "start_line": 771,
+          "end_line": null,
+          "start_column": 29
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-07b927331f6b42ad8654ac5a17c82e30",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "resources/install.sh",
+        "start_line": 771,
+        "end_line": null,
+        "start_column": 29
+      },
+      "finding": "rm -rf ~/.claude-devcontainer",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "\n  if ! git -C \"$SCRIPT_DIR\" rev-parse --is-inside-work-tree &>/dev/null; then\n    log_error \"Not a git repository: $SCRIPT_DIR\"\n    log_info \"Re-clone with: rm -rf ~/.claude-devcontainer && git clone https://github.com/trailofbits/claude-code-devcontainer ~/.claude-devcontainer\"\n    exit 1\n  fi\n",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "06cefd0f2ce2e48f70fa4bfc9cb48f91b638a007869015db5967fbc91296fc6b",
+      "occurrences": [
+        {
+          "file": "resources/install.sh",
+          "start_line": 771,
+          "end_line": null,
+          "start_column": 29
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-073efe73ba6f4e998d88cf1f4b40d59a",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.6,
+      "location": {
+        "file": "resources/post_install.py",
+        "start_line": 244,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": ".env.local\n",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "\n# Misc\n*.log\n.env.local\n.env.*.local\n\"\"\"\n    gitignore.write_text(patterns, encoding=\"utf-8\")",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "021f7ffa4122cf8ed26ecae08a0a46ff9aa27fee40f717ab4c3bff5f82c6550e",
+      "occurrences": [
+        {
+          "file": "resources/post_install.py",
+          "start_line": 244,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    },
+    {
+      "id": "LP3",
+      "finding_id": "finding-1f69bf5e98234229a1c325cb8d06acf6",
+      "category": "MCP Least Privilege",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 1,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "Without declared permissions the skill's intent is opaque and cannot be validated.",
+      "remediation": "Declare the skill's tool scope: for Claude Code / Agent Skills SKILL.md, list the tools the skill may invoke in the 'allowed-tools' frontmatter field; for MCP server manifests, add a 'permissions' list naming the required capabilities.",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI02"
+      ],
+      "evidence": {},
+      "match_fingerprint": null,
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 1,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "EA2",
+      "finding_id": "finding-f4cea4d196f845db802332853023c1de",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "severity": "MEDIUM",
+      "confidence": 0.85,
+      "location": {
+        "file": "resources/install.sh",
+        "start_line": 59,
+        "end_line": null,
+        "start_column": 34
+      },
+      "finding": "Skip confirmation",
+      "explanation": "Skill enables autonomous high-impact decisions without human-in-the-loop verification. Critical operations (destructive commands, financial transactions, data deletion) should require explicit user confirmation.",
+      "remediation": "Add human-in-the-loop confirmation for destructive, irreversible, or high-impact operations. Never auto-execute commands that modify files, send data, or alter system state.",
+      "code_snippet": "    devc sync crypto            # Sync only matching devcontainer\n    devc cp /some/file ./out    # Copy a path from container to host\n    devc destroy                # Remove all project Docker resources\n    devc destroy -f             # Skip confirmation prompt\nEOF\n}\n",
+      "intent": null,
+      "tags": [
+        "Excessive Agency"
+      ],
+      "evidence": {},
+      "match_fingerprint": "f2585ed1a9f8ffe69bade4f4a85869690c663180a11cc20f5d4a1c41371c139d",
+      "occurrences": [
+        {
+          "file": "resources/install.sh",
+          "start_line": 59,
+          "end_line": null,
+          "start_column": 34
+        }
+      ]
+    },
+    {
+      "id": "RA2",
+      "finding_id": "finding-9ddd6332791e47c0a0633e348b019ee5",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "resources/install.sh",
+        "start_line": 751,
+        "end_line": null,
+        "start_column": 2
+      },
+      "finding": "mkdir -p \"$install_dir\"\n\n  # Create a symlink to the original script\n  ln -sf \"$SCRIPT_DIR/$SCRIPT_NAME\" \"$install_path\"\n\n  log_success \"Installed 'devc' to $install_path\"\n\n  # Check if in PATH\n  if [",
+      "explanation": "Skill establishes unauthorized persistence across sessions via cron jobs, startup scripts, or state files. Session persistence allows an attacker to maintain access beyond the current interaction.",
+      "remediation": "Remove any persistence mechanisms (cron jobs, startup scripts, state files). Skills should not maintain state across sessions without explicit user consent.",
+      "code_snippet": "  local install_dir=\"$HOME/.local/bin\"\n  local install_path=\"$install_dir/devc\"\n\n  mkdir -p \"$install_dir\"\n\n  # Create a symlink to the original script\n  ln -sf \"$SCRIPT_DIR/$SCRIPT_NAME\" \"$install_path\"",
+      "intent": null,
+      "tags": [
+        "Rogue Agent"
+      ],
+      "evidence": {},
+      "match_fingerprint": "9d8dbbb45be949463b8c796cd7f5845ff74d70e817a85f25ab386b30b8db2464",
+      "occurrences": [
+        {
+          "file": "resources/install.sh",
+          "start_line": 751,
+          "end_line": null,
+          "start_column": 2
+        }
+      ]
+    },
+    {
+      "id": "AST4",
+      "finding_id": "finding-e6962e89cfb6461082037f3f10a73f79",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "resources/post_install.py",
+        "start_line": 47,
+        "end_line": 52,
+        "start_column": 17,
+        "end_column": 9
+      },
+      "finding": "subprocess.run(\n            [\"claude\", \"-p\", \"ok\"],\n            capture_output=True,\n            text=True,\n            timeout=30,\n        )",
+      "explanation": "subprocess module calls execute external commands. Without careful input validation, this enables command injection.",
+      "remediation": "Use subprocess.run() with shell=False and an explicit argument list. Validate all inputs and avoid passing user-controlled data to commands.",
+      "code_snippet": "\n    print(\"[post_install] Running claude -p to populate auth state...\", file=sys.stderr)\n    try:\n        result = subprocess.run(\n            [\"claude\", \"-p\", \"ok\"],\n            capture_output=True,\n            text=True,",
+      "intent": null,
+      "tags": [
+        "Dangerous Code Execution"
+      ],
+      "evidence": {},
+      "match_fingerprint": "97ff06d036b85f9aad7bedffbeb23e94facf0c334444a14d92122853b62a699c",
+      "occurrences": [
+        {
+          "file": "resources/post_install.py",
+          "start_line": 47,
+          "end_line": 52,
+          "start_column": 17,
+          "end_column": 9
+        }
+      ]
+    },
+    {
+      "id": "PE2",
+      "finding_id": "finding-1dd187e97d624c0283082cf8bf7f7ea0",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "resources/post_install.py",
+        "start_line": 176,
+        "end_line": null,
+        "start_column": 22
+      },
+      "finding": "sudo ",
+      "explanation": "Commands invoke sudo or root privileges. Verify this elevated access is necessary and justified.",
+      "remediation": "Avoid sudo/root unless strictly required. Prefer least-privilege patterns. If elevation is needed, document the justification and scope.",
+      "code_snippet": "    for dir_path in dirs_to_fix:\n        if dir_path.exists():\n            try:\n                # Use sudo to fix ownership if needed\n                stat_info = dir_path.stat()\n                if stat_info.st_uid != uid:\n                    subprocess.run(",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "16746f7044f347c6322d4c5b879b3fb06b2f205cbf1c9a209b43d52b34b3afd7",
+      "occurrences": [
+        {
+          "file": "resources/post_install.py",
+          "start_line": 176,
+          "end_line": null,
+          "start_column": 22
+        }
+      ]
+    },
+    {
+      "id": "AST4",
+      "finding_id": "finding-65a791ccbe1e492d865e68dee586af10",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "resources/post_install.py",
+        "start_line": 179,
+        "end_line": 183,
+        "start_column": 20,
+        "end_column": 21
+      },
+      "finding": "subprocess.run(\n                        [\"sudo\", \"chown\", \"-R\", f\"{uid}:{gid}\", str(dir_path)],\n                        check=True,\n                        capture_output=True,\n                    )",
+      "explanation": "subprocess module calls execute external commands. Without careful input validation, this enables command injection.",
+      "remediation": "Use subprocess.run() with shell=False and an explicit argument list. Validate all inputs and avoid passing user-controlled data to commands.",
+      "code_snippet": "                # Use sudo to fix ownership if needed\n                stat_info = dir_path.stat()\n                if stat_info.st_uid != uid:\n                    subprocess.run(\n                        [\"sudo\", \"chown\", \"-R\", f\"{uid}:{gid}\", str(dir_path)],\n                        check=True,\n                        capture_output=True,",
+      "intent": null,
+      "tags": [
+        "Dangerous Code Execution"
+      ],
+      "evidence": {},
+      "match_fingerprint": "50c9aba0ce1a9c346d513f9438a8609ef53d3856c0d18b26a5cda2ac6bf61b99",
+      "occurrences": [
+        {
+          "file": "resources/post_install.py",
+          "start_line": 179,
+          "end_line": 183,
+          "start_column": 20,
+          "end_column": 21
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-56f8832851ec4d4f96d7f4070f29fef0",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "LOW",
+      "confidence": 0.15,
+      "location": {
+        "file": "resources/Dockerfile",
+        "start_line": 33,
+        "end_line": null,
+        "start_column": 22
+      },
+      "finding": "rm -rf /",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "  ipset \\\n  iptables \\\n  iproute2 \\\n  && apt-get clean && rm -rf /var/lib/apt/lists/*\n\n# Install git-delta\nARG GIT_DELTA_VERSION=0.18.2",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "f3ff4d6cfbe1b7f6b23dd4d1379edae984c14738c5f5b14db40e215beb673f08",
+      "occurrences": [
+        {
+          "file": "resources/Dockerfile",
+          "start_line": 33,
+          "end_line": null,
+          "start_column": 22
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-cc4594a69178445cb52b1a1d8cada804",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "LOW",
+      "confidence": 0.15,
+      "location": {
+        "file": "resources/Dockerfile",
+        "start_line": 33,
+        "end_line": null,
+        "start_column": 22
+      },
+      "finding": "rm -rf /var/lib/apt/lists/*",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "  ipset \\\n  iptables \\\n  iproute2 \\\n  && apt-get clean && rm -rf /var/lib/apt/lists/*\n\n# Install git-delta\nARG GIT_DELTA_VERSION=0.18.2",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "95e9afa11fed54a53f28b6f446bbc3a2db2288e67b4d456b256a99ab81fe73f6",
+      "occurrences": [
+        {
+          "file": "resources/Dockerfile",
+          "start_line": 33,
+          "end_line": null,
+          "start_column": 22
+        }
+      ]
+    },
+    {
+      "id": "TM2",
+      "finding_id": "finding-ae1f8f7eef994c3f9cfc93c9166214f3",
+      "category": "Tool Misuse",
+      "pattern": "Chaining Abuse",
+      "severity": "LOW",
+      "confidence": 0.15,
+      "location": {
+        "file": "resources/Dockerfile",
+        "start_line": 33,
+        "end_line": null,
+        "start_column": 19
+      },
+      "finding": "&& rm -",
+      "explanation": "Tool calls are chained to bypass individual safety checks or escalate capabilities beyond what any single tool call would allow.",
+      "remediation": "Limit tool chaining depth and validate the output of each tool before passing it to the next. Require explicit user approval for multi-step chains.",
+      "code_snippet": "  ipset \\\n  iptables \\\n  iproute2 \\\n  && apt-get clean && rm -rf /var/lib/apt/lists/*\n\n# Install git-delta\nARG GIT_DELTA_VERSION=0.18.2",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "da42bed49ba667f4edac8a3628fa28e5cc6bbc20fc757fb7d1ddbddd9a531ec0",
+      "occurrences": [
+        {
+          "file": "resources/Dockerfile",
+          "start_line": 33,
+          "end_line": null,
+          "start_column": 19
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": true,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 10,
+    "scanned_components": 8,
+    "coverage_percent": 80.0,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 8,
+    "partially_inspected_files": 2,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 46,
+        "end_line": 46,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 47,
+        "end_line": 47,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 48,
+        "end_line": 48,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 49,
+        "end_line": 49,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 58,
+        "end_line": 58,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 59,
+        "end_line": 59,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 60,
+        "end_line": 60,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 61,
+        "end_line": 61,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 108,
+        "end_line": 108,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 112,
+        "end_line": 112,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 121,
+        "end_line": 121,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 123,
+        "end_line": 123,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 125,
+        "end_line": 125,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 128,
+        "end_line": 128,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 132,
+        "end_line": 132,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 140,
+        "end_line": 140,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 149,
+        "end_line": 149,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 155,
+        "end_line": 155,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 161,
+        "end_line": 161,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 165,
+        "end_line": 165,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 171,
+        "end_line": 171,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 172,
+        "end_line": 172,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 173,
+        "end_line": 173,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 180,
+        "end_line": 180,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 190,
+        "end_line": 190,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 196,
+        "end_line": 196,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 204,
+        "end_line": 204,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 217,
+        "end_line": 217,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 229,
+        "end_line": 229,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 231,
+        "end_line": 231,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 234,
+        "end_line": 234,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 237,
+        "end_line": 237,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 303,
+        "end_line": 303,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "resources/.zshrc",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "resources/Dockerfile",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "completed",
+        "planned_work": 4,
+        "completed": 4,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "degraded",
+        "planned_work": 10,
+        "completed": 8,
+        "partial": 2,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 46,
+        "column": 5,
+        "evidence": "1. `package.json` → `name` field",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 47,
+        "column": 5,
+        "evidence": "2. `pyproject.toml` → `project.name`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 47,
+        "column": 24,
+        "evidence": "2. `pyproject.toml` → `project.name`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 48,
+        "column": 5,
+        "evidence": "3. `Cargo.toml` → `package.name`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 48,
+        "column": 20,
+        "evidence": "3. `Cargo.toml` → `package.name`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 49,
+        "column": 5,
+        "evidence": "4. `go.mod` → module path (last segment after `/`)",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 58,
+        "column": 13,
+        "evidence": "| Python | `pyproject.toml`, `*.py` |",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 59,
+        "column": 22,
+        "evidence": "| Node/TypeScript | `package.json`, `tsconfig.json` |",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 59,
+        "column": 38,
+        "evidence": "| Node/TypeScript | `package.json`, `tsconfig.json` |",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 60,
+        "column": 11,
+        "evidence": "| Rust | `Cargo.toml` |",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 61,
+        "column": 9,
+        "evidence": "| Go | `go.mod`, `go.sum` |",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 61,
+        "column": 19,
+        "evidence": "| Go | `go.mod`, `go.sum` |",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 108,
+        "column": 17,
+        "evidence": "**Detection:** `pyproject.toml`, `requirements.txt`, `setup.py`, or `*.py` files",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 108,
+        "column": 35,
+        "evidence": "**Detection:** `pyproject.toml`, `requirements.txt`, `setup.py`, or `*.py` files",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 108,
+        "column": 55,
+        "evidence": "**Detection:** `pyproject.toml`, `requirements.txt`, `setup.py`, or `*.py` files",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 112,
+        "column": 109,
+        "evidence": "The base Dockerfile already includes Python 3.13 via uv. If a different version is required (detected from `pyproject.toml`), modify the Python installation:",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 121,
+        "column": 9,
+        "evidence": "Add to `customizations.vscode.extensions`:",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 123,
+        "column": 2,
+        "evidence": "\"ms-python.python\",",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 125,
+        "column": 2,
+        "evidence": "\"charliermarsh.ruff\"",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 128,
+        "column": 9,
+        "evidence": "Add to `customizations.vscode.settings`:",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 132,
+        "column": 31,
+        "evidence": "\"editor.defaultFormatter\": \"charliermarsh.ruff\",",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 140,
+        "column": 5,
+        "evidence": "If `pyproject.toml` exists, chain commands:",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 149,
+        "column": 17,
+        "evidence": "**Detection:** `package.json` or `tsconfig.json`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 149,
+        "column": 35,
+        "evidence": "**Detection:** `package.json` or `tsconfig.json`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 155,
+        "column": 9,
+        "evidence": "Add to `customizations.vscode.extensions`:",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 161,
+        "column": 9,
+        "evidence": "Add to `customizations.vscode.settings`:",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 165,
+        "column": 4,
+        "evidence": "\"source.fixAll.eslint\": \"explicit\"",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 171,
+        "column": 4,
+        "evidence": "- `pnpm-lock.yaml` → `uv run /opt/post_install.py && pnpm install --frozen-lockfile`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 172,
+        "column": 4,
+        "evidence": "- `yarn.lock` → `uv run /opt/post_install.py && yarn install --frozen-lockfile`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 173,
+        "column": 4,
+        "evidence": "- `package-lock.json` → `uv run /opt/post_install.py && npm ci`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 180,
+        "column": 17,
+        "evidence": "**Detection:** `Cargo.toml`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 190,
+        "column": 9,
+        "evidence": "Add to `customizations.vscode.extensions`:",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 196,
+        "column": 9,
+        "evidence": "Add to `customizations.vscode.settings`:",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 204,
+        "column": 5,
+        "evidence": "If `Cargo.lock` exists, use locked builds:",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 217,
+        "column": 17,
+        "evidence": "**Detection:** `go.mod`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 229,
+        "column": 9,
+        "evidence": "Add to `customizations.vscode.extensions`:",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 231,
+        "column": 2,
+        "evidence": "\"golang.go\"",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 234,
+        "column": 9,
+        "evidence": "Add to `customizations.vscode.settings`:",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 237,
+        "column": 31,
+        "evidence": "\"editor.defaultFormatter\": \"golang.go\"",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 252,
+        "column": 4,
+        "evidence": "- `references/dockerfile-best-practices.md` - Layer optimization, multi-stage builds, architecture support",
+        "target_path": "references/dockerfile-best-practices.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 253,
+        "column": 4,
+        "evidence": "- `references/features-vs-dockerfile.md` - When to use devcontainer features vs custom Dockerfile",
+        "target_path": "references/features-vs-dockerfile.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 259,
+        "column": 28,
+        "evidence": "Pattern for new mounts in `devcontainer.json`:",
+        "target_path": "resources/devcontainer.json",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 278,
+        "column": 5,
+        "evidence": "2. `devcontainer.json` - VS Code/devcontainer configuration",
+        "target_path": "resources/devcontainer.json",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 279,
+        "column": 5,
+        "evidence": "3. `post_install.py` - Post-creation setup script",
+        "target_path": "resources/post_install.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 281,
+        "column": 5,
+        "evidence": "5. `install.sh` - CLI helper for managing the devcontainer (`devc` command)",
+        "target_path": "resources/install.sh",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 291,
+        "column": 29,
+        "evidence": "3. JSON syntax is valid in `devcontainer.json` (no trailing commas, proper nesting)",
+        "target_path": "resources/devcontainer.json",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 303,
+        "column": 21,
+        "evidence": "3. CLI helper: Run `.devcontainer/install.sh self-install` to add the `devc` command to PATH",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      }
+    ],
+    "limitations": [
+      "Analyzer static_patterns_tool_misuse status: degraded."
+    ],
+    "findings_before_filtering": 25,
+    "findings_after_filtering": 25
+  }
+}

@@ -1,0 +1,1513 @@
+{
+  "skill": {
+    "name": "gke-alert-configuration",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\google\\skills\\gke-alert-configuration",
+    "scanned_at": "2026-10-31T21:13:47.707417+00:00"
+  },
+  "risk_assessment": {
+    "score": 19,
+    "severity": "LOW",
+    "recommendation": "CAUTION",
+    "max_issue_severity": "MEDIUM"
+  },
+  "components": [
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 414,
+      "executable": false,
+      "size_bytes": 21660,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/attribution.md",
+      "type": "markdown",
+      "lines": 39,
+      "executable": false,
+      "size_bytes": 1909,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/gke_configuration_prerequisites.md",
+      "type": "markdown",
+      "lines": 244,
+      "executable": false,
+      "size_bytes": 10823,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/metrics_and_alerts_catalog.md",
+      "type": "markdown",
+      "lines": 319,
+      "executable": false,
+      "size_bytes": 24996,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/promql_queries.md",
+      "type": "markdown",
+      "lines": 453,
+      "executable": false,
+      "size_bytes": 11906,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/validate_config.py",
+      "type": "python",
+      "lines": 449,
+      "executable": true,
+      "size_bytes": 13265,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "LP3",
+      "finding_id": "finding-cff318abe23d4b1fb22699bd8611b651",
+      "category": "MCP Least Privilege",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 1,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "Without declared permissions the skill's intent is opaque and cannot be validated.",
+      "remediation": "Declare the skill's tool scope: for Claude Code / Agent Skills SKILL.md, list the tools the skill may invoke in the 'allowed-tools' frontmatter field; for MCP server manifests, add a 'permissions' list naming the required capabilities.",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI02"
+      ],
+      "evidence": {},
+      "match_fingerprint": null,
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 1,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "P9",
+      "finding_id": "finding-ff58583abfaf4ab5870f5155cfb0afdb",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/metrics_and_alerts_catalog.md",
+        "start_line": 175,
+        "end_line": null
+      },
+      "finding": "U+0020 x195",
+      "explanation": "Large whitespace padding was detected (a block of blank lines or a long run of spaces). This can push injected instructions below or to the right of the visible area so a human reviewer never sees them while the agent still reads them. Manual review of the hidden content is recommended.",
+      "remediation": "Remove the large whitespace padding (blank-line blocks or long space runs) and review any content hidden below or to the right of it. Keep skill files compact and reviewable so no instructions can be concealed off-screen.",
+      "code_snippet": "\n### Node Health and Capacity Alerts\n\nAlert Name                              | Open Source PromQL Rule                                                                                                                                                                                                   | Severity | KSM Required? | Non-KSM Native Alternative Available?\n:-------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------- | :------------ | :------------------------------------\n**Kubernetes Node not ready**           | `kube_node_status_condition{condition=\"Ready\",status=\"true\"} == 0`                                                                                                                                                        | Critical | No (Standard) | Yes (Tier 1 PromQL ",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "40dd98c9d9593fac609d4d44eefb9812c91de14b9eb423e35ab6d0b223f27816",
+      "occurrences": [
+        {
+          "file": "references/metrics_and_alerts_catalog.md",
+          "start_line": 175,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "P9",
+      "finding_id": "finding-97ea70ac895a4649b8151c23f3af9140",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/metrics_and_alerts_catalog.md",
+        "start_line": 177,
+        "end_line": null
+      },
+      "finding": "U+0020 x152",
+      "explanation": "Large whitespace padding was detected (a block of blank lines or a long run of spaces). This can push injected instructions below or to the right of the visible area so a human reviewer never sees them while the agent still reads them. Manual review of the hidden content is recommended.",
+      "remediation": "Remove the large whitespace padding (blank-line blocks or long space runs) and review any content hidden below or to the right of it. Keep skill files compact and reviewable so no instructions can be concealed off-screen.",
+      "code_snippet": "Severity | KSM Required? | Non-KSM Native Alternative Available?\n:-------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------- | :------------ | :------------------------------------\n**Kubernetes Node not ready**           | `kube_node_status_condition{condition=\"Ready\",status=\"true\"} == 0`                                                                                                                                                        | Critical | No (Standard) | Yes (Tier 1 PromQL / native node status)\n**Kubernetes Node scheduling disabled** | `kube_node_spec_taint{key=\"node.kubernetes.io/unschedulable\"} == 1`                                                                                                                                                       | Warning  | No (S",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "7aa2516f139e96110acc5783be4282685b186faf6e5bfeea702af12ce548502f",
+      "occurrences": [
+        {
+          "file": "references/metrics_and_alerts_catalog.md",
+          "start_line": 177,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "P9",
+      "finding_id": "finding-84139847ab544dd9922e583c71eac121",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/metrics_and_alerts_catalog.md",
+        "start_line": 178,
+        "end_line": null
+      },
+      "finding": "U+0020 x151",
+      "explanation": "Large whitespace padding was detected (a block of blank lines or a long run of spaces). This can push injected instructions below or to the right of the visible area so a human reviewer never sees them while the agent still reads them. Manual review of the hidden content is recommended.",
+      "remediation": "Remove the large whitespace padding (blank-line blocks or long space runs) and review any content hidden below or to the right of it. Keep skill files compact and reviewable so no instructions can be concealed off-screen.",
+      "code_snippet": "---- | :------------ | :------------------------------------\n**Kubernetes Node not ready**           | `kube_node_status_condition{condition=\"Ready\",status=\"true\"} == 0`                                                                                                                                                        | Critical | No (Standard) | Yes (Tier 1 PromQL / native node status)\n**Kubernetes Node scheduling disabled** | `kube_node_spec_taint{key=\"node.kubernetes.io/unschedulable\"} == 1`                                                                                                                                                       | Warning  | No (Standard) | Yes\n**Kubernetes Node memory pressure**     | `kube_node_status_condition{condition=\"MemoryPressure\",status=\"true\"} == 1`                                                                                                                                               | Critical | No (Standard) | Yes\n**Kubernetes Node disk ",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "542b62f0b297b6295507b8760b27e96e0c5f1eca491741dda56d64a7dabd48bc",
+      "occurrences": [
+        {
+          "file": "references/metrics_and_alerts_catalog.md",
+          "start_line": 178,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "P9",
+      "finding_id": "finding-139ff24a2fc8438688b96f1223d4db5f",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/metrics_and_alerts_catalog.md",
+        "start_line": 179,
+        "end_line": null
+      },
+      "finding": "U+0020 x143",
+      "explanation": "Large whitespace padding was detected (a block of blank lines or a long run of spaces). This can push injected instructions below or to the right of the visible area so a human reviewer never sees them while the agent still reads them. Manual review of the hidden content is recommended.",
+      "remediation": "Remove the large whitespace padding (blank-line blocks or long space runs) and review any content hidden below or to the right of it. Keep skill files compact and reviewable so no instructions can be concealed off-screen.",
+      "code_snippet": "                    | Critical | No (Standard) | Yes (Tier 1 PromQL / native node status)\n**Kubernetes Node scheduling disabled** | `kube_node_spec_taint{key=\"node.kubernetes.io/unschedulable\"} == 1`                                                                                                                                                       | Warning  | No (Standard) | Yes\n**Kubernetes Node memory pressure**     | `kube_node_status_condition{condition=\"MemoryPressure\",status=\"true\"} == 1`                                                                                                                                               | Critical | No (Standard) | Yes\n**Kubernetes Node disk pressure**       | `kube_node_status_condition{condition=\"DiskPressure\",status=\"true\"} == 1`                                                                                                                                                 | Critical | No (Standard) | Yes\n**Kubernetes Node network unava",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "1c97bdc17dccec9388d5610c5c6421f447802abf1afa524c355961d5f6ed6340",
+      "occurrences": [
+        {
+          "file": "references/metrics_and_alerts_catalog.md",
+          "start_line": 179,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "P9",
+      "finding_id": "finding-362d24f263664e4a8b0c716accec23cd",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/metrics_and_alerts_catalog.md",
+        "start_line": 180,
+        "end_line": null
+      },
+      "finding": "U+0020 x145",
+      "explanation": "Large whitespace padding was detected (a block of blank lines or a long run of spaces). This can push injected instructions below or to the right of the visible area so a human reviewer never sees them while the agent still reads them. Manual review of the hidden content is recommended.",
+      "remediation": "Remove the large whitespace padding (blank-line blocks or long space runs) and review any content hidden below or to the right of it. Keep skill files compact and reviewable so no instructions can be concealed off-screen.",
+      "code_snippet": "                                                           | Warning  | No (Standard) | Yes\n**Kubernetes Node memory pressure**     | `kube_node_status_condition{condition=\"MemoryPressure\",status=\"true\"} == 1`                                                                                                                                               | Critical | No (Standard) | Yes\n**Kubernetes Node disk pressure**       | `kube_node_status_condition{condition=\"DiskPressure\",status=\"true\"} == 1`                                                                                                                                                 | Critical | No (Standard) | Yes\n**Kubernetes Node network unavailable** | `kube_node_status_condition{condition=\"NetworkUnavailable\",status=\"true\"} == 1`                                                                                                                                           | Critical | No (Standard) | Yes\n**Kubernetes Node out of pod ",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "4ae2ab6ff0115e6b758eb546b7621576a7487e8bdaa5389c332aaf878878846e",
+      "occurrences": [
+        {
+          "file": "references/metrics_and_alerts_catalog.md",
+          "start_line": 180,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "P9",
+      "finding_id": "finding-dcff495ff5cd45dfbec2e1b491af5b57",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/metrics_and_alerts_catalog.md",
+        "start_line": 181,
+        "end_line": null
+      },
+      "finding": "U+0020 x139",
+      "explanation": "Large whitespace padding was detected (a block of blank lines or a long run of spaces). This can push injected instructions below or to the right of the visible area so a human reviewer never sees them while the agent still reads them. Manual review of the hidden content is recommended.",
+      "remediation": "Remove the large whitespace padding (blank-line blocks or long space runs) and review any content hidden below or to the right of it. Keep skill files compact and reviewable so no instructions can be concealed off-screen.",
+      "code_snippet": "                                                     | Critical | No (Standard) | Yes\n**Kubernetes Node disk pressure**       | `kube_node_status_condition{condition=\"DiskPressure\",status=\"true\"} == 1`                                                                                                                                                 | Critical | No (Standard) | Yes\n**Kubernetes Node network unavailable** | `kube_node_status_condition{condition=\"NetworkUnavailable\",status=\"true\"} == 1`                                                                                                                                           | Critical | No (Standard) | Yes\n**Kubernetes Node out of pod capacity** | `sum by (node) ((kube_pod_status_phase{phase=\"Running\"} == 1) + on(uid, instance) group_left(node) (0 * kube_pod_info{pod_template_hash=\"\"})) / sum by (node) (kube_node_status_allocatable{resource=\"pods\"}) * 100 > 90` | Warning  | **Yes (KSM)** | Yes (Approximate via cAdvisor pod count",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "6412a500e99a4614a54c0fcacf79b379252474687d583f496fdbd48e0b2eb3c7",
+      "occurrences": [
+        {
+          "file": "references/metrics_and_alerts_catalog.md",
+          "start_line": 181,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "P9",
+      "finding_id": "finding-49a64ae6c6a04497a7d6af8d3628a107",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/metrics_and_alerts_catalog.md",
+        "start_line": 186,
+        "end_line": null
+      },
+      "finding": "U+0020 x197",
+      "explanation": "Large whitespace padding was detected (a block of blank lines or a long run of spaces). This can push injected instructions below or to the right of the visible area so a human reviewer never sees them while the agent still reads them. Manual review of the hidden content is recommended.",
+      "remediation": "Remove the large whitespace padding (blank-line blocks or long space runs) and review any content hidden below or to the right of it. Keep skill files compact and reviewable so no instructions can be concealed off-screen.",
+      "code_snippet": "\n### Workload and Container Reliability Alerts\n\nAlert Name                                       | Open Source PromQL Rule                                                                                                                                                                                                     | Severity | KSM Required? | Non-KSM Native Alternative Available?\n:----------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------- | :------------ | :------------------------------------\n**Kubernetes Pod crash looping**                 | `increase(kube_pod_container_status_restarts_total[15m]) > 3`                                                                                                                                                               | War",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "623a7c2d7e443c821267848df4e2e20bf1a604964f2146181cf97066ae6463d1",
+      "occurrences": [
+        {
+          "file": "references/metrics_and_alerts_catalog.md",
+          "start_line": 186,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "P9",
+      "finding_id": "finding-4ef56553c0e742cd8ea0c04e6897e6eb",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/metrics_and_alerts_catalog.md",
+        "start_line": 188,
+        "end_line": null
+      },
+      "finding": "U+0020 x159",
+      "explanation": "Large whitespace padding was detected (a block of blank lines or a long run of spaces). This can push injected instructions below or to the right of the visible area so a human reviewer never sees them while the agent still reads them. Manual review of the hidden content is recommended.",
+      "remediation": "Remove the large whitespace padding (blank-line blocks or long space runs) and review any content hidden below or to the right of it. Keep skill files compact and reviewable so no instructions can be concealed off-screen.",
+      "code_snippet": "Required? | Non-KSM Native Alternative Available?\n:----------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------- | :------------ | :------------------------------------\n**Kubernetes Pod crash looping**                 | `increase(kube_pod_container_status_restarts_total[15m]) > 3`                                                                                                                                                               | Warning  | No (cAdvisor) | Yes (`kubernetes.io/container/restart_count`)\n**Kubernetes Pod not healthy**                   | `sum by (namespace, pod) (kube_pod_status_phase{phase=~\"Pending\\|Unknown\\|Failed\"}) > 0`                                                                                                                               ",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "33b140070b58b71b130bba68be90c89a1156b52b8be2176859b297d1b41581f3",
+      "occurrences": [
+        {
+          "file": "references/metrics_and_alerts_catalog.md",
+          "start_line": 188,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "P9",
+      "finding_id": "finding-c17d5b29933146a1baf060d67fb45468",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/metrics_and_alerts_catalog.md",
+        "start_line": 189,
+        "end_line": null
+      },
+      "finding": "U+0020 x132",
+      "explanation": "Large whitespace padding was detected (a block of blank lines or a long run of spaces). This can push injected instructions below or to the right of the visible area so a human reviewer never sees them while the agent still reads them. Manual review of the hidden content is recommended.",
+      "remediation": "Remove the large whitespace padding (blank-line blocks or long space runs) and review any content hidden below or to the right of it. Keep skill files compact and reviewable so no instructions can be concealed off-screen.",
+      "code_snippet": "--------------\n**Kubernetes Pod crash looping**                 | `increase(kube_pod_container_status_restarts_total[15m]) > 3`                                                                                                                                                               | Warning  | No (cAdvisor) | Yes (`kubernetes.io/container/restart_count`)\n**Kubernetes Pod not healthy**                   | `sum by (namespace, pod) (kube_pod_status_phase{phase=~\"Pending\\|Unknown\\|Failed\"}) > 0`                                                                                                                                    | Critical | **Yes (KSM)** | Partial (Native pod availability checks)\n**Kubernetes Container OOMKiller**               | `(kube_pod_container_status_restarts_total - kube_pod_container_status_restarts_total offset 10m >= 1) and ignoring (reason) min_over_time(kube_pod_container_status_last_terminated_reason{reason=\"OOMKilled\"}[10m]) == 1` | Warning  | **Yes (KSM)** ",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "d7c9639f6605e8546a9c7dd8c8f029f428c1af5e0b21c7f26ad43a4a20b46319",
+      "occurrences": [
+        {
+          "file": "references/metrics_and_alerts_catalog.md",
+          "start_line": 189,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "P9",
+      "finding_id": "finding-db47434d778043d4aeb3d084c441d284",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/metrics_and_alerts_catalog.md",
+        "start_line": 191,
+        "end_line": null
+      },
+      "finding": "U+0020 x144",
+      "explanation": "Large whitespace padding was detected (a block of blank lines or a long run of spaces). This can push injected instructions below or to the right of the visible area so a human reviewer never sees them while the agent still reads them. Manual review of the hidden content is recommended.",
+      "remediation": "Remove the large whitespace padding (blank-line blocks or long space runs) and review any content hidden below or to the right of it. Keep skill files compact and reviewable so no instructions can be concealed off-screen.",
+      "code_snippet": "ive pod availability checks)\n**Kubernetes Container OOMKiller**               | `(kube_pod_container_status_restarts_total - kube_pod_container_status_restarts_total offset 10m >= 1) and ignoring (reason) min_over_time(kube_pod_container_status_last_terminated_reason{reason=\"OOMKilled\"}[10m]) == 1` | Warning  | **Yes (KSM)** | Yes (Memory usage > 95% of container limit)\n**Kubernetes Deployment replicas mismatch**      | `kube_deployment_spec_replicas != kube_deployment_status_replicas_available`                                                                                                                                                | Warning  | **Yes (KSM)** | No exact match without KSM (Control Plane state)\n**Kubernetes StatefulSet replicas mismatch**     | `kube_statefulset_status_replicas_ready != kube_statefulset_status_replicas`                                                                                                                                                | Warni",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "effb96d2aa6ff6c7a8746baf5b4c6634e969d1259bc2768660496cd7aa028304",
+      "occurrences": [
+        {
+          "file": "references/metrics_and_alerts_catalog.md",
+          "start_line": 191,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "P9",
+      "finding_id": "finding-2e71905009714fe89eb7f80d6efbe2e6",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/metrics_and_alerts_catalog.md",
+        "start_line": 192,
+        "end_line": null
+      },
+      "finding": "U+0020 x144",
+      "explanation": "Large whitespace padding was detected (a block of blank lines or a long run of spaces). This can push injected instructions below or to the right of the visible area so a human reviewer never sees them while the agent still reads them. Manual review of the hidden content is recommended.",
+      "remediation": "Remove the large whitespace padding (blank-line blocks or long space runs) and review any content hidden below or to the right of it. Keep skill files compact and reviewable so no instructions can be concealed off-screen.",
+      "code_snippet": "95% of container limit)\n**Kubernetes Deployment replicas mismatch**      | `kube_deployment_spec_replicas != kube_deployment_status_replicas_available`                                                                                                                                                | Warning  | **Yes (KSM)** | No exact match without KSM (Control Plane state)\n**Kubernetes StatefulSet replicas mismatch**     | `kube_statefulset_status_replicas_ready != kube_statefulset_status_replicas`                                                                                                                                                | Warning  | **Yes (KSM)** | No exact match without KSM\n**Kubernetes StatefulSet down**                  | `kube_statefulset_replicas != kube_statefulset_status_replicas_ready > 0`                                                                                                                                                   | Critical | **Yes (KSM)** | ",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "effb96d2aa6ff6c7a8746baf5b4c6634e969d1259bc2768660496cd7aa028304",
+      "occurrences": [
+        {
+          "file": "references/metrics_and_alerts_catalog.md",
+          "start_line": 192,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "P9",
+      "finding_id": "finding-e336ab655e084ab08fe3dbea47c45927",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/metrics_and_alerts_catalog.md",
+        "start_line": 193,
+        "end_line": null
+      },
+      "finding": "U+0020 x147",
+      "explanation": "Large whitespace padding was detected (a block of blank lines or a long run of spaces). This can push injected instructions below or to the right of the visible area so a human reviewer never sees them while the agent still reads them. Manual review of the hidden content is recommended.",
+      "remediation": "Remove the large whitespace padding (blank-line blocks or long space runs) and review any content hidden below or to the right of it. Keep skill files compact and reviewable so no instructions can be concealed off-screen.",
+      "code_snippet": "No exact match without KSM (Control Plane state)\n**Kubernetes StatefulSet replicas mismatch**     | `kube_statefulset_status_replicas_ready != kube_statefulset_status_replicas`                                                                                                                                                | Warning  | **Yes (KSM)** | No exact match without KSM\n**Kubernetes StatefulSet down**                  | `kube_statefulset_replicas != kube_statefulset_status_replicas_ready > 0`                                                                                                                                                   | Critical | **Yes (KSM)** | No exact match without KSM\n**Kubernetes Deployment generation mismatch**    | `kube_deployment_status_observed_generation != kube_deployment_metadata_generation`                                                                                                                                         | Critical | **Yes (KSM)**",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "c471ccff63aab59289422e5393bb56a282cf1dfb67cd1b07c48eeff09dc2f333",
+      "occurrences": [
+        {
+          "file": "references/metrics_and_alerts_catalog.md",
+          "start_line": 193,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "P9",
+      "finding_id": "finding-5bdcd9de3598486493c98eeede4bcd88",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/metrics_and_alerts_catalog.md",
+        "start_line": 194,
+        "end_line": null
+      },
+      "finding": "U+0020 x137",
+      "explanation": "Large whitespace padding was detected (a block of blank lines or a long run of spaces). This can push injected instructions below or to the right of the visible area so a human reviewer never sees them while the agent still reads them. Manual review of the hidden content is recommended.",
+      "remediation": "Remove the large whitespace padding (blank-line blocks or long space runs) and review any content hidden below or to the right of it. Keep skill files compact and reviewable so no instructions can be concealed off-screen.",
+      "code_snippet": "s (KSM)** | No exact match without KSM\n**Kubernetes StatefulSet down**                  | `kube_statefulset_replicas != kube_statefulset_status_replicas_ready > 0`                                                                                                                                                   | Critical | **Yes (KSM)** | No exact match without KSM\n**Kubernetes Deployment generation mismatch**    | `kube_deployment_status_observed_generation != kube_deployment_metadata_generation`                                                                                                                                         | Critical | **Yes (KSM)** | Requires KSM\n**Kubernetes StatefulSet update not rolled out** | `max without (revision) (kube_statefulset_status_current_revision unless kube_statefulset_status_update_revision) * (kube_statefulset_replicas != kube_statefulset_status_replicas_updated)`                                | Warning  | **Yes (KSM)** | Requires KSM\n**Kubern",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "6d47fb4bc7d20d04d5e2711586bd7bbf1a25e92062b749556b933f5910e4a7f9",
+      "occurrences": [
+        {
+          "file": "references/metrics_and_alerts_catalog.md",
+          "start_line": 194,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "P9",
+      "finding_id": "finding-9888a2f54b944cbe886e49edcf4faedf",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/metrics_and_alerts_catalog.md",
+        "start_line": 197,
+        "end_line": null
+      },
+      "finding": "U+0020 x173",
+      "explanation": "Large whitespace padding was detected (a block of blank lines or a long run of spaces). This can push injected instructions below or to the right of the visible area so a human reviewer never sees them while the agent still reads them. Manual review of the hidden content is recommended.",
+      "remediation": "Remove the large whitespace padding (blank-line blocks or long space runs) and review any content hidden below or to the right of it. Keep skill files compact and reviewable so no instructions can be concealed off-screen.",
+      "code_snippet": "SM)** | Requires KSM\n**Kubernetes StatefulSet update not rolled out** | `max without (revision) (kube_statefulset_status_current_revision unless kube_statefulset_status_update_revision) * (kube_statefulset_replicas != kube_statefulset_status_replicas_updated)`                                | Warning  | **Yes (KSM)** | Requires KSM\n**Kubernetes DaemonSet rollout stuck**           | `(kube_daemonset_status_number_ready / kube_daemonset_status_desired_number_scheduled * 100 < 100) or (kube_daemonset_status_desired_number_scheduled - kube_daemonset_status_current_number_scheduled > 0)`                | Warning  | **Yes (KSM)** | Requires KSM\n**Kubernetes DaemonSet misscheduled**            | `kube_daemonset_status_number_misscheduled > 0`                                                                                                                                                                             | Critical | **Yes (KSM)** | Requires KSM\n\n### Jobs, CronJobs, and Storage Alerts\n",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "6abcfc677ebd0c319c89e4f87edaafdc5d68b4448732403c9031f104eecbae5d",
+      "occurrences": [
+        {
+          "file": "references/metrics_and_alerts_catalog.md",
+          "start_line": 197,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "P9",
+      "finding_id": "finding-0354022ee1674db597cc348acb661543",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/metrics_and_alerts_catalog.md",
+        "start_line": 201,
+        "end_line": null
+      },
+      "finding": "U+0020 x138",
+      "explanation": "Large whitespace padding was detected (a block of blank lines or a long run of spaces). This can push injected instructions below or to the right of the visible area so a human reviewer never sees them while the agent still reads them. Manual review of the hidden content is recommended.",
+      "remediation": "Remove the large whitespace padding (blank-line blocks or long space runs) and review any content hidden below or to the right of it. Keep skill files compact and reviewable so no instructions can be concealed off-screen.",
+      "code_snippet": "\n### Jobs, CronJobs, and Storage Alerts\n\nAlert Name                              | Open Source PromQL Rule                                                                                                                                          | Severity | KSM Required? | Non-KSM Native Alternative Available?\n:-------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------- | :------------ | :------------------------------------\n**Kubernetes Job failed**               | `kube_job_status_failed > 0`                                                                                                                                     | Warning  | **Yes (KSM)** | Requires KSM\n**Kubernetes Job not starting**         | `kube_job_status_active == 0 and kube_job_status_failed == 0 and kube_job_status_succeeded == 0 and (time() - kube_job_status_start_",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "970337f493b01685f719bfeeb195133745f8a0dcd21eefad1d7187c4100f592b",
+      "occurrences": [
+        {
+          "file": "references/metrics_and_alerts_catalog.md",
+          "start_line": 201,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "P9",
+      "finding_id": "finding-1225722b391348e59813ddd852f4f7f0",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/metrics_and_alerts_catalog.md",
+        "start_line": 203,
+        "end_line": null
+      },
+      "finding": "U+0020 x133",
+      "explanation": "Large whitespace padding was detected (a block of blank lines or a long run of spaces). This can push injected instructions below or to the right of the visible area so a human reviewer never sees them while the agent still reads them. Manual review of the hidden content is recommended.",
+      "remediation": "Remove the large whitespace padding (blank-line blocks or long space runs) and review any content hidden below or to the right of it. Keep skill files compact and reviewable so no instructions can be concealed off-screen.",
+      "code_snippet": "                                                                                             | Severity | KSM Required? | Non-KSM Native Alternative Available?\n:-------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------- | :------------ | :------------------------------------\n**Kubernetes Job failed**               | `kube_job_status_failed > 0`                                                                                                                                     | Warning  | **Yes (KSM)** | Requires KSM\n**Kubernetes Job not starting**         | `kube_job_status_active == 0 and kube_job_status_failed == 0 and kube_job_status_succeeded == 0 and (time() - kube_job_status_start_time) > 600`                 | Warning  | **Yes (KSM)** | Requires KSM\n**Kubernetes CronJob failing**          | `(kube_cronjob_status_last_schedule_ti",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "d7cc3b34a80ae810a7c6e67472f59f28d95fb62dadb72f5ce3106da9c772c572",
+      "occurrences": [
+        {
+          "file": "references/metrics_and_alerts_catalog.md",
+          "start_line": 203,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "P9",
+      "finding_id": "finding-c3f6c4fb2b0741b691a327cd0079c90d",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/metrics_and_alerts_catalog.md",
+        "start_line": 207,
+        "end_line": null
+      },
+      "finding": "U+0020 x81",
+      "explanation": "Large whitespace padding was detected (a block of blank lines or a long run of spaces). This can push injected instructions below or to the right of the visible area so a human reviewer never sees them while the agent still reads them. Manual review of the hidden content is recommended.",
+      "remediation": "Remove the large whitespace padding (blank-line blocks or long space runs) and review any content hidden below or to the right of it. Keep skill files compact and reviewable so no instructions can be concealed off-screen.",
+      "code_snippet": "     | `(kube_cronjob_status_last_schedule_time > kube_cronjob_status_last_successful_time) AND (kube_cronjob_status_active == 0) AND (kube_cronjob_spec_suspend == 0)` | Critical | **Yes (KSM)** | Requires KSM\n**Kubernetes Volume out of disk space** | `kubelet_volume_stats_available_bytes / kubelet_volume_stats_capacity_bytes * 100 < 10 and kubelet_volume_stats_capacity_bytes > 0`                              | Warning  | No (Kubelet)  | Yes (`kubernetes.io/pod/volume/...`)\n**Kubernetes Volume full in four days** | `predict_linear(kubelet_volume_stats_available_bytes[6h:5m], 4 * 24 * 3600) < 0`                                                                                 | Critical | No (Kubelet)  | Yes\n**Kubernetes PersistentVolume error**   | `kube_persistentvolume_status_phase{phase=~\"Failed\\|Pending\"} > 0`                                                                                               | Critical | **Yes (KSM)** | Requires KSM\n\n### API Server and Control Plane Alerts",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "f55586aface25533006bf6dbfa1930b448dbc914ca45dbbcee1e774ab3067919",
+      "occurrences": [
+        {
+          "file": "references/metrics_and_alerts_catalog.md",
+          "start_line": 207,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "P9",
+      "finding_id": "finding-0310e65c35be42e4aa89b09c185d6835",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/metrics_and_alerts_catalog.md",
+        "start_line": 208,
+        "end_line": null
+      },
+      "finding": "U+0020 x95",
+      "explanation": "Large whitespace padding was detected (a block of blank lines or a long run of spaces). This can push injected instructions below or to the right of the visible area so a human reviewer never sees them while the agent still reads them. Manual review of the hidden content is recommended.",
+      "remediation": "Remove the large whitespace padding (blank-line blocks or long space runs) and review any content hidden below or to the right of it. Keep skill files compact and reviewable so no instructions can be concealed off-screen.",
+      "code_snippet": "    | `(kube_cronjob_status_last_schedule_time > kube_cronjob_status_last_successful_time) AND (kube_cronjob_status_active == 0) AND (kube_cronjob_spec_suspend == 0)` | Critical | **Yes (KSM)** | Requires KSM\n**Kubernetes Volume out of disk space** | `kubelet_volume_stats_available_bytes / kubelet_volume_stats_capacity_bytes * 100 < 10 and kubelet_volume_stats_capacity_bytes > 0`                              | Warning  | No (Kubelet)  | Yes (`kubernetes.io/pod/volume/...`)\n**Kubernetes Volume full in four days** | `predict_linear(kubelet_volume_stats_available_bytes[6h:5m], 4 * 24 * 3600) < 0`                                                                                 | Critical | No (Kubelet)  | Yes\n**Kubernetes PersistentVolume error**   | `kube_persistentvolume_status_phase{phase=~\"Failed\\|Pending\"} > 0`                                                                                               | Critical | **Yes (KSM)** | Requires KSM\n\n### API Server and Control Plane Alerts\n",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "253612b1991a6a4c251de7d1078df5b01fd78a51ac6e31176efa28ecc3b4fb3f",
+      "occurrences": [
+        {
+          "file": "references/metrics_and_alerts_catalog.md",
+          "start_line": 208,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "P9",
+      "finding_id": "finding-144b77fcca8a44889b301f12b01979fe",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/metrics_and_alerts_catalog.md",
+        "start_line": 212,
+        "end_line": null
+      },
+      "finding": "U+0020 x240",
+      "explanation": "Large whitespace padding was detected (a block of blank lines or a long run of spaces). This can push injected instructions below or to the right of the visible area so a human reviewer never sees them while the agent still reads them. Manual review of the hidden content is recommended.",
+      "remediation": "Remove the large whitespace padding (blank-line blocks or long space runs) and review any content hidden below or to the right of it. Keep skill files compact and reviewable so no instructions can be concealed off-screen.",
+      "code_snippet": "\n### API Server and Control Plane Alerts\n\nAlert Name                                     | Open Source PromQL Rule                                                                                                                                                                                                                                                | Severity | KSM Required? | Non-KSM Native Alternative Available?\n:--------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------- | :------------ | :------------------------------------\n**Kubernetes API server errors**               | `sum(rate(apiserver_request_total{job=\"apiserver\",code=~\"(?:5..)\"}[1m])) by (instance, job) / sum(rate(apiserver_request_total{job=\"apiserver\"}[1m])) b",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "ed0d742575fda98b1677b0de4d46f9b31733978e51bb6a9e3828b900bd62dea1",
+      "occurrences": [
+        {
+          "file": "references/metrics_and_alerts_catalog.md",
+          "start_line": 212,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "P9",
+      "finding_id": "finding-2083ff84416b491f916edcfd4baeb649",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/metrics_and_alerts_catalog.md",
+        "start_line": 217,
+        "end_line": null
+      },
+      "finding": "U+0020 x106",
+      "explanation": "Large whitespace padding was detected (a block of blank lines or a long run of spaces). This can push injected instructions below or to the right of the visible area so a human reviewer never sees them while the agent still reads them. Manual review of the hidden content is recommended.",
+      "remediation": "Remove the large whitespace padding (blank-line blocks or long space runs) and review any content hidden below or to the right of it. Keep skill files compact and reviewable so no instructions can be concealed off-screen.",
+      "code_snippet": " sum(rate(rest_client_requests_total[1m])) by (instance, job) > 0`                                       | Critical | No            | Yes (Native Control Plane PromQL)\n**Kubernetes client certificate expires soon** | `apiserver_client_certificate_expiration_seconds_count{job=\"apiserver\"} > 0 and on(job) histogram_quantile(0.01, sum by (job, le) (rate(apiserver_client_certificate_expiration_seconds_bucket{job=\"apiserver\"}[5m]))) < 24*60*60`                                     | Critical | No            | Yes (Native Control Plane PromQL)\n**Kubernetes API server latency**              | `histogram_quantile(0.99, sum(rate(apiserver_request_duration_seconds_bucket{verb!~\"(?:CONNECT\\|WATCHLIST\\|WATCH\\|PROXY)\"}[10m])) WITHOUT (subresource)) > 1`                                                                                                          | Warning  | No            | Yes (Native Control Plane PromQL)\n\n--------------------------------------------------------------------------------\n",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "ef6ccd825bf3f8a2f54c415aafb941ab10ca4a7fa5f2ef276aea34be5e499618",
+      "occurrences": [
+        {
+          "file": "references/metrics_and_alerts_catalog.md",
+          "start_line": 217,
+          "end_line": null
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": true,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 6,
+    "scanned_components": 6,
+    "coverage_percent": 100.0,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 6,
+    "partially_inspected_files": 0,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 34,
+        "end_line": 34,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 35,
+        "end_line": 35,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 112,
+        "end_line": 112,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 120,
+        "end_line": 120,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 146,
+        "end_line": 146,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 156,
+        "end_line": 156,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 157,
+        "end_line": 157,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 210,
+        "end_line": 210,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 330,
+        "end_line": 330,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 372,
+        "end_line": 372,
+        "fatal": false
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 31,
+        "column": 31,
+        "evidence": "MUST read [Usage Attribution](references/attribution.md). For commands executed",
+        "target_path": "references/attribution.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 34,
+        "column": 40,
+        "evidence": "`CLOUDSDK_METRICS_REQUEST_ATTRIBUTION=\"agent-skills/1.0 (skill:gke-alert-configuration)\"`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 35,
+        "column": 13,
+        "evidence": "and append `agent-skills/1.0 (skill:gke-alert-configuration)` to `User-Agent` headers.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 92,
+        "column": 41,
+        "evidence": "[metrics_and_alerts_catalog.md](references/metrics_and_alerts_catalog.md))",
+        "target_path": "references/metrics_and_alerts_catalog.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 102,
+        "column": 45,
+        "evidence": "[metrics_and_alerts_catalog.md](references/metrics_and_alerts_catalog.md)):",
+        "target_path": "references/metrics_and_alerts_catalog.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 112,
+        "column": 52,
+        "evidence": "1. **Plan**: Draft a structured change plan (`changes.json`) containing",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 116,
+        "column": 9,
+        "evidence": "scripts/validate_config.py --plan changes.json`) to verify PromQL",
+        "target_path": "scripts/validate_config.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 120,
+        "column": 60,
+        "evidence": "in-place into the target Terraform configuration (`alerts.tf`).",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 146,
+        "column": 39,
+        "evidence": "Terraform (`.tf`) files, such as `alerts.tf` and `variables.tf`.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 146,
+        "column": 55,
+        "evidence": "Terraform (`.tf`) files, such as `alerts.tf` and `variables.tf`.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 156,
+        "column": 10,
+        "evidence": "`var.namespace`) to make the configuration reusable across environments.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 157,
+        "column": 43,
+        "evidence": "Always define these variables in `variables.tf` (or within the",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 188,
+        "column": 37,
+        "evidence": "[metrics_and_alerts_catalog.md](references/metrics_and_alerts_catalog.md)",
+        "target_path": "references/metrics_and_alerts_catalog.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 210,
+        "column": 2,
+        "evidence": "`variables.tf` for `project_id`, `cluster_name`, and `namespace`.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 309,
+        "column": 37,
+        "evidence": "* [metrics_and_alerts_catalog.md](references/metrics_and_alerts_catalog.md)",
+        "target_path": "references/metrics_and_alerts_catalog.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 314,
+        "column": 25,
+        "evidence": "* [promql_queries.md](references/promql_queries.md)",
+        "target_path": "references/promql_queries.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 321,
+        "column": 42,
+        "evidence": "* [gke_configuration_prerequisites.md](references/gke_configuration_prerequisites.md)",
+        "target_path": "references/gke_configuration_prerequisites.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 327,
+        "column": 10,
+        "evidence": "Use the `validate_config.py` script to validate change plans and Terraform",
+        "target_path": "scripts/validate_config.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 330,
+        "column": 44,
+        "evidence": "* **Pre-Edit Plan Validation**: Draft a `changes.json` plan specifying the",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 332,
+        "column": 27,
+        "evidence": "* Command: `python3 scripts/validate_config.py --plan changes.json`",
+        "target_path": "scripts/validate_config.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "inline_command"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 335,
+        "column": 27,
+        "evidence": "* Command: `python3 scripts/validate_config.py --directory [TARGET_TF_DIR]",
+        "target_path": "scripts/validate_config.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "inline_command"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 337,
+        "column": 42,
+        "evidence": "* Single file validation: `python3 scripts/validate_config.py --file",
+        "target_path": "scripts/validate_config.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "inline_command"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 372,
+        "column": 11,
+        "evidence": "(`resources.limits.memory`) for the saturation query to resolve (and not",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 409,
+        "column": 65,
+        "evidence": "* [Google Cloud Managed Service for Prometheus Documentation](https://docs.cloud.google.com/stackdriver/docs/managed-prometheus.md.txt)",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 410,
+        "column": 49,
+        "evidence": "* [GKE Observability and Monitoring Concepts](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/observability.md.txt)",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 411,
+        "column": 51,
+        "evidence": "* [Google Cloud Alerting Policies in Terraform](https://docs.cloud.google.com/monitoring/alerts/terraform.md.txt)",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 413,
+        "column": 45,
+        "evidence": "* [Google SRE Workbook: Alerting on SLOs](https://sre.google/workbook/alerting-on-slos/)",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 414,
+        "column": 44,
+        "evidence": "* [Awesome Prometheus Alerts Repository](https://github.com/samber/awesome-prometheus-alerts)",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      }
+    ],
+    "limitations": [],
+    "findings_before_filtering": 21,
+    "findings_after_filtering": 21
+  }
+}

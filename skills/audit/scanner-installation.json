@@ -1,0 +1,67 @@
+{
+  "scanner": "NVIDIA SkillSpector",
+  "release": "v2.13.1",
+  "source_url": "https://github.com/NVIDIA/SkillSpector",
+  "tag_commit": "f3b25697d76256998ca9d42c198d256258d4c035",
+  "commit_signature": {
+    "verified_by_github_api": true,
+    "reason": "valid"
+  },
+  "checkout_path": "C:\\Users\\mhyah\\Downloads\\SkillSpector-v2.13.1",
+  "checkout_detached_at_pinned_commit": true,
+  "checkout_worktree_clean": true,
+  "installation_path_outside_skill_library": true,
+  "installation_command": "uv --system-certs sync --locked --python 3.12",
+  "python_version": "3.12.10",
+  "uv_version": "0.11.28",
+  "installed_project_version": "2.13.1",
+  "uv_lock_sha256": "65682A369310657AA3FDE7E3C647E31D3D901E45BC34C80FF8AEEFEB260DAB33",
+  "locked_packages_installed": 64,
+  "cli_version_check": "SkillSpector v2.13.1",
+  "safe_windows_report_output": "--output rejected by the scanner on Windows; reports were captured from CLI stdout by a local Python runner and JSON parsed before being saved.",
+  "semantic_llm_review": "not_run; --no-llm used for all static scans; no external model received skill contents.",
+  "external_dependency_lookup": "SkillSpector SC4 live OSV.dev lookup ran where dependency coordinates were detectable; 46 findings captured. Only coordinates, not skill contents, were sent to OSV.",
+  "self_tests": [
+    {
+      "fixture": "tests/fixtures/safe_skill",
+      "cli_exit_code": 0,
+      "recommendation": "SAFE",
+      "risk_score": 0,
+      "severity": "LOW",
+      "analysis_status": "complete",
+      "complete": true,
+      "evidence": "scan-reports/_scanner-selftests/safe-fixture.json"
+    },
+    {
+      "fixture": "tests/fixtures/malicious_skill",
+      "cli_exit_code": 1,
+      "recommendation": "DO_NOT_INSTALL",
+      "risk_score": 100,
+      "severity": "CRITICAL",
+      "analysis_status": "complete",
+      "complete": true,
+      "evidence": "scan-reports/_scanner-selftests/malicious-fixture.json"
+    }
+  ],
+  "long_path_handling": "The first isolated venv at the deeper backup path failed to import a locked dependency due to Windows path length. A second detached checkout at the shorter path was installed and verified; scanner code and Windows settings were not modified.",
+  "scan_scope": {
+    "individual_package_folders": 2305,
+    "final_reports_saved_and_hash_verified": 2305,
+    "cli_exit_codes": {
+      "0": 2040,
+      "1": 265
+    },
+    "coverage": {
+      "complete": 752,
+      "partial": 1553
+    },
+    "recommendations": {
+      "CAUTION": 1345,
+      "DO_NOT_INSTALL": 265,
+      "SAFE": 695
+    },
+    "retry_records": 1,
+    "semantic_review": "not run; no approved backend selected",
+    "skill_code_executed": false
+  }
+}

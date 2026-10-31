@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Course progress</title>
+<style>
+  :root{
+    --bg:#f7f7f5; --panel:#fff; --ink:#1b1b19; --muted:#6b6b66; --line:#e3e3df;
+    --accent:#2f6f4e; --accent-soft:#e6f0ea; --warn:#a8560f; --warn-soft:#fbeee0;
+    --info:#3c5f8a; --info-soft:#e7edf5;
+    --lock:#9a9a94; --lock-soft:#efefec; --shadow:0 1px 2px rgba(0,0,0,.05),0 8px 24px rgba(0,0,0,.04);
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#131413; --panel:#1c1e1c; --ink:#ececea; --muted:#9a9a94; --line:#2c2f2c;
+      --accent:#6fbf8f; --accent-soft:#1e2a23; --warn:#e0a464; --warn-soft:#2c231a;
+      --info:#8fb3dd; --info-soft:#1b2431;
+      --lock:#6b6b66; --lock-soft:#232523; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:15px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Inter,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:40px 24px 80px}
+  header{display:flex;flex-wrap:wrap;gap:28px;align-items:center;margin-bottom:30px}
+  .ring{flex:0 0 auto;position:relative;width:132px;height:132px}
+  .ring svg{transform:rotate(-90deg)}
+  .ring .pct{position:absolute;inset:0;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;font-size:30px;font-weight:650;
+    letter-spacing:-.02em;line-height:1.05}
+  .ring .pct small{font-size:9.5px;font-weight:500;color:var(--muted);
+    letter-spacing:.08em;text-transform:uppercase;margin-top:3px}
+  .head-main{flex:1 1 320px;min-width:0}
+  h1{margin:0 0 6px;font-size:27px;line-height:1.2;letter-spacing:-.02em}
+  .sub{color:var(--muted);font-size:14px}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+  .chip{font-size:12px;padding:4px 10px;border-radius:999px;background:var(--panel);
+    border:1px solid var(--line);color:var(--muted)}
+  .chip b{color:var(--ink);font-weight:600}
+  .chip.warn{border-color:color-mix(in srgb,var(--warn) 40%,transparent);color:var(--warn)}
+  .chip.warn b{color:var(--warn)}
+  .chip.streak{border-color:color-mix(in srgb,var(--warn) 45%,transparent);
+    background:var(--warn-soft);color:var(--warn)}
+  .chip.streak b{color:var(--warn)}
+  .wins{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
+  .win{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:4px 10px 4px 8px;
+    border-radius:999px;background:var(--accent-soft);color:var(--accent);
+    border:1px solid color-mix(in srgb,var(--accent) 26%,transparent);cursor:default}
+  .win i{font-style:normal;font-size:13px;line-height:1}
+  .callout{margin:0 0 12px;padding:16px 18px;border-radius:12px}
+  .callout .label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    font-weight:650;margin-bottom:4px}
+  .callout .body{font-size:16px;font-weight:560}
+  .callout .hint{color:var(--muted);font-size:13px;margin-top:4px}
+  .next{background:var(--accent-soft);
+    border:1px solid color-mix(in srgb,var(--accent) 28%,transparent)}
+  .next .label{color:var(--accent)}
+  .revq{background:var(--warn-soft);
+    border:1px solid color-mix(in srgb,var(--warn) 34%,transparent)}
+  .revq .label{color:var(--warn)}
+  .revlist{margin-top:11px;display:flex;flex-direction:column;gap:5px}
+  .revrow{display:flex;gap:10px;align-items:baseline;font-size:13.5px}
+  .revrow .rid{font-family:var(--mono);font-size:11px;color:var(--muted);
+    flex:0 0 auto;white-space:nowrap}
+  .revrow .rt{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;
+    white-space:nowrap}
+  .revrow .rd{flex:0 0 auto;font-size:11.5px;font-family:var(--mono);color:var(--warn)}
+  .blocked{margin-top:11px;font-size:13px;font-weight:600;color:var(--warn)}
+  .mod{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    margin-bottom:12px;box-shadow:var(--shadow);overflow:hidden}
+  .mod.locked{opacity:.62}
+  .mod > summary{list-style:none;cursor:pointer;padding:16px 18px;display:flex;gap:14px;
+    align-items:center}
+  .mod > summary::-webkit-details-marker{display:none}
+  .mod > summary:hover{background:color-mix(in srgb,var(--ink) 3%,transparent)}
+  .num{flex:0 0 auto;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;
+    font-size:13px;font-weight:650;font-family:var(--mono);
+    background:var(--lock-soft);color:var(--lock)}
+  .mod.complete .num{background:var(--accent);color:#fff}
+  .mod.active .num{background:var(--accent-soft);color:var(--accent);
+    box-shadow:inset 0 0 0 1.5px var(--accent)}
+  .mtitle{flex:1 1 auto;min-width:0}
+  .mtitle .t{font-weight:600;letter-spacing:-.01em}
+  .mtitle .s{color:var(--muted);font-size:13px;margin-top:2px;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .mmeta{flex:0 0 auto;display:flex;align-items:center;gap:12px}
+  .minibar{width:74px;height:6px;border-radius:99px;background:var(--lock-soft);overflow:hidden}
+  .minibar i{display:block;height:100%;background:var(--accent);border-radius:99px}
+  .mcount{font-size:12px;color:var(--muted);font-family:var(--mono)}
+  .rows{border-top:1px solid var(--line)}
+  .row{display:flex;gap:12px;align-items:center;padding:11px 18px 11px 20px;
+    border-bottom:1px solid color-mix(in srgb,var(--line) 55%,transparent)}
+  .row:last-child{border-bottom:none}
+  .row.test{background:color-mix(in srgb,var(--ink) 2.5%,transparent)}
+  .st{flex:0 0 auto;width:19px;height:19px;border-radius:50%;display:grid;place-items:center;
+    font-size:11px;font-weight:700;border:1.5px solid var(--lock);color:var(--lock)}
+  .st.passed{background:var(--accent);border-color:var(--accent);color:#fff}
+  .st.generated,.st.unlocked{border-color:var(--accent);color:var(--accent)}
+  .rtitle{flex:1 1 auto;min-width:0}
+  .rtitle .t{font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .row.lockedrow .rtitle .t{color:var(--muted)}
+  .rtitle .id{font-family:var(--mono);font-size:11px;color:var(--muted);
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .badges{flex:0 0 auto;display:flex;gap:6px;align-items:center;flex-wrap:wrap;
+    justify-content:flex-end}
+  .b{font-size:11px;padding:2.5px 8px;border-radius:6px;font-family:var(--mono);
+    background:var(--lock-soft);color:var(--muted);white-space:nowrap}
+  .b.ok{background:var(--accent-soft);color:var(--accent)}
+  .b.bad{background:var(--warn-soft);color:var(--warn)}
+  .b.info{background:var(--info-soft);color:var(--info)}
+  h2{font-size:12px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);
+    margin:34px 0 12px;font-weight:650}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    box-shadow:var(--shadow)}
+  .final{padding:18px}
+  .final.locked{opacity:.62}
+  .final .t{font-weight:600;font-size:16px}
+  .final .s{color:var(--muted);font-size:13.5px;margin-top:4px}
+  .reqs{margin:12px 0 0;padding-left:18px;color:var(--muted);font-size:13.5px}
+  .reqs li{margin:3px 0}
+  .timewrap{padding:18px;display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end}
+  .tstats{flex:1 1 200px;min-width:0;display:flex;flex-wrap:wrap;gap:18px 26px}
+  .tstat .v{font-size:20px;font-weight:650;letter-spacing:-.02em;line-height:1.15}
+  .tstat .k{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--muted);margin-top:3px}
+  .chart{flex:1 1 300px;min-width:0}
+  .bars{display:flex;align-items:flex-end;gap:2px;height:58px}
+  .bars i{flex:1 1 0;min-width:0;background:var(--accent);border-radius:2px 2px 0 0;
+    opacity:.85;min-height:2px}
+  .bars i.zero{background:var(--lock-soft)}
+  .bars i.today{opacity:1;box-shadow:0 0 0 1px color-mix(in srgb,var(--accent) 45%,transparent)}
+  .axis{display:flex;justify-content:space-between;font-size:10.5px;color:var(--muted);
+    font-family:var(--mono);margin-top:6px}
+  .log .e{display:flex;gap:12px;padding:9px 16px;font-size:13px;align-items:baseline;
+    border-bottom:1px solid color-mix(in srgb,var(--line) 55%,transparent)}
+  .log .e:last-child{border-bottom:none}
+  .log .ts{flex:0 0 auto;font-family:var(--mono);font-size:11px;color:var(--muted);
+    width:132px;white-space:nowrap}
+  .log .ev{flex:0 0 auto;width:126px;font-family:var(--mono);font-size:11px}
+  .log .ev.pass{color:var(--accent)} .log .ev.fail,.log .ev.over{color:var(--warn)}
+  .log .ev.rev{color:var(--info)}
+  .log .d{flex:1 1 auto;min-width:0;color:var(--muted)}
+  .empty{padding:16px;color:var(--muted);font-size:13.5px}
+  footer{margin-top:36px;color:var(--muted);font-size:12px;text-align:center}
+  code{font-family:var(--mono);font-size:.92em;background:var(--lock-soft);
+    padding:1px 5px;border-radius:4px}
+  @media (max-width:560px){
+    .wrap{padding:26px 15px 60px} h1{font-size:22px}
+    .mmeta .minibar{display:none} .log .ts{display:none} .rtitle .id{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<script>
+const DATA = __PROGRESS_DATA__;
+
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c =>
+  ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+const mins = m => !m ? "0m" : (m >= 60 ? Math.floor(m/60) + "h " + String(m%60).padStart(2,"0") + "m" : m + "m");
+
+function ring(pct){
+  const r = 58, c = 2 * Math.PI * r;
+  return `<div class="ring">
+    <svg width="132" height="132" viewBox="0 0 132 132">
+      <circle cx="66" cy="66" r="${r}" fill="none" stroke="var(--lock-soft)" stroke-width="11"/>
+      <circle cx="66" cy="66" r="${r}" fill="none" stroke="var(--accent)" stroke-width="11"
+        stroke-linecap="round" stroke-dasharray="${c}"
+        stroke-dashoffset="${c * (1 - pct / 100)}"/>
+    </svg>
+    <div class="pct">${pct}%<small>complete</small></div></div>`;
+}
+
+const mark = s => s === "passed" ? "&#10003;" : (s === "locked" ? "&#183;" : "");
+
+function scoreBadge(v, th){
+  if (v === null || v === undefined) return "";
+  return `<span class="b ${v >= th ? "ok" : "bad"}">${v}%</span>`;
+}
+
+function render(){
+  const { course, progress, stats, moduleStatus, reviewQueue } = DATA;
+  const th = progress.passThreshold, t = stats.time;
+  const mo = stats.momentum || {current:0, best:0}, wins = stats.wins || [];
+  const gateN = progress.reviewGate ?? 3;
+  const out = [];
+
+  out.push(`<header>
+    ${ring(stats.percent)}
+    <div class="head-main">
+      <h1>${esc(course.topic)}</h1>
+      <div class="sub">${esc(course.goal || "Self-directed course")}</div>
+      <div class="chips">
+        <span class="chip">depth <b>${esc(course.depth)}</b></span>
+        <span class="chip">modules <b>${stats.modulesComplete}/${stats.modulesTotal}</b></span>
+        <span class="chip">lessons <b>${stats.lessonsPassed}/${stats.lessonsTotal}</b></span>
+        <span class="chip">pass mark <b>${th}%</b></span>
+        ${stats.averageScore !== null ? `<span class="chip">average <b>${stats.averageScore}%</b></span>` : ""}
+        <span class="chip">time <b>${mins(t.totalMinutes)}</b></span>
+        ${t.pacePerWeek ? `<span class="chip">pace <b>${mins(t.pacePerWeek)}/wk</b></span>` : ""}
+        ${stats.reviewsDue ? `<span class="chip warn">reviews due <b>${stats.reviewsDue}</b></span>` : ""}
+        ${stats.testedOut ? `<span class="chip">tested out <b>${stats.testedOut}</b></span>` : ""}
+        ${stats.overrides ? `<span class="chip warn">overrides <b>${stats.overrides}</b></span>` : ""}
+        ${mo.current >= 2 ? `<span class="chip streak">🔥 streak <b>${mo.current} day${mo.current > 1 ? "s" : ""}</b></span>` : ""}
+      </div>
+      ${wins.length ? `<div class="wins">${wins.map(w => `
+        <span class="win" title="${esc(w.detail)}"><i>${esc(w.icon)}</i>${esc(w.label)}</span>`).join("")}</div>` : ""}
+    </div>
+  </header>`);
+
+  // review queue -- comes first when it exists, because it gates everything else
+  if (reviewQueue.length){
+    const blocked = gateN && reviewQueue.length >= gateN;
+    out.push(`<div class="callout revq">
+      <div class="label">Reviews due</div>
+      <div class="body">${reviewQueue.length} lesson${reviewQueue.length > 1 ? "s" : ""} waiting to be recalled</div>
+      <div class="hint">Spaced repetition. Answer these from memory before new material.</div>
+      <div class="revlist">${reviewQueue.slice(0, 6).map(r => `
+        <div class="revrow">
+          <span class="rid">${esc(r.module)}/${esc(r.lesson)}</span>
+          <span class="rt">${esc(r.title)}</span>
+          <span class="rd">${r.daysOverdue ? r.daysOverdue + "d overdue" : "today"}</span>
+        </div>`).join("")}
+        ${reviewQueue.length > 6 ? `<div class="revrow"><span class="rt" style="color:var(--muted)">
+          and ${reviewQueue.length - 6} more</span></div>` : ""}</div>
+      ${blocked ? `<div class="blocked">New lessons are blocked until this drops below ${gateN}.</div>` : ""}
+    </div>`);
+  }
+
+  // next action
+  let nxt = null;
+  outer:
+  for (const m of progress.modules){
+    for (const l of m.lessons) if (l.status !== "passed"){ nxt = {m, i:l, kind:"lesson"}; break outer; }
+    if (m.test.status !== "passed"){ nxt = {m, i:m.test, kind:"test"}; break; }
+  }
+  if (!nxt && progress.finalProject.status !== "passed") nxt = {m:null, i:progress.finalProject, kind:"final"};
+
+  if (nxt){
+    const where = nxt.kind === "final" ? "Final project"
+      : `${esc(nxt.m.title)} &rsaquo; ${esc(nxt.i.title)}`;
+    const missing = [];
+    if (nxt.kind === "lesson"){
+      if (nxt.i.quizScore == null) missing.push("quiz");
+      if (nxt.i.requiresAssignment !== false && nxt.i.assignmentScore == null) missing.push("assignment");
+      if (nxt.i.requiresExplain !== false && nxt.i.explainScore == null) missing.push("explain-back");
+    }
+    const hint = nxt.i.status === "locked" ? "Locked — finish what is outstanding above it."
+      : (nxt.kind === "lesson" && missing.length && nxt.i.attempts
+          ? "Still outstanding: " + missing.join(", ") + "."
+          : (nxt.i.score != null && nxt.i.status !== "passed"
+              ? `Last attempt ${nxt.i.score}% — below the ${th}% pass mark. Retry.`
+              : "Unlocked and waiting for you."));
+    out.push(`<div class="callout next"><div class="label">Up next</div>
+      <div class="body">${where}</div><div class="hint">${esc(hint)}</div></div>`);
+  } else {
+    out.push(`<div class="callout next"><div class="label">Complete</div>
+      <div class="body">Every module and the final project are done.</div></div>`);
+  }
+
+  out.push(`<h2>Modules</h2>`);
+  progress.modules.forEach((pm, idx) => {
+    const cm = course.modules[idx] || {};
+    const ms = moduleStatus[pm.id];
+    const done = pm.lessons.filter(l => l.status === "passed").length
+               + (pm.test.status === "passed" ? 1 : 0);
+    const total = pm.lessons.length + 1;
+    const open = ms === "active" ? " open" : "";
+    const rows = pm.lessons.map((l, li) => {
+      const cl = (cm.lessons || [])[li] || {};
+      const locked = l.status === "locked";
+      const due = reviewQueue.find(r => r.module === pm.id && r.lesson === l.id);
+      return `<div class="row ${locked ? "lockedrow" : ""}">
+        <div class="st ${l.status}">${mark(l.status)}</div>
+        <div class="rtitle"><div class="t">${esc(l.title)}</div>
+          <div class="id">${esc(pm.id)}/${esc(l.id)}${cl.summary ? " — " + esc(cl.summary) : ""}</div></div>
+        <div class="badges">
+          ${due ? `<span class="b bad">review ${due.daysOverdue ? due.daysOverdue + "d" : "due"}</span>` : ""}
+          ${l.testedOut ? `<span class="b info">tested out</span>` : ""}
+          ${l.quizScore != null ? `<span class="b ${l.quizScore >= th ? "ok" : "bad"}">quiz ${l.quizScore}</span>` : ""}
+          ${l.assignmentScore != null ? `<span class="b ${l.assignmentScore >= th ? "ok" : "bad"}">task ${l.assignmentScore}</span>` : ""}
+          ${l.explainScore != null ? `<span class="b ${l.explainScore >= th ? "ok" : "bad"}">explain ${l.explainScore}</span>` : ""}
+          ${l.attempts > 1 ? `<span class="b">&times;${l.attempts}</span>` : ""}
+          ${l.overridden ? `<span class="b bad">override</span>` : ""}
+        </div></div>`;
+    }).join("");
+    const tt = pm.test;
+    const testRow = `<div class="row test ${tt.status === "locked" ? "lockedrow" : ""}">
+      <div class="st ${tt.status}">${mark(tt.status)}</div>
+      <div class="rtitle"><div class="t">${esc(tt.title)}</div>
+        <div class="id">module test — cumulative, closed book</div></div>
+      <div class="badges">${tt.testedOut ? `<span class="b info">tested out</span>` : ""}
+        ${scoreBadge(tt.score, th)}
+        ${tt.attempts > 1 ? `<span class="b">&times;${tt.attempts}</span>` : ""}
+        ${tt.overridden ? `<span class="b bad">override</span>` : ""}</div></div>`;
+
+    out.push(`<details class="mod ${ms}"${open}>
+      <summary>
+        <div class="num">${String(idx + 1).padStart(2, "0")}</div>
+        <div class="mtitle"><div class="t">${esc(pm.title)}</div>
+          <div class="s">${esc(cm.summary || "")}</div></div>
+        <div class="mmeta">
+          <div class="minibar"><i style="width:${Math.round(done * 100 / total)}%"></i></div>
+          <div class="mcount">${done}/${total}</div>
+        </div>
+      </summary>
+      <div class="rows">${rows}${testRow}</div>
+    </details>`);
+  });
+
+  // study time
+  const peak = Math.max(1, ...t.daily.map(d => d.minutes));
+  const todayKey = t.daily.length ? t.daily[t.daily.length - 1].date : "";
+  out.push(`<h2>Study time</h2>
+    <div class="card timewrap">
+      <div class="tstats">
+        <div class="tstat"><div class="v">${mins(t.totalMinutes)}</div><div class="k">total</div></div>
+        <div class="tstat"><div class="v">${t.sessionCount}</div><div class="k">sessions</div></div>
+        ${t.minutesPerItem ? `<div class="tstat"><div class="v">${mins(t.minutesPerItem)}</div><div class="k">per item</div></div>` : ""}
+        ${t.estRemainingMinutes ? `<div class="tstat"><div class="v">${mins(t.estRemainingMinutes)}</div><div class="k">left</div></div>` : ""}
+        ${t.estFinish ? `<div class="tstat"><div class="v">${esc(t.estFinish)}</div><div class="k">est. finish</div></div>` : ""}
+      </div>
+      <div class="chart">
+        <div class="bars">${t.daily.map(d => `<i class="${d.minutes ? "" : "zero"}${d.date === todayKey ? " today" : ""}"
+          style="height:${d.minutes ? Math.max(4, Math.round(d.minutes * 100 / peak)) : 3}%"
+          title="${esc(d.date)}: ${mins(d.minutes)}"></i>`).join("")}</div>
+        <div class="axis"><span>21 days ago</span><span>today</span></div>
+      </div>
+    </div>`);
+
+  // final project
+  const fp = progress.finalProject, cfp = course.finalProject || {};
+  out.push(`<h2>Final project</h2>
+    <div class="card final ${fp.status}">
+      <div class="t">${esc(fp.title)} ${scoreBadge(fp.score, th)}</div>
+      <div class="s">${esc(cfp.summary || "")}</div>
+      ${(cfp.requirements || []).length
+        ? `<ul class="reqs">${cfp.requirements.map(r => `<li>${esc(r)}</li>`).join("")}</ul>` : ""}
+      <div class="s" style="margin-top:12px">${
+        fp.status === "locked" ? "Locked until every module is complete."
+        : fp.status === "passed" ? "Passed." : "Unlocked — brief is in <code>final-project/</code>."}</div>
+    </div>`);
+
+  // log
+  const evs = (progress.log || []).slice().reverse().slice(0, 40);
+  out.push(`<h2>Activity</h2><div class="card log">${
+    evs.length ? evs.map(e => {
+      const cls = /passed/.test(e.event) ? "pass"
+        : /failed|partial/.test(e.event) ? "fail"
+        : e.event === "override" ? "over"
+        : e.event === "review" ? "rev" : "";
+      return `<div class="e"><div class="ts">${esc(e.ts.replace("T", " ").replace("+00:00", ""))}</div>
+        <div class="ev ${cls}">${esc(e.event)}</div>
+        <div class="d">${esc(e.detail)}</div></div>`;
+    }).join("") : `<div class="empty">Nothing recorded yet.</div>`}</div>`);
+
+  out.push(`<footer>Generated ${esc(DATA.renderedAt.replace("T", " ").replace("+00:00", " UTC"))}
+    · rebuilt by <code>course.py</code> after every graded item · learn-anything skill</footer>`);
+
+  document.getElementById("app").innerHTML = out.join("");
+  document.title = course.topic + " — " + stats.percent + "% complete";
+}
+render();
+</script>
+</body>
+</html>

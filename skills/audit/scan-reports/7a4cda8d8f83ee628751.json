@@ -1,0 +1,971 @@
+{
+  "skill": {
+    "name": "seo-cluster",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\AgriciDaniel\\claude-seo\\seo-cluster",
+    "scanned_at": "2026-10-31T20:58:43.718233+00:00"
+  },
+  "risk_assessment": {
+    "score": 77,
+    "severity": "HIGH",
+    "recommendation": "DO_NOT_INSTALL",
+    "max_issue_severity": "HIGH"
+  },
+  "components": [
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 331,
+      "executable": false,
+      "size_bytes": 14046,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/execution-workflow.md",
+      "type": "markdown",
+      "lines": 180,
+      "executable": false,
+      "size_bytes": 6455,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/hub-spoke-architecture.md",
+      "type": "markdown",
+      "lines": 181,
+      "executable": false,
+      "size_bytes": 6291,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/serp-overlap-methodology.md",
+      "type": "markdown",
+      "lines": 108,
+      "executable": false,
+      "size_bytes": 4514,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "templates/cluster-map.html",
+      "type": "other",
+      "lines": 605,
+      "executable": false,
+      "size_bytes": 19577,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "RA1",
+      "finding_id": "finding-7b57e9acfd194924895ddc1c818ee15f",
+      "category": "Rogue Agent",
+      "pattern": "Self-Modification",
+      "severity": "HIGH",
+      "confidence": 0.85,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 6,
+        "end_line": null,
+        "start_column": 32
+      },
+      "finding": "write skill",
+      "explanation": "Skill modifies its own code, configuration, or behavior at runtime. Self-modification enables an agent to escalate privileges, disable safety constraints, or install persistent backdoors.",
+      "remediation": "Prevent the skill from modifying its own code, SKILL.md, or configuration files. Treat skill files as read-only at runtime.",
+      "code_snippet": "description: >\n  Cluster keywords by SERP overlap and design hub-and-spoke content architecture\n  with internal links. Use for planning; `/seo cluster execute` then writes the\n  posts with claude-blog's blog-write skill when it is installed, or content\n  briefs when it is not.\nuser-invocable: true\nargument-hint: \"<seed-keyword or url>\"",
+      "intent": null,
+      "tags": [
+        "Rogue Agent"
+      ],
+      "evidence": {},
+      "match_fingerprint": "be76aa3b8ee8ba0091b45db5ceb2fe4088a26078a5f1429d11667e608c128e95",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 6,
+          "end_line": null,
+          "start_column": 32
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "finding_id": "finding-f7753b77ee7346c0aa867c1f9b3e7a9f",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/execution-workflow.md",
+        "start_line": 44,
+        "end_line": 44,
+        "start_column": 34,
+        "end_column": 72
+      },
+      "finding": "<!-- cluster-link:cluster-0-post-1 -->",
+      "explanation": "Hidden instructions were detected in comments or invisible text. These could contain malicious directives. Manual review is recommended.",
+      "remediation": "Audit all comments and invisible characters. Remove any instructions that direct the agent to perform unauthorized actions. Use plain, reviewable content.",
+      "code_snippet": "      { \"url\": \"/pillar-url\", \"anchor\": \"main topic guide\", \"type\": \"mandatory\" },\n      { \"url\": \"/sibling-post\", \"anchor\": \"related subtopic\", \"type\": \"recommended\" }\n    ],\n    \"incoming_link_placeholder\": \"<!-- cluster-link:cluster-0-post-1 -->\",\n    \"differentiation_note\": \"This post should focus on X, while sibling post covers Y\"\n  }\n}",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "48015cedc394a0cd8d2a1e4b6a0184b620aa011b28937b63a43148520ef03b53",
+      "occurrences": [
+        {
+          "file": "references/execution-workflow.md",
+          "start_line": 44,
+          "end_line": 44,
+          "start_column": 34,
+          "end_column": 72
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "finding_id": "finding-a9739edaff3747c2ab0d5c429c31008f",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/execution-workflow.md",
+        "start_line": 84,
+        "end_line": 84,
+        "start_column": 0,
+        "end_column": 38
+      },
+      "finding": "<!-- cluster-link:cluster-0-post-1 -->",
+      "explanation": "Hidden instructions were detected in comments or invisible text. These could contain malicious directives. Manual review is recommended.",
+      "remediation": "Audit all comments and invisible characters. Remove any instructions that direct the agent to perform unauthorized actions. Use plain, reviewable content.",
+      "code_snippet": "### Placeholder Format\n\n```html\n<!-- cluster-link:cluster-0-post-1 -->\n```\n\nThis is inserted during content creation at a contextually appropriate location.",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "48015cedc394a0cd8d2a1e4b6a0184b620aa011b28937b63a43148520ef03b53",
+      "occurrences": [
+        {
+          "file": "references/execution-workflow.md",
+          "start_line": 84,
+          "end_line": 84,
+          "start_column": 0,
+          "end_column": 38
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "finding_id": "finding-77a4eaf28b52477a8d6c69322792eb26",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/execution-workflow.md",
+        "start_line": 76,
+        "end_line": 76,
+        "start_column": 43,
+        "end_column": 72
+      },
+      "finding": "<!-- cluster-link:POST_ID -->",
+      "explanation": "Hidden instructions were detected in comments or invisible text. These could contain malicious directives. Manual review is recommended.",
+      "remediation": "Audit all comments and invisible characters. Remove any instructions that direct the agent to perform unauthorized actions. Use plain, reviewable content.",
+      "code_snippet": "2. Identify all posts that should link TO the newly written post\n3. For each of those posts (that is already written):\n   a. Open the post file\n   b. Search for the placeholder comment: `<!-- cluster-link:POST_ID -->`\n   c. Replace the placeholder with an actual contextual link\n   d. If no placeholder found, append a contextual link in the most relevant section\n4. Log all backward links added",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "8863fb949e43199ad7595693a8d83416d3f38eb7c098f573f0549ef964b5db12",
+      "occurrences": [
+        {
+          "file": "references/execution-workflow.md",
+          "start_line": 76,
+          "end_line": 76,
+          "start_column": 43,
+          "end_column": 72
+        }
+      ]
+    },
+    {
+      "id": "RA2",
+      "finding_id": "finding-0334ede0d8394f06a1639c43fd54e936",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 170,
+        "end_line": null,
+        "start_column": 65
+      },
+      "finding": "write every\n   `<` as `\\u003c`, so a SERP title containing `</script>` cannot end the\n   script block. Use `#RRGGBB` cluster colors; anything else falls back to the\n   default palette.\n4. Write the co",
+      "explanation": "Skill establishes unauthorized persistence across sessions via cron jobs, startup scripts, or state files. Session persistence allows an attacker to maintain access beyond the current interaction.",
+      "remediation": "Remove any persistence mechanisms (cron jobs, startup scripts, state files). Skills should not maintain state across sessions without explicit user consent.",
+      "code_snippet": "   }\n   ```\n3. Replace the `CLUSTER_DATA` placeholder in the template with the actual JSON.\n   Serialize it as real JSON (for example `json.dumps`) and then write every\n   `<` as `\\u003c`, so a SERP title containing `</script>` cannot end the\n   script block. Use `#RRGGBB` cluster colors; anything else falls back to the\n   default palette.",
+      "intent": null,
+      "tags": [
+        "Rogue Agent"
+      ],
+      "evidence": {},
+      "match_fingerprint": "849fc6a4180aff3084ad9bfe76975f650ffb2cf59a9b4aa42652c601535f9bf8",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 170,
+          "end_line": null,
+          "start_column": 65
+        }
+      ]
+    },
+    {
+      "id": "AS3",
+      "finding_id": "finding-06d5f74379b647008b258e2051409816",
+      "category": "Agent Snooping",
+      "pattern": "Skill Enumeration",
+      "severity": "MEDIUM",
+      "confidence": 0.8,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 204,
+        "end_line": null,
+        "start_column": 12
+      },
+      "finding": "skills/blog/SKILL.md",
+      "explanation": "Skill enumerates or reads other installed skills. Access to other skills' SKILL.md files or the skills directory reveals prompt instructions, capabilities, and secrets that should be invisible to peer skills.",
+      "remediation": "Remove all code or instructions that list or read other skills' files or directories. Skills should operate independently; cross-skill access is a privilege escalation.",
+      "code_snippet": "```\nTest: Is a `blog-write` skill available in this session (any plugin namespace,\nfor example claude-blog:blog-write)? If unsure, check both install layouts:\n  ~/.claude/skills/blog/SKILL.md                                (manual install)\n  ~/.claude/plugins/cache/*/claude-blog/*/skills/blog/SKILL.md   (plugin install)\n```\n",
+      "intent": null,
+      "tags": [
+        "Agent Snooping"
+      ],
+      "evidence": {},
+      "match_fingerprint": "dc450e1d29d4f8a97862dab2737e25f39a8ba7bebba04f4b17a88573d619863d",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 204,
+          "end_line": null,
+          "start_column": 12
+        }
+      ]
+    },
+    {
+      "id": "AS3",
+      "finding_id": "finding-992bdf8f79274c90bd4d75a30c1774b7",
+      "category": "Agent Snooping",
+      "pattern": "Skill Enumeration",
+      "severity": "MEDIUM",
+      "confidence": 0.8,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 205,
+        "end_line": null,
+        "start_column": 42
+      },
+      "finding": "skills/blog/SKILL.md",
+      "explanation": "Skill enumerates or reads other installed skills. Access to other skills' SKILL.md files or the skills directory reveals prompt instructions, capabilities, and secrets that should be invisible to peer skills.",
+      "remediation": "Remove all code or instructions that list or read other skills' files or directories. Skills should operate independently; cross-skill access is a privilege escalation.",
+      "code_snippet": "Test: Is a `blog-write` skill available in this session (any plugin namespace,\nfor example claude-blog:blog-write)? If unsure, check both install layouts:\n  ~/.claude/skills/blog/SKILL.md                                (manual install)\n  ~/.claude/plugins/cache/*/claude-blog/*/skills/blog/SKILL.md   (plugin install)\n```\n\n**If claude-blog IS installed:**",
+      "intent": null,
+      "tags": [
+        "Agent Snooping"
+      ],
+      "evidence": {},
+      "match_fingerprint": "dc450e1d29d4f8a97862dab2737e25f39a8ba7bebba04f4b17a88573d619863d",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 205,
+          "end_line": null,
+          "start_column": 42
+        }
+      ]
+    },
+    {
+      "id": "EA2",
+      "finding_id": "finding-f2cecb3b340c487183b70a4e5f34df43",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "severity": "MEDIUM",
+      "confidence": 0.75,
+      "location": {
+        "file": "references/serp-overlap-methodology.md",
+        "start_line": 59,
+        "end_line": null,
+        "start_column": 53
+      },
+      "finding": "without checking",
+      "explanation": "Skill enables autonomous high-impact decisions without human-in-the-loop verification. Critical operations (destructive commands, financial transactions, data deletion) should require explicit user confirmation.",
+      "remediation": "Add human-in-the-loop confirmation for destructive, irreversible, or high-impact operations. Never auto-execute commands that modify files, send data, or alter system state.",
+      "code_snippet": "### Skip Rules\n\n- If keywords A and B are both long-tail variants of the same head term AND share\n  the same intent, assume overlap 4-6 (same cluster) without checking SERP\n- If keywords are in different intent categories, assume overlap 0-2 unless they\n  share a head term\n- Verify assumptions with spot-check SERP comparisons (sample 20% of skipped pairs)",
+      "intent": null,
+      "tags": [
+        "Excessive Agency"
+      ],
+      "evidence": {},
+      "match_fingerprint": "9341b6f34d6af9081a0d6673f4217b7307d273da9f43357efd9029e15c5da76c",
+      "occurrences": [
+        {
+          "file": "references/serp-overlap-methodology.md",
+          "start_line": 59,
+          "end_line": null,
+          "start_column": 53
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": false,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 5,
+    "scanned_components": 5,
+    "coverage_percent": 100.0,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 5,
+    "partially_inspected_files": 0,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 170,
+        "end_line": 170,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 211,
+        "end_line": 211,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 264,
+        "end_line": 264,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 277,
+        "end_line": 277,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 278,
+        "end_line": 278,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 281,
+        "end_line": 281,
+        "fatal": false
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 58,
+        "column": 40,
+        "evidence": "This is the core differentiator. Load `references/serp-overlap-methodology.md` for",
+        "target_path": "references/serp-overlap-methodology.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 101,
+        "column": 7,
+        "evidence": "Load `references/hub-spoke-architecture.md` for full specifications.",
+        "target_path": "references/hub-spoke-architecture.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 157,
+        "column": 11,
+        "evidence": "Generate `cluster-map.html` using the template at `templates/cluster-map.html`.",
+        "target_path": "templates/cluster-map.html",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 157,
+        "column": 52,
+        "evidence": "Generate `cluster-map.html` using the template at `templates/cluster-map.html`.",
+        "target_path": "templates/cluster-map.html",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 170,
+        "column": 44,
+        "evidence": "Serialize it as real JSON (for example `json.dumps`) and then write every",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 175,
+        "column": 24,
+        "evidence": "5. Inform user: \"Open `cluster-map.html` in a browser to explore the interactive cluster map.\"",
+        "target_path": "templates/cluster-map.html",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 210,
+        "column": 10,
+        "evidence": "1. Load `references/execution-workflow.md` for the full algorithm",
+        "target_path": "references/execution-workflow.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 211,
+        "column": 10,
+        "evidence": "2. Read `cluster-plan.json` from the current directory",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 237,
+        "column": 40,
+        "evidence": "4. Inform user: \"Install [claude-blog](https://github.com/AgriciDaniel/claude-blog)",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 264,
+        "column": 10,
+        "evidence": "1. Read `cluster-plan.json` from the current directory",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 266,
+        "column": 16,
+        "evidence": "3. Regenerate `cluster-map.html` with updated statuses",
+        "target_path": "templates/cluster-map.html",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 277,
+        "column": 4,
+        "evidence": "| `cluster-plan.json` | Machine-readable cluster plan (full data) |",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 278,
+        "column": 4,
+        "evidence": "| `cluster-plan.md` | Human-readable cluster plan summary |",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 279,
+        "column": 4,
+        "evidence": "| `cluster-map.html` | Interactive SVG visualization |",
+        "target_path": "templates/cluster-map.html",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 281,
+        "column": 4,
+        "evidence": "| `cluster-scorecard.md` | Post-execution quality report |",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      }
+    ],
+    "limitations": [],
+    "findings_before_filtering": 8,
+    "findings_after_filtering": 8
+  }
+}

@@ -1,0 +1,1228 @@
+{
+  "skill": {
+    "name": "agent-platform-deploy",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\google\\skills\\agent-platform-deploy",
+    "scanned_at": "2026-10-31T21:20:10.185148+00:00"
+  },
+  "risk_assessment": {
+    "score": 83,
+    "severity": "CRITICAL",
+    "recommendation": "DO_NOT_INSTALL",
+    "max_issue_severity": "HIGH"
+  },
+  "components": [
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 424,
+      "executable": false,
+      "size_bytes": 20201,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/copy_deploy_guide.md",
+      "type": "markdown",
+      "lines": 294,
+      "executable": false,
+      "size_bytes": 11246,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/region_availability.md",
+      "type": "markdown",
+      "lines": 63,
+      "executable": false,
+      "size_bytes": 3625,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/troubleshooting.md",
+      "type": "markdown",
+      "lines": 20,
+      "executable": false,
+      "size_bytes": 1013,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/undeploy_guide.md",
+      "type": "markdown",
+      "lines": 67,
+      "executable": false,
+      "size_bytes": 2179,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/usage.md",
+      "type": "markdown",
+      "lines": 12,
+      "executable": false,
+      "size_bytes": 367,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/calculate_cost.py",
+      "type": "python",
+      "lines": 160,
+      "executable": true,
+      "size_bytes": 6664,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/config_gcloud_cli.sh",
+      "type": "shell",
+      "lines": 46,
+      "executable": true,
+      "size_bytes": 1296,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "AE1",
+      "finding_id": "finding-ddb439ea1b674629ac5a076691b8ca14",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 32,
+        "end_line": null
+      },
+      "finding": "references/copy_deploy_guide.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Review the target's analysis-completeness ledger and resolve all limitations. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "[1P Tuned Model Copy & Deployment Guide](references/copy_deploy_guide.md).",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/copy_deploy_guide.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_agent_snooping"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_anti_refusal"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_deserialization"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_excessive_agency"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_harmful_content"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_memory_poisoning"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_privilege_escalation"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_prompt_injection"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_rogue_agent"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_ssrf"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_supply_chain"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_system_prompt_leakage"
+            ]
+          },
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "524885c62aeca64b71a974361209f8a082562f54ea6cfba8439cf193facdcc00",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 32,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-c444e0b4887d4fd2870c02d1d9d42125",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 333,
+        "end_line": null
+      },
+      "finding": "references/copy_deploy_guide.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Review the target's analysis-completeness ledger and resolve all limitations. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "> file_path='references/copy_deploy_guide.md')`. That guide covers the execution",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/copy_deploy_guide.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_agent_snooping"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_anti_refusal"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_deserialization"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_excessive_agency"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_harmful_content"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_memory_poisoning"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_privilege_escalation"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_prompt_injection"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_rogue_agent"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_ssrf"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_supply_chain"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_system_prompt_leakage"
+            ]
+          },
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "524885c62aeca64b71a974361209f8a082562f54ea6cfba8439cf193facdcc00",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 333,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-4da139890e0546febf905814e58b99a8",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 111,
+        "end_line": null,
+        "start_column": 7
+      },
+      "finding": "Access Token",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "```\n\n> [!NOTE] Some models, especially Hugging Face models, might require a Hugging\n> Face Access Token for deployment.\n\n> [!TIP] **Model Recommendation Instructions:** Whenever you are about to name a\n> specific model version in a response, do NOT recommend from memory. This",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "d791fddf2b521316d721148b0ff375b4cd22146833b76e12a6a85aae7e9ea3f2",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 111,
+          "end_line": null,
+          "start_column": 7
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-e90f2bb0e72040ed912a49e15d3f2737",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 161,
+        "end_line": null
+      },
+      "finding": "references/region_availability.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "> file_path='references/region_availability.md')`.",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/region_availability.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "fc580e06af4c3443cb1356b95ab6486ff2b7f85fc25d6a73eb58c8a4640b0bd3",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 161,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "EA2",
+      "finding_id": "finding-95accc2eaa204ffa8a8dff61610e0fdd",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "severity": "MEDIUM",
+      "confidence": 0.75,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 40,
+        "end_line": null,
+        "start_column": 18
+      },
+      "finding": "No confirmation",
+      "explanation": "Skill enables autonomous high-impact decisions without human-in-the-loop verification. Critical operations (destructive commands, financial transactions, data deletion) should require explicit user confirmation.",
+      "remediation": "Add human-in-the-loop confirmation for destructive, irreversible, or high-impact operations. Never auto-execute commands that modify files, send data, or alter system state.",
+      "code_snippet": "following safety tiers based on the action requested:\n\n1.  **Tier R: Read-only (`list`, `describe`, `list-deployment-config`)**\n    *   **Rule**: No confirmation needed. You may execute these commands\n        immediately to gather information for the user.\n2.  **Tier M: Mutating & Reversible (`deploy`, `undeploy-model`)**\n    *   **Rule**: This requires explicit user confirmation. You MUST present a",
+      "intent": null,
+      "tags": [
+        "Excessive Agency"
+      ],
+      "evidence": {},
+      "match_fingerprint": "afca04afeb75db76cbddc1ffb2a73598f31d2d03b5941c69a9de6af31da2733a",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 40,
+          "end_line": null,
+          "start_column": 18
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-941f55b2b3ba483ab6f08434445fa3cf",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 289,
+        "end_line": null,
+        "start_column": 60
+      },
+      "finding": "curl command for\n# the deploy confirmation card, inline ALL values as literals — do NOT leave\n# ${PROJECT_ID}, ${LOCATION_ID}, or ${PUBLISHER_MODEL} as shell variables.\n# The server rejects commands w",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "# before running this script, and do NOT quote the placeholder back to the\n# user as a recommended model.\n#\n# IMPORTANT FOR deploy_config[\"command\"]: when building the curl command for\n# the deploy confirmation card, inline ALL values as literals — do NOT leave\n# ${PROJECT_ID}, ${LOCATION_ID}, or ${PUBLISHER_MODEL} as shell variables.\n# The server rejects commands with unresolved variables at render time.",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "7dc5f0bd4405da0088853fa24e427fb47adf18e37348883a69b302565dc3a500",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 289,
+          "end_line": null,
+          "start_column": 60
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-23db0a46b75f4692a4187e2e725eca5c",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "references/copy_deploy_guide.md",
+        "start_line": 118,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": "curl -X GET -H \"Authorization: Bearer $(gcloud auth print-access-token)\" ${ENDPOINT}/ui/${MODEL}\n```\n\n## Step 2: Copy source model to destination project\n\nIf user is copying to different project and d",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "## Step 1: Verify the source model exists and valid\n\n```bash\ncurl -X GET -H \"Authorization: Bearer $(gcloud auth print-access-token)\" ${ENDPOINT}/ui/${MODEL}\n```\n\n## Step 2: Copy source model to destination project",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "2e21da23aceed735827b5e116d378cb160c6ebeaceb07b60ba7ea884fea062f4",
+      "occurrences": [
+        {
+          "file": "references/copy_deploy_guide.md",
+          "start_line": 118,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-217bde8a69cf4da1a26bb1cef3e4121d",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "references/copy_deploy_guide.md",
+        "start_line": 178,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": "curl -X GET -H \"Authorization: Bearer $(gcloud auth print-access-token)\" ${ENDPOINT}/ui/${MODEL_COPY}\n```\n\n## Step 3: Create an endpoint\n\nPrompt user `Creating a Public Shared endpoint in selected reg",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "Get the copied model ${MODEL_COPY} from the LRO polling output. Describe it.\n\n```bash\ncurl -X GET -H \"Authorization: Bearer $(gcloud auth print-access-token)\" ${ENDPOINT}/ui/${MODEL_COPY}\n```\n\n## Step 3: Create an endpoint",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "83173137f71c4bb30d2477af591c20167307b2eeabc09796e8595640ea29968d",
+      "occurrences": [
+        {
+          "file": "references/copy_deploy_guide.md",
+          "start_line": 178,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    },
+    {
+      "id": "EA2",
+      "finding_id": "finding-ee5523c8fab9413ab5f146aa066849cd",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "severity": "MEDIUM",
+      "confidence": 0.8,
+      "location": {
+        "file": "references/region_availability.md",
+        "start_line": 30,
+        "end_line": null,
+        "start_column": 32
+      },
+      "finding": "do not ask the user",
+      "explanation": "Skill enables autonomous high-impact decisions without human-in-the-loop verification. Critical operations (destructive commands, financial transactions, data deletion) should require explicit user confirmation.",
+      "remediation": "Add human-in-the-loop confirmation for destructive, irreversible, or high-impact operations. Never auto-execute commands that modify files, send data, or alter system state.",
+      "code_snippet": "\nFor first-party publisher models (`google/*`), probe with a real\n`:generateContent` call using a minimal valid payload. This probe is\nagent-executed in the sandbox — do not ask the user to run it manually:\n\n```bash\n",
+      "intent": null,
+      "tags": [
+        "Excessive Agency"
+      ],
+      "evidence": {},
+      "match_fingerprint": "6c70454728b03185163a4a49ef0ee04594a078335fd27f5b237f14a877522ca9",
+      "occurrences": [
+        {
+          "file": "references/region_availability.md",
+          "start_line": 30,
+          "end_line": null,
+          "start_column": 32
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-861137bebc4a431aa2743a7d888a90a3",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "references/region_availability.md",
+        "start_line": 34,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": "curl -sS -o /dev/null -w \"%{http_code}\\n\" \\\n    -H \"Authorization: Bearer $(gcloud auth print-access-token)\" \\\n    -H \"Content-Type: application/json\" \\\n    \"https://${location_id}-aiplatform.googleap",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "\n```bash\n\ncurl -sS -o /dev/null -w \"%{http_code}\\n\" \\\n    -H \"Authorization: Bearer $(gcloud auth print-access-token)\" \\\n    -H \"Content-Type: application/json\" \\\n    \"https://${location_id}-aiplatform.googleapis.com/v1/projects/${PROJECT_ID}/locations/${LOCATION_ID}/publishers/google/${MODEL_ID}:generateContent\" \\",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "706858725d2a466779a42ce5c138967e97c87eae4710ad7001d84acb6f3376b6",
+      "occurrences": [
+        {
+          "file": "references/region_availability.md",
+          "start_line": 34,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": true,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 8,
+    "scanned_components": 6,
+    "coverage_percent": 75.0,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 6,
+    "partially_inspected_files": 2,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "obfuscated_instruction_text",
+        "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+        "path": "references/copy_deploy_guide.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_agent_snooping",
+          "static_patterns_anti_refusal",
+          "static_patterns_deserialization",
+          "static_patterns_excessive_agency",
+          "static_patterns_harmful_content",
+          "static_patterns_memory_poisoning",
+          "static_patterns_privilege_escalation",
+          "static_patterns_prompt_injection",
+          "static_patterns_rogue_agent",
+          "static_patterns_ssrf",
+          "static_patterns_supply_chain",
+          "static_patterns_system_prompt_leakage"
+        ]
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "references/copy_deploy_guide.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "references/region_availability.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "reference_coverage",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "degraded",
+        "planned_work": 8,
+        "completed": 7,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "degraded",
+        "planned_work": 8,
+        "completed": 7,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "degraded",
+        "planned_work": 8,
+        "completed": 7,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "degraded",
+        "planned_work": 8,
+        "completed": 7,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "degraded",
+        "planned_work": 8,
+        "completed": 7,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "degraded",
+        "planned_work": 8,
+        "completed": 7,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "degraded",
+        "planned_work": 8,
+        "completed": 7,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "degraded",
+        "planned_work": 8,
+        "completed": 7,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "degraded",
+        "planned_work": 8,
+        "completed": 7,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "degraded",
+        "planned_work": 8,
+        "completed": 7,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "degraded",
+        "planned_work": 8,
+        "completed": 7,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "degraded",
+        "planned_work": 8,
+        "completed": 7,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "degraded",
+        "planned_work": 8,
+        "completed": 6,
+        "partial": 2,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 32,
+        "column": 42,
+        "evidence": "[1P Tuned Model Copy & Deployment Guide](references/copy_deploy_guide.md).",
+        "target_path": "references/copy_deploy_guide.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 161,
+        "column": 14,
+        "evidence": "> file_path='references/region_availability.md')`.",
+        "target_path": "references/region_availability.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 176,
+        "column": 16,
+        "evidence": "> - Run `scripts/calculate_cost.py`. The accelerator type and count are",
+        "target_path": "scripts/calculate_cost.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 181,
+        "column": 19,
+        "evidence": "> python3 scripts/calculate_cost.py \\",
+        "target_path": "scripts/calculate_cost.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 191,
+        "column": 47,
+        "evidence": "> [Agent Platform prediction pricing](https://cloud.google.com/products/gemini-enterprise-agent-platform/pricing?hl=en#prediction-and-explanation)",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 333,
+        "column": 14,
+        "evidence": "> file_path='references/copy_deploy_guide.md')`. That guide covers the execution",
+        "target_path": "references/copy_deploy_guide.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 414,
+        "column": 14,
+        "evidence": "> file_path='references/undeploy_guide.md')`.",
+        "target_path": "references/undeploy_guide.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 424,
+        "column": 14,
+        "evidence": "> file_path='references/troubleshooting.md')`.",
+        "target_path": "references/troubleshooting.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      }
+    ],
+    "limitations": [
+      "Analyzer static_patterns_agent_snooping status: degraded.",
+      "Analyzer static_patterns_anti_refusal status: degraded.",
+      "Analyzer static_patterns_deserialization status: degraded.",
+      "Analyzer static_patterns_excessive_agency status: degraded.",
+      "Analyzer static_patterns_harmful_content status: degraded.",
+      "Analyzer static_patterns_memory_poisoning status: degraded.",
+      "Analyzer static_patterns_privilege_escalation status: degraded.",
+      "Analyzer static_patterns_prompt_injection status: degraded.",
+      "Analyzer static_patterns_rogue_agent status: degraded.",
+      "Analyzer static_patterns_ssrf status: degraded.",
+      "Analyzer static_patterns_supply_chain status: degraded.",
+      "Analyzer static_patterns_system_prompt_leakage status: degraded.",
+      "Analyzer static_patterns_tool_misuse status: degraded."
+    ],
+    "findings_before_filtering": 10,
+    "findings_after_filtering": 10
+  }
+}

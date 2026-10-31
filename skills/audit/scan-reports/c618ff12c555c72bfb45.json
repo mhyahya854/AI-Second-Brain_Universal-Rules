@@ -1,0 +1,1281 @@
+{
+  "skill": {
+    "name": "web-accessibility-wizard",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\Community-Access\\accessibility-agents\\web-accessibility-wizard",
+    "scanned_at": "2026-10-31T21:03:39.719973+00:00"
+  },
+  "risk_assessment": {
+    "score": 53,
+    "severity": "HIGH",
+    "recommendation": "DO_NOT_INSTALL",
+    "max_issue_severity": "HIGH"
+  },
+  "components": [
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 97,
+      "executable": false,
+      "size_bytes": 4236,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "agents/openai.yaml",
+      "type": "yaml",
+      "lines": 8,
+      "executable": false,
+      "size_bytes": 423,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/delegation-and-scan-context.md",
+      "type": "markdown",
+      "lines": 117,
+      "executable": false,
+      "size_bytes": 6371,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/dispatch-matrix.md",
+      "type": "markdown",
+      "lines": 69,
+      "executable": false,
+      "size_bytes": 4355,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/phase-0-discovery.md",
+      "type": "markdown",
+      "lines": 191,
+      "executable": false,
+      "size_bytes": 10488,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/phase-11-handoffs.md",
+      "type": "markdown",
+      "lines": 194,
+      "executable": false,
+      "size_bytes": 10826,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/phase-11-report-template.md",
+      "type": "markdown",
+      "lines": 356,
+      "executable": false,
+      "size_bytes": 11315,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/phase-12-ci-and-config.md",
+      "type": "markdown",
+      "lines": 359,
+      "executable": false,
+      "size_bytes": 11641,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/phases-1-8-domain-checks.md",
+      "type": "markdown",
+      "lines": 196,
+      "executable": false,
+      "size_bytes": 6788,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/phases-9-10-testing.md",
+      "type": "markdown",
+      "lines": 255,
+      "executable": false,
+      "size_bytes": 11941,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/screenshots-and-scope.md",
+      "type": "markdown",
+      "lines": 128,
+      "executable": false,
+      "size_bytes": 5394,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "AR2",
+      "finding_id": "finding-34e3baf4274840348b0771266dd2d41c",
+      "category": "Anti-Refusal",
+      "pattern": "Anti-Refusal Statement",
+      "severity": "HIGH",
+      "confidence": 0.8,
+      "location": {
+        "file": "references/phases-9-10-testing.md",
+        "start_line": 206,
+        "end_line": 206,
+        "start_column": 26,
+        "end_column": 41
+      },
+      "finding": "without warning",
+      "explanation": "Skill instructs the agent to omit warnings, disclaimers, or ethical commentary. Stripping safety caveats hides risk from the user and is a common jailbreak preamble.",
+      "remediation": "Remove instructions that suppress warnings, disclaimers, or ethical commentary. Let the agent surface safety-relevant caveats to the user.",
+      "code_snippet": "| Missing `<label>` for inputs | Add `<label>` element with `for` attribute |\n| Button without accessible name | Add `aria-label` or text content |\n| Missing `autocomplete` on identity fields | Add appropriate `autocomplete` value |\n| Link opening in new tab without warning | Add `(opens in new tab)` visually hidden text |\n| Missing `scope` on `<th>` elements | Add `scope=\"col\"` or `scope=\"row\"` |\n\n### Human-Judgment Issues (show fix, ask for approval)",
+      "intent": null,
+      "tags": [
+        "Anti-Refusal"
+      ],
+      "evidence": {},
+      "match_fingerprint": "e1c52694e854c5bd049e3a3ae66f3efcfe098f61a8ee160655ad3b90035f67fd",
+      "occurrences": [
+        {
+          "file": "references/phases-9-10-testing.md",
+          "start_line": 206,
+          "end_line": 206,
+          "start_column": 26,
+          "end_column": 41
+        }
+      ]
+    },
+    {
+      "id": "AS3",
+      "finding_id": "finding-441293b86abf46a7950acfc2fbcfbaff",
+      "category": "Agent Snooping",
+      "pattern": "Skill Enumeration",
+      "severity": "MEDIUM",
+      "confidence": 0.8,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 96,
+        "end_line": null,
+        "start_column": 46
+      },
+      "finding": "skills/a11y-core/SKILL.md",
+      "explanation": "Skill enumerates or reads other installed skills. Access to other skills' SKILL.md files or the skills directory reveals prompt instructions, capabilities, and secrets that should be invisible to peer skills.",
+      "remediation": "Remove all code or instructions that list or read other skills' files or directories. Skills should operate independently; cross-skill access is a privilege escalation.",
+      "code_snippet": "`.a11y-history/<timestamp>/`, then render the report with\n`node skills/a11y-core/scripts/render-report.mjs`. Do not type the report by hand.\n\nShared rules, dispatch contract and schemas: `skills/a11y-core/SKILL.md`.\nAuthoritative specifications for this skill: `skills/a11y-core/references/sources.md`.",
+      "intent": null,
+      "tags": [
+        "Agent Snooping"
+      ],
+      "evidence": {},
+      "match_fingerprint": "c0602cc68f17de2b8c1ea558422f7591ed6d79638e382eeaed9a054c6919e457",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 96,
+          "end_line": null,
+          "start_column": 46
+        }
+      ]
+    },
+    {
+      "id": "EA2",
+      "finding_id": "finding-647c3c10df954aa08829030303e884a7",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "severity": "MEDIUM",
+      "confidence": 0.75,
+      "location": {
+        "file": "references/dispatch-matrix.md",
+        "start_line": 49,
+        "end_line": null,
+        "start_column": 30
+      },
+      "finding": "without asking",
+      "explanation": "Skill enables autonomous high-impact decisions without human-in-the-loop verification. Critical operations (destructive commands, financial transactions, data deletion) should require explicit user confirmation.",
+      "remediation": "Add human-in-the-loop confirmation for destructive, irreversible, or high-impact operations. Never auto-execute commands that modify files, send data, or alter system state.",
+      "code_snippet": "## Helpers\n\nThe 7 mechanical skills in these domains: discovery, scanning, export and\nconfiguration. Dispatch these without asking the user first.\n\n| Skill | Use it for |\n|---|---|",
+      "intent": null,
+      "tags": [
+        "Excessive Agency"
+      ],
+      "evidence": {},
+      "match_fingerprint": "8dc77d3dce9ba1f2672e813265a1b1a0c8594866ef38a4e978bf4f4451795465",
+      "occurrences": [
+        {
+          "file": "references/dispatch-matrix.md",
+          "start_line": 49,
+          "end_line": null,
+          "start_column": 30
+        }
+      ]
+    },
+    {
+      "id": "EA2",
+      "finding_id": "finding-c4bb1952d61c4bf090ad1443f5512123",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "severity": "MEDIUM",
+      "confidence": 0.75,
+      "location": {
+        "file": "references/phase-11-handoffs.md",
+        "start_line": 188,
+        "end_line": null,
+        "start_column": 106
+      },
+      "finding": "without asking",
+      "explanation": "Skill enables autonomous high-impact decisions without human-in-the-loop verification. Critical operations (destructive commands, financial transactions, data deletion) should require explicit user confirmation.",
+      "remediation": "Add human-in-the-loop confirmation for destructive, irreversible, or high-impact operations. Never auto-execute commands that modify files, send data, or alter system state.",
+      "code_snippet": "17. **Offer interactive fixes.** After reporting issues, offer to fix auto-fixable issues directly.\n18. **Run specialists in parallel** when possible to reduce audit time.\n19. **Verify fixes with re-scan.** After applying fixes in interactive mode, re-run axe-core to confirm resolution.\n20. **Offer follow-up actions.** After the report, always present Phase 11 options. Never end the session without asking what the user wants to do next.\n21. **Detect shared components.** When auditing multiple pages, identify component-level issues that can be fixed once to remediate many pages.\n22. **Offer CI/CD guidance proactively.** After any audit, offer Phase 12 CI/CD integration if no `.a11y-web-config.json` exists.\n23. **Respect web scan configuration.** If `.a11y-web-config.json` exists, honor its rules unless the user overrides.",
+      "intent": null,
+      "tags": [
+        "Excessive Agency"
+      ],
+      "evidence": {},
+      "match_fingerprint": "8dc77d3dce9ba1f2672e813265a1b1a0c8594866ef38a4e978bf4f4451795465",
+      "occurrences": [
+        {
+          "file": "references/phase-11-handoffs.md",
+          "start_line": 188,
+          "end_line": null,
+          "start_column": 106
+        }
+      ]
+    },
+    {
+      "id": "EA2",
+      "finding_id": "finding-810f5819975345ab94edc810745cbe50",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "severity": "MEDIUM",
+      "confidence": 0.75,
+      "location": {
+        "file": "references/phases-9-10-testing.md",
+        "start_line": 192,
+        "end_line": null,
+        "start_column": 39
+      },
+      "finding": "without asking",
+      "explanation": "Skill enables autonomous high-impact decisions without human-in-the-loop verification. Critical operations (destructive commands, financial transactions, data deletion) should require explicit user confirmation.",
+      "remediation": "Add human-in-the-loop confirmation for destructive, irreversible, or high-impact operations. Never auto-execute commands that modify files, send data, or alter system state.",
+      "code_snippet": "- **Just the report** - no fixes, I'll handle them manually\n- **Fix a specific issue** - let me pick which one(s)\n\n### Auto-Fixable Issues (safe to apply without asking)\n\nThese can be fixed programmatically with high confidence:\n",
+      "intent": null,
+      "tags": [
+        "Excessive Agency"
+      ],
+      "evidence": {},
+      "match_fingerprint": "8dc77d3dce9ba1f2672e813265a1b1a0c8594866ef38a4e978bf4f4451795465",
+      "occurrences": [
+        {
+          "file": "references/phases-9-10-testing.md",
+          "start_line": 192,
+          "end_line": null,
+          "start_column": 39
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-fe6a350e01b84f8e8329aaabbdce784e",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/phase-12-ci-and-config.md",
+        "start_line": 145,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "844f78f8fb953b601fc65ebc75dd0ab0c6dd087743ff0628773cea584f38a4a8",
+      "occurrences": [
+        {
+          "file": "references/phase-12-ci-and-config.md",
+          "start_line": 145,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-0fab6480ef1d45aa8867914c3824b1a1",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/phases-9-10-testing.md",
+        "start_line": 21,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "844f78f8fb953b601fc65ebc75dd0ab0c6dd087743ff0628773cea584f38a4a8",
+      "occurrences": [
+        {
+          "file": "references/phases-9-10-testing.md",
+          "start_line": 21,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-2670cb553cb648ef9f0abc1d52cac41e",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/phases-9-10-testing.md",
+        "start_line": 24,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "ccf05f5be6a44c2d4560da5a62c3650b2fcaf04292255695009daed0acd82bda",
+      "occurrences": [
+        {
+          "file": "references/phases-9-10-testing.md",
+          "start_line": 24,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-cc7c0494cb2449099a008ca4728197c9",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/screenshots-and-scope.md",
+        "start_line": 30,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "a23c4b23e4a4f2da898a9c7e331d8a60c725cfc73cdabe67e8c5957228ea46a3",
+      "occurrences": [
+        {
+          "file": "references/screenshots-and-scope.md",
+          "start_line": 30,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-7ded2bc2de074b36b44a145cfad1dfc9",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/screenshots-and-scope.md",
+        "start_line": 42,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "a23c4b23e4a4f2da898a9c7e331d8a60c725cfc73cdabe67e8c5957228ea46a3",
+      "occurrences": [
+        {
+          "file": "references/screenshots-and-scope.md",
+          "start_line": 42,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-918c86bf95fc4662a7eed0dd84af67cf",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/screenshots-and-scope.md",
+        "start_line": 45,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "a23c4b23e4a4f2da898a9c7e331d8a60c725cfc73cdabe67e8c5957228ea46a3",
+      "occurrences": [
+        {
+          "file": "references/screenshots-and-scope.md",
+          "start_line": 45,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-6b8ea64243a447fe9c187c14b45693d5",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/screenshots-and-scope.md",
+        "start_line": 48,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "a23c4b23e4a4f2da898a9c7e331d8a60c725cfc73cdabe67e8c5957228ea46a3",
+      "occurrences": [
+        {
+          "file": "references/screenshots-and-scope.md",
+          "start_line": 48,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-b30dfc2892444458a7a8433c74c293a0",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/screenshots-and-scope.md",
+        "start_line": 51,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "a23c4b23e4a4f2da898a9c7e331d8a60c725cfc73cdabe67e8c5957228ea46a3",
+      "occurrences": [
+        {
+          "file": "references/screenshots-and-scope.md",
+          "start_line": 51,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-c76cfce14500456db5ff0083c34adba5",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/screenshots-and-scope.md",
+        "start_line": 33,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "5d1e71786bcce07e288b1b7488d594b4d051d0f6efefb2c50641987706a012da",
+      "occurrences": [
+        {
+          "file": "references/screenshots-and-scope.md",
+          "start_line": 33,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-3a8879aaea274169901511fecf9d2213",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/screenshots-and-scope.md",
+        "start_line": 57,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "5d1e71786bcce07e288b1b7488d594b4d051d0f6efefb2c50641987706a012da",
+      "occurrences": [
+        {
+          "file": "references/screenshots-and-scope.md",
+          "start_line": 57,
+          "end_line": null
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": false,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 11,
+    "scanned_components": 11,
+    "coverage_percent": 100.0,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 11,
+    "partially_inspected_files": 0,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 62,
+        "end_line": 62,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 94,
+        "end_line": 94,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 96,
+        "end_line": 96,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 97,
+        "end_line": 97,
+        "fatal": false
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 21,
+        "column": 13,
+        "evidence": "whole run. `references/phase-0-discovery.md` has the questions and the",
+        "target_path": "references/phase-0-discovery.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 30,
+        "column": 75,
+        "evidence": "| 0 | Discovery: scope, framework, conformance target, tooling present | `references/phase-0-discovery.md` |",
+        "target_path": "references/phase-0-discovery.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 31,
+        "column": 74,
+        "evidence": "| 1 to 8 | Domain checks, one specialist each, dispatched in parallel | `references/phases-1-8-domain-checks.md` |",
+        "target_path": "references/phases-1-8-domain-checks.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 32,
+        "column": 86,
+        "evidence": "| 9 to 10 | Testing advice, severity scoring, behavioural testing with Playwright | `references/phases-9-10-testing.md` |",
+        "target_path": "references/phases-9-10-testing.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 33,
+        "column": 42,
+        "evidence": "| 11 | Report, scorecard and handoffs | `references/phase-11-report-template.md` |",
+        "target_path": "references/phase-11-report-template.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 34,
+        "column": 57,
+        "evidence": "| 12 | Continuous integration and scan configuration | `references/phase-12-ci-and-config.md` |",
+        "target_path": "references/phase-12-ci-and-config.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 36,
+        "column": 42,
+        "evidence": "Screenshot rules and audit scope are in `references/screenshots-and-scope.md`.",
+        "target_path": "references/screenshots-and-scope.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 38,
+        "column": 2,
+        "evidence": "`references/delegation-and-scan-context.md`.",
+        "target_path": "references/delegation-and-scan-context.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 44,
+        "column": 2,
+        "evidence": "`references/dispatch-matrix.md` and use exactly this prompt shape. Never read a",
+        "target_path": "references/dispatch-matrix.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 62,
+        "column": 6,
+        "evidence": "node skills/a11y-core/scripts/render-report.mjs .a11y-history/<timestamp>/*.json \\",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 80,
+        "column": 4,
+        "evidence": "- `references/phase-0-discovery.md` - the questions, and framework intelligence",
+        "target_path": "references/phase-0-discovery.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 81,
+        "column": 4,
+        "evidence": "- `references/phases-1-8-domain-checks.md` - what each domain phase covers",
+        "target_path": "references/phases-1-8-domain-checks.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 82,
+        "column": 4,
+        "evidence": "- `references/phases-9-10-testing.md` - testing advice, scoring, Playwright",
+        "target_path": "references/phases-9-10-testing.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 83,
+        "column": 4,
+        "evidence": "- `references/phase-11-report-template.md` - report structure and scorecard",
+        "target_path": "references/phase-11-report-template.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 84,
+        "column": 4,
+        "evidence": "- `references/phase-11-handoffs.md` - fixes, CSV export, conformance claims",
+        "target_path": "references/phase-11-handoffs.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 85,
+        "column": 4,
+        "evidence": "- `references/phase-12-ci-and-config.md` - CI wiring, scan config, edge cases",
+        "target_path": "references/phase-12-ci-and-config.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 86,
+        "column": 4,
+        "evidence": "- `references/screenshots-and-scope.md` - screenshot rules and audit scope",
+        "target_path": "references/screenshots-and-scope.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 87,
+        "column": 4,
+        "evidence": "- `references/delegation-and-scan-context.md` - dispatch model and scan context",
+        "target_path": "references/delegation-and-scan-context.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 88,
+        "column": 4,
+        "evidence": "- `references/dispatch-matrix.md` - the full roster of skills you can dispatch",
+        "target_path": "references/dispatch-matrix.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 94,
+        "column": 7,
+        "evidence": "`node skills/a11y-core/scripts/render-report.mjs`. Do not type the report by hand.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "inline_command"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 96,
+        "column": 47,
+        "evidence": "Shared rules, dispatch contract and schemas: `skills/a11y-core/SKILL.md`.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 97,
+        "column": 47,
+        "evidence": "Authoritative specifications for this skill: `skills/a11y-core/references/sources.md`.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      }
+    ],
+    "limitations": [],
+    "findings_before_filtering": 15,
+    "findings_after_filtering": 15
+  }
+}

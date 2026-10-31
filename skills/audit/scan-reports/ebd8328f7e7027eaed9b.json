@@ -1,0 +1,1721 @@
+{
+  "skill": {
+    "name": "google-cloud-solution-n-tier-serverless-web-app",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\google\\skills\\google-cloud-solution-n-tier-serverless-web-app",
+    "scanned_at": "2026-10-31T21:15:39.169965+00:00"
+  },
+  "risk_assessment": {
+    "score": 100,
+    "severity": "CRITICAL",
+    "recommendation": "DO_NOT_INSTALL",
+    "max_issue_severity": "HIGH"
+  },
+  "components": [
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 182,
+      "executable": false,
+      "size_bytes": 22103,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "assets/main.tf",
+      "type": "other",
+      "lines": 824,
+      "executable": false,
+      "size_bytes": 30912,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "assets/output-template.md",
+      "type": "markdown",
+      "lines": 246,
+      "executable": false,
+      "size_bytes": 16135,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/attribution.md",
+      "type": "markdown",
+      "lines": 41,
+      "executable": false,
+      "size_bytes": 1989,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/non-negotiable-architectural-rules.md",
+      "type": "markdown",
+      "lines": 39,
+      "executable": false,
+      "size_bytes": 8464,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/related-guidance.md",
+      "type": "markdown",
+      "lines": 274,
+      "executable": false,
+      "size_bytes": 28616,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "AE1",
+      "finding_id": "finding-a47ec1c25e9142aeb84ccac974912a38",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 43,
+        "end_line": null
+      },
+      "finding": "assets/output-template.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "| `assets/output-template.md` | Standardized Solution Architecture report markdown structure. |",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "assets/output-template.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "6fe0ae0637d7cba8a19bffff984ddb7bd393cd4393ec6a34fdfdaa07b2bba974",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 43,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-1e9a622af7554016971336dcc5b94a1c",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 58,
+        "end_line": null
+      },
+      "finding": "assets/output-template.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "When embedding code or scripts inside architecture reports (e.g., Section 6 of `assets/output-template.md`), always inline the actual complete Terraform code, g",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "assets/output-template.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "6fe0ae0637d7cba8a19bffff984ddb7bd393cd4393ec6a34fdfdaa07b2bba974",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 58,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-bc969e20f9a94e72b2073fb90fb1b0e8",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 120,
+        "end_line": null
+      },
+      "finding": "assets/output-template.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "e architecture diagram**: Create a clean Mermaid format architecture diagram (`assets/output-template.md`) illustrating the multi-tier request and data flow acr",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "assets/output-template.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "6fe0ae0637d7cba8a19bffff984ddb7bd393cd4393ec6a34fdfdaa07b2bba974",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 120,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-68b59811837848079c58f8a789013a36",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 138,
+        "end_line": null
+      },
+      "finding": "assets/output-template.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "foundation for your Terraform implementation plan (`assets/output-template.md` for architecture structure).",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "assets/output-template.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "6fe0ae0637d7cba8a19bffff984ddb7bd393cd4393ec6a34fdfdaa07b2bba974",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 138,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-55de6e177bba4a999fbd0541dd16d35c",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 155,
+        "end_line": null
+      },
+      "finding": "assets/output-template.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "*: In Section 6.3 (\"Step-by-step gcloud CLI deployment commands\") inside `assets/output-template.md`, provide a complete, self-contained sequence of `gcloud` CL",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "assets/output-template.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "6fe0ae0637d7cba8a19bffff984ddb7bd393cd4393ec6a34fdfdaa07b2bba974",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 155,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-8c5f7f7536534f878c47243a4da91995",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 180,
+        "end_line": null
+      },
+      "finding": "assets/output-template.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "(\"Solution verification guide and custom automated validation script\") inside `assets/output-template.md`.",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "assets/output-template.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "6fe0ae0637d7cba8a19bffff984ddb7bd393cd4393ec6a34fdfdaa07b2bba974",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 180,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-3704d87837eb41f2b54ce2b2e8b55e27",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 45,
+        "end_line": null
+      },
+      "finding": "references/related-guidance.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "| `references/related-guidance.md` | Supplemental deep reference (do NOT read for standard design or IaC tasks; read only if specialized edge-case troubleshooti",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/related-guidance.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "07ed63bd1e69676ca07c65b94ec35e147ab13f87d4729ee21c56e4df960afc60",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 45,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-f52d201546d646b7aa57cdb42ab39b66",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 74,
+        "end_line": null
+      },
+      "finding": "references/related-guidance.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "ation (`cloud.google.com/docs`) alongside this skill's offline knowledge base (`references/related-guidance.md`).",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/related-guidance.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "07ed63bd1e69676ca07c65b94ec35e147ab13f87d4729ee21c56e4df960afc60",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 74,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-c045e0550def40b99656f0dba7313641",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 111,
+        "end_line": null
+      },
+      "finding": "references/related-guidance.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": " `references/non-negotiable-architectural-rules.md`. Do **NOT** retrieve `references/related-guidance.md` or `assets/main.tf` when only high-level design/checkl",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/related-guidance.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "07ed63bd1e69676ca07c65b94ec35e147ab13f87d4729ee21c56e4df960afc60",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 111,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-d641f34e9fd047cd991fc301cc7a6f3d",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 112,
+        "end_line": null
+      },
+      "finding": "references/related-guidance.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "ets/main.tf` (Single Source of Truth for exact HCL). Do **NOT** retrieve `references/related-guidance.md` unless specialized edge-case troubleshooting is explic",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/related-guidance.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "07ed63bd1e69676ca07c65b94ec35e147ab13f87d4729ee21c56e4df960afc60",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 112,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-95320e27d8ba4736800de285b2fb4fef",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.6,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 156,
+        "end_line": null,
+        "start_column": 244
+      },
+      "finding": "curl -k",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "database-version=POSTGRES_18` when provisioning Cloud SQL, and extract downstream container URLs (`gcloud run services describe... --format='value(status.url)'`) into shell variables to dynamically pass them via `--update-env-vars` into upstream services.\n    *   Explanation of all Terraform variables, **explicitly including and documenting the `enable_vpc_sc` and `use_self_signed_cert` variables** (explaining how setting `use_self_signed_cert = true` enables immediate sandbox verification via `curl -k https://<LB_IP>/` without waiting for DNS propagation).\n    *   **Dedicated VPC Service Controls Guidance Section**: Provide specific instructions and gcloud commands for implementing an Org-level VPC-SC service perimeter around Cloud Run (`run.googleapis.com`), Cloud SQL (`sqladmin.googleapis.com`), and Secret Manager (`secretmanager.googleapis.com`) when `enable_vpc_sc = true`.\n    *   Container image deployment strategies (specifying pre-existing image URLs or placeholder bootstrappin",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "242e90591aefadb7a0da792119fe44866ed593571c6b2654fd5e5c39ca79fd29",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 156,
+          "end_line": null,
+          "start_column": 244
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-2233ea920a9447cdacea2b86e5404186",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.6,
+      "location": {
+        "file": "assets/main.tf",
+        "start_line": 796,
+        "end_line": null,
+        "start_column": 61
+      },
+      "finding": "curl -k",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "\noutput \"ssl_verification_instructions\" {\n  value = var.use_self_signed_cert ? (\n    \"Self-signed certificate deployed. Test immediately via: curl -k https://${google_compute_global_address.lb_ip.address}/\"\n  ) : (\n    \"Google-managed certificate deployed for ${var.domain_name}. Create a DNS A record pointing ${var.domain_name} -> ${google_compute_global_address.lb_ip.address}, then monitor status: gcloud compute ssl-certificates describe secure-3tier-ssl-cert --global\"\n  )",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "242e90591aefadb7a0da792119fe44866ed593571c6b2654fd5e5c39ca79fd29",
+      "occurrences": [
+        {
+          "file": "assets/main.tf",
+          "start_line": 796,
+          "end_line": null,
+          "start_column": 61
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-454e2ec7d3e348fa98aca5a234005e50",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.6,
+      "location": {
+        "file": "assets/output-template.md",
+        "start_line": 179,
+        "end_line": null,
+        "start_column": 316
+      },
+      "finding": "curl -k",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "    # For sandbox/dev testing over IP with a self-signed certificate:\n    terraform apply -var=\"use_self_signed_cert=true\"\n    ```\n3.  **DNS Cutover & SSL Validation**: If using a Google-managed certificate (`use_self_signed_cert = false`), create a DNS `A` record at your registrar pointing `var.domain_name` to the outputted `load_balancer_ip`. If using self-signed mode (`use_self_signed_cert = true`), you can test immediately over HTTPS via `curl -k <redacted-url>.\n4.  **Optional VPC Service Controls (`enable_vpc_sc`) Configuration**: If\n    deploying with `enable_vpc_sc = true`, ensure your active identity is an\n    Organization Access Context Manager Admin and update your service perimeter",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "242e90591aefadb7a0da792119fe44866ed593571c6b2654fd5e5c39ca79fd29",
+      "occurrences": [
+        {
+          "file": "assets/output-template.md",
+          "start_line": 179,
+          "end_line": null,
+          "start_column": 316
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-4ab2f8b503f44beea30b01a0d58cd109",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "assets/main.tf",
+        "start_line": 560,
+        "end_line": null,
+        "start_column": 8
+      },
+      "finding": "access token",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "      # PRIMARY / DEFAULT RECOMMENDED CONNECTION PATH: Unix Socket via built-in Cloud SQL Auth Proxy sidecar.\n      # DB_SOCKET_PATH (/cloudsql/project:region:instance) is strongly recommended over direct TCP\n      # because the Auth Proxy sidecar automatically handles transparent IAM authentication, short-lived OAuth\n      # access token refresh, and mutual TLS (mTLS) encryption out of the box without requiring password\n      # rotation or custom token acquisition code in application database drivers.\n      env {\n        name  = \"DB_SOCKET_PATH\"",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "903a9f18e7222d4c1e39fcf76dec31bef3fd46b6332f4bc5bc823999d287548b",
+      "occurrences": [
+        {
+          "file": "assets/main.tf",
+          "start_line": 560,
+          "end_line": null,
+          "start_column": 8
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "finding_id": "finding-b97104ea056b476882af84cdf99c3ada",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "assets/output-template.md",
+        "start_line": 1,
+        "end_line": 2,
+        "start_column": 0,
+        "end_column": 42
+      },
+      "finding": "<!-- Use this template to compile the solution architecture and code generated\nbased on the instructions in SKILL.md. -->",
+      "explanation": "Hidden instructions were detected in comments or invisible text. These could contain malicious directives. Manual review is recommended.",
+      "remediation": "Audit all comments and invisible characters. Remove any instructions that direct the agent to perform unauthorized actions. Use plain, reviewable content.",
+      "code_snippet": "<!-- Use this template to compile the solution architecture and code generated\nbased on the instructions in SKILL.md. -->\n<!-- disableFinding(all) -->\n<!-- mdlint off -->",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "867b4dd0a4325305a39cd21068c6d577eb206d71e02aa2a8a6073d77d14857a3",
+      "occurrences": [
+        {
+          "file": "assets/output-template.md",
+          "start_line": 1,
+          "end_line": 2,
+          "start_column": 0,
+          "end_column": 42
+        }
+      ]
+    },
+    {
+      "id": "YR1",
+      "finding_id": "finding-098c047f61514eecab83c363da2cf07a",
+      "category": "YARA Match",
+      "pattern": "YARA rule 'info_stealer': Information stealer patterns (credential harvesting, browser data theft) [malware]",
+      "severity": "HIGH",
+      "confidence": 0.75,
+      "location": {
+        "file": "references/related-guidance.md",
+        "start_line": 144,
+        "end_line": null
+      },
+      "finding": "cookies/tokens at the edge",
+      "explanation": "YARA rule matched a known malware signature (reverse shell, backdoor, ransomware, C2 framework, or info stealer).",
+      "remediation": "Remove the malware payload or compromised file entirely. Investigate how it entered the skill and audit all other artifacts for additional indicators of compromise.",
+      "code_snippet": "se traffic in transit automatically.\n\n---\n\n## 6. Security and operational best practices\n\n### Presentation tier as a reverse proxy\nBy routing all API calls through the Presentation Tier server:\n1.  **Hidden API Structure**: The internal API endpoints, schemas, and routing are completely hidden from the public internet.\n2.  **Centralized Authentication**: The Presentation Tier can validate session cookies/tokens at the edge before forwarding requests to the Backend, protecting the Backend from unauthorized load.\n3.  **Simplified Domain/CORS**: The browser only ever talks to one domain (the Presentation Tier). No CORS configuration is required.\n\n### Secrets management\nAll database credentials, Redis connection strings, and API keys are stored in **Secret Manager** and mounted securely as environment variables in the Application Tier service.\n\n### Optional VPC Service Controls perimeter\nWhile Private Service Connect and VPC Egress Firewalls secure the network data plane (traffic to TCP 54",
+      "intent": null,
+      "tags": [
+        "YARA Match"
+      ],
+      "evidence": {},
+      "match_fingerprint": "b94308d07e47d5e8f8f6562f3a85b023f618f79db5aa86dbca3bbe7648337594",
+      "occurrences": [
+        {
+          "file": "references/related-guidance.md",
+          "start_line": 144,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-49c215daa6dc44b19e41e547b55a6989",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 74,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "2d54526960301cfd3e57394acc0677963e694531e4f6ee3f34c7870458ec2977",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 74,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "EA2",
+      "finding_id": "finding-0cee77a39ace4903ad54a8da26b40910",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "severity": "MEDIUM",
+      "confidence": 0.8,
+      "location": {
+        "file": "assets/main.tf",
+        "start_line": 599,
+        "end_line": null,
+        "start_column": 6
+      },
+      "finding": "Automatically run",
+      "explanation": "Skill enables autonomous high-impact decisions without human-in-the-loop verification. Critical operations (destructive commands, financial transactions, data deletion) should require explicit user confirmation.",
+      "remediation": "Add human-in-the-loop confirmation for destructive, irreversible, or high-impact operations. Never auto-execute commands that modify files, send data, or alter system state.",
+      "code_snippet": "      }\n    }\n\n    # Automatically run the Cloud SQL Auth Proxy sidecar\n    volumes {\n      name = \"cloudsql\"\n      cloud_sql_instance {",
+      "intent": null,
+      "tags": [
+        "Excessive Agency"
+      ],
+      "evidence": {},
+      "match_fingerprint": "822a5fcee2b989e2bbdb1350f2cd756c82621ea366b88b07337e49ca94c5f5b4",
+      "occurrences": [
+        {
+          "file": "assets/main.tf",
+          "start_line": 599,
+          "end_line": null,
+          "start_column": 6
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": false,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 6,
+    "scanned_components": 4,
+    "coverage_percent": 66.7,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 4,
+    "partially_inspected_files": 2,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 69,
+        "end_line": 69,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 97,
+        "end_line": 97,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 142,
+        "end_line": 142,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 143,
+        "end_line": 143,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 144,
+        "end_line": 144,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 145,
+        "end_line": 145,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 153,
+        "end_line": 153,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 157,
+        "end_line": 157,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "assets/output-template.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "references/related-guidance.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "reference_coverage",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "degraded",
+        "planned_work": 6,
+        "completed": 4,
+        "partial": 2,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 6,
+        "completed": 6,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 33,
+        "column": 21,
+        "evidence": "[Usage Attribution](references/attribution.md).",
+        "target_path": "references/attribution.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 42,
+        "column": 4,
+        "evidence": "| `assets/main.tf` | **Single Source of Truth for Terraform (HCL)**. Contains all security boundaries, Cloud Run v2 configs, PSC endpoints, DNS private zones, a",
+        "target_path": "assets/main.tf",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 43,
+        "column": 4,
+        "evidence": "| `assets/output-template.md` | Standardized Solution Architecture report markdown structure. |",
+        "target_path": "assets/output-template.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 44,
+        "column": 4,
+        "evidence": "| `references/non-negotiable-architectural-rules.md` | Non-negotiable security rules, audit checklist, and product mappings. |",
+        "target_path": "references/non-negotiable-architectural-rules.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 45,
+        "column": 4,
+        "evidence": "| `references/related-guidance.md` | Supplemental deep reference (do NOT read for standard design or IaC tasks; read only if specialized edge-case troubleshooti",
+        "target_path": "references/related-guidance.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 48,
+        "column": 110,
+        "evidence": "cal Files**: Do NOT run `code_search` or `find_by_name` queries to look inside `assets/main.tf`. Read the file directly using `view_file` once and reuse the con",
+        "target_path": "assets/main.tf",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 53,
+        "column": 189,
+        "evidence": "onment configs, or draft reports. All required patterns are fully contained in `assets/main.tf` and `references/`.",
+        "target_path": "assets/main.tf",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 58,
+        "column": 116,
+        "evidence": "When embedding code or scripts inside architecture reports (e.g., Section 6 of `assets/output-template.md`), always inline the actual complete Terraform code, g",
+        "target_path": "assets/output-template.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 69,
+        "column": 224,
+        "evidence": "ition to TCP port `5432` so the Cloud SQL Auth Proxy sidecar can query `sqladmin.googleapis.com` on startup for IAM certificate exchange.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 74,
+        "column": 174,
+        "evidence": "Protocol (`MCP`)**, you can connect the [Google Developer Knowledge MCP Server](https://developers.google.com/knowledge/mcp) (`npx -y @google/mcp-developer-know",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 74,
+        "column": 401,
+        "evidence": "ation (`cloud.google.com/docs`) alongside this skill's offline knowledge base (`references/related-guidance.md`).",
+        "target_path": "references/related-guidance.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 81,
+        "column": 218,
+        "evidence": "MPORTANT: You should offer to generate the complete Terraform code (based on `assets/main.tf` and adhering to all Phase 3 specifications) alongside the solution",
+        "target_path": "assets/main.tf",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 97,
+        "column": 71,
+        "evidence": "* **Domain & SSL Mode**: If the user specifies a domain (e.g., `app.mycompany.com`), configure `var.domain_name` with a Google-managed certificate (`use_self_si",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 111,
+        "column": 144,
+        "evidence": "ve ONLY the 9 architectural security boundaries and audit checklist from `references/non-negotiable-architectural-rules.md`. Do **NOT** retrieve `references/rel",
+        "target_path": "references/non-negotiable-architectural-rules.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 111,
+        "column": 216,
+        "evidence": " `references/non-negotiable-architectural-rules.md`. Do **NOT** retrieve `references/related-guidance.md` or `assets/main.tf` when only high-level design/checkl",
+        "target_path": "references/related-guidance.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 111,
+        "column": 252,
+        "evidence": "tural-rules.md`. Do **NOT** retrieve `references/related-guidance.md` or `assets/main.tf` when only high-level design/checklists are requested without full Terr",
+        "target_path": "assets/main.tf",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 112,
+        "column": 58,
+        "evidence": "* **Terraform Implementation Requests**: Retrieve `references/non-negotiable-architectural-rules.md` and `assets/main.tf` (Single Source of Truth for exact HCL)",
+        "target_path": "references/non-negotiable-architectural-rules.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 112,
+        "column": 113,
+        "evidence": "uests**: Retrieve `references/non-negotiable-architectural-rules.md` and `assets/main.tf` (Single Source of Truth for exact HCL). Do **NOT** retrieve `reference",
+        "target_path": "assets/main.tf",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 112,
+        "column": 190,
+        "evidence": "ets/main.tf` (Single Source of Truth for exact HCL). Do **NOT** retrieve `references/related-guidance.md` unless specialized edge-case troubleshooting is explic",
+        "target_path": "references/related-guidance.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 120,
+        "column": 91,
+        "evidence": "e architecture diagram**: Create a clean Mermaid format architecture diagram (`assets/output-template.md`) illustrating the multi-tier request and data flow acr",
+        "target_path": "assets/output-template.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 125,
+        "column": 49,
+        "evidence": "Infrastructure as Code (`Terraform based on assets/main.tf alongside a",
+        "target_path": "assets/main.tf",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 129,
+        "column": 257,
+        "evidence": "e_report-20260701T212820Z.md`). Verify that all 9 security boundaries from `assets/main.tf` are documented cleanly in your report and all template placeholders ",
+        "target_path": "assets/main.tf",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 137,
+        "column": 35,
+        "evidence": "*Important*: Use the code in `assets/main.tf` as the",
+        "target_path": "assets/main.tf",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 138,
+        "column": 57,
+        "evidence": "foundation for your Terraform implementation plan (`assets/output-template.md` for architecture structure).",
+        "target_path": "assets/output-template.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 142,
+        "column": 38,
+        "evidence": "* Required Google Cloud APIs (`run.googleapis.com`,",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 143,
+        "column": 10,
+        "evidence": "`sqladmin.googleapis.com`, `redis.googleapis.com`,",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 143,
+        "column": 37,
+        "evidence": "`sqladmin.googleapis.com`, `redis.googleapis.com`,",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 144,
+        "column": 10,
+        "evidence": "`servicenetworking.googleapis.com`, `secretmanager.googleapis.com`,",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 144,
+        "column": 46,
+        "evidence": "`servicenetworking.googleapis.com`, `secretmanager.googleapis.com`,",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 145,
+        "column": 10,
+        "evidence": "`monitoring.googleapis.com`, `dns.googleapis.com`).",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 145,
+        "column": 39,
+        "evidence": "`monitoring.googleapis.com`, `dns.googleapis.com`).",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 150,
+        "column": 6,
+        "evidence": "`references/non-negotiable-architectural-rules.md`. Base code strictly on the building blocks in",
+        "target_path": "references/non-negotiable-architectural-rules.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 151,
+        "column": 6,
+        "evidence": "`assets/main.tf` (`Section 1.5` for Cloud NGFW firewall policies, `Section 5.1` for Tier 1, `Section 5.2` for Tiers 2..N), ensuring `database_version = \"POSTGRE",
+        "target_path": "assets/main.tf",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 153,
+        "column": 125,
+        "evidence": "md**: Draft comprehensive step-by-step deployment instructions (or a complete `README.md` artifact), ensuring you include:",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 155,
+        "column": 152,
+        "evidence": "*: In Section 6.3 (\"Step-by-step gcloud CLI deployment commands\") inside `assets/output-template.md`, provide a complete, self-contained sequence of `gcloud` CL",
+        "target_path": "assets/output-template.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 157,
+        "column": 186,
+        "evidence": "for implementing an Org-level VPC-SC service perimeter around Cloud Run (`run.googleapis.com`), Cloud SQL (`sqladmin.googleapis.com`), and Secret Manager (`secr",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 157,
+        "column": 220,
+        "evidence": "SC service perimeter around Cloud Run (`run.googleapis.com`), Cloud SQL (`sqladmin.googleapis.com`), and Secret Manager (`secretmanager.googleapis.com`) when `e",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 157,
+        "column": 268,
+        "evidence": "leapis.com`), Cloud SQL (`sqladmin.googleapis.com`), and Secret Manager (`secretmanager.googleapis.com`) when `enable_vpc_sc = true`.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 180,
+        "column": 244,
+        "evidence": "(\"Solution verification guide and custom automated validation script\") inside `assets/output-template.md`.",
+        "target_path": "assets/output-template.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      }
+    ],
+    "limitations": [
+      "Analyzer static_patterns_tool_misuse status: degraded."
+    ],
+    "findings_before_filtering": 18,
+    "findings_after_filtering": 18
+  }
+}

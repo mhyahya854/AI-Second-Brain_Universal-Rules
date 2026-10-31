@@ -1,0 +1,1281 @@
+{
+  "skill": {
+    "name": "expo-module",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\expo\\skills\\expo-module",
+    "scanned_at": "2026-10-31T21:02:30.893530+00:00"
+  },
+  "risk_assessment": {
+    "score": 37,
+    "severity": "MEDIUM",
+    "recommendation": "CAUTION",
+    "max_issue_severity": "MEDIUM"
+  },
+  "components": [
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 151,
+      "executable": false,
+      "size_bytes": 6550,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "agents/openai.yaml",
+      "type": "yaml",
+      "lines": 4,
+      "executable": false,
+      "size_bytes": 367,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/config-plugin.md",
+      "type": "markdown",
+      "lines": 90,
+      "executable": false,
+      "size_bytes": 2040,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/create-expo-module.md",
+      "type": "markdown",
+      "lines": 206,
+      "executable": false,
+      "size_bytes": 10075,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/lifecycle.md",
+      "type": "markdown",
+      "lines": 127,
+      "executable": false,
+      "size_bytes": 3763,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/module-config.md",
+      "type": "markdown",
+      "lines": 48,
+      "executable": false,
+      "size_bytes": 1762,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/native-module.md",
+      "type": "markdown",
+      "lines": 286,
+      "executable": false,
+      "size_bytes": 5869,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/native-view.md",
+      "type": "markdown",
+      "lines": 171,
+      "executable": false,
+      "size_bytes": 3590,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "RA2",
+      "finding_id": "finding-9be54da236e340549717be9398ce7732",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "severity": "MEDIUM",
+      "confidence": 0.75,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 33,
+        "end_line": null,
+        "start_column": 60
+      },
+      "finding": "plist",
+      "explanation": "Skill establishes unauthorized persistence across sessions via cron jobs, startup scripts, or state files. Session persistence allows an attacker to maintain access beyond the current interaction.",
+      "remediation": "Remove any persistence mechanisms (cron jobs, startup scripts, state files). Skills should not maintain state across sessions without explicit user consent.",
+      "code_snippet": "  native-module.md           Module definition DSL: Name, Function, AsyncFunction, Property, Constant, Events, type system, shared objects\n  native-view.md             Native view components: View, Prop, EventDispatcher, view lifecycle, ref-based functions\n  lifecycle.md               Lifecycle hooks: module, iOS app/AppDelegate, Android activity/application listeners\n  config-plugin.md           Config plugins: modifying Info.plist, AndroidManifest.xml, reading values in native code\n  module-config.md           expo-module.config.json fields, file placement, and autolinking behavior\n```\n",
+      "intent": null,
+      "tags": [
+        "Rogue Agent"
+      ],
+      "evidence": {},
+      "match_fingerprint": "92ac6668a75d0bc0e0c009eaa03caa4e6c179ffa107b611e1fe7194dd61864e6",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 33,
+          "end_line": null,
+          "start_column": 60
+        }
+      ]
+    },
+    {
+      "id": "RA2",
+      "finding_id": "finding-3a5777b3f07248a095fe34357d571626",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "severity": "MEDIUM",
+      "confidence": 0.75,
+      "location": {
+        "file": "references/config-plugin.md",
+        "start_line": 29,
+        "end_line": null,
+        "start_column": 22
+      },
+      "finding": "plist",
+      "explanation": "Skill establishes unauthorized persistence across sessions via cron jobs, startup scripts, or state files. Session persistence allows an attacker to maintain access beyond the current interaction.",
+      "remediation": "Remove any persistence mechanisms (cron jobs, startup scripts, state files). Skills should not maintain state across sessions without explicit user consent.",
+      "code_snippet": "} from \"expo/config-plugins\";\n\nconst withMyConfig: ConfigPlugin<{ apiKey: string }> = (config, { apiKey }) => {\n  // iOS: modify Info.plist\n  config = withInfoPlist(config, (config) => {\n    config.modResults[\"MY_API_KEY\"] = apiKey;\n    return config;",
+      "intent": null,
+      "tags": [
+        "Rogue Agent"
+      ],
+      "evidence": {},
+      "match_fingerprint": "92ac6668a75d0bc0e0c009eaa03caa4e6c179ffa107b611e1fe7194dd61864e6",
+      "occurrences": [
+        {
+          "file": "references/config-plugin.md",
+          "start_line": 29,
+          "end_line": null,
+          "start_column": 22
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-fbe18c1bf7ee4a718d14b7e09ea9daca",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 148,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "1ec5b41060366159220f53072b7454ca88ee9c5004500d0c2354d91636f1df33",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 148,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-0dabec3d66e04d82a12c1d6c7dd7bb06",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/config-plugin.md",
+        "start_line": 3,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "e38517e0fbc08df74e70542e838fb144ee7c3b4722682d30fde47eb05961c500",
+      "occurrences": [
+        {
+          "file": "references/config-plugin.md",
+          "start_line": 3,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-4873722e78b043bcb10fe5b54829e749",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/config-plugin.md",
+        "start_line": 90,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "e38517e0fbc08df74e70542e838fb144ee7c3b4722682d30fde47eb05961c500",
+      "occurrences": [
+        {
+          "file": "references/config-plugin.md",
+          "start_line": 90,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RA2",
+      "finding_id": "finding-6af4bf2d01b04069ae0940986e392877",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "severity": "MEDIUM",
+      "confidence": 0.75,
+      "location": {
+        "file": "references/config-plugin.md",
+        "start_line": 23,
+        "end_line": null,
+        "start_column": 10
+      },
+      "finding": "Plist",
+      "explanation": "Skill establishes unauthorized persistence across sessions via cron jobs, startup scripts, or state files. Session persistence allows an attacker to maintain access beyond the current interaction.",
+      "remediation": "Remove any persistence mechanisms (cron jobs, startup scripts, state files). Skills should not maintain state across sessions without explicit user consent.",
+      "code_snippet": "```typescript\nimport {\n  ConfigPlugin,\n  withInfoPlist,\n  withAndroidManifest,\n  AndroidConfig,\n} from \"expo/config-plugins\";",
+      "intent": null,
+      "tags": [
+        "Rogue Agent"
+      ],
+      "evidence": {},
+      "match_fingerprint": "ad09bf62fb5c71a222656b093126e7f22de5ade9fa40a81fc46efe43144a4c80",
+      "occurrences": [
+        {
+          "file": "references/config-plugin.md",
+          "start_line": 23,
+          "end_line": null,
+          "start_column": 10
+        }
+      ]
+    },
+    {
+      "id": "RA2",
+      "finding_id": "finding-5d820d597d9c460c83ae81351a52e547",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "severity": "MEDIUM",
+      "confidence": 0.75,
+      "location": {
+        "file": "references/config-plugin.md",
+        "start_line": 30,
+        "end_line": null,
+        "start_column": 19
+      },
+      "finding": "Plist",
+      "explanation": "Skill establishes unauthorized persistence across sessions via cron jobs, startup scripts, or state files. Session persistence allows an attacker to maintain access beyond the current interaction.",
+      "remediation": "Remove any persistence mechanisms (cron jobs, startup scripts, state files). Skills should not maintain state across sessions without explicit user consent.",
+      "code_snippet": "\nconst withMyConfig: ConfigPlugin<{ apiKey: string }> = (config, { apiKey }) => {\n  // iOS: modify Info.plist\n  config = withInfoPlist(config, (config) => {\n    config.modResults[\"MY_API_KEY\"] = apiKey;\n    return config;\n  });",
+      "intent": null,
+      "tags": [
+        "Rogue Agent"
+      ],
+      "evidence": {},
+      "match_fingerprint": "ad09bf62fb5c71a222656b093126e7f22de5ade9fa40a81fc46efe43144a4c80",
+      "occurrences": [
+        {
+          "file": "references/config-plugin.md",
+          "start_line": 30,
+          "end_line": null,
+          "start_column": 19
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-5ec15edec2b24dfa952db866a0a93100",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/create-expo-module.md",
+        "start_line": 37,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "1a23012d42979506247cc8acda34198f7aedd493cfbe088c8ea7336b5a7aeccd",
+      "occurrences": [
+        {
+          "file": "references/create-expo-module.md",
+          "start_line": 37,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-c5c22a657aaf4e7098cd3dd4efabb068",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/create-expo-module.md",
+        "start_line": 43,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "1a23012d42979506247cc8acda34198f7aedd493cfbe088c8ea7336b5a7aeccd",
+      "occurrences": [
+        {
+          "file": "references/create-expo-module.md",
+          "start_line": 43,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-f7602e38389d4c1c840fbe5fb6ee0b5c",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/create-expo-module.md",
+        "start_line": 59,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "1a23012d42979506247cc8acda34198f7aedd493cfbe088c8ea7336b5a7aeccd",
+      "occurrences": [
+        {
+          "file": "references/create-expo-module.md",
+          "start_line": 59,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-ab8f302ca2cf417489052adbe2549145",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/create-expo-module.md",
+        "start_line": 163,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "1a23012d42979506247cc8acda34198f7aedd493cfbe088c8ea7336b5a7aeccd",
+      "occurrences": [
+        {
+          "file": "references/create-expo-module.md",
+          "start_line": 163,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-bd67f6622e114d84b2ed0fb4f8d201d8",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/create-expo-module.md",
+        "start_line": 169,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "1a23012d42979506247cc8acda34198f7aedd493cfbe088c8ea7336b5a7aeccd",
+      "occurrences": [
+        {
+          "file": "references/create-expo-module.md",
+          "start_line": 169,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-eee03e351ede49d6b6679113e421588f",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/create-expo-module.md",
+        "start_line": 175,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "1a23012d42979506247cc8acda34198f7aedd493cfbe088c8ea7336b5a7aeccd",
+      "occurrences": [
+        {
+          "file": "references/create-expo-module.md",
+          "start_line": 175,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "P9",
+      "finding_id": "finding-dbdfb98e8075449fb5d5d52b878a5e33",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/create-expo-module.md",
+        "start_line": 66,
+        "end_line": null
+      },
+      "finding": "U+0020 x101",
+      "explanation": "Large whitespace padding was detected (a block of blank lines or a long run of spaces). This can push injected instructions below or to the right of the visible area so a human reviewer never sees them while the agent still reads them. Manual review of the hidden content is recommended.",
+      "remediation": "Remove the large whitespace padding (blank-line blocks or long space runs) and review any content hidden below or to the right of it. Keep skill files compact and reviewable so no instructions can be concealed off-screen.",
+      "code_snippet": "\nThese are the module creation options exposed by the CLI:\n\n| Option                        | Applies to        | Notes                                                                                                     |\n| ----------------------------- | ----------------- | --------------------------------------------------------------------------------------------------------- |\n| `[path]`                      | local, standalone | Positional slug or target path. Use this explicitly for stable local scaffolding in non-interactive mode. |\n| `--local`                     | local             | Create a local module inside the current Expo project.                                                    |",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "2795f70068bb76f0670153c1756e5da978b942867fa056e4d7f9e28f7aaaeab5",
+      "occurrences": [
+        {
+          "file": "references/create-expo-module.md",
+          "start_line": 66,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "P9",
+      "finding_id": "finding-06374a09fc7340b0a57086dbe184a636",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/create-expo-module.md",
+        "start_line": 76,
+        "end_line": null
+      },
+      "finding": "U+0020 x86",
+      "explanation": "Large whitespace padding was detected (a block of blank lines or a long run of spaces). This can push injected instructions below or to the right of the visible area so a human reviewer never sees them while the agent still reads them. Manual review of the hidden content is recommended.",
+      "remediation": "Remove the large whitespace padding (blank-line blocks or long space runs) and review any content hidden below or to the right of it. Keep skill files compact and reviewable so no instructions can be concealed off-screen.",
+      "code_snippet": "te a local `index.ts` barrel. Ignored for standalone modules.                                       |\n| `--source <source_dir>`       | local, standalone | Use a local `expo-module-template` directory instead of downloading from npm.                             |\n| `--name <name>`               | local, standalone | Native module name, for example `KeyValueStore`.                                                          |\n| `--description <description>` | standalone        | Package description.                                                                                      |\n| `--package <package>`         | local, standalone | Android package name, for example `expo.modules.keyvaluestore`.                                           |\n| `--author-name <name>`        | standalone        | Package author name.                                                                                      |\n| `--author-email <email>`      | standalone        | Package author email.             ",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "48ab25c2cc5ab96339f21d4559fab9e1f1e714098be3927708c07563efb3fa74",
+      "occurrences": [
+        {
+          "file": "references/create-expo-module.md",
+          "start_line": 76,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "P9",
+      "finding_id": "finding-5fbb4e5643784a4ebe430ea4b2a15c0c",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/create-expo-module.md",
+        "start_line": 78,
+        "end_line": null
+      },
+      "finding": "U+0020 x86",
+      "explanation": "Large whitespace padding was detected (a block of blank lines or a long run of spaces). This can push injected instructions below or to the right of the visible area so a human reviewer never sees them while the agent still reads them. Manual review of the hidden content is recommended.",
+      "remediation": "Remove the large whitespace padding (blank-line blocks or long space runs) and review any content hidden below or to the right of it. Keep skill files compact and reviewable so no instructions can be concealed off-screen.",
+      "code_snippet": " module name, for example `KeyValueStore`.                                                          |\n| `--description <description>` | standalone        | Package description.                                                                                      |\n| `--package <package>`         | local, standalone | Android package name, for example `expo.modules.keyvaluestore`.                                           |\n| `--author-name <name>`        | standalone        | Package author name.                                                                                      |\n| `--author-email <email>`      | standalone        | Package author email.                                                                                     |\n| `--author-url <url>`          | standalone        | Package author profile URL.                                                                               |\n| `--repo <url>`                | standalone        | Package repository URL.           ",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "48ab25c2cc5ab96339f21d4559fab9e1f1e714098be3927708c07563efb3fa74",
+      "occurrences": [
+        {
+          "file": "references/create-expo-module.md",
+          "start_line": 78,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "P9",
+      "finding_id": "finding-53ad59e6e98f45cc87e210ecc27122b8",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/create-expo-module.md",
+        "start_line": 79,
+        "end_line": null
+      },
+      "finding": "U+0020 x85",
+      "explanation": "Large whitespace padding was detected (a block of blank lines or a long run of spaces). This can push injected instructions below or to the right of the visible area so a human reviewer never sees them while the agent still reads them. Manual review of the hidden content is recommended.",
+      "remediation": "Remove the large whitespace padding (blank-line blocks or long space runs) and review any content hidden below or to the right of it. Keep skill files compact and reviewable so no instructions can be concealed off-screen.",
+      "code_snippet": " description.                                                                                      |\n| `--package <package>`         | local, standalone | Android package name, for example `expo.modules.keyvaluestore`.                                           |\n| `--author-name <name>`        | standalone        | Package author name.                                                                                      |\n| `--author-email <email>`      | standalone        | Package author email.                                                                                     |\n| `--author-url <url>`          | standalone        | Package author profile URL.                                                                               |\n| `--repo <url>`                | standalone        | Package repository URL.                                                                                   |\n| `--license <license>`         | standalone        | Package license identifier.        ",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "6be9cdae7cc485141117cbb224fef5f39f9b82e9bf0cae78de54f0dcd545c8cf",
+      "occurrences": [
+        {
+          "file": "references/create-expo-module.md",
+          "start_line": 79,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "P9",
+      "finding_id": "finding-2285c7e7b94c4cfd807425ad9965cd68",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/create-expo-module.md",
+        "start_line": 81,
+        "end_line": null
+      },
+      "finding": "U+0020 x83",
+      "explanation": "Large whitespace padding was detected (a block of blank lines or a long run of spaces). This can push injected instructions below or to the right of the visible area so a human reviewer never sees them while the agent still reads them. Manual review of the hidden content is recommended.",
+      "remediation": "Remove the large whitespace padding (blank-line blocks or long space runs) and review any content hidden below or to the right of it. Keep skill files compact and reviewable so no instructions can be concealed off-screen.",
+      "code_snippet": "uthor name.                                                                                      |\n| `--author-email <email>`      | standalone        | Package author email.                                                                                     |\n| `--author-url <url>`          | standalone        | Package author profile URL.                                                                               |\n| `--repo <url>`                | standalone        | Package repository URL.                                                                                   |\n| `--license <license>`         | standalone        | Package license identifier.                                                                               |\n| `--module-version <version>`  | standalone        | Initial package version.                                                                                  |\n| `--package-manager <manager>` | standalone        | One of `npm`, `pnpm`, `yarn`, `bun`. ",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "d96191c882bbef56bdec8a780a83ec38d26e0883e5ef2b13675bd905d73e797d",
+      "occurrences": [
+        {
+          "file": "references/create-expo-module.md",
+          "start_line": 81,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "P9",
+      "finding_id": "finding-90a542cacaec4d099cb75cc3fbadf14f",
+      "category": "Prompt Injection",
+      "pattern": "Whitespace Padding",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/create-expo-module.md",
+        "start_line": 83,
+        "end_line": null
+      },
+      "finding": "U+0020 x82",
+      "explanation": "Large whitespace padding was detected (a block of blank lines or a long run of spaces). This can push injected instructions below or to the right of the visible area so a human reviewer never sees them while the agent still reads them. Manual review of the hidden content is recommended.",
+      "remediation": "Remove the large whitespace padding (blank-line blocks or long space runs) and review any content hidden below or to the right of it. Keep skill files compact and reviewable so no instructions can be concealed off-screen.",
+      "code_snippet": "thor profile URL.                                                                               |\n| `--repo <url>`                | standalone        | Package repository URL.                                                                                   |\n| `--license <license>`         | standalone        | Package license identifier.                                                                               |\n| `--module-version <version>`  | standalone        | Initial package version.                                                                                  |\n| `--package-manager <manager>` | standalone        | One of `npm`, `pnpm`, `yarn`, `bun`.                                                                      |\n| `--with-readme`               | standalone        | Keep `README.md` in the generated package.                                                                |\n| `--with-changelog`            | standalone        | Keep `CHANGELOG.md` in the generated p",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "56a1fba3fc5c2b6f6be05d02db28d3222329cdc90432ba911b95334ba07ef204",
+      "occurrences": [
+        {
+          "file": "references/create-expo-module.md",
+          "start_line": 83,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RA2",
+      "finding_id": "finding-a491d4afd9984c7fa822d3e6ff1eb65e",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "severity": "MEDIUM",
+      "confidence": 0.75,
+      "location": {
+        "file": "references/lifecycle.md",
+        "start_line": 118,
+        "end_line": null,
+        "start_column": 22
+      },
+      "finding": "pList",
+      "explanation": "Skill establishes unauthorized persistence across sessions via cron jobs, startup scripts, or state files. Session persistence allows an attacker to maintain access beyond the current interaction.",
+      "remediation": "Remove any persistence mechanisms (cron jobs, startup scripts, state files). Skills should not maintain state across sessions without explicit user consent.",
+      "code_snippet": "  override fun createApplicationLifecycleListeners(\n    context: Context\n  ): List<ApplicationLifecycleListener> {\n    return listOf(MyAppListener())\n  }\n}\n",
+      "intent": null,
+      "tags": [
+        "Rogue Agent"
+      ],
+      "evidence": {},
+      "match_fingerprint": "db6e0668ac096eab548e407e69bf059ebea51006d56c3468d4c6245ee5980ba5",
+      "occurrences": [
+        {
+          "file": "references/lifecycle.md",
+          "start_line": 118,
+          "end_line": null,
+          "start_column": 22
+        }
+      ]
+    },
+    {
+      "id": "RA2",
+      "finding_id": "finding-8978d2c8d83d4ecf8fae54348df0d041",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "severity": "MEDIUM",
+      "confidence": 0.75,
+      "location": {
+        "file": "references/lifecycle.md",
+        "start_line": 122,
+        "end_line": null,
+        "start_column": 10
+      },
+      "finding": "pList",
+      "explanation": "Skill establishes unauthorized persistence across sessions via cron jobs, startup scripts, or state files. Session persistence allows an attacker to maintain access beyond the current interaction.",
+      "remediation": "Remove any persistence mechanisms (cron jobs, startup scripts, state files). Skills should not maintain state across sessions without explicit user consent.",
+      "code_snippet": "  }\n}\n\nclass MyAppListener : ApplicationLifecycleListener {\n  override fun onCreate(application: Application) {\n    // App-level initialization\n  }",
+      "intent": null,
+      "tags": [
+        "Rogue Agent"
+      ],
+      "evidence": {},
+      "match_fingerprint": "db6e0668ac096eab548e407e69bf059ebea51006d56c3468d4c6245ee5980ba5",
+      "occurrences": [
+        {
+          "file": "references/lifecycle.md",
+          "start_line": 122,
+          "end_line": null,
+          "start_column": 10
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": false,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 8,
+    "scanned_components": 8,
+    "coverage_percent": 100.0,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 8,
+    "partially_inspected_files": 0,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 19,
+        "end_line": 19,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 39,
+        "end_line": 39,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 69,
+        "end_line": 69,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 138,
+        "end_line": 138,
+        "fatal": false
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 19,
+        "column": 12,
+        "evidence": "- Editing `expo-module.config.json`, config plugins, or lifecycle hooks",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 39,
+        "column": 228,
+        "evidence": "d first and then build on top of it. The scaffold sets up the expected layout, `expo-module.config.json`, podspec or Gradle files, TypeScript bindings, and the ",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 43,
+        "column": 40,
+        "evidence": "See [references/create-expo-module.md](references/create-expo-module.md) before scaffolding or extending a module. It covers:",
+        "target_path": "references/create-expo-module.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 43,
+        "column": 6,
+        "evidence": "See [references/create-expo-module.md](references/create-expo-module.md) before scaffolding or extending a module. It covers:",
+        "target_path": "references/create-expo-module.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 69,
+        "column": 41,
+        "evidence": "- Local modules do **not** generate an `index.ts` barrel by default. Use `--barrel` only if you want one.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 138,
+        "column": 18,
+        "evidence": "\"modules\": [\"expo.modules.mymodule.MyModule\"]",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 143,
+        "column": 105,
+        "evidence": "Note: iOS uses just the class name; Android uses the fully-qualified class name (package + class). See `references/module-config.md` for all fields.",
+        "target_path": "references/module-config.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      }
+    ],
+    "limitations": [],
+    "findings_before_filtering": 21,
+    "findings_after_filtering": 21
+  }
+}

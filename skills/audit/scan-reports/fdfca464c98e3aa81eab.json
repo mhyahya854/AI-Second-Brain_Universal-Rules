@@ -1,0 +1,2068 @@
+{
+  "skill": {
+    "name": "semgrep",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\trailofbits\\skills\\semgrep",
+    "scanned_at": "2026-10-31T21:48:44.372559+00:00"
+  },
+  "risk_assessment": {
+    "score": 100,
+    "severity": "CRITICAL",
+    "recommendation": "DO_NOT_INSTALL",
+    "max_issue_severity": "HIGH"
+  },
+  "components": [
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 273,
+      "executable": false,
+      "size_bytes": 15678,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "agents/openai.yaml",
+      "type": "yaml",
+      "lines": 6,
+      "executable": false,
+      "size_bytes": 229,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "assets/trail-of-bits-mark.svg",
+      "type": "other",
+      "lines": 1,
+      "executable": true,
+      "size_bytes": 3084,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/rulesets.md",
+      "type": "markdown",
+      "lines": 162,
+      "executable": false,
+      "size_bytes": 7695,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/scan-modes.md",
+      "type": "markdown",
+      "lines": 172,
+      "executable": false,
+      "size_bytes": 8713,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/merge_sarif.py",
+      "type": "python",
+      "lines": 339,
+      "executable": true,
+      "size_bytes": 14034,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/run-scans.sh",
+      "type": "shell",
+      "lines": 786,
+      "executable": true,
+      "size_bytes": 34393,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/test_merge_sarif.py",
+      "type": "python",
+      "lines": 581,
+      "executable": true,
+      "size_bytes": 22943,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "workflows/scan-workflow.md",
+      "type": "markdown",
+      "lines": 478,
+      "executable": false,
+      "size_bytes": 24630,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "AE1",
+      "finding_id": "finding-0eddd7707a914d0ba3bc5159bde6ce88",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 6,
+        "end_line": null
+      },
+      "finding": "scripts/run-scans.sh (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "ruleset through scripts/run-scans.sh, which batches the semgrep processes and",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "scripts/run-scans.sh",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "e6aa794e053356f13d88b8f6b690e851cb85b2c2ceba3a2713ac19138e85f232",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 6,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-3bde835659f24c6883a9d0449ec23583",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 26,
+        "end_line": null
+      },
+      "finding": "scripts/run-scans.sh (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "4. **`scripts/run-scans.sh` generates the commands; do not write them yourself** — it builds every `semgrep` line from the approved list. That is what makes `--",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "scripts/run-scans.sh",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "e6aa794e053356f13d88b8f6b690e851cb85b2c2ceba3a2713ac19138e85f232",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 26,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-149f1ea40c174869a3f6b330efb4040b",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 130,
+        "end_line": null
+      },
+      "finding": "scripts/run-scans.sh (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "│ Step 4: Run scripts/run-scans.sh with the approved rulesets │",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "scripts/run-scans.sh",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "e6aa794e053356f13d88b8f6b690e851cb85b2c2ceba3a2713ac19138e85f232",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 130,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-42bd5158829d4a5abc6cd400a55e66dc",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 136,
+        "end_line": null
+      },
+      "finding": "scripts/run-scans.sh (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "│ scripts/run-scans.sh │",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "scripts/run-scans.sh",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "e6aa794e053356f13d88b8f6b690e851cb85b2c2ceba3a2713ac19138e85f232",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 136,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-61236369f21d4da4992fed2780e40de4",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 161,
+        "end_line": null
+      },
+      "finding": "scripts/run-scans.sh (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "`scripts/run-scans.sh`, merge and report. Pass it a JSON object, not prose:",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "scripts/run-scans.sh",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "e6aa794e053356f13d88b8f6b690e851cb85b2c2ceba3a2713ac19138e85f232",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 161,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-1a8a1de3db834f5489f9cca0ea2da163",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 185,
+        "end_line": null
+      },
+      "finding": "scripts/run-scans.sh (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "| 4 | Run the scans | — | `scripts/run-scans.sh` |",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "scripts/run-scans.sh",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "e6aa794e053356f13d88b8f6b690e851cb85b2c2ceba3a2713ac19138e85f232",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 185,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-87d8dcf119a74c8d8a5e11e7003d1cf7",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 215,
+        "end_line": null
+      },
+      "finding": "scripts/run-scans.sh (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "| `scripts/run-scans.sh` | Builds every scan command from the approved rulesets, runs them in batches, and writes `scans.json` |",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "scripts/run-scans.sh",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "e6aa794e053356f13d88b8f6b690e851cb85b2c2ceba3a2713ac19138e85f232",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 215,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-27f334aac52e4733b8b2efdceeedacc1",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 231,
+        "end_line": null
+      },
+      "finding": "scripts/run-scans.sh (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "| \"I'll just run the semgrep commands myself\" | `run-scans.sh` is what enforces `--metrics=off`, the `--include` rule and the output-directory `--exclude`. Hand",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "scripts/run-scans.sh",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "e6aa794e053356f13d88b8f6b690e851cb85b2c2ceba3a2713ac19138e85f232",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 231,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-27bf4a74343b4d7dba3600fa6bbb1790",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 250,
+        "end_line": null
+      },
+      "finding": "scripts/run-scans.sh (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "| `scripts/run-scans.sh` | The scan runner Step 4 calls |",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "scripts/run-scans.sh",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "e6aa794e053356f13d88b8f6b690e851cb85b2c2ceba3a2713ac19138e85f232",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 250,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-b1169dfee315429fa8f8931add3ddd69",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 260,
+        "end_line": null
+      },
+      "finding": "scripts/run-scans.sh (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "- [ ] `run-scans.sh` exited 0 and wrote `$OUTPUT_DIR/scans.json`",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "scripts/run-scans.sh",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "e6aa794e053356f13d88b8f6b690e851cb85b2c2ceba3a2713ac19138e85f232",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 260,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-dbd8cf3588ca41ae9d891c935984ffa5",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 178,
+        "end_line": null
+      },
+      "finding": "workflows/scan-workflow.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "**Follow the detailed workflow in [scan-workflow.md](workflows/scan-workflow.md).** Summary:",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "workflows/scan-workflow.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "6b550a151f76005af621d80f211ed4bfd09f1a2801f5fac06d8113c064998edc",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 178,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-c1121c9206f34add8b13e5f3d7830d10",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 249,
+        "end_line": null
+      },
+      "finding": "workflows/scan-workflow.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "| [scan-workflow.md](workflows/scan-workflow.md) | Complete 5-step scan execution process |",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "workflows/scan-workflow.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "6b550a151f76005af621d80f211ed4bfd09f1a2801f5fac06d8113c064998edc",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 249,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "LP1",
+      "finding_id": "finding-5f347a134a484531a0bda51edc3058da",
+      "category": "MCP Least Privilege",
+      "pattern": null,
+      "severity": "HIGH",
+      "confidence": 0.75,
+      "location": {
+        "file": "scripts/merge_sarif.py",
+        "start_line": 1,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "The skill uses 'file_write' capability that is not listed in its permissions. This may indicate deceptive intent or missing permission declarations.",
+      "remediation": "Add a tool that covers the 'file_write' capability to the 'allowed-tools' frontmatter field in SKILL.md, or remove the code that requires it.",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI02"
+      ],
+      "evidence": {},
+      "match_fingerprint": null,
+      "occurrences": [
+        {
+          "file": "scripts/merge_sarif.py",
+          "start_line": 1,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-7e2a0b47c6154347b96223ccfec69e6d",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.85,
+      "location": {
+        "file": "workflows/scan-workflow.md",
+        "start_line": 392,
+        "end_line": null,
+        "start_column": 24
+      },
+      "finding": "rm -rf \"$OUTPUT_DIR/repos\"",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "the deletion happens, and nothing that reads it is still running by now.\n\n```bash\n[ -n \"$OUTPUT_DIR\" ] && rm -rf \"$OUTPUT_DIR/repos\"\n```\n\n**Report to user:**",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "6fff173d1274e8609e75ee3f09c20b22f64e2c30e49c4936e9667a18b47313bf",
+      "occurrences": [
+        {
+          "file": "workflows/scan-workflow.md",
+          "start_line": 392,
+          "end_line": null,
+          "start_column": 24
+        }
+      ]
+    },
+    {
+      "id": "TM2",
+      "finding_id": "finding-634996b780b34295a1df04934cef8f90",
+      "category": "Tool Misuse",
+      "pattern": "Chaining Abuse",
+      "severity": "HIGH",
+      "confidence": 0.75,
+      "location": {
+        "file": "workflows/scan-workflow.md",
+        "start_line": 392,
+        "end_line": null,
+        "start_column": 21
+      },
+      "finding": "&& rm -",
+      "explanation": "Tool calls are chained to bypass individual safety checks or escalate capabilities beyond what any single tool call would allow.",
+      "remediation": "Limit tool chaining depth and validate the output of each tool before passing it to the next. Require explicit user approval for multi-step chains.",
+      "code_snippet": "the deletion happens, and nothing that reads it is still running by now.\n\n```bash\n[ -n \"$OUTPUT_DIR\" ] && rm -rf \"$OUTPUT_DIR/repos\"\n```\n\n**Report to user:**",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "da42bed49ba667f4edac8a3628fa28e5cc6bbc20fc757fb7d1ddbddd9a531ec0",
+      "occurrences": [
+        {
+          "file": "workflows/scan-workflow.md",
+          "start_line": 392,
+          "end_line": null,
+          "start_column": 21
+        }
+      ]
+    },
+    {
+      "id": "EA2",
+      "finding_id": "finding-352d868fba404d48b5db537c8b42e08f",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "severity": "MEDIUM",
+      "confidence": 0.75,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 228,
+        "end_line": null,
+        "start_column": 22
+      },
+      "finding": "without asking",
+      "explanation": "Skill enables autonomous high-impact decisions without human-in-the-loop verification. Critical operations (destructive commands, financial transactions, data deletion) should require explicit user confirmation.",
+      "remediation": "Add human-in-the-loop confirmation for destructive, irreversible, or high-impact operations. Never auto-execute commands that modify files, send data, or alter system state.",
+      "code_snippet": "| \"Step 3 task is blocking, just mark complete\" | Lying about task status defeats enforcement. Only mark complete after real approval |\n| \"I already know what they want\" | Assumptions cause scanning wrong directories/rulesets. Present plan for verification |\n| \"Just use default rulesets\" | User must see and approve exact rulesets before scan |\n| \"Add extra rulesets without asking\" | Modifying approved list without consent breaks trust |\n| \"Third-party rulesets are optional\" | Trail of Bits, 0xdea, Decurity catch vulnerabilities not in official registry — REQUIRED |\n| \"Use --config auto\" | Sends metrics; less control over rulesets |\n| \"I'll just run the semgrep commands myself\" | `run-scans.sh` is what enforces `--metrics=off`, the `--include` rule and the output-directory `--exclude`. Hand-written commands drop them silently |",
+      "intent": null,
+      "tags": [
+        "Excessive Agency"
+      ],
+      "evidence": {},
+      "match_fingerprint": "8dc77d3dce9ba1f2672e813265a1b1a0c8594866ef38a4e978bf4f4451795465",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 228,
+          "end_line": null,
+          "start_column": 22
+        }
+      ]
+    },
+    {
+      "id": "EA2",
+      "finding_id": "finding-6115e5f26ad64649b953ee5d704176fd",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "severity": "MEDIUM",
+      "confidence": 0.75,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 228,
+        "end_line": null,
+        "start_column": 64
+      },
+      "finding": "without consent",
+      "explanation": "Skill enables autonomous high-impact decisions without human-in-the-loop verification. Critical operations (destructive commands, financial transactions, data deletion) should require explicit user confirmation.",
+      "remediation": "Add human-in-the-loop confirmation for destructive, irreversible, or high-impact operations. Never auto-execute commands that modify files, send data, or alter system state.",
+      "code_snippet": "| \"Step 3 task is blocking, just mark complete\" | Lying about task status defeats enforcement. Only mark complete after real approval |\n| \"I already know what they want\" | Assumptions cause scanning wrong directories/rulesets. Present plan for verification |\n| \"Just use default rulesets\" | User must see and approve exact rulesets before scan |\n| \"Add extra rulesets without asking\" | Modifying approved list without consent breaks trust |\n| \"Third-party rulesets are optional\" | Trail of Bits, 0xdea, Decurity catch vulnerabilities not in official registry — REQUIRED |\n| \"Use --config auto\" | Sends metrics; less control over rulesets |\n| \"I'll just run the semgrep commands myself\" | `run-scans.sh` is what enforces `--metrics=off`, the `--include` rule and the output-directory `--exclude`. Hand-written commands drop them silently |",
+      "intent": null,
+      "tags": [
+        "Excessive Agency"
+      ],
+      "evidence": {},
+      "match_fingerprint": "8f513068f50cde8c1bd5e878987a91aa2876dd293703f25117ca09675437e4d5",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 228,
+          "end_line": null,
+          "start_column": 64
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-b3f3719fd0f34081b4b8881fe76dc2fb",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "scripts/merge_sarif.py",
+        "start_line": 29,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "21c532e46ac485b30ecc100f33dade548ebe4af6a2c803186d01030a4592e786",
+      "occurrences": [
+        {
+          "file": "scripts/merge_sarif.py",
+          "start_line": 29,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-2df3e74de7e247979e239392a1d0cb03",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "scripts/test_merge_sarif.py",
+        "start_line": 406,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "21c532e46ac485b30ecc100f33dade548ebe4af6a2c803186d01030a4592e786",
+      "occurrences": [
+        {
+          "file": "scripts/test_merge_sarif.py",
+          "start_line": 406,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-c60c052ade1d4cba8d8ed4a4b1dac126",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "scripts/merge_sarif.py",
+        "start_line": 30,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "6357bee82d6fac042271593e7ccf78aaa0d76ea51e63d4c77d61b7e612363529",
+      "occurrences": [
+        {
+          "file": "scripts/merge_sarif.py",
+          "start_line": 30,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "TT2",
+      "finding_id": "finding-61aa64aa5a7c499794fb71868aab7b01",
+      "category": "Data Flow",
+      "pattern": "Tainted flow: 'merged' from pathlib.Path.read_text (line 287, file read) → pathlib.Path.write_text (file write)",
+      "severity": "MEDIUM",
+      "confidence": 0.65,
+      "location": {
+        "file": "scripts/merge_sarif.py",
+        "start_line": 332,
+        "end_line": 332,
+        "start_column": 4,
+        "end_column": 56
+      },
+      "finding": "output_file.write_text(json.dumps(merged, indent=2))",
+      "explanation": "Data from a source is assigned to a variable that is later passed to a sink, creating a variable-mediated taint flow.",
+      "remediation": "Validate tainted variables before passing them to sinks. Use allowlists, type checks, or sanitization functions on data from external sources.",
+      "code_snippet": "    print(f\"Merged SARIF contains {result_count} findings\")\n\n    # Write output\n    output_file.write_text(json.dumps(merged, indent=2))\n    print(f\"Written to {output_file}\")\n\n    return 0",
+      "intent": null,
+      "tags": [
+        "Data Flow"
+      ],
+      "evidence": {},
+      "match_fingerprint": "80b9104b2ec7952dffe1cb73f0f45e4c93eff7d4f367185a94df40bab474274a",
+      "occurrences": [
+        {
+          "file": "scripts/merge_sarif.py",
+          "start_line": 332,
+          "end_line": 332,
+          "start_column": 4,
+          "end_column": 56
+        }
+      ]
+    },
+    {
+      "id": "AST4",
+      "finding_id": "finding-348acd8ac01a4da1bee83364e691b8b1",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "scripts/test_merge_sarif.py",
+        "start_line": 79,
+        "end_line": 83,
+        "start_column": 11,
+        "end_column": 5
+      },
+      "finding": "subprocess.run(\n        [sys.executable, str(SCRIPT), str(raw), str(out), *flags],\n        capture_output=True,\n        text=True,\n    )",
+      "explanation": "subprocess module calls execute external commands. Without careful input validation, this enables command injection.",
+      "remediation": "Use subprocess.run() with shell=False and an explicit argument list. Validate all inputs and avoid passing user-controlled data to commands.",
+      "code_snippet": "\n\ndef run_merge(raw: Path, out: Path, *flags: str) -> subprocess.CompletedProcess:\n    return subprocess.run(\n        [sys.executable, str(SCRIPT), str(raw), str(out), *flags],\n        capture_output=True,\n        text=True,",
+      "intent": null,
+      "tags": [
+        "Dangerous Code Execution"
+      ],
+      "evidence": {},
+      "match_fingerprint": "144163cd0306fd6ea97ab977856b54be6c6609c65e717e1cd39b01297e387bc3",
+      "occurrences": [
+        {
+          "file": "scripts/test_merge_sarif.py",
+          "start_line": 79,
+          "end_line": 83,
+          "start_column": 11,
+          "end_column": 5
+        }
+      ]
+    },
+    {
+      "id": "AST4",
+      "finding_id": "finding-1b3aef79f8f64c2ebde59952b6db0e31",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "scripts/test_merge_sarif.py",
+        "start_line": 151,
+        "end_line": 166,
+        "start_column": 11,
+        "end_column": 5
+      },
+      "finding": "subprocess.run(\n        [\n            semgrep_bin(),\n            \"--metrics=off\",\n            \"--config\",\n            str(rule),\n            \"--json\",\n            \"-o\",\n            str(json_out),\n    ",
+      "explanation": "subprocess module calls execute external commands. Without careful input validation, this enables command injection.",
+      "remediation": "Use subprocess.run() with shell=False and an explicit argument list. Validate all inputs and avoid passing user-controlled data to commands.",
+      "code_snippet": "    json_out = tmp_path / \"out.json\"\n    sarif_out = tmp_path / \"out.sarif\"\n\n    proc = subprocess.run(\n        [\n            semgrep_bin(),\n            \"--metrics=off\",",
+      "intent": null,
+      "tags": [
+        "Dangerous Code Execution"
+      ],
+      "evidence": {},
+      "match_fingerprint": "ab5a5c4e3daf901745d4b7ba9a8fb73502c023b3be64f70755a89bb6e84cf9a9",
+      "occurrences": [
+        {
+          "file": "scripts/test_merge_sarif.py",
+          "start_line": 151,
+          "end_line": 166,
+          "start_column": 11,
+          "end_column": 5
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-0b06f6ff4f6c4a22931904daefaf92fa",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "scripts/test_merge_sarif.py",
+        "start_line": 407,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "c53af8f16ae74ad89e7cc9bde55024a410e9515163aac79167b514a8ac8d56c7",
+      "occurrences": [
+        {
+          "file": "scripts/test_merge_sarif.py",
+          "start_line": 407,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AST4",
+      "finding_id": "finding-06adc052dd47433784780ba164f81f5a",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "scripts/test_merge_sarif.py",
+        "start_line": 418,
+        "end_line": 423,
+        "start_column": 11,
+        "end_column": 5
+      },
+      "finding": "subprocess.run(\n        [sys.executable, str(SCRIPT), str(raw), str(out), \"--important\"],\n        capture_output=True,\n        text=True,\n        env={\"PATH\": \"\", \"HOME\": str(tmp_path)},\n    )",
+      "explanation": "subprocess module calls execute external commands. Without careful input validation, this enables command injection.",
+      "remediation": "Use subprocess.run() with shell=False and an explicit argument list. Validate all inputs and avoid passing user-controlled data to commands.",
+      "code_snippet": "        raw, \"python-python\", [sarif_result(RULE, \"a.py\", 5)], [json_result(RULE, \"a.py\", 5)]\n    )\n    out = tmp_path / \"results.sarif\"\n    proc = subprocess.run(\n        [sys.executable, str(SCRIPT), str(raw), str(out), \"--important\"],\n        capture_output=True,\n        text=True,",
+      "intent": null,
+      "tags": [
+        "Dangerous Code Execution"
+      ],
+      "evidence": {},
+      "match_fingerprint": "54580d6fcfceab2b9340f4098bd707cce0c4d07c611fca60836141031f79e225",
+      "occurrences": [
+        {
+          "file": "scripts/test_merge_sarif.py",
+          "start_line": 418,
+          "end_line": 423,
+          "start_column": 11,
+          "end_column": 5
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": true,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 9,
+    "scanned_components": 6,
+    "coverage_percent": 66.7,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 6,
+    "partially_inspected_files": 3,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "SKILL.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 28,
+        "end_line": 28,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 50,
+        "end_line": 50,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 171,
+        "end_line": 171,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 194,
+        "end_line": 194,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 195,
+        "end_line": 195,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 198,
+        "end_line": 198,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 199,
+        "end_line": 199,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 209,
+        "end_line": 209,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 215,
+        "end_line": 215,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 233,
+        "end_line": 233,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 260,
+        "end_line": 260,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 261,
+        "end_line": 261,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 262,
+        "end_line": 262,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 264,
+        "end_line": 264,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 266,
+        "end_line": 266,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 267,
+        "end_line": 267,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 270,
+        "end_line": 270,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "scripts/run-scans.sh",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "workflows/scan-workflow.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "reference_coverage",
+        "status": "completed",
+        "planned_work": 12,
+        "completed": 12,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "degraded",
+        "planned_work": 9,
+        "completed": 6,
+        "partial": 3,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 9,
+        "completed": 9,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 6,
+        "column": 19,
+        "evidence": "ruleset through scripts/run-scans.sh, which batches the semgrep processes and",
+        "target_path": "scripts/run-scans.sh",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 26,
+        "column": 7,
+        "evidence": "4. **`scripts/run-scans.sh` generates the commands; do not write them yourself** — it builds every `semgrep` line from the approved list. That is what makes `--",
+        "target_path": "scripts/run-scans.sh",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 28,
+        "column": 35,
+        "evidence": "6. **Report what did not run** — `scans.json` carries `failed` and `skipped` alongside `scans`. A ruleset whose repo would not clone, or whose scan exited non-z",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 50,
+        "column": 37,
+        "evidence": "- **If not specified**, default to `./static_analysis_semgrep_1`. If that already exists, increment to `_2`, `_3`, etc.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 89,
+        "column": 100,
+        "evidence": "**Required:** Semgrep CLI (`semgrep --version`). If not installed, see [Semgrep installation docs](https://semgrep.dev/docs/getting-started/).",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 120,
+        "column": 21,
+        "evidence": "See [scan-modes.md](references/scan-modes.md) for metadata criteria and jq filter commands.",
+        "target_path": "references/scan-modes.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 130,
+        "column": 15,
+        "evidence": "│ Step 4: Run scripts/run-scans.sh with the approved rulesets │",
+        "target_path": "scripts/run-scans.sh",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 136,
+        "column": 3,
+        "evidence": "│ scripts/run-scans.sh │",
+        "target_path": "scripts/run-scans.sh",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 160,
+        "column": 62,
+        "evidence": "detect languages and Pro, select rulesets from [rulesets.md](references/rulesets.md), run",
+        "target_path": "references/rulesets.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 161,
+        "column": 2,
+        "evidence": "`scripts/run-scans.sh`, merge and report. Pass it a JSON object, not prose:",
+        "target_path": "scripts/run-scans.sh",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 171,
+        "column": 2,
+        "evidence": "`rulesets.json` and `scans.json` either way.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 171,
+        "column": 22,
+        "evidence": "`rulesets.json` and `scans.json` either way.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 178,
+        "column": 54,
+        "evidence": "**Follow the detailed workflow in [scan-workflow.md](workflows/scan-workflow.md).** Summary:",
+        "target_path": "workflows/scan-workflow.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 183,
+        "column": 55,
+        "evidence": "| 2 | Select scan mode + rulesets | — | [rulesets.md](references/rulesets.md) |",
+        "target_path": "references/rulesets.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 185,
+        "column": 28,
+        "evidence": "| 4 | Run the scans | — | `scripts/run-scans.sh` |",
+        "target_path": "scripts/run-scans.sh",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 194,
+        "column": 74,
+        "evidence": "uv run --no-project {baseDir}/scripts/merge_sarif.py \"$OUTPUT_DIR/raw\" \"$OUTPUT_DIR/results/results.sarif\" \\",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 195,
+        "column": 13,
+        "evidence": "--scans \"$OUTPUT_DIR/scans.json\"",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 198,
+        "column": 74,
+        "evidence": "uv run --no-project {baseDir}/scripts/merge_sarif.py \"$OUTPUT_DIR/raw\" \"$OUTPUT_DIR/results/results.sarif\" \\",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 199,
+        "column": 25,
+        "evidence": "--important --scans \"$OUTPUT_DIR/scans.json\"",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 209,
+        "column": 35,
+        "evidence": "`(rule, file, line)`. Without it `results.sarif` is unfiltered while the JSON side is not.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 215,
+        "column": 4,
+        "evidence": "| `scripts/run-scans.sh` | Builds every scan command from the approved rulesets, runs them in batches, and writes `scans.json` |",
+        "target_path": "scripts/run-scans.sh",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 215,
+        "column": 116,
+        "evidence": "| `scripts/run-scans.sh` | Builds every scan command from the approved rulesets, runs them in batches, and writes `scans.json` |",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 231,
+        "column": 50,
+        "evidence": "| \"I'll just run the semgrep commands myself\" | `run-scans.sh` is what enforces `--metrics=off`, the `--include` rule and the output-directory `--exclude`. Hand",
+        "target_path": "scripts/run-scans.sh",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 233,
+        "column": 85,
+        "evidence": "| \"Some scans failed, the run still finished\" | `failed` and `skipped` are part of `scans.json`. Report them or the user reads a partial scan as a clean one |",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 244,
+        "column": 17,
+        "evidence": "| [rulesets.md](references/rulesets.md) | Complete ruleset catalog and selection algorithm |",
+        "target_path": "references/rulesets.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 245,
+        "column": 19,
+        "evidence": "| [scan-modes.md](references/scan-modes.md) | Pre/post-filter criteria and jq commands |",
+        "target_path": "references/scan-modes.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 249,
+        "column": 22,
+        "evidence": "| [scan-workflow.md](workflows/scan-workflow.md) | Complete 5-step scan execution process |",
+        "target_path": "workflows/scan-workflow.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 250,
+        "column": 4,
+        "evidence": "| `scripts/run-scans.sh` | The scan runner Step 4 calls |",
+        "target_path": "scripts/run-scans.sh",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 260,
+        "column": 8,
+        "evidence": "- [ ] `run-scans.sh` exited 0 and wrote `$OUTPUT_DIR/scans.json`",
+        "target_path": "scripts/run-scans.sh",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 260,
+        "column": 43,
+        "evidence": "- [ ] `run-scans.sh` exited 0 and wrote `$OUTPUT_DIR/scans.json`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 261,
+        "column": 36,
+        "evidence": "- [ ] `failed` and `skipped` from `scans.json` are empty, or listed in the report",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 262,
+        "column": 34,
+        "evidence": "- [ ] Scans marked `partial` in `scans.json` are none, or listed in the report — they ran with some of their rules failing to compile",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 264,
+        "column": 34,
+        "evidence": "- [ ] Approved plan written to `$OUTPUT_DIR/rulesets.json` at the Step 3 gate, and passed to",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 266,
+        "column": 30,
+        "evidence": "- [ ] `coveredNothing` from `scans.json` is empty, or listed in the report",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 267,
+        "column": 25,
+        "evidence": "- [ ] `oversized` from `scans.json` is empty, or listed in the report — those files exceed",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 270,
+        "column": 8,
+        "evidence": "- [ ] `results.sarif` exists in `$OUTPUT_DIR/results/` and is valid JSON",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      }
+    ],
+    "limitations": [
+      "Analyzer static_patterns_tool_misuse status: degraded."
+    ],
+    "findings_before_filtering": 25,
+    "findings_after_filtering": 25
+  }
+}

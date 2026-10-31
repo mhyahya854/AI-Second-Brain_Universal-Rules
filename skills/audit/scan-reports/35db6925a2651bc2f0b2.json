@@ -1,0 +1,1297 @@
+{
+  "skill": {
+    "name": "google-ads-api-quickstart",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\google\\skills\\google-ads-api-quickstart",
+    "scanned_at": "2026-10-31T21:14:18.706572+00:00"
+  },
+  "risk_assessment": {
+    "score": 46,
+    "severity": "MEDIUM",
+    "recommendation": "CAUTION",
+    "max_issue_severity": "HIGH"
+  },
+  "components": [
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 306,
+      "executable": false,
+      "size_bytes": 17612,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/dotnet.md",
+      "type": "markdown",
+      "lines": 95,
+      "executable": false,
+      "size_bytes": 4125,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/java.md",
+      "type": "markdown",
+      "lines": 179,
+      "executable": false,
+      "size_bytes": 8396,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/perl.md",
+      "type": "markdown",
+      "lines": 80,
+      "executable": false,
+      "size_bytes": 2866,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/php.md",
+      "type": "markdown",
+      "lines": 107,
+      "executable": false,
+      "size_bytes": 4102,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/python.md",
+      "type": "markdown",
+      "lines": 163,
+      "executable": false,
+      "size_bytes": 7534,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/rest.md",
+      "type": "markdown",
+      "lines": 114,
+      "executable": false,
+      "size_bytes": 5307,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/ruby.md",
+      "type": "markdown",
+      "lines": 89,
+      "executable": false,
+      "size_bytes": 3583,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "PE3",
+      "finding_id": "finding-8bd2380d514e4bab8fa0e61e5b941f89",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 119,
+        "end_line": null,
+        "start_column": 132
+      },
+      "finding": "secrets.json",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "       *   Click **Create Credentials 🡒 OAuth client ID**.\n       *   Select **Desktop App** as the Application Type.\n       *   Name the client and click **Create**.\n    6. **Download Secrets:** Click the download icon (JSON) next to your newly created Client ID. Save this file locally as `client_secrets.json`.\n\n### 3. OAuth2 Refresh Token\n",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "7634e64bddb7fc24ef060d0954c045d961ed4e19dfc72ce3c100ed20452c70ce",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 119,
+          "end_line": null,
+          "start_column": 132
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-8ff814ddfe9445698869c49ac088235e",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 131,
+        "end_line": null,
+        "start_column": 80
+      },
+      "finding": "secrets.json",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "    Ensure the [gcloud CLI](https://cloud.google.com/sdk/docs/install) is installed and available in your terminal.\n\n    #### 2. Execute the Login Flow:\n    Run the following command in your terminal, passing the path to the `client_secrets.json` file downloaded in the previous step:\n    \n    ```bash\n    gcloud auth application-default login \\",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "7634e64bddb7fc24ef060d0954c045d961ed4e19dfc72ce3c100ed20452c70ce",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 131,
+          "end_line": null,
+          "start_column": 80
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-cb8e3089eb5340dbbbad47c467bf6188",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 136,
+        "end_line": null,
+        "start_column": 30
+      },
+      "finding": "secrets.json",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "    ```bash\n    gcloud auth application-default login \\\n      --scopes=https://www.googleapis.com/auth/adwords,https://www.googleapis.com/auth/cloud-platform \\\n      --client-id-file=client_secrets.json\n    ```\n\n    #### 3. Authorize in Browser:",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "7634e64bddb7fc24ef060d0954c045d961ed4e19dfc72ce3c100ed20452c70ce",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 136,
+          "end_line": null,
+          "start_column": 30
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-eca72de806214e649ecd4e3ff413b776",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 123,
+        "end_line": null,
+        "start_column": 55
+      },
+      "finding": "access tokens",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "\n### 3. OAuth2 Refresh Token\n\n*   **Purpose:** Allows your application to obtain new access tokens automatically without requiring manual user login every hour.\n*   **How to Obtain:**\n    You must run the Google Cloud (`gcloud`) CLI to generate your refresh token.\n",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "5059bb7b75e9337932d45472816371182dc6083e9db6060d8b737da812751493",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 123,
+          "end_line": null,
+          "start_column": 55
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-a2497ae4f16d4dd18345a686f55fa3cf",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.8,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 145,
+        "end_line": null,
+        "start_column": 108
+      },
+      "finding": "~/.config/gcloud/",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "    3. If your app is unverified, click **Advanced** and continue to the project. Click **Continue** to grant permissions.\n\n    #### 4. Retrieve Your Refresh Token:\n    Once successful, `gcloud` will output a message indicating where the credentials were saved (typically `~/.config/gcloud/application_default_credentials.json`). Open that file to copy your `refresh_token`.\n\n### 4. Client Customer ID\n",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "ba9f4139635cc6a3cbac394f81e61d034a72a09da352141f3c8e27086d3ce0e8",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 145,
+          "end_line": null,
+          "start_column": 108
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-c4d786bdcd2f4313b30496d2edd5ea0f",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.8,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 145,
+        "end_line": null,
+        "start_column": 125
+      },
+      "finding": "application_default_credentials.json",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "    3. If your app is unverified, click **Advanced** and continue to the project. Click **Continue** to grant permissions.\n\n    #### 4. Retrieve Your Refresh Token:\n    Once successful, `gcloud` will output a message indicating where the credentials were saved (typically `~/.config/gcloud/application_default_credentials.json`). Open that file to copy your `refresh_token`.\n\n### 4. Client Customer ID\n",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "bfb3702bb906fea47a7bd8c5ee043c7bad234522ccc7d0d03f843485e57aa67b",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 145,
+          "end_line": null,
+          "start_column": 125
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-7bc829a7d2f14a3c83c1711a1aa403ab",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 145,
+        "end_line": null,
+        "start_column": 145
+      },
+      "finding": "credentials.json",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "    3. If your app is unverified, click **Advanced** and continue to the project. Click **Continue** to grant permissions.\n\n    #### 4. Retrieve Your Refresh Token:\n    Once successful, `gcloud` will output a message indicating where the credentials were saved (typically `~/.config/gcloud/application_default_credentials.json`). Open that file to copy your `refresh_token`.\n\n### 4. Client Customer ID\n",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "07a0b37ad28a14919446682ad9b1f38223a950eb02c424e48b49fe75c25268c0",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 145,
+          "end_line": null,
+          "start_column": 145
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-770c98440a65415b819581eace0b48ed",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/rest.md",
+        "start_line": 7,
+        "end_line": null,
+        "start_column": 32
+      },
+      "finding": "Access Token",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "\n---\n\n## Step 1: Obtain a Short-Lived Access Token\n\n> [!IMPORTANT]\n> **Mandatory Agent Directive (OAuth Authorization Routes):**",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation",
+        "contextual-triage",
+        "likely-benign-context"
+      ],
+      "evidence": {},
+      "match_fingerprint": "d791fddf2b521316d721148b0ff375b4cd22146833b76e12a6a85aae7e9ea3f2",
+      "occurrences": [
+        {
+          "file": "references/rest.md",
+          "start_line": 7,
+          "end_line": null,
+          "start_column": 32
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-46a47aa319874484bc4253ff7fc761e1",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/rest.md",
+        "start_line": 26,
+        "end_line": null,
+        "start_column": 22
+      },
+      "finding": "Access Token",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "3. **Generate JWT Claim Set:** Follow the [OAuth 2.0 Server to Server Applications](https://developers.google.com/identity/protocols/oauth2/service-account) guide (selecting the HTTP/REST tab) to create and sign a JWT claim set.\n   * **Scope:** Use `https://www.googleapis.com/auth/adwords`.\n   * **Impersonation (`sub`):** You can skip the `sub` parameter when constructing the JWT claim set, as the service account has direct access to the Google Ads account.\n4. **Exchange JWT for Access Token:** Exchange the signed JWT for a short-lived `access_token` via the Google OAuth2 token endpoint (`https://oauth2.googleapis.com/token`).\n\n### Option B: User Authentication Flow (Alternative)\nIf you are authenticating as an individual user, exchange your `refresh_token`, `client_id`, and `client_secret` for a short-lived `access_token` (typically valid for 1 hour):",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation",
+        "contextual-triage",
+        "likely-benign-context"
+      ],
+      "evidence": {},
+      "match_fingerprint": "d791fddf2b521316d721148b0ff375b4cd22146833b76e12a6a85aae7e9ea3f2",
+      "occurrences": [
+        {
+          "file": "references/rest.md",
+          "start_line": 26,
+          "end_line": null,
+          "start_column": 22
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-ed7d1de4560346b09bfff3fcde1d2f08",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/rest.md",
+        "start_line": 12,
+        "end_line": null,
+        "start_column": 180
+      },
+      "finding": "access token",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "> [!IMPORTANT]\n> **Mandatory Agent Directive (OAuth Authorization Routes):**\n> When guiding a user through the REST quickstart, your response **MUST** explicitly explain both OAuth2 authorization routes:\n> 1. **Option A: Service Account Flow (Recommended):** Explain creating a service account, granting direct Ads account access, generating a JWT claim set, and exchanging it for an access token.\n> 2. **Option B: User Authentication Flow (Alternative):** Explain exchanging a `refresh_token`, `client_id`, and `client_secret` for an access token via cURL.\n> \n> Do not omit either flow in your final output.",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation",
+        "contextual-triage",
+        "likely-benign-context"
+      ],
+      "evidence": {},
+      "match_fingerprint": "903a9f18e7222d4c1e39fcf76dec31bef3fd46b6332f4bc5bc823999d287548b",
+      "occurrences": [
+        {
+          "file": "references/rest.md",
+          "start_line": 12,
+          "end_line": null,
+          "start_column": 180
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-1156b5a694584c128944412a28409114",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/rest.md",
+        "start_line": 13,
+        "end_line": null,
+        "start_column": 137
+      },
+      "finding": "access token",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "> **Mandatory Agent Directive (OAuth Authorization Routes):**\n> When guiding a user through the REST quickstart, your response **MUST** explicitly explain both OAuth2 authorization routes:\n> 1. **Option A: Service Account Flow (Recommended):** Explain creating a service account, granting direct Ads account access, generating a JWT claim set, and exchanging it for an access token.\n> 2. **Option B: User Authentication Flow (Alternative):** Explain exchanging a `refresh_token`, `client_id`, and `client_secret` for an access token via cURL.\n> \n> Do not omit either flow in your final output.\n",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation",
+        "contextual-triage",
+        "likely-benign-context"
+      ],
+      "evidence": {},
+      "match_fingerprint": "903a9f18e7222d4c1e39fcf76dec31bef3fd46b6332f4bc5bc823999d287548b",
+      "occurrences": [
+        {
+          "file": "references/rest.md",
+          "start_line": 13,
+          "end_line": null,
+          "start_column": 137
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-bb0a90e12ad647888aaa1eccf47148dd",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/rest.md",
+        "start_line": 17,
+        "end_line": null,
+        "start_column": 89
+      },
+      "finding": "access token",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "> \n> Do not omit either flow in your final output.\n\nSince client libraries automatically refresh OAuth2 tokens, you must manually request an access token when using the direct REST interface.\n\n### Option A: Service Account Flow (Recommended)\nFor server-to-server REST applications, using a Service Account is the recommended best practice:",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation",
+        "contextual-triage",
+        "likely-benign-context"
+      ],
+      "evidence": {},
+      "match_fingerprint": "903a9f18e7222d4c1e39fcf76dec31bef3fd46b6332f4bc5bc823999d287548b",
+      "occurrences": [
+        {
+          "file": "references/rest.md",
+          "start_line": 17,
+          "end_line": null,
+          "start_column": 89
+        }
+      ]
+    },
+    {
+      "id": "RA2",
+      "finding_id": "finding-ab8beec0c827463481a4487a595190d2",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 107,
+        "end_line": null,
+        "start_column": 7
+      },
+      "finding": "Create a new project (or select an existing one).\n    3. Search for the **Google Ads API** in the API Library and click **Enable**.\n    4. Configure the **OAuth Consent Screen**:\n       *   Select **E",
+      "explanation": "Skill establishes unauthorized persistence across sessions via cron jobs, startup scripts, or state files. Session persistence allows an attacker to maintain access beyond the current interaction.",
+      "remediation": "Remove any persistence mechanisms (cron jobs, startup scripts, state files). Skills should not maintain state across sessions without explicit user consent.",
+      "code_snippet": "*   **Purpose:** Identifies your application to Google's OAuth 2.0 server and allows you to request user authorization.\n*   **How to Obtain:**\n    1. Open the [Google Cloud Console](https://console.cloud.google.com/).\n    2. Create a new project (or select an existing one).\n    3. Search for the **Google Ads API** in the API Library and click **Enable**.\n    4. Configure the **OAuth Consent Screen**:\n       *   Select **External** user type.",
+      "intent": null,
+      "tags": [
+        "Rogue Agent"
+      ],
+      "evidence": {},
+      "match_fingerprint": "367a6b1140f5065f76e3543df34c6dd2a77b4b01840a3d33910f0d102a7419b5",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 107,
+          "end_line": null,
+          "start_column": 7
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-5e0d8da8c4ce48fc9b9b521c3c6818af",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "references/rest.md",
+        "start_line": 32,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": "curl \\\n  --data \"grant_type=refresh_token\" \\\n  --data \"client_id=INSERT_OAUTH2_CLIENT_ID_HERE\" \\\n  --data \"client_secret=INSERT_OAUTH2_CLIENT_SECRET_HERE\" \\\n  --data \"refresh_token=INSERT_OAUTH2_REFRE",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "If you are authenticating as an individual user, exchange your `refresh_token`, `client_id`, and `client_secret` for a short-lived `access_token` (typically valid for 1 hour):\n\n```bash\ncurl \\\n  --data \"grant_type=refresh_token\" \\\n  --data \"client_id=INSERT_OAUTH2_CLIENT_ID_HERE\" \\\n  --data \"client_secret=INSERT_OAUTH2_CLIENT_SECRET_HERE\" \\",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "8c146cd4d5ab52779b26dc213341c5effe0b3ab8e2335f0e2c5b1cb5a3d7691f",
+      "occurrences": [
+        {
+          "file": "references/rest.md",
+          "start_line": 32,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": false,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 8,
+    "scanned_components": 8,
+    "coverage_percent": 100.0,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 8,
+    "partially_inspected_files": 0,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 43,
+        "end_line": 43,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 55,
+        "end_line": 55,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 56,
+        "end_line": 56,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 57,
+        "end_line": 57,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 64,
+        "end_line": 64,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 119,
+        "end_line": 119,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 131,
+        "end_line": 131,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 203,
+        "end_line": 203,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 276,
+        "end_line": 276,
+        "fatal": false
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 43,
+        "column": 147,
+        "evidence": "eading tools to inspect the latest entry in the [Google Ads API Release Notes](https://developers.google.com/google-ads/api/docs/release-notes.md.txt) or the hi",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 43,
+        "column": 292,
+        "evidence": ".txt) or the highest versioned directory in the [Googleapis Github Repository](https://github.com/googleapis/googleapis/tree/master/google/ads/googleads) to res",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 43,
+        "column": 580,
+        "evidence": "gle Ads Java Client Library (referred to as `RESOLVED_LIBRARY_VERSION`, e.g., `34.0.0`).",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 55,
+        "column": 132,
+        "evidence": "| **Java** (Maven/Gradle) | `LATEST_LIBRARY_VERSION` | Search & substitute the latest Maven release version of the library. | `34.0.0` |",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 56,
+        "column": 80,
+        "evidence": "| **Java** (Imports) | `vXX` | Replace with **lower-case** API version. | `com.google.ads.googleads.v24` |",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 57,
+        "column": 88,
+        "evidence": "| **.NET / C#** (Namespaces) | `VXX` | Replace with **title-case** API version. | `Google.Ads.GoogleAds.V24` |",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 64,
+        "column": 70,
+        "evidence": "> * **Java Client Library Version (`RESOLVED_LIBRARY_VERSION`):** `34.0.0`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 71,
+        "column": 136,
+        "evidence": "ols to inspect the official [Google Ads Client Libraries - Supported Versions](https://developers.google.com/google-ads/api/docs/client-libs.md.txt#supported_ap",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 106,
+        "column": 40,
+        "evidence": "1. Open the [Google Cloud Console](https://console.cloud.google.com/).",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 119,
+        "column": 126,
+        "evidence": "6. **Download Secrets:** Click the download icon (JSON) next to your newly created Client ID. Save this file locally as `client_secrets.json`.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 128,
+        "column": 29,
+        "evidence": "Ensure the [gcloud CLI](https://cloud.google.com/sdk/docs/install) is installed and available in your terminal.",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 131,
+        "column": 74,
+        "evidence": "Run the following command in your terminal, passing the path to the `client_secrets.json` file downloaded in the previous step:",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 188,
+        "column": 45,
+        "evidence": "* [Google Ads API Python Setup Reference](references/python.md)",
+        "target_path": "references/python.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 195,
+        "column": 43,
+        "evidence": "* [Google Ads API Java Setup Reference](references/java.md)",
+        "target_path": "references/java.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 202,
+        "column": 43,
+        "evidence": "* [Google Ads API .NET Setup Reference](references/dotnet.md)",
+        "target_path": "references/dotnet.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 203,
+        "column": 13,
+        "evidence": "*(Package: `Google.Ads.GoogleAds`)*",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 209,
+        "column": 42,
+        "evidence": "* [Google Ads API PHP Setup Reference](references/php.md)",
+        "target_path": "references/php.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 216,
+        "column": 43,
+        "evidence": "* [Google Ads API Ruby Setup Reference](references/ruby.md)",
+        "target_path": "references/ruby.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 223,
+        "column": 43,
+        "evidence": "* [Google Ads API Perl Setup Reference](references/perl.md)",
+        "target_path": "references/perl.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 239,
+        "column": 43,
+        "evidence": "* [Google Ads API REST Setup Reference](references/rest.md)",
+        "target_path": "references/rest.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 276,
+        "column": 34,
+        "evidence": "#### Configuration Fix Example (`google-ads.yaml`):",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 302,
+        "column": 110,
+        "evidence": "e Guide:** Point the user to the official [Google Ads API Test Accounts Guide](https://developers.google.com/google-ads/api/docs/best-practices/test-accounts.md",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      }
+    ],
+    "limitations": [],
+    "findings_before_filtering": 14,
+    "findings_after_filtering": 14
+  }
+}

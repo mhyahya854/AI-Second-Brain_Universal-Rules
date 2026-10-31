@@ -1,0 +1,1679 @@
+{
+  "skill": {
+    "name": "email-html-mjml",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\framix-team\\skill-email-html-mjml\\email-html-mjml",
+    "scanned_at": "2026-10-31T21:07:31.955579+00:00"
+  },
+  "risk_assessment": {
+    "score": 92,
+    "severity": "CRITICAL",
+    "recommendation": "DO_NOT_INSTALL",
+    "max_issue_severity": "HIGH"
+  },
+  "components": [
+    {
+      "path": "LICENSE",
+      "type": "other",
+      "lines": 21,
+      "executable": false,
+      "size_bytes": 1063,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 179,
+      "executable": false,
+      "size_bytes": 10898,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "assets/examples/basic-layout.mjml",
+      "type": "other",
+      "lines": 135,
+      "executable": false,
+      "size_bytes": 3782,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "assets/examples/newsletter.mjml",
+      "type": "other",
+      "lines": 116,
+      "executable": false,
+      "size_bytes": 5153,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "assets/examples/order-confirmation.mjml",
+      "type": "other",
+      "lines": 104,
+      "executable": false,
+      "size_bytes": 4219,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "assets/examples/partials/footer.mjml",
+      "type": "other",
+      "lines": 15,
+      "executable": false,
+      "size_bytes": 742,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "assets/examples/promo-sale.mjml",
+      "type": "other",
+      "lines": 117,
+      "executable": false,
+      "size_bytes": 5728,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "compilation.md",
+      "type": "markdown",
+      "lines": 107,
+      "executable": false,
+      "size_bytes": 5357,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "components/advanced.md",
+      "type": "markdown",
+      "lines": 149,
+      "executable": false,
+      "size_bytes": 6109,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "components/content.md",
+      "type": "markdown",
+      "lines": 176,
+      "executable": false,
+      "size_bytes": 5233,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "components/head.md",
+      "type": "markdown",
+      "lines": 113,
+      "executable": false,
+      "size_bytes": 3301,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "components/interactive.md",
+      "type": "markdown",
+      "lines": 218,
+      "executable": false,
+      "size_bytes": 8189,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "components/layout.md",
+      "type": "markdown",
+      "lines": 148,
+      "executable": false,
+      "size_bytes": 4916,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "mjml-reference.md",
+      "type": "markdown",
+      "lines": 193,
+      "executable": false,
+      "size_bytes": 8700,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "YR4",
+      "finding_id": "finding-9d8158c29711478b84191ea5683e8898",
+      "category": "YARA Match",
+      "pattern": "YARA rule 'agent_skill_mcp_tool_poisoning_metadata': MCP/tool metadata poisoning indicators in tool schemas or skill manifests [agent_skills]",
+      "severity": "HIGH",
+      "confidence": 0.8,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 3,
+        "end_line": null
+      },
+      "finding": "description:; <!-- htmlmin:ignore -->; <!-- Dark mode overrides -->",
+      "explanation": "YARA rule matched a hack tool or exploit indicator (offensive tools, reconnaissance, privilege escalation, or exploit frameworks).",
+      "remediation": "Remove offensive tool references and exploit code. Legitimate agent skills should not contain penetration testing tools, exploit frameworks, or reconnaissance utilities.",
+      "code_snippet": "---\nname: email-html-mjml\ndescription: Responsive HTML email template generation using MJML 5.x framework. Use when the user asks to create, generate, design, or build an email template — including welcome emails, promotional blasts, transactional templates, newsletters, or any responsive email. Also use when the user asks to compile MJML to HTML, work with or edit existing MJML templates or `.mjml` files, or troubleshoot email rendering issues across clients.\nlicense: MIT\ncompatibility: Requires Node.js 20 or later (LTS 20/22/24) for npx mjml compilation. Install MJML per project (npm install -D mjml). Works with Cl",
+      "intent": null,
+      "tags": [
+        "YARA Match"
+      ],
+      "evidence": {},
+      "match_fingerprint": "82b88684475458b8c1c77784bca4df645f597259faa6db06be3fe78f31dfc0ef",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 3,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "finding_id": "finding-62f692a833924790872615d4ea762cf4",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 39,
+        "end_line": 39,
+        "start_column": 239,
+        "end_column": 262
+      },
+      "finding": "<!-- htmlmin:ignore -->",
+      "explanation": "Hidden instructions were detected in comments or invisible text. These could contain malicious directives. Manual review is recommended.",
+      "remediation": "Audit all comments and invisible characters. Remove any instructions that direct the agent to perform unauthorized actions. Use plain, reviewable content.",
+      "code_snippet": "ia-level` attributes on `mj-text` are illegal under strict validation (see Accessibility Checklist below).\n7. **Styling Efficiency** — Use `<mj-attributes>` with `<mj-all>`, component defaults, and `<mj-class>` to eliminate repetitive inline styles.\n8. **Hero Sections** — Use `<mj-hero>` for full-bleed hero banners; it falls back to a regular section in unsupported clients. Avoid `<mj-accordion>` and `<mj-carousel>` — client support is too poor to be useful.\n9. **Templating Support** — Plain interpolations (`{{firstName}}`) need no wrapping — they pass through text, attributes, `mj-title` and `mj-preview` untouched. Only block tags containing `<` or `>` (`{% if x < 5 %}`, `{{#if a<b}}`) need `<!-- htmlmin:ignore -->` protection, or minify silently corrupts them. An `<mj-raw>` between content components inside a column emits its content *between* `</tr>` and `<tr>` — invalid markup; put `mj-raw` between sections, and keep templating tags out of `<mj-style>` (see `compilation.md`).\n\n---\n",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "961f274e60feaff45db810301053f6ead5844159dc8f73ce54771389baaab057",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 39,
+          "end_line": 39,
+          "start_column": 239,
+          "end_column": 262
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "finding_id": "finding-42a48567a6a14616a34925b4d264b68c",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "assets/examples/order-confirmation.mjml",
+        "start_line": 87,
+        "end_line": 87,
+        "start_column": 6,
+        "end_column": 29
+      },
+      "finding": "<!-- htmlmin:ignore -->",
+      "explanation": "Hidden instructions were detected in comments or invisible text. These could contain malicious directives. Manual review is recommended.",
+      "remediation": "Audit all comments and invisible characters. Remove any instructions that direct the agent to perform unauthorized actions. Use plain, reviewable content.",
+      "code_snippet": "    </mj-section>\n\n    <mj-raw>\n      <!-- htmlmin:ignore --> {{#if order.giftMessage}} <!-- htmlmin:ignore -->\n    </mj-raw>\n    <mj-section background-color=\"#ffffff\" padding=\"0 0 24px\">\n      <mj-column>",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "961f274e60feaff45db810301053f6ead5844159dc8f73ce54771389baaab057",
+      "occurrences": [
+        {
+          "file": "assets/examples/order-confirmation.mjml",
+          "start_line": 87,
+          "end_line": 87,
+          "start_column": 6,
+          "end_column": 29
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "finding_id": "finding-343c4bb40cef44e694325031dfc7a022",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "assets/examples/order-confirmation.mjml",
+        "start_line": 87,
+        "end_line": 87,
+        "start_column": 56,
+        "end_column": 79
+      },
+      "finding": "<!-- htmlmin:ignore -->",
+      "explanation": "Hidden instructions were detected in comments or invisible text. These could contain malicious directives. Manual review is recommended.",
+      "remediation": "Audit all comments and invisible characters. Remove any instructions that direct the agent to perform unauthorized actions. Use plain, reviewable content.",
+      "code_snippet": "    </mj-section>\n\n    <mj-raw>\n      <!-- htmlmin:ignore --> {{#if order.giftMessage}} <!-- htmlmin:ignore -->\n    </mj-raw>\n    <mj-section background-color=\"#ffffff\" padding=\"0 0 24px\">\n      <mj-column>",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "961f274e60feaff45db810301053f6ead5844159dc8f73ce54771389baaab057",
+      "occurrences": [
+        {
+          "file": "assets/examples/order-confirmation.mjml",
+          "start_line": 87,
+          "end_line": 87,
+          "start_column": 56,
+          "end_column": 79
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "finding_id": "finding-ad0b124712b54041addf8c8edb4c356b",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "assets/examples/order-confirmation.mjml",
+        "start_line": 98,
+        "end_line": 98,
+        "start_column": 6,
+        "end_column": 29
+      },
+      "finding": "<!-- htmlmin:ignore -->",
+      "explanation": "Hidden instructions were detected in comments or invisible text. These could contain malicious directives. Manual review is recommended.",
+      "remediation": "Audit all comments and invisible characters. Remove any instructions that direct the agent to perform unauthorized actions. Use plain, reviewable content.",
+      "code_snippet": "      </mj-column>\n    </mj-section>\n    <mj-raw>\n      <!-- htmlmin:ignore --> {{/if}} <!-- htmlmin:ignore -->\n    </mj-raw>\n\n    <mj-include path=\"./partials/footer.mjml\" />",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "961f274e60feaff45db810301053f6ead5844159dc8f73ce54771389baaab057",
+      "occurrences": [
+        {
+          "file": "assets/examples/order-confirmation.mjml",
+          "start_line": 98,
+          "end_line": 98,
+          "start_column": 6,
+          "end_column": 29
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "finding_id": "finding-a6b54f99cf354357877c0bbe32a3770b",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "assets/examples/order-confirmation.mjml",
+        "start_line": 98,
+        "end_line": 98,
+        "start_column": 38,
+        "end_column": 61
+      },
+      "finding": "<!-- htmlmin:ignore -->",
+      "explanation": "Hidden instructions were detected in comments or invisible text. These could contain malicious directives. Manual review is recommended.",
+      "remediation": "Audit all comments and invisible characters. Remove any instructions that direct the agent to perform unauthorized actions. Use plain, reviewable content.",
+      "code_snippet": "      </mj-column>\n    </mj-section>\n    <mj-raw>\n      <!-- htmlmin:ignore --> {{/if}} <!-- htmlmin:ignore -->\n    </mj-raw>\n\n    <mj-include path=\"./partials/footer.mjml\" />",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "961f274e60feaff45db810301053f6ead5844159dc8f73ce54771389baaab057",
+      "occurrences": [
+        {
+          "file": "assets/examples/order-confirmation.mjml",
+          "start_line": 98,
+          "end_line": 98,
+          "start_column": 38,
+          "end_column": 61
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "finding_id": "finding-9f4f362fce304c9990e99ad4313329dc",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "components/advanced.md",
+        "start_line": 90,
+        "end_line": 90,
+        "start_column": 2,
+        "end_column": 25
+      },
+      "finding": "<!-- htmlmin:ignore -->",
+      "explanation": "Hidden instructions were detected in comments or invisible text. These could contain malicious directives. Manual review is recommended.",
+      "remediation": "Audit all comments and invisible characters. Remove any instructions that direct the agent to perform unauthorized actions. Use plain, reviewable content.",
+      "code_snippet": "```xml\n<!-- Protecting template tags from minifier -->\n<mj-raw>\n  <!-- htmlmin:ignore --> {% if user.first_name %} <!-- htmlmin:ignore -->\n</mj-raw>\n<mj-text>Hello {{ user.first_name }}!</mj-text>\n<mj-raw>",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "961f274e60feaff45db810301053f6ead5844159dc8f73ce54771389baaab057",
+      "occurrences": [
+        {
+          "file": "components/advanced.md",
+          "start_line": 90,
+          "end_line": 90,
+          "start_column": 2,
+          "end_column": 25
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "finding_id": "finding-e18cfc55056f4164ac2230289822b22a",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "components/advanced.md",
+        "start_line": 90,
+        "end_line": 90,
+        "start_column": 51,
+        "end_column": 74
+      },
+      "finding": "<!-- htmlmin:ignore -->",
+      "explanation": "Hidden instructions were detected in comments or invisible text. These could contain malicious directives. Manual review is recommended.",
+      "remediation": "Audit all comments and invisible characters. Remove any instructions that direct the agent to perform unauthorized actions. Use plain, reviewable content.",
+      "code_snippet": "```xml\n<!-- Protecting template tags from minifier -->\n<mj-raw>\n  <!-- htmlmin:ignore --> {% if user.first_name %} <!-- htmlmin:ignore -->\n</mj-raw>\n<mj-text>Hello {{ user.first_name }}!</mj-text>\n<mj-raw>",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "961f274e60feaff45db810301053f6ead5844159dc8f73ce54771389baaab057",
+      "occurrences": [
+        {
+          "file": "components/advanced.md",
+          "start_line": 90,
+          "end_line": 90,
+          "start_column": 51,
+          "end_column": 74
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "finding_id": "finding-3898c70315d941c383d81b7cb5532472",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "components/advanced.md",
+        "start_line": 102,
+        "end_line": 102,
+        "start_column": 80,
+        "end_column": 103
+      },
+      "finding": "<!-- htmlmin:ignore -->",
+      "explanation": "Hidden instructions were detected in comments or invisible text. These could contain malicious directives. Manual review is recommended.",
+      "remediation": "Audit all comments and invisible characters. Remove any instructions that direct the agent to perform unauthorized actions. Use plain, reviewable content.",
+      "code_snippet": "</mj-raw>\n```\n\n**Minify warning**: The `<` character causes parse errors with minify. Wrap in `<!-- htmlmin:ignore -->` tags or use `&lt;`.\n\n---\n",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "961f274e60feaff45db810301053f6ead5844159dc8f73ce54771389baaab057",
+      "occurrences": [
+        {
+          "file": "components/advanced.md",
+          "start_line": 102,
+          "end_line": 102,
+          "start_column": 80,
+          "end_column": 103
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "finding_id": "finding-4c060b46ec1a4659b459b54b758cdce4",
+      "category": "Prompt Injection",
+      "pattern": "Hidden Instructions",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "mjml-reference.md",
+        "start_line": 39,
+        "end_line": 39,
+        "start_column": 14,
+        "end_column": 37
+      },
+      "finding": "<!-- htmlmin:ignore -->",
+      "explanation": "Hidden instructions were detected in comments or invisible text. These could contain malicious directives. Manual review is recommended.",
+      "remediation": "Audit all comments and invisible characters. Remove any instructions that direct the agent to perform unauthorized actions. Use plain, reviewable content.",
+      "code_snippet": " Characters `<` and `>` used as literal text should be escaped as `&lt;` and `&gt;`\n- **MJML 5 relaxed this.** A `<` followed by a space is now fine: `Price < 100 dollars` compiles and survives intact under `minify`. In MJML 4 the same input was a hard `Parse Error`. The `htmlnano` swap fixed it\n- **But a *tag-like* `<` still breaks — silently.** `{{#if a<b}}yes{{/if}}` (a `<` immediately followed by a letter) compiles at exit `0` and emits mangled output: `{{#if a<b}}yes{{ if}}< div> </b}}yes{{>`. No error, no warning. Never treat exit `0` as proof here\n- The fix is `<!-- htmlmin:ignore -->` around the tag, which preserves it byte-exact (markers must come in pairs and are stripped from the output). **Do not** substitute `&lt;` for a template tag: the entity survives literally into the sent HTML (`{{#if a&lt;b}}`), so the ESP never receives a `<` and the condition never evaluates\n- `mj-html-attributes` and inline `mj-style` require re-parsing — can conflict with ending tag content\n\n---",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "961f274e60feaff45db810301053f6ead5844159dc8f73ce54771389baaab057",
+      "occurrences": [
+        {
+          "file": "mjml-reference.md",
+          "start_line": 39,
+          "end_line": 39,
+          "start_column": 14,
+          "end_column": 37
+        }
+      ]
+    },
+    {
+      "id": "YR4",
+      "finding_id": "finding-374e67d47ccd45a4b1deff105b27676e",
+      "category": "YARA Match",
+      "pattern": "YARA rule 'agent_skill_mcp_tool_poisoning_metadata': MCP/tool metadata poisoning indicators in tool schemas or skill manifests [agent_skills]",
+      "severity": "HIGH",
+      "confidence": 0.8,
+      "location": {
+        "file": "mjml-reference.md",
+        "start_line": 12,
+        "end_line": null
+      },
+      "finding": "description=; <!-- htmlmin:ignore -->",
+      "explanation": "YARA rule matched a hack tool or exploit indicator (offensive tools, reconnaissance, privilege escalation, or exploit frameworks).",
+      "remediation": "Remove offensive tool references and exploit code. Legitimate agent skills should not contain penetration testing tools, exploit frameworks, or reconnaissance utilities.",
+      "code_snippet": "# MJML General Reference\n\nNon-component knowledge from the MJML documentation — architecture, behaviors, gotchas, and validation.\n\n---\n\n## mj-body Automatic ARIA Injection\n\nMJML automatically wraps email body content in a `<div>` with the following accessibility attributes:\n\n```html\n<div role=\"article\" aria-roledescription=\"email\" aria-label=\"[value from mj-title]\" lang=\"[from mjml tag]\" dir=\"[from mjml tag]\">\n```\n\nThis means:\n- Always set `<mj-title>` — it populates `aria-label` on the wrapper div, used by screen readers to identify the email\n- Always set `lang` on the root `<mjml>` tag — it flows through to this div\n\n---\n\n## Ending Tags\n\nThe following components are **ending tags** — their content is raw HTML/text, NOT processed by the MJML engine. You cannot nest other MJML components inside them.\n\n- `mj-text`\n- `mj-button`\n- `mj-table`\n- `mj-raw`\n- `mj-accordion-title`\n- `mj-accordion-text`",
+      "intent": null,
+      "tags": [
+        "YARA Match"
+      ],
+      "evidence": {},
+      "match_fingerprint": "81e414747f0d8afc4266f093ffbbeb0a395fb4521fe44fb1ed7d86b21758d89b",
+      "occurrences": [
+        {
+          "file": "mjml-reference.md",
+          "start_line": 12,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AR2",
+      "finding_id": "finding-05900e5a17704892a310b220d2121de2",
+      "category": "Anti-Refusal",
+      "pattern": "Anti-Refusal Statement",
+      "severity": "HIGH",
+      "confidence": 0.8,
+      "location": {
+        "file": "mjml-reference.md",
+        "start_line": 38,
+        "end_line": 38,
+        "start_column": 217,
+        "end_column": 227
+      },
+      "finding": "no warning",
+      "explanation": "Skill instructs the agent to omit warnings, disclaimers, or ethical commentary. Stripping safety caveats hides risk from the user and is a common jailbreak preamble.",
+      "remediation": "Remove instructions that suppress warnings, disclaimers, or ethical commentary. Let the agent surface safety-relevant caveats to the user.",
+      "code_snippet": ".)\n- Characters `<` and `>` used as literal text should be escaped as `&lt;` and `&gt;`\n- **MJML 5 relaxed this.** A `<` followed by a space is now fine: `Price < 100 dollars` compiles and survives intact under `minify`. In MJML 4 the same input was a hard `Parse Error`. The `htmlnano` swap fixed it\n- **But a *tag-like* `<` still breaks — silently.** `{{#if a<b}}yes{{/if}}` (a `<` immediately followed by a letter) compiles at exit `0` and emits mangled output: `{{#if a<b}}yes{{ if}}< div> </b}}yes{{>`. No error, no warning. Never treat exit `0` as proof here\n- The fix is `<!-- htmlmin:ignore -->` around the tag, which preserves it byte-exact (markers must come in pairs and are stripped from the output). **Do not** substitute `&lt;` for a template tag: the entity survives literally into the sent HTML (`{{#if a&lt;b}}`), so the ESP never receives a `<` and the condition never evaluates\n- `mj-html-attributes` and inline `mj-style` require re-parsing — can conflict with ending tag content\n",
+      "intent": null,
+      "tags": [
+        "Anti-Refusal"
+      ],
+      "evidence": {},
+      "match_fingerprint": "449e47b25897541aa26f8824417d1280ef58d2d29e5e3ba95502143b7207c9ec",
+      "occurrences": [
+        {
+          "file": "mjml-reference.md",
+          "start_line": 38,
+          "end_line": 38,
+          "start_column": 217,
+          "end_column": 227
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-20f6f0082fef44ef88a62f87c98fa238",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 5,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "06c6e7cf6d21aa0d8f86f204a1e34f37c8879add392c336065563d7ca05b66bd",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 5,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-670846154a834920881e1dc98ef3a3ba",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 24,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "06c6e7cf6d21aa0d8f86f204a1e34f37c8879add392c336065563d7ca05b66bd",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 24,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-17eb9640b0544695a47ceb309372ada8",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 147,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "06c6e7cf6d21aa0d8f86f204a1e34f37c8879add392c336065563d7ca05b66bd",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 147,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-0034946d8d124ed2a1c002f222c59f17",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "compilation.md",
+        "start_line": 8,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "06c6e7cf6d21aa0d8f86f204a1e34f37c8879add392c336065563d7ca05b66bd",
+      "occurrences": [
+        {
+          "file": "compilation.md",
+          "start_line": 8,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-4014811faaa3449d837309909eee569e",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "compilation.md",
+        "start_line": 27,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "06c6e7cf6d21aa0d8f86f204a1e34f37c8879add392c336065563d7ca05b66bd",
+      "occurrences": [
+        {
+          "file": "compilation.md",
+          "start_line": 27,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-191de1e8efe34f9695e6f7efef0a87a5",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "compilation.md",
+        "start_line": 36,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "06c6e7cf6d21aa0d8f86f204a1e34f37c8879add392c336065563d7ca05b66bd",
+      "occurrences": [
+        {
+          "file": "compilation.md",
+          "start_line": 36,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-c743e0607fd14ad6b806045318c4acd2",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "compilation.md",
+        "start_line": 89,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "06c6e7cf6d21aa0d8f86f204a1e34f37c8879add392c336065563d7ca05b66bd",
+      "occurrences": [
+        {
+          "file": "compilation.md",
+          "start_line": 89,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-123f5d8d4e954dd2bdaaea029e1e18b3",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "components/advanced.md",
+        "start_line": 142,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "06c6e7cf6d21aa0d8f86f204a1e34f37c8879add392c336065563d7ca05b66bd",
+      "occurrences": [
+        {
+          "file": "components/advanced.md",
+          "start_line": 142,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-a3f69dfb9d7b4b36af93b7f7184610c2",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "mjml-reference.md",
+        "start_line": 57,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "06c6e7cf6d21aa0d8f86f204a1e34f37c8879add392c336065563d7ca05b66bd",
+      "occurrences": [
+        {
+          "file": "mjml-reference.md",
+          "start_line": 57,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-a51c013c4de641e5ad1b248640b658e3",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "mjml-reference.md",
+        "start_line": 60,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "06c6e7cf6d21aa0d8f86f204a1e34f37c8879add392c336065563d7ca05b66bd",
+      "occurrences": [
+        {
+          "file": "mjml-reference.md",
+          "start_line": 60,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-a8135cc0490f43e595a9f5cc511e2470",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "mjml-reference.md",
+        "start_line": 61,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "06c6e7cf6d21aa0d8f86f204a1e34f37c8879add392c336065563d7ca05b66bd",
+      "occurrences": [
+        {
+          "file": "mjml-reference.md",
+          "start_line": 61,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-4913de49778940d9a82178ad13884c90",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "mjml-reference.md",
+        "start_line": 156,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "06c6e7cf6d21aa0d8f86f204a1e34f37c8879add392c336065563d7ca05b66bd",
+      "occurrences": [
+        {
+          "file": "mjml-reference.md",
+          "start_line": 156,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-c69da231100b41a6ac4d8886b7780768",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "mjml-reference.md",
+        "start_line": 190,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "06c6e7cf6d21aa0d8f86f204a1e34f37c8879add392c336065563d7ca05b66bd",
+      "occurrences": [
+        {
+          "file": "mjml-reference.md",
+          "start_line": 190,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-7ce51cb88a9d42038c7370c2b52ce5c8",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "compilation.md",
+        "start_line": 8,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "9c930bbb355a055b442c054679fb5eb22b3b9ce8fbd202ead331ee6d90dbc3fd",
+      "occurrences": [
+        {
+          "file": "compilation.md",
+          "start_line": 8,
+          "end_line": null
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": false,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 14,
+    "scanned_components": 14,
+    "coverage_percent": 100.0,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 14,
+    "partially_inspected_files": 0,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 48,
+        "end_line": 48,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 147,
+        "end_line": 147,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 152,
+        "end_line": 152,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 153,
+        "end_line": 153,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 164,
+        "end_line": 164,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 179,
+        "end_line": 179,
+        "fatal": false
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 14,
+        "completed": 14,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 24,
+        "column": 26,
+        "evidence": "5. **Compile** — Follow `compilation.md`. Run `npx mjml` with `--config.minify=true`",
+        "target_path": "compilation.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 39,
+        "column": 515,
+        "evidence": "t `mj-raw` between sections, and keep templating tags out of `<mj-style>` (see `compilation.md`).",
+        "target_path": "compilation.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 48,
+        "column": 35,
+        "evidence": "- Scope allowed directories with `--config.includePath` (CLI) or `includePath` (Node) — only MJML, HTML, and CSS includes are supported",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 132,
+        "column": 126,
+        "evidence": "| Head | mj-attributes, mj-font, mj-style, mj-preview, mj-breakpoint, mj-html-attributes | Setting up head, global styles | `components/head.md` |",
+        "target_path": "components/head.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 133,
+        "column": 96,
+        "evidence": "| Layout | mj-body, mj-section, mj-column, mj-group, mj-wrapper | Building structure / grid | `components/layout.md` |",
+        "target_path": "components/layout.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 134,
+        "column": 102,
+        "evidence": "| Content | mj-text, mj-image, mj-button, mj-divider, mj-spacer, mj-table | Adding content blocks | `components/content.md` |",
+        "target_path": "components/content.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 135,
+        "column": 101,
+        "evidence": "| Interactive | mj-accordion, mj-carousel, mj-social, mj-navbar | Interactive or social elements | `components/interactive.md` |",
+        "target_path": "components/interactive.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 136,
+        "column": 85,
+        "evidence": "| Advanced | mj-hero, mj-raw, mj-include | Hero banners, template tags, partials | `components/advanced.md` |",
+        "target_path": "components/advanced.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 138,
+        "column": 82,
+        "evidence": "General reference (hierarchy, ending tags, validation, width math, Gmail clip): `mjml-reference.md`",
+        "target_path": "mjml-reference.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 144,
+        "column": 7,
+        "evidence": "Read `compilation.md` for the full workflow. Key command:",
+        "target_path": "compilation.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 147,
+        "column": 27,
+        "evidence": "npx mjml template.mjml -o dist/template.html --config.minify=true --config.validationLevel=strict",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 152,
+        "column": 24,
+        "evidence": "- Always use `npx` or `./node_modules/.bin/mjml`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 153,
+        "column": 19,
+        "evidence": "- If mjml not in `package.json`, suggest `npm install -D mjml`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 163,
+        "column": 4,
+        "evidence": "| `assets/examples/basic-layout.mjml` | Structure only. MJML docs example: 6-section layout (header, image hero + button, intro, 2-col image+text, 3-col icons, ",
+        "target_path": "assets/examples/basic-layout.mjml",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 164,
+        "column": 4,
+        "evidence": "| `assets/examples/order-confirmation.mjml` | Transactional. Full `mj-head` (`mj-attributes` + `mj-class` + `mj-font` + `mj-html-attributes`), receipt `mj-table",
+        "target_path": "assets/examples/order-confirmation.mjml",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 164,
+        "column": 277,
+        "evidence": "bars in `mj-raw` with `htmlmin:ignore`, conditional block, and `mj-include` of `partials/footer.mjml`. **Requires `--config.allowIncludes true`.** |",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 165,
+        "column": 4,
+        "evidence": "| `assets/examples/promo-sale.mjml` | Promotional. `mj-hero` and `mj-section` background images (VML generated), `mj-navbar`, `mj-group` non-stacking row, `mj-s",
+        "target_path": "assets/examples/promo-sale.mjml",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 166,
+        "column": 4,
+        "evidence": "| `assets/examples/newsletter.mjml` | Editorial + **dark mode**. The full dark-mode pattern from above, `mj-wrapper`, `mj-html-attributes` for `aria-level` 1 an",
+        "target_path": "assets/examples/newsletter.mjml",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 179,
+        "column": 35,
+        "evidence": "Name files after the email type: `welcome.mjml`, `promo-sale.mjml`, `order-confirmation.mjml`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 179,
+        "column": 51,
+        "evidence": "Name files after the email type: `welcome.mjml`, `promo-sale.mjml`, `order-confirmation.mjml`",
+        "target_path": "assets/examples/promo-sale.mjml",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 179,
+        "column": 70,
+        "evidence": "Name files after the email type: `welcome.mjml`, `promo-sale.mjml`, `order-confirmation.mjml`",
+        "target_path": "assets/examples/order-confirmation.mjml",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      }
+    ],
+    "limitations": [],
+    "findings_before_filtering": 26,
+    "findings_after_filtering": 26
+  }
+}

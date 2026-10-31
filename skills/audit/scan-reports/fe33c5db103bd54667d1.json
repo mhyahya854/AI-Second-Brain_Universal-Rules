@@ -1,0 +1,915 @@
+{
+  "skill": {
+    "name": "spline-interactive",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\freshtechbro\\claudedesignskills\\spline-interactive",
+    "scanned_at": "2026-10-31T21:28:45.164648+00:00"
+  },
+  "risk_assessment": {
+    "score": 21,
+    "severity": "MEDIUM",
+    "recommendation": "CAUTION",
+    "max_issue_severity": "MEDIUM"
+  },
+  "components": [
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 756,
+      "executable": false,
+      "size_bytes": 19539,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "assets/README.md",
+      "type": "markdown",
+      "lines": 312,
+      "executable": false,
+      "size_bytes": 7883,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/api_reference.md",
+      "type": "markdown",
+      "lines": 530,
+      "executable": false,
+      "size_bytes": 13071,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/component_builder.py",
+      "type": "python",
+      "lines": 270,
+      "executable": true,
+      "size_bytes": 6637,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/project_generator.py",
+      "type": "python",
+      "lines": 347,
+      "executable": true,
+      "size_bytes": 7828,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "LP3",
+      "finding_id": "finding-3c7c3cea1dcc4749a472f3ada9bec003",
+      "category": "MCP Least Privilege",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 1,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "Without declared permissions the skill's intent is opaque and cannot be validated.",
+      "remediation": "Declare the skill's tool scope: for Claude Code / Agent Skills SKILL.md, list the tools the skill may invoke in the 'allowed-tools' frontmatter field; for MCP server manifests, add a 'permissions' list naming the required capabilities.",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI02"
+      ],
+      "evidence": {},
+      "match_fingerprint": null,
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 1,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "TT2",
+      "finding_id": "finding-808cf3580c6248e5a4ef01482197c908",
+      "category": "Data Flow",
+      "pattern": "Tainted flow: 'base_path' from input (line 22, user input) → open (file write)",
+      "severity": "MEDIUM",
+      "confidence": 0.65,
+      "location": {
+        "file": "scripts/project_generator.py",
+        "start_line": 64,
+        "end_line": 64,
+        "start_column": 9,
+        "end_column": 46
+      },
+      "finding": "open(base_path / 'package.json', 'w')",
+      "explanation": "Data from a source is assigned to a variable that is later passed to a sink, creating a variable-mediated taint flow.",
+      "remediation": "Validate tainted variables before passing them to sinks. Use allowlists, type checks, or sanitization functions on data from external sources.",
+      "code_snippet": "            \"start\": \"next start\"\n        }\n\n    with open(base_path / 'package.json', 'w') as f:\n        json.dump(package_json, f, indent=2)\n\n    # vite.config.js (if not Next.js)",
+      "intent": null,
+      "tags": [
+        "Data Flow"
+      ],
+      "evidence": {},
+      "match_fingerprint": "4ee8593e5c7d3a9234e0cad3038e3ac3021bf11a90f939a33879af4aa02cfd5a",
+      "occurrences": [
+        {
+          "file": "scripts/project_generator.py",
+          "start_line": 64,
+          "end_line": 64,
+          "start_column": 9,
+          "end_column": 46
+        }
+      ]
+    },
+    {
+      "id": "TT2",
+      "finding_id": "finding-834d0b04954d42018d8de1277ae4e5a2",
+      "category": "Data Flow",
+      "pattern": "Tainted flow: 'base_path' from input (line 22, user input) → open (file write)",
+      "severity": "MEDIUM",
+      "confidence": 0.65,
+      "location": {
+        "file": "scripts/project_generator.py",
+        "start_line": 79,
+        "end_line": 79,
+        "start_column": 13,
+        "end_column": 52
+      },
+      "finding": "open(base_path / 'vite.config.js', 'w')",
+      "explanation": "Data from a source is assigned to a variable that is later passed to a sink, creating a variable-mediated taint flow.",
+      "remediation": "Validate tainted variables before passing them to sinks. Use allowlists, type checks, or sanitization functions on data from external sources.",
+      "code_snippet": "  }\n});\n\"\"\"\n        with open(base_path / 'vite.config.js', 'w') as f:\n            f.write(vite_config)\n\n    # index.html (if not Next.js)",
+      "intent": null,
+      "tags": [
+        "Data Flow"
+      ],
+      "evidence": {},
+      "match_fingerprint": "70a33a1e2e213a13aaef7e57cad25939a9fdb485e8116ae0147aa2b7191dc3c7",
+      "occurrences": [
+        {
+          "file": "scripts/project_generator.py",
+          "start_line": 79,
+          "end_line": 79,
+          "start_column": 13,
+          "end_column": 52
+        }
+      ]
+    },
+    {
+      "id": "TT2",
+      "finding_id": "finding-63b0e2a93adb4333b1a1613bbcb2053a",
+      "category": "Data Flow",
+      "pattern": "Tainted flow: 'base_path' from input (line 22, user input) → open (file write)",
+      "severity": "MEDIUM",
+      "confidence": 0.65,
+      "location": {
+        "file": "scripts/project_generator.py",
+        "start_line": 97,
+        "end_line": 97,
+        "start_column": 13,
+        "end_column": 48
+      },
+      "finding": "open(base_path / 'index.html', 'w')",
+      "explanation": "Data from a source is assigned to a variable that is later passed to a sink, creating a variable-mediated taint flow.",
+      "remediation": "Validate tainted variables before passing them to sinks. Use allowlists, type checks, or sanitization functions on data from external sources.",
+      "code_snippet": "  </body>\n</html>\n\"\"\"\n        with open(base_path / 'index.html', 'w') as f:\n            f.write(index_html)\n\n    # src/main.jsx (if not Next.js)",
+      "intent": null,
+      "tags": [
+        "Data Flow"
+      ],
+      "evidence": {},
+      "match_fingerprint": "7065d16d408eeeed4cd6e8e46c4f3b3badfbef2348c321f4251e01989910ddda",
+      "occurrences": [
+        {
+          "file": "scripts/project_generator.py",
+          "start_line": 97,
+          "end_line": 97,
+          "start_column": 13,
+          "end_column": 48
+        }
+      ]
+    },
+    {
+      "id": "TT2",
+      "finding_id": "finding-0433c89d8e07434391c2f054784024a0",
+      "category": "Data Flow",
+      "pattern": "Tainted flow: 'base_path' from input (line 22, user input) → open (file write)",
+      "severity": "MEDIUM",
+      "confidence": 0.65,
+      "location": {
+        "file": "scripts/project_generator.py",
+        "start_line": 113,
+        "end_line": 113,
+        "start_column": 13,
+        "end_column": 54
+      },
+      "finding": "open(base_path / 'src' / 'main.jsx', 'w')",
+      "explanation": "Data from a source is assigned to a variable that is later passed to a sink, creating a variable-mediated taint flow.",
+      "remediation": "Validate tainted variables before passing them to sinks. Use allowlists, type checks, or sanitization functions on data from external sources.",
+      "code_snippet": "  </React.StrictMode>\n);\n\"\"\"\n        with open(base_path / 'src' / 'main.jsx', 'w') as f:\n            f.write(main_jsx)\n\n    # src/App.jsx or app/page.jsx",
+      "intent": null,
+      "tags": [
+        "Data Flow"
+      ],
+      "evidence": {},
+      "match_fingerprint": "58e18b2a5cde03d762147b1f10e156be1e7c35cc7807d9a87bdf54de5562c1ad",
+      "occurrences": [
+        {
+          "file": "scripts/project_generator.py",
+          "start_line": 113,
+          "end_line": 113,
+          "start_column": 13,
+          "end_column": 54
+        }
+      ]
+    },
+    {
+      "id": "TT2",
+      "finding_id": "finding-8f6fb7490d9a47dea8fd47c6adbde3ae",
+      "category": "Data Flow",
+      "pattern": "Tainted flow: 'app_dir' from input (line 118, user input) → open (file write)",
+      "severity": "MEDIUM",
+      "confidence": 0.65,
+      "location": {
+        "file": "scripts/project_generator.py",
+        "start_line": 149,
+        "end_line": 149,
+        "start_column": 13,
+        "end_column": 44
+      },
+      "finding": "open(app_dir / 'page.jsx', 'w')",
+      "explanation": "Data from a source is assigned to a variable that is later passed to a sink, creating a variable-mediated taint flow.",
+      "remediation": "Validate tainted variables before passing them to sinks. Use allowlists, type checks, or sanitization functions on data from external sources.",
+      "code_snippet": "  );\n}\n\"\"\"\n        with open(app_dir / 'page.jsx', 'w') as f:\n            f.write(page_jsx)\n    else:\n        app_jsx = \"\"\"import { useRef, useState } from 'react';",
+      "intent": null,
+      "tags": [
+        "Data Flow"
+      ],
+      "evidence": {},
+      "match_fingerprint": "14fe60720c5f50aba5009c2fd5f0eb7fc010a6678e8e87167bf41c2fea8d8f0a",
+      "occurrences": [
+        {
+          "file": "scripts/project_generator.py",
+          "start_line": 149,
+          "end_line": 149,
+          "start_column": 13,
+          "end_column": 44
+        }
+      ]
+    },
+    {
+      "id": "TT2",
+      "finding_id": "finding-6a5fc5ccd1a5424c99d1f73d33f8c14e",
+      "category": "Data Flow",
+      "pattern": "Tainted flow: 'base_path' from input (line 22, user input) → open (file write)",
+      "severity": "MEDIUM",
+      "confidence": 0.65,
+      "location": {
+        "file": "scripts/project_generator.py",
+        "start_line": 197,
+        "end_line": 197,
+        "start_column": 13,
+        "end_column": 53
+      },
+      "finding": "open(base_path / 'src' / 'App.jsx', 'w')",
+      "explanation": "Data from a source is assigned to a variable that is later passed to a sink, creating a variable-mediated taint flow.",
+      "remediation": "Validate tainted variables before passing them to sinks. Use allowlists, type checks, or sanitization functions on data from external sources.",
+      "code_snippet": "  );\n}\n\"\"\"\n        with open(base_path / 'src' / 'App.jsx', 'w') as f:\n            f.write(app_jsx)\n\n    # CSS",
+      "intent": null,
+      "tags": [
+        "Data Flow"
+      ],
+      "evidence": {},
+      "match_fingerprint": "a15b1789b9aa5b29e49fe9817186db463287de2fb0fc862b2293a3c324d46420",
+      "occurrences": [
+        {
+          "file": "scripts/project_generator.py",
+          "start_line": 197,
+          "end_line": 197,
+          "start_column": 13,
+          "end_column": 53
+        }
+      ]
+    },
+    {
+      "id": "TT2",
+      "finding_id": "finding-5e1605f8a6084d2f8037671176e6543b",
+      "category": "Data Flow",
+      "pattern": "Tainted flow: 'base_path' from input (line 22, user input) → open (file write)",
+      "severity": "MEDIUM",
+      "confidence": 0.65,
+      "location": {
+        "file": "scripts/project_generator.py",
+        "start_line": 257,
+        "end_line": 257,
+        "start_column": 13,
+        "end_column": 53
+      },
+      "finding": "open(base_path / 'src' / 'App.css', 'w')",
+      "explanation": "Data from a source is assigned to a variable that is later passed to a sink, creating a variable-mediated taint flow.",
+      "remediation": "Validate tainted variables before passing them to sinks. Use allowlists, type checks, or sanitization functions on data from external sources.",
+      "code_snippet": "  transform: scale(0.98);\n}\n\"\"\"\n        with open(base_path / 'src' / 'App.css', 'w') as f:\n            f.write(app_css)\n\n    # README.md",
+      "intent": null,
+      "tags": [
+        "Data Flow"
+      ],
+      "evidence": {},
+      "match_fingerprint": "0adf4b78a224298059261bb9ded390678930f7749e02ee8ae56148fba943838b",
+      "occurrences": [
+        {
+          "file": "scripts/project_generator.py",
+          "start_line": 257,
+          "end_line": 257,
+          "start_column": 13,
+          "end_column": 53
+        }
+      ]
+    },
+    {
+      "id": "TT2",
+      "finding_id": "finding-4d3a46c070884b5bb22eb824b90c6f6c",
+      "category": "Data Flow",
+      "pattern": "Tainted flow: 'base_path' from input (line 22, user input) → open (file write)",
+      "severity": "MEDIUM",
+      "confidence": 0.65,
+      "location": {
+        "file": "scripts/project_generator.py",
+        "start_line": 300,
+        "end_line": 300,
+        "start_column": 9,
+        "end_column": 43
+      },
+      "finding": "open(base_path / 'README.md', 'w')",
+      "explanation": "Data from a source is assigned to a variable that is later passed to a sink, creating a variable-mediated taint flow.",
+      "remediation": "Validate tainted variables before passing them to sinks. Use allowlists, type checks, or sanitization functions on data from external sources.",
+      "code_snippet": "- [Spline Documentation](https://docs.spline.design)\n- [React Spline GitHub](https://github.com/splinetool/react-spline)\n\"\"\"\n    with open(base_path / 'README.md', 'w') as f:\n        f.write(readme)\n\n    print(f\"\\n✅ Project '{project_name}' created successfully!\")",
+      "intent": null,
+      "tags": [
+        "Data Flow"
+      ],
+      "evidence": {},
+      "match_fingerprint": "c4ae3b860a9fdaf60942445a830c62f3dabbfe984b613dd0830aedc7efb71da2",
+      "occurrences": [
+        {
+          "file": "scripts/project_generator.py",
+          "start_line": 300,
+          "end_line": 300,
+          "start_column": 9,
+          "end_column": 43
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": true,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 5,
+    "scanned_components": 5,
+    "coverage_percent": 100.0,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 5,
+    "partially_inspected_files": 0,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 223,
+        "end_line": 223,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 289,
+        "end_line": 289,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 438,
+        "end_line": 438,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 577,
+        "end_line": 577,
+        "fatal": false
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 223,
+        "column": 4,
+        "evidence": "- `material.color` - Color hex value",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 289,
+        "column": 4,
+        "evidence": "// app/page.js (Next.js 13+ App Router)",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 438,
+        "column": 14,
+        "evidence": "loader.load('spline-model.glb', (gltf) => {",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 577,
+        "column": 16,
+        "evidence": "<Spline scene=\"my-scene.splinecode\" />",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 743,
+        "column": 4,
+        "evidence": "- `project_generator.py` - Generate Spline + React starter projects",
+        "target_path": "scripts/project_generator.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 744,
+        "column": 4,
+        "evidence": "- `component_builder.py` - Build Spline component wrappers with events",
+        "target_path": "scripts/component_builder.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 748,
+        "column": 1,
+        "evidence": "./scripts/project_generator.py",
+        "target_path": "scripts/project_generator.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 749,
+        "column": 1,
+        "evidence": "./scripts/component_builder.py",
+        "target_path": "scripts/component_builder.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      }
+    ],
+    "limitations": [],
+    "findings_before_filtering": 9,
+    "findings_after_filtering": 9
+  }
+}

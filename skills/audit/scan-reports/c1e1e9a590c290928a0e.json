@@ -1,0 +1,1341 @@
+{
+  "skill": {
+    "name": "dbt-sf-to-bq-translator",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\google\\skills\\dbt-sf-to-bq-translator",
+    "scanned_at": "2026-10-31T21:19:26.956241+00:00"
+  },
+  "risk_assessment": {
+    "score": 47,
+    "severity": "MEDIUM",
+    "recommendation": "CAUTION",
+    "max_issue_severity": "HIGH"
+  },
+  "components": [
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 170,
+      "executable": false,
+      "size_bytes": 15074,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/attribution.md",
+      "type": "markdown",
+      "lines": 39,
+      "executable": false,
+      "size_bytes": 1909,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/dbt_migration_patterns.md",
+      "type": "markdown",
+      "lines": 284,
+      "executable": false,
+      "size_bytes": 15100,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/bulk_translate_via_gcloud.py",
+      "type": "python",
+      "lines": 103,
+      "executable": true,
+      "size_bytes": 3139,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/dbt_translator.py",
+      "type": "python",
+      "lines": 2463,
+      "executable": true,
+      "size_bytes": 85139,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "AE1",
+      "finding_id": "finding-5d35d5686e00445c9d259d858e8ba6fc",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 93,
+        "end_line": null
+      },
+      "finding": "scripts/dbt_translator.py (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the target's analysis-completeness ledger and resolve all limitations. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "- `scripts/dbt_translator.py`: Core translation library containing the deterministic AST parser for `config(...)`, Jinja placeholder masking and restoration, JS",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "scripts/dbt_translator.py",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_agent_snooping"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_anti_refusal"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_deserialization"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_excessive_agency"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_harmful_content"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_memory_poisoning"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_privilege_escalation"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_prompt_injection"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_rogue_agent"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_ssrf"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_supply_chain"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_system_prompt_leakage"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "7c97b18c1673d53313fff08d5eb696d87645d1f8e05fcf17077329cab73505bc",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 93,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "LP3",
+      "finding_id": "finding-6dffe265d8614702b77e34c9e6195aca",
+      "category": "MCP Least Privilege",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 1,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "Without declared permissions the skill's intent is opaque and cannot be validated.",
+      "remediation": "Declare the skill's tool scope: for Claude Code / Agent Skills SKILL.md, list the tools the skill may invoke in the 'allowed-tools' frontmatter field; for MCP server manifests, add a 'permissions' list naming the required capabilities.",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI02"
+      ],
+      "evidence": {},
+      "match_fingerprint": null,
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 1,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AST4",
+      "finding_id": "finding-1c405d377c944b7a95c3e712e0e7be8a",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "scripts/dbt_translator.py",
+        "start_line": 2107,
+        "end_line": 2111,
+        "start_column": 4,
+        "end_column": 5
+      },
+      "finding": "subprocess.run(\n        [\"gcloud\", \"storage\", \"rm\", \"--recursive\", f\"{gcs_input_uri}/\"],\n        capture_output=True,\n        check=False,\n    )",
+      "explanation": "subprocess module calls execute external commands. Without careful input validation, this enables command injection.",
+      "remediation": "Use subprocess.run() with shell=False and an explicit argument list. Validate all inputs and avoid passing user-controlled data to commands.",
+      "code_snippet": "\n    # GCS copy\n    print(f\"Uploading files to {gcs_input_uri}...\")\n    subprocess.run(\n        [\"gcloud\", \"storage\", \"rm\", \"--recursive\", f\"{gcs_input_uri}/\"],\n        capture_output=True,\n        check=False,",
+      "intent": null,
+      "tags": [
+        "Dangerous Code Execution"
+      ],
+      "evidence": {},
+      "match_fingerprint": "4d738762cb63852d33ace07088f9e03fe3ba4c88c85566da31040304ccd649d3",
+      "occurrences": [
+        {
+          "file": "scripts/dbt_translator.py",
+          "start_line": 2107,
+          "end_line": 2111,
+          "start_column": 4,
+          "end_column": 5
+        }
+      ]
+    },
+    {
+      "id": "AST4",
+      "finding_id": "finding-ee2cc0c90dd74520a111cf37f29d2daa",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "scripts/dbt_translator.py",
+        "start_line": 2112,
+        "end_line": 2116,
+        "start_column": 4,
+        "end_column": 5
+      },
+      "finding": "subprocess.run(\n        [\"gcloud\", \"storage\", \"rm\", \"--recursive\", f\"{gcs_output_uri}/\"],\n        capture_output=True,\n        check=False,\n    )",
+      "explanation": "subprocess module calls execute external commands. Without careful input validation, this enables command injection.",
+      "remediation": "Use subprocess.run() with shell=False and an explicit argument list. Validate all inputs and avoid passing user-controlled data to commands.",
+      "code_snippet": "        capture_output=True,\n        check=False,\n    )\n    subprocess.run(\n        [\"gcloud\", \"storage\", \"rm\", \"--recursive\", f\"{gcs_output_uri}/\"],\n        capture_output=True,\n        check=False,",
+      "intent": null,
+      "tags": [
+        "Dangerous Code Execution"
+      ],
+      "evidence": {},
+      "match_fingerprint": "c20561470c00def280f4173cdabd28d60e26205426e1d1336c00530b6549d976",
+      "occurrences": [
+        {
+          "file": "scripts/dbt_translator.py",
+          "start_line": 2112,
+          "end_line": 2116,
+          "start_column": 4,
+          "end_column": 5
+        }
+      ]
+    },
+    {
+      "id": "AST4",
+      "finding_id": "finding-83c9eb0773f54ff8b7113f2d14b04467",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "scripts/dbt_translator.py",
+        "start_line": 2123,
+        "end_line": 2127,
+        "start_column": 8,
+        "end_column": 9
+      },
+      "finding": "subprocess.run(\n            [\"gcloud\", \"storage\", \"rm\", \"--recursive\", f\"{gcs_metadata_uri}/\"],\n            capture_output=True,\n            check=False,\n        )",
+      "explanation": "subprocess module calls execute external commands. Without careful input validation, this enables command injection.",
+      "remediation": "Use subprocess.run() with shell=False and an explicit argument list. Validate all inputs and avoid passing user-controlled data to commands.",
+      "code_snippet": "            \"Warning: Direct metadata ZIP processing is deprecated in BQMS v2 API. Please run a migration assessment first and pass the dataset ID using metadata_dataset.\"\n        )\n        print(\"Pre-processing metadata (mapping sources and refs)...\")\n        subprocess.run(\n            [\"gcloud\", \"storage\", \"rm\", \"--recursive\", f\"{gcs_metadata_uri}/\"],\n            capture_output=True,\n            check=False,",
+      "intent": null,
+      "tags": [
+        "Dangerous Code Execution"
+      ],
+      "evidence": {},
+      "match_fingerprint": "f7a0bf2e966325038d762981b7c2c66436597fdbd5f688f676028537440261af",
+      "occurrences": [
+        {
+          "file": "scripts/dbt_translator.py",
+          "start_line": 2123,
+          "end_line": 2127,
+          "start_column": 8,
+          "end_column": 9
+        }
+      ]
+    },
+    {
+      "id": "AST4",
+      "finding_id": "finding-96b4ab3885664d9b8c3557f1a2ee6162",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "scripts/dbt_translator.py",
+        "start_line": 2136,
+        "end_line": 2145,
+        "start_column": 12,
+        "end_column": 13
+      },
+      "finding": "subprocess.run(\n                [\n                    \"gcloud\",\n                    \"storage\",\n                    \"cp\",\n                    zip_path,\n                    f\"{gcs_metadata_uri}/metadata",
+      "explanation": "subprocess module calls execute external commands. Without careful input validation, this enables command injection.",
+      "remediation": "Use subprocess.run() with shell=False and an explicit argument list. Validate all inputs and avoid passing user-controlled data to commands.",
+      "code_snippet": "            zip_directory(local_temp_metadata, zip_path)\n\n            print(f\"Uploading metadata zip to {gcs_metadata_uri}/metadata.zip...\")\n            subprocess.run(\n                [\n                    \"gcloud\",\n                    \"storage\",",
+      "intent": null,
+      "tags": [
+        "Dangerous Code Execution"
+      ],
+      "evidence": {},
+      "match_fingerprint": "bc556170e7eccdf8ebadd97ba4b29ede62aeb70c78c0d938a8c6927663b346e7",
+      "occurrences": [
+        {
+          "file": "scripts/dbt_translator.py",
+          "start_line": 2136,
+          "end_line": 2145,
+          "start_column": 12,
+          "end_column": 13
+        }
+      ]
+    },
+    {
+      "id": "AST4",
+      "finding_id": "finding-259c0899093243c8b5c3c2b0d12f883d",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "scripts/dbt_translator.py",
+        "start_line": 2150,
+        "end_line": 2154,
+        "start_column": 4,
+        "end_column": 5
+      },
+      "finding": "subprocess.run(\n        [\"gcloud\", \"storage\", \"cp\", \"-r\", \".\", f\"{gcs_input_uri}/\"],\n        cwd=local_temp_input,\n        check=True,\n    )",
+      "explanation": "subprocess module calls execute external commands. Without careful input validation, this enables command injection.",
+      "remediation": "Use subprocess.run() with shell=False and an explicit argument list. Validate all inputs and avoid passing user-controlled data to commands.",
+      "code_snippet": "            print(\"Warning: No metadata files were processed successfully.\")\n\n    # Upload by running copy from local_temp_input to avoid nesting\n    subprocess.run(\n        [\"gcloud\", \"storage\", \"cp\", \"-r\", \".\", f\"{gcs_input_uri}/\"],\n        cwd=local_temp_input,\n        check=True,",
+      "intent": null,
+      "tags": [
+        "Dangerous Code Execution"
+      ],
+      "evidence": {},
+      "match_fingerprint": "3239879321b74d00ebe7db9b50732f41801dab4bd94d3f2650d79f63539cfa2b",
+      "occurrences": [
+        {
+          "file": "scripts/dbt_translator.py",
+          "start_line": 2150,
+          "end_line": 2154,
+          "start_column": 4,
+          "end_column": 5
+        }
+      ]
+    },
+    {
+      "id": "AST4",
+      "finding_id": "finding-8c4669b62ff6494c88596559def2b875",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "scripts/dbt_translator.py",
+        "start_line": 2189,
+        "end_line": 2200,
+        "start_column": 10,
+        "end_column": 5
+      },
+      "finding": "subprocess.run(\n        [\n            \"gcloud\",\n            \"bq\",\n            \"migration-workflows\",\n            \"create\",\n            f\"--location={location}\",\n            f\"--config-file={config_fil",
+      "explanation": "subprocess module calls execute external commands. Without careful input validation, this enables command injection.",
+      "remediation": "Use subprocess.run() with shell=False and an explicit argument list. Validate all inputs and avoid passing user-controlled data to commands.",
+      "code_snippet": "    print(\n        f\"Triggering BigQuery Translation Service in location: {location} (please wait)...\"\n    )\n    res = subprocess.run(\n        [\n            \"gcloud\",\n            \"bq\",",
+      "intent": null,
+      "tags": [
+        "Dangerous Code Execution"
+      ],
+      "evidence": {},
+      "match_fingerprint": "4a95f53b550a990e8b7cf944ac42278c4f380793e54af6b9b30e7255f62bae1b",
+      "occurrences": [
+        {
+          "file": "scripts/dbt_translator.py",
+          "start_line": 2189,
+          "end_line": 2200,
+          "start_column": 10,
+          "end_column": 5
+        }
+      ]
+    },
+    {
+      "id": "AST4",
+      "finding_id": "finding-bb26127d76604fb480a8fc873e4203c8",
+      "category": "Dangerous Code Execution",
+      "pattern": "subprocess module call",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "scripts/dbt_translator.py",
+        "start_line": 2205,
+        "end_line": 2209,
+        "start_column": 4,
+        "end_column": 5
+      },
+      "finding": "subprocess.run(\n        [\"gcloud\", \"storage\", \"cp\", \"-r\", f\"{gcs_output_uri}/\", \".\"],\n        cwd=local_temp_output,\n        check=True,\n    )",
+      "explanation": "subprocess module calls execute external commands. Without careful input validation, this enables command injection.",
+      "remediation": "Use subprocess.run() with shell=False and an explicit argument list. Validate all inputs and avoid passing user-controlled data to commands.",
+      "code_snippet": "\n    # Download translated files\n    print(f\"Downloading outputs from {gcs_output_uri}...\")\n    subprocess.run(\n        [\"gcloud\", \"storage\", \"cp\", \"-r\", f\"{gcs_output_uri}/\", \".\"],\n        cwd=local_temp_output,\n        check=True,",
+      "intent": null,
+      "tags": [
+        "Dangerous Code Execution"
+      ],
+      "evidence": {},
+      "match_fingerprint": "e4d3631fc18cef0ec1b74c382e1717a957e4643a1d091bf514ccfd63bc0920c3",
+      "occurrences": [
+        {
+          "file": "scripts/dbt_translator.py",
+          "start_line": 2205,
+          "end_line": 2209,
+          "start_column": 4,
+          "end_column": 5
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": true,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 5,
+    "scanned_components": 4,
+    "coverage_percent": 80.0,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 4,
+    "partially_inspected_files": 1,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 30,
+        "end_line": 30,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 31,
+        "end_line": 31,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 65,
+        "end_line": 65,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 87,
+        "end_line": 87,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 89,
+        "end_line": 89,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 105,
+        "end_line": 105,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 108,
+        "end_line": 108,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 119,
+        "end_line": 119,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 143,
+        "end_line": 143,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 144,
+        "end_line": 144,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "obfuscated_instruction_text",
+        "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+        "path": "scripts/dbt_translator.py",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_agent_snooping",
+          "static_patterns_anti_refusal",
+          "static_patterns_deserialization",
+          "static_patterns_excessive_agency",
+          "static_patterns_harmful_content",
+          "static_patterns_memory_poisoning",
+          "static_patterns_privilege_escalation",
+          "static_patterns_prompt_injection",
+          "static_patterns_rogue_agent",
+          "static_patterns_ssrf",
+          "static_patterns_supply_chain",
+          "static_patterns_system_prompt_leakage",
+          "static_patterns_tool_misuse"
+        ]
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "reference_coverage",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "degraded",
+        "planned_work": 5,
+        "completed": 4,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "degraded",
+        "planned_work": 5,
+        "completed": 4,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "degraded",
+        "planned_work": 5,
+        "completed": 4,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "degraded",
+        "planned_work": 5,
+        "completed": 4,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "degraded",
+        "planned_work": 5,
+        "completed": 4,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "degraded",
+        "planned_work": 5,
+        "completed": 4,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "degraded",
+        "planned_work": 5,
+        "completed": 4,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "degraded",
+        "planned_work": 5,
+        "completed": 4,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "degraded",
+        "planned_work": 5,
+        "completed": 4,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "degraded",
+        "planned_work": 5,
+        "completed": 4,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "degraded",
+        "planned_work": 5,
+        "completed": 4,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "degraded",
+        "planned_work": 5,
+        "completed": 4,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "degraded",
+        "planned_work": 5,
+        "completed": 4,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 27,
+        "column": 31,
+        "evidence": "MUST read [Usage Attribution](references/attribution.md). For commands executed",
+        "target_path": "references/attribution.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 30,
+        "column": 40,
+        "evidence": "`CLOUDSDK_METRICS_REQUEST_ATTRIBUTION=\"agent-skills/1.0 (skill:dbt-sf-to-bq-translator)\"`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 31,
+        "column": 13,
+        "evidence": "and append `agent-skills/1.0 (skill:dbt-sf-to-bq-translator)` to",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 37,
+        "column": 58,
+        "evidence": "1. **Google Cloud SDK**: Install the [Google Cloud SDK](https://docs.cloud.google.com/sdk/docs/install-sdk.md.txt) if not already installed.",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 52,
+        "column": 151,
+        "evidence": "ion (default recommended: `us-central1` or `us`). See [Google Cloud Locations](https://cloud.google.com/about/locations):",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 65,
+        "column": 104,
+        "evidence": "6. (Optional) Local path to a directory or `.zip` file containing source database metadata (such as `columns.csv` or `tables.csv`).",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 65,
+        "column": 121,
+        "evidence": "6. (Optional) Local path to a directory or `.zip` file containing source database metadata (such as `columns.csv` or `tables.csv`).",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 69,
+        "column": 88,
+        "evidence": "Execute the deterministic end-to-end migration using the bundled translation script `scripts/bulk_translate_via_gcloud.py`:",
+        "target_path": "scripts/bulk_translate_via_gcloud.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 71,
+        "column": 11,
+        "evidence": "python3 scripts/bulk_translate_via_gcloud.py \\",
+        "target_path": "scripts/bulk_translate_via_gcloud.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 87,
+        "column": 95,
+        "evidence": "| `--metadata` | `None` | Optional path to a directory or `.zip` archive containing source `tables.csv` and `columns.csv`. |",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 87,
+        "column": 112,
+        "evidence": "| `--metadata` | `None` | Optional path to a directory or `.zip` archive containing source `tables.csv` and `columns.csv`. |",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 89,
+        "column": 196,
+        "evidence": "struct_col,record_col`) to convert from `JSON_VALUE` to native dot notation (`col.field`). |",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 92,
+        "column": 6,
+        "evidence": "- `scripts/bulk_translate_via_gcloud.py`: Orchestrates end-to-end bulk migration, automating pre-processing, Cloud Storage upload, BigQuery Translation Service ",
+        "target_path": "scripts/bulk_translate_via_gcloud.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 93,
+        "column": 6,
+        "evidence": "- `scripts/dbt_translator.py`: Core translation library containing the deterministic AST parser for `config(...)`, Jinja placeholder masking and restoration, JS",
+        "target_path": "scripts/dbt_translator.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 105,
+        "column": 129,
+        "evidence": "ies matching discovered dbt models/sources to their placeholder names in `columns.csv` and `tables.csv`, clear catalog names to prevent namespace resolution err",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 105,
+        "column": 147,
+        "evidence": "vered dbt models/sources to their placeholder names in `columns.csv` and `tables.csv`, clear catalog names to prevent namespace resolution errors, package into ",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 105,
+        "column": 234,
+        "evidence": "clear catalog names to prevent namespace resolution errors, package into `metadata.zip`, and upload to Cloud Storage.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 108,
+        "column": 17,
+        "evidence": "- Create `migration_config.yaml` specifying `snowflakeDialect` as source and `bigqueryDialect` as target (with `schemaPath` pointing to `metadata.zip` if provid",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 108,
+        "column": 144,
+        "evidence": "as source and `bigqueryDialect` as target (with `schemaPath` pointing to `metadata.zip` if provided).",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 119,
+        "column": 231,
+        "evidence": "get), convert `json_value` on `STRUCT` columns to direct dot notation (`col.field`) and on `ARRAY<STRUCT>` columns to `col[SAFE_OFFSET(idx)].field`, and clean `",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 139,
+        "column": 290,
+        "evidence": "ups using BigQuery's standard functions and consult [dbt_migration_patterns.md](references/dbt_migration_patterns.md) for detailed patterns and error remedies:",
+        "target_path": "references/dbt_migration_patterns.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 141,
+        "column": 360,
+        "evidence": "ING_ARRAY` based on source schema; see Section 3 of [dbt_migration_patterns.md](references/dbt_migration_patterns.md)).",
+        "target_path": "references/dbt_migration_patterns.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 142,
+        "column": 366,
+        "evidence": "tream, cast via `TIMESTAMP` first (see Section 5 of [dbt_migration_patterns.md](references/dbt_migration_patterns.md)).",
+        "target_path": "references/dbt_migration_patterns.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 143,
+        "column": 78,
+        "evidence": "- **BigQuery `STRUCT` & `ARRAY<STRUCT>` Columns**: Use direct dot notation (`col.field`, e.g., `source.struct_col.count`) for native `STRUCT` columns and `sourc",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 143,
+        "column": 97,
+        "evidence": "RUCT` & `ARRAY<STRUCT>` Columns**: Use direct dot notation (`col.field`, e.g., `source.struct_col.count`) for native `STRUCT` columns and `source.col[SAFE_OFFSE",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 143,
+        "column": 394,
+        "evidence": "ON)` do not accept `STRUCT` types (see Section 6 of [dbt_migration_patterns.md](references/dbt_migration_patterns.md)).",
+        "target_path": "references/dbt_migration_patterns.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 144,
+        "column": 248,
+        "evidence": "`error_unimplemented` or 16MB `substr(string(...), 1, 16777216)` wrappers with `col.field` (for `STRUCT` columns) or `JSON_VALUE(col, '$.field')` (for `JSON` co",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 144,
+        "column": 383,
+        "evidence": "$.field')` (for `JSON` columns; see Sections 7–8 of [dbt_migration_patterns.md](references/dbt_migration_patterns.md)).",
+        "target_path": "references/dbt_migration_patterns.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 167,
+        "column": 60,
+        "evidence": "For translation examples, see: [dbt_migration_patterns.md](references/dbt_migration_patterns.md)",
+        "target_path": "references/dbt_migration_patterns.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      }
+    ],
+    "limitations": [
+      "Analyzer static_patterns_agent_snooping status: degraded.",
+      "Analyzer static_patterns_anti_refusal status: degraded.",
+      "Analyzer static_patterns_deserialization status: degraded.",
+      "Analyzer static_patterns_excessive_agency status: degraded.",
+      "Analyzer static_patterns_harmful_content status: degraded.",
+      "Analyzer static_patterns_memory_poisoning status: degraded.",
+      "Analyzer static_patterns_privilege_escalation status: degraded.",
+      "Analyzer static_patterns_prompt_injection status: degraded.",
+      "Analyzer static_patterns_rogue_agent status: degraded.",
+      "Analyzer static_patterns_ssrf status: degraded.",
+      "Analyzer static_patterns_supply_chain status: degraded.",
+      "Analyzer static_patterns_system_prompt_leakage status: degraded.",
+      "Analyzer static_patterns_tool_misuse status: degraded."
+    ],
+    "findings_before_filtering": 9,
+    "findings_after_filtering": 9
+  }
+}

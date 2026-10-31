@@ -1,0 +1,1706 @@
+{
+  "skill": {
+    "name": "tui-design",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\gfargo\\tui-design-skill\\tui-design",
+    "scanned_at": "2026-10-31T21:34:27.498478+00:00"
+  },
+  "risk_assessment": {
+    "score": 100,
+    "severity": "CRITICAL",
+    "recommendation": "DO_NOT_INSTALL",
+    "max_issue_severity": "HIGH"
+  },
+  "components": [
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 141,
+      "executable": false,
+      "size_bytes": 12567,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "agents/openai.yaml",
+      "type": "yaml",
+      "lines": 4,
+      "executable": false,
+      "size_bytes": 197,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/cli-basics.md",
+      "type": "markdown",
+      "lines": 581,
+      "executable": false,
+      "size_bytes": 39515,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/ecosystem-go.md",
+      "type": "markdown",
+      "lines": 575,
+      "executable": false,
+      "size_bytes": 37072,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/ecosystem-python.md",
+      "type": "markdown",
+      "lines": 452,
+      "executable": false,
+      "size_bytes": 26434,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/ecosystem-rust.md",
+      "type": "markdown",
+      "lines": 495,
+      "executable": false,
+      "size_bytes": 32229,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/ecosystem-typescript.md",
+      "type": "markdown",
+      "lines": 389,
+      "executable": false,
+      "size_bytes": 28960,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/exemplar-apps.md",
+      "type": "markdown",
+      "lines": 246,
+      "executable": false,
+      "size_bytes": 18304,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/interaction-patterns.md",
+      "type": "markdown",
+      "lines": 412,
+      "executable": false,
+      "size_bytes": 31977,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/terminal-protocols.md",
+      "type": "markdown",
+      "lines": 75,
+      "executable": false,
+      "size_bytes": 15909,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/visual-patterns.md",
+      "type": "markdown",
+      "lines": 674,
+      "executable": false,
+      "size_bytes": 52959,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "AE1",
+      "finding_id": "finding-43951e08ec4642ec849858366998b28e",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 17,
+        "end_line": null
+      },
+      "finding": "references/ecosystem-typescript.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "| TypeScript/JavaScript, Ink, OpenTUI, Clack, Inquirer | `references/ecosystem-typescript.md` |",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/ecosystem-typescript.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "49a9475996eca9e8cbd134a1baf5c2f0f40108882ad4a10376e4f7e6d3dbcd93",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 17,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-38b46d5f7b3a412496e4f6a0b46bebfc",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 19,
+        "end_line": null
+      },
+      "finding": "references/visual-patterns.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "zation and Unicode width, accessibility (screen readers, plain mode, motion) | `references/visual-patterns.md` |",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/visual-patterns.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "436ae3c220d6fb20ad27a386e0851a45c540879f8d47d475b7d7d1da6a6af15a",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 19,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-13e4804d4e544838a4df5f58f9e52a60",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 39,
+        "end_line": null
+      },
+      "finding": "references/visual-patterns.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "down stack, dashboard, IDE-style panes, overlay, or tabs—and verify it against `visual-patterns.md`. Sketch the states and layout before writing code: initial, ",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/visual-patterns.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "436ae3c220d6fb20ad27a386e0851a45c540879f8d47d475b7d7d1da6a6af15a",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 39,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-936d72a7437544668ad92d126fb59e03",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 78,
+        "end_line": null
+      },
+      "finding": "references/visual-patterns.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "ent mode when automation or serious accessibility needs require linear output; `visual-patterns.md` → *Accessibility* defines what it must contain.",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/visual-patterns.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "436ae3c220d6fb20ad27a386e0851a45c540879f8d47d475b7d7d1da6a6af15a",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 78,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-ce0c76730d4244c3bb05c87d2db10575",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 93,
+        "end_line": null
+      },
+      "finding": "references/visual-patterns.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "epeated fields to remove. Do not stop at “simplify it.” Use the full method in `visual-patterns.md` → *The clutter audit*.",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/visual-patterns.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "436ae3c220d6fb20ad27a386e0851a45c540879f8d47d475b7d7d1da6a6af15a",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 93,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-e583cdb531f34091b80a93d3e56f3a0c",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 97,
+        "end_line": null
+      },
+      "finding": "references/visual-patterns.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "s a single-pane fallback. Use the breakpoint ladder and minimum-size method in `visual-patterns.md` → *Responsive design*.",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/visual-patterns.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "436ae3c220d6fb20ad27a386e0851a45c540879f8d47d475b7d7d1da6a6af15a",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 97,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-cca32b563f384faf893e5a98f209bd8b",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 20,
+        "end_line": null
+      },
+      "finding": "references/interaction-patterns.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Review the target's analysis-completeness ledger and resolve all limitations. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "ection, log follow mode, trees, text input, forms, mouse, confirmation, undo | `references/interaction-patterns.md` |",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/interaction-patterns.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_agent_snooping"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_anti_refusal"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_deserialization"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_excessive_agency"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_harmful_content"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_memory_poisoning"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_privilege_escalation"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_prompt_injection"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_rogue_agent"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_ssrf"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_supply_chain"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_system_prompt_leakage"
+            ]
+          },
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "e71899b6734d84540aebdf2f4a52c833b192c9dab47e631ace9d181c710a698a",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 20,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-f7d85aa9fe944e29b31d0cb981456b9e",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 76,
+        "end_line": null
+      },
+      "finding": "references/interaction-patterns.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Review the target's analysis-completeness ledger and resolve all limitations. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "amework. Which other keys are reserved, and why raw mode frees `Ctrl+S`, is in `interaction-patterns.md` → *Reserved keys*.",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/interaction-patterns.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_agent_snooping"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_anti_refusal"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_deserialization"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_excessive_agency"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_harmful_content"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_memory_poisoning"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_privilege_escalation"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_prompt_injection"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_rogue_agent"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_ssrf"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_supply_chain"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_system_prompt_leakage"
+            ]
+          },
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "e71899b6734d84540aebdf2f4a52c833b192c9dab47e631ace9d181c710a698a",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 76,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "SC2",
+      "finding_id": "finding-66bcd2b7259b4aaa8409f505e253c255",
+      "category": "Supply Chain",
+      "pattern": "External Script Fetching",
+      "severity": "HIGH",
+      "confidence": 0.9,
+      "location": {
+        "file": "references/cli-basics.md",
+        "start_line": 353,
+        "end_line": null,
+        "start_column": 230
+      },
+      "finding": "curl | sh",
+      "explanation": "Remote code is downloaded and executed. This bypasses code review and could introduce malicious code.",
+      "remediation": "Avoid downloading and executing remote scripts. Use trusted packages from PyPI/npm. If remote fetch is required, verify checksums and use HTTPS.",
+      "code_snippet": "\n### Never silently edit rc files\n\nShow the user the line and tell them to add it (`Add this to the end of ~/.zshrc`) — this is what starship, zoxide, and mise all do, and it's the strong convention. Auto-appending via an explicit, visible installer step (atuin's `curl | sh` installer does this) is an accepted variant; silently mutating a user's rc file without telling them is not.\n\n---\n",
+      "intent": null,
+      "tags": [
+        "Supply Chain"
+      ],
+      "evidence": {},
+      "match_fingerprint": "ebbef685b1c1efc2c831bcdb8c1073d0ef4e35ed2ec5ba08fa7bc9c205d8407f",
+      "occurrences": [
+        {
+          "file": "references/cli-basics.md",
+          "start_line": 353,
+          "end_line": null,
+          "start_column": 230
+        }
+      ]
+    },
+    {
+      "id": "RA1",
+      "finding_id": "finding-0bf44bc5c4fa4d8c98194a7f797529b2",
+      "category": "Rogue Agent",
+      "pattern": "Self-Modification",
+      "severity": "HIGH",
+      "confidence": 0.9,
+      "location": {
+        "file": "references/cli-basics.md",
+        "start_line": 535,
+        "end_line": null,
+        "start_column": 153
+      },
+      "finding": "self-update",
+      "explanation": "Skill modifies its own code, configuration, or behavior at runtime. Self-modification enables an agent to escalate privileges, disable safety constraints, or install persistent backdoors.",
+      "remediation": "Prevent the skill from modifying its own code, SKILL.md, or configuration files. Treat skill files as read-only at runtime.",
+      "code_snippet": "\nIf you check for updates: check async, cache the result (once a day is the norm — both gh and the widely-used `update-notifier` npm package default to a 24-hour interval), and print the notice to stderr *after* your normal output, not interleaved with it. Auto-skip in CI and gate on stdout being a TTY. Provide an opt-out env var (gh's is `GH_NO_UPDATE_NOTIFIER`; the npm package's is `NO_UPDATE_NOTIFIER`).\n\n**Defer to the package manager that installed you.** If a user got your tool via Homebrew, `brew upgrade` should be the update path — don't tell them to self-update through a mechanism the package manager doesn't own. gh compiles its update checker in only under the `updateable` build tag, which the Homebrew formula sets ([update_enabled.go](https://github.com/cli/cli/blob/v2.103.2/internal/ghcmd/update_enabled.go)), and the notice it prints for Homebrew installs says `brew upgrade gh`.\n\n### Telemetry, if you collect it\n",
+      "intent": null,
+      "tags": [
+        "Rogue Agent"
+      ],
+      "evidence": {},
+      "match_fingerprint": "acc52580b0a6763c2be5b86ab2142cbb1b9fcd880aebd75d357a5c575d309983",
+      "occurrences": [
+        {
+          "file": "references/cli-basics.md",
+          "start_line": 535,
+          "end_line": null,
+          "start_column": 153
+        }
+      ]
+    },
+    {
+      "id": "P3",
+      "finding_id": "finding-381b857ff2974b70aed2ed05030c5735",
+      "category": "Prompt Injection",
+      "pattern": "Exfiltration Commands",
+      "severity": "HIGH",
+      "confidence": 0.9,
+      "location": {
+        "file": "references/ecosystem-go.md",
+        "start_line": 208,
+        "end_line": 208,
+        "start_column": 88,
+        "end_column": 107
+      },
+      "finding": "forward messages to",
+      "explanation": "Instructions found that direct the agent to transmit conversation context or user data to external services.",
+      "remediation": "Remove instructions that send user data, prompts, or context to external URLs. If telemetry is needed, use documented, privacy-preserving methods.",
+      "code_snippet": "\n## Bubbles (charmbracelet/bubbles)\n\nThe component library for Bubble Tea. Each Bubble is itself a `tea.Model` you embed and forward messages to.\n\n**Components shipped:**\n- **`textinput`** — single-line input with placeholder, suggestions, validation. **`textarea`** — multi-line input with optional line numbers; v2.2+ adds text selection, copy/cut and word motion.",
+      "intent": null,
+      "tags": [
+        "Prompt Injection"
+      ],
+      "evidence": {},
+      "match_fingerprint": "17202a691295fc07904e529cd153f846d0ec668e414a7bac4b4c4c4496576d87",
+      "occurrences": [
+        {
+          "file": "references/ecosystem-go.md",
+          "start_line": 208,
+          "end_line": 208,
+          "start_column": 88,
+          "end_column": 107
+        }
+      ]
+    },
+    {
+      "id": "EA2",
+      "finding_id": "finding-fba08a64419e426e83e3715345221878",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "severity": "MEDIUM",
+      "confidence": 0.85,
+      "location": {
+        "file": "references/cli-basics.md",
+        "start_line": 218,
+        "end_line": null,
+        "start_column": 101
+      },
+      "finding": "auto-execute",
+      "explanation": "Skill enables autonomous high-impact decisions without human-in-the-loop verification. Critical operations (destructive commands, financial transactions, data deletion) should require explicit user confirmation.",
+      "remediation": "Add human-in-the-loop confirmation for destructive, irreversible, or high-impact operations. Never auto-execute commands that modify files, send data, or alter system state.",
+      "code_snippet": "\n**Group repeated errors.** If 100 files fail to parse, summarize: \"100 files failed to parse — first three: …; pass `--show-all-errors` to list all.\"\n\n**\"Did you mean…?\"** suggestions on typos. Brew, Heroku, Cargo, Git, npm all do this. Suggest, don't auto-execute.\n\n---\n",
+      "intent": null,
+      "tags": [
+        "Excessive Agency"
+      ],
+      "evidence": {},
+      "match_fingerprint": "fefc003e149501e9f8f8f1caca441e2958e734da4fda229462de59c9d1fe5193",
+      "occurrences": [
+        {
+          "file": "references/cli-basics.md",
+          "start_line": 218,
+          "end_line": null,
+          "start_column": 101
+        }
+      ]
+    },
+    {
+      "id": "RA2",
+      "finding_id": "finding-b98c840121644af09127e7cc51fd9896",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "references/cli-basics.md",
+        "start_line": 306,
+        "end_line": null,
+        "start_column": 53
+      },
+      "finding": "create container`.\n- `gh pr list`, `gh issue close`, `gh repo clone`.\n\nNoun-verb scales: adding `pr review` doesn't conflict with `issue review`. Verb-first runs out of namespace.\n\n**Same flag = same ",
+      "explanation": "Skill establishes unauthorized persistence across sessions via cron jobs, startup scripts, or state files. Session persistence allows an attacker to maintain access beyond the current interaction.",
+      "remediation": "Remove any persistence mechanisms (cron jobs, startup scripts, state files). Skills should not maintain state across sessions without explicit user consent.",
+      "code_snippet": "## Subcommands\n\nSingle-command tools (`grep`, `cp`, `rg`) are simple; multi-command tools (`git`, `gh`, `docker`) fit many objects. For multi-command tools, **noun-verb** is the more common order (clig.dev says either order works, but noun-verb \"seems to be more common\"):\n- `docker container create` (noun-verb), not `docker create container`.\n- `gh pr list`, `gh issue close`, `gh repo clone`.\n\nNoun-verb scales: adding `pr review` doesn't conflict with `issue review`. Verb-first runs out of namespace.",
+      "intent": null,
+      "tags": [
+        "Rogue Agent"
+      ],
+      "evidence": {},
+      "match_fingerprint": "250c78f8b6b793d0d95645948556910753f933d87302e1323cfdfae4bed1bee0",
+      "occurrences": [
+        {
+          "file": "references/cli-basics.md",
+          "start_line": 306,
+          "end_line": null,
+          "start_column": 53
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-58fa8967e4274e94aba88b87f1ec8672",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.75,
+      "location": {
+        "file": "references/cli-basics.md",
+        "start_line": 306,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "Docker image references without a specific tag (:latest is implicit) or digest (@sha256:...) can be silently replaced by a malicious image.",
+      "remediation": "Pin the image: image:tag or image@sha256:abc123",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "c95fdd20e0fdd9967e47b56538bda85fdbf807abfefa8bde298e03c81ccbaaee",
+      "occurrences": [
+        {
+          "file": "references/cli-basics.md",
+          "start_line": 306,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "PE2",
+      "finding_id": "finding-bdcaf612b15a48ba870589a4b5f00e30",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "severity": "MEDIUM",
+      "confidence": 0.8,
+      "location": {
+        "file": "references/cli-basics.md",
+        "start_line": 425,
+        "end_line": null,
+        "start_column": 246
+      },
+      "finding": "chmod 600",
+      "explanation": "Commands invoke sudo or root privileges. Verify this elevated access is necessary and justified.",
+      "remediation": "Avoid sudo/root unless strictly required. Prefer least-privilege patterns. If elevation is needed, document the justification and scope.",
+      "code_snippet": "- Node — **not `keytar`, archived and unmaintained since December 2022**; VS Code moved to Electron's `safeStorage`, and a plain Node CLI should fall back to a config file.\n- On Linux, keychain backends need a running Secret Service daemon (GNOME Keyring/KWallet) that headless containers often lack, so ship an explicit plaintext fallback (gh's opt-in `--insecure-storage`) rather than failing silently.\n\n**If you do fall back to a plaintext file, set the permissions explicitly — don't rely on umask.** AWS CLI shipped this bug (CVE-2026-13769): under a default umask, three subcommands wrote credential files world-readable (0644) instead of 0600. `chmod 600` the file yourself at creation time.\n\n---\n",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "fac387638fbcbc4ed94acb702b3cf68cbc839ee694afdddde6d97a39a3523b73",
+      "occurrences": [
+        {
+          "file": "references/cli-basics.md",
+          "start_line": 425,
+          "end_line": null,
+          "start_column": 246
+        }
+      ]
+    },
+    {
+      "id": "TM3",
+      "finding_id": "finding-c58fdb8eed60401c9014d43064553977",
+      "category": "Tool Misuse",
+      "pattern": "Unsafe Defaults",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/cli-basics.md",
+        "start_line": 425,
+        "end_line": null,
+        "start_column": 206
+      },
+      "finding": "world-readable",
+      "explanation": "Tool defaults are unsafe or overly permissive (e.g. disabled TLS verification, no authentication, world-writable permissions). Unsafe defaults widen the attack surface.",
+      "remediation": "Override unsafe defaults with secure settings (verify=True, auth required, restrictive permissions). Review and harden all tool configurations.",
+      "code_snippet": "- Node — **not `keytar`, archived and unmaintained since December 2022**; VS Code moved to Electron's `safeStorage`, and a plain Node CLI should fall back to a config file.\n- On Linux, keychain backends need a running Secret Service daemon (GNOME Keyring/KWallet) that headless containers often lack, so ship an explicit plaintext fallback (gh's opt-in `--insecure-storage`) rather than failing silently.\n\n**If you do fall back to a plaintext file, set the permissions explicitly — don't rely on umask.** AWS CLI shipped this bug (CVE-2026-13769): under a default umask, three subcommands wrote credential files world-readable (0644) instead of 0600. `chmod 600` the file yourself at creation time.\n\n---\n",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "08ab99de1034a0cd722661ecc978dd2265680bf78de538d14d0dea371d421246",
+      "occurrences": [
+        {
+          "file": "references/cli-basics.md",
+          "start_line": 425,
+          "end_line": null,
+          "start_column": 206
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-f6eb6150b8414246b3496d49ecdfb4ac",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/ecosystem-typescript.md",
+        "start_line": 226,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "76f641c5a891a76fac35bb7b80d4b90737018d346bbd71a1471ddac1b34896f9",
+      "occurrences": [
+        {
+          "file": "references/ecosystem-typescript.md",
+          "start_line": 226,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "EA2",
+      "finding_id": "finding-ae9c5d9c41924be1a05bc42ba0808cb7",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "severity": "MEDIUM",
+      "confidence": 0.75,
+      "location": {
+        "file": "references/interaction-patterns.md",
+        "start_line": 403,
+        "end_line": null,
+        "start_column": 31
+      },
+      "finding": "without confirmation",
+      "explanation": "Skill enables autonomous high-impact decisions without human-in-the-loop verification. Critical operations (destructive commands, financial transactions, data deletion) should require explicit user confirmation.",
+      "remediation": "Add human-in-the-loop confirmation for destructive, irreversible, or high-impact operations. Never auto-execute commands that modify files, send data, or alter system state.",
+      "code_snippet": "5. **`Esc` doesn't back up or dismiss** where the UI establishes a navigation stack or modal.\n6. **No discoverable key help** in an action-rich app; `?` is conventional, but an equivalent visible route is fine.\n7. **Filter that's slow** (>100ms updates).\n8. **Destructive single-letter without confirmation or undo.** Either confirm or implement undo.\n9. **Inconsistent meanings for the same key across panels** without a footer hint bar to explain.\n10. **Mouse-only actions** with no keyboard equivalent.\n11. **Tab order that skips around** (not following visual reading order).",
+      "intent": null,
+      "tags": [
+        "Excessive Agency"
+      ],
+      "evidence": {},
+      "match_fingerprint": "185d22f157da5a84d02dff9686fa7f147180d794b4c7e43df099ae9daa3d598e",
+      "occurrences": [
+        {
+          "file": "references/interaction-patterns.md",
+          "start_line": 403,
+          "end_line": null,
+          "start_column": 31
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": false,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 11,
+    "scanned_components": 8,
+    "coverage_percent": 72.7,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 8,
+    "partially_inspected_files": 3,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "references/ecosystem-typescript.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "obfuscated_instruction_text",
+        "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+        "path": "references/interaction-patterns.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_agent_snooping",
+          "static_patterns_anti_refusal",
+          "static_patterns_deserialization",
+          "static_patterns_excessive_agency",
+          "static_patterns_harmful_content",
+          "static_patterns_memory_poisoning",
+          "static_patterns_privilege_escalation",
+          "static_patterns_prompt_injection",
+          "static_patterns_rogue_agent",
+          "static_patterns_ssrf",
+          "static_patterns_supply_chain",
+          "static_patterns_system_prompt_leakage"
+        ]
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "references/interaction-patterns.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "references/visual-patterns.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "reference_coverage",
+        "status": "completed",
+        "planned_work": 8,
+        "completed": 8,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "degraded",
+        "planned_work": 11,
+        "completed": 10,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "degraded",
+        "planned_work": 11,
+        "completed": 10,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "degraded",
+        "planned_work": 11,
+        "completed": 10,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "degraded",
+        "planned_work": 11,
+        "completed": 10,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "degraded",
+        "planned_work": 11,
+        "completed": 10,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "degraded",
+        "planned_work": 11,
+        "completed": 10,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "degraded",
+        "planned_work": 11,
+        "completed": 10,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "degraded",
+        "planned_work": 11,
+        "completed": 10,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "degraded",
+        "planned_work": 11,
+        "completed": 10,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "degraded",
+        "planned_work": 11,
+        "completed": 10,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "degraded",
+        "planned_work": 11,
+        "completed": 10,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "degraded",
+        "planned_work": 11,
+        "completed": 10,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "degraded",
+        "planned_work": 11,
+        "completed": 8,
+        "partial": 3,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 14,
+        "column": 54,
+        "evidence": "| Go, Bubble Tea, Lipgloss, Bubbles, tview, gocui | `references/ecosystem-go.md` |",
+        "target_path": "references/ecosystem-go.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 15,
+        "column": 40,
+        "evidence": "| Rust, Ratatui, crossterm, Cursive | `references/ecosystem-rust.md` |",
+        "target_path": "references/ecosystem-rust.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 16,
+        "column": 51,
+        "evidence": "| Python, Textual, Rich, prompt_toolkit, urwid | `references/ecosystem-python.md` |",
+        "target_path": "references/ecosystem-python.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 17,
+        "column": 59,
+        "evidence": "| TypeScript/JavaScript, Ink, OpenTUI, Clack, Inquirer | `references/ecosystem-typescript.md` |",
+        "target_path": "references/ecosystem-typescript.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 18,
+        "column": 140,
+        "evidence": "n` and errors, completions, paging, config, Windows, CLI testing, automation | `references/cli-basics.md` |",
+        "target_path": "references/cli-basics.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 19,
+        "column": 372,
+        "evidence": "zation and Unicode width, accessibility (screen readers, plain mode, motion) | `references/visual-patterns.md` |",
+        "target_path": "references/visual-patterns.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 20,
+        "column": 266,
+        "evidence": "ection, log follow mode, trees, text input, forms, mouse, confirmation, undo | `references/interaction-patterns.md` |",
+        "target_path": "references/interaction-patterns.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 21,
+        "column": 312,
+        "evidence": "s behavior, clipboard, links, notifications, color depth and theme detection | `references/terminal-protocols.md` |",
+        "target_path": "references/terminal-protocols.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 22,
+        "column": 64,
+        "evidence": "| Case studies: lazygit, k9s, fzf, btop, helix, yazi, atuin | `references/exemplar-apps.md` |",
+        "target_path": "references/exemplar-apps.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 23,
+        "column": 89,
+        "evidence": "| Screenshots or demo recordings | The `vhs-cli-demos` skill when installed; otherwise `references/cli-basics.md` → *Demo recordings* |",
+        "target_path": "references/cli-basics.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 35,
+        "column": 122,
+        "evidence": "| One-shot CLI | No live full-screen UI. Stable stdout for results, stderr for diagnostics, meaningful exit codes. Load `cli-basics.md`. |",
+        "target_path": "references/cli-basics.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 39,
+        "column": 151,
+        "evidence": "down stack, dashboard, IDE-style panes, overlay, or tabs—and verify it against `visual-patterns.md`. Sketch the states and layout before writing code: initial, ",
+        "target_path": "references/visual-patterns.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 39,
+        "column": 302,
+        "evidence": "initial, loading, empty, partial, success, error, disconnected, and too-small (`visual-patterns.md` → *States*). In a design answer, include an ASCII sketch of ",
+        "target_path": "references/visual-patterns.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 76,
+        "column": 310,
+        "evidence": "amework. Which other keys are reserved, and why raw mode frees `Ctrl+S`, is in `interaction-patterns.md` → *Reserved keys*.",
+        "target_path": "references/interaction-patterns.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 78,
+        "column": 120,
+        "evidence": "ent mode when automation or serious accessibility needs require linear output; `visual-patterns.md` → *Accessibility* defines what it must contain.",
+        "target_path": "references/visual-patterns.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 93,
+        "column": 126,
+        "evidence": "epeated fields to remove. Do not stop at “simplify it.” Use the full method in `visual-patterns.md` → *The clutter audit*.",
+        "target_path": "references/visual-patterns.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 97,
+        "column": 298,
+        "evidence": "s a single-pane fallback. Use the breakpoint ladder and minimum-size method in `visual-patterns.md` → *Responsive design*.",
+        "target_path": "references/visual-patterns.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 118,
+        "column": 108,
+        "evidence": "- for one-shot CLIs, stdout, stderr, and the exit code in golden tests, with no TTY and under `NO_COLOR` (`cli-basics.md` → *Testing one-shot CLIs*).",
+        "target_path": "references/cli-basics.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 141,
+        "column": 179,
+        "evidence": "ly. When a design choice remains abstract, point to the relevant case study in `exemplar-apps.md` and explain which part of its solution transfers.",
+        "target_path": "references/exemplar-apps.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      }
+    ],
+    "limitations": [
+      "Analyzer static_patterns_agent_snooping status: degraded.",
+      "Analyzer static_patterns_anti_refusal status: degraded.",
+      "Analyzer static_patterns_deserialization status: degraded.",
+      "Analyzer static_patterns_excessive_agency status: degraded.",
+      "Analyzer static_patterns_harmful_content status: degraded.",
+      "Analyzer static_patterns_memory_poisoning status: degraded.",
+      "Analyzer static_patterns_privilege_escalation status: degraded.",
+      "Analyzer static_patterns_prompt_injection status: degraded.",
+      "Analyzer static_patterns_rogue_agent status: degraded.",
+      "Analyzer static_patterns_ssrf status: degraded.",
+      "Analyzer static_patterns_supply_chain status: degraded.",
+      "Analyzer static_patterns_system_prompt_leakage status: degraded.",
+      "Analyzer static_patterns_tool_misuse status: degraded."
+    ],
+    "findings_before_filtering": 18,
+    "findings_after_filtering": 18
+  }
+}

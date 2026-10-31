@@ -1,0 +1,1440 @@
+{
+  "skill": {
+    "name": "api-gateway-mcp-server",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\google\\skills\\api-gateway-mcp-server",
+    "scanned_at": "2026-10-31T21:17:54.811899+00:00"
+  },
+  "risk_assessment": {
+    "score": 67,
+    "severity": "HIGH",
+    "recommendation": "DO_NOT_INSTALL",
+    "max_issue_severity": "HIGH"
+  },
+  "components": [
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 138,
+      "executable": false,
+      "size_bytes": 16694,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/adk-and-api-hub-discovery.md",
+      "type": "markdown",
+      "lines": 100,
+      "executable": false,
+      "size_bytes": 6799,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/attribution.md",
+      "type": "markdown",
+      "lines": 39,
+      "executable": false,
+      "size_bytes": 1906,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/mcp-limitations-and-troubleshooting.md",
+      "type": "markdown",
+      "lines": 152,
+      "executable": false,
+      "size_bytes": 10984,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/openapi-agent-tool-optimizer.md",
+      "type": "markdown",
+      "lines": 45,
+      "executable": false,
+      "size_bytes": 5595,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/openapi-v2-to-v3-mcp-migration.md",
+      "type": "markdown",
+      "lines": 251,
+      "executable": false,
+      "size_bytes": 17615,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "scripts/validate_mcp_openapi.py",
+      "type": "python",
+      "lines": 614,
+      "executable": true,
+      "size_bytes": 22552,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "AE1",
+      "finding_id": "finding-33a9864e562c4635ae6b35915b8a4da7",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 69,
+        "end_line": null
+      },
+      "finding": "references/mcp-limitations-and-troubleshooting.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": " model routing in the same API config. | [MCP Verification and Troubleshooting](references/mcp-limitations-and-troubleshooting.md) |",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/mcp-limitations-and-troubleshooting.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "5482c498a56c3ddc2b13abdf6189ad3b25a4773847220a6a5fd0244f62c78c3f",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 69,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-3a6bc26457204978bd6563becd126e93",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 116,
+        "end_line": null
+      },
+      "finding": "references/mcp-limitations-and-troubleshooting.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "d `tools/call` verification probes in [MCP Verification and Troubleshooting](references/mcp-limitations-and-troubleshooting.md).",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/mcp-limitations-and-troubleshooting.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "5482c498a56c3ddc2b13abdf6189ad3b25a4773847220a6a5fd0244f62c78c3f",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 116,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "LP3",
+      "finding_id": "finding-f34b560720bb4f428c556c1bbab1d427",
+      "category": "MCP Least Privilege",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 1,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "Without declared permissions the skill's intent is opaque and cannot be validated.",
+      "remediation": "Declare the skill's tool scope: for Claude Code / Agent Skills SKILL.md, list the tools the skill may invoke in the 'allowed-tools' frontmatter field; for MCP server manifests, add a 'permissions' list naming the required capabilities.",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI02"
+      ],
+      "evidence": {},
+      "match_fingerprint": null,
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 1,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "TM3",
+      "finding_id": "finding-c36a440719514382aed132ed02748fe8",
+      "category": "Tool Misuse",
+      "pattern": "Unsafe Defaults",
+      "severity": "MEDIUM",
+      "confidence": 0.8,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 75,
+        "end_line": null,
+        "start_column": 365
+      },
+      "finding": "disableAuth",
+      "explanation": "Tool defaults are unsafe or overly permissive (e.g. disabled TLS verification, no authentication, world-writable permissions). Unsafe defaults widen the attack surface.",
+      "remediation": "Override unsafe defaults with secure settings (verify=True, auth required, restrictive permissions). Review and harden all tool configurations.",
+      "code_snippet": "igration.md#complete-converted-example) shows a finished spec with a Google ID token scheme. Use them before you search other sources.\n   - Follow [OpenAPI 2.0 to 3.x Migration](references/openapi-v2-to-v3-mcp-migration.md) and [OpenAPI Agent Tool Optimizer](references/openapi-agent-tool-optimizer.md) to set `openapi` to a 3.0.x or 3.1.x version (the examples use `3.0.4`), remove unsupported OpenAPI 2.0 fields (`x-google-allow`), define `x-google-api-management.backends` (with `jwtAudience` or `disableAuth`), configure `x-google-api-management.mcp.tools-list.security` with exactly one JWT or API key scheme (add a JWT scheme to the root `security` list too, in the same requirement object as any API key scheme), author `x-google-mcp-tool` descriptions stating *when and why* to invoke each tool, and opt out administrative routes (`x-google-mcp-tool: false`).\n   - Before you deploy, give the user a short summary that states each of these points, and get approval:\n     - MCP is not supporte",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "26803002c199de076dd4932684648ea256042218bb39db26c3a6f0df8017f47f",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 75,
+          "end_line": null,
+          "start_column": 365
+        }
+      ]
+    },
+    {
+      "id": "TM3",
+      "finding_id": "finding-d2491556a75841348a35a45bfc61be59",
+      "category": "Tool Misuse",
+      "pattern": "Unsafe Defaults",
+      "severity": "MEDIUM",
+      "confidence": 0.8,
+      "location": {
+        "file": "references/openapi-v2-to-v3-mcp-migration.md",
+        "start_line": 26,
+        "end_line": null,
+        "start_column": 245
+      },
+      "finding": "disableAuth",
+      "explanation": "Tool defaults are unsafe or overly permissive (e.g. disabled TLS verification, no authentication, world-writable permissions). Unsafe defaults widen the attack surface.",
+      "remediation": "Override unsafe defaults with secure settings (verify=True, auth required, restrictive permissions). Review and harden all tool configurations.",
+      "code_snippet": "\n| Feature | OpenAPI 2.0 (`swagger: \"2.0\"`) | OpenAPI 3.x | Required Structural Change |\n| --- | --- | --- | --- |\n| Backends | Inline `x-google-backend` object with `snake_case` fields (`jwt_audience`, `path_translation`, `disable_auth`) | Root `x-google-api-management.backends.{backend_name}` map with `camelCase` fields (`jwtAudience`, `pathTranslation`, `disableAuth`) + `x-google-backend: {backend_name}` string reference | Define named backends in `x-google-api-management.backends` (setting `jwtAudience` or `disableAuth`) and set `x-google-backend` to the string name. |\n| JWT Auth | `x-google-issuer`, `x-google-jwks_uri`, `x-google-audiences` directly on the security scheme | `x-google-auth: { issuer, jwksUri, audiences, jwtLocations }` inside `components.securitySchemes.{name}` | Nest the JWT settings inside `x-google-auth`: `x-google-issuer` becomes `issuer`, `x-google-jwks_uri` becomes `jwksUri`, and the comma-separated `x-google-audiences` string becomes an `audiences` list. |\n|",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "26803002c199de076dd4932684648ea256042218bb39db26c3a6f0df8017f47f",
+      "occurrences": [
+        {
+          "file": "references/openapi-v2-to-v3-mcp-migration.md",
+          "start_line": 26,
+          "end_line": null,
+          "start_column": 245
+        }
+      ]
+    },
+    {
+      "id": "TM3",
+      "finding_id": "finding-90af5604f12a4c43964d389ed499008e",
+      "category": "Tool Misuse",
+      "pattern": "Unsafe Defaults",
+      "severity": "MEDIUM",
+      "confidence": 0.8,
+      "location": {
+        "file": "references/openapi-v2-to-v3-mcp-migration.md",
+        "start_line": 26,
+        "end_line": null,
+        "start_column": 402
+      },
+      "finding": "disableAuth",
+      "explanation": "Tool defaults are unsafe or overly permissive (e.g. disabled TLS verification, no authentication, world-writable permissions). Unsafe defaults widen the attack surface.",
+      "remediation": "Override unsafe defaults with secure settings (verify=True, auth required, restrictive permissions). Review and harden all tool configurations.",
+      "code_snippet": "\n| Feature | OpenAPI 2.0 (`swagger: \"2.0\"`) | OpenAPI 3.x | Required Structural Change |\n| --- | --- | --- | --- |\n| Backends | Inline `x-google-backend` object with `snake_case` fields (`jwt_audience`, `path_translation`, `disable_auth`) | Root `x-google-api-management.backends.{backend_name}` map with `camelCase` fields (`jwtAudience`, `pathTranslation`, `disableAuth`) + `x-google-backend: {backend_name}` string reference | Define named backends in `x-google-api-management.backends` (setting `jwtAudience` or `disableAuth`) and set `x-google-backend` to the string name. |\n| JWT Auth | `x-google-issuer`, `x-google-jwks_uri`, `x-google-audiences` directly on the security scheme | `x-google-auth: { issuer, jwksUri, audiences, jwtLocations }` inside `components.securitySchemes.{name}` | Nest the JWT settings inside `x-google-auth`: `x-google-issuer` becomes `issuer`, `x-google-jwks_uri` becomes `jwksUri`, and the comma-separated `x-google-audiences` string becomes an `audiences` list. |\n|",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "26803002c199de076dd4932684648ea256042218bb39db26c3a6f0df8017f47f",
+      "occurrences": [
+        {
+          "file": "references/openapi-v2-to-v3-mcp-migration.md",
+          "start_line": 26,
+          "end_line": null,
+          "start_column": 402
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-967c393c6eb547cc8628462bec4b3a01",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "references/mcp-limitations-and-troubleshooting.md",
+        "start_line": 3,
+        "end_line": null,
+        "start_column": 34
+      },
+      "finding": "curl (JSON-RPC 2.0 Lifecycle)](#mcp-endpoint-verification-with-curl-json-rpc-20-lifecycle): Lines 7-93\n- [JSON-RPC and HTTP Error Diagnosis on /mcp](#json-rpc-and-http-error-diagnosis-on-mcp): Lines 9",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "# MCP Verification, Limitations, and Troubleshooting Reference\n\n- [MCP Endpoint Verification with curl (JSON-RPC 2.0 Lifecycle)](#mcp-endpoint-verification-with-curl-json-rpc-20-lifecycle): Lines 7-93\n- [JSON-RPC and HTTP Error Diagnosis on /mcp](#json-rpc-and-http-error-diagnosis-on-mcp): Lines 95-135\n- [Mutual Exclusion with Model Routing and Preview Limits](#mutual-exclusion-with-model-routing-and-preview-limits): Lines 137-152\n",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "901cdf8ef2281055a942acd8f3ea68765d3fbd2434c87bfacc851e8af72e517a",
+      "occurrences": [
+        {
+          "file": "references/mcp-limitations-and-troubleshooting.md",
+          "start_line": 3,
+          "end_line": null,
+          "start_column": 34
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-9407d17ee43d4dbd8ccc800829d51581",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "references/mcp-limitations-and-troubleshooting.md",
+        "start_line": 65,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": "curl -sS -X POST \"https://{default_hostname}/mcp\" \\\n  -H \"Content-Type: application/json\" \\\n  -H \"MCP-Protocol-Version: 2025-11-25\" \\\n  -H \"Authorization: Bearer ${jwt_token}\" \\\n  -d '{\"jsonrpc\": \"2.0",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "  --impersonate-service-account={caller_sa_email} \\\n  --audiences={jwt_audience})\"\n\ncurl -sS -X POST \"https://{default_hostname}/mcp\" \\\n  -H \"Content-Type: application/json\" \\\n  -H \"MCP-Protocol-Version: 2025-11-25\" \\\n  -H \"Authorization: Bearer ${jwt_token}\" \\",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "dd6169dd3e7f986800fed79f92a44bdc16f8b9bdeeb971d85515a2dca0096116",
+      "occurrences": [
+        {
+          "file": "references/mcp-limitations-and-troubleshooting.md",
+          "start_line": 65,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    },
+    {
+      "id": "TM3",
+      "finding_id": "finding-5901387c081c430c9c10ec2d42327865",
+      "category": "Tool Misuse",
+      "pattern": "Unsafe Defaults",
+      "severity": "MEDIUM",
+      "confidence": 0.8,
+      "location": {
+        "file": "references/openapi-v2-to-v3-mcp-migration.md",
+        "start_line": 26,
+        "end_line": null,
+        "start_column": 109
+      },
+      "finding": "disable_auth",
+      "explanation": "Tool defaults are unsafe or overly permissive (e.g. disabled TLS verification, no authentication, world-writable permissions). Unsafe defaults widen the attack surface.",
+      "remediation": "Override unsafe defaults with secure settings (verify=True, auth required, restrictive permissions). Review and harden all tool configurations.",
+      "code_snippet": "\n| Feature | OpenAPI 2.0 (`swagger: \"2.0\"`) | OpenAPI 3.x | Required Structural Change |\n| --- | --- | --- | --- |\n| Backends | Inline `x-google-backend` object with `snake_case` fields (`jwt_audience`, `path_translation`, `disable_auth`) | Root `x-google-api-management.backends.{backend_name}` map with `camelCase` fields (`jwtAudience`, `pathTranslation`, `disableAuth`) + `x-google-backend: {backend_name}` string reference | Define named backends in `x-google-api-management.backends` (setting `jwtAudience` or `disableAuth`) and set `x-google-backend` to the string name. |\n| JWT Auth | `x-google-issuer`, `x-google-jwks_uri`, `x-google-audiences` directly on the security scheme | `x-google-auth: { issuer, jwksUri, audiences, jwtLocations }` inside `components.securitySchemes.{name}` | Nest the JWT settings inside `x-google-auth`: `x-google-issuer` becomes `issuer`, `x-google-jwks_uri` becomes `jwksUri`, and the comma-separated `x-google-audiences` string becomes an `audiences` list. |\n|",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "3d367c22a273c779d3f43ca7de293a9b2dacd42a02136b3006d5e2db3a522174",
+      "occurrences": [
+        {
+          "file": "references/openapi-v2-to-v3-mcp-migration.md",
+          "start_line": 26,
+          "end_line": null,
+          "start_column": 109
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": true,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 7,
+    "scanned_components": 6,
+    "coverage_percent": 85.7,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 6,
+    "partially_inspected_files": 1,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 19,
+        "end_line": 19,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 27,
+        "end_line": 27,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 28,
+        "end_line": 28,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 55,
+        "end_line": 55,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 57,
+        "end_line": 57,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 65,
+        "end_line": 65,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 66,
+        "end_line": 66,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 67,
+        "end_line": 67,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 69,
+        "end_line": 69,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 75,
+        "end_line": 75,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 83,
+        "end_line": 83,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 89,
+        "end_line": 89,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 115,
+        "end_line": 115,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 121,
+        "end_line": 121,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 124,
+        "end_line": 124,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 127,
+        "end_line": 127,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "references/mcp-limitations-and-troubleshooting.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "reference_coverage",
+        "status": "completed",
+        "planned_work": 2,
+        "completed": 2,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "degraded",
+        "planned_work": 7,
+        "completed": 6,
+        "partial": 1,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 19,
+        "column": 251,
+        "evidence": "c Preview**). By annotating an OpenAPI 3.x (3.0.x or 3.1.x) specification with `x-google-api-management.mcp` and `x-google-mcp-tool`, API Gateway translates MCP",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 24,
+        "column": 31,
+        "evidence": "MUST read [Usage Attribution](references/attribution.md). For commands executed",
+        "target_path": "references/attribution.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 27,
+        "column": 40,
+        "evidence": "`CLOUDSDK_METRICS_REQUEST_ATTRIBUTION=\"agent-skills/1.0 (skill:api-gateway-mcp-server)\"`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 28,
+        "column": 13,
+        "evidence": "and append `agent-skills/1.0 (skill:api-gateway-mcp-server)` to `User-Agent` headers.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 33,
+        "column": 37,
+        "evidence": "- Install the [Google Cloud CLI](https://docs.cloud.google.com/sdk/docs/install-sdk.md.txt). Then update it to the latest version with `gcloud components update",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 43,
+        "column": 325,
+        "evidence": "data transfer out are charged. For current prices, see [API Gateway pricing](https://cloud.google.com/api-gateway/pricing).",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 44,
+        "column": 142,
+        "evidence": "ommands. For the other supported regions, see [API Gateway deployment model](https://docs.cloud.google.com/api-gateway/docs/deployment-model.md.txt).",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 55,
+        "column": 83,
+        "evidence": "To create and update the API, API configs, and gateways: API Gateway Admin (`roles/apigateway.admin`) on `{project_id}`. To run the `gcloud services enable` com",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 57,
+        "column": 94,
+        "evidence": "- For a Cloud Run backend: grant the gateway service account the Cloud Run Invoker role (`roles/run.invoker`) on the service.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 59,
+        "column": 57,
+        "evidence": "- Reference: [Configure the development environment](https://docs.cloud.google.com/api-gateway/docs/configure-dev-env.md.txt).",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 65,
+        "column": 35,
+        "evidence": "| Migrate OpenAPI 2.0 (`swagger: \"2.0\"`) or author OpenAPI 3.x for MCP | Root `x-google-api-management.mcp` + named `backends` + operation-level `x-google-mcp-t",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 65,
+        "column": 80,
+        "evidence": "| Migrate OpenAPI 2.0 (`swagger: \"2.0\"`) or author OpenAPI 3.x for MCP | Root `x-google-api-management.mcp` + named `backends` + operation-level `x-google-mcp-t",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 65,
+        "column": 540,
+        "evidence": "eway serves the MCP tools of only one of them. | [OpenAPI 2.0 to 3.x Migration](references/openapi-v2-to-v3-mcp-migration.md) |",
+        "target_path": "references/openapi-v2-to-v3-mcp-migration.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 66,
+        "column": 320,
+        "evidence": "posed tool MUST resolve to a unique name that matches `[A-Za-z0-9_.-]{1,128}` (`x-google-mcp-tool.name`, or else the `operationId`), a non-empty description, an",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 66,
+        "column": 940,
+        "evidence": "inputSchema` in `tools/list` after you deploy. | [OpenAPI Agent Tool Optimizer](references/openapi-agent-tool-optimizer.md) |",
+        "target_path": "references/openapi-agent-tool-optimizer.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 67,
+        "column": 57,
+        "evidence": "| Secure `tools/list` and hide internal/admin routes | `x-google-api-management.mcp.tools-list.security` (exactly one JWT or API key scheme; a JWT scheme is als",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 67,
+        "column": 386,
+        "evidence": " scheme sent in the `x-api-key` header. API Gateway rejects a config whose JWT `tools-list.security` scheme is missing from the root `security` list, and that r",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 67,
+        "column": 985,
+        "evidence": "CP only; keep REST `security` on admin routes. | [OpenAPI 2.0 to 3.x Migration](references/openapi-v2-to-v3-mcp-migration.md) |",
+        "target_path": "references/openapi-v2-to-v3-mcp-migration.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 68,
+        "column": 376,
+        "evidence": "_api} (MCP)` and in Agent Registry automatically. | [ADK and API Hub Discovery](references/adk-and-api-hub-discovery.md) |",
+        "target_path": "references/adk-and-api-hub-discovery.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 69,
+        "column": 340,
+        "evidence": "hs only, and `{basepath}/mcp` returns HTTP 404. Nest JSON request bodies under `params.arguments.body` (`{\"body\": {...}}`). NEVER combine `x-google-api-manageme",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 69,
+        "column": 399,
+        "evidence": "equest bodies under `params.arguments.body` (`{\"body\": {...}}`). NEVER combine `x-google-api-management.mcp` with `x-google-model-router` in one config. **Ratio",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 69,
+        "column": 601,
+        "evidence": " model routing in the same API config. | [MCP Verification and Troubleshooting](references/mcp-limitations-and-troubleshooting.md) |",
+        "target_path": "references/mcp-limitations-and-troubleshooting.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 74,
+        "column": 108,
+        "evidence": "ill contain the conversion rules: the [Swagger 2.0 Construct Conversion Map](references/openapi-v2-to-v3-mcp-migration.md#swagger-20-construct-conversion-map) c",
+        "target_path": "references/openapi-v2-to-v3-mcp-migration.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 74,
+        "column": 262,
+        "evidence": "map) covers each Swagger 2.0 construct, and the [Complete Converted Example](references/openapi-v2-to-v3-mcp-migration.md#complete-converted-example) shows a fi",
+        "target_path": "references/openapi-v2-to-v3-mcp-migration.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 75,
+        "column": 44,
+        "evidence": "- Follow [OpenAPI 2.0 to 3.x Migration](references/openapi-v2-to-v3-mcp-migration.md) and [OpenAPI Agent Tool Optimizer](references/openapi-agent-tool-optimizer",
+        "target_path": "references/openapi-v2-to-v3-mcp-migration.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 75,
+        "column": 125,
+        "evidence": "rences/openapi-v2-to-v3-mcp-migration.md) and [OpenAPI Agent Tool Optimizer](references/openapi-agent-tool-optimizer.md) to set `openapi` to a 3.0.x or 3.1.x ve",
+        "target_path": "references/openapi-agent-tool-optimizer.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 75,
+        "column": 233,
+        "evidence": "ptimizer.md) to set `openapi` to a 3.0.x or 3.1.x version (the examples use `3.0.4`), remove unsupported OpenAPI 2.0 fields (`x-google-allow`), define `x-google",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 75,
+        "column": 308,
+        "evidence": " `3.0.4`), remove unsupported OpenAPI 2.0 fields (`x-google-allow`), define `x-google-api-management.backends` (with `jwtAudience` or `disableAuth`), configure ",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 75,
+        "column": 392,
+        "evidence": "e-api-management.backends` (with `jwtAudience` or `disableAuth`), configure `x-google-api-management.mcp.tools-list.security` with exactly one JWT or API key sc",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 83,
+        "column": 44,
+        "evidence": "- Preserve exact quota metric names in `x-google-api-management.metrics` across API configs so existing gateways do not fail with HTTP 500 `Failed to call Servi",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 85,
+        "column": 15,
+        "evidence": "- Execute `scripts/validate_mcp_openapi.py` on `{candidate_openapi_spec}`:",
+        "target_path": "scripts/validate_mcp_openapi.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 87,
+        "column": 14,
+        "evidence": "python3 scripts/validate_mcp_openapi.py --spec={candidate_openapi_spec}",
+        "target_path": "scripts/validate_mcp_openapi.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 89,
+        "column": 10,
+        "evidence": "- If `scripts/validate_mcp_openapi.py` exits with code `1` (`status: \"FAIL\"`), fix every reported error in `{candidate_openapi_spec}` (such as OpenAPI 2.0 synta",
+        "target_path": "scripts/validate_mcp_openapi.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 89,
+        "column": 396,
+        "evidence": "cate tool names, a header parameter with the reserved `x-google-` prefix, a `tools-list.security` scheme that is neither an `oauth2` JWT nor an `apiKey` scheme,",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 89,
+        "column": 487,
+        "evidence": "urity` scheme that is neither an `oauth2` JWT nor an `apiKey` scheme, a JWT `tools-list.security` scheme missing from the root `security` list, alternative (OR)",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 115,
+        "column": 83,
+        "evidence": "If `tools/list` requires a JWT, mint a Google ID token whose audience is in `x-google-auth.audiences`: `gcloud auth print-identity-token --impersonate-service-a",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 116,
+        "column": 150,
+        "evidence": "d `tools/call` verification probes in [MCP Verification and Troubleshooting](references/mcp-limitations-and-troubleshooting.md).",
+        "target_path": "references/mcp-limitations-and-troubleshooting.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 117,
+        "column": 171,
+        "evidence": "ub (`{your_api} (MCP)`) and Agent Registry using [ADK and API Hub Discovery](references/adk-and-api-hub-discovery.md).",
+        "target_path": "references/adk-and-api-hub-discovery.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 121,
+        "column": 53,
+        "evidence": "- [ ] Specification version is `openapi: 3.0.x` or `3.1.x` (not `swagger: \"2.0\"`), omits `x-google-allow`, and does not contain `x-google-model-router`.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 121,
+        "column": 76,
+        "evidence": "- [ ] Specification version is `openapi: 3.0.x` or `3.1.x` (not `swagger: \"2.0\"`), omits `x-google-allow`, and does not contain `x-google-model-router`.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 122,
+        "column": 16,
+        "evidence": "- [ ] `python3 scripts/validate_mcp_openapi.py --spec={candidate_openapi_spec}` returns `status: \"PASS\"` (exit code `0`).",
+        "target_path": "scripts/validate_mcp_openapi.py",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "inline_command"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 124,
+        "column": 8,
+        "evidence": "- [ ] `x-google-api-management.mcp.tools-list.security` names exactly one scheme: an `oauth2` JWT scheme with `x-google-auth` that the root `security` list also",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 127,
+        "column": 127,
+        "evidence": "ame}/mcp` (not `{basepath}/mcp`), nest `tools/call` JSON request bodies inside `params.arguments.body`, and send `MCP-Protocol-Version: 2025-11-25`.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      }
+    ],
+    "limitations": [
+      "Analyzer static_patterns_tool_misuse status: degraded."
+    ],
+    "findings_before_filtering": 9,
+    "findings_after_filtering": 9
+  }
+}

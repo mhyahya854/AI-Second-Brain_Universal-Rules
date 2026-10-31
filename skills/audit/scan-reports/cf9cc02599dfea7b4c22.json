@@ -1,0 +1,1075 @@
+{
+  "skill": {
+    "name": "seo-image-gen",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\AgriciDaniel\\claude-seo\\seo-image-gen-bcecd5b7",
+    "scanned_at": "2026-10-31T20:58:16.635031+00:00"
+  },
+  "risk_assessment": {
+    "score": 59,
+    "severity": "HIGH",
+    "recommendation": "DO_NOT_INSTALL",
+    "max_issue_severity": "HIGH"
+  },
+  "components": [
+    {
+      "path": "LICENSE.txt",
+      "type": "text",
+      "lines": 4,
+      "executable": false,
+      "size_bytes": 143,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 183,
+      "executable": false,
+      "size_bytes": 8799,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/cost-tracking.md",
+      "type": "markdown",
+      "lines": 41,
+      "executable": false,
+      "size_bytes": 1185,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/gemini-models.md",
+      "type": "markdown",
+      "lines": 200,
+      "executable": false,
+      "size_bytes": 8126,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/mcp-tools.md",
+      "type": "markdown",
+      "lines": 116,
+      "executable": false,
+      "size_bytes": 4094,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/post-processing.md",
+      "type": "markdown",
+      "lines": 192,
+      "executable": false,
+      "size_bytes": 5201,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/presets.md",
+      "type": "markdown",
+      "lines": 69,
+      "executable": false,
+      "size_bytes": 2250,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/prompt-adaptation-safety.md",
+      "type": "markdown",
+      "lines": 72,
+      "executable": false,
+      "size_bytes": 4534,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/prompt-engineering.md",
+      "type": "markdown",
+      "lines": 188,
+      "executable": false,
+      "size_bytes": 9543,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/prompt-templates.md",
+      "type": "markdown",
+      "lines": 171,
+      "executable": false,
+      "size_bytes": 8005,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/seo-image-presets.md",
+      "type": "markdown",
+      "lines": 137,
+      "executable": false,
+      "size_bytes": 4163,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "EA5",
+      "finding_id": "finding-e4049990336245499bc868cea75f6097",
+      "category": "Excessive Agency",
+      "pattern": "External Model or Provider Selection",
+      "severity": "HIGH",
+      "confidence": 0.9,
+      "location": {
+        "file": "references/cost-tracking.md",
+        "start_line": 24,
+        "end_line": 24,
+        "start_column": 0,
+        "end_column": 94
+      },
+      "finding": "cost_tracker.py log --model gemini-3.1-flash-image --resolution 1K --prompt \"coffee shop hero\"",
+      "explanation": "Skill selects an external model or provider that may use a different account or billing plan than the operator expects. Undisclosed model switches can cause unexpected cost or quota consumption.",
+      "remediation": "Remove the model/provider override or disclose it prominently and require explicit operator approval before invoking an external coding CLI or billed model.",
+      "code_snippet": "\n```bash\n# Log a generation\ncost_tracker.py log --model gemini-3.1-flash-image --resolution 1K --prompt \"coffee shop hero\"\n\n# View summary (total + last 7 days)\ncost_tracker.py summary",
+      "intent": null,
+      "tags": [
+        "Excessive Agency"
+      ],
+      "evidence": {
+        "selection_surface": "command"
+      },
+      "match_fingerprint": "a391c30c3f5fdd2ddb9414b5ca72f79c99ac2b15c10c2c916965db434ed6d1a6",
+      "occurrences": [
+        {
+          "file": "references/cost-tracking.md",
+          "start_line": 24,
+          "end_line": 24,
+          "start_column": 0,
+          "end_column": 94
+        }
+      ]
+    },
+    {
+      "id": "EA5",
+      "finding_id": "finding-0a14c93009c647d192642b0eea863692",
+      "category": "Excessive Agency",
+      "pattern": "External Model or Provider Selection",
+      "severity": "HIGH",
+      "confidence": 0.9,
+      "location": {
+        "file": "references/cost-tracking.md",
+        "start_line": 33,
+        "end_line": 33,
+        "start_column": 0,
+        "end_column": 82
+      },
+      "finding": "cost_tracker.py estimate --model gemini-3.1-flash-image --resolution 1K --count 10",
+      "explanation": "Skill selects an external model or provider that may use a different account or billing plan than the operator expects. Undisclosed model switches can cause unexpected cost or quota consumption.",
+      "remediation": "Remove the model/provider override or disclose it prominently and require explicit operator approval before invoking an external coding CLI or billed model.",
+      "code_snippet": "cost_tracker.py today\n\n# Estimate before batch\ncost_tracker.py estimate --model gemini-3.1-flash-image --resolution 1K --count 10\n\n# Reset ledger\ncost_tracker.py reset --confirm",
+      "intent": null,
+      "tags": [
+        "Excessive Agency"
+      ],
+      "evidence": {
+        "selection_surface": "command"
+      },
+      "match_fingerprint": "bde3d48d74de084d8527104d27ee5096f5a673c0a7119ae25a280e2e8820a637",
+      "occurrences": [
+        {
+          "file": "references/cost-tracking.md",
+          "start_line": 33,
+          "end_line": 33,
+          "start_column": 0,
+          "end_column": 82
+        }
+      ]
+    },
+    {
+      "id": "P7",
+      "finding_id": "finding-2f6502f8760348f1b89cf10843504952",
+      "category": "System Prompt Leakage",
+      "pattern": "Indirect Prompt Extraction",
+      "severity": "MEDIUM",
+      "confidence": 0.75,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 145,
+        "end_line": null,
+        "start_column": 19
+      },
+      "finding": "Rephrase prompt",
+      "explanation": "Skill contains patterns that could indirectly extract system prompts through rephrasing, translation, summarization, or side-channel techniques.",
+      "remediation": "Guard against indirect extraction by refusing to summarize, translate, or rephrase system instructions. Add explicit anti-extraction clauses.",
+      "code_snippet": "| MCP not configured | Run `./extensions/banana/install.sh` |\n| API key invalid | New key at https://aistudio.google.com/apikey |\n| Rate limited (429) | Wait 60s, retry. Free tier: ~10 RPM / ~500 RPD |\n| `IMAGE_SAFETY` | Rephrase prompt - see `references/prompt-adaptation-safety.md` |\n| MCP unavailable | Configure MCP with `./extensions/banana/install.sh`; claude-seo does not vendor a local generation fallback script |\n| Extension not installed | Show install instructions: `./extensions/banana/install.sh` |\n",
+      "intent": null,
+      "tags": [
+        "System Prompt Leakage"
+      ],
+      "evidence": {},
+      "match_fingerprint": "60db56ea023091e46239cf5d6c87f8462a20c374b556701b50f4480e0c62d345",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 145,
+          "end_line": null,
+          "start_column": 19
+        }
+      ]
+    },
+    {
+      "id": "P7",
+      "finding_id": "finding-43786800ae0143589314a39873d7b3d1",
+      "category": "System Prompt Leakage",
+      "pattern": "Indirect Prompt Extraction",
+      "severity": "MEDIUM",
+      "confidence": 0.75,
+      "location": {
+        "file": "references/gemini-models.md",
+        "start_line": 182,
+        "end_line": null,
+        "start_column": 53
+      },
+      "finding": "Rephrase prompt",
+      "explanation": "Skill contains patterns that could indirectly extract system prompts through rephrasing, translation, summarization, or side-channel techniques.",
+      "remediation": "Guard against indirect extraction by refusing to summarize, translate, or rephrase system instructions. Add explicit anti-extraction clauses.",
+      "code_snippet": "| `finishReason` | Meaning | Retryable? |\n|----------------|---------|:----------:|\n| `STOP` | Successful generation | N/A |\n| `IMAGE_SAFETY` | Output blocked by safety filter | Rephrase prompt |\n| `PROHIBITED_CONTENT` | Content policy violation | No - topic is blocked |\n| `SAFETY` | General safety block | Rephrase prompt |\n| `RECITATION` | Detected copyrighted content | Rephrase prompt |",
+      "intent": null,
+      "tags": [
+        "System Prompt Leakage"
+      ],
+      "evidence": {},
+      "match_fingerprint": "60db56ea023091e46239cf5d6c87f8462a20c374b556701b50f4480e0c62d345",
+      "occurrences": [
+        {
+          "file": "references/gemini-models.md",
+          "start_line": 182,
+          "end_line": null,
+          "start_column": 53
+        }
+      ]
+    },
+    {
+      "id": "P7",
+      "finding_id": "finding-23e8358bc7924eb7bb54dc349acc884d",
+      "category": "System Prompt Leakage",
+      "pattern": "Indirect Prompt Extraction",
+      "severity": "MEDIUM",
+      "confidence": 0.75,
+      "location": {
+        "file": "references/gemini-models.md",
+        "start_line": 184,
+        "end_line": null,
+        "start_column": 36
+      },
+      "finding": "Rephrase prompt",
+      "explanation": "Skill contains patterns that could indirectly extract system prompts through rephrasing, translation, summarization, or side-channel techniques.",
+      "remediation": "Guard against indirect extraction by refusing to summarize, translate, or rephrase system instructions. Add explicit anti-extraction clauses.",
+      "code_snippet": "| `STOP` | Successful generation | N/A |\n| `IMAGE_SAFETY` | Output blocked by safety filter | Rephrase prompt |\n| `PROHIBITED_CONTENT` | Content policy violation | No - topic is blocked |\n| `SAFETY` | General safety block | Rephrase prompt |\n| `RECITATION` | Detected copyrighted content | Rephrase prompt |\n\n**Known issue:** Filters are known to be overly cautious. Benign prompts may be blocked. Iterate with rephrased wording if this happens.",
+      "intent": null,
+      "tags": [
+        "System Prompt Leakage"
+      ],
+      "evidence": {},
+      "match_fingerprint": "60db56ea023091e46239cf5d6c87f8462a20c374b556701b50f4480e0c62d345",
+      "occurrences": [
+        {
+          "file": "references/gemini-models.md",
+          "start_line": 184,
+          "end_line": null,
+          "start_column": 36
+        }
+      ]
+    },
+    {
+      "id": "P7",
+      "finding_id": "finding-bc057a22974146249d8eff6e899b4d27",
+      "category": "System Prompt Leakage",
+      "pattern": "Indirect Prompt Extraction",
+      "severity": "MEDIUM",
+      "confidence": 0.75,
+      "location": {
+        "file": "references/gemini-models.md",
+        "start_line": 185,
+        "end_line": null,
+        "start_column": 48
+      },
+      "finding": "Rephrase prompt",
+      "explanation": "Skill contains patterns that could indirectly extract system prompts through rephrasing, translation, summarization, or side-channel techniques.",
+      "remediation": "Guard against indirect extraction by refusing to summarize, translate, or rephrase system instructions. Add explicit anti-extraction clauses.",
+      "code_snippet": "| `IMAGE_SAFETY` | Output blocked by safety filter | Rephrase prompt |\n| `PROHIBITED_CONTENT` | Content policy violation | No - topic is blocked |\n| `SAFETY` | General safety block | Rephrase prompt |\n| `RECITATION` | Detected copyrighted content | Rephrase prompt |\n\n**Known issue:** Filters are known to be overly cautious. Benign prompts may be blocked. Iterate with rephrased wording if this happens.\n",
+      "intent": null,
+      "tags": [
+        "System Prompt Leakage"
+      ],
+      "evidence": {},
+      "match_fingerprint": "60db56ea023091e46239cf5d6c87f8462a20c374b556701b50f4480e0c62d345",
+      "occurrences": [
+        {
+          "file": "references/gemini-models.md",
+          "start_line": 185,
+          "end_line": null,
+          "start_column": 48
+        }
+      ]
+    },
+    {
+      "id": "PE2",
+      "finding_id": "finding-f731572c918845fba08d122ac20960cc",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/post-processing.md",
+        "start_line": 14,
+        "end_line": null,
+        "start_column": 37
+      },
+      "finding": "sudo ",
+      "explanation": "Commands invoke sudo or root privileges. Verify this elevated access is necessary and justified.",
+      "remediation": "Avoid sudo/root unless strictly required. Prefer least-privilege patterns. If elevation is needed, document the justification and scope.",
+      "code_snippet": "which ffmpeg    # For video/animation\n```\n\nInstall ImageMagick if not present: `sudo apt install imagemagick` (Debian/Ubuntu) or `brew install imagemagick` (macOS).\n\n## Common Operations\n",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation",
+        "contextual-triage",
+        "likely-benign-context"
+      ],
+      "evidence": {},
+      "match_fingerprint": "16746f7044f347c6322d4c5b879b3fb06b2f205cbf1c9a209b43d52b34b3afd7",
+      "occurrences": [
+        {
+          "file": "references/post-processing.md",
+          "start_line": 14,
+          "end_line": null,
+          "start_column": 37
+        }
+      ]
+    },
+    {
+      "id": "RA2",
+      "finding_id": "finding-cdcc3523a427406bb25cd1118227fb03",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "references/seo-image-presets.md",
+        "start_line": 124,
+        "end_line": null,
+        "start_column": 10
+      },
+      "finding": "create their own presets with the installed Banana MCP preset tool.\nIf the standalone Banana extension is not installed, configure it before using\ncustom presets. The core claude-seo skill does not as",
+      "explanation": "Skill establishes unauthorized persistence across sessions via cron jobs, startup scripts, or state files. Session persistence allows an attacker to maintain access beyond the current interaction.",
+      "remediation": "Remove any persistence mechanisms (cron jobs, startup scripts, state files). Skills should not maintain state across sessions without explicit user consent.",
+      "code_snippet": "\n## Creating Custom Presets\n\nUsers can create their own presets with the installed Banana MCP preset tool.\nIf the standalone Banana extension is not installed, configure it before using\ncustom presets. The core claude-seo skill does not assume a local fallback\nscript or a fixed personal configuration directory.",
+      "intent": null,
+      "tags": [
+        "Rogue Agent"
+      ],
+      "evidence": {},
+      "match_fingerprint": "18a3f202a58fbb096bc17f72593e30104dcdc921daef90facad1a9102fba95bf",
+      "occurrences": [
+        {
+          "file": "references/seo-image-presets.md",
+          "start_line": 124,
+          "end_line": null,
+          "start_column": 10
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": false,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 11,
+    "scanned_components": 11,
+    "coverage_percent": 100.0,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 11,
+    "partially_inspected_files": 0,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 27,
+        "end_line": 27,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 33,
+        "end_line": 33,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 95,
+        "end_line": 95,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 142,
+        "end_line": 142,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 146,
+        "end_line": 146,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 147,
+        "end_line": 147,
+        "fatal": false
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 11,
+        "completed": 11,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 22,
+        "column": 44,
+        "evidence": "This extension is built on [Claude Banana](https://github.com/AgriciDaniel/banana-claude),",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 27,
+        "column": 15,
+        "evidence": "- **Agent** (`agents/seo-image-gen.md`): Audit-only analyst spawned during `/seo audit` to assess existing OG/social images and produce a generation plan (never",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 33,
+        "column": 1,
+        "evidence": "./extensions/banana/install.sh",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 75,
+        "column": 12,
+        "evidence": "- Load `references/prompt-engineering.md` for the 6-component system",
+        "target_path": "references/prompt-engineering.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 87,
+        "column": 57,
+        "evidence": "Load matching preset and apply as defaults. Also check `references/seo-image-presets.md`",
+        "target_path": "references/seo-image-presets.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 95,
+        "column": 53,
+        "evidence": "2. **File naming**: Rename to SEO-friendly format: `keyword-description-widthxheight.webp`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 142,
+        "column": 29,
+        "evidence": "| MCP not configured | Run `./extensions/banana/install.sh` |",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 145,
+        "column": 43,
+        "evidence": "| `IMAGE_SAFETY` | Rephrase prompt - see `references/prompt-adaptation-safety.md` |",
+        "target_path": "references/prompt-adaptation-safety.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 146,
+        "column": 41,
+        "evidence": "| MCP unavailable | Configure MCP with `./extensions/banana/install.sh`; claude-seo does not vendor a local generation fallback script |",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 147,
+        "column": 57,
+        "evidence": "| Extension not installed | Show install instructions: `./extensions/banana/install.sh` |",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 158,
+        "column": 4,
+        "evidence": "- `references/prompt-engineering.md`: 6-component system, domain modes, advanced techniques",
+        "target_path": "references/prompt-engineering.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 159,
+        "column": 4,
+        "evidence": "- `references/prompt-templates.md`: ready-to-use templates by use case",
+        "target_path": "references/prompt-templates.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 160,
+        "column": 4,
+        "evidence": "- `references/prompt-adaptation-safety.md`: model adaptation rules, common mistakes, safety-filter rephrasing",
+        "target_path": "references/prompt-adaptation-safety.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 161,
+        "column": 4,
+        "evidence": "- `references/gemini-models.md`:Model specs, rate limits, capabilities",
+        "target_path": "references/gemini-models.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 162,
+        "column": 4,
+        "evidence": "- `references/mcp-tools.md`:MCP tool parameters and responses",
+        "target_path": "references/mcp-tools.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 163,
+        "column": 4,
+        "evidence": "- `references/post-processing.md`:ImageMagick/FFmpeg pipeline recipes",
+        "target_path": "references/post-processing.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 164,
+        "column": 4,
+        "evidence": "- `references/cost-tracking.md`:Pricing, usage tracking",
+        "target_path": "references/cost-tracking.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 165,
+        "column": 4,
+        "evidence": "- `references/presets.md`:Brand preset management",
+        "target_path": "references/presets.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 166,
+        "column": 4,
+        "evidence": "- `references/seo-image-presets.md`:SEO-specific preset templates",
+        "target_path": "references/seo-image-presets.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      }
+    ],
+    "limitations": [],
+    "findings_before_filtering": 8,
+    "findings_after_filtering": 8
+  }
+}

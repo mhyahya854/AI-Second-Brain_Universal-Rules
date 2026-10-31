@@ -1,0 +1,2625 @@
+{
+  "skill": {
+    "name": "application-integration-authoring",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\google\\skills\\application-integration-authoring",
+    "scanned_at": "2026-10-31T21:12:33.983588+00:00"
+  },
+  "risk_assessment": {
+    "score": 96,
+    "severity": "CRITICAL",
+    "recommendation": "DO_NOT_INSTALL",
+    "max_issue_severity": "HIGH"
+  },
+  "components": [
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 393,
+      "executable": false,
+      "size_bytes": 34505,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/attribution.md",
+      "type": "markdown",
+      "lines": 96,
+      "executable": false,
+      "size_bytes": 5091,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/cicd-promotion.md",
+      "type": "markdown",
+      "lines": 161,
+      "executable": false,
+      "size_bytes": 11646,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/integration-version-json.md",
+      "type": "markdown",
+      "lines": 196,
+      "executable": false,
+      "size_bytes": 14704,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/rest-api-cheatsheet.md",
+      "type": "markdown",
+      "lines": 122,
+      "executable": false,
+      "size_bytes": 19800,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/tasks-and-gotchas.md",
+      "type": "markdown",
+      "lines": 114,
+      "executable": false,
+      "size_bytes": 13302,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/triggers-and-execution.md",
+      "type": "markdown",
+      "lines": 151,
+      "executable": false,
+      "size_bytes": 15764,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "AE1",
+      "finding_id": "finding-b78190a129354216a10743b99835d04a",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 27,
+        "end_line": null
+      },
+      "finding": "references/attribution.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "[Usage Attribution](references/attribution.md). For commands executed directly",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/attribution.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "76b81cf4befea46ebddc99841bf9cd8e37e10910dde3d7cf028ed313b303fa65",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 27,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-7abdb8be4deb4fffa1d6e16390ccffbe",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 388,
+        "end_line": null
+      },
+      "finding": "references/attribution.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "- [Usage Attribution](references/attribution.md): Usage attribution for `gcloud` CLI commands, direct `curl` REST calls, and Python discovery-client snippets ru",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/attribution.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "76b81cf4befea46ebddc99841bf9cd8e37e10910dde3d7cf028ed313b303fa65",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 388,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-361a376ffb8541a69861d5e1adbe1946",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 81,
+        "end_line": null
+      },
+      "finding": "references/rest-api-cheatsheet.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Review the target's analysis-completeness ledger and resolve all limitations. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "See [references/rest-api-cheatsheet.md](references/rest-api-cheatsheet.md) for full request parameters, query filters, and IAM permissions for each method.",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/rest-api-cheatsheet.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_agent_snooping"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_anti_refusal"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_deserialization"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_excessive_agency"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_harmful_content"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_memory_poisoning"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_privilege_escalation"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_prompt_injection"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_rogue_agent"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_ssrf"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_supply_chain"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_system_prompt_leakage"
+            ]
+          },
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "be27b3288d7b06ec3d0513062304ef0b6e66a646be60374f00520db30093d653",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 81,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-56bd2294bcb74e858f494a0df14891c1",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 389,
+        "end_line": null
+      },
+      "finding": "references/rest-api-cheatsheet.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Review the target's analysis-completeness ledger and resolve all limitations. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "- [REST API Cheatsheet](references/rest-api-cheatsheet.md): v1 and v2 endpoints, parameters, filters, and IAM permissions.",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/rest-api-cheatsheet.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_agent_snooping"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_anti_refusal"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_deserialization"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_excessive_agency"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_harmful_content"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_memory_poisoning"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_privilege_escalation"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_prompt_injection"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_rogue_agent"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_ssrf"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_supply_chain"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_system_prompt_leakage"
+            ]
+          },
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "be27b3288d7b06ec3d0513062304ef0b6e66a646be60374f00520db30093d653",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 389,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-37cff08814104986972afc71e4dd7d6f",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 119,
+        "end_line": null
+      },
+      "finding": "references/integration-version-json.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the target's analysis-completeness ledger and resolve all limitations. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "rnal` because they are deprecated. See [references/integration-version-json.md](references/integration-version-json.md) for field schemas, `ValueType` shapes, a",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/integration-version-json.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_agent_snooping"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_anti_refusal"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_deserialization"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_excessive_agency"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_harmful_content"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_memory_poisoning"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_privilege_escalation"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_prompt_injection"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_rogue_agent"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_ssrf"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_supply_chain"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_system_prompt_leakage"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "a0399907773da1b194b9422eceba4aaa95596d4deb79c82b9c2d62265bfbe9d7",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 119,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-00523b7235554f86aa8bd5723276b46f",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 390,
+        "end_line": null
+      },
+      "finding": "references/integration-version-json.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the target's analysis-completeness ledger and resolve all limitations. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "- [IntegrationVersion JSON Reference](references/integration-version-json.md): Schema for `triggerConfigs`, `taskConfigs`, `integrationParameters`, `ValueType`,",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/integration-version-json.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_agent_snooping"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_anti_refusal"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_deserialization"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_excessive_agency"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_harmful_content"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_memory_poisoning"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_privilege_escalation"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_prompt_injection"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_rogue_agent"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_ssrf"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_supply_chain"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_system_prompt_leakage"
+            ]
+          },
+          {
+            "reason_code": "obfuscated_instruction_text",
+            "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "a0399907773da1b194b9422eceba4aaa95596d4deb79c82b9c2d62265bfbe9d7",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 390,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-67fd3459bd98454d8ea52ff9e281c87d",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 185,
+        "end_line": null
+      },
+      "finding": "references/triggers-and-execution.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "See [references/triggers-and-execution.md](references/triggers-and-execution.md) for all trigger types, `ValueType` input formatting, OpenAPI spec generation, a",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/triggers-and-execution.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "decd3734d9e8e0f1b1fb2e621e93d36790c5b44244691b7d33d368307f906767",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 185,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-772afc1be0e74c75a7a8f0aed7bdfc9f",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 391,
+        "end_line": null
+      },
+      "finding": "references/triggers-and-execution.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "- [Triggers and Execution Reference](references/triggers-and-execution.md): Trigger types, `triggerId` formats, `:execute` vs `:schedule`, OpenAPI generation, a",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/triggers-and-execution.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "decd3734d9e8e0f1b1fb2e621e93d36790c5b44244691b7d33d368307f906767",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 391,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-65a5301a2dc547c7880ae629d0852a05",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 377,
+        "end_line": null
+      },
+      "finding": "references/cicd-promotion.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "See [references/cicd-promotion.md](references/cicd-promotion.md) for the complete promotion checklist and a ready-to-use Cloud Build pipeline.",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/cicd-promotion.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "2187a43275e9239f6bc8ced398058a504a5649528c1f3da14bc77e8f2a258a43",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 377,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-ae66f2d5357741b7aaa6ced5166853bf",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 393,
+        "end_line": null
+      },
+      "finding": "references/cicd-promotion.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "- [CI/CD Promotion Reference](references/cicd-promotion.md): Cross-project promotion checklist, environment config pattern, and Cloud Build workflow.",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/cicd-promotion.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "2187a43275e9239f6bc8ced398058a504a5649528c1f3da14bc77e8f2a258a43",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 393,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-f43fafe933e146eb9350ef32bf835bbf",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.8,
+      "location": {
+        "file": "references/rest-api-cheatsheet.md",
+        "start_line": 34,
+        "end_line": null,
+        "start_column": 14
+      },
+      "finding": "DELETE /integrations/INTEGRATION_NAME`",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "| :--- | :--- | :--- | :--- | :--- |\n| `list` | `GET /integrations` | Query: `pageSize`, `pageToken`, `orderBy`, `filter` | `integrations.integrations.list` | Returns `integrations[]` (`name`, `description`, `active`, `createTime`, `updateTime`, `creatorEmail`, `lastModifierEmail`). |\n| `search` | `GET /integrations:search` | Query search parameters | `integrations.integrations.list` | Searches integrations in the region. |\n| `delete` | `DELETE /integrations/INTEGRATION_NAME` | None | `integrations.integrations.delete` | Permanently deletes the integration and **all** its versions. Cannot be undone. |\n| `execute` | `POST /integrations/INTEGRATION_NAME:execute` | Body: `triggerId`, `inputParameters`, `requestId`, `doNotPropagateError` | `integrations.integrations.invoke` | Synchronous run; integration must be `ACTIVE`. Use `-` as `INTEGRATION_NAME` to run all integrations matching `triggerId`. |\n| `schedule` | `POST /integrations/INTEGRATION_NAME:schedule` | Body: `triggerId`, `schedule",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "dc5376dd2408e4349fa73e5515bc6d4d34d8c9f5c2e4f3207b18638ec0a05340",
+      "occurrences": [
+        {
+          "file": "references/rest-api-cheatsheet.md",
+          "start_line": 34,
+          "end_line": null,
+          "start_column": 14
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-3670d5654dac4d9080f4f4e625b768b8",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.8,
+      "location": {
+        "file": "references/rest-api-cheatsheet.md",
+        "start_line": 54,
+        "end_line": null,
+        "start_column": 14
+      },
+      "finding": "DELETE /versions/VERSION_ID`",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "full `IntegrationVersion` resource. |\n| `list` | `GET /versions` | Query: `pageSize` (default 50, max 1000), `pageToken`, `orderBy`, `filter`, `fieldMask` | `integrations.integrationVersions.list` | `orderBy` supports `last_modified_time`, `created_time`, `snapshot_number` (desc), `name` (asc). |\n| `patch` | `PATCH /versions/VERSION_ID` | Query: `updateMask` (FieldMask); Body: `IntegrationVersion` | `integrations.integrationVersions.update` | Updates an editable `DRAFT` version. |\n| `delete` | `DELETE /versions/VERSION_ID` | None | `integrations.integrationVersions.delete` | Soft-deletes version to `ARCHIVED` (no undelete) and releases any edit lock. Fails if `DRAFT` and the caller is not `lockHolder`. Deleting all versions deletes the integration. |\n| `download` | `GET /versions/VERSION_ID:download` | Query: `fileFormat` (`JSON` or `YAML`), `files[]` (`INTEGRATION`, `INTEGRATION_CONFIG_VARIABLES`) | `integrations.integrationVersions.get` | Returns `DownloadIntegrationVersionResponse` ",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "6abd126fb4f45704171e8b61f8a7535aa5ec92a76307eddccd7f205c748bc6cc",
+      "occurrences": [
+        {
+          "file": "references/rest-api-cheatsheet.md",
+          "start_line": 54,
+          "end_line": null,
+          "start_column": 14
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-a05d2eb20b164a61bc506c97a45e78f7",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.8,
+      "location": {
+        "file": "references/rest-api-cheatsheet.md",
+        "start_line": 74,
+        "end_line": null,
+        "start_column": 14
+      },
+      "finding": "DELETE /authConfigs/AUTH_CONFIG_ID`",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "| `get` | `GET /authConfigs/AUTH_CONFIG_ID` | None | Returns `AuthConfig` (`state`: `VALID`, `INVALID`, `SOFT_DELETED`, `EXPIRED`, `UNAUTHORIZED`, `UNSUPPORTED`). |\n| `list` | `GET /authConfigs` | Query: `pageSize`, `pageToken`, `filter`, `readMask` | Lists regional auth profiles. |\n| `patch` | `PATCH /authConfigs/AUTH_CONFIG_ID` | Query: `updateMask`; Body: `AuthConfig` | Updates credentials or metadata. |\n| `delete` | `DELETE /authConfigs/AUTH_CONFIG_ID` | None | Requires `roles/integrations.integrationAdmin`. |\n\n- **Supported `credentialType` values**: `USERNAME_AND_PASSWORD`, `API_KEY`, `OAUTH2_AUTHORIZATION_CODE`, `OAUTH2_IMPLICIT`, `OAUTH2_CLIENT_CREDENTIALS`, `OAUTH2_RESOURCE_OWNER_CREDENTIALS`, `JWT`, `AUTH_TOKEN`, `SERVICE_ACCOUNT`, `CLIENT_CERTIFICATE_ONLY`, `OIDC_TOKEN`.\n- **OAuth 2.0 redirect URI**: `https://console.cloud.google.com/integrations/callback/locations/AUTH_PROFILE_REGION`.",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "80dc8d37559bf1d04b3544c464703245a0f8e74182524084a4fff614f4fc61c4",
+      "occurrences": [
+        {
+          "file": "references/rest-api-cheatsheet.md",
+          "start_line": 74,
+          "end_line": null,
+          "start_column": 14
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-065b8028cf7c4c79802780f947f699b8",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.8,
+      "location": {
+        "file": "references/rest-api-cheatsheet.md",
+        "start_line": 88,
+        "end_line": null,
+        "start_column": 73
+      },
+      "finding": "DELETE /testCases/TEST_CASE_ID`",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "| :--- | :--- | :--- |\n| `create` | `POST /testCases?testCaseId=TEST_CASE_ID` | Cannot create test cases on an `ACTIVE` version (create a `DRAFT` first). |\n| `get` / `list` | `GET /testCases/TEST_CASE_ID` / `GET /testCases` | Reads test case definitions (`triggerId`, `testInputParameters`, `testTaskConfigs`). |\n| `patch` / `delete` | `PATCH /testCases/TEST_CASE_ID?updateMask=...` / `DELETE /testCases/TEST_CASE_ID` | Updates or removes a test case on a `DRAFT`. |\n| `download` / `upload` | `GET /testCases/TEST_CASE_ID:download` / `POST /testCases:upload` | Exports or imports a test case (`fileFormat`: `JSON` or `YAML`). |\n| `executeTest` | `POST /testCases/TEST_CASE_ID:executeTest` | Runs one test case (body `inputParameters`). Returns `executionId`, `testExecutionState`, `assertionResults[]`, `outputParameters`. Needs `integrations.testCases.invoke` (included in `roles/integrations.integrationInvoker`, `roles/integrations.integrationEditor`, and `roles/integrations.integrationAdmin`). |",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "826e6c96dafd66850fc70099b93766c18f8a56a0fc4193361616a5ed7a55a89d",
+      "occurrences": [
+        {
+          "file": "references/rest-api-cheatsheet.md",
+          "start_line": 88,
+          "end_line": null,
+          "start_column": 73
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-f9f028576e1b468e890166b8d7f59ba4",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.8,
+      "location": {
+        "file": "references/rest-api-cheatsheet.md",
+        "start_line": 100,
+        "end_line": null,
+        "start_column": 103
+      },
+      "finding": "DELETE /templates/TEMPLATE_ID`",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "\n| Method | HTTP & Path (under `.../locations/LOCATION`) | Notes |\n| :--- | :--- | :--- |\n| `create` / `patch` / `delete` | `POST /templates` / `PATCH /templates/TEMPLATE_ID?updateMask=...` / `DELETE /templates/TEMPLATE_ID` | Manages project or shared templates. |\n| `get` / `list` / `search` | `GET /templates/TEMPLATE_ID` / `GET /templates` / `GET /templates:search` | Inspects available templates (`visibility`: `PRIVATE`, `SHARED`, `PUBLIC`). |\n| `download` / `upload` | `GET /templates/TEMPLATE_ID:download?fileFormat=JSON` / `POST /templates:upload` | Exports (`fileFormat` required) or imports template content (body requires `content` and `fileFormat`). |\n| `use` | `POST /templates/TEMPLATE_ID:use` | Creates a new integration from a template (body requires `integrationDetails` and `integrationRegion`; `subIntegrations` is optional). |",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "1f8acb462a249dacff99d1b047f26322402c8d47d81ac155ec6849a1b16a59bf",
+      "occurrences": [
+        {
+          "file": "references/rest-api-cheatsheet.md",
+          "start_line": 100,
+          "end_line": null,
+          "start_column": 103
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-4b9298bf8d0244fd8b573f75a9438716",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 129,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": "curl -sS --fail-with-body -X POST \\\n  -H \"Authorization: Bearer $(gcloud auth print-access-token)\" \\\n  -H \"Content-Type: application/json\" \\\n  -d ",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "# Upload integration-version.json as a new DRAFT version\nPAYLOAD=\"$(jq -n --rawfile content integration-version.json '{content: $content, fileFormat: \"JSON\"}')\"\n\ncurl -sS --fail-with-body -X POST \\\n  -H \"Authorization: Bearer $(gcloud auth print-access-token)\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${PAYLOAD}\" \\",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "146d1526da8443fb4c25110d34e48ca360d0afc2e96be94dd5e6167346a3e5ac",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 129,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-c3de2e9c0d3e4987964aabcfb8c34827",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 166,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": "curl -sS --fail-with-body -X POST \\\n  -H \"Authorization: Bearer $(gcloud auth print-access-token)\" \\\n  -H \"Content-Type: application/json\" \\\n  -d ",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "\n```bash\n# Publish VERSION_ID and supply config variable values (keys must exactly match integrationConfigParameters keys, backticks included; unknown keys are silently ignored)\ncurl -sS --fail-with-body -X POST \\\n  -H \"Authorization: Bearer $(gcloud auth print-access-token)\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"configParameters\": {\"`CONFIG_backend_url`\": \"https://api.example.com\"}}' \\",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "146d1526da8443fb4c25110d34e48ca360d0afc2e96be94dd5e6167346a3e5ac",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 166,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-b518b1a9d337459c849317f0f3e37d4c",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 246,
+        "end_line": null,
+        "start_column": 16
+      },
+      "finding": "curl -sS --fail-with-body -X POST \\\n  -H \"Authorization: Bearer ${TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d ",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "\n# 2. Upload as a new DRAFT version — creates INTEGRATION_NAME if it does not exist yet (confirm with user first)\nUPLOAD_BODY=\"$(jq -n --rawfile content /tmp/version.json '{content: $content, fileFormat: \"JSON\"}')\"\nVERSION_NAME=\"$(curl -sS --fail-with-body -X POST \\\n  -H \"Authorization: Bearer ${TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${UPLOAD_BODY}\" \\",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "4acb2b527ae9d808d00a42d8bff1dbadb3da4f6ff4d62f531bceff7d034a72a6",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 246,
+          "end_line": null,
+          "start_column": 16
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-faf209663a9649f68e650b60306903f8",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "references/cicd-promotion.md",
+        "start_line": 86,
+        "end_line": null,
+        "start_column": 16
+      },
+      "finding": "curl -sS --fail-with-body -X POST \\\n  -H \"Authorization: Bearer ${TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d ",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "  '{content: $content, fileFormat: \"JSON\"}')\"\n\n# 2. Upload the DRAFT version (creates INTEGRATION_NAME if it does not exist yet) and extract its VERSION_ID (confirm with user before running)\nVERSION_NAME=\"$(curl -sS --fail-with-body -X POST \\\n  -H \"Authorization: Bearer ${TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${UPLOAD_PAYLOAD}\" \\",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "4acb2b527ae9d808d00a42d8bff1dbadb3da4f6ff4d62f531bceff7d034a72a6",
+      "occurrences": [
+        {
+          "file": "references/cicd-promotion.md",
+          "start_line": 86,
+          "end_line": null,
+          "start_column": 16
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-cfa68e8464ab4d15a8ad89caceb70f5f",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "references/cicd-promotion.md",
+        "start_line": 97,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": "curl -sS --fail-with-body -X POST \\\n  -H \"Authorization: Bearer ${TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d ",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "\n# 3. Publish the uploaded version with environment-specific configParameters (keys must exactly match integrationConfigParameters keys, backticks included, or unknown keys are silently ignored; confirm with user before running)\nPUBLISH_PAYLOAD=\"$(jq '{configParameters}' configs/prod.json)\"\ncurl -sS --fail-with-body -X POST \\\n  -H \"Authorization: Bearer ${TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${PUBLISH_PAYLOAD}\" \\",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "4acb2b527ae9d808d00a42d8bff1dbadb3da4f6ff4d62f531bceff7d034a72a6",
+      "occurrences": [
+        {
+          "file": "references/cicd-promotion.md",
+          "start_line": 97,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-337e86ff28aa4b3fb4ae03bc81a8c6ab",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 256,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": "curl -sS --fail-with-body -X POST \\\n  -H \"Authorization: Bearer ${TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{}' \\\n  \"${BASE_URL}/integrations/${INTEGRATION_NAME}/versions/${VERSION_ID}:p",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "[[ -n \"${VERSION_ID}\" && \"${VERSION_ID}\" != \"null\" ]] || { echo \"upload failed: ${VERSION_NAME}\" >&2; exit 1; }\n\n# 3. Publish the DRAFT version (confirm with user first)\ncurl -sS --fail-with-body -X POST \\\n  -H \"Authorization: Bearer ${TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{}' \\",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "67d4225963a25a089db9f2e6b76ca3839b0a4d61fac76cef7170ab7f22da3a85",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 256,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-4b6d7be96e3a4f24845a509309cbe8ff",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "references/cicd-promotion.md",
+        "start_line": 124,
+        "end_line": null,
+        "start_column": 24
+      },
+      "finding": "curl -sS --fail-with-body -X POST \\\n          -H \"Authorization: Bearer $${TOKEN}\" \\\n          -H \"Content-Type: application/json\" \\\n          -d ",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "        echo \"Rewriting runAsServiceAccount to ${_RUN_AS_SA} and uploading ${_INTEGRATION_NAME} to ${_TARGET_PROJECT_ID} (${_LOCATION})...\"\n        jq --arg sa \"${_RUN_AS_SA}\" '.runAsServiceAccount = $$sa' \"${_INTEGRATION_FILE}\" > /tmp/integration.env.json\n        UPLOAD_PAYLOAD=\"$$(jq -n --rawfile content /tmp/integration.env.json '{content: $$content, fileFormat: \"JSON\"}')\"\n        UPLOAD_RESP=\"$$(curl -sS --fail-with-body -X POST \\\n          -H \"Authorization: Bearer $${TOKEN}\" \\\n          -H \"Content-Type: application/json\" \\\n          -d \"$${UPLOAD_PAYLOAD}\" \\",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "b962a1c40e89644cdecf62a7bdfb9fa297941aa8e9084285ce9fb2750d1baef0",
+      "occurrences": [
+        {
+          "file": "references/cicd-promotion.md",
+          "start_line": 124,
+          "end_line": null,
+          "start_column": 24
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-fe1f17358f564dda9341001edef630a0",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "references/cicd-promotion.md",
+        "start_line": 137,
+        "end_line": null,
+        "start_column": 8
+      },
+      "finding": "curl -sS --fail-with-body -X POST \\\n          -H \"Authorization: Bearer $${TOKEN}\" \\\n          -H \"Content-Type: application/json\" \\\n          -d ",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "\n        echo \"Publishing version $${VERSION_ID} with ${_CONFIG_FILE}...\"\n        PUBLISH_PAYLOAD=\"$$(jq '{configParameters}' \"${_CONFIG_FILE}\")\"\n        curl -sS --fail-with-body -X POST \\\n          -H \"Authorization: Bearer $${TOKEN}\" \\\n          -H \"Content-Type: application/json\" \\\n          -d \"$${PUBLISH_PAYLOAD}\" \\",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "b962a1c40e89644cdecf62a7bdfb9fa297941aa8e9084285ce9fb2750d1baef0",
+      "occurrences": [
+        {
+          "file": "references/cicd-promotion.md",
+          "start_line": 137,
+          "end_line": null,
+          "start_column": 8
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-006d9561e86d41eca88861fc1ca327c8",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "references/triggers-and-execution.md",
+        "start_line": 94,
+        "end_line": null,
+        "start_column": 3
+      },
+      "finding": "curl -sS -H \"Authorization: Bearer $(gcloud auth print-access-token)\" \\\n     \"https://integrations.googleapis.com/v1/projects/PROJECT_ID/locations/LOCATION/integrations/-/executions?filter=execution_i",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "\n1. **Verify the execution record (`executions.list`)**: Do not rely on HTTP 200 alone (or the legacy, deprecated `executionFailed` field, which is not a supported public signal). Query the execution record by `executionId`:\n   ```bash\n   curl -sS -H \"Authorization: Bearer $(gcloud auth print-access-token)\" \\\n     \"https://integrations.googleapis.com/v1/projects/PROJECT_ID/locations/LOCATION/integrations/-/executions?filter=execution_id%3D%22EXECUTION_ID%22\"\n   ```\n   Check `executionDetails.state` (`PENDING`, `PROCESSING`, `SUCCEEDED`, `FAILED`, `CANCELLED`, `RETRY_ON_HOLD`, `SUSPENDED`) and each task's `taskExecutionState` (`SUCCEED`, `FAILED`, `FATAL`, `SKIPPED`, `SUSPENDED`, and so on).",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "24cbc70c6b9968cc1e2e61c3e2d5138f789a5907a3495cab5cc1eae687e86eff",
+      "occurrences": [
+        {
+          "file": "references/triggers-and-execution.md",
+          "start_line": 94,
+          "end_line": null,
+          "start_column": 3
+        }
+      ]
+    },
+    {
+      "id": "EA2",
+      "finding_id": "finding-8705c9953f224bb78b2132bc9c86a1e5",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "severity": "MEDIUM",
+      "confidence": 0.75,
+      "location": {
+        "file": "references/triggers-and-execution.md",
+        "start_line": 98,
+        "end_line": null,
+        "start_column": 42
+      },
+      "finding": "without checking",
+      "explanation": "Skill enables autonomous high-impact decisions without human-in-the-loop verification. Critical operations (destructive commands, financial transactions, data deletion) should require explicit user confirmation.",
+      "remediation": "Add human-in-the-loop confirmation for destructive, irreversible, or high-impact operations. Never auto-execute commands that modify files, send data, or alter system state.",
+      "code_snippet": "     \"https://integrations.googleapis.com/v1/projects/PROJECT_ID/locations/LOCATION/integrations/-/executions?filter=execution_id%3D%22EXECUTION_ID%22\"\n   ```\n   Check `executionDetails.state` (`PENDING`, `PROCESSING`, `SUCCEEDED`, `FAILED`, `CANCELLED`, `RETRY_ON_HOLD`, `SUSPENDED`) and each task's `taskExecutionState` (`SUCCEED`, `FAILED`, `FATAL`, `SKIPPED`, `SUSPENDED`, and so on).\n2. **Do not trust HTTP 200 or `SUCCEEDED` without checking task states**: If a task has `failurePolicy.retryStrategy` set to `IGNORE` (\"assumes this task succeeded\") or `NONE` with an alternate branch, the integration can still return HTTP 200 and state `SUCCEEDED` even though a task failed.\n3. **Check system keys in `outputParameters`**: System-generated variable names inside `outputParameters` are wrapped in backticks (for example, `` `ExecutionId` ``, `` `ErrorInfo` ``). User-defined output variables use their plain `key` name.\n4. **Check `ErrorInfo` on errors**: Without `doNotPropagateError: true`, a",
+      "intent": null,
+      "tags": [
+        "Excessive Agency"
+      ],
+      "evidence": {},
+      "match_fingerprint": "9341b6f34d6af9081a0d6673f4217b7307d273da9f43357efd9029e15c5da76c",
+      "occurrences": [
+        {
+          "file": "references/triggers-and-execution.md",
+          "start_line": 98,
+          "end_line": null,
+          "start_column": 42
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": false,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 7,
+    "scanned_components": 1,
+    "coverage_percent": 14.3,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 1,
+    "partially_inspected_files": 6,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "obfuscated_instruction_text",
+        "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+        "path": "SKILL.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_agent_snooping",
+          "static_patterns_anti_refusal",
+          "static_patterns_deserialization",
+          "static_patterns_excessive_agency",
+          "static_patterns_harmful_content",
+          "static_patterns_memory_poisoning",
+          "static_patterns_privilege_escalation",
+          "static_patterns_prompt_injection",
+          "static_patterns_rogue_agent",
+          "static_patterns_ssrf",
+          "static_patterns_supply_chain",
+          "static_patterns_system_prompt_leakage"
+        ]
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "SKILL.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 30,
+        "end_line": 30,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 31,
+        "end_line": 31,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 36,
+        "end_line": 36,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 39,
+        "end_line": 39,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 58,
+        "end_line": 58,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 59,
+        "end_line": 59,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 116,
+        "end_line": 116,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 136,
+        "end_line": 136,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 145,
+        "end_line": 145,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 147,
+        "end_line": 147,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 148,
+        "end_line": 148,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 152,
+        "end_line": 152,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 158,
+        "end_line": 158,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 183,
+        "end_line": 183,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 251,
+        "end_line": 251,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 279,
+        "end_line": 279,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 364,
+        "end_line": 364,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "references/attribution.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "references/cicd-promotion.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "obfuscated_instruction_text",
+        "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+        "path": "references/integration-version-json.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_agent_snooping",
+          "static_patterns_anti_refusal",
+          "static_patterns_deserialization",
+          "static_patterns_excessive_agency",
+          "static_patterns_harmful_content",
+          "static_patterns_memory_poisoning",
+          "static_patterns_privilege_escalation",
+          "static_patterns_prompt_injection",
+          "static_patterns_rogue_agent",
+          "static_patterns_ssrf",
+          "static_patterns_supply_chain",
+          "static_patterns_system_prompt_leakage",
+          "static_patterns_tool_misuse"
+        ]
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "obfuscated_instruction_text",
+        "message": "Obfuscated instruction text could not be fully evaluated by the deterministic layer.",
+        "path": "references/rest-api-cheatsheet.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_agent_snooping",
+          "static_patterns_anti_refusal",
+          "static_patterns_deserialization",
+          "static_patterns_excessive_agency",
+          "static_patterns_harmful_content",
+          "static_patterns_memory_poisoning",
+          "static_patterns_privilege_escalation",
+          "static_patterns_prompt_injection",
+          "static_patterns_rogue_agent",
+          "static_patterns_ssrf",
+          "static_patterns_supply_chain",
+          "static_patterns_system_prompt_leakage"
+        ]
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "references/rest-api-cheatsheet.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "references/triggers-and-execution.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "reference_coverage",
+        "status": "completed",
+        "planned_work": 10,
+        "completed": 10,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "degraded",
+        "planned_work": 7,
+        "completed": 4,
+        "partial": 3,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "degraded",
+        "planned_work": 7,
+        "completed": 4,
+        "partial": 3,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "degraded",
+        "planned_work": 7,
+        "completed": 4,
+        "partial": 3,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "degraded",
+        "planned_work": 7,
+        "completed": 4,
+        "partial": 3,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "degraded",
+        "planned_work": 7,
+        "completed": 4,
+        "partial": 3,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "degraded",
+        "planned_work": 7,
+        "completed": 4,
+        "partial": 3,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "degraded",
+        "planned_work": 7,
+        "completed": 4,
+        "partial": 3,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "degraded",
+        "planned_work": 7,
+        "completed": 4,
+        "partial": 3,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "degraded",
+        "planned_work": 7,
+        "completed": 4,
+        "partial": 3,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "degraded",
+        "planned_work": 7,
+        "completed": 4,
+        "partial": 3,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "degraded",
+        "planned_work": 7,
+        "completed": 4,
+        "partial": 3,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "degraded",
+        "planned_work": 7,
+        "completed": 4,
+        "partial": 3,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "degraded",
+        "planned_work": 7,
+        "completed": 1,
+        "partial": 6,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 7,
+        "completed": 7,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 27,
+        "column": 21,
+        "evidence": "[Usage Attribution](references/attribution.md). For commands executed directly",
+        "target_path": "references/attribution.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 30,
+        "column": 40,
+        "evidence": "`CLOUDSDK_METRICS_REQUEST_ATTRIBUTION=\"agent-skills/1.0 (skill:application-integration-authoring)\"`",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 31,
+        "column": 10,
+        "evidence": "and add `agent-skills/1.0 (skill:application-integration-authoring)` to the",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 36,
+        "column": 41,
+        "evidence": "- **Read-only operations run freely**: `integrations.list`, `integrations:search`, `versions.list`, `versions.get`, `versions:download`, `authConfigs.list`, and",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 36,
+        "column": 85,
+        "evidence": "Read-only operations run freely**: `integrations.list`, `integrations:search`, `versions.list`, `versions.get`, `versions:download`, `authConfigs.list`, and `ex",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 36,
+        "column": 102,
+        "evidence": "ons run freely**: `integrations.list`, `integrations:search`, `versions.list`, `versions.get`, `versions:download`, `authConfigs.list`, and `executions.list`.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 36,
+        "column": 139,
+        "evidence": ", `integrations:search`, `versions.list`, `versions.get`, `versions:download`, `authConfigs.list`, and `executions.list`.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 36,
+        "column": 163,
+        "evidence": " `versions.list`, `versions.get`, `versions:download`, `authConfigs.list`, and `executions.list`.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 39,
+        "column": 154,
+        "evidence": "*`) are stored and exported in plain text. Always use authentication profiles (`projects.locations.authConfigs`) or the Secret Manager access task for credentia",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 43,
+        "column": 66,
+        "evidence": "1. **Install Google Cloud SDK**: Follow [Install the gcloud CLI](https://docs.cloud.google.com/sdk/docs/install-sdk.md.txt) if `gcloud` is not installed.",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 52,
+        "column": 145,
+        "evidence": ": confirm the target region is supported on [Application Integration locations](https://docs.cloud.google.com/application-integration/docs/locations.md.txt) and",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 58,
+        "column": 117,
+        "evidence": "oles/integrations.integrationEditor` (covers `versions:upload`, which needs `integrations.integrationVersions.create`, and `versions:publish`)",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 59,
+        "column": 239,
+        "evidence": " publish an existing version but cannot upload via `versions:upload`), plus `roles/integrations.serviceAgent` granted to the Application Integration service age",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 81,
+        "column": 41,
+        "evidence": "See [references/rest-api-cheatsheet.md](references/rest-api-cheatsheet.md) for full request parameters, query filters, and IAM permissions for each method.",
+        "target_path": "references/rest-api-cheatsheet.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 81,
+        "column": 6,
+        "evidence": "See [references/rest-api-cheatsheet.md](references/rest-api-cheatsheet.md) for full request parameters, query filters, and IAM permissions for each method.",
+        "target_path": "references/rest-api-cheatsheet.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 116,
+        "column": 132,
+        "evidence": "ic config variable definitions (`parameter` with key `` `CONFIG_<NAME>` `` and `parameter.defaultValue`; a top-level `value` in uploaded or created draft JSON i",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 119,
+        "column": 242,
+        "evidence": "rnal` because they are deprecated. See [references/integration-version-json.md](references/integration-version-json.md) for field schemas, `ValueType` shapes, a",
+        "target_path": "references/integration-version-json.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 119,
+        "column": 202,
+        "evidence": "Internal`, or `integrationParametersInternal` because they are deprecated. See [references/integration-version-json.md](references/integration-version-json.md) ",
+        "target_path": "references/integration-version-json.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 136,
+        "column": 36,
+        "evidence": "Capture the new `VERSION_ID` from `.integrationVersion.name` in the response (`projects/PROJECT_ID/locations/LOCATION/integrations/INTEGRATION_NAME/versions/VER",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 145,
+        "column": 34,
+        "evidence": "| `ARCHIVED` | Soft-deleted via `versions.delete` (no undelete; listed as `DELETED` on the Integration versions documentation page) | No | No |",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 147,
+        "column": 129,
+        "evidence": " edit lock is held by its author (`lockHolder`). Calling `versions:publish` or `versions.delete` on a `DRAFT` fails if the caller is not the `lockHolder` (`vers",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 147,
+        "column": 228,
+        "evidence": " a `DRAFT` fails if the caller is not the `lockHolder` (`versions:publish` and `versions.delete` release any existing lock when they succeed).",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 148,
+        "column": 74,
+        "evidence": "- **No v1 lock-takeover API**: `takeoverEditLock` does **not** exist on `projects.locations.integrations.versions` in the v1 REST API (it only exists on `versio",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 148,
+        "column": 155,
+        "evidence": "rojects.locations.integrations.versions` in the v1 REST API (it only exists on `versions.testCases`). If a `DRAFT` is locked by another user, wait 15 minutes fr",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 152,
+        "column": 219,
+        "evidence": "ine them in `integrationConfigParameters` on the draft (putting any default in `parameter.defaultValue`, because a top-level `value` on a draft is discarded) an",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 158,
+        "column": 148,
+        "evidence": "../integrations/INTEGRATION_NAME:test` for testing a `DRAFT`, which requires `TestIntegrationsRequest.clientId` (\"Required. This is used to identify the client ",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 183,
+        "column": 321,
+        "evidence": "tion record via `executions.list?filter=execution_id=\"EXECUTION_ID\"` (checking `executionDetails.state`, each task's `taskExecutionState`, and `ErrorInfo` in `E",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 185,
+        "column": 44,
+        "evidence": "See [references/triggers-and-execution.md](references/triggers-and-execution.md) for all trigger types, `ValueType` input formatting, OpenAPI spec generation, a",
+        "target_path": "references/triggers-and-execution.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 185,
+        "column": 6,
+        "evidence": "See [references/triggers-and-execution.md](references/triggers-and-execution.md) for all trigger types, `ValueType` input formatting, OpenAPI spec generation, a",
+        "target_path": "references/triggers-and-execution.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 251,
+        "column": 12,
+        "evidence": "| jq -r '.integrationVersion.name')\"",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 279,
+        "column": 44,
+        "evidence": "No official Python sample is published on `docs.cloud.google.com`; the following workflow is built from the v1 API discovery document (`google-api-python-client",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 364,
+        "column": 390,
+        "evidence": "ch is the same call the Cloud console Approve/Reject buttons make and requires `integrations.suspensions.resolve`. Suspend tasks are resumed via `POST .../integ",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 364,
+        "column": 793,
+        "evidence": "cepts an optional `suspensionResult` defaulting to `Resolved`), which requires `integrations.suspensions.lift`. Listing suspensions (`suspensions.list`) require",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 364,
+        "column": 847,
+        "evidence": "solved`), which requires `integrations.suspensions.lift`. Listing suspensions (`suspensions.list`) requires `integrations.suspensions.list`. All three permissio",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 364,
+        "column": 876,
+        "evidence": "egrations.suspensions.lift`. Listing suspensions (`suspensions.list`) requires `integrations.suspensions.list`. All three permissions are included in `roles/int",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 367,
+        "column": 39,
+        "evidence": "See [references/tasks-and-gotchas.md](references/tasks-and-gotchas.md) for the full task catalog, limits, variable reference syntax, and retry strategies.",
+        "target_path": "references/tasks-and-gotchas.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 367,
+        "column": 6,
+        "evidence": "See [references/tasks-and-gotchas.md](references/tasks-and-gotchas.md) for the full task catalog, limits, variable reference syntax, and retry strategies.",
+        "target_path": "references/tasks-and-gotchas.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 377,
+        "column": 36,
+        "evidence": "See [references/cicd-promotion.md](references/cicd-promotion.md) for the complete promotion checklist and a ready-to-use Cloud Build pipeline.",
+        "target_path": "references/cicd-promotion.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 377,
+        "column": 6,
+        "evidence": "See [references/cicd-promotion.md](references/cicd-promotion.md) for the complete promotion checklist and a ready-to-use Cloud Build pipeline.",
+        "target_path": "references/cicd-promotion.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 381,
+        "column": 415,
+        "evidence": "view current thresholds and rates on the [Application Integration pricing page](https://cloud.google.com/application-integration/pricing) and estimate costs wit",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 388,
+        "column": 23,
+        "evidence": "- [Usage Attribution](references/attribution.md): Usage attribution for `gcloud` CLI commands, direct `curl` REST calls, and Python discovery-client snippets ru",
+        "target_path": "references/attribution.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 389,
+        "column": 25,
+        "evidence": "- [REST API Cheatsheet](references/rest-api-cheatsheet.md): v1 and v2 endpoints, parameters, filters, and IAM permissions.",
+        "target_path": "references/rest-api-cheatsheet.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 390,
+        "column": 39,
+        "evidence": "- [IntegrationVersion JSON Reference](references/integration-version-json.md): Schema for `triggerConfigs`, `taskConfigs`, `integrationParameters`, `ValueType`,",
+        "target_path": "references/integration-version-json.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 391,
+        "column": 38,
+        "evidence": "- [Triggers and Execution Reference](references/triggers-and-execution.md): Trigger types, `triggerId` formats, `:execute` vs `:schedule`, OpenAPI generation, a",
+        "target_path": "references/triggers-and-execution.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 392,
+        "column": 33,
+        "evidence": "- [Tasks and Gotchas Reference](references/tasks-and-gotchas.md): Task-by-task rules, quotas, variable reference syntax, and error handling strategies.",
+        "target_path": "references/tasks-and-gotchas.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 393,
+        "column": 31,
+        "evidence": "- [CI/CD Promotion Reference](references/cicd-promotion.md): Cross-project promotion checklist, environment config pattern, and Cloud Build workflow.",
+        "target_path": "references/cicd-promotion.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "markdown_link"
+      }
+    ],
+    "limitations": [
+      "Analyzer static_patterns_agent_snooping status: degraded.",
+      "Analyzer static_patterns_anti_refusal status: degraded.",
+      "Analyzer static_patterns_deserialization status: degraded.",
+      "Analyzer static_patterns_excessive_agency status: degraded.",
+      "Analyzer static_patterns_harmful_content status: degraded.",
+      "Analyzer static_patterns_memory_poisoning status: degraded.",
+      "Analyzer static_patterns_privilege_escalation status: degraded.",
+      "Analyzer static_patterns_prompt_injection status: degraded.",
+      "Analyzer static_patterns_rogue_agent status: degraded.",
+      "Analyzer static_patterns_ssrf status: degraded.",
+      "Analyzer static_patterns_supply_chain status: degraded.",
+      "Analyzer static_patterns_system_prompt_leakage status: degraded.",
+      "Analyzer static_patterns_tool_misuse status: degraded."
+    ],
+    "findings_before_filtering": 25,
+    "findings_after_filtering": 25
+  }
+}

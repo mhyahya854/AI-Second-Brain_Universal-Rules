@@ -1,0 +1,1073 @@
+{
+  "skill": {
+    "name": "omc-setup",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\Yeachan-Heo\\oh-my-claudecode\\omc-setup",
+    "scanned_at": "2026-10-31T21:54:24.376968+00:00"
+  },
+  "risk_assessment": {
+    "score": 100,
+    "severity": "CRITICAL",
+    "recommendation": "DO_NOT_INSTALL",
+    "max_issue_severity": "HIGH"
+  },
+  "components": [
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 215,
+      "executable": false,
+      "size_bytes": 10044,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "phases/01-install-claude-md.md",
+      "type": "markdown",
+      "lines": 119,
+      "executable": false,
+      "size_bytes": 7106,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "phases/02-configure.md",
+      "type": "markdown",
+      "lines": 281,
+      "executable": false,
+      "size_bytes": 11167,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "phases/03-integrations.md",
+      "type": "markdown",
+      "lines": 275,
+      "executable": false,
+      "size_bytes": 9795,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "phases/04-welcome.md",
+      "type": "markdown",
+      "lines": 219,
+      "executable": false,
+      "size_bytes": 8002,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "MP3",
+      "finding_id": "finding-0fcccb16c8ac47e08916a4a3b2b11451",
+      "category": "Memory Poisoning",
+      "pattern": "Memory Manipulation",
+      "severity": "HIGH",
+      "confidence": 0.8,
+      "location": {
+        "file": "phases/01-install-claude-md.md",
+        "start_line": 115,
+        "end_line": null,
+        "start_column": 42
+      },
+      "finding": "clear state",
+      "explanation": "Skill manipulates agent memory, state, or stored context. Memory corruption can alter personality, override safety rules, or cause unpredictable behavior.",
+      "remediation": "Protect agent memory and state from modification by untrusted content. Use read-only memory for critical instructions and validate all state changes.",
+      "code_snippet": "\n## Early Exit for Flag Mode\n\nIf `--local` or `--global` flag was used, clear state and **STOP HERE**:\n```bash\nbash \"${OMC_SETUP_PLUGIN_ROOT:-${CLAUDE_PLUGIN_ROOT}}/scripts/setup-progress.sh\" clear\n```",
+      "intent": null,
+      "tags": [
+        "Memory Poisoning"
+      ],
+      "evidence": {},
+      "match_fingerprint": "4dee4faaa7194e6cfc82288caa423040ce3c068aa01abc9dc9bf4acae0f37507",
+      "occurrences": [
+        {
+          "file": "phases/01-install-claude-md.md",
+          "start_line": 115,
+          "end_line": null,
+          "start_column": 42
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-3da00680c0ef4f3583221a0274490f2b",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.85,
+      "location": {
+        "file": "phases/02-configure.md",
+        "start_line": 32,
+        "end_line": null,
+        "start_column": 76
+      },
+      "finding": "rm -f \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/.omc-write-probe\"",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "```bash\nnode --version || echo \"ERROR: Node is required for OMC hooks and Ralph state persistence.\"\nmkdir -p \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}\" 2>/dev/null\ntouch \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/.omc-write-probe\" 2>/dev/null && rm -f \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/.omc-write-probe\" \\\n  || echo \"WARNING: Config dir is not writable; Ralph state persistence will fail until it is.\"\n```\n",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "fccd1e52eace5fadf7c87112443928434668ce7c6171a372ae3e8df338216bf8",
+      "occurrences": [
+        {
+          "file": "phases/02-configure.md",
+          "start_line": 32,
+          "end_line": null,
+          "start_column": 76
+        }
+      ]
+    },
+    {
+      "id": "TM2",
+      "finding_id": "finding-8da420b934df4c46b1529e3c94664b1a",
+      "category": "Tool Misuse",
+      "pattern": "Chaining Abuse",
+      "severity": "HIGH",
+      "confidence": 0.75,
+      "location": {
+        "file": "phases/02-configure.md",
+        "start_line": 32,
+        "end_line": null,
+        "start_column": 73
+      },
+      "finding": "&& rm -",
+      "explanation": "Tool calls are chained to bypass individual safety checks or escalate capabilities beyond what any single tool call would allow.",
+      "remediation": "Limit tool chaining depth and validate the output of each tool before passing it to the next. Require explicit user approval for multi-step chains.",
+      "code_snippet": "```bash\nnode --version || echo \"ERROR: Node is required for OMC hooks and Ralph state persistence.\"\nmkdir -p \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}\" 2>/dev/null\ntouch \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/.omc-write-probe\" 2>/dev/null && rm -f \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/.omc-write-probe\" \\\n  || echo \"WARNING: Config dir is not writable; Ralph state persistence will fail until it is.\"\n```\n",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "da42bed49ba667f4edac8a3628fa28e5cc6bbc20fc757fb7d1ddbddd9a531ec0",
+      "occurrences": [
+        {
+          "file": "phases/02-configure.md",
+          "start_line": 32,
+          "end_line": null,
+          "start_column": 73
+        }
+      ]
+    },
+    {
+      "id": "AS1",
+      "finding_id": "finding-34d14449978648828c58752c4f58ce5e",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "severity": "HIGH",
+      "confidence": 0.9,
+      "location": {
+        "file": "phases/02-configure.md",
+        "start_line": 48,
+        "end_line": null,
+        "start_column": 30
+      },
+      "finding": "~/.claude/settings.json",
+      "explanation": "Skill reads from agent configuration directories (.claude/, .codex/, .gemini/). These directories may contain API keys, personal settings, and other credentials that the skill has no legitimate need to access.",
+      "remediation": "Remove all code or instructions that access agent configuration directories (.claude/, .codex/, .gemini/). If configuration values are needed, pass them explicitly as parameters or environment variables — never read the agent's own config files.",
+      "code_snippet": "\nThis will:\n1. Install the HUD wrapper script to `~/.claude/hud/omc-hud.mjs`\n2. Configure `statusLine` in `~/.claude/settings.json`\n3. Report status and prompt to restart if needed\n\nAfter HUD setup completes, save progress:",
+      "intent": null,
+      "tags": [
+        "Agent Snooping"
+      ],
+      "evidence": {},
+      "match_fingerprint": "5a1df888db5d4ec0b5b9acca20cfc27be4af48718ceb134b7edd155d53abdf2c",
+      "occurrences": [
+        {
+          "file": "phases/02-configure.md",
+          "start_line": 48,
+          "end_line": null,
+          "start_column": 30
+        }
+      ]
+    },
+    {
+      "id": "AS1",
+      "finding_id": "finding-7510dadb9a314549bf40e11c4abdabef",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "severity": "HIGH",
+      "confidence": 0.9,
+      "location": {
+        "file": "phases/03-integrations.md",
+        "start_line": 47,
+        "end_line": null,
+        "start_column": 87
+      },
+      "finding": "~/.claude/settings.json",
+      "explanation": "Skill reads from agent configuration directories (.claude/, .codex/, .gemini/). These directories may contain API keys, personal settings, and other credentials that the skill has no legitimate need to access.",
+      "remediation": "Remove all code or instructions that access agent configuration directories (.claude/, .codex/, .gemini/). If configuration values are needed, pass them explicitly as parameters or environment variables — never read the agent's own config files.",
+      "code_snippet": "\n#### 3.3.1: Enable Agent Teams in settings.json\n\n**CRITICAL**: Agent teams require `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` to be set in `~/.claude/settings.json`. This must be done carefully to preserve existing user settings.\n\nFirst, read the current settings.json:\n",
+      "intent": null,
+      "tags": [
+        "Agent Snooping"
+      ],
+      "evidence": {},
+      "match_fingerprint": "5a1df888db5d4ec0b5b9acca20cfc27be4af48718ceb134b7edd155d53abdf2c",
+      "occurrences": [
+        {
+          "file": "phases/03-integrations.md",
+          "start_line": 47,
+          "end_line": null,
+          "start_column": 87
+        }
+      ]
+    },
+    {
+      "id": "AS1",
+      "finding_id": "finding-3418c05b9fff43339bebd7025e5539dc",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "severity": "HIGH",
+      "confidence": 0.9,
+      "location": {
+        "file": "phases/03-integrations.md",
+        "start_line": 259,
+        "end_line": null,
+        "start_column": 86
+      },
+      "finding": "~/.claude/settings.json",
+      "explanation": "Skill reads from agent configuration directories (.claude/, .codex/, .gemini/). These directories may contain API keys, personal settings, and other credentials that the skill has no legitimate need to access.",
+      "remediation": "Remove all code or instructions that access agent configuration directories (.claude/, .codex/, .gemini/). If configuration values are needed, pass them explicitly as parameters or environment variables — never read the agent's own config files.",
+      "code_snippet": "\n### If User Chooses NO:\n\nSkip this step. Agent teams will remain disabled. User can enable later by adding to `~/.claude/settings.json`:\n```json\n{\n  \"env\": {",
+      "intent": null,
+      "tags": [
+        "Agent Snooping"
+      ],
+      "evidence": {},
+      "match_fingerprint": "5a1df888db5d4ec0b5b9acca20cfc27be4af48718ceb134b7edd155d53abdf2c",
+      "occurrences": [
+        {
+          "file": "phases/03-integrations.md",
+          "start_line": 259,
+          "end_line": null,
+          "start_column": 86
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-df17f4b6b6a642b4b0c2d1d381e02e7c",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.6,
+      "location": {
+        "file": "phases/03-integrations.md",
+        "start_line": 90,
+        "end_line": null,
+        "start_column": 9
+      },
+      "finding": ".env ",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "if [ -f \"$SETTINGS_FILE\" ]; then\n  TEMP_FILE=$(mktemp \"${SETTINGS_FILE}.tmp.XXXXXX\")\n  trap 'rm -f \"$TEMP_FILE\"' EXIT\n  if jq '.env = (.env // {} | . + {\"CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS\": \"1\"})' \"$SETTINGS_FILE\" > \"$TEMP_FILE\" \\\n    && mv \"$TEMP_FILE\" \"$SETTINGS_FILE\"; then\n    :\n  else",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "66ef81c27c03406fd9935e5fc86fc4126d7150c15b8d076fdc528d05cea7c7bf",
+      "occurrences": [
+        {
+          "file": "phases/03-integrations.md",
+          "start_line": 90,
+          "end_line": null,
+          "start_column": 9
+        }
+      ]
+    },
+    {
+      "id": "PE3",
+      "finding_id": "finding-85d46d3a36384b73a7ca224255c19de6",
+      "category": "Privilege Escalation",
+      "pattern": "Credential Access",
+      "severity": "HIGH",
+      "confidence": 0.6,
+      "location": {
+        "file": "phases/03-integrations.md",
+        "start_line": 90,
+        "end_line": null,
+        "start_column": 17
+      },
+      "finding": ".env ",
+      "explanation": "Code accesses credential files (SSH keys, AWS credentials, etc.). This could indicate credential theft attempts.",
+      "remediation": "Remove references to credential paths. Use environment variables or secrets managers. For docs, use placeholder paths (e.g., /path/to/config). Never load .env or token files in production code paths.",
+      "code_snippet": "if [ -f \"$SETTINGS_FILE\" ]; then\n  TEMP_FILE=$(mktemp \"${SETTINGS_FILE}.tmp.XXXXXX\")\n  trap 'rm -f \"$TEMP_FILE\"' EXIT\n  if jq '.env = (.env // {} | . + {\"CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS\": \"1\"})' \"$SETTINGS_FILE\" > \"$TEMP_FILE\" \\\n    && mv \"$TEMP_FILE\" \"$SETTINGS_FILE\"; then\n    :\n  else",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation"
+      ],
+      "evidence": {},
+      "match_fingerprint": "66ef81c27c03406fd9935e5fc86fc4126d7150c15b8d076fdc528d05cea7c7bf",
+      "occurrences": [
+        {
+          "file": "phases/03-integrations.md",
+          "start_line": 90,
+          "end_line": null,
+          "start_column": 17
+        }
+      ]
+    },
+    {
+      "id": "AS1",
+      "finding_id": "finding-5fa9eff607d04785a87a82008978f10c",
+      "category": "Agent Snooping",
+      "pattern": "Agent Config Directory Access",
+      "severity": "HIGH",
+      "confidence": 0.85,
+      "location": {
+        "file": "phases/04-welcome.md",
+        "start_line": 207,
+        "end_line": null,
+        "start_column": 16
+      },
+      "finding": "grep -m1 'OMC:VERSION:' .claude/",
+      "explanation": "Skill reads from agent configuration directories (.claude/, .codex/, .gemini/). These directories may contain API keys, personal settings, and other credentials that the skill has no legitimate need to access.",
+      "remediation": "Remove all code or instructions that access agent configuration directories (.claude/, .codex/, .gemini/). If configuration values are needed, pass them explicitly as parameters or environment variables — never read the agent's own config files.",
+      "code_snippet": "  \"~\\\\\"*) CONFIG_DIR=\"$HOME/${CONFIG_DIR#\\~\\\\}\" ;;\nesac\nif [ -f \".claude/CLAUDE.md\" ]; then\n  OMC_VERSION=$(grep -m1 'OMC:VERSION:' .claude/CLAUDE.md 2>/dev/null | sed -E 's/.*OMC:VERSION:([^ ]+).*/\\1/' || true)\nelif [ -f \"$CONFIG_DIR/CLAUDE.md\" ]; then\n  OMC_VERSION=$(grep -m1 'OMC:VERSION:' \"$CONFIG_DIR/CLAUDE.md\" 2>/dev/null | sed -E 's/.*OMC:VERSION:([^ ]+).*/\\1/' || true)\nfi",
+      "intent": null,
+      "tags": [
+        "Agent Snooping"
+      ],
+      "evidence": {},
+      "match_fingerprint": "67c0e26b71666313ed127e3b4b2dc4338c7ab6189f7c7873f7ac96c474be9b11",
+      "occurrences": [
+        {
+          "file": "phases/04-welcome.md",
+          "start_line": 207,
+          "end_line": null,
+          "start_column": 16
+        }
+      ]
+    },
+    {
+      "id": "RA2",
+      "finding_id": "finding-57e07cf29c0844f99231e7c4dc642666",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "phases/01-install-claude-md.md",
+        "start_line": 50,
+        "end_line": null,
+        "start_column": 9
+      },
+      "finding": "write base CLAUDE.md (Recommended)** - plain `claude` and `omc` both use OMC globally.\n2. **Keep base CLAUDE.md; use OMC only through `omc`** - preserve the user's base file, install OMC into `CLAUDE-",
+      "explanation": "Skill establishes unauthorized persistence across sessions via cron jobs, startup scripts, or state files. Session persistence allows an attacker to maintain access beyond the current interaction.",
+      "remediation": "Remove any persistence mechanisms (cron jobs, startup scripts, state files). Skills should not maintain state across sessions without explicit user consent.",
+      "code_snippet": "**Question:** \"Global setup will change your base Claude config. Which behavior do you want?\"\n\n**Options (default first):**\n1. **Overwrite base CLAUDE.md (Recommended)** - plain `claude` and `omc` both use OMC globally.\n2. **Keep base CLAUDE.md; use OMC only through `omc`** - preserve the user's base file, install OMC into `CLAUDE-omc.md`, and let `omc` force-load that companion config at launch.\n\nSet `GLOBAL_INSTALL_STYLE=overwrite` or `preserve` based on the user's choice. If you did not ask this question, default `GLOBAL_INSTALL_STYLE=overwrite`.",
+      "intent": null,
+      "tags": [
+        "Rogue Agent"
+      ],
+      "evidence": {},
+      "match_fingerprint": "2512f4df4b8d502d431fd35ebc0198ddc0db0c3000bd6efc44d0145c57362930",
+      "occurrences": [
+        {
+          "file": "phases/01-install-claude-md.md",
+          "start_line": 50,
+          "end_line": null,
+          "start_column": 9
+        }
+      ]
+    },
+    {
+      "id": "PE2",
+      "finding_id": "finding-902faca2773e49e3b0e2eb555f9d60aa",
+      "category": "Privilege Escalation",
+      "pattern": "Sudo/Root Execution",
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "phases/02-configure.md",
+        "start_line": 185,
+        "end_line": null,
+        "start_column": 24
+      },
+      "finding": "sudo ",
+      "explanation": "Commands invoke sudo or root privileges. Verify this elevated access is necessary and justified.",
+      "remediation": "Avoid sudo/root unless strictly required. Prefer least-privilege patterns. If elevation is needed, document the justification and scope.",
+      "code_snippet": "  else\n    echo \"WARNING: Failed to install OMC CLI (permission issue or network error).\"\n    echo \"You can install manually later: npm install -g oh-my-claude-sisyphus\"\n    echo \"Or with sudo: sudo npm install -g oh-my-claude-sisyphus\"\n  fi\nfi\n```",
+      "intent": null,
+      "tags": [
+        "Privilege Escalation",
+        "contextual-triage",
+        "likely-benign-context"
+      ],
+      "evidence": {},
+      "match_fingerprint": "16746f7044f347c6322d4c5b879b3fb06b2f205cbf1c9a209b43d52b34b3afd7",
+      "occurrences": [
+        {
+          "file": "phases/02-configure.md",
+          "start_line": 185,
+          "end_line": null,
+          "start_column": 24
+        }
+      ]
+    },
+    {
+      "id": "RA2",
+      "finding_id": "finding-d7dc39396c604231949cf8f89f4543e4",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "phases/03-integrations.md",
+        "start_line": 64,
+        "end_line": null,
+        "start_column": 38
+      },
+      "finding": "create one\"\nfi\n```\n\nThen use the Read tool to read `${CLAUDE_CONFIG_DIR:-~/.claude",
+      "explanation": "Skill establishes unauthorized persistence across sessions via cron jobs, startup scripts, or state files. Session persistence allows an attacker to maintain access beyond the current interaction.",
+      "remediation": "Remove any persistence mechanisms (cron jobs, startup scripts, state files). Skills should not maintain state across sessions without explicit user consent.",
+      "code_snippet": "  echo \"Current settings.json found\"\n  cat \"$SETTINGS_FILE\"\nelse\n  echo \"No settings.json found - will create one\"\nfi\n```\n",
+      "intent": null,
+      "tags": [
+        "Rogue Agent"
+      ],
+      "evidence": {},
+      "match_fingerprint": "dbab3d194ec11c6656ac4a878de3adb27082c839f0b64c053cf22811a6a81755",
+      "occurrences": [
+        {
+          "file": "phases/03-integrations.md",
+          "start_line": 64,
+          "end_line": null,
+          "start_column": 38
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": false,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 5,
+    "scanned_components": 3,
+    "coverage_percent": 60.0,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 3,
+    "partially_inspected_files": 2,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 41,
+        "end_line": 41,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 57,
+        "end_line": 57,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 63,
+        "end_line": 63,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 66,
+        "end_line": 66,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 94,
+        "end_line": 94,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 108,
+        "end_line": 108,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 143,
+        "end_line": 143,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "phases/03-integrations.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "phases/04-welcome.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "degraded",
+        "planned_work": 5,
+        "completed": 3,
+        "partial": 2,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 5,
+        "completed": 5,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 41,
+        "column": 66,
+        "evidence": "/oh-my-claudecode:omc-setup --local Configure local project (.claude/CLAUDE.md)",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 57,
+        "column": 53,
+        "evidence": "- Invokes the plugin-local coordinator through `scripts/setup-claude-md.sh`; the shell validates the coordinator response and its exit status before any post-in",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 63,
+        "column": 53,
+        "evidence": "- Invokes the plugin-local coordinator through `scripts/setup-claude-md.sh`; the shell validates the coordinator response and its exit status before any post-in",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 66,
+        "column": 53,
+        "evidence": "- Optional preserve mode keeps the user's base `CLAUDE.md` and installs OMC into `CLAUDE-omc.md` for `omc` launches",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 66,
+        "column": 87,
+        "evidence": "- Optional preserve mode keeps the user's base `CLAUDE.md` and installs OMC into `CLAUDE-omc.md` for `omc` launches",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 94,
+        "column": 90,
+        "evidence": "t is the sole cache resolver. It accepts only complete plugin roots (canonical `docs/CLAUDE.md`, coordinator artifact, and `wiki` skill), chooses a strict full-",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 94,
+        "column": 338,
+        "evidence": "nator protocol or status disagreement. Do not download configuration or mutate `CLAUDE.md` outside that coordinator.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 108,
+        "column": 15,
+        "evidence": "CONFIG_FILE=\"$CONFIG_DIR/.omc-config.json\"",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 143,
+        "column": 20,
+        "evidence": "- Detect if local (.claude/CLAUDE.md) or global (~/.claude/CLAUDE.md) config exists",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "plain_path"
+      }
+    ],
+    "limitations": [
+      "Analyzer static_patterns_tool_misuse status: degraded."
+    ],
+    "findings_before_filtering": 12,
+    "findings_after_filtering": 12
+  }
+}

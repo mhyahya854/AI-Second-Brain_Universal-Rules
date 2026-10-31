@@ -1,0 +1,2161 @@
+{
+  "skill": {
+    "name": "cloud",
+    "source": "C:\\Users\\mhyah\\Downloads\\AI-Second-Brain_Universal-Rules-main\\AI-Second-Brain_Universal-Rules-main\\skills\\_intake\\github\\browser-use\\browser-use\\cloud",
+    "scanned_at": "2026-10-31T21:08:23.645029+00:00"
+  },
+  "risk_assessment": {
+    "score": 100,
+    "severity": "CRITICAL",
+    "recommendation": "DO_NOT_INSTALL",
+    "max_issue_severity": "HIGH"
+  },
+  "components": [
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 70,
+      "executable": false,
+      "size_bytes": 4091,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/api-v2.md",
+      "type": "markdown",
+      "lines": 328,
+      "executable": false,
+      "size_bytes": 11803,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/api-v3.md",
+      "type": "markdown",
+      "lines": 257,
+      "executable": false,
+      "size_bytes": 8268,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/api-v4.md",
+      "type": "markdown",
+      "lines": 151,
+      "executable": false,
+      "size_bytes": 5592,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/browser-api.md",
+      "type": "markdown",
+      "lines": 122,
+      "executable": false,
+      "size_bytes": 3471,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/features.md",
+      "type": "markdown",
+      "lines": 231,
+      "executable": false,
+      "size_bytes": 5429,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/guides/chat-ui.md",
+      "type": "markdown",
+      "lines": 237,
+      "executable": false,
+      "size_bytes": 6673,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/guides/subagent.md",
+      "type": "markdown",
+      "lines": 241,
+      "executable": false,
+      "size_bytes": 7342,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/guides/tools-integration.md",
+      "type": "markdown",
+      "lines": 199,
+      "executable": false,
+      "size_bytes": 7006,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/patterns.md",
+      "type": "markdown",
+      "lines": 182,
+      "executable": false,
+      "size_bytes": 4355,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/quickstart.md",
+      "type": "markdown",
+      "lines": 181,
+      "executable": false,
+      "size_bytes": 4159,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    },
+    {
+      "path": "references/sessions.md",
+      "type": "markdown",
+      "lines": 177,
+      "executable": false,
+      "size_bytes": 4382,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "AE1",
+      "finding_id": "finding-39e96e3f6c744346ba9bc2a98c49f897",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 40,
+        "end_line": null
+      },
+      "finding": "references/api-v2.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "| v2 REST API: all 30 endpoints, cURL examples, schemas | `references/api-v2.md` |",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/api-v2.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "f0ef3bfd930422cfc87740a93710e40c2ceca36e1585f9d130ab2f607f61ad41",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 40,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-197625d1f39243cd81f200b7b25925b4",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 43,
+        "end_line": null
+      },
+      "finding": "references/browser-api.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "| CDP direct access, Playwright/Puppeteer/Selenium | `references/browser-api.md` |",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/browser-api.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "5a02cf4bcf68e7280880f10cc15c111b27057add3b94ef4a661bf4100915f87d",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 43,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "AE1",
+      "finding_id": "finding-e7099f646c914b3895b97e48df1af358",
+      "category": "analysis-evasion",
+      "pattern": "Incomplete referenced artifact analysis",
+      "severity": "HIGH",
+      "confidence": 1.0,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 51,
+        "end_line": null
+      },
+      "finding": "references/guides/chat-ui.md (partial)",
+      "explanation": "Referenced artifact was not completely inspected",
+      "remediation": "Review the reported expression and analyzer's parsing limitation; correct the scanner if it misinterprets valid source, then rerun the scan. Keep required references; incomplete analysis is not proof of malicious evasion.",
+      "code_snippet": "| Building a chat interface with live browser view | `references/guides/chat-ui.md` |",
+      "intent": null,
+      "tags": [
+        "coverage",
+        "reference",
+        "target-disposition:partial"
+      ],
+      "evidence": {
+        "target_path": "references/guides/chat-ui.md",
+        "target_disposition": "partial",
+        "reasons": [
+          {
+            "reason_code": "static_parse_limit",
+            "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+            "phase": "static",
+            "analyzers": [
+              "static_patterns_tool_misuse"
+            ]
+          }
+        ]
+      },
+      "match_fingerprint": "e6aab243ba42e7003045172fa3c766e29908f4b1aa82d3ad7994056c9abe2b35",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 51,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-8fae93dd90014f838177681bb50d0f77",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.8,
+      "location": {
+        "file": "references/api-v2.md",
+        "start_line": 175,
+        "end_line": null,
+        "start_column": 2
+      },
+      "finding": "DELETE /sessions/{id}/public-share**",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "**POST /sessions/{id}/public-share** — Create or return existing share.\nResponse (201): ShareView.\n\n**DELETE /sessions/{id}/public-share** — Remove share.\nResponse: 204.\n\n---",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "d31197e67fc2fbf0df272b5d35b1559cbb6c07dc6afe90ddd3b9eb84d358cad2",
+      "occurrences": [
+        {
+          "file": "references/api-v2.md",
+          "start_line": 175,
+          "end_line": null,
+          "start_column": 2
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-0cfb593b94e54ed492ee34380fb20cd3",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.8,
+      "location": {
+        "file": "references/api-v2.md",
+        "start_line": 231,
+        "end_line": null,
+        "start_column": 2
+      },
+      "finding": "DELETE /profiles/{id}**",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "\n**GET /profiles/{id}** — Profile details.\n\n**DELETE /profiles/{id}** — Permanently delete. Response: 204.\n\n**PATCH /profiles/{id}** — Update name. Body: `{ name?: string }`\n",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "4532e47571cd72d6e4da2d77d2b9843cade0c35a78e27de627bf21472ee3edea",
+      "occurrences": [
+        {
+          "file": "references/api-v2.md",
+          "start_line": 231,
+          "end_line": null,
+          "start_column": 2
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-a94fed54ce2c4c20b73778d097adafc0",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.8,
+      "location": {
+        "file": "references/api-v3.md",
+        "start_line": 127,
+        "end_line": null,
+        "start_column": 2
+      },
+      "finding": "DELETE /sessions/{id}**",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "**GET /sessions/{id}** — Get session details (includes cost breakdown).\nResponse: SessionView\n\n**DELETE /sessions/{id}** — Delete session.\nResponse: 204\n\n**POST /sessions/{id}/stop** — Stop session or task.",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "c7f7d5a2e3bb360f7f5be6ead902bf8b0cdc0855943b8a7400ba3b0cd37937b8",
+      "occurrences": [
+        {
+          "file": "references/api-v3.md",
+          "start_line": 127,
+          "end_line": null,
+          "start_column": 2
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-d0b8f13414524f3db7bd1f54df06fee3",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.8,
+      "location": {
+        "file": "references/api-v3.md",
+        "start_line": 180,
+        "end_line": null,
+        "start_column": 2
+      },
+      "finding": "DELETE /workspaces/{id}**",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "**PATCH /workspaces/{id}** — Update workspace.\nBody: `{ name?: string, metadata?: object }`\n\n**DELETE /workspaces/{id}** — Delete workspace and all files (irreversible).\n\n**GET /workspaces/{id}/files** — List workspace files.\nQuery: `include_urls?`, `prefix?`, `limit?`, `cursor?`",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "258ecbeb66b402e60e4776629d07eef1069c54beb6f43cee780aa3600b4a6c94",
+      "occurrences": [
+        {
+          "file": "references/api-v3.md",
+          "start_line": 180,
+          "end_line": null,
+          "start_column": 2
+        }
+      ]
+    },
+    {
+      "id": "SC2",
+      "finding_id": "finding-242aafbbcb3d4aa0a6cb9bb94741b58b",
+      "category": "Supply Chain",
+      "pattern": "External Script Fetching",
+      "severity": "HIGH",
+      "confidence": 0.9,
+      "location": {
+        "file": "references/quickstart.md",
+        "start_line": 162,
+        "end_line": null,
+        "start_column": 27
+      },
+      "finding": "curl -fsSL https://browser-use.com/profile.sh | sh",
+      "explanation": "Remote code is downloaded and executed. This bypasses code review and could introduce malicious code.",
+      "remediation": "Avoid downloading and executing remote scripts. Use trusted packages from PyPI/npm. If remote fetch is required, verify checksums and use HTTPS.",
+      "code_snippet": "- Set `start_url`\n\n**Login issues?**\n- Profile sync (easiest): `curl -fsSL https://browser-use.com/profile.sh | sh`\n- Secrets (per-domain credentials)\n- 1Password (most secure, auto 2FA)\n",
+      "intent": null,
+      "tags": [
+        "Supply Chain"
+      ],
+      "evidence": {},
+      "match_fingerprint": "0e1a15b495f1a370e4aeac65df307f927fdf5ba759043a42cfa6b7c987018240",
+      "occurrences": [
+        {
+          "file": "references/quickstart.md",
+          "start_line": 162,
+          "end_line": null,
+          "start_column": 27
+        }
+      ]
+    },
+    {
+      "id": "SC2",
+      "finding_id": "finding-192dcf444b0f4c68a4c808776dca6bd7",
+      "category": "Supply Chain",
+      "pattern": "External Script Fetching",
+      "severity": "HIGH",
+      "confidence": 0.9,
+      "location": {
+        "file": "references/sessions.md",
+        "start_line": 92,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": "curl -fsSL https://browser-use.com/profile.sh | sh",
+      "explanation": "Remote code is downloaded and executed. This bypasses code review and could introduce malicious code.",
+      "remediation": "Avoid downloading and executing remote scripts. Use trusted packages from PyPI/npm. If remote fetch is required, verify checksums and use HTTPS.",
+      "code_snippet": "\n```bash\nexport BROWSER_USE_API_KEY=your_key\ncurl -fsSL https://browser-use.com/profile.sh | sh\n```\n\nOpens a browser where you log into sites. Returns a `profile_id` to use in tasks.",
+      "intent": null,
+      "tags": [
+        "Supply Chain"
+      ],
+      "evidence": {},
+      "match_fingerprint": "0e1a15b495f1a370e4aeac65df307f927fdf5ba759043a42cfa6b7c987018240",
+      "occurrences": [
+        {
+          "file": "references/sessions.md",
+          "start_line": 92,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    },
+    {
+      "id": "SC2",
+      "finding_id": "finding-14396321890f400daf98c582d4e8a27a",
+      "category": "Supply Chain",
+      "pattern": "External Script Fetching",
+      "severity": "HIGH",
+      "confidence": 0.9,
+      "location": {
+        "file": "references/sessions.md",
+        "start_line": 103,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": "curl -fsSL https://browser-use.com/profile.sh | sh",
+      "explanation": "Remote code is downloaded and executed. This bypasses code review and could introduce malicious code.",
+      "remediation": "Avoid downloading and executing remote scripts. Use trusted packages from PyPI/npm. If remote fetch is required, verify checksums and use HTTPS.",
+      "code_snippet": "\nLog in locally, sync cookies to cloud:\n```bash\ncurl -fsSL https://browser-use.com/profile.sh | sh\n```\n\n### 2. Secrets (Domain-Scoped)",
+      "intent": null,
+      "tags": [
+        "Supply Chain"
+      ],
+      "evidence": {},
+      "match_fingerprint": "0e1a15b495f1a370e4aeac65df307f927fdf5ba759043a42cfa6b7c987018240",
+      "occurrences": [
+        {
+          "file": "references/sessions.md",
+          "start_line": 103,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    },
+    {
+      "id": "TM2",
+      "finding_id": "finding-a2e6bbe17a79446b8737d6de3fda54da",
+      "category": "Tool Misuse",
+      "pattern": "Chaining Abuse",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/sessions.md",
+        "start_line": 92,
+        "end_line": null,
+        "start_column": 46
+      },
+      "finding": "| sh",
+      "explanation": "Tool calls are chained to bypass individual safety checks or escalate capabilities beyond what any single tool call would allow.",
+      "remediation": "Limit tool chaining depth and validate the output of each tool before passing it to the next. Require explicit user approval for multi-step chains.",
+      "code_snippet": "\n```bash\nexport BROWSER_USE_API_KEY=your_key\ncurl -fsSL https://browser-use.com/profile.sh | sh\n```\n\nOpens a browser where you log into sites. Returns a `profile_id` to use in tasks.",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "1d8c5f437ab35a4780c77ab29ff51a050f9e7ead84a13d55decf93cd3c70c577",
+      "occurrences": [
+        {
+          "file": "references/sessions.md",
+          "start_line": 92,
+          "end_line": null,
+          "start_column": 46
+        }
+      ]
+    },
+    {
+      "id": "TM2",
+      "finding_id": "finding-e5db4fa698e3432ea41ff8f759838e78",
+      "category": "Tool Misuse",
+      "pattern": "Chaining Abuse",
+      "severity": "HIGH",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/sessions.md",
+        "start_line": 103,
+        "end_line": null,
+        "start_column": 46
+      },
+      "finding": "| sh",
+      "explanation": "Tool calls are chained to bypass individual safety checks or escalate capabilities beyond what any single tool call would allow.",
+      "remediation": "Limit tool chaining depth and validate the output of each tool before passing it to the next. Require explicit user approval for multi-step chains.",
+      "code_snippet": "\nLog in locally, sync cookies to cloud:\n```bash\ncurl -fsSL https://browser-use.com/profile.sh | sh\n```\n\n### 2. Secrets (Domain-Scoped)",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "1d8c5f437ab35a4780c77ab29ff51a050f9e7ead84a13d55decf93cd3c70c577",
+      "occurrences": [
+        {
+          "file": "references/sessions.md",
+          "start_line": 103,
+          "end_line": null,
+          "start_column": 46
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-294e6913cf55482ebb8b40a99081d3a6",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 58,
+        "end_line": null,
+        "start_column": 23
+      },
+      "finding": "https://api.browser-use.com/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "## Critical Notes\n\n- Use v4 for new hosted-agent integrations. Keep v2 or v3 only when maintaining an existing integration or using a resource not yet wrapped by the v4 SDK.\n- Cloud API base URL: `https://api.browser-use.com/api/v2/` (v2), `https://api.browser-use.com/api/v3` (v3), or `https://api.browser-use.com/api/v4` (v4)\n- Auth header: `X-Browser-Use-API-Key: <key>`\n- Get API key: https://cloud.browser-use.com/new-api-key\n- Set env var: `BROWSER_USE_API_KEY=<key>`",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "58c5c466b9b49db9c08de45368308c7abfdaf17239d91a04fb2e05ff93653a54",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 58,
+          "end_line": null,
+          "start_column": 23
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-71cd1ea887b54ec58de1e2857e57cc59",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 58,
+        "end_line": null,
+        "start_column": 67
+      },
+      "finding": "https://api.browser-use.com/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "## Critical Notes\n\n- Use v4 for new hosted-agent integrations. Keep v2 or v3 only when maintaining an existing integration or using a resource not yet wrapped by the v4 SDK.\n- Cloud API base URL: `https://api.browser-use.com/api/v2/` (v2), `https://api.browser-use.com/api/v3` (v3), or `https://api.browser-use.com/api/v4` (v4)\n- Auth header: `X-Browser-Use-API-Key: <key>`\n- Get API key: https://cloud.browser-use.com/new-api-key\n- Set env var: `BROWSER_USE_API_KEY=<key>`",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "58c5c466b9b49db9c08de45368308c7abfdaf17239d91a04fb2e05ff93653a54",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 58,
+          "end_line": null,
+          "start_column": 67
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-5b458b4c4c36400d94479af0ca865631",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 58,
+        "end_line": null,
+        "start_column": 113
+      },
+      "finding": "https://api.browser-use.com/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "## Critical Notes\n\n- Use v4 for new hosted-agent integrations. Keep v2 or v3 only when maintaining an existing integration or using a resource not yet wrapped by the v4 SDK.\n- Cloud API base URL: `https://api.browser-use.com/api/v2/` (v2), `https://api.browser-use.com/api/v3` (v3), or `https://api.browser-use.com/api/v4` (v4)\n- Auth header: `X-Browser-Use-API-Key: <key>`\n- Get API key: https://cloud.browser-use.com/new-api-key\n- Set env var: `BROWSER_USE_API_KEY=<key>`",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "58c5c466b9b49db9c08de45368308c7abfdaf17239d91a04fb2e05ff93653a54",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 58,
+          "end_line": null,
+          "start_column": 113
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-8f771804421c4151a82c28bf66fdf8a1",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "references/api-v2.md",
+        "start_line": 25,
+        "end_line": null,
+        "start_column": 17
+      },
+      "finding": "https://api.browser-use.com/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "## Authentication\n\n- **Header:** `X-Browser-Use-API-Key: <your-key>`\n- **Base URL:** `https://api.browser-use.com/api/v2`\n- **Get key:** https://cloud.browser-use.com/new-api-key\n\nAll endpoints require the `X-Browser-Use-API-Key` header.",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "58c5c466b9b49db9c08de45368308c7abfdaf17239d91a04fb2e05ff93653a54",
+      "occurrences": [
+        {
+          "file": "references/api-v2.md",
+          "start_line": 25,
+          "end_line": null,
+          "start_column": 17
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-cb12e26f36f34d2b92f691683b3ceb55",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "references/api-v2.md",
+        "start_line": 35,
+        "end_line": null,
+        "start_column": 13
+      },
+      "finding": "https://api.browser-use.com/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "### Create a task\n\n```bash\ncurl -X POST https://api.browser-use.com/api/v2/tasks \\\n  -H \"X-Browser-Use-API-Key: $BROWSER_USE_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"task\": \"Find the top Hacker News post and return title and URL\"}'",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "58c5c466b9b49db9c08de45368308c7abfdaf17239d91a04fb2e05ff93653a54",
+      "occurrences": [
+        {
+          "file": "references/api-v2.md",
+          "start_line": 35,
+          "end_line": null,
+          "start_column": 13
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-95667aa2ad4e4529844e22eb8adf1e99",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "references/api-v2.md",
+        "start_line": 46,
+        "end_line": null,
+        "start_column": 5
+      },
+      "finding": "https://api.browser-use.com/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "### Poll task status\n\n```bash\ncurl https://api.browser-use.com/api/v2/tasks/<task-id>/status \\\n  -H \"X-Browser-Use-API-Key: $BROWSER_USE_API_KEY\"\n```\n",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "58c5c466b9b49db9c08de45368308c7abfdaf17239d91a04fb2e05ff93653a54",
+      "occurrences": [
+        {
+          "file": "references/api-v2.md",
+          "start_line": 46,
+          "end_line": null,
+          "start_column": 5
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-1c4e1aa936cb44a682098eee118db02e",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "references/api-v2.md",
+        "start_line": 53,
+        "end_line": null,
+        "start_column": 5
+      },
+      "finding": "https://api.browser-use.com/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "### Get session live URL\n\n```bash\ncurl https://api.browser-use.com/api/v2/sessions/<session-id> \\\n  -H \"X-Browser-Use-API-Key: $BROWSER_USE_API_KEY\"\n```\n",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "58c5c466b9b49db9c08de45368308c7abfdaf17239d91a04fb2e05ff93653a54",
+      "occurrences": [
+        {
+          "file": "references/api-v2.md",
+          "start_line": 53,
+          "end_line": null,
+          "start_column": 5
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-115db86a1f56464e93ac7bb363206f69",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "references/api-v2.md",
+        "start_line": 62,
+        "end_line": null,
+        "start_column": 13
+      },
+      "finding": "https://api.browser-use.com/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "### Create a CDP browser\n\n```bash\ncurl -X POST https://api.browser-use.com/api/v2/browsers \\\n  -H \"X-Browser-Use-API-Key: $BROWSER_USE_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"proxyCountryCode\": \"us\", \"timeout\": 30}'",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "58c5c466b9b49db9c08de45368308c7abfdaf17239d91a04fb2e05ff93653a54",
+      "occurrences": [
+        {
+          "file": "references/api-v2.md",
+          "start_line": 62,
+          "end_line": null,
+          "start_column": 13
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-6605908c046a4edfa33b568b1062db09",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "references/api-v2.md",
+        "start_line": 73,
+        "end_line": null,
+        "start_column": 14
+      },
+      "finding": "https://api.browser-use.com/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "### Stop a session\n\n```bash\ncurl -X PATCH https://api.browser-use.com/api/v2/sessions/<session-id> \\\n  -H \"X-Browser-Use-API-Key: $BROWSER_USE_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"action\": \"stop\"}'",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "58c5c466b9b49db9c08de45368308c7abfdaf17239d91a04fb2e05ff93653a54",
+      "occurrences": [
+        {
+          "file": "references/api-v2.md",
+          "start_line": 73,
+          "end_line": null,
+          "start_column": 14
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-2ff4655ac0ea40539509b684d9c0a398",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "references/api-v2.md",
+        "start_line": 83,
+        "end_line": null,
+        "start_column": 13
+      },
+      "finding": "https://api.browser-use.com/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "\n```bash\n# 1. Get presigned URL\ncurl -X POST https://api.browser-use.com/api/v2/files/sessions/<session-id>/presigned-url \\\n  -H \"X-Browser-Use-API-Key: $BROWSER_USE_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"fileName\": \"input.pdf\", \"contentType\": \"application/pdf\", \"sizeBytes\": 102400}'",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "58c5c466b9b49db9c08de45368308c7abfdaf17239d91a04fb2e05ff93653a54",
+      "occurrences": [
+        {
+          "file": "references/api-v2.md",
+          "start_line": 83,
+          "end_line": null,
+          "start_column": 13
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-6a32c2aa804d4b9b92e1f1bbb7040fbd",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "references/api-v3.md",
+        "start_line": 24,
+        "end_line": null,
+        "start_column": 17
+      },
+      "finding": "https://api.browser-use.com/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "## Authentication\n\n- **Header:** `X-Browser-Use-API-Key: <your-key>`\n- **Base URL:** `https://api.browser-use.com/api/v3`\n- **Get key:** https://cloud.browser-use.com/new-api-key\n\nSame package as v2, different import path:",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "58c5c466b9b49db9c08de45368308c7abfdaf17239d91a04fb2e05ff93653a54",
+      "occurrences": [
+        {
+          "file": "references/api-v3.md",
+          "start_line": 24,
+          "end_line": null,
+          "start_column": 17
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-ac447b873804475fbec8ccb23f8c112b",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "references/api-v4.md",
+        "start_line": 7,
+        "end_line": null,
+        "start_column": 14
+      },
+      "finding": "https://api.browser-use.com/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "**session** is the conversation shared by follow-up runs, and a **workspace**\nis the persistent filesystem that can be reused across sessions.\n\n- REST base: `https://api.browser-use.com/api/v4`\n- Auth header: `X-Browser-Use-API-Key: <key>`\n- Python: `from browser_use_sdk.v4 import BrowserUse`\n- TypeScript: `import { BrowserUse } from \"browser-use-sdk/v4\"`",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "58c5c466b9b49db9c08de45368308c7abfdaf17239d91a04fb2e05ff93653a54",
+      "occurrences": [
+        {
+          "file": "references/api-v4.md",
+          "start_line": 7,
+          "end_line": null,
+          "start_column": 14
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-23205411fd6a45df84ee99457e96ed6e",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "references/api-v4.md",
+        "start_line": 58,
+        "end_line": null,
+        "start_column": 13
+      },
+      "finding": "https://api.browser-use.com/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "only after the status is `completed`, `failed`, or `cancelled`:\n\n```bash\ncurl -X POST https://api.browser-use.com/api/v4/runs \\\n  -H \"X-Browser-Use-API-Key: $BROWSER_USE_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"task\":\"Find the top Hacker News story\"}'",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "58c5c466b9b49db9c08de45368308c7abfdaf17239d91a04fb2e05ff93653a54",
+      "occurrences": [
+        {
+          "file": "references/api-v4.md",
+          "start_line": 58,
+          "end_line": null,
+          "start_column": 13
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-537e20eb32b94118a0eb9fa16c6a5829",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "references/api-v4.md",
+        "start_line": 63,
+        "end_line": null,
+        "start_column": 5
+      },
+      "finding": "https://api.browser-use.com/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "  -H \"Content-Type: application/json\" \\\n  -d '{\"task\":\"Find the top Hacker News story\"}'\n\ncurl https://api.browser-use.com/api/v4/runs/RUN_ID/status \\\n  -H \"X-Browser-Use-API-Key: $BROWSER_USE_API_KEY\"\n\ncurl https://api.browser-use.com/api/v4/runs/RUN_ID \\",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "58c5c466b9b49db9c08de45368308c7abfdaf17239d91a04fb2e05ff93653a54",
+      "occurrences": [
+        {
+          "file": "references/api-v4.md",
+          "start_line": 63,
+          "end_line": null,
+          "start_column": 5
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-af7cc62db55d4bf4b6e258ffa2bed1ef",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "references/api-v4.md",
+        "start_line": 66,
+        "end_line": null,
+        "start_column": 5
+      },
+      "finding": "https://api.browser-use.com/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "curl https://api.browser-use.com/api/v4/runs/RUN_ID/status \\\n  -H \"X-Browser-Use-API-Key: $BROWSER_USE_API_KEY\"\n\ncurl https://api.browser-use.com/api/v4/runs/RUN_ID \\\n  -H \"X-Browser-Use-API-Key: $BROWSER_USE_API_KEY\"\n```\n",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "58c5c466b9b49db9c08de45368308c7abfdaf17239d91a04fb2e05ff93653a54",
+      "occurrences": [
+        {
+          "file": "references/api-v4.md",
+          "start_line": 66,
+          "end_line": null,
+          "start_column": 5
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-e89486e1708542a3921a28029c2888aa",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "references/features.md",
+        "start_line": 184,
+        "end_line": null,
+        "start_column": 19
+      },
+      "finding": "https://api.browser-use.com/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "\n## MCP Server\n\nHTTP-based MCP at `https://api.browser-use.com/mcp`\n\n| Tool | Cost | Description |\n|------|------|-------------|",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "58c5c466b9b49db9c08de45368308c7abfdaf17239d91a04fb2e05ff93653a54",
+      "occurrences": [
+        {
+          "file": "references/features.md",
+          "start_line": 184,
+          "end_line": null,
+          "start_column": 19
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-c2d22167f4b24743bce190faaa2e37da",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "references/guides/subagent.md",
+        "start_line": 158,
+        "end_line": null,
+        "start_column": 14
+      },
+      "finding": "https://api.browser-use.com/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "{\n  \"mcpServers\": {\n    \"browser-use\": {\n      \"url\": \"https://api.browser-use.com/mcp\",\n      \"headers\": { \"X-Browser-Use-API-Key\": \"YOUR_KEY\" }\n    }\n  }",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "58c5c466b9b49db9c08de45368308c7abfdaf17239d91a04fb2e05ff93653a54",
+      "occurrences": [
+        {
+          "file": "references/guides/subagent.md",
+          "start_line": 158,
+          "end_line": null,
+          "start_column": 14
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-e123f38221214ce68f11fa145f4deb61",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "references/guides/subagent.md",
+        "start_line": 185,
+        "end_line": null,
+        "start_column": 13
+      },
+      "finding": "https://api.browser-use.com/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "\n```bash\n# 1. Create task\ncurl -X POST https://api.browser-use.com/api/v2/tasks \\\n  -H \"X-Browser-Use-API-Key: $BROWSER_USE_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"task\": \"Find the top HN post and return title+URL\"}'",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "58c5c466b9b49db9c08de45368308c7abfdaf17239d91a04fb2e05ff93653a54",
+      "occurrences": [
+        {
+          "file": "references/guides/subagent.md",
+          "start_line": 185,
+          "end_line": null,
+          "start_column": 13
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-b4f9b828bce846bc8ac02dc9dcc1ceaa",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "references/guides/subagent.md",
+        "start_line": 192,
+        "end_line": null,
+        "start_column": 5
+      },
+      "finding": "https://api.browser-use.com/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "# → {\"id\": \"task-uuid\", \"sessionId\": \"session-uuid\"}\n\n# 2. Poll status\ncurl https://api.browser-use.com/api/v2/tasks/<task-id>/status \\\n  -H \"X-Browser-Use-API-Key: $BROWSER_USE_API_KEY\"\n# → {\"status\": \"finished\"}\n",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "58c5c466b9b49db9c08de45368308c7abfdaf17239d91a04fb2e05ff93653a54",
+      "occurrences": [
+        {
+          "file": "references/guides/subagent.md",
+          "start_line": 192,
+          "end_line": null,
+          "start_column": 5
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-eae2249da7e0455d81ce8fc93db1ff11",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "references/guides/subagent.md",
+        "start_line": 197,
+        "end_line": null,
+        "start_column": 5
+      },
+      "finding": "https://api.browser-use.com/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "# → {\"status\": \"finished\"}\n\n# 3. Get result\ncurl https://api.browser-use.com/api/v2/tasks/<task-id> \\\n  -H \"X-Browser-Use-API-Key: $BROWSER_USE_API_KEY\"\n# → Full TaskView with output, steps, outputFiles\n```",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "58c5c466b9b49db9c08de45368308c7abfdaf17239d91a04fb2e05ff93653a54",
+      "occurrences": [
+        {
+          "file": "references/guides/subagent.md",
+          "start_line": 197,
+          "end_line": null,
+          "start_column": 5
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-c3f8b4fcc81c49628c1afea2ea24e458",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "references/quickstart.md",
+        "start_line": 23,
+        "end_line": null,
+        "start_column": 13
+      },
+      "finding": "https://api.browser-use.com/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "Browser Use Cloud is the hosted platform for web automation. Stealth browsers with anti-fingerprinting, CAPTCHA solving, residential proxies in 195+ countries. Usage-based pricing via API keys.\n\n- Web app: https://cloud.browser-use.com/\n- API base: `https://api.browser-use.com/api/v2/`\n- Auth header: `X-Browser-Use-API-Key: <key>`\n\n## Setup",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "58c5c466b9b49db9c08de45368308c7abfdaf17239d91a04fb2e05ff93653a54",
+      "occurrences": [
+        {
+          "file": "references/quickstart.md",
+          "start_line": 23,
+          "end_line": null,
+          "start_column": 13
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-d7f79abb7730443b9b6a3829b779fe8f",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "references/quickstart.md",
+        "start_line": 68,
+        "end_line": null,
+        "start_column": 13
+      },
+      "finding": "https://api.browser-use.com/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "### cURL\n\n```bash\ncurl -X POST https://api.browser-use.com/api/v2/tasks \\\n     -H \"X-Browser-Use-API-Key: $BROWSER_USE_API_KEY\" \\\n     -H \"Content-Type: application/json\" \\\n     -d '{\"task\": \"Search for the top Hacker News post and return the title and url.\"}'",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "58c5c466b9b49db9c08de45368308c7abfdaf17239d91a04fb2e05ff93653a54",
+      "occurrences": [
+        {
+          "file": "references/quickstart.md",
+          "start_line": 68,
+          "end_line": null,
+          "start_column": 13
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-dd4fcec3a8d44f13a79c87cc0087d086",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "references/quickstart.md",
+        "start_line": 98,
+        "end_line": null,
+        "start_column": 5
+      },
+      "finding": "https://api.browser-use.com/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "Every session has a `liveUrl`:\n\n```bash\ncurl https://api.browser-use.com/api/v2/sessions/<sessionId> \\\n     -H \"X-Browser-Use-API-Key: $BROWSER_USE_API_KEY\"\n```\n",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "58c5c466b9b49db9c08de45368308c7abfdaf17239d91a04fb2e05ff93653a54",
+      "occurrences": [
+        {
+          "file": "references/quickstart.md",
+          "start_line": 98,
+          "end_line": null,
+          "start_column": 5
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-469f21b28dfa45c5bfdd3c8b16319d15",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.5,
+      "location": {
+        "file": "references/quickstart.md",
+        "start_line": 177,
+        "end_line": null,
+        "start_column": 14
+      },
+      "finding": "https://api.browser-use.com/",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "\n**Stop a session:**\n```bash\ncurl -X PATCH https://api.browser-use.com/api/v2/sessions/<id> \\\n     -H \"X-Browser-Use-API-Key: $BROWSER_USE_API_KEY\" \\\n     -H \"Content-Type: application/json\" \\\n     -d '{\"action\": \"stop\"}'",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "58c5c466b9b49db9c08de45368308c7abfdaf17239d91a04fb2e05ff93653a54",
+      "occurrences": [
+        {
+          "file": "references/quickstart.md",
+          "start_line": 177,
+          "end_line": null,
+          "start_column": 14
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-9054e1f439e9450bb8391508e954da4b",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "references/api-v2.md",
+        "start_line": 7,
+        "end_line": null,
+        "start_column": 10
+      },
+      "finding": "cURL Examples](#common-curl-examples)\n- [Tasks](#tasks)\n- [Sessions](#sessions)\n- [Browsers (CDP)](#browsers-cdp)\n- [Files](#files)\n- [Profiles](#profiles)\n- [Skills](#skills)\n- [Marketplace](#marketp",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "\n## Table of Contents\n- [Authentication](#authentication)\n- [Common cURL Examples](#common-curl-examples)\n- [Tasks](#tasks)\n- [Sessions](#sessions)\n- [Browsers (CDP)](#browsers-cdp)",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "c145514c74a3f52169df8dee03bfc7a2e8e0215972509ca6090c96edce7ca379",
+      "occurrences": [
+        {
+          "file": "references/api-v2.md",
+          "start_line": 7,
+          "end_line": null,
+          "start_column": 10
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-1eadde8575304e1a9c0833ca95bb8b89",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "references/api-v4.md",
+        "start_line": 58,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": "curl -X POST https://api.browser-use.com/api/v4/runs \\\n  -H \"X-Browser-Use-API-Key: $BROWSER_USE_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d ",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "only after the status is `completed`, `failed`, or `cancelled`:\n\n```bash\ncurl -X POST https://api.browser-use.com/api/v4/runs \\\n  -H \"X-Browser-Use-API-Key: $BROWSER_USE_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"task\":\"Find the top Hacker News story\"}'",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "9b3ad5c0d618278af261480c226d0a826c737612482203b3a34f055ce43a6ca3",
+      "occurrences": [
+        {
+          "file": "references/api-v4.md",
+          "start_line": 58,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-4b4f6fcfff57498fa98b5c7265bf87ff",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "references/guides/subagent.md",
+        "start_line": 185,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": "curl -X POST https://api.browser-use.com/api/v2/tasks \\\n  -H \"X-Browser-Use-API-Key: $BROWSER_USE_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d ",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "\n```bash\n# 1. Create task\ncurl -X POST https://api.browser-use.com/api/v2/tasks \\\n  -H \"X-Browser-Use-API-Key: $BROWSER_USE_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"task\": \"Find the top HN post and return title+URL\"}'",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "35381a82e5c7a5d1d329b1b1d5e129e47ae7b31548acc3486057fb689233ecfe",
+      "occurrences": [
+        {
+          "file": "references/guides/subagent.md",
+          "start_line": 185,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    },
+    {
+      "id": "RP1",
+      "finding_id": "finding-8ce452bce42f4072a0e29869f1c81298",
+      "category": "MCP Rug Pull",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "references/patterns.md",
+        "start_line": 171,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "npx commands without a version suffix (e.g. @1.0.0) create a rug-pull risk if the upstream server is compromised and publishes a malicious update.",
+      "remediation": "Pin the version: npx @scope/server@1.2.3",
+      "code_snippet": null,
+      "intent": null,
+      "tags": [
+        "ASI16"
+      ],
+      "evidence": {},
+      "match_fingerprint": "2b5664f2a936abba4141331e7b3e83205cce617d2cea9af83aa306db07500782",
+      "occurrences": [
+        {
+          "file": "references/patterns.md",
+          "start_line": 171,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-5a6e12125c1846f793c67aa5edba882d",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "references/quickstart.md",
+        "start_line": 50,
+        "end_line": null,
+        "start_column": 4
+      },
+      "finding": "cURL\n\n```bash\nexport BROWSER_USE_API_KEY=your-key\n```\n\n## First Task\n\n### SDK\n\n```python\nresult = await client.run(\"Search for top Hacker News post and return title and URL\")\nprint(result.output)\n```\n",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "const client = new BrowserUse();  // Uses BROWSER_USE_API_KEY env var\n```\n\n### cURL\n\n```bash\nexport BROWSER_USE_API_KEY=your-key",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "379aa536468eea55282a7fbd670af2f13d23bb3e5935da3f90e0dc6999b21085",
+      "occurrences": [
+        {
+          "file": "references/quickstart.md",
+          "start_line": 50,
+          "end_line": null,
+          "start_column": 4
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "finding_id": "finding-301247373f094f7694f99b6b87bd5f76",
+      "category": "Data Exfiltration",
+      "pattern": "External Transmission",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "references/quickstart.md",
+        "start_line": 177,
+        "end_line": null,
+        "start_column": 0
+      },
+      "finding": "curl -X PATCH https://api.browser-use.com/api/v2/sessions/<id> \\\n     -H \"X-Browser-Use-API-Key: $BROWSER_USE_API_KEY\" \\\n     -H \"Content-Type: application/json\" \\\n     -d ",
+      "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+      "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+      "code_snippet": "\n**Stop a session:**\n```bash\ncurl -X PATCH https://api.browser-use.com/api/v2/sessions/<id> \\\n     -H \"X-Browser-Use-API-Key: $BROWSER_USE_API_KEY\" \\\n     -H \"Content-Type: application/json\" \\\n     -d '{\"action\": \"stop\"}'",
+      "intent": null,
+      "tags": [
+        "Data Exfiltration"
+      ],
+      "evidence": {},
+      "match_fingerprint": "beb0cf3fa57818a9dab38444c3191916866a8b0b1f8d541ce7074a627daf7483",
+      "occurrences": [
+        {
+          "file": "references/quickstart.md",
+          "start_line": 177,
+          "end_line": null,
+          "start_column": 0
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": false,
+    "skillspector_version": "2.13.1",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "llm_provenance": {
+      "schema_version": 1,
+      "provider": {
+        "configured_adapter": "unknown",
+        "resolved_adapter": "unknown",
+        "effective_adapter": "not_applicable",
+        "effective_adapters": [],
+        "service": "unknown",
+        "routing": {
+          "deployment_override": null,
+          "deployment_source": "unknown",
+          "api_version": null,
+          "api_version_source": "unknown"
+        }
+      },
+      "analyzers": [
+        {
+          "analyzer_id": "mcp_tool_poisoning",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_developer_intent",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_quality_policy",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "semantic_security_discovery",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        },
+        {
+          "analyzer_id": "meta_analyzer",
+          "model": "z-ai/glm-5.3",
+          "model_source": "resolved_configuration",
+          "analyzer_revision": {
+            "value": "2.13.1",
+            "source": "skillspector_package",
+            "source_revision": {
+              "value": "unknown",
+              "source": "unknown"
+            }
+          }
+        }
+      ],
+      "sampling": {
+        "temperature": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "seed": {
+          "requested": null,
+          "source": "unset",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        },
+        "reasoning_effort": {
+          "requested": null,
+          "source": "provider_default",
+          "forwarded_to_client": null,
+          "adapter_support": false,
+          "provider_support": "unknown"
+        }
+      },
+      "determinism": {
+        "classification": "not_applicable",
+        "control_status": "not_applied",
+        "provider_guarantee": false,
+        "reason": "LLM analysis was not executed for this scan."
+      }
+    },
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 12,
+    "scanned_components": 9,
+    "coverage_percent": 75.0,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 9,
+    "partially_inspected_files": 3,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_missing",
+        "message": "A local path-like reference does not match any bundled artifact, such as a file the skill writes at runtime.",
+        "path": "SKILL.md",
+        "start_line": 69,
+        "end_line": 69,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "references/api-v2.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "references/browser-api.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      },
+      {
+        "outcome": "partial",
+        "phase": "static",
+        "reason_code": "static_parse_limit",
+        "message": "A security-relevant expression exceeded a bounded static parser's span limit.",
+        "path": "references/guides/chat-ui.md",
+        "start_line": null,
+        "end_line": null,
+        "fatal": false,
+        "analyzers": [
+          "static_patterns_tool_misuse"
+        ]
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 12,
+        "completed": 12,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 12,
+        "completed": 12,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "reference_coverage",
+        "status": "completed",
+        "planned_work": 3,
+        "completed": 3,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "semantic_developer_intent",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_quality_policy",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "semantic_security_discovery",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "completed",
+        "planned_work": 12,
+        "completed": 12,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "completed",
+        "planned_work": 12,
+        "completed": 12,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 12,
+        "completed": 12,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "completed",
+        "planned_work": 12,
+        "completed": 12,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "completed",
+        "planned_work": 12,
+        "completed": 12,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "completed",
+        "planned_work": 12,
+        "completed": 12,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "completed",
+        "planned_work": 12,
+        "completed": 12,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 12,
+        "completed": 12,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "completed",
+        "planned_work": 12,
+        "completed": 12,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "completed",
+        "planned_work": 12,
+        "completed": 12,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "completed",
+        "planned_work": 12,
+        "completed": 12,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "completed",
+        "planned_work": 12,
+        "completed": 12,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "completed",
+        "planned_work": 12,
+        "completed": 12,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "completed",
+        "planned_work": 12,
+        "completed": 12,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "degraded",
+        "planned_work": 12,
+        "completed": 9,
+        "partial": 3,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 12,
+        "completed": 12,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 26,
+        "column": 66,
+        "evidence": "- Hosted task in, result out: use the V4 SDK `runs` resource in `references/api-v4.md`.",
+        "target_path": "references/api-v4.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 30,
+        "column": 169,
+        "evidence": "card required; email/password signups do not qualify. [Pricing and eligibility](https://browser-use.com/pricing.md). Use `gpt-5.6-luna` for the free starter; pa",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope",
+        "reference_kind": "markdown_link"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 38,
+        "column": 66,
+        "evidence": "| Current v4 setup, first run, sessions, workspaces, browsers | `references/api-v4.md` |",
+        "target_path": "references/api-v4.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 39,
+        "column": 36,
+        "evidence": "| Legacy v2 setup, pricing, FAQ | `references/quickstart.md` |",
+        "target_path": "references/quickstart.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 40,
+        "column": 60,
+        "evidence": "| v2 REST API: all 30 endpoints, cURL examples, schemas | `references/api-v2.md` |",
+        "target_path": "references/api-v2.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 41,
+        "column": 61,
+        "evidence": "| v3 BU Agent API: sessions, messages, files, workspaces | `references/api-v3.md` |",
+        "target_path": "references/api-v3.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 42,
+        "column": 53,
+        "evidence": "| Sessions, profiles, auth strategies, 1Password | `references/sessions.md` |",
+        "target_path": "references/sessions.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 43,
+        "column": 55,
+        "evidence": "| CDP direct access, Playwright/Puppeteer/Selenium | `references/browser-api.md` |",
+        "target_path": "references/browser-api.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 44,
+        "column": 60,
+        "evidence": "| Proxies, webhooks, workspaces, skills, MCP, live view | `references/features.md` |",
+        "target_path": "references/features.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 45,
+        "column": 51,
+        "evidence": "| Parallel, streaming, geo-scraping, tutorials | `references/patterns.md` |",
+        "target_path": "references/patterns.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 51,
+        "column": 55,
+        "evidence": "| Building a chat interface with live browser view | `references/guides/chat-ui.md` |",
+        "target_path": "references/guides/chat-ui.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 52,
+        "column": 61,
+        "evidence": "| Using browser-use as a subagent (task in → result out) | `references/guides/subagent.md` |",
+        "target_path": "references/guides/subagent.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 53,
+        "column": 52,
+        "evidence": "| Adding browser-use tools to an existing agent | `references/guides/tools-integration.md` |",
+        "target_path": "references/guides/tools-integration.md",
+        "status": "resolved",
+        "disposition": "analyzed",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 69,
+        "column": 32,
+        "evidence": "- SDK 3.11.3 or newer exposes `browsers.create` and `browsers.stop` in the v4 namespace, alongside the v4 REST `/browsers` resource. Always stop a browser expli",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 69,
+        "column": 54,
+        "evidence": "- SDK 3.11.3 or newer exposes `browsers.create` and `browsers.stop` in the v4 namespace, alongside the v4 REST `/browsers` resource. Always stop a browser expli",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial",
+        "reference_kind": "quoted_or_code"
+      }
+    ],
+    "limitations": [
+      "Analyzer static_patterns_tool_misuse status: degraded."
+    ],
+    "findings_before_filtering": 42,
+    "findings_after_filtering": 42
+  }
+}

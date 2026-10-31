@@ -1,0 +1,11 @@
+{
+  "scanner": "NVIDIA SkillSpector v2.13.1",
+  "source_commit": "f3b25697d76256998ca9d42c198d256258d4c035",
+  "command": "skillspector scan <fixture> --no-llm --format json",
+  "execution": "official CLI process; stdout captured by local Python runner; each report parsed as JSON; exit status preserved",
+  "fixtures": [
+    {"name":"safe_skill","exit_code":0,"recommendation":"SAFE","risk_score":0,"severity":"LOW","analysis_complete":true,"report":"safe-fixture.json"},
+    {"name":"malicious_skill","exit_code":1,"recommendation":"DO_NOT_INSTALL","risk_score":100,"severity":"CRITICAL","analysis_complete":true,"report":"malicious-fixture.json"}
+  ],
+  "no_skill_code_executed": true
+}
