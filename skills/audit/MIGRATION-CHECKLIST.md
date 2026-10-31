@@ -32,7 +32,7 @@
 - [ ] Review 134 caution folders and 266 quarantined folders, including dependency advisories and scanner flags.
 - [ ] Decide whether an approved private/local semantic-review backend should be used.
 - [ ] Revisit unresolved source-relative links and frontmatter only with pinned upstream evidence. No package text was rewritten in this audit.
-- [ ] Recheck remote branch count and publication commit after the final push.
+- [x] After the intake audit payload push, live GitHub state showed default branch `main` and exactly one remote branch, `main`, at `57f934926f421bfb81292a4d7490343dd976460c`; PR #3 is merged and the archive tags remain present. Final metadata follow-up is committed on the same branch.
 
 ## Explicitly deferred
 
