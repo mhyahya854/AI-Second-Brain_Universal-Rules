@@ -25,3 +25,30 @@ Every generic-aesthetic review MUST ask what can be removed. Also inspect reflex
 
 References from software/screenshots/platforms, design systems, print, architecture, photography, physical products, typography, moodboards, or historical UI MAY inform composition, rhythm, hierarchy, interaction, and density. References do not authorize copying proprietary work. Prefer owner-created, properly licensed/open resources, public standards, and original design, preserving relevant provenance. Art-direction dials such as variance, motion intensity, or density MAY clarify the brief; no third-party numerical default becomes universal policy.
 
+<a id="web-ux-1"></a>
+### WEB-UX-1 — Living website/app design and UX preferences (2026-11-04 candidate)
+
+**Type:** DEFAULT | **Origin:** USER POLICY | **Applies:** website and application visual/interaction design, whether human-authored, AI-generated, or adapted from licensed sources
+
+This is the **design/UX** category of the owner's living three-category website/app ruleset. The owner's stated items are **defaults, not absolute bans**, unless a separately applicable integrity, security, accessibility, or evidence rule makes a particular behavior mandatory or prohibited. An explicit project-specific request may choose an otherwise avoided visual technique. Assess the composition and actual product needs; avoid inventing additional aesthetic mandates. This refines, but does not replace, [UI-4](#ui-4), [DESIGN-1](504-%20Creating%20Three%20Design%20Directions.md#design-1), [UI-5](506-%20Building%20the%20Design%20System.md#ui-5), and [UI-7](510-%20Reviewing%20and%20Approving%20the%20Design.md#ui-7).
+
+**Avoid by default unless explicitly requested:**
+
+- **Icons and stock visuals:** ubiquitous Lucide or emoji icons; AI stock imagery; sparkles or generic AI-star decoration. Icon choices should not become automatic fingerprints of AI-generated UI.
+- **Color and effects:** purple or harsh gradients; generic white backgrounds chosen by reflex rather than intent; neon or pastel defaults; radial orbs; liquid glass. White, purple, gradients, and similar primitives remain usable when intentionally selected for the actual product.
+- **Typography, layout, and sections:** oversized hero text; rote use of Space Grotesk; bento layouts and dot grids; generic three-feature-card layouts; terminal mockups; three pricing tiers by rote; repetitive layouts; inconsistent or crowded sections. Do not impose identical designs across unrelated products.
+- **Motion and flourishes:** excessive animations; cursor effects; animated arrows; unnecessary motion without a meaningful interaction or feedback purpose.
+- **Marketing and claims:** fake reviews, testimonials, metrics, or counters; generic content without real product demonstrations; em dashes in site copy by default. Invented evidence is separately governed by [EVID-1](../0-%20Start%20Here%20and%20Universal%20Rules/009-%20Evidence%20and%20Truthful%20Completion.md#evid-1) and is not permitted merely because a project requests a visual exception.
+- **Product usability failures:** poor mobile support; missing real product demos when a product demonstration is relevant. The actual rendered-state and responsive evidence contract remains [UI-7](510-%20Reviewing%20and%20Approving%20the%20Design.md#ui-7).
+
+**Try to employ when relevant to the product and its users:**
+
+- **Visual perception and hierarchy:** aesthetic-usability effect; visual hierarchy; Gestalt proximity, similarity, and common region; Von Restorff effect. These inform legibility, grouping, and meaningful emphasis, not decorative uniformity.
+- **Choice, action, and interaction speed:** Hick's law, Fitts's law, Doherty threshold, and feedback loops. Apply to decision complexity, control reachability, responsiveness, and visible system state; do not invent an arbitrary universal number of choices or latency budget.
+- **Learnability and information structure:** Jakob's law, recognition over recall, progressive disclosure, Miller's law, and serial-position effect. Familiar interaction patterns and appropriate grouping should reduce cognitive effort without hiding important actions. Miller's law is not a compulsory fixed menu-item count.
+- **Workflows and remembered experience:** goal-gradient effect, peak-end rule, Tesler's law, and Occam's razor. Reduce avoidable complexity, prioritize task completion, and make recovery/progress comprehensible without pretending intrinsic complexity can always be removed.
+- **Input handling and tolerance:** Postel's law, interpreted only where lenient input acceptance is safe. It MUST NOT override strict authentication, authorization, input/schema validation, data integrity, or secure output encoding.
+
+The principles above are **decision aids**, not a checklist requiring a visual cliché or a claim that every interface must implement every cognitive effect. Distinguish user evidence from heuristics, test important workflows and supported screen sizes, and disclose when a principle conflicts with another goal. Established accessibility criteria and real-world rendering under [UI-3](509-%20Applying%20Accessibility%20and%20Localization.md#ui-3) and UI-7 take precedence over attractive but unusable compositions.
+
+**Maintenance:** Preserve the owner's wording when practical, deduplicate repeated preferences, keep the latest three-category structure, and flag uncertain voice transcriptions as *unverified* rather than silently normalizing them. This typed 2026-11-04 statement has no identified ambiguous voice transcription. Named design references are in [WEB-REF-1](502-%20Researching%20Design%20References.md#web-ref-1).
